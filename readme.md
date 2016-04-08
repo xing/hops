@@ -50,6 +50,13 @@ module.exports = {
 ```
 
 
+## Run Hops
+
+```
+npm start (--production)
+```
+
+
 #### Thanks!
 
 The beautiful hops icon we are using as our logo was created by [The Crew at Fusionary](https://thenounproject.com/fusionary/) and provided via [The Noun Project](https://thenounproject.com/term/hops/9255/). It was licensed under the [Creative Commons BY 3.0 US](http://creativecommons.org/licenses/by/3.0/us/) license.
