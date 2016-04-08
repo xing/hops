@@ -1,5 +1,5 @@
 
-<p><img align="middle" width="300" height="300" src="/xing/hops/blob/master/logo.png?raw=true" alt="logo"></p>
+<p><img width="200" height="200" src="/logo.png?raw=true" alt="logo"></p>
 
 # Hops UI Toolbox
 
