@@ -1,9 +1,9 @@
 
 <p align="center"><img width="200" height="200" src="https://github.com/xing/hops/blob/master/logo.png?raw=true" alt="logo"></p>
 
-# Hops UI Toolbox
+<h1 align="center">Hops UI Toolbox</h1>
 
-:zap:**Highly experimental - use at your own peril. Things *will* break.**:zap:
+<p align="center">:zap:<b>Highly experimental - use at your own peril. Things <i>will</i> break.</b>:zap:</p><p>&nbsp;</p>
 
 In this repo, we are experimenting with technology that might serve as our next
 generation front-end technology stack. To get an impression, take a look at our
