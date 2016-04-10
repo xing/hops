@@ -21,7 +21,9 @@
     "hops": "bin/hops.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretest": "rm -rf app/{dist,node_modules/hops} && cd app && npm install",
+    "test": "tape spec/**/*.js | tap-min",
+    "preversion": "npm test",
     "postversion": "git push && git push --tags"
   },
   "contributors": [
@@ -81,5 +83,9 @@
     "webpack": "1.12.14",
     "webpack-config": "4.0.0",
     "webpack-dev-server": "1.14.1"
+  },
+  "devDependencies": {
+    "tap-min": "1.1.0",
+    "tape": "4.5.1"
   }
 }

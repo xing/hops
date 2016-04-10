@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "example of hops in action",
   "main": "src/main.js",
+  "license": "MIT",
+  "repository": {},
   "scripts": {
     "start": "hops",
     "test": "echo \"Error: no test specified\" && exit 1"
