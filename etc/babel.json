@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    ["typecheck", { "disable": { "production": true }}],
+    "transform-class-properties",
+    "transform-decorators-legacy"
+  ],
+  "presets": [
+    "react",
+    "es2015"
+  ],
+  "env": {
+    "hot": {
+      "presets": ["react-hmre"]
+    }
+  }
+}

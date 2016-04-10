@@ -1,0 +1,16 @@
+{
+  "name": "hops-example",
+  "version": "1.0.0",
+  "description": "example of hops in action",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "hops",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "hops": "file:.."
+  },
+  "babel": {
+    "extends": "hops/etc/babel"
+  }
+}

@@ -1,36 +1,21 @@
 
-<p align="center"><img width="200" height="200" src="/logo.png?raw=true" alt="logo"></p>
+<p align="center"><img width="200" height="200" src="https://github.com/xing/hops/blob/master/logo.png?raw=true" alt="logo"></p>
 
 # Hops UI Toolbox
 
 :zap:**Highly experimental - use at your own peril. Things *will* break.**:zap:
 
 In this repo, we are experimenting with technology that might serve as our next
-generation front-end technology stack.
+generation front-end technology stack. To get an impression, take a look at our
+[example app](https://github.com/xing/hops/tree/master/app);
 
 ## Install Hops
 
 ```
-npm i -SE hops
+npm install -SE hops
 ```
 
 ## Configure Project
-
-**.eslintrc.js**
-
-```
-module.exports = {
-  extends: require.resolve('hops/etc/eslint')
-}
-```
-
-**.stylelintrc.js**
-
-```
-module.exports = {
-  extends: require.resolve('hops/etc/stylelint')
-}
-```
 
 **package.json**
 
@@ -49,13 +34,29 @@ module.exports = {
 }
 ```
 
-
 ## Run Hops
 
 ```
 npm start (--production)
 ```
 
+## Configure Linters (optional)
+
+**.eslintrc.js**
+
+```
+module.exports = {
+  extends: require.resolve('hops/etc/eslint')
+}
+```
+
+**.stylelintrc.js**
+
+```
+module.exports = {
+  extends: require.resolve('hops/etc/stylelint')
+}
+```
 
 #### Thanks!
 
