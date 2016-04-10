@@ -48,7 +48,7 @@ npm install -SE hops
 npm start (--production)
 ```
 
-#### Thanks!
+### Thanks!
 
 The beautiful hops icon we are using instead of a logo was created by
 [The Crew at Fusionary](https://thenounproject.com/fusionary/) and provided via
