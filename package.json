@@ -1,7 +1,15 @@
 {
   "name": "hops",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "next generation toolbox for ux craftspeople",
+  "keywords": [
+    "react",
+    "redux",
+    "react-router",
+    "webpack",
+    "babel",
+    "static"
+  ],
   "main": "lib/node.js",
   "browser": "lib/browser.js",
   "files": [
@@ -15,9 +23,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "XING",
+  "contributors": [
+    "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)"
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/xing/hops",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xing/hops/issues"
+  },
+  "engines": {
+    "node": ">5.0.0"
+  },
   "dependencies": {
     "app-root-path": "1.0.0",
     "babel-eslint": "6.0.2",
