@@ -27,7 +27,9 @@
     "postversion": "git push && git push --tags"
   },
   "contributors": [
-    "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)"
+    "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
+    "TobiasKrogh <tobias@krogh.de> (https://www.xing.com/profile/Tobias_Krogh)",
+    "matthias-reis <mr@smartr.de> (https://www.xing.com/profile/Matthias_Reis3)"
   ],
   "license": "MIT",
   "homepage": "https://github.com/xing/hops",
