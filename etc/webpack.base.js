@@ -4,10 +4,9 @@ var WebpackConfig = require('webpack-config');
 var config = require('../lib/config');
 
 module.exports = new WebpackConfig().merge({
-  entry: [
-    'normalize.css',
+  entry: config.cssShared.concat([
     config.appRoot
-  ],
+  ]),
   output: {
     path: config.distDir,
     publicPath: '/',
@@ -35,3 +34,4 @@ module.exports = new WebpackConfig().merge({
     packageMains: ['webpack', 'browser', 'web', 'browserify', 'style', 'main']
   }
 });
+
