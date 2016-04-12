@@ -63,7 +63,6 @@
     "file-loader": "0.8.5",
     "json-loader": "0.5.4",
     "mkdirp": "0.5.1",
-    "normalize.css": "4.0.0",
     "postcss": "5.0.19",
     "postcss-cssnext": "2.5.2",
     "postcss-loader": "0.8.2",

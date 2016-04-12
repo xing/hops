@@ -5,7 +5,7 @@ var config = require('../lib/config');
 
 module.exports = new WebpackConfig().merge({
   entry: [
-    'normalize.css',
+    ...config.cssAdditionalEntry,
     config.appRoot
   ],
   output: {
@@ -35,3 +35,4 @@ module.exports = new WebpackConfig().merge({
     packageMains: ['webpack', 'browser', 'web', 'browserify', 'style', 'main']
   }
 });
+
