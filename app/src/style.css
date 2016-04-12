@@ -1,4 +1,6 @@
 
+@value primary: crimson;
+
 .headline {
-  color: crimson;
+  color: primary;
 }
