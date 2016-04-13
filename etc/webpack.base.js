@@ -1,12 +1,12 @@
-
 var WebpackConfig = require('webpack-config');
 
 var config = require('../lib/config');
 
 module.exports = new WebpackConfig().merge({
-  entry: config.cssShared.concat([
+  entry: [
+    ...config.cssShared,
     config.appRoot
-  ]),
+  ],
   output: {
     path: config.distDir,
     publicPath: '/',

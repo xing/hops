@@ -4,6 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <% if (css) { %><link rel="stylesheet" href="/<%= css %>" /><% } %>
+    <% if (sw) { %>
+      <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/<%= sw %>');
+        }
+      </script>
+    <% } %>
+
   </head>
   <body>
     <main><% if (body) { %><%- body %><% } %></main>
