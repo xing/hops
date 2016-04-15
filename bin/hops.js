@@ -8,22 +8,28 @@ var shell = require('shelljs');
 var config = require('../lib/config');
 
 function exec() {
-  var child = shell.exec(
-    util.format.apply(util, arguments),
-    {
-      async: true,
-      silent: true,
-      env: Object.assign({}, process.env, {
-        PATH: [
-          config.resolve(path.join('node_modules', '.bin')),
-          process.env.PATH
-        ].join(':'),
-        PWD: config.appRoot
-      })
-    }
-  );
-  child.stdout.pipe(process.stdout);
-  child.stderr.pipe(process.stderr);
+  var args = Array.from(arguments);
+  return new Promise(function (resolve, reject) {
+    var child = shell.exec(
+      util.format.apply(util, args),
+      {
+        silent: true,
+        env: Object.assign({}, process.env, {
+          PATH: [
+            config.resolve(path.join('node_modules', '.bin')),
+            process.env.PATH
+          ].join(':'),
+          PWD: config.appRoot
+        })
+      },
+      function(code, stdout, stderr) {
+        if (code === 0) { resolve(stdout); }
+        else { reject(stderr); }
+      }
+    );
+    child.stdout.pipe(process.stdout);
+    child.stderr.pipe(process.stderr);
+  });
 }
 
 function run(method) {
@@ -45,16 +51,20 @@ function run(method) {
       );
       break;
     case 'build':
-      exec(
-        'webpack -p --progress --config %s',
-        config.webpackBuild
-      );
+      exec('webpack -p --progress --config %s', config.webpackBuild);
       break;
     case 'prerender':
-      exec('node %s', require.resolve('../lib/prerender.js'));
+      exec('node %s', path.resolve(__dirname, '..', 'lib', 'prerender.js'));
+      break;
+    case 'lint':
+      Promise.all([
+        exec('eslint --config %s %s', config.eslint, config.srcDir),
+        exec('stylelint --config %s "%s/**/*.css"', config.stylelint, config.srcDir)
+      ])
+      .catch(function () { shell.exit(1); });
       break;
     default:
-      shell.echo('Usage: hops [{start,watch,build,prerender}]');
+      shell.echo('Usage: hops [{start,watch,build,prerender,lint}]');
       shell.exit(1);
   }
 }
