@@ -6,11 +6,19 @@ import { connect } from 'react-redux';
 import { createReducer, render } from 'hops';
 
 /*
- * App is you "container" element. Every other element will be passed as "props"
- * to it, they will be in the key "children"[1]. As you see this is a dumb
- * component and has NO access to the store and state as it does not need it.
+ * App is your container element. Everything will be passed to it as `props`,
+ * including its child elements or `children` [1]. It is a stateless component
+ * in the sense that it has no local state and no direct connection to the
+ * central state.
+ *
+ * App could have been implemented as a pure functional component, but there are
+ * still some issues [3] with these and hot module replacement.
+ *
+ * ({ children }) => (<div>{ children }</div>)
  *
  * [1]: https://facebook.github.io/react/docs/multiple-components.html#children
+ * [2]: https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components
+ * [3]: https://github.com/gaearon/babel-plugin-react-transform/issues/57
  */
 class App extends Component {
   static propTypes = {
@@ -26,10 +34,10 @@ class App extends Component {
 
 /*
  * Importing from a CSS file will allow you to import top-level class
- * definitions. In this case style.css contains only the class .headline, that's
- * what's getting imported. Local class[1] definitions will be created, and your
- * .headline class will look something like .style-headline-3i7jG to avoid
- * collisions[2].
+ * definitions. In this case style.css contains the class `.headline` and that
+ * is what is being imported here. Local class[1] definitions will be created,
+ * and your `.headline` class will look something like `.style-headline-3i7jG`
+ * to avoid collisions [2].
  *
  * [1]: https://github.com/webpack/css-loader#local-scope
  * [2]: https://github.com/css-modules/css-modules
@@ -52,23 +60,18 @@ const reducer = createReducer('home');
 const { createSelector, createAction, registerReducer } = reducer;
 
 /*
- * The promise here is essentially unnecessary, but serves as an example of how
- * you could dispatch other async actions, such as a `fetch`[1] call, a process
- * in the background via WebWorkers, or anything that could return a promise.
- * This is achieved via redux-thunk[2]. If your action does not do async
- * stuff you probably don't need this and your action creator should not return
- * a function.
+ * To modify your application's state, you need to dispatch actions [1].
+ * Usually, these actions are plain JavaScript objects. You can conveniently
+ * create simple update [2] actions using the `createAction` helper.
  *
- * hops's createStore[3] makes some assumptions, one of them is the fact that
- * you will be using thunk for async stuff. You don't have to, if you take a
- * look at lib/store.js you should notice that the createStore method accepts an
- * enhancer argument. That should be enough to figure out how to use something
- * else like redux-saga. If it isn't enough we recommend you stick with
- * redux-thunk to get started!
+ * If you need to dispatch asynchronous actions, such as a `fetch`[3] call or a
+ * process in the background via WebWorkers, dispatch a function and
+ * have it return a promise, which is needed for rendering in node [4].
  *
- * [1]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
- * [2]: https://github.com/gaearon/redux-thunk
- * [3]: https://github.com/xing/hops/blob/master/lib/store.js#L38-L52
+ * [1]: http://redux.js.org/docs/basics/Actions.html
+ * [2]: https://facebook.github.io/react/docs/update.html
+ * [3]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+ * [4]: https://github.com/gaearon/redux-thunk
  */
 const fetchDataAsync = dispatch => (
   new Promise(resolve => {
@@ -82,9 +85,11 @@ const fetchDataAsync = dispatch => (
 );
 
 /*
- * Home is your stateful component. Decorators, at least in the old form, wrap a
- * function or class in another function. More information in [1]. The
- * createSelector is a function provided for you by the hops stack, you
+ * Home is your stateful component: It is `@connect`ed to the central store.
+ * Decorators like `@connect`, at least in the current form, wrap a function or
+ * class in another function. More information in [1].
+ *
+ * `createSelector` is a function provided for you by the hops stack, you
  * can find it in [2]. It's a handy utility function that maps your state
  * to the props of the element.
  *
@@ -110,7 +115,7 @@ class Home extends Component {
   }
   render() {
     /*
-     * Destructuring[1] the "props"[2] object of Home into Headline will give
+     * Destructuring[1] the `props` [2] object of Home into Headline will give
      * Headline a copy of the Home props, allowing it to have access to, for
      * instance, "greeting". So the result, abbreviated, would be something
      * like this (note it will pass ALL values in this.props):
@@ -143,4 +148,9 @@ const routes = (
     <IndexRoute component={ Home } />
   </Route>
 );
+
+/*
+ * You need to make sure you call hops' render function and export its return
+ * value to enable universal (isomorphic) rendering.
+ */
 export default render({ routes, reducers });
