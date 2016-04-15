@@ -26,8 +26,8 @@ npm install -SE hops
 
 A postinstall script will try to create the following: `.eslintrc.js`,
 `.stylelintrc.js`. It will also try to find your _source directory_, which comes
-from trying to resolve where your _main_ file is in your `package.json`. If there
-is no _main_ it will add some defaults to your `package.json`:
+from trying to resolve where your _main_ file is in your `package.json`. If
+there is no _main_ it will add some defaults to your `package.json`:
 
 ```json
 {
@@ -37,9 +37,9 @@ is no _main_ it will add some defaults to your `package.json`:
 
 Your `scripts` and `babel` values will be merged with the examples in the
 [configure](https://github.com/rcsole/hops/tree/postinstall-scripts#configure)
-section, your prior settings will always take preference. Finally, if it couldn't
-match your _source directory_, it will copy a boilerplate example which you can find
-in this project under `app/src`.
+section, your prior settings will always take preference. Finally, if it could
+not match your _source directory_, it will copy a boilerplate example which you
+can find in this project under `app/src`.
 
 ### Configure
 
