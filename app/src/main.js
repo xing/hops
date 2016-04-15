@@ -11,8 +11,8 @@ import { createReducer, render } from 'hops';
  * in the sense that it has no local state and no direct connection to the
  * central state.
  *
- * App could have been implemented as a pure functional component, but there are
- * still some issues [3] with these and hot module replacement.
+ * App could have been implemented as a pure functional component [2], but there
+ * are still some issues [3] with these and hot module replacement.
  *
  * ({ children }) => (<div>{ children }</div>)
  *
