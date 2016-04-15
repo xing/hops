@@ -1,6 +1,33 @@
 
-@value primary: crimson;
+/*
+ * Variables are being exported and can be reused [1]
+ *
+ * [1]: https://github.com/css-modules/postcss-modules-values
+ */
+@value primary: rebeccapurple;
 
-.headline {
+
+/*
+ * Top level classes are being namespaced and exported [1]
+ *
+ * [1]: https://github.com/css-modules/css-modules
+ */
+.highlight {
   color: primary;
+}
+
+
+/*
+ * Class composition [1] and next generation syntax [2] are equally supported
+ *
+ * [1]: https://github.com/css-modules/css-modules#composition
+ * [2]: http://cssnext.io
+ */
+.headline {
+  composes: highlight;
+  margin-top: 2em;
+  text-align: center;
+  &:after {
+    content: ' 🚀';
+  }
 }
