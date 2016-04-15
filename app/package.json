@@ -6,7 +6,11 @@
   "license": "MIT",
   "repository": {},
   "scripts": {
-    "start": "hops",
+    "start": "hops start",
+    "watch": "hops watch",
+    "build": "hops build",
+    "prerender": "hops prerender",
+    "lint": "hops lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
