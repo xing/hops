@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <% if (css) { %><link rel="stylesheet" href="/<%= css %>" /><% } %>
-    <% if (sw) { %>
+    <% if (css) { %><link rel="stylesheet" href="/<%= css %>.css" /><% } %>
+    <% if (sw) { -%>
       <script>
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/<%= sw %>');
+          navigator.serviceWorker.register('/<%= sw %>.js');
         }
       </script>
-    <% } %>
+    <% } -%>
   </head>
   <body>
     <main><% if (body) { %><%- body %><% } %></main>
     <% if (state) { %><script>
       INITIAL_STATE = <%- JSON.stringify(state) %>;
     </script><% } %>
-    <% if (js) { %><script src="/<%= js %>" async></script><% } %>
+    <% if (js) { %><script src="/<%= js %>.js" async></script><% } %>
   </body>
 </html>

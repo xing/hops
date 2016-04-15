@@ -3,14 +3,18 @@ var WebpackConfig = require('webpack-config');
 
 var config = require('../lib/config');
 
+var entry = {};
+entry[config.bundleName] = config.cssShared.concat([ config.appRoot ]);
+if (config.package.worker) {
+  entry[config.workerName] = config.resolve(config.package.worker);
+}
+
 module.exports = new WebpackConfig().merge({
-  entry: config.cssShared.concat([
-    config.appRoot
-  ]),
+  entry: entry,
   output: {
     path: config.distDir,
     publicPath: '/',
-    filename: config.jsFile
+    filename: '[name].js'
   },
   module: {
     loaders: [{
@@ -34,4 +38,3 @@ module.exports = new WebpackConfig().merge({
     packageMains: ['webpack', 'browser', 'web', 'browserify', 'style', 'main']
   }
 });
-

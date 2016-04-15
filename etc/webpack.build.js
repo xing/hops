@@ -19,7 +19,7 @@ module.exports = new WebpackConfig().extend(baseConfig).merge({
     }]
   },
   plugins: [
-    new ExtractTextPlugin(config.cssFile, { allChunks: true }),
+    new ExtractTextPlugin('[name].css', { allChunks: true }),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false }})
   ]
