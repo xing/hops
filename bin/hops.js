@@ -37,12 +37,12 @@ function run(method) {
     case undefined:
     case 'start':
       shell.rm('-rf', config.distDir);
-      run('prerender');
+      run('render');
       run((process.env.NODE_ENV === 'production') ? 'build' : 'watch');
       break;
     case 'watch':
       exec(
-        'chokidar "%s/**/*.+(css|js)" --silent -c "hops prerender"',
+        'chokidar "%s/**/*.+(css|js)" --silent -c "hops render"',
         config.srcDir
       );
       exec(
@@ -53,8 +53,8 @@ function run(method) {
     case 'build':
       exec('webpack -p --progress --config %s', config.webpackBuild);
       break;
-    case 'prerender':
-      exec('node %s', path.resolve(__dirname, '..', 'lib', 'prerender.js'));
+    case 'render':
+      exec('node %s', path.resolve(__dirname, 'render.js'));
       break;
     case 'lint':
       Promise.all([
@@ -64,7 +64,7 @@ function run(method) {
       .catch(function () { shell.exit(1); });
       break;
     default:
-      shell.echo('Usage: hops [{start,watch,build,prerender,lint}]');
+      shell.echo('Usage: hops [{start,watch,build,render,lint}]');
       shell.exit(1);
   }
 }

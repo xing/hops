@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 var path = require('path');
 var fs = require('fs');
@@ -5,24 +6,7 @@ var fs = require('fs');
 var mkdirp = require('mkdirp');
 
 var config = require('../lib/config');
-
-require('babel-register')({
-  ignore: config.noBabel
-});
-
-require('css-modules-require-hook')({
-  generateScopedName: config.cssName
-});
-
-var renderUrl = require(config.appRoot);
-if (renderUrl.__esModule) { // eslint-disable-line no-underscore-dangle
-  renderUrl = renderUrl.default;
-}
-if (typeof renderUrl !== 'function') {
-  renderUrl = function () {
-    return Promise.reject(new Error('invalid render function'));
-  };
-}
+var render = require('../lib/render');
 
 function getFileName(url, distDir) {
   var segments = url.split('/').filter(function(segment) {
@@ -38,7 +22,7 @@ function getFileName(url, distDir) {
 function renderShells() {
   config.shells.forEach(function(url) {
     var fileName = getFileName(url, config.distDir);
-    renderUrl(url).then(function(body) {
+    render(url).then(function(body) {
       mkdirp(path.dirname(fileName), function(err) {
         if (err) { throw err; }
         else {
@@ -47,16 +31,12 @@ function renderShells() {
       });
     })
     .catch(function(err) {
-       /* eslint-disable no-console */
-      console.error(err);
-      console.trace();
-      /* eslint-enable no-console */
+      throw err || new Error('invalid route: ' + url);
     });
   });
 }
 
-module.exports.renderUrl = renderUrl;
-module.exports.renderShells = renderShells;
+module.exports = renderShells;
 
 if (require.main === module) {
   renderShells();
