@@ -4,9 +4,9 @@ var WebpackConfig = require('webpack-config');
 var config = require('../lib/config');
 
 var entry = {};
-entry[config.bundleName] = config.cssShared.concat([ config.appRoot ]);
-if (config.package.worker) {
-  entry[config.workerName] = config.resolve(config.package.worker);
+entry[config.bundleName] = config.bundleFile;
+if (config.workerFile && config.isProd) {
+  entry[config.workerName] = config.workerFile;
 }
 
 module.exports = new WebpackConfig().merge({
