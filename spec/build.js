@@ -8,13 +8,6 @@ var shell = require('shelljs');
 
 var appRoot = path.resolve(__dirname, '..', 'app');
 
-function exec() {
-  return shell.exec(
-    util.format.apply(util, arguments),
-    { silent: true }
-  );
-}
-
 function fileExists(file) {
   try {
     return fs.statSync(file).size;
@@ -35,9 +28,13 @@ test('build test', function (t) {
   t.notOk(fileExists(cssFile), 'css file not there already');
   t.notOk(fileExists(jsFile), 'js file not there already');
 
-  exec('cd %s && npm start --production', appRoot);
-
-  t.ok(fileExists(htmlFile, 'html file created and not empty'));
-  t.ok(fileExists(cssFile, 'css file created and not empty'));
-  t.ok(fileExists(jsFile, 'js file created and not empty'));
+  shell.exec(
+    util.format('cd %s && npm start --production', appRoot),
+    { silent: true },
+    function () {
+      t.ok(fileExists(htmlFile), 'html file created and not empty');
+      t.ok(fileExists(cssFile), 'css file created and not empty');
+      t.ok(fileExists(jsFile), 'js file created and not empty');
+    }
+  );
 });
