@@ -9,16 +9,23 @@
 
 <h1 align="center">Hops UI Toolbox</h1>
 
-<div class=highlight><p align="center">
-  <b>Highly experimental - use at your own peril. Things <i>will</i> break.</b>
-</p></div><p>&nbsp;</p>
+<p align="center">
+  <a href="https://travis-ci.org/xing/hops">
+    <img src="https://travis-ci.org/xing/hops.svg?branch=master">
+  </a>
+  <a href="https://david-dm.org/xing/hops">
+    <img src="https://david-dm.org/xing/hops.svg">
+  </a>
+</p>
+<p>&nbsp;</p>
 
-In this repo, we are experimenting with technology that might serve as our next
-generation front end technology stack: hops spices our brew (i.e. web front end)
-with ECMAScript, CSSModules, JSX/React and Flux/Redux. To get an impression take
-a look at our [example app](https://github.com/xing/hops/tree/master/app).
+In this repo, we are experimenting with technology that might serve as our next generation front end technology stack: hops spices our brew (i.e. web front end) with [ECMAScript](https://babeljs.io) and [Flow](http://flowtype.org), [CSS Next](http://cssnext.io) and [CSS Modules](https://github.com/css-modules/css-modules), [JSX](https://facebook.github.io/jsx/)/[React](https://facebook.github.io/react/) and [Flux](https://facebook.github.io/flux/)/[Redux](http://redux.js.org). To get an impression take a look at our [example app](https://github.com/xing/hops/tree/master/app).
+
+Hops is not yet another boilerplate. Hops is a self-contained but highly extensible development and build environment that is packaged as a single module. Batteries included.
 
 ### Install
+
+Besides recent versions of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com), hops has no global dependencies. If you need those, we recommend using [nvm](https://github.com/creationix/nvm) or similar.
 
 ```
 mkdir foo && cd foo
@@ -26,22 +33,77 @@ npm init -y
 npm install -SE hops
 ```
 
-A postinstall script will attempt to bootstrap and configure your project: after
-installation, you ought to be able to instantly start developing.
+A postinstall script will attempt to bootstrap and configure the project hops is being installed to: after installation, you can instantly start developing.
 
 ### Run
+
+For developing with hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io) with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
 
 ```
 npm start (--production)
 ```
 
-If called without the `--production` flag, a development server with hot module
-replacement is started. In production mode, a static build is initialized.
+If called without the `--production` flag, a development server with hot module replacement is started. In production mode, a static build is initialized.
+
+### API
+
+#### render(options)
+
+`render()` is hops main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both client- and server-side. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
+
+```
+import { render } from 'hops';
+
+import { reducers } from './reducers';
+import { routes } from './routes';
+
+export default render({ routes, reducers });
+```
+
+In addition to `routes` and `reducers`, an html `mountPoint` selector and a `createStore` factory function may be passed as options.
+
+
+#### createReducer(key)
+
+`createReducer()` generates a [Redux](https://github.com/reactjs/redux) reducer function using the provided key and React's [immutability helpers](https://facebook.github.io/react/docs/update.html). As an extra, it adds a couple of helper functions to it to make interacting with your store more convenient.
+
+```
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Route } from 'react-router';
+import { createReducer, render } from 'hops';
+
+const fooReducer = createReducer('foo');
+
+@connect(fooReducer.createSelector())
+class Foo extends Component {
+  static fetchData(dispatch) {
+    dispatch(fooReducer.createAction({
+      'bar': { '$set': 42 }
+    }));
+    return Promise.resolve();
+  }
+  componentDidMount() {
+    this.constructor.fetchData(this.props.dispatch);
+  }
+  render() {
+    return (<div>{ this.props.bar }</div>);
+  }
+}
+
+const routes = (
+  <Route path='/' component={ Foo } />
+);
+
+const reducers = {};
+fooReducer.registerReducer(reducers);
+
+export default render({ routes, reducers });
+```
+
+Hops supports server-side data fetching for route components: it calls their static `fetchData` methods and expects them to return promises. Of course, asynchronous actions are supported by using [thunks](https://github.com/gaearon/redux-thunk).
+
 
 ### Thanks!
 
-The beautiful hops icon we are using instead of a logo was created by
-[The Crew at Fusionary](https://thenounproject.com/fusionary/) and provided via
-[The Noun Project](https://thenounproject.com/term/hops/9255/). It is licensed
-under a [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/)
-license.
+The beautiful hops icon we are using instead of a logo was created by [The Crew at Fusionary](https://thenounproject.com/fusionary/) and provided via [The Noun Project](https://thenounproject.com/term/hops/9255/). It is licensed under a [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/) license.
