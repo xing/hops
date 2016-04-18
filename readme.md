@@ -2,7 +2,7 @@
 <p align="center">
   <img
     width="200"
-    height="200"
+    height="217"
     src="https://github.com/xing/hops/blob/master/logo.png?raw=true"
   />
 </p>
