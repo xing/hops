@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "next generation toolbox for ux craftspeople",
   "keywords": [
     "react",
@@ -22,11 +22,12 @@
     "hops": "bin/hops.js"
   },
   "scripts": {
+    "install": "node bin/setup.js",
+    "test": "tape spec/**/*.js | tap-dot",
     "pretest": "rm -rf app/{dist,node_modules/hops} && cd app && npm install",
-    "test": "tape spec/**/*.js | tap-min",
+    "posttest": "eslint --config etc/eslint.js lib",
     "preversion": "npm test",
-    "postversion": "git push && git push --tags",
-    "install": "node bin/setup.js"
+    "postversion": "git push && git push --tags"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -66,9 +67,9 @@
     "eslint-plugin-react": "4.3.0",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.8.5",
+    "isomorphic-fetch": "2.2.1",
     "json-loader": "0.5.4",
     "mkdirp": "0.5.1",
-    "normalize-package-data": "^2.3.5",
     "postcss": "5.0.19",
     "postcss-cssnext": "2.5.2",
     "postcss-loader": "0.8.2",
@@ -91,7 +92,8 @@
     "webpack-dev-server": "1.14.1"
   },
   "devDependencies": {
-    "tap-min": "1.1.0",
-    "tape": "4.5.1"
+    "tap-dot": "1.0.5",
+    "tape": "4.5.1",
+    "tree-kill": "1.0.0"
   }
 }

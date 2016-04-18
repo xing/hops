@@ -1,52 +1,67 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+var fs = require('fs');
+var path = require('path');
 
-const shell = require('shelljs');
-const normalizeData = require('normalize-package-data');
+var shell = require('shelljs');
 
-const config = require('../lib/config');
-const pkgPath = path.join(config.appRoot, 'package.json');
-const pkg = JSON.parse(fs.readFileSync(pkgPath));
+var config = require('../lib/config');
 
-normalizeData(pkg);
+var pkgPath = config.resolve('package.json');
+var pkg = Object.assign({}, config.package);
 
-const scripts = Object.assign({}, { start: 'hops' }, pkg.scripts);
-const babel = Object.assign({}, { extends: 'hops/etc/babel' }, pkg.babel);
-const main = pkg.main || 'src/main.js';
+Object.assign(pkg, {
+  main: (shell.test('-e', pkg.main)) ? pkg.main : 'src/main.js',
+  scripts: Object.assign(
+    {
+      start: 'hops start',
+      watch: 'hops watch',
+      build: 'hops build',
+      render: 'hops render',
+      lint: 'hops lint'
+    },
+    pkg.scripts
+  ),
+  babel: Object.assign(
+    { extends: 'hops/etc/babel' },
+    pkg.babel
+  )
+});
 
-fs.writeFileSync(
-  pkgPath,
-  JSON.stringify(Object.assign({}, pkg, { main, scripts, babel }), null, 2)
-);
+var template = [{
+  origin: path.resolve(__dirname, '..', 'app', 'src', 'main.js'),
+  destination: config.resolve(pkg.main)
+}, {
+  origin: path.resolve(__dirname, '..', 'app', 'src', 'style.css'),
+  destination: path.resolve(path.dirname(config.resolve(pkg.main)), 'style.css')
+}, {
+  origin: path.resolve(__dirname, '..', 'app', '.eslintrc.js'),
+  destination: config.resolve('.eslintrc.js')
+}, {
+  origin: path.resolve(__dirname, '..', 'app', '.stylelintrc.js'),
+  destination: config.resolve('.stylelintrc.js')
+}];
 
-const tryCopy = (file) => {
-  try {
-    fs.accessSync(file.path, fs.F_OK);
-  } catch (e) {
-    shell.cp('-R', file.origin, file.destination);
-  }
-};
+function configure() {
+  fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2));
+  shell.echo('updated package.json');
+}
 
-const projectPath = (pathname) => path.join(config.appRoot, pathname);
+function bootstrap() {
+  template.forEach(function (file) {
+    if (!shell.test('-e', file.destination)) {
+      var destDir = path.dirname(file.destination);
+      shell.mkdir('-p', destDir);
+      shell.cp('-r', file.origin, destDir);
+      shell.echo('created ' + file.destination.replace(destDir + '/', ''));
+    }
+  });
+}
 
-const template = [
-  {
-    path: config.srcDir,
-    origin: path.join('app', 'src'),
-    destination: path.join('..', '..')
-  },
-  {
-    path: projectPath('.eslintrc.js'),
-    origin: path.join('app', '.eslintrc.js'),
-    destination: config.appRoot
-  },
-  {
-    path: projectPath('.stylelintrc.js'),
-    origin: path.join('app', '.stylelintrc.js'),
-    destination: config.appRoot
-  }
-];
+module.exports.configure = configure;
+module.exports.bootstrap = bootstrap;
 
-template.forEach(tryCopy);
+if (require.main === module) {
+  configure();
+  bootstrap();
+}
