@@ -106,4 +106,4 @@ Hops supports server-side data fetching for route components: it calls their sta
 
 ### Thanks!
 
-The beautiful hops icon we are using instead of a logo was created by [The Crew at Fusionary](https://thenounproject.com/fusionary/) and provided via [The Noun Project](https://thenounproject.com/term/hops/9255/). It is licensed under a [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/) license.
+The beautiful hops icon used in the logo was created by [The Crew at Fusionary](https://thenounproject.com/fusionary/) and provided via [The Noun Project](https://thenounproject.com/term/hops/9254/). It is licensed under a [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/) license.
