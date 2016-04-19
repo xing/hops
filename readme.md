@@ -51,7 +51,7 @@ If called without the `--production` flag, a development server with hot module 
 
 `render()` is hops main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both client- and server-side. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
 
-```
+```javascript
 import { render } from 'hops';
 
 import { reducers } from './reducers';
@@ -63,42 +63,31 @@ export default render({ routes, reducers });
 In addition to `routes` and `reducers`, an html `mountPoint` selector and a `createStore` factory function may be passed as options.
 
 
+#### createAction(key)
+
+`createReducer()` is just a small helper function to work with reducers generated with `createReducer()`.
+
+```javascript
+import { createAction } from 'hops';
+
+const namespace = 'foo';
+const update = createAction(namespace);
+
+update({'bar': '$set': 'baz'});
+```
+
+
 #### createReducer(key)
 
-`createReducer()` generates a [Redux](https://github.com/reactjs/redux) reducer function using the provided key and React's [immutability helpers](https://facebook.github.io/react/docs/update.html). As an extra, it adds a couple of helper functions to it to make interacting with your store more convenient.
+`createReducer()` generates a [Redux](https://github.com/reactjs/redux) reducer function using the provided key and React's [immutability helpers](https://facebook.github.io/react/docs/update.html).
 
-```
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Route } from 'react-router';
-import { createReducer, render } from 'hops';
+```javascript
+import { createReducer } from 'hops';
 
-const fooReducer = createReducer('foo');
-
-@connect(fooReducer.createSelector())
-class Foo extends Component {
-  static fetchData(dispatch) {
-    dispatch(fooReducer.createAction({
-      'bar': { '$set': 42 }
-    }));
-    return Promise.resolve();
-  }
-  componentDidMount() {
-    this.constructor.fetchData(this.props.dispatch);
-  }
-  render() {
-    return (<div>{ this.props.bar }</div>);
-  }
-}
-
-const routes = (
-  <Route path='/' component={ Foo } />
-);
-
-const reducers = {};
-fooReducer.registerReducer(reducers);
-
-export default render({ routes, reducers });
+const namespace = 'foo';
+const reducers = {
+  [namespace]: createReducer(namespace)
+};
 ```
 
 Hops supports server-side data fetching for route components: it calls their static `fetchData` methods and expects them to return promises. Of course, asynchronous actions are supported by using [thunks](https://github.com/gaearon/redux-thunk).
