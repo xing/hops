@@ -11,7 +11,7 @@ var baseConfig = path.join(__dirname, 'webpack.base');
 module.exports = new WebpackConfig().extend(baseConfig).merge({
   module: {
     loaders: [{
-      test: /\.css$/,
+      test: /\.(css|pcss)$/,
       loader: ExtractTextPlugin.extract(
         'style',
         'css?modules&localIdentName=' + config.cssName + '&importLoaders=1!postcss'

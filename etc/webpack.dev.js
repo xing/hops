@@ -9,7 +9,7 @@ var baseConfig = path.join(__dirname, 'webpack.base');
 module.exports = new WebpackConfig().extend(baseConfig).merge({
   module: {
     loaders: [{
-      test: /\.css$/,
+      test: /\.(css|pcss)$/,
       loaders: [
         'style',
         'css?sourceMap&modules&localIdentName=' + config.cssName + '&importLoaders=1',
