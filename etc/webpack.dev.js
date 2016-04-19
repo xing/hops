@@ -21,6 +21,9 @@ module.exports = new WebpackConfig().extend(baseConfig).merge({
     aggregateTimeout: 100
   },
   devServer: {
-    contentBase: config.distDir
+    contentBase: config.distDir,
+    proxy: {
+      '/api/*': 'http://localhost:3000/'
+    }
   }
 });
