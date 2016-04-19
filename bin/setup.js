@@ -58,8 +58,8 @@ function bootstrap() {
   });
 }
 
-module.exports.configure = configure;
-module.exports.bootstrap = bootstrap;
+exports.configure = configure;
+exports.bootstrap = bootstrap;
 
 if (require.main === module) {
   configure();
