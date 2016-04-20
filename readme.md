@@ -74,7 +74,7 @@ import { createAction } from 'hops';
 const namespace = 'foo';
 const update = createAction(namespace);
 
-dispatch(update({'bar': '$set': 'baz'}));
+dispatch(update({'bar': {'$set': 'baz'}}));
 ```
 
 
