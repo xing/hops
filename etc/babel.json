@@ -1,8 +1,6 @@
 {
   "plugins": [
-    ["typecheck", { "disable": { "production": true }}],
-    "transform-class-properties",
-    "transform-decorators-legacy"
+    ["typecheck", { "disable": { "production": true }}]
   ],
   "presets": [
     "react",
