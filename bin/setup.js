@@ -62,6 +62,8 @@ exports.configure = configure;
 exports.bootstrap = bootstrap;
 
 if (require.main === module) {
-  configure();
-  bootstrap();
+  if (path.resolve(__dirname, '..') !== config.appRoot) {
+    configure();
+    bootstrap();
+  }
 }
