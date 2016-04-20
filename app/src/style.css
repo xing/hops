@@ -1,10 +1,30 @@
 
 /*
- * Variables are being exported and can be reused [1]
+ * Variables can be imported and renamed from external .css files [1]
  *
  * [1]: https://github.com/css-modules/postcss-modules-values
  */
-@value primary: rebeccapurple;
+@value primary as primary-color, secondary from './values.css';
+
+
+/*
+ * CSS Custom Properties [1]
+ *
+ * [1]: https://www.w3.org/TR/css-variables/
+ */
+:root {
+  --font-family-sans: 'Helvetica Neue', Arial, sans;
+  --font-size: 2rem;
+}
+
+
+/*
+ * Custom Media Queries [1] and media query ranges [2]
+ *
+ * [1]: https://drafts.csswg.org/mediaqueries/#custom-mq
+ * [2]: https://drafts.csswg.org/mediaqueries/#mq-ranges
+ */
+@custom-media --medium-viewport (width >= 50em);
 
 
 /*
@@ -13,7 +33,7 @@
  * [1]: https://github.com/css-modules/css-modules
  */
 .highlight {
-  color: primary;
+  color: primary-color;
 }
 
 
@@ -23,11 +43,38 @@
  * [1]: https://github.com/css-modules/css-modules#composition
  * [2]: http://cssnext.io
  */
-.headline {
-  composes: highlight;
-  margin-top: 2em;
+body {
   text-align: center;
-  &:after {
+}
+
+.headline {
+  margin-top: 2em;
+  display: inline-block;
+  padding: 1em 2em;
+
+  /* Class composition */
+  composes: highlight;
+
+  /* CSS Custom Properties */
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size);
+
+  /* Color function */
+  border: 3px solid color(indigo lightness(70%));
+
+  /* Nesting */
+  @nest &::after { /* @nest keyword is required for complex nesting */
     content: ' 🚀';
+  }
+
+  /* Media query nesting */
+  @media (--medium-viewport) {
+    /* Custom properties in calc() methods will be parsed previously */
+    font-size: calc(var(--font-size) + 1rem);
+  }
+
+  &:hover {
+    /* Gray function */
+    box-shadow: 0 .5em 1em gray(50%, .5);
   }
 }
