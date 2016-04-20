@@ -22,6 +22,7 @@
     "hops": "bin/hops.js"
   },
   "scripts": {
+    "start": "cd app; npm start",
     "install": "node bin/setup.js",
     "test": "tape spec/**/*.js | tap-dot",
     "pretest": "rm -rf app/{dist,node_modules/hops} && cd app && npm install",
