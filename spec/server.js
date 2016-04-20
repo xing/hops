@@ -8,7 +8,7 @@ var shell = require('shelljs');
 var kill = require('tree-kill');
 var fetch = require('isomorphic-fetch');
 
-var appRoot = path.resolve(__dirname, '..', 'app');
+var appRoot = path.resolve(__dirname, '..', 'tmp');
 
 var baseUrl = 'http://localhost:8080/';
 

@@ -25,8 +25,8 @@
     "start": "cd app; npm start",
     "install": "node bin/setup.js",
     "test": "tape spec/**/*.js | tap-dot",
-    "pretest": "rm -rf app/{dist,node_modules/hops} && cd app && npm install",
-    "posttest": "eslint --config etc/eslint.js lib",
+    "pretest": "mkdir -p tmp; cd tmp; npm init -y; npm install file:..",
+    "posttest": "rm -rf tmp; eslint --config etc/eslint.js lib",
     "preversion": "npm test",
     "postversion": "git push --tags"
   },
