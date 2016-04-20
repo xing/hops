@@ -65,15 +65,16 @@ In addition to `routes` and `reducers`, an html `mountPoint` selector and a `cre
 
 #### createAction(key)
 
-`createReducer()` is just a small helper function to work with reducers generated with `createReducer()`.
+`createAction()` is just a small helper function to work with reducers generated with `createReducer()`.
 
 ```javascript
+import { dispatch } from 'store';
 import { createAction } from 'hops';
 
 const namespace = 'foo';
 const update = createAction(namespace);
 
-update({'bar': '$set': 'baz'});
+dispatch(update({'bar': '$set': 'baz'}));
 ```
 
 
