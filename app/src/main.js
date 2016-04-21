@@ -1,19 +1,21 @@
 
-import React, { PropTypes } from 'react';
+import React, { createClass, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Route } from 'react-router';
 
-import { createContainer, createAction, createReducer, render } from 'hops';
+import { createAction, createReducer, render } from 'hops';
 
 import { headline } from './style.css';
 
 const namespace = 'home';
 
-const Home = createContainer(
+const Home = connect(
   (state) => state[namespace],
   {
     update: createAction(namespace)
-  },
-  {
+  }
+)(
+  createClass({
     propTypes: {
       greeting: PropTypes.string,
       update: PropTypes.func
@@ -28,7 +30,7 @@ const Home = createContainer(
         <h1 className={ headline }>{ greeting }</h1>
       );
     }
-  }
+  })
 );
 
 const routes = (
