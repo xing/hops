@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "next generation toolbox for ux craftspeople",
   "keywords": [
     "react",
@@ -28,7 +28,7 @@
     "pretest": "mkdir -p tmp; cd tmp; npm init -y; npm install file:..",
     "posttest": "rm -rf tmp; eslint --config etc/eslint.js lib",
     "preversion": "npm test",
-    "postversion": "git push --tags"
+    "postversion": "git push && git push --tags"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
