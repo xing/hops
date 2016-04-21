@@ -6,7 +6,7 @@ var util = require('util');
 var test = require('tape');
 var shell = require('shelljs');
 
-var appRoot = path.resolve(__dirname, '..', 'app');
+var appRoot = path.resolve(__dirname, '..', 'tmp');
 
 function fileExists(file) {
   try {

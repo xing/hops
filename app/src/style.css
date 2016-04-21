@@ -1,10 +1,17 @@
+/*
+ * Variables are being exported and can be reused [1]
+ *
+ * [1]: https://github.com/css-modules/postcss-modules-values
+ */
+@value primary: rebeccapurple;
 
 /*
  * Variables can be imported and renamed from external .css files [1]
  *
  * [1]: https://github.com/css-modules/postcss-modules-values
+ *
+ * @value secondary as secondary-color from './values.css';
  */
-@value primary as primary-color, secondary from './values.css';
 
 
 /*
@@ -33,7 +40,7 @@
  * [1]: https://github.com/css-modules/css-modules
  */
 .highlight {
-  color: primary-color;
+  color: primary;
 }
 
 
