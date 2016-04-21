@@ -43,7 +43,7 @@ var template = [{
 }];
 
 function configure() {
-  fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2));
+  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
   shell.echo('updated package.json');
 }
 
@@ -61,9 +61,11 @@ function bootstrap() {
 exports.configure = configure;
 exports.bootstrap = bootstrap;
 
-if (require.main === module) {
-  if (path.resolve(__dirname, '..') !== config.appRoot) {
-    configure();
-    bootstrap();
-  }
+if (
+  require.main === module &&
+  path.resolve(__dirname, '..') !== config.appRoot &&
+  !shell.test('-e', config.resolve(config.package.main))
+) {
+  configure();
+  bootstrap();
 }
