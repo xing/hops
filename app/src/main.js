@@ -20,11 +20,11 @@ const Home = connect(
       greeting: PropTypes.string,
       update: PropTypes.func
     },
-    componentDidMount: function () {
+    componentDidMount() {
       const { update } = this.props;
       update({'greeting': {'$set': 'Hello World!'}});
     },
-    render: function () {
+    render() {
       const { greeting } = this.props;
       return (
         <h1 className={ headline }>{ greeting }</h1>
