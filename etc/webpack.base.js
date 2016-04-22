@@ -5,9 +5,6 @@ var config = require('../lib/config');
 
 var entry = {};
 entry[config.bundleName] = config.bundleFile;
-if (config.workerFile && config.isProd) {
-  entry[config.workerName] = config.workerFile;
-}
 
 module.exports = new WebpackConfig().merge({
   entry: entry,
