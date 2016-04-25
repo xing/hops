@@ -16,7 +16,8 @@ module.exports = new WebpackConfig().merge({
   module: {
     loaders: [{
       test: /\.js$/,
-      loader: 'babel', exclude: config.noBabel
+      loader: 'babel',
+      exclude: config.babelIgnore
     }, {
       test: /\.json$/,
       loader: 'json'
