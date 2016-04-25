@@ -69,7 +69,7 @@ function run(method) {
   }
 }
 
-module.exports = run;
+exports.run = run;
 
 if (require.main === module) {
   run.apply(this, process.argv.slice(2));
