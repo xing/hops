@@ -16,6 +16,7 @@ const Home = connect(
   }
 )(
   createClass({
+    displayName: 'Home',
     propTypes: {
       greeting: PropTypes.string,
       update: PropTypes.func
