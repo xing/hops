@@ -59,12 +59,24 @@ function run(method) {
     case 'lint':
       Promise.all([
         exec('eslint --config %s %s', config.eslint, config.srcDir),
-        exec('stylelint --config %s "%s/**/*.css"', config.stylelint, config.srcDir)
+        exec(
+          'stylelint --config %s "%s/**/*.css"',
+          config.stylelint,
+          config.srcDir
+        )
       ])
       .catch(function () { shell.exit(1); });
       break;
+    case 'test':
+      exec(
+        'tape -r %s %s | faucet',
+        path.resolve(__dirname, '../lib', 'config'),
+        config.testGlob
+      )
+      .catch(function () { shell.exit(1); });
+      break;
     default:
-      shell.echo('Usage: hops [{start,watch,build,render,lint}]');
+      shell.echo('Usage: hops [{start,watch,build,render,lint,test}]');
       shell.exit(1);
   }
 }

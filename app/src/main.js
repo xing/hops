@@ -7,9 +7,9 @@ import { createAction, createReducer, render } from 'hops';
 
 import { headline } from './style.css';
 
-const namespace = 'home';
+export const namespace = 'home';
 
-const Home = connect(
+export const Home = connect(
   (state) => state[namespace],
   {
     update: createAction(namespace)
@@ -34,9 +34,9 @@ const Home = connect(
   })
 );
 
-const routes = (
+export const routes = (
   <Route path='/' component={ Home }/>
 );
-const reducers = {[namespace]: createReducer(namespace)};
+export const reducers = {[namespace]: createReducer(namespace)};
 
 export default render({ routes, reducers });
