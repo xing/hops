@@ -6,7 +6,14 @@ var fs = require('fs');
 var shell = require('shelljs');
 
 var config = require('../lib/config');
-var render = require('../lib/render');
+
+var main = require(config.appRoot);
+if (main.__esModule) { // eslint-disable-line no-underscore-dangle
+  main = main.default;
+}
+var render = (typeof main === 'function') ? main : function () {
+  return Promise.resolve('');
+};
 
 function getFileName(url, distDir) {
   var segments = url.split('/').filter(function(segment) {
