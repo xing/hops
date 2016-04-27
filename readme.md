@@ -63,16 +63,29 @@ export default render({ routes, reducers });
 In addition to `routes` and `reducers`, an html `mountPoint` selector and a `createStore` factory function may be passed as options.
 
 
-#### createAction(key)
+#### createFetchAction(key[, url[, options]])
 
-`createAction()` is just a small helper function to work with reducers generated with `createReducer()`.
+`createFetchAction()` basically allows you to map a json api url to a specific slice of your application's state. It uses the [Fetch API ](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) under the hood.
 
 ```javascript
-import { dispatch } from 'store';
+import { createFetchAction } from 'hops';
+
+const fetch = createFetchAction('foo', 'https://example.com/foo');
+
+dispatch(fetch());
+```
+
+Both `createFetchAction()` and the action creator function it returns accept `options` arguments that are merged and passed straight on to `fetch()`.
+
+
+#### createAction(key)
+
+`createAction()` is just a small helper function to work with reducers generated with `createReducer()`. It is being used internally by `createFetchAction()`.
+
+```javascript
 import { createAction } from 'hops';
 
-const namespace = 'foo';
-const update = createAction(namespace);
+const update = createAction('foo');
 
 dispatch(update({'bar': {'$set': 'baz'}}));
 ```
@@ -85,10 +98,7 @@ dispatch(update({'bar': {'$set': 'baz'}}));
 ```javascript
 import { createReducer } from 'hops';
 
-const namespace = 'foo';
-const reducers = {
-  [namespace]: createReducer(namespace)
-};
+export const reducers = { foo: createReducer('foo')};
 ```
 
 Hops supports server-side data fetching for route components: it calls their static `fetchData` methods and expects them to return promises. Of course, asynchronous actions are supported by using [thunks](https://github.com/gaearon/redux-thunk).
