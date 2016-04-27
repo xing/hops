@@ -24,7 +24,7 @@
   "scripts": {
     "start": "cd app; rm -rf node_modules/hops; npm install; npm start",
     "install": "node bin/setup.js",
-    "test": "tape spec/**/*.js | tap-dot",
+    "test": "tape spec/**/*.js | faucet",
     "pretest": "mkdir -p tmp; cd tmp; npm init -y; npm install file:..",
     "posttest": "rm -rf tmp; eslint --config etc/eslint.js lib",
     "preversion": "npm test",
@@ -62,18 +62,21 @@
     "css-loader": "0.23.1",
     "css-modules-require-hook": "4.0.0",
     "ejs": "2.4.1",
+    "enzyme": "2.2.0",
     "eslint": "2.8.0",
     "eslint-plugin-flowtype": "2.2.7",
     "eslint-plugin-react": "5.0.1",
     "extract-text-webpack-plugin": "1.0.1",
+    "faucet": "0.0.1",
     "file-loader": "0.8.5",
+    "isomorphic-fetch": "2.2.1",
     "json-loader": "0.5.4",
     "postcss": "5.0.19",
     "postcss-cssnext": "2.5.2",
     "postcss-loader": "0.8.2",
     "postcss-modules-values": "1.1.2",
     "react": "15.0.1",
-    "react-addons-shallow-compare": "15.0.1",
+    "react-addons-test-utils": "15.0.1",
     "react-addons-update": "15.0.1",
     "react-dom": "15.0.1",
     "react-redux": "4.4.5",
@@ -85,14 +88,11 @@
     "style-loader": "0.13.1",
     "stylelint": "6.2.1",
     "stylelint-statement-max-nesting-depth": "2.0.1",
+    "tape": "4.5.1",
+    "tree-kill": "1.0.0",
     "url-loader": "0.5.7",
     "webpack": "1.13.0",
     "webpack-config": "4.0.0",
     "webpack-dev-server": "1.14.1"
-  },
-  "devDependencies": {
-    "tap-dot": "1.0.5",
-    "tape": "4.5.1",
-    "tree-kill": "1.0.0"
   }
 }
