@@ -16,7 +16,7 @@ function exec() {
         silent: true,
         env: Object.assign({}, process.env, {
           PATH: [
-            config.resolve(path.join('node_modules', '.bin')),
+            path.resolve(config.appRoot, 'node_modules', '.bin'),
             process.env.PATH
           ].join(':'),
           PWD: config.appRoot
@@ -69,11 +69,14 @@ function run(method) {
       break;
     case 'test':
       exec(
-        'tape -r %s %s | faucet',
+        'tape -r %s "%s" | faucet',
         path.resolve(__dirname, '../lib', 'config'),
         config.testGlob
       )
-      .catch(function () { shell.exit(1); });
+      .catch(function (error) {
+        shell.echo(error);
+        shell.exit(1);
+      });
       break;
     default:
       shell.echo('Usage: hops [{start,watch,build,render,lint,test}]');
