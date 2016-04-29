@@ -47,7 +47,7 @@ If called without the `--production` flag, a development server with hot module 
 
 ### API
 
-#### render(options)
+#### render(options: object): function|undefined
 
 `render()` is hops main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both client- and server-side. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
 
