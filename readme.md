@@ -47,7 +47,7 @@ If called without the `--production` flag, a development server with hot module 
 
 ### API
 
-#### render(options)
+#### render(options: object): function|undefined
 
 `render()` is hops main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both client- and server-side. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
 
@@ -63,7 +63,7 @@ export default render({ routes, reducers });
 In addition to `routes` and `reducers`, an html `mountPoint` selector and a `createStore` factory function may be passed as options.
 
 
-#### createFetchAction(key[, url[, options]])
+#### createFetchAction(key: string, options: string|object): function
 
 `createFetchAction()` basically allows you to map a json api url to a specific slice of your application's state. It uses the [Fetch API ](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) under the hood.
 
@@ -78,7 +78,7 @@ dispatch(fetch());
 Both `createFetchAction()` and the action creator function it returns accept `options` arguments that are merged and passed straight on to `fetch()`.
 
 
-#### createAction(key)
+#### createAction(key: string): function
 
 `createAction()` is just a small helper function to work with reducers generated with `createReducer()`. It is being used internally by `createFetchAction()`.
 
@@ -91,7 +91,7 @@ dispatch(update({'bar': {'$set': 'baz'}}));
 ```
 
 
-#### createReducer(key)
+#### createReducer(key: string): function
 
 `createReducer()` generates a [Redux](https://github.com/reactjs/redux) reducer function using the provided key and React's [immutability helpers](https://facebook.github.io/react/docs/update.html).
 
