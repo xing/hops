@@ -22,7 +22,7 @@ module.exports = new WebpackConfig().merge({
       test: /\.json$/,
       loader: 'json'
     }, {
-      test: /\.((html)|(jpeg))$/,
+      test: /\.((html)|(svg)|(jpeg))$/,
       loader: 'file'
     }, {
       test: /\.((png)|(gif))$/,

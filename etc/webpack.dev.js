@@ -17,13 +17,16 @@ module.exports = new WebpackConfig().extend(baseConfig).merge({
       ]
     }]
   },
-  watchOptions: {
-    aggregateTimeout: 100
-  },
   devServer: {
     contentBase: config.distDir,
+    historyApiFallback: {
+      index: '/'
+    },
     proxy: {
       '/api/*': 'http://localhost:3000/'
+    },
+    watchOptions: {
+      aggregateTimeout: 100
     }
   }
 });
