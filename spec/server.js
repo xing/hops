@@ -12,6 +12,7 @@ var appRoot = path.resolve(__dirname, '..', 'tmp');
 
 var baseUrl = 'http://localhost:8080/';
 
+
 test('server test', function (t) {
   t.plan(4);
   fetch(baseUrl)
