@@ -7,7 +7,7 @@ var shell = require('shelljs');
 
 var config = require('../lib/config');
 
-var pkgPath = config.resolve('package.json');
+var pkgPath = path.resolve(config.appRoot, 'package.json');
 var pkg = Object.assign({}, config.package);
 
 Object.assign(pkg, {
@@ -31,16 +31,19 @@ Object.assign(pkg, {
 
 var template = [{
   origin: path.resolve(__dirname, '..', 'app', 'src', 'main.js'),
-  destination: config.resolve(pkg.main)
+  destination: path.resolve(config.appRoot, pkg.main)
+}, {
+  origin: path.resolve(__dirname, '..', 'app', 'src', 'main.test.js'),
+  destination: path.resolve(config.srcDir, 'main.test.js')
 }, {
   origin: path.resolve(__dirname, '..', 'app', 'src', 'style.css'),
-  destination: path.resolve(path.dirname(config.resolve(pkg.main)), 'style.css')
+  destination: path.resolve(config.srcDir, 'style.css')
 }, {
   origin: path.resolve(__dirname, '..', 'app', '.eslintrc.js'),
-  destination: config.resolve('.eslintrc.js')
+  destination: path.resolve(config.appRoot, '.eslintrc.js')
 }, {
   origin: path.resolve(__dirname, '..', 'app', '.stylelintrc.js'),
-  destination: config.resolve('.stylelintrc.js')
+  destination: path.resolve(config.appRoot, '.stylelintrc.js')
 }];
 
 function configure() {
@@ -65,7 +68,7 @@ exports.bootstrap = bootstrap;
 if (
   require.main === module &&
   path.resolve(__dirname, '..') !== config.appRoot &&
-  !shell.test('-e', config.resolve(config.package.main))
+  !shell.test('-e', path.resolve(config.appRoot, config.package.main))
 ) {
   configure();
   bootstrap();

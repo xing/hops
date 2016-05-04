@@ -12,12 +12,6 @@
   ],
   "main": "lib/node.js",
   "browser": "lib/browser.js",
-  "files": [
-    "bin",
-    "etc",
-    "lib",
-    "app"
-  ],
   "bin": {
     "hops": "bin/hops.js"
   },
@@ -84,6 +78,7 @@
     "react-router-redux": "4.0.4",
     "redux": "3.5.2",
     "redux-thunk": "2.0.1",
+    "reselect": "2.5.1",
     "shelljs": "0.7.0",
     "style-loader": "0.13.1",
     "stylelint": "6.2.2",
