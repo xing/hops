@@ -10,3 +10,4 @@ deploy:
   on:
     tags: true
     repo: xing/hops
+  skip_cleanup: true
