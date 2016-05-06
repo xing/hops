@@ -18,11 +18,12 @@
   "scripts": {
     "start": "cd app; rm -rf node_modules/hops; npm install; npm start",
     "install": "node bin/setup.js",
-    "test": "tape spec/**/*.js | faucet",
-    "pretest": "mkdir -p tmp; cd tmp; npm init -y; npm install file:..",
-    "posttest": "rm -rf tmp; eslint --config etc/eslint.js lib",
-    "preversion": "npm test",
-    "postversion": "git push && git push --tags"
+    "test": "istanbul test -x spec/**/* --root lib --print none tape spec/**/*.js | faucet",
+    "pretest": "npm run cleanup; mkdir -p tmp; cd tmp; npm init -y; npm install --cache-min 9999999 file:../",
+    "posttest": "[ -n \"$npm_config_coverage\" ] && istanbul report text-summary || exit 0",
+    "preversion": "npm test --coverage",
+    "postversion": "git push && git push --tags",
+    "cleanup": "rm -rf coverage tmp/{.eslintrc,.stylelintrc,src,dist,node_modules/hops}"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -89,5 +90,9 @@
     "webpack": "1.13.0",
     "webpack-config": "4.0.0",
     "webpack-dev-server": "1.14.1"
+  },
+  "devDependencies": {
+    "fetch-mock": "4.4.0",
+    "jsdom": "8.5.0"
   }
 }

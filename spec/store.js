@@ -6,7 +6,7 @@ var createReducer = require('../lib/store').createReducer;
 var createSelector = require('../lib/store').createSelector;
 var createStore = require('../lib/store').createStore;
 
-test('store.createAction test', function (t) {
+test('createAction test', function (t) {
   t.plan(4);
 
   t.equal(typeof createAction, 'function', 'createAction is a function');
@@ -24,7 +24,7 @@ test('store.createAction test', function (t) {
 });
 
 
-test('store.createReducer test', function (t) {
+test('createReducer test', function (t) {
   t.plan(7);
 
   t.equal(typeof createReducer, 'function', 'createReducer is a function');
@@ -44,7 +44,7 @@ test('store.createReducer test', function (t) {
 });
 
 
-test('store.createSelector test', function (t) {
+test('createSelector test', function (t) {
   t.plan(5);
 
   t.equal(typeof createSelector, 'function', 'createSelector is a function');
@@ -69,8 +69,8 @@ test('store.createSelector test', function (t) {
 });
 
 
-test('store.createStore test', function (t) {
-  t.plan(4);
+test('createStore test', function (t) {
+  t.plan(5);
 
   t.equal(typeof createStore, 'function', 'createStore is a function');
 
@@ -84,4 +84,17 @@ test('store.createStore test', function (t) {
   t.ok(store, 'store was created');
   t.equal(typeof store.dispatch, 'function', 'store has a dispatch method');
   t.equal(typeof store.getState, 'function', 'store has a getState method');
+
+  global.devToolsExtension = function () {
+    return function (f) { return f; };
+  };
+
+  var devStore = createStore(
+    { foo: function (s) { return s || {}; }},
+    null,
+    null,
+    require('react-router').createMemoryHistory()
+  );
+
+  t.ok(devStore, 'devStore was created');
 });
