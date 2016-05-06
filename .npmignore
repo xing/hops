@@ -1,2 +1,7 @@
 logo.png
 spec
+tmp
+coverage
+node_modules
+npm-debug.log
+.DS_Store
