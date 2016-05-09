@@ -46,7 +46,7 @@ function run(method) {
         config.srcDir
       );
       exec(
-        'BABEL_ENV=hot webpack-dev-server -d --hot --inline --no-info --config %s',
+        'BABEL_ENV=hot webpack-dev-server -d --hot --inline --no-info --config "%s"',
         config.webpackDev
       );
       break;
@@ -54,25 +54,39 @@ function run(method) {
       exec('webpack -p --progress --config %s', config.webpackBuild);
       break;
     case 'render':
-      exec('node %s', path.resolve(__dirname, 'render.js'));
+      exec('node "%s"', path.resolve(__dirname, 'render.js'));
       break;
     case 'lint':
       Promise.all([
-        exec('eslint --config %s %s', config.eslint, config.srcDir),
+        exec('eslint --config "%s" "%s"', config.eslint, config.srcDir),
         exec(
-          'stylelint --config %s "%s/**/*.css"',
+          'stylelint --config "%s" "%s/**/*.css"',
           config.stylelint,
           config.srcDir
         )
       ])
-      .catch(function () { shell.exit(1); });
+      .catch(function (error) {
+        shell.echo(error);
+        shell.exit(1);
+      });
       break;
     case 'test':
+      shell.rm('-rf', config.covDir);
       exec(
-        'tape -r %s "%s" | faucet',
+        'istanbul cover -x "%s" --root "%s" --dir "%s" --print none --report none tape -- -r "%s" "%s" | faucet',
+        config.testGlob,
+        config.srcDir,
+        config.covDir,
         path.resolve(__dirname, '../lib', 'config'),
         config.testGlob
       )
+      .then(function () {
+        return exec(
+          '[ -n \"$npm_config_coverage\" ] && istanbul report --dir "%s" --root "%s" text-summary || exit 0',
+          config.covDir,
+          config.covDir
+        );
+      })
       .catch(function (error) {
         shell.echo(error);
         shell.exit(1);
