@@ -1,8 +1,5 @@
 
 module.exports = {
-  'plugins': [
-    'stylelint-statement-max-nesting-depth'
-  ],
   'rules': {
     'block-no-empty': true,
     'color-hex-case': 'lower',
@@ -16,6 +13,7 @@ module.exports = {
     'media-feature-colon-space-before': 'never',
     'media-feature-name-no-vendor-prefix': true,
     'max-empty-lines': 5,
+    'max-nesting-depth': 2,
     'number-leading-zero': 'never',
     'number-max-precision': 2,
     'number-no-trailing-zeros': true,
@@ -26,7 +24,6 @@ module.exports = {
     'selector-list-comma-space-before': 'never',
     'selector-list-comma-newline-after': 'always',
     'selector-no-id': true,
-    'statement-max-nesting-depth': [2, { 'countAtRules': false }],
     'string-quotes': 'single',
     'value-no-vendor-prefix': true
   }
