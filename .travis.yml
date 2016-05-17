@@ -2,12 +2,3 @@ language: node_js
 node_js:
 - '5'
 - '6'
-deploy:
-  provider: npm
-  email: daniel@dmbch.net
-  api_key:
-    secure: pA/EK117uwYi/+21kNtxDHHP4dWvWqkbsB6i3RMYVQuQugfnebztqUWvHhztJLziJhzHKVQvMNFvsTJvyfb4poU+SjWMPY65+CbsQl64jSXWJKssruYPrGFJ9nl3q5h9eW9v28VUd20Tr3IZPlkF918NwJbdzGeFXk35EgLKKKxhyhe3n9gaI6r4/iAX2UWkoCDNVPj4drS4DMGJCIf1bIempaILf5f9MikxCJxkUcEr/iSW4BspbOPsHV4y6sC704NISJlw8KK230y5sxdurEGEHqUBKj0Ew77PTR0SIublNHtVTURvR2xKLFD6j/l60QjVirMmFfmYSBF5wMMiODfC2uzgMBYMSm0fSlp4hMpLes5Yw/VjO/IYkjq9uq0PYKcSoIDGEbx0Eo5pOm0Enl2jZJiW24mk9SEs/XKASi5R6YuOOST2rRA3zYOEMpQ4Cit4xMMPWgr5VMvOXKSI8wofwjvhMD3UpcbRyDPkISoyQRjYbhCW/VzjXyMbKEMSs1oKtRKfxgPp6+SW4UbjaU2vialIOTeYqA6r057uwWSI48ecDcxRygyG5CXODSZbsgPEisB5af9ZVap5vXUf6g5bDI8ZH9RxMiuGiL1qRtKpQunr5sAWJv5hBuFVBkLHGw/plDIm1iCawsbBTIsl+SM62OPH3d9xBSwtOeFYN8s=
-  on:
-    tags: true
-    repo: xing/hops
-  skip_cleanup: true
