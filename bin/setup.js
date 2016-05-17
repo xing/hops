@@ -10,6 +10,8 @@ var config = require('../lib/config');
 var pkgPath = path.resolve(config.appRoot, 'package.json');
 var pkg = Object.assign({}, config.package);
 
+var defaultTest = 'echo "Error: no test specified" && exit 1';
+
 Object.assign(pkg, {
   main: (shell.test('-e', pkg.main)) ? pkg.main : 'src/main.js',
   scripts: Object.assign(
@@ -18,10 +20,12 @@ Object.assign(pkg, {
       watch: 'hops watch',
       build: 'hops build',
       render: 'hops render',
-      lint: 'hops lint',
-      test: 'hops test'
+      lint: 'hops lint'
     },
-    pkg.scripts
+    pkg.scripts,
+    {
+      test: (pkg.scripts.test === defaultTest) ? 'hops test' : pkg.scripts.test
+    }
   ),
   babel: Object.assign(
     { extends: 'hops/etc/babel' },

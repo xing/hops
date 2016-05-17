@@ -35,7 +35,7 @@ npm install -SE hops
 
 A postinstall script will attempt to bootstrap and configure the project hops is being installed to: after installation, you can instantly start developing.
 
-### Run
+### Running
 
 For developing with hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io) with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
 
@@ -45,11 +45,21 @@ npm start (--production)
 
 If called without the `--production` flag, a development server with hot module replacement is started. In production mode, a static build is initialized.
 
+### Testing
+
+If you are developing any kind of real application, you certainly want to be able to test your code. For hops, we chose to include a rather simple testing toolchain consisting of [Tape](https://github.com/substack/tape), [Enzyme](http://airbnb.io/enzyme/) and [Istanbul](https://github.com/gotwarlost/istanbul).
+
+```
+npm test (--coverage)
+```
+
+In hops' default configuration, all files with names ending with `.test.js` (and outside `/node_modules`) are being picked up. As to be expected the `--coverage` flag enables code coverage reporting.
+
 ### API
 
 #### render(options: object): function|undefined
 
-`render()` is hops main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both client- and server-side. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
+`render()` is hops main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both in the browser and in node. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
 
 ```javascript
 import { render } from 'hops';
