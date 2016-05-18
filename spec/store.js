@@ -22,7 +22,10 @@ test('createStore test', function (t) {
   };
 
   var devStore = createStore({
-    reducers: { foo: function (s) { return s || {}; }},
+    enhancer: function (f) { return f; },
+    reducer: require('redux').combineReducers({
+      routing: require('react-router-redux').routerReducer
+    }),
     history: require('react-router').createMemoryHistory()
   });
 
