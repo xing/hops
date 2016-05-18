@@ -3,7 +3,7 @@ import React, { createClass, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router';
 
-import { createAction, createReducer, render } from 'hops';
+import { createAction, createReducers, render } from 'hops';
 
 import { headline } from './style.css';
 
@@ -37,6 +37,6 @@ export const Home = connect(
 export const routes = (
   <Route path='/' component={ Home }/>
 );
-export const reducers = {[namespace]: createReducer(namespace)};
+export const reducers = createReducers.add(namespace);
 
 export default render({ routes, reducers });
