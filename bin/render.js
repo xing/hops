@@ -29,17 +29,15 @@ function getFileName(url, distDir) {
   return path.join.apply(path, segments);
 }
 
-function renderShells() {
+function renderShells(options) {
   config.shells.forEach(function(url) {
     var fileName = getFileName(url, config.distDir);
-    render(url)
+    render(url, options)
     .then(function(body) {
       shell.mkdir('-p', path.dirname(fileName));
       fs.writeFile(fileName, body);
     })
-    .catch(function(err) {
-      throw err || new Error('invalid route: ' + url);
-    });
+    .catch(shell.echo);
   });
 }
 
