@@ -5,55 +5,62 @@ var React = require('react');
 var ReactRouter = require('react-router');
 
 
-test('route rendering test', function (t) {
-  t.plan(4);
+test('node: basic rendering test', function (t) {
+  t.plan(3);
 
-  var Component = React.createClass({
-    render: function () { return null; }
-  });
-
-  var render = require('../lib/node').render({
-    routes: React.createElement(
-      ReactRouter.Route,
-      { path: '/', component: Component }
-    ),
-    reducers: {}
-  });
+  var render = require('../lib/node').render();
 
   t.equal(typeof render, 'function', 'render returns function');
   t.ok(render('/') instanceof Promise, 'render function returns Promise');
 
-  render('/').then(function (html) {
-    t.ok(html.length, 'correct default behavior');
-  });
-
-  render('/foo').catch(function () {
-    t.ok(true, 'correct error behavior');
+  render('/').catch(function () {
+    t.ok(true, 'error handled by rejection');
   });
 });
 
 
-test('advanced route rendering test', function (t) {
+test('node: route rendering test', function (t) {
   t.plan(2);
-
-  var Component = React.createClass({
-    statics: {
-      fetchData: function () {
-        t.pass('fetchData is being called');
-        return Promise.resolve();
-      }
-    },
-    render: function () { return null; }
-  });
 
   var render = require('../lib/node').render({
     routes: React.createElement(
       ReactRouter.Route,
-      { path: '/', component: Component }
+      { path: '/', component: React.createClass({
+        render: function () { return null; }
+      })}
+    ),
+    reducers: {}
+  });
+
+  render('/').then(function (html) {
+    t.ok(html.length, 'some html rendered');
+  });
+
+  render('/foo').catch(function () {
+    t.ok(true, 'error handled by rejection');
+  });
+});
+
+
+test('node: route/reducer rendering test', function (t) {
+  t.plan(2);
+
+  var render = require('../lib/node').render({
+    routes: React.createElement(
+      ReactRouter.Route,
+      { path: '/', component: React.createClass({
+        statics: {
+          fetchData: function () {
+            t.pass('fetchData is being called');
+            return Promise.resolve();
+          }
+        },
+        render: function () { return null; }
+      })}
     )
   });
 
   render('/').then(function (html) {
-    t.ok(html.length, 'correct default behavior');
+    t.ok(html.length, 'some html rendered');
   });
 });

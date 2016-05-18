@@ -35,7 +35,8 @@ var App = React.createClass({
 });
 
 
-test('basic rendering test', function (t) {
+
+test('browser: basic rendering test', function (t) {
   t.plan(1);
 
   var actual = render().innerHTML;
@@ -45,7 +46,7 @@ test('basic rendering test', function (t) {
 });
 
 
-test('route rendering test', function (t) {
+test('browser: route rendering test', function (t) {
   t.plan(1);
 
   var actual = render({
@@ -63,7 +64,7 @@ test('route rendering test', function (t) {
 });
 
 
-test('route/reducer rendering test', function (t) {
+test('browser: route/reducer rendering test', function (t) {
   t.plan(1);
 
   var actual = render({

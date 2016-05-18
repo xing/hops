@@ -17,7 +17,7 @@ function fileExists(file) {
   }
 }
 
-test('build test', function (t) {
+test('build: file creation test', function (t) {
   t.plan(6);
 
   var htmlFile = path.join(appRoot, 'dist', 'index.html');
