@@ -1,21 +1,15 @@
 
 import React, { createClass, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { Route } from 'react-router';
+import { connect } from 'react-redux';
 
-import { render } from 'hops';
+import { render, register } from 'hops';
 
 import { headline } from './style.css';
 
-export const namespace = 'home';
-export const setActionType = 'setHome';
+export const { update, select } = register('home');
 
-export const Home = connect(
-  (state) => state[namespace],
-  {
-    update: (payload) => ({ type: setActionType, payload })
-  }
-)(
+export const Home = connect(select, { update })(
   createClass({
     displayName: 'Home',
     propTypes: {
@@ -23,13 +17,11 @@ export const Home = connect(
       update: PropTypes.func
     },
     componentDidMount() {
-      const { update } = this.props;
-      update({ greeting: 'Hello World!'});
+      this.props.update({ greeting: {'$set': 'Hello World!'}});
     },
     render() {
-      const { greeting } = this.props;
       return (
-        <h1 className={ headline }>{ greeting }</h1>
+        <h1 className={ headline }>{ this.props.greeting }</h1>
       );
     }
   })
@@ -39,13 +31,4 @@ export const routes = (
   <Route path='/' component={ Home }/>
 );
 
-export const reducers = {
-  [namespace]: (state = {}, action) => {
-    if (action.type === setActionType) {
-      return Object.assign({}, state, action.payload);
-    }
-    return state;
-  }
-};
-
-export default render({ routes, reducers });
+export default render({ routes });
