@@ -1,100 +1,95 @@
 
 var test = require('tape');
 
-var createAction = require('../lib/store').createAction;
-var createReducer = require('../lib/store').createReducer;
-var createSelector = require('../lib/store').createSelector;
-var createStore = require('../lib/store').createStore;
+var store = require('../lib/store');
 
-test('createAction test', function (t) {
+test('store: exports test', function (t) {
+  t.equal(typeof store.register, 'function', 'register is a function');
+  t.equal(typeof store.createStore, 'function', 'createStore is a function');
+  t.equal(typeof store.createContext, 'function', 'createContext is a function');
+
+  t.end();
+});
+
+
+test('store: context test', function (t) {
+  var context = store.createContext();
+
+  t.ok(context, 'new context was created');
+
+  t.equal(typeof context.register, 'function', 'register is a function');
+  t.equal(typeof context.createStore, 'function', 'createStore is a function');
+  t.equal(typeof context.createContext, 'function', 'createContext is a function');
+
+  t.end();
+});
+
+
+test('store: basic autoregister test', function (t) {
+  var context = store.createContext();
+  var util = context.register('foo');
+
+  t.ok(util, 'register returns something truthy');
+
+  t.equal(typeof util.select, 'function', 'select is a function');
+  t.equal(typeof util.update, 'function', 'update is a function');
+
+  t.throws(context.register.bind(context, 'foo'), 'namespace clash is caught');
+
+  t.end();
+});
+
+
+test('store: full autoregister test', function (t) {
+  var context = store.createContext();
+  var util = context.register('foo');
+  var actualStore = context.createStore({
+    history: require('react-router').createMemoryHistory(),
+    middleware: []
+  });
+
+  actualStore.dispatch(util.update({ bar: {'$set': 'baz'}}));
+
+  var state = actualStore.getState();
+  var fooState = util.select(state);
+
+  t.ok(state.foo, 'global state contains namespace');
+  t.equal(state.foo.bar, 'baz', 'update reducer works');
+  t.deepEqual(fooState, { bar: 'baz'}, 'selector returns correct slice');
+
+  t.end();
+});
+
+
+test('store: store creation test', function (t) {
+  t.plan(3);
+
+  var actualStore = store.createStore({
+    history: require('react-router').createMemoryHistory(),
+    middleware: []
+  });
+
+  t.ok(actualStore, 'store was created');
+  t.equal(typeof actualStore.dispatch, 'function', 'store has a dispatch method');
+  t.equal(typeof actualStore.getState, 'function', 'store has a getState method');
+});
+
+
+test('store: dev test', function (t) {
   t.plan(4);
 
-  t.equal(typeof createAction, 'function', 'createAction is a function');
-
-  var key = 'foo';
-  var type = 'updateFoo';
-  var payload = 'bar';
-
-  var action = createAction(key);
-  t.equal(typeof action, 'function', 'createAction returns a function');
-
-  var result = action(payload);
-  t.equal(result.type, type, 'result has the expected type');
-  t.equal(result.payload, payload, 'result has the expected payload');
-});
-
-
-test('createReducer test', function (t) {
-  t.plan(7);
-
-  t.equal(typeof createReducer, 'function', 'createReducer is a function');
-
-  var key = 'foo';
-
-  var reducer = createReducer(key);
-  t.equal(typeof reducer, 'function', 'createReducer returns a function');
-
-  t.deepEqual(reducer(), {}, 'reducer returns default object');
-  t.deepEqual(reducer({ bar: 1 }), { bar: 1 }, 'reducer returns given object');
-  t.notEqual(reducer({}), {}, 'reducer clones passed in object');
-
-  var action = createAction(key)({'bar': {'$set': 1 }});
-  t.deepEqual(reducer({}, action), { bar: 1 }, 'reducer applies action');
-  t.deepEqual(reducer({}, 'baz'), {}, 'reducer does not apply unknown action');
-});
-
-
-test('createSelector test', function (t) {
-  t.plan(5);
-
-  t.equal(typeof createSelector, 'function', 'createSelector is a function');
-
-  var input = { foo: 1, bar: 2, baz: 'qux' };
-
-  var selector = createSelector(
-    'foo',
-    function (state) {
-      return state.bar;
-    },
-    function (foo, bar) {
-      t.equal(foo, input.foo, 'input selector is generated from string');
-      t.equal(bar, input.bar, 'conventional input selector is working');
-      return foo + bar;
-    }
-  );
-  t.equal(typeof selector, 'function', 'createSelector returns a function');
-
-  var output = selector(input);
-  t.equal(output, 3, 'selector processes state appropriately');
-});
-
-
-test('createStore test', function (t) {
-  t.plan(5);
-
-  t.equal(typeof createStore, 'function', 'createStore is a function');
-
-  var store = createStore(
-    { foo: function (s) { return s || {}; }},
-    null,
-    null,
-    require('react-router').createMemoryHistory()
-  );
-
-  t.ok(store, 'store was created');
-  t.equal(typeof store.dispatch, 'function', 'store has a dispatch method');
-  t.equal(typeof store.getState, 'function', 'store has a getState method');
-
   global.devToolsExtension = function () {
+    t.pass('dev tools are being used');
+    delete global.devToolsExtension;
     return function (f) { return f; };
   };
 
-  var devStore = createStore(
-    { foo: function (s) { return s || {}; }},
-    null,
-    null,
-    require('react-router').createMemoryHistory()
-  );
+  var actualStore = store.createStore({
+    history: require('react-router').createMemoryHistory(),
+    middleware: []
+  });
 
-  t.ok(devStore, 'devStore was created');
+  t.ok(actualStore, 'store was created');
+  t.equal(typeof actualStore.dispatch, 'function', 'store has a dispatch method');
+  t.equal(typeof actualStore.getState, 'function', 'store has a getState method');
 });

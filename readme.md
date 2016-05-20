@@ -59,7 +59,7 @@ In hops' default configuration, all files with names ending with `.test.js` (and
 
 #### render(options: object): function|undefined
 
-`render()` is hops main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both in the browser and in node. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
+`render()` is hops' main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both in the browser and in node. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
 
 ```javascript
 import { render } from 'hops';
@@ -70,46 +70,7 @@ import { routes } from './routes';
 export default render({ routes, reducers });
 ```
 
-In addition to `routes` and `reducers`, an html `mountPoint` selector and a `createStore` factory function may be passed as options.
-
-
-#### createFetchAction(key: string, options: string|object): function
-
-`createFetchAction()` basically allows you to map a json api url to a specific slice of your application's state. It uses the [Fetch API ](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) under the hood.
-
-```javascript
-import { createFetchAction } from 'hops';
-
-const fetch = createFetchAction('foo', 'https://example.com/foo');
-
-dispatch(fetch());
-```
-
-Both `createFetchAction()` and the action creator function it returns accept `options` arguments that are merged and passed straight on to `fetch()`.
-
-
-#### createAction(key: string): function
-
-`createAction()` is just a small helper function to work with reducers generated with `createReducer()`. It is being used internally by `createFetchAction()`.
-
-```javascript
-import { createAction } from 'hops';
-
-const update = createAction('foo');
-
-dispatch(update({'bar': {'$set': 'baz'}}));
-```
-
-
-#### createReducer(key: string): function
-
-`createReducer()` generates a [Redux](https://github.com/reactjs/redux) reducer function using the provided key and React's [immutability helpers](https://facebook.github.io/react/docs/update.html).
-
-```javascript
-import { createReducer } from 'hops';
-
-export const reducers = { foo: createReducer('foo')};
-```
+In addition to `routes` and `reducers`, an html `mountPoint` selector and some othes may be passed as options. Please check the [defaults](https://github.com/xing/hops/blob/master/lib/defaults.js) for some details.
 
 Hops supports server-side data fetching for route components: it calls their static `fetchData` methods and expects them to return promises. Of course, asynchronous actions are supported by using [thunks](https://github.com/gaearon/redux-thunk).
 

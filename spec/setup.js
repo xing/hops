@@ -15,7 +15,7 @@ function fileExists(file) {
   }
 }
 
-test('setup test', function (t) {
+test('setup: file creation test', function (t) {
   t.plan(3);
 
   var packageFile = path.join(appRoot, 'package.json');
