@@ -64,13 +64,22 @@ In hops' default configuration, all files with names ending with `.test.js` (and
 ```javascript
 import { render } from 'hops';
 
-import { reducers } from './reducers';
 import { routes } from './routes';
 
-export default render({ routes, reducers });
+export default render({ routes });
 ```
 
 In addition to `routes` and `reducers`, an html `mountPoint` selector and some othes may be passed as options. Please check the [defaults](https://github.com/xing/hops/blob/master/lib/defaults.js) for some details.
+
+#### register(namespace: string[, reducer: function]): object
+
+`register()` is a helper to streamline store/state interactions in hops based projects. If passed only a `namespace` string, a generic reducer using React's [immutability helpers](https://facebook.github.io/react/docs/update.html) is created for that namespace. It's return value is an object containing a selector function for use in ReactRedux' `connect()` and a generic action creator (`update()`) working with the update reducer.
+
+```javascript
+import { register } from 'hops';
+
+export const { select, update } = register('foo');
+```
 
 Hops supports server-side data fetching for route components: it calls their static `fetchData` methods and expects them to return promises. Of course, asynchronous actions are supported by using [thunks](https://github.com/gaearon/redux-thunk).
 
