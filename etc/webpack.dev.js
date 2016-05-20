@@ -19,9 +19,6 @@ module.exports = new WebpackConfig().extend(baseConfig).merge({
   },
   devServer: {
     contentBase: config.distDir,
-    historyApiFallback: {
-      index: '/'
-    },
     proxy: {
       '/api/*': 'http://localhost:3000/'
     },
