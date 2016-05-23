@@ -18,8 +18,25 @@ test('store: context test', function (t) {
   t.ok(context, 'new context was created');
 
   t.equal(typeof context.register, 'function', 'register is a function');
+  t.equal(typeof context.getReducers, 'function', 'getReducers is a function');
   t.equal(typeof context.createStore, 'function', 'createStore is a function');
   t.equal(typeof context.createContext, 'function', 'createContext is a function');
+
+  t.end();
+});
+
+
+test('store: register/getReducer test', function (t) {
+  var context = store.createContext();
+
+  var util = context.register('foo', function (s) { return s; });
+  t.ok(util, 'register returns something truthy');
+  t.equal(typeof util.select, 'function', 'select is a function');
+
+  var reducers = context.getReducers();
+  t.ok(reducers, 'getReducers return something truthy');
+  t.ok('foo' in reducers, 'foo namespace exists');
+  t.ok('routing' in reducers, 'routing namespace exists');
 
   t.end();
 });

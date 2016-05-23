@@ -7,7 +7,7 @@ import { render, register } from 'hops';
 
 import { headline } from './style.css';
 
-export const { update, select } = register('home');
+export const { select, update } = register('home');
 
 export const Home = connect(select, { update })(
   createClass({

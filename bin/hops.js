@@ -73,18 +73,15 @@ function run(method) {
     case 'test':
       shell.rm('-rf', config.covDir);
       exec(
-        'istanbul cover -x "%s" --root "%s" --dir "%s" --print none --report none tape -- -r "%s" "%s" | faucet',
+        'istanbul cover -x "%s" --root "%s" --print none --report none tape -- -r "%s" "%s" | faucet',
         config.testGlob,
         config.srcDir,
-        config.covDir,
         path.resolve(__dirname, '../lib', 'config'),
         config.testGlob
       )
       .then(function () {
         return exec(
-          '[ -n \"$npm_config_coverage\" ] && istanbul report --dir "%s" --root "%s" text-summary || exit 0',
-          config.covDir,
-          config.covDir
+          '[ -n \"$npm_config_coverage\" ] && istanbul report text-summary || exit 0'
         );
       })
       .catch(function (error) {
