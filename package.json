@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "next generation toolbox for ux craftspeople",
   "keywords": [
     "react",
@@ -90,6 +90,6 @@
     "webpack-dev-server": "1.14.1"
   },
   "devDependencies": {
-    "jsdom": "9.1.0"
+    "jsdom": "9.2.0"
   }
 }
