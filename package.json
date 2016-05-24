@@ -90,6 +90,6 @@
     "webpack-dev-server": "1.14.1"
   },
   "devDependencies": {
-    "jsdom": "9.1.0"
+    "jsdom": "9.2.0"
   }
 }
