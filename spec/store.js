@@ -61,8 +61,7 @@ test('store: full autoregister test', function (t) {
   var context = store.createContext();
   var util = context.register('foo');
   var actualStore = context.createStore({
-    history: require('react-router').createMemoryHistory(),
-    middleware: []
+    history: require('react-router').createMemoryHistory()
   });
 
   actualStore.dispatch(util.update({ bar: {'$set': 'baz'}}));
@@ -81,9 +80,8 @@ test('store: full autoregister test', function (t) {
 test('store: store creation test', function (t) {
   t.plan(3);
 
-  var actualStore = store.createStore({
-    history: require('react-router').createMemoryHistory(),
-    middleware: []
+  var actualStore = store.createContext().createStore({
+    history: require('react-router').createMemoryHistory()
   });
 
   t.ok(actualStore, 'store was created');
@@ -101,7 +99,7 @@ test('store: dev test', function (t) {
     return function (f) { return f; };
   };
 
-  var actualStore = store.createStore({
+  var actualStore = store.createContext().createStore({
     history: require('react-router').createMemoryHistory(),
     middleware: []
   });
