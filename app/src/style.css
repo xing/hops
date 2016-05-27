@@ -3,7 +3,7 @@
  *
  * [1]: https://github.com/css-modules/postcss-modules-values
  */
-@value primary: rebeccapurple;
+@value primary: orange;
 
 /*
  * Variables can be imported and renamed from external .css files [1]

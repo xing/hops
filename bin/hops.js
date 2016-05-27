@@ -46,12 +46,12 @@ function run(method) {
         config.srcDir
       );
       exec(
-        'BABEL_ENV=hot webpack-dev-server -d --hot --inline --no-info --config "%s"',
+        'BABEL_ENV=webpack webpack-dev-server -d --hot --inline --no-info --config "%s"',
         config.webpackDev
       );
       break;
     case 'build':
-      exec('webpack -p --progress --config %s', config.webpackBuild);
+      exec('BABEL_ENV=webpack webpack -p --progress --config %s', config.webpackBuild);
       break;
     case 'render':
       exec('node "%s"', path.resolve(__dirname, 'render.js'));

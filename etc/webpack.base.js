@@ -3,11 +3,8 @@ var WebpackConfig = require('webpack-config');
 
 var config = require('../lib/config');
 
-var entry = {};
-entry[config.bundleName] = config.bundleFile;
-
 module.exports = new WebpackConfig().merge({
-  entry: entry,
+  entry: config.webpackEntry,
   output: {
     path: config.distDir,
     publicPath: '/',
@@ -21,6 +18,13 @@ module.exports = new WebpackConfig().merge({
     }, {
       test: /\.json$/,
       loader: 'json'
+    }, {
+      test: /\.css$/,
+      loaders: [
+        'style',
+        'css?sourceMap&modules&localIdentName=' + config.cssName + '&importLoaders=1',
+        'postcss'
+      ]
     }, {
       test: /\.((html)|(svg)|(jpeg))$/,
       loader: 'file'
