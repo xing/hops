@@ -6,7 +6,7 @@ module.exports = {
     node: true,
     browser: true
   },
-  globals: [
-    'Promise'
-  ]
+  globals: {
+    Promise: true
+  }
 };
