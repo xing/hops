@@ -71,7 +71,7 @@ function run(method) {
       });
       break;
     case 'test':
-      shell.rm('-rf', config.covDir);
+      shell.rm('-rf', path.resolve(config.appRoot, 'coverage'));
       exec(
         'istanbul cover -x "%s" --root "%s" --print none --report none tape -- -r "%s" "%s" | faucet',
         config.testGlob,
