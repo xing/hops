@@ -1,6 +1,4 @@
 
-require('react-hot-loader/patch');
-
 var ReactDOM = require('react-dom');
 
 function render() {
