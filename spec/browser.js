@@ -19,7 +19,8 @@ setup();
 function render() {
   setup();
   process.env.NODE_ENV = 'production';
-  var result = require('../lib/browser').render.apply(window, arguments);
+  var browser = require('../lib/browser');
+  var result = browser.render.apply(window, arguments).call(window);
   process.env.NODE_ENV = ORIGINAL_ENV;
   return result;
 }

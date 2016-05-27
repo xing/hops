@@ -3,6 +3,7 @@ var test = require('tape');
 
 var store = require('../lib/store');
 
+
 test('store: exports test', function (t) {
   t.equal(typeof store.register, 'function', 'register is a function');
   t.equal(typeof store.createStore, 'function', 'createStore is a function');
@@ -27,18 +28,50 @@ test('store: context test', function (t) {
 
 
 test('store: register/getReducer test', function (t) {
+  t.plan(9);
+
   var context = store.createContext();
 
-  var util = context.register('foo', function (s) { return s; });
+  var util = context.register('foo', function (s) {
+    t.pass('foo reducer is called');
+    return s || {};
+  });
+
+  context.createStore({
+    history: require('react-router').createMemoryHistory()
+  });
+
   t.ok(util, 'register returns something truthy');
   t.equal(typeof util.select, 'function', 'select is a function');
 
   var reducers = context.getReducers();
+
   t.ok(reducers, 'getReducers return something truthy');
   t.ok('foo' in reducers, 'foo namespace exists');
   t.ok('routing' in reducers, 'routing namespace exists');
+});
 
-  t.end();
+
+test('store: re-register test', function (t) {
+  t.plan(8);
+
+  var context = store.createContext();
+
+  var util = context.register('foo', function (s) {
+    t.pass('initial foo reducer is called');
+    return s || {};
+  });
+
+  context.createStore({
+    history: require('react-router').createMemoryHistory()
+  });
+
+  context.register('foo', function (s) {
+    t.pass('new foo reducer is called');
+    return s || {};
+  });
+
+  t.ok(util, 'register returns something truthy');
 });
 
 
@@ -51,8 +84,6 @@ test('store: basic autoregister test', function (t) {
   t.equal(typeof util.select, 'function', 'select is a function');
   t.equal(typeof util.update, 'function', 'update is a function');
 
-  t.throws(context.register.bind(context, 'foo'), 'namespace clash is caught');
-
   t.end();
 });
 
@@ -61,8 +92,7 @@ test('store: full autoregister test', function (t) {
   var context = store.createContext();
   var util = context.register('foo');
   var actualStore = context.createStore({
-    history: require('react-router').createMemoryHistory(),
-    middleware: []
+    history: require('react-router').createMemoryHistory()
   });
 
   actualStore.dispatch(util.update({ bar: {'$set': 'baz'}}));
@@ -81,9 +111,8 @@ test('store: full autoregister test', function (t) {
 test('store: store creation test', function (t) {
   t.plan(3);
 
-  var actualStore = store.createStore({
-    history: require('react-router').createMemoryHistory(),
-    middleware: []
+  var actualStore = store.createContext().createStore({
+    history: require('react-router').createMemoryHistory()
   });
 
   t.ok(actualStore, 'store was created');
@@ -101,7 +130,7 @@ test('store: dev test', function (t) {
     return function (f) { return f; };
   };
 
-  var actualStore = store.createStore({
+  var actualStore = store.createContext().createStore({
     history: require('react-router').createMemoryHistory(),
     middleware: []
   });

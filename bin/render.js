@@ -15,7 +15,7 @@ var render = (typeof main === 'function') ? main : function () {
   return Promise.resolve('');
 };
 
-function getFileName(url, distDir) {
+var getFileName = config.getFileName || function (url, distDir) {
   var segments = url.split('/').filter(function(segment) {
     return segment.length;
   });
@@ -27,7 +27,7 @@ function getFileName(url, distDir) {
   }
   segments.unshift(distDir);
   return path.join.apply(path, segments);
-}
+};
 
 function renderShells(options) {
   config.shells.forEach(function(url) {

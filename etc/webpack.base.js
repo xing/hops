@@ -4,7 +4,7 @@ var WebpackConfig = require('webpack-config');
 var config = require('../lib/config');
 
 var entry = {};
-entry[config.bundleName] = config.bundleFile;
+entry[config.bundleName] = require.resolve('./webpack.entry');
 
 module.exports = new WebpackConfig().merge({
   entry: entry,
@@ -33,6 +33,6 @@ module.exports = new WebpackConfig().merge({
     require('postcss-cssnext')
   ],
   resolve: {
-    packageMains: ['webpack', 'browser', 'web', 'browserify', 'style', 'main']
+    alias: { 'hops-main': config.bundleFile }
   }
 });
