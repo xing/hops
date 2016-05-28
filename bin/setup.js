@@ -19,7 +19,6 @@ Object.assign(pkg, {
       start: 'hops start',
       watch: 'hops watch',
       build: 'hops build',
-      render: 'hops render',
       lint: 'hops lint'
     },
     pkg.scripts,

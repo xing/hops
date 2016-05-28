@@ -3,12 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <% if (title) { %><title><%= title %></title><% } %>
-    <% if (css) { %><link rel="stylesheet" href="/<%= css %>.css" /><% } %>
   </head>
   <body>
-    <main><% if (body) { %><%- body %><% } %></main>
-    <% if (state) { %><script>INITIAL_STATE = <%- state %>;</script><% } %>
-    <% if (js) { %><script src="/<%= js %>.js" async></script><% } %>
+    <main><%- body %></main>
+    <script>INITIAL_STATE = <%- state %>;</script>
+    <script src="/bundle.js" async></script>
   </body>
 </html>

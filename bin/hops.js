@@ -37,24 +37,19 @@ function run(method) {
     case undefined:
     case 'start':
       shell.rm('-rf', config.distDir);
-      run('render');
       run((process.env.NODE_ENV === 'production') ? 'build' : 'watch');
       break;
     case 'watch':
       exec(
-        'chokidar "%s/**/*.+(css|js)" --silent -c "hops render"',
-        config.srcDir
-      );
-      exec(
-        'BABEL_ENV=hot webpack-dev-server -d --hot --inline --no-info --config "%s"',
+        'BABEL_ENV=webpack webpack-dev-server -d --hot --inline --no-info --config "%s"',
         config.webpackDev
       );
       break;
     case 'build':
-      exec('webpack -p --progress --config %s', config.webpackBuild);
-      break;
-    case 'render':
-      exec('node "%s"', path.resolve(__dirname, 'render.js'));
+      exec(
+        'BABEL_ENV=webpack webpack -p --progress --config "%s"',
+        config.webpackBuild
+      );
       break;
     case 'lint':
       Promise.all([
@@ -90,7 +85,7 @@ function run(method) {
       });
       break;
     default:
-      shell.echo('Usage: hops [{start,watch,build,render,lint,test}]');
+      shell.echo('Usage: hops [{start,watch,build,lint,test}]');
       shell.exit(1);
   }
 }
