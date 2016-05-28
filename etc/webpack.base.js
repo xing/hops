@@ -2,13 +2,14 @@
 var WebpackConfig = require('webpack-config');
 
 var config = require('../lib/config');
+var HopsPlugin = require('./plugin.webpack');
 
 module.exports = new WebpackConfig().merge({
-  entry: config.webpackEntry,
+  entry: require.resolve('./shim.webpack'),
   output: {
     path: config.distDir,
     publicPath: '/',
-    filename: '[name].js'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [{
@@ -38,8 +39,13 @@ module.exports = new WebpackConfig().merge({
   ],
   resolve: {
     alias: {
-      'hops-main': require.resolve('./webpack.entry'),
-      'hops-main-render': config.appRoot
+      'hops-main': config.appRoot
     }
-  }
+  },
+  plugins: [
+    new HopsPlugin({
+      entry: require.resolve('./shim.node'),
+      locations: config.shells
+    })
+  ]
 });
