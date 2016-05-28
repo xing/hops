@@ -2,7 +2,7 @@
 var path = require('path');
 
 var webpack = require('webpack');
-var WebpackConfig = require('webpack-config');
+var WebpackConfig = require('webpack-config').default;
 
 var baseConfig = path.join(__dirname, 'webpack.base');
 

@@ -1,5 +1,5 @@
 
-var WebpackConfig = require('webpack-config');
+var WebpackConfig = require('webpack-config').default;
 
 var config = require('../lib/config');
 var HopsPlugin = require('./plugin.webpack');
