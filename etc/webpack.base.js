@@ -2,10 +2,10 @@
 var WebpackConfig = require('webpack-config').default;
 
 var config = require('../lib/config');
-var HopsPlugin = require('./plugin.webpack');
+var HopsPlugin = require('../plugin');
 
 module.exports = new WebpackConfig().merge({
-  entry: require.resolve('./shim.webpack'),
+  entry: require.resolve('../shims/browser'),
   output: {
     path: config.distDir,
     publicPath: '/',
@@ -15,7 +15,7 @@ module.exports = new WebpackConfig().merge({
     loaders: [{
       test: /\.js$/,
       loader: 'babel',
-      exclude: config.babelIgnore
+      exclude: /node_modules\//
     }, {
       test: /\.json$/,
       loader: 'json'
@@ -23,7 +23,7 @@ module.exports = new WebpackConfig().merge({
       test: /\.css$/,
       loaders: [
         'style',
-        'css?sourceMap&modules&localIdentName=' + config.cssName + '&importLoaders=1',
+        'css?sourceMap&modules&localIdentName=[path][name]-[local]-[hash:base64:5]&importLoaders=1',
         'postcss'
       ]
     }, {
@@ -44,8 +44,8 @@ module.exports = new WebpackConfig().merge({
   },
   plugins: [
     new HopsPlugin({
-      entry: require.resolve('./shim.node'),
-      locations: config.shells
+      entry: require.resolve('../shims/node'),
+      main: config.appRoot
     })
   ]
 });

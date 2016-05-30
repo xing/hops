@@ -8,7 +8,7 @@ var shell = require('shelljs');
 var config = require('../lib/config');
 
 var pkgPath = path.resolve(config.appRoot, 'package.json');
-var pkg = Object.assign({}, config.package);
+var pkg = require(pkgPath);
 
 var defaultTest = 'echo "Error: no test specified" && exit 1';
 
@@ -71,7 +71,7 @@ exports.bootstrap = bootstrap;
 if (
   require.main === module &&
   path.resolve(__dirname, '..') !== config.appRoot &&
-  !shell.test('-e', path.resolve(config.appRoot, config.package.main))
+  !shell.test('-e', path.resolve(config.appRoot, pkg.main))
 ) {
   configure();
   bootstrap();

@@ -20,7 +20,7 @@ test('node: basic rendering test', function (t) {
 
 
 test('node: route rendering test', function (t) {
-  t.plan(2);
+  t.plan(3);
 
   var render = require('../lib/node').render({
     routes: React.createElement(
@@ -32,8 +32,9 @@ test('node: route rendering test', function (t) {
     reducers: {}
   });
 
-  render('/').then(function (html) {
-    t.ok(html.length, 'some html rendered');
+  render('/').then(function (result) {
+    t.ok(result.dom.length, 'some html rendered');
+    t.ok(result.state.length, 'some state serialized');
   });
 
   render('/foo').catch(function () {
@@ -43,7 +44,7 @@ test('node: route rendering test', function (t) {
 
 
 test('node: route/reducer rendering test', function (t) {
-  t.plan(2);
+  t.plan(3);
 
   var render = require('../lib/node').render({
     routes: React.createElement(
@@ -60,7 +61,8 @@ test('node: route/reducer rendering test', function (t) {
     )
   });
 
-  render('/').then(function (html) {
-    t.ok(html.length, 'some html rendered');
+  render('/').then(function (result) {
+    t.ok(result.dom.length, 'some html rendered');
+    t.ok(result.state.length, 'some state serialized');
   });
 });
