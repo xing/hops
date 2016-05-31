@@ -1,4 +1,11 @@
 
+if (global.Object.assign.constructor !== Function) {
+  global.Object.assign = require('babel-runtime/core-js/object/assign').default;
+}
+if (global.Promise.constructor !== Function) {
+  global.Promise = require('babel-runtime/core-js/promise').default;
+}
+
 var ReactDOM = require('react-dom');
 
 function render() {
