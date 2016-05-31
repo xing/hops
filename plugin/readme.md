@@ -17,7 +17,7 @@ module.exports = {
 };
 ```
 
-The plugin's constructor takes a single options object as an argument. The supported options are documented below.
+The plugin's constructor takes a single options object as an argument, which is also passed along to the template. The supported options are documented below.
 
 
 ### Options
@@ -30,17 +30,21 @@ Full path to the path to the node entry file. This is usually *not* your applica
 
 Full path to your application's main entry point. May be a module, i.e. directory path. This module is expected to export the result of a `hops.render` function call.
 
+##### `locations: [string]`
+
+Array of location strings (i.e. http paths) to be 'requested' by the static site generation process. These must correspond to paths registered in your ReactRouter instance. Defaults to `['/']`.
+
 ##### `template: string`
 
 Full path to an [EJS](http://ejs.co) template file that should at least have the outlets found in hops' [default](https://github.com/xing/hops/blob/master/plugin/template.ejs).
 
 ##### `babelIgnore: RegExp`
 
-A regular expression that prevents Babel from processing folders containing only ES3/5 code. Defaults to `/node_modules\//`.
+A regular expression that prevents Babel from processing folders containing only ES3/5 code. Hops attempts to extract this setting from your webpack config - if all else fails, defaults to `/node_modules\//`.
 
 ##### `localIdentName: string`
 
-A string template used for css modules' namespacing. Defaults to `[path][name]-[local]-[hash:base64:5]`.
+A string template used for css modules' namespacing. Hops also tries to extract this, defaults to `[path][name]-[local]-[hash:base64:5]`.
 
 
 ### Example
