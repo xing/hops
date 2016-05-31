@@ -18,7 +18,7 @@
   "scripts": {
     "install": "node bin/setup.js",
     "start": "cd app; rm -rf node_modules/hops; npm install; npm start",
-    "test": "istanbul cover -x \"spec/**/*.js\" --root lib --print none tape \"spec/**/*.js\" | faucet",
+    "test": "istanbul cover -x \"spec/**/*.js\" --root . --print none tape \"spec/**/*.js\" | faucet",
     "pretest": "npm run cleanup; mkdir -p tmp; cd tmp; npm init -y; npm install file:../",
     "posttest": "[ -n \"$npm_config_coverage\" ] && istanbul report text-summary || exit 0",
     "preversion": "npm test --coverage",

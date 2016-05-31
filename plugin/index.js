@@ -26,7 +26,7 @@ function renderLocation(location, options) {
   });
 }
 
-var getFileName = function (location) {
+function getFileName(location) {
   var parts = location.split('/').filter(function (part) {
     return !!part.length;
   });
@@ -35,7 +35,7 @@ var getFileName = function (location) {
     parts.push('index.html');
   }
   return path.join.apply(path, parts);
-};
+}
 
 function getBabelIgnore(options) {
   var config = options.module.loaders.find(function (conf) {
@@ -107,14 +107,15 @@ Plugin.prototype.apply = function(compiler) {
           source: function() { return html; },
           size: function() { return html.length; }
         };
-      });
+      })
+      .catch(self.options.debug ? shell.echo : function () {});
     }))
-    .then(function () { callback(); })
-    .catch(function (e) {
-      shell.echo.apply(shell, e);
-      callback();
-    });
+    .then(function () { callback(); });
   });
 };
+
+Plugin.getFileName = getFileName;
+Plugin.getBabelIgnore = getBabelIgnore;
+Plugin.getLocalIdentName = getLocalIdentName;
 
 module.exports = Plugin;
