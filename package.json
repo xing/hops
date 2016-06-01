@@ -18,7 +18,8 @@
     "test": "istanbul test -x \"spec/**/*.js\" --root . --dir .tmp/coverage _mocha \"spec/**/*.js\"",
     "pretest": "npm run cleanup; mkdir -p .tmp/test; cd .tmp/test; npm init -y; npm install file:../../",
     "cleanup": "rm -rf coverage .tmp/test/{.eslintrc.js,.stylelintrc.js,webpack.config.js,src,dist,node_modules/hops}",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "docs": "rm -rf docs; jsdoc -c jsdoc.json"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -62,6 +63,8 @@
     "fake-style-loader": "1.0.1",
     "file-loader": "0.8.5",
     "istanbul": "0.4.3",
+    "hopsdoc": "git+https://github.com/xing/hopsdoc.git",
+    "jsdoc": "git+https://github.com/pixelass/jsdoc.git",
     "json-loader": "0.5.4",
     "memory-fs": "0.3.0",
     "mocha": "2.5.3",

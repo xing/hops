@@ -9,7 +9,8 @@
     "start": "[ \"$NODE_ENV\" != \"production\" ] && npm run watch || npm run build",
     "watch": "webpack-dev-server --hot --config webpack.config.js",
     "build": "webpack --progress --config webpack.config.js",
-    "test": "mocha-webpack --reporter hops/reporter --webpack-config webpack.config.js \"src/**/*.test.js\""
+    "test": "mocha-webpack --reporter hops/reporter --webpack-config webpack.config.js \"src/**/*.test.js\"",
+    "docs": "rm -rf docs; jsdoc -c jsdoc.json"
   },
   "dependencies": {
     "hops": "file:.."

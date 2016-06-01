@@ -1,3 +1,7 @@
+/**
+ * @module Plugin
+ * @author Somebody <somebody@foo.bar>
+ */
 
 var fs = require('fs');
 var path = require('path');
