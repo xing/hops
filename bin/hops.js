@@ -71,7 +71,7 @@ function run(method) {
         'istanbul cover -x "%s" --root "%s" --print none --report none tape -- -r "%s" "%s" | faucet',
         config.testGlob,
         config.srcDir,
-        path.resolve(__dirname, '../lib', 'config'),
+        path.resolve(__dirname, '../', 'shims', 'test'),
         config.testGlob
       )
       .then(function () {
