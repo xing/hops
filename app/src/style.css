@@ -50,7 +50,7 @@
  * [1]: https://github.com/css-modules/css-modules#composition
  * [2]: http://cssnext.io
  */
-body {
+body { /* stylelint-disable-line */
   text-align: center;
 }
 

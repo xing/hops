@@ -47,13 +47,13 @@ If called without the `--production` flag, a development server with hot module 
 
 ### Testing
 
-If you are developing any kind of real application, you certainly want to be able to test your code. For hops, we chose to include a rather simple testing toolchain consisting of [Tape](https://github.com/substack/tape), [Enzyme](http://airbnb.io/enzyme/) and [Istanbul](https://github.com/gotwarlost/istanbul).
+If you are developing any kind of real application, you certainly want to be able to test your code. For hops, we chose to include a rather simple testing toolchain consisting of [Tape](https://github.com/substack/tape) and [Enzyme](http://airbnb.io/enzyme/).
 
 ```
-npm test (--coverage)
+npm test
 ```
 
-In hops' default configuration, all files with names ending with `.test.js` (and outside `/node_modules`) are being picked up. As to be expected the `--coverage` flag enables code coverage reporting.
+In hops' default configuration, all files with names ending with `.test.js` (and outside `/node_modules`) are being picked up.
 
 ### API
 

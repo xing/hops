@@ -16,13 +16,15 @@ function fileExists(file) {
 }
 
 test('setup: file creation test', function (t) {
-  t.plan(3);
+  t.plan(4);
 
   var packageFile = path.join(appRoot, 'package.json');
   var eslintFile = path.join(appRoot, '.eslintrc.js');
   var stylelintFile = path.join(appRoot, '.stylelintrc.js');
+  var webpackFile = path.join(appRoot, 'webpack.config.js');
 
   t.ok(fileExists(packageFile), 'package.json created and not empty');
   t.ok(fileExists(eslintFile), '.eslintrc created and not empty');
   t.ok(fileExists(stylelintFile), '.stylelintrc created and not empty');
+  t.ok(fileExists(webpackFile), 'webpack.config.js created and not empty');
 });

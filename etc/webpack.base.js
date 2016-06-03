@@ -5,6 +5,7 @@ var config = require('../lib/config');
 var HopsPlugin = require('../plugin');
 
 module.exports = new WebpackConfig().merge({
+  filename: __filename,
   entry: require.resolve('../shims/browser'),
   output: {
     path: config.distDir,

@@ -11,25 +11,22 @@ var pkgPath = path.resolve(config.appRoot, 'package.json');
 var pkg = require(pkgPath);
 
 var defaultTest = 'echo "Error: no test specified" && exit 1';
+var hopsTest = 'tape -r hops/shims/test \'!(node_modules)/**/*.test.js\' | faucet';
 
 Object.assign(pkg, {
   main: (shell.test('-e', pkg.main)) ? pkg.main : 'src/main.js',
   scripts: Object.assign(
     {
-      start: 'hops start',
-      watch: 'hops watch',
-      build: 'hops build',
-      lint: 'hops lint'
+      start: '[ \"$NODE_ENV\" != "production" ] && npm run watch || npm run build',
+      watch: 'BABEL_ENV=webpack webpack-dev-server --hot --inline',
+      build: 'BABEL_ENV=webpack webpack || true'
     },
     pkg.scripts,
     {
-      test: (pkg.scripts.test === defaultTest) ? 'hops test' : pkg.scripts.test
+      test: (pkg.scripts.test === defaultTest) ? hopsTest : pkg.scripts.test
     }
   ),
-  babel: Object.assign(
-    { extends: 'hops/etc/babel' },
-    pkg.babel
-  )
+  babel: Object.assign({ extends: 'hops/etc/babel' }, pkg.babel)
 });
 
 var template = [{
@@ -47,6 +44,9 @@ var template = [{
 }, {
   origin: path.resolve(__dirname, '..', 'app', '.stylelintrc.js'),
   destination: path.resolve(config.appRoot, '.stylelintrc.js')
+}, {
+  origin: path.resolve(__dirname, '..', 'app', 'webpack.config.js'),
+  destination: path.resolve(config.appRoot, 'webpack.config.js')
 }];
 
 function configure() {
