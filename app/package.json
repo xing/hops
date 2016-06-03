@@ -6,11 +6,10 @@
   "license": "MIT",
   "repository": {},
   "scripts": {
-    "start": "hops start",
-    "watch": "hops watch",
-    "build": "hops build",
-    "lint": "hops lint",
-    "test": "hops test"
+    "start": "[ \"$NODE_ENV\" != \"production\" ] && npm run watch || npm run build",
+    "watch": "BABEL_ENV=webpack webpack-dev-server --hot --inline",
+    "build": "BABEL_ENV=webpack webpack || true",
+    "test": "tape -r hops/shims/test '!(node_modules)/**/*.test.js' | faucet"
   },
   "dependencies": {
     "hops": "file:.."
