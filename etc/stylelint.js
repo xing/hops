@@ -27,10 +27,14 @@ module.exports = {
     'selector-list-comma-space-before': 'never',
     'selector-list-comma-newline-after': 'always',
     'selector-max-empty-lines': 0,
+    'selector-max-compound-selectors': 2,
+    'selector-max-specificity': '0,3,1',
     'selector-no-id': true,
     'selector-no-qualifying-type': true,
     'selector-no-type': true,
     'selector-no-universal': true,
+    'selector-pseudo-class-parentheses-space-inside': 'never',
+    'selector-pseudo-element-colon-notation': 'double',
     'string-quotes': 'single',
     'value-no-vendor-prefix': true
   }

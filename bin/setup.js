@@ -29,24 +29,25 @@ Object.assign(pkg, {
   babel: Object.assign({ extends: 'hops/etc/babel' }, pkg.babel)
 });
 
+var appDir = path.resolve(__dirname, '..', 'app');
 var template = [{
-  origin: path.resolve(__dirname, '..', 'app', 'src', 'main.js'),
-  destination: path.resolve(config.appRoot, pkg.main)
+  origin: path.join(appDir, 'src', 'main.js'),
+  destination: path.join(config.appRoot, pkg.main)
 }, {
-  origin: path.resolve(__dirname, '..', 'app', 'src', 'main.test.js'),
-  destination: path.resolve(config.srcDir, 'main.test.js')
+  origin: path.join(appDir, 'src', 'main.test.js'),
+  destination: path.join(config.srcDir, 'main.test.js')
 }, {
-  origin: path.resolve(__dirname, '..', 'app', 'src', 'style.css'),
-  destination: path.resolve(config.srcDir, 'style.css')
+  origin: path.join(appDir, 'src', 'style.css'),
+  destination: path.join(config.srcDir, 'style.css')
 }, {
-  origin: path.resolve(__dirname, '..', 'app', '.eslintrc.js'),
-  destination: path.resolve(config.appRoot, '.eslintrc.js')
+  origin: path.join(appDir, '.eslintrc.js'),
+  destination: path.join(config.appRoot, '.eslintrc.js')
 }, {
-  origin: path.resolve(__dirname, '..', 'app', '.stylelintrc.js'),
-  destination: path.resolve(config.appRoot, '.stylelintrc.js')
+  origin: path.join(appDir, '.stylelintrc.js'),
+  destination: path.join(config.appRoot, '.stylelintrc.js')
 }, {
-  origin: path.resolve(__dirname, '..', 'app', 'webpack.config.js'),
-  destination: path.resolve(config.appRoot, 'webpack.config.js')
+  origin: path.join(appDir, 'webpack.config.js'),
+  destination: path.join(config.appRoot, 'webpack.config.js')
 }];
 
 function configure() {
@@ -65,14 +66,25 @@ function bootstrap() {
   });
 }
 
-exports.configure = configure;
-exports.bootstrap = bootstrap;
+function isBootstrapped() {
+  var index = template.findIndex(function (file) {
+    return shell.test('-e', file.destination);
+  });
+  return index >= 0;
+}
 
-if (
-  require.main === module &&
-  path.resolve(__dirname, '..') !== config.appRoot &&
-  !shell.test('-e', path.resolve(config.appRoot, pkg.main))
-) {
+function isDevInstall() {
+  return path.resolve(__dirname, '..') === config.appRoot;
+}
+
+function hasMain() {
+  return shell.test('-e', path.join(config.appRoot, pkg.main));
+}
+
+if (require.main === module && !isBootstrapped() && !isDevInstall()) {
   configure();
   bootstrap();
 }
+
+exports.configure = configure;
+exports.bootstrap = bootstrap;

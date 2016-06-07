@@ -18,13 +18,17 @@ function validateOptions(location, options) {
   }
 }
 
+function stringToRegExp(string) {
+  var parts = string.match(/\/(.*?)\/([gimy])?$/);
+  return new RegExp(parts[1], parts[2]);
+}
+
 function run(location, options) {
   return new Promise(function (resolve, reject) {
     try {
       validateOptions(location, options);
-      var babelIgnore = options.babelIgnore.match(/\/(.*?)\/([gimy])?$/);
       require('babel-register')({
-        ignore: new RegExp(babelIgnore[1], babelIgnore[2])
+        ignore: stringToRegExp(options.babelIgnore)
       });
       require('css-modules-require-hook')({
         generateScopedName: options.localIdentName
