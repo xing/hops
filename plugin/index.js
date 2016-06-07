@@ -30,8 +30,7 @@ function getFileName(location) {
   var parts = location.split('/').filter(function (part) {
     return !!part.length;
   });
-  var length = parts.length;
-  if (!length || parts[length - 1].indexOf('.') === -1) {
+  if (!parts.length || parts[parts.length - 1].indexOf('.') === -1) {
     parts.push('index.html');
   }
   return path.join.apply(path, parts);
