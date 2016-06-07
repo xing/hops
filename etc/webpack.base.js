@@ -14,7 +14,7 @@ module.exports = new WebpackConfig().merge({
   },
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       loader: 'babel',
       exclude: /node_modules\//
     }, {
@@ -39,6 +39,7 @@ module.exports = new WebpackConfig().merge({
     require('postcss-cssnext')
   ],
   resolve: {
+    extensions: ['', '.js', '.jsx'],
     alias: {
       'hops-main': config.appRoot
     }
