@@ -20,7 +20,7 @@
     "posttest": "[ -n \"$npm_config_coverage\" ] && istanbul report text-summary || exit 0",
     "preversion": "npm test --coverage",
     "postversion": "git push && git push --tags",
-    "cleanup": "rm -rf coverage tmp/{.eslintrc,.stylelintrc,src,dist,node_modules/hops}"
+    "cleanup": "rm -rf coverage tmp/{.eslintrc.js,.stylelintrc.js,webpack.config.js,src,dist,node_modules/hops}"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -74,7 +74,7 @@
     "react-dom": "15.1.0",
     "react-redux": "4.4.5",
     "react-router": "2.4.1",
-    "react-router-redux": "4.0.4",
+    "react-router-redux": "4.0.5",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
     "shell-escape": "0.2.0",
