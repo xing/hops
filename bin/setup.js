@@ -29,24 +29,18 @@ Object.assign(pkg, {
   babel: Object.assign({ extends: 'hops/etc/babel' }, pkg.babel)
 });
 
-var appDir = path.resolve(__dirname, '..', 'app');
+var srcDir = path.resolve(__dirname, '..', 'app');
 var template = [{
-  origin: path.join(appDir, 'src', 'main.js'),
-  destination: path.join(config.appRoot, pkg.main)
+  source: path.join(srcDir, 'src'),
+  destination: path.join(config.appRoot, 'src')
 }, {
-  origin: path.join(appDir, 'src', 'main.test.js'),
-  destination: path.join(config.srcDir, 'main.test.js')
-}, {
-  origin: path.join(appDir, 'src', 'style.css'),
-  destination: path.join(config.srcDir, 'style.css')
-}, {
-  origin: path.join(appDir, '.eslintrc.js'),
+  source: path.join(srcDir, '.eslintrc.js'),
   destination: path.join(config.appRoot, '.eslintrc.js')
 }, {
-  origin: path.join(appDir, '.stylelintrc.js'),
+  source: path.join(srcDir, '.stylelintrc.js'),
   destination: path.join(config.appRoot, '.stylelintrc.js')
 }, {
-  origin: path.join(appDir, 'webpack.config.js'),
+  source: path.join(srcDir, 'webpack.config.js'),
   destination: path.join(config.appRoot, 'webpack.config.js')
 }];
 
@@ -60,7 +54,7 @@ function bootstrap() {
     if (!shell.test('-e', file.destination)) {
       var destDir = path.dirname(file.destination);
       shell.mkdir('-p', destDir);
-      shell.cp('-r', file.origin, destDir);
+      shell.cp('-r', file.source, destDir);
       shell.echo('created ' + file.destination.replace(destDir + '/', ''));
     }
   });
@@ -73,15 +67,12 @@ function isBootstrapped() {
   return index >= 0;
 }
 
-function isDevInstall() {
-  return path.resolve(__dirname, '..') === config.appRoot;
-}
-
-function hasMain() {
-  return shell.test('-e', path.join(config.appRoot, pkg.main));
-}
-
-if (require.main === module && !isBootstrapped() && !isDevInstall()) {
+if (
+  require.main === module &&
+  path.resolve(__dirname, '..') !== config.appRoot &&
+  !shell.test('-e', path.join(config.appRoot, pkg.main)) &&
+  !isBootstrapped()
+) {
   configure();
   bootstrap();
 }

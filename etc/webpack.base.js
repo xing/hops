@@ -1,4 +1,5 @@
 
+var path = require('path');
 var WebpackConfig = require('webpack-config').default;
 
 var config = require('../lib/config');
@@ -8,7 +9,7 @@ module.exports = new WebpackConfig().merge({
   filename: __filename,
   entry: require.resolve('../shims/browser'),
   output: {
-    path: config.distDir,
+    path: path.resolve(config.appRoot, 'dist'),
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -46,8 +47,8 @@ module.exports = new WebpackConfig().merge({
   },
   plugins: [
     new HopsPlugin({
-      entry: require.resolve('../shims/node'),
-      main: config.appRoot
+      debug: true,
+      config: config.webpackNode
     })
   ]
 });
