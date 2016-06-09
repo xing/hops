@@ -9,6 +9,25 @@ var webpack = require('webpack');
 var MemoryFS = require('memory-fs');
 var ejs = require('ejs');
 
+
+function createScript(fileContent, funcName) {
+  var script = vm.createScript(util.format(
+    '(function () { %s; return %s; })()',
+    fileContent.toString(),
+    funcName
+  ));
+  return script.runInNewContext({
+    require: require,
+    process: Object.assign({}, process, {
+      env: Object.assign(process.env, {
+        NODE_ENV: 'production'
+      })
+    }),
+    console: console,
+    global: {}
+  });
+}
+
 function createRenderer(options) {
   return Promise.resolve().then(function () {
     return new Promise(function (resolve, reject) {
@@ -18,33 +37,13 @@ function createRenderer(options) {
       compiler.outputFileSystem = mfs;
       compiler.run(function(compilerError) {
         /* istanbul ignore if */
-        if (compilerError) {
-          reject(compilerError);
-        }
+        if (compilerError) { reject(compilerError); }
         else {
           var filePath = path.join(config.output.path, config.output.filename);
           mfs.readFile(filePath, function (readFileError, fileContent) {
             /* istanbul ignore if */
-            if (readFileError) {
-              reject(readFileError);
-            }
-            else {
-              var script = vm.createScript(util.format(
-                '(function () { %s; return %s; })()',
-                fileContent.toString(),
-                config.output.library
-              ));
-              resolve(script.runInNewContext({
-                require: require,
-                process: Object.assign(process, {
-                  env: Object.assign(process.env, {
-                    NODE_ENV: 'production'
-                  })
-                }),
-                console: console,
-                global: {}
-              }));
-            }
+            if (readFileError) { reject(readFileError); }
+            else { resolve(createScript(fileContent, config.output.library)); }
           });
         }
       });

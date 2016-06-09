@@ -18,7 +18,7 @@ Object.assign(pkg, {
   scripts: Object.assign(
     {
       start: '[ \"$NODE_ENV\" != "production" ] && npm run watch || npm run build',
-      watch: 'BABEL_ENV=webpack webpack-dev-server --hot --inline',
+      watch: 'BABEL_ENV=webpack webpack-dev-server --hot',
       build: 'BABEL_ENV=webpack webpack || true'
     },
     pkg.scripts,
