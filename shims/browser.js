@@ -2,6 +2,7 @@
 if (global.Object.assign.constructor !== Function) {
   global.Object.assign = require('babel-runtime/core-js/object/assign').default;
 }
+
 if (global.Promise.constructor !== Function) {
   global.Promise = require('babel-runtime/core-js/promise').default;
 }
@@ -14,14 +15,16 @@ function render() {
     mainRender = mainRender.default;
   }
   var mountPoint = mainRender();
-  if (module.hot) {
-    module.hot.accept(
-      require.resolve('hops-main'),
-      function () {
-        ReactDOM.unmountComponentAtNode(mountPoint);
-        setTimeout(render);
-      }
-    );
+  if (process.env.NODE_ENV !== 'production') {
+    if (module.hot) {
+      module.hot.accept(
+        require.resolve('hops-main'),
+        function () {
+          ReactDOM.unmountComponentAtNode(mountPoint);
+          setTimeout(render);
+        }
+      );
+    }
   }
 }
 

@@ -28,7 +28,6 @@ module.exports = new WebpackConfig().extend(modifiedBaseConfig).merge({
   },
   resolveLoader: {
     alias: {
-      'style-loader': 'fake-style-loader',
       'style': 'fake-style-loader'
     }
   },
