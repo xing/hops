@@ -12,6 +12,7 @@ modifiedBaseConfig[config.webpackBase] = function (baseConfig) {
   baseConfig.plugins = baseConfig.plugins.filter(function (plugin) {
     return (plugin.constructor !== HopsPlugin);
   });
+  delete baseConfig.devtool;
   return baseConfig;
 };
 

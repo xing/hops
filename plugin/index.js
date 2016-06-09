@@ -17,12 +17,14 @@ function createRenderer(options) {
       var compiler = webpack(config);
       compiler.outputFileSystem = mfs;
       compiler.run(function(compilerError) {
+        /* istanbul ignore if */
         if (compilerError) {
           reject(compilerError);
         }
         else {
           var filePath = path.join(config.output.path, config.output.filename);
           mfs.readFile(filePath, function (readFileError, fileContent) {
+            /* istanbul ignore if */
             if (readFileError) {
               reject(readFileError);
             }
@@ -32,7 +34,16 @@ function createRenderer(options) {
                 fileContent.toString(),
                 config.output.library
               ));
-              resolve(script.runInNewContext({ require: require }));
+              resolve(script.runInNewContext({
+                require: require,
+                process: Object.assign(process, {
+                  env: Object.assign(process.env, {
+                    NODE_ENV: 'production'
+                  })
+                }),
+                console: console,
+                global: {}
+              }));
             }
           });
         }
@@ -67,7 +78,6 @@ Plugin.prototype.apply = function(compiler) {
   var renderHTML = ejs.compile(
     fs.readFileSync(this.options.template, 'utf-8')
   );
-  var log = console.log.bind(console); // eslint-disable-line no-console
   compiler.plugin('emit', function(compilation, callback) {
     createRenderer(options)
     .then(function (renderReact) {
@@ -82,11 +92,17 @@ Plugin.prototype.apply = function(compiler) {
         });
       }));
     })
-    .then(function () { callback(); })
-    .catch(options.debug ? log : function () {});
+    .catch(function () {
+      /* istanbul ignore if */
+      if (options.debug) {
+        console.log.apply(console, arguments); // eslint-disable-line no-console
+      }
+    })
+    .then(function () { callback(); });
   });
 };
 
+Plugin.createRenderer = createRenderer;
 Plugin.getFileName = getFileName;
 
 module.exports = Plugin;

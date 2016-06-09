@@ -47,7 +47,6 @@ module.exports = new WebpackConfig().merge({
   },
   plugins: [
     new HopsPlugin({
-      debug: true,
       config: config.webpackNode
     })
   ]
