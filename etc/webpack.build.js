@@ -2,7 +2,8 @@
 var webpack = require('webpack');
 var WebpackConfig = require('webpack-config').default;
 
-var baseConfig = require('../lib/config').webpackBase;
+var config = require('../lib/config');
+var baseConfig = config.webpackBase;
 
 module.exports = new WebpackConfig().extend(baseConfig).merge({
   filename: __filename,
@@ -19,6 +20,12 @@ module.exports = new WebpackConfig().extend(baseConfig).merge({
         exclude: /node_modules/
       }
     ]
+  },
+  eslint: {
+    configFile: config.eslint
+  },
+  stylelint: {
+    configFile: config.stylelint
   },
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
