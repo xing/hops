@@ -11,7 +11,8 @@ module.exports = new WebpackConfig().merge({
   output: {
     path: path.resolve(config.appRoot, 'dist'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '[name]-[hash].js',
+    chunkFilename: 'chunk-[id]-[hash].js'
   },
   module: {
     loaders: [{
@@ -25,7 +26,15 @@ module.exports = new WebpackConfig().merge({
       test: /\.css$/,
       loaders: [
         'style',
-        'css?sourceMap&modules&localIdentName=[path][name]-[local]-[hash:base64:5]&importLoaders=1',
+        {
+          loader: 'css',
+          query: {
+            sourceMap: true,
+            modules: true,
+            localIdentName: '[name]-[local]-[hash:base64:5]',
+            importLoaders: 1
+          }
+        },
         'postcss'
       ]
     }, {

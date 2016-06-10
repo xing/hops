@@ -3,10 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%-css.map(function (path) {
+      return '<link rel="stylesheet" href="/' + path + '"/>';
+    }).join('\n    ')%>
   </head>
   <body>
-    <main><%- dom %></main>
-    <script>INITIAL_STATE = <%- state %>;</script>
-    <script src="/bundle.js" async></script>
+    <main><%- dom -%></main>
+    <script>INITIAL_STATE = <%- state -%></script>
+    <%-js.map(function (path) {
+      return '<script src="/' + path + '" defer></script>';
+    }).join('\n    ')%>
   </body>
 </html>

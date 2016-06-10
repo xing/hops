@@ -9,14 +9,12 @@ var webpack = require('webpack');
 var MemoryFS = require('memory-fs');
 var ejs = require('ejs');
 
-
 function createScript(fileContent, funcName) {
-  var script = vm.createScript(util.format(
+  return vm.createScript(util.format(
     '(function () { %s; return %s; })()',
     fileContent.toString(),
     funcName
-  ));
-  return script.runInNewContext({
+  )).runInNewContext({
     require: require,
     process: Object.assign({}, process, {
       env: Object.assign(process.env, {
@@ -61,12 +59,22 @@ function getFileName(location) {
   return path.join.apply(path, parts);
 }
 
+function getAssetPaths(assets, pfx) {
+  return function (ext) {
+    var regexp = new RegExp(util.format('^(?!(%s)).+\\.%s(?:\\?|$)', pfx, ext));
+    return Object.keys(assets).filter(function (key) {
+      return key.search(regexp) > -1;
+    });
+  };
+}
+
 function Plugin(options) {
   this.options = Object.assign(
     {
       locations: ['/'],
       template: path.resolve(__dirname, './template.ejs'),
-      config: path.resolve(__dirname, '../etc/webpack.node')
+      config: path.resolve(__dirname, '../etc/webpack.node'),
+      chunkPrefix: 'chunk-'
     },
     options
   );
@@ -78,12 +86,16 @@ Plugin.prototype.apply = function(compiler) {
     fs.readFileSync(this.options.template, 'utf-8')
   );
   compiler.plugin('emit', function(compilation, callback) {
+    var getPaths = getAssetPaths(compilation.assets, options.chunkPrefix);
     createRenderer(options)
     .then(function (renderReact) {
       return Promise.all(options.locations.map(function (location) {
         return renderReact(location, options)
         .then(function (result) {
-          var html = renderHTML(Object.assign({}, options, result));
+          var html = renderHTML(Object.assign({}, options, result, {
+            js: getPaths('js'),
+            css: getPaths('css')
+          }));
           compilation.assets[getFileName(location)] = {
             source: function() { return html; },
             size: function() { return html.length; }

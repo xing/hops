@@ -8,30 +8,36 @@ var shell = require('shelljs');
 
 var appRoot = path.resolve(__dirname, '..', 'tmp');
 
-function fileExists(file) {
+function fileExists(regex) {
   try {
-    return fs.statSync(file).size;
+    var index = fs.readdirSync(path.join(appRoot, 'dist')).findIndex(
+      function (file) { return file.search(regex) > -1; }
+    );
+    return index > -1;
   }
   catch (e) {
-    return null;
+    return false;
   }
 }
 
 test('build: file creation test', function (t) {
-  t.plan(4);
+  t.plan(6);
 
-  var htmlFile = path.join(appRoot, 'dist', 'index.html');
-  var jsFile = path.join(appRoot, 'dist', 'bundle.js');
+  var jsRegex = /^main-[0-9a-f]+\.js$/;
+  var cssRegex = /^main-[0-9a-f]+\.css$/;
+  var htmlRegex = /^index\.html$/;
 
-  t.notOk(fileExists(htmlFile), 'html shell not there already');
-  t.notOk(fileExists(jsFile), 'js file not there already');
+  t.notOk(fileExists(jsRegex), 'js file not there already');
+  t.notOk(fileExists(cssRegex), 'css file not there already');
+  t.notOk(fileExists(htmlRegex), 'html shell not there already');
 
   shell.exec(
     util.format('cd %s && npm start --production', appRoot),
     { silent: true },
     function () {
-      t.ok(fileExists(htmlFile), 'html file created and not empty');
-      t.ok(fileExists(jsFile), 'js file created and not empty');
+      t.ok(fileExists(jsRegex), 'js file created');
+      t.ok(fileExists(cssRegex), 'css file created');
+      t.ok(fileExists(htmlRegex), 'html file created');
     }
   );
 });
