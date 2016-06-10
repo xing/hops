@@ -1,15 +1,14 @@
 
 var path = require('path');
-var WebpackConfig = require('webpack-config').default;
 
-var config = require('../lib/config');
 var HopsPlugin = require('../plugin');
+var helpers = require('../plugin/helpers');
 
-module.exports = new WebpackConfig().merge({
+module.exports = helpers.createConfig({
   filename: __filename,
   entry: require.resolve('../shims/browser'),
   output: {
-    path: path.resolve(config.appRoot, 'dist'),
+    path: path.resolve(helpers.root, 'dist'),
     publicPath: '/',
     filename: '[name]-[hash].js',
     chunkFilename: 'chunk-[id]-[hash].js'
@@ -51,12 +50,12 @@ module.exports = new WebpackConfig().merge({
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      'hops-main': config.appRoot
+      'hops-main': helpers.root
     }
   },
   plugins: [
     new HopsPlugin({
-      config: config.webpackNode
+      config: helpers.resolve('webpack.node.js')
     })
   ]
 });
