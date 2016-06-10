@@ -1,18 +1,19 @@
 
 var path = require('path');
 
-var WebpackConfig = require('webpack-config').default;
+var helpers = require('../plugin/helpers');
 
-var baseConfig = require.resolve('./webpack.node');
-
-module.exports = new WebpackConfig().extend(baseConfig).merge({
-  filename: __filename,
-  output: {
-    path: path.resolve(__dirname, '..', 'tmp', 'dist')
-  },
-  resolve: {
-    alias: {
-      'hops-main': path.resolve(__dirname, '..', 'tmp')
+module.exports = helpers.extendConfig(
+  helpers.resolve('webpack.node.js'),
+  {
+    filename: __filename,
+    output: {
+      path: path.resolve(__dirname, '..', 'tmp', 'dist')
+    },
+    resolve: {
+      alias: {
+        'hops-main': path.resolve(__dirname, '..', 'tmp')
+      }
     }
   }
-});
+);

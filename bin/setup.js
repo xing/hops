@@ -4,10 +4,9 @@ var fs = require('fs');
 var path = require('path');
 
 var shell = require('shelljs');
+var root = require('app-root-path').toString();
 
-var config = require('../lib/config');
-
-var pkgPath = path.resolve(config.appRoot, 'package.json');
+var pkgPath = path.resolve(root, 'package.json');
 var pkg = require(pkgPath);
 
 var defaultTest = 'echo "Error: no test specified" && exit 1';
@@ -19,7 +18,7 @@ Object.assign(pkg, {
     {
       start: '[ \"$NODE_ENV\" != "production" ] && npm run watch || npm run build',
       watch: 'BABEL_ENV=webpack webpack-dev-server --hot',
-      build: 'BABEL_ENV=webpack webpack || true'
+      build: 'BABEL_ENV=webpack webpack --progress || true'
     },
     pkg.scripts,
     {
@@ -32,16 +31,16 @@ Object.assign(pkg, {
 var srcDir = path.resolve(__dirname, '..', 'app');
 var template = [{
   source: path.join(srcDir, 'src'),
-  destination: path.join(config.appRoot, 'src')
+  destination: path.join(root, 'src')
 }, {
   source: path.join(srcDir, '.eslintrc.js'),
-  destination: path.join(config.appRoot, '.eslintrc.js')
+  destination: path.join(root, '.eslintrc.js')
 }, {
   source: path.join(srcDir, '.stylelintrc.js'),
-  destination: path.join(config.appRoot, '.stylelintrc.js')
+  destination: path.join(root, '.stylelintrc.js')
 }, {
   source: path.join(srcDir, 'webpack.config.js'),
-  destination: path.join(config.appRoot, 'webpack.config.js')
+  destination: path.join(root, 'webpack.config.js')
 }];
 
 function configure() {
@@ -69,8 +68,8 @@ function isBootstrapped() {
 
 if (
   require.main === module &&
-  path.resolve(__dirname, '..') !== config.appRoot &&
-  !shell.test('-e', path.join(config.appRoot, pkg.main)) &&
+  path.resolve(__dirname, '..') !== root &&
+  !shell.test('-e', path.join(root, pkg.main)) &&
   !isBootstrapped()
 ) {
   configure();
