@@ -59,11 +59,13 @@ function getFileName(location) {
   return path.join.apply(path, parts);
 }
 
-function getAssetPaths(assets, extension) {
-  return Object.keys(assets).filter(function (key) {
-    var regex = '\.' + extension + '(?:\\?|$)';
-    return key.search(new RegExp(regex)) > -1;
-  });
+function getAssetPaths(assets, pfx) {
+  return function (ext) {
+    var regexp = new RegExp(util.format('^(?!(%s)).+\\.%s(?:\\?|$)', pfx, ext));
+    return Object.keys(assets).filter(function (key) {
+      return key.search(regexp) > -1;
+    });
+  };
 }
 
 function Plugin(options) {
@@ -71,7 +73,8 @@ function Plugin(options) {
     {
       locations: ['/'],
       template: path.resolve(__dirname, './template.ejs'),
-      config: path.resolve(__dirname, '../etc/webpack.node')
+      config: path.resolve(__dirname, '../etc/webpack.node'),
+      chunkPrefix: 'chunk-'
     },
     options
   );
@@ -83,15 +86,15 @@ Plugin.prototype.apply = function(compiler) {
     fs.readFileSync(this.options.template, 'utf-8')
   );
   compiler.plugin('emit', function(compilation, callback) {
-    var jsPaths = getAssetPaths(compilation.assets, 'js');
-    var cssPaths = getAssetPaths(compilation.assets, 'css');
+    var getPaths = getAssetPaths(compilation.assets, options.chunkPrefix);
     createRenderer(options)
     .then(function (renderReact) {
       return Promise.all(options.locations.map(function (location) {
         return renderReact(location, options)
         .then(function (result) {
           var html = renderHTML(Object.assign({}, options, result, {
-            js: jsPaths, css: cssPaths
+            js: getPaths('js'),
+            css: getPaths('css')
           }));
           compilation.assets[getFileName(location)] = {
             source: function() { return html; },

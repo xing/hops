@@ -30,7 +30,7 @@ module.exports = new WebpackConfig().extend(modifiedBaseConfig).merge({
       'redux',
       'redux-thunk'
     ],
-    bundle: require.resolve('../shims/browser')
+    main: require.resolve('../shims/browser')
   },
   module: {
     preLoaders: [
@@ -72,8 +72,11 @@ module.exports = new WebpackConfig().extend(modifiedBaseConfig).merge({
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.js'
+      minChunks: Infinity,
+      filename: '[name]-[hash].js'
     }),
-    new ExtractTextPlugin('bundle.css')
+    new ExtractTextPlugin('[name]-[contenthash].css', {
+      allChunks: true
+    })
   ]
 });

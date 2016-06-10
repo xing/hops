@@ -11,7 +11,8 @@ module.exports = new WebpackConfig().merge({
   output: {
     path: path.resolve(config.appRoot, 'dist'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '[name]-[hash].js',
+    chunkFilename: 'chunk-[id]-[hash].js'
   },
   module: {
     loaders: [{

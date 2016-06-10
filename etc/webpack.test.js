@@ -1,7 +1,6 @@
 
 var path = require('path');
 
-var webpack = require('webpack');
 var WebpackConfig = require('webpack-config').default;
 
 var baseConfig = require.resolve('./webpack.node');
