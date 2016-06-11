@@ -14,24 +14,14 @@ module.exports = helpers.extendConfig(
           return (json.search(/"css(?=(?:-loader(?:\?|"))|\?|")/) === -1);
         }
       );
-      delete config.devtool;
       return config;
     }
   ),
   {
     filename: __filename,
     entry: {
-      vendor: [
-        'react',
-        'react-dom',
-        'react-addons-update',
-        'react-router',
-        'react-router-redux',
-        'react-redux',
-        'redux',
-        'redux-thunk'
-      ],
-      main: require.resolve('../shims/browser')
+      vendor: 'hops',
+      main: helpers.root
     },
     module: {
       preLoaders: [
@@ -57,7 +47,6 @@ module.exports = helpers.extendConfig(
     plugins: [
       new webpack.EnvironmentPlugin(['NODE_ENV']),
       new webpack.LoaderOptionsPlugin({
-        test: /\.css$/,
         minimize: true,
         debug: false
       }),
@@ -67,12 +56,12 @@ module.exports = helpers.extendConfig(
       }),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        minChunks: Infinity,
         filename: '[name]-[hash].js'
       }),
-      new ExtractTextPlugin('[name]-[contenthash].css', {
-        allChunks: true
-      })
+      new ExtractTextPlugin(
+        '[name]-[contenthash].css',
+        { allChunks: true }
+      )
     ]
   }
 );

@@ -11,9 +11,8 @@ var ejs = require('ejs');
 
 function createScript(fileContent, funcName) {
   return vm.createScript(util.format(
-    '(function () { %s; return %s; })()',
-    fileContent.toString(),
-    funcName
+    '(function () { %s; return %s.__esModule ? %s.default : %s; })()',
+    fileContent.toString(), funcName, funcName, funcName
   )).runInNewContext({
     require: require,
     process: Object.assign({}, process, {
@@ -49,6 +48,15 @@ function createRenderer(options) {
   });
 }
 
+function getAssetPaths(assets, pfx) {
+  return function (ext) {
+    var regexp = new RegExp(util.format('^(?!(%s)).+\\.%s(?:\\?|$)', pfx, ext));
+    return Object.keys(assets).filter(function (key) {
+      return key.search(regexp) > -1;
+    });
+  };
+}
+
 function getFileName(location) {
   var parts = location.split('/').filter(function (part) {
     return !!part.length;
@@ -57,15 +65,6 @@ function getFileName(location) {
     parts.push('index.html');
   }
   return path.join.apply(path, parts);
-}
-
-function getAssetPaths(assets, pfx) {
-  return function (ext) {
-    var regexp = new RegExp(util.format('^(?!(%s)).+\\.%s(?:\\?|$)', pfx, ext));
-    return Object.keys(assets).filter(function (key) {
-      return key.search(regexp) > -1;
-    });
-  };
 }
 
 function Plugin(options) {
@@ -83,10 +82,13 @@ function Plugin(options) {
 Plugin.prototype.apply = function(compiler) {
   var options = this.options;
   var renderHTML = ejs.compile(
-    fs.readFileSync(this.options.template, 'utf-8')
+    fs.readFileSync(options.template, 'utf-8')
   );
   compiler.plugin('emit', function(compilation, callback) {
     var getPaths = getAssetPaths(compilation.assets, options.chunkPrefix);
+    Object.keys(require.cache).forEach(function(key) {
+      delete require.cache[key];
+    });
     createRenderer(options)
     .then(function (renderReact) {
       return Promise.all(options.locations.map(function (location) {
@@ -114,6 +116,7 @@ Plugin.prototype.apply = function(compiler) {
 };
 
 Plugin.createRenderer = createRenderer;
+Plugin.getAssetPaths = getAssetPaths;
 Plugin.getFileName = getFileName;
 
 module.exports = Plugin;

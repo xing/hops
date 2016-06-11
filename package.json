@@ -82,6 +82,7 @@
     "redux-thunk": "2.1.0",
     "shell-escape": "0.2.0",
     "shelljs": "0.7.0",
+    "source-map-support": "0.4.0",
     "style-loader": "0.13.1",
     "stylelint": "6.5.1",
     "stylelint-loader": "6.0.0",

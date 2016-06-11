@@ -7,13 +7,9 @@ module.exports = helpers.extendConfig(
   helpers.resolve('webpack.node.js'),
   {
     filename: __filename,
+    entry: path.resolve(__dirname, '..', 'tmp'),
     output: {
       path: path.resolve(__dirname, '..', 'tmp', 'dist')
-    },
-    resolve: {
-      alias: {
-        'hops-main': path.resolve(__dirname, '..', 'tmp')
-      }
     }
   }
 );
