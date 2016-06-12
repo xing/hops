@@ -17,15 +17,23 @@ module.exports = helpers.extendConfig(
   {
     filename: __filename,
     target: 'node',
+    entry: [
+      require.resolve('source-map-support/register'),
+      helpers.root
+    ],
     output: {
       filename: 'bundle.js',
-      library: 'hopsRender'
+      library: 'hopsRender',
+      devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+      devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
     },
+    devtool: 'cheap-module-eval-source-map',
+    externals: [nodeExternals()],
     resolveLoader: {
       alias: {
+        'style-loader': 'fake-style-loader',
         'style': 'fake-style-loader'
       }
-    },
-    externals: [nodeExternals()]
+    }
   }
 );

@@ -1,15 +1,26 @@
 
-var path = require('path');
-
 var helpers = require('../plugin/helpers');
 
 module.exports = helpers.extendConfig(
   helpers.resolve('webpack.node.js'),
   {
     filename: __filename,
-    entry: path.resolve(__dirname, '..', 'tmp'),
     output: {
-      path: path.resolve(__dirname, '..', 'tmp', 'dist')
+      library: false
+    },
+    module: {
+      preLoaders: [
+        {
+          test: /\.js$/,
+          loader: 'eslint',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.css$/,
+          loader: 'stylelint',
+          exclude: /node_modules/
+        }
+      ]
     }
   }
 );

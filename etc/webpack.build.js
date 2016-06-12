@@ -24,18 +24,6 @@ module.exports = helpers.extendConfig(
       main: helpers.root
     },
     module: {
-      preLoaders: [
-        {
-          test: /\.js$/,
-          loader: 'eslint',
-          exclude: /node_modules/
-        },
-        {
-          test: /\.css$/,
-          loader: 'stylelint',
-          exclude: /node_modules/
-        }
-      ],
       loaders: {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
