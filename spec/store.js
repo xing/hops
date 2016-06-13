@@ -19,27 +19,26 @@ describe('store: context', function () {
     var context = store.createContext();
     assert(context, 'new context was created');
     assert.equal(typeof context.register, 'function', 'register is a function');
-    assert.equal(typeof context.getReducers, 'function', 'getReducers is a function');
     assert.equal(typeof context.createStore, 'function', 'createStore is a function');
     assert.equal(typeof context.createContext, 'function', 'createContext is a function');
   });
 });
 
 
-describe('store: register/getReducer', function () {
+describe('store: register reducer', function () {
   it('should be able to register custom reducers', function () {
     var context = store.createContext();
-    var duck = context.register('foo', function () { return 'bar'; });
-    var reducers = context.getReducers();
-    assert(duck, 'register returns something truthy');
-    assert.equal(typeof duck.select, 'function', 'select is a function');
-    assert(reducers, 'getReducers return something truthy');
-    assert('foo' in reducers, 'foo namespace exists');
+    var select = context.register('foo', function () { return 'bar'; });
+    var actualStore = context.createStore({
+      history: require('react-router').createMemoryHistory()
+    });
+    assert.equal(typeof select, 'function', 'select is a function');
+    assert.equal(actualStore.getState().foo, 'bar', 'reducer is being used');
   });
 });
 
 
-describe('store: re-register', function () {
+describe('store: re-register reducer', function () {
   it('should be capable of re-registering reducers', function () {
     var context = store.createContext();
     context.register('foo', function () { return 'bar'; });
@@ -50,35 +49,6 @@ describe('store: re-register', function () {
     context.register('foo', function () { return 'baz'; });
     actualStore.dispatch({ type: '' });
     assert.equal(actualStore.getState().foo, 'baz', 'new reducer is being used');
-  });
-});
-
-
-describe('store: basic autoregister', function () {
-  it('should be capable of generating megaducks', function () {
-    var context = store.createContext();
-    var duck = context.register('foo');
-    assert(duck, 'register returns something truthy');
-    assert.equal(typeof duck.select, 'function', 'select is a function');
-    assert.equal(typeof duck.update, 'function', 'update is a function');
-  });
-});
-
-
-describe('store: full autoregister', function () {
-  it('should generate a working reducer', function (done) {
-    var context = store.createContext();
-    var duck = context.register('foo');
-    var actualStore = context.createStore({
-      history: require('react-router').createMemoryHistory()
-    });
-    actualStore.dispatch(duck.update({ bar: {'$set': 'baz'}}));
-    var state = actualStore.getState();
-    var fooState = duck.select(state);
-    assert(state.foo, 'global state contains namespace');
-    assert.equal(state.foo.bar, 'baz', 'update reducer works');
-    assert.deepEqual(fooState, { bar: 'baz'}, 'selector returns correct slice');
-    done();
   });
 });
 

@@ -9,10 +9,7 @@ var HopsPlugin = require('hops/plugin');
 module.exports = {
   //...
   plugins: [
-    new HopsPlugin({
-      entry: require.resolve('hops/shims/node'),
-      main: './'
-    })
+    new HopsPlugin()
   ]
 };
 ```
@@ -22,15 +19,7 @@ The plugin's constructor takes a single options object as an argument, which is 
 
 ### Options
 
-##### `entry: string (required)`
-
-Full path to the path to the node entry file. This is usually *not* your application's actual entry point, but rather a shim to make your app play nicely with static page generation.
-
-##### `main: string (required)`
-
-Full path to your application's main entry point. May be a module, i.e. directory path. This module is expected to export the result of a `hops.render` function call.
-
-##### `locations: [string]`
+##### `locations: Array<string>`
 
 Array of location strings (i.e. http paths) to be 'requested' by the static site generation process. These must correspond to paths registered in your ReactRouter instance. Defaults to `['/']`.
 
@@ -38,50 +27,14 @@ Array of location strings (i.e. http paths) to be 'requested' by the static site
 
 Full path to an [EJS](http://ejs.co) template file that should at least have the outlets found in hops' [default](https://github.com/xing/hops/blob/master/plugin/template.ejs).
 
-##### `babelIgnore: RegExp`
+##### `config: string`
 
-A regular expression that prevents Babel from processing folders containing only ES3/5 code. Hops attempts to extract this setting from your webpack config - if all else fails, defaults to `/node_modules\//`.
+Full path to the webpack config file for a node build environment. Defaults to `hops/etc/webpack.node.js`.
 
-##### `localIdentName: string`
+##### `chunkPrefix: string`
 
-A string template used for css modules' namespacing. Hops also tries to extract this, defaults to `[path][name]-[local]-[hash:base64:5]`.
+Filename prefix to identify non-entry chunks. Defaults to `chunk-` in accordance with hops' webpack configs.
 
+##### `debug: boolean`
 
-### Example
-
-```javascript
-var HopsPlugin = require('hops/plugin');
-
-module.exports = {
-  entry: require.resolve('hops/shims/browser'),
-  output: {
-    path: 'dist',
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel',
-      exclude: /node_modules\//
-    }, {
-      test: /\.css$/,
-      loaders: [
-        'style',
-        'css?modules&localIdentName=[name]-[local]-[hash:base64:5]'
-      ]
-    }]
-  },
-  resolve: {
-    alias: {
-      'hops-main': './src/foo'
-    }
-  },
-  plugins: [
-    new HopsPlugin({
-      entry: require.resolve('hops/shims/node'),
-      main: './src/bar'
-    })
-  ]
-};
-```
+Enable error logging to the console. Defaults to `false`.
