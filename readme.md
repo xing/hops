@@ -47,7 +47,7 @@ If called without the `--production` flag, a development server with hot module 
 
 ### Testing
 
-If you are developing any kind of real application, you certainly want to be able to test your code. For hops, we chose to include a rather simple testing toolchain consisting of [Tape](https://github.com/substack/tape) and [Enzyme](http://airbnb.io/enzyme/).
+If you are developing any kind of real application, you certainly want to be able to test your code. For hops, we chose to include a rather simple testing toolchain consisting of [Mocha](https://mochajs.org) and [Enzyme](http://airbnb.io/enzyme/).
 
 ```
 npm test
@@ -73,12 +73,12 @@ In addition to `routes` and `reducers`, an html `mountPoint` selector and some o
 
 #### register(namespace: string[, reducer: function]): object
 
-`register()` is a helper to streamline store/state interactions in hops based projects. If passed only a `namespace` string, a generic reducer using React's [immutability helpers](https://facebook.github.io/react/docs/update.html) is created for that namespace. It's return value is an object containing a selector function for use in ReactRedux' `connect()` and a generic action creator (`update()`) working with the update reducer.
+`register()` is a helper to streamline store/state interactions in hops based projects. It's return value is an object containing a selector function for use in ReactRedux' `connect()`.
 
 ```javascript
 import { register } from 'hops';
 
-export const { select, update } = register('foo');
+export const select = register('foo', (state, action) => state);
 ```
 
 Hops supports server-side data fetching for route components: it calls their static `fetchData` methods and expects them to return promises. Of course, asynchronous actions are supported by using [thunks](https://github.com/gaearon/redux-thunk).

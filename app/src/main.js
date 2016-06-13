@@ -7,9 +7,14 @@ import { render, register } from 'hops';
 
 import { headline } from './style.css';
 
-export const { select, update } = register('home');
+const select = register('home', (state = {}, action) => (
+  (action.type !== 'updateGreeting') ? state : Object.assign(
+    {}, state, { greeting: action.payload }
+  )
+));
+const update = (payload) => ({ type: 'updateGreeting', payload });
 
-export const Home = connect(select, { update })(
+const Home = connect(select, { update })(
   createClass({
     displayName: 'Home',
     propTypes: {
@@ -17,7 +22,7 @@ export const Home = connect(select, { update })(
       update: PropTypes.func
     },
     componentDidMount() {
-      this.props.update({ greeting: {'$set': 'Hello World!'}});
+      this.props.update('Hello World!');
     },
     render() {
       return (
@@ -27,8 +32,9 @@ export const Home = connect(select, { update })(
   })
 );
 
-export const routes = (
+const routes = (
   <Route path='/' component={ Home }/>
 );
 
 export default render({ routes });
+export { Home };
