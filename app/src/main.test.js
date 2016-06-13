@@ -1,17 +1,19 @@
+/* eslint-env node, mocha */
 
 import React from 'react';
-import test from 'tape';
+import assert from 'assert';
 import { shallow } from 'enzyme';
 
 import { Home as HomeContainer } from './main';
 
 const Home = HomeContainer.WrappedComponent;
 
-test('<Home />', (t) => {
-  t.plan(2);
-
-  var wrapper = shallow(<Home />);
-
-  t.equal(wrapper.find('h1').length, 1, 'contains an h1');
-  t.true(wrapper.props().className.match(/style-headline/), 'has class');
+describe('<Home />', () => {
+  var home = shallow(<Home />);
+  it('should contain an h1', () => {
+    assert.equal(home.find('h1').length, 1);
+  });
+  it('should have class', () => {
+    assert.ok(home.props().className.match(/style-headline/));
+  });
 });

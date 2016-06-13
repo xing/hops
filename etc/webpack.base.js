@@ -6,7 +6,7 @@ var helpers = require('../plugin/helpers');
 
 module.exports = helpers.createConfig({
   filename: __filename,
-  entry: require.resolve('../shims/browser'),
+  entry: helpers.root,
   output: {
     path: path.resolve(helpers.root, 'dist'),
     publicPath: '/',
@@ -48,14 +48,9 @@ module.exports = helpers.createConfig({
     require('postcss-cssnext')
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-      'hops-main': helpers.root
-    }
+    extensions: ['', '.js', '.jsx']
   },
   plugins: [
-    new HopsPlugin({
-      config: helpers.resolve('webpack.node.js')
-    })
+    new HopsPlugin()
   ]
 });

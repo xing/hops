@@ -1,8 +1,9 @@
+/* eslint-env node, mocha */
 
 var fs = require('fs');
 var path = require('path');
+var assert = require('assert');
 
-var test = require('tape');
 
 var appRoot = path.resolve(__dirname, '..', 'tmp');
 
@@ -15,16 +16,18 @@ function fileExists(file) {
   }
 }
 
-test('setup: file creation test', function (t) {
-  t.plan(4);
 
-  var packageFile = path.join(appRoot, 'package.json');
-  var eslintFile = path.join(appRoot, '.eslintrc.js');
-  var stylelintFile = path.join(appRoot, '.stylelintrc.js');
-  var webpackFile = path.join(appRoot, 'webpack.config.js');
+var packageFile = path.join(appRoot, 'package.json');
+var eslintFile = path.join(appRoot, '.eslintrc.js');
+var stylelintFile = path.join(appRoot, '.stylelintrc.js');
+var webpackFile = path.join(appRoot, 'webpack.config.js');
 
-  t.ok(fileExists(packageFile), 'package.json created and not empty');
-  t.ok(fileExists(eslintFile), '.eslintrc created and not empty');
-  t.ok(fileExists(stylelintFile), '.stylelintrc created and not empty');
-  t.ok(fileExists(webpackFile), 'webpack.config.js created and not empty');
+
+describe('setup: file creation test', function () {
+  it('should have created expected files', function () {
+    assert(fileExists(packageFile), 'package.json created and not empty');
+    assert(fileExists(eslintFile), '.eslintrc created and not empty');
+    assert(fileExists(stylelintFile), '.stylelintrc created and not empty');
+    assert(fileExists(webpackFile), 'webpack.config.js created and not empty');
+  });
 });

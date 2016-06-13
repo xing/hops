@@ -1,6 +1,4 @@
 
-var path = require('path');
-
 var nodeExternals = require('webpack-node-externals');
 
 var HopsPlugin = require('../plugin');
@@ -13,25 +11,29 @@ module.exports = helpers.extendConfig(
       config.plugins = config.plugins.filter(function (plugin) {
         return (plugin.constructor !== HopsPlugin);
       });
-      delete config.devtool;
       return config;
     }
   ),
   {
     filename: __filename,
-    entry: require.resolve('../shims/node'),
     target: 'node',
+    entry: [
+      require.resolve('source-map-support/register'),
+      helpers.root
+    ],
     output: {
-      path: path.resolve(helpers.root, 'dist'),
-      publicPath: '/',
       filename: 'bundle.js',
-      library: 'hopsRender'
+      library: 'hopsRender',
+      devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+      devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
     },
+    devtool: 'cheap-module-eval-source-map',
+    externals: [nodeExternals()],
     resolveLoader: {
       alias: {
+        'style-loader': 'fake-style-loader',
         'style': 'fake-style-loader'
       }
-    },
-    externals: [nodeExternals()]
+    }
   }
 );

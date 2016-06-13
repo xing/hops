@@ -1,6 +1,4 @@
 
-var path = require('path');
-
 var helpers = require('../plugin/helpers');
 
 module.exports = helpers.extendConfig(
@@ -8,12 +6,21 @@ module.exports = helpers.extendConfig(
   {
     filename: __filename,
     output: {
-      path: path.resolve(__dirname, '..', 'tmp', 'dist')
+      library: false
     },
-    resolve: {
-      alias: {
-        'hops-main': path.resolve(__dirname, '..', 'tmp')
-      }
+    module: {
+      preLoaders: [
+        {
+          test: /\.js$/,
+          loader: 'eslint',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.css$/,
+          loader: 'stylelint',
+          exclude: /node_modules/
+        }
+      ]
     }
   }
 );

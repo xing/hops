@@ -1,5 +1,6 @@
+/* eslint-env node, mocha */
 
-var test = require('tape');
+var assert = require('assert');
 var jsdom = require('jsdom');
 
 var ORIGINAL_ENV = process.env.NODE_ENV;
@@ -20,7 +21,7 @@ function render() {
   setup();
   process.env.NODE_ENV = 'production';
   var browser = require('../lib/browser');
-  var result = browser.render.apply(window, arguments).call(window);
+  var result = browser.render.apply(window, arguments);
   process.env.NODE_ENV = ORIGINAL_ENV;
   return result;
 }
@@ -37,52 +38,49 @@ var App = React.createClass({
 
 
 
-test('browser: basic rendering test', function (t) {
-  t.plan(1);
-
-  var actual = render().innerHTML;
-  var expected = '<!-- react-empty: 1 -->';
-
-  t.equal(actual, expected, 'correct default behavior');
+describe('browser: basic rendering', function () {
+  it('returns html comment only', function () {
+    var actual = render().innerHTML;
+    var expected = '<!-- react-empty: 1 -->';
+    assert.equal(actual, expected, 'correct default behavior');
+  });
 });
 
 
-test('browser: route rendering test', function (t) {
-  t.plan(1);
-
-  var actual = render({
-    routes: React.createElement(
-      ReactRouter.Route,
-      {
-        path: '/',
-        component: App
-      }
-    )
-  }).innerHTML;
-  var expected = '<div data-reactroot=""></div>';
-
-  t.equal(actual, expected, 'correct html rendered');
+describe('browser: route rendering', function () {
+  it('returns correct html', function () {
+    var actual = render({
+      routes: React.createElement(
+        ReactRouter.Route,
+        {
+          path: '/',
+          component: App
+        }
+      )
+    }).innerHTML;
+    var expected = '<div data-reactroot=""></div>';
+    assert.equal(actual, expected, 'correct html rendered');
+  });
 });
 
 
-test('browser: route/reducer rendering test', function (t) {
-  t.plan(1);
-
-  var actual = render({
-    routes: React.createElement(
-      ReactRouter.Route,
-      {
-        path: '/',
-        component: App
+describe('browser: route/reducer rendering', function () {
+  it('returns correct html', function () {
+    var actual = render({
+      routes: React.createElement(
+        ReactRouter.Route,
+        {
+          path: '/',
+          component: App
+        }
+      ),
+      reducers: {
+        foo: function (state) {
+          return state || {};
+        }
       }
-    ),
-    reducers: {
-      foo: function (state) {
-        return state || {};
-      }
-    }
-  }).innerHTML;
-  var expected = '<div data-reactroot=""></div>';
-
-  t.equal(actual, expected, 'correct html rendered');
+    }).innerHTML;
+    var expected = '<div data-reactroot=""></div>';
+    assert.equal(actual, expected, 'correct html rendered');
+  });
 });
