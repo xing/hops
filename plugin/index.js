@@ -11,8 +11,8 @@ var ejs = require('ejs');
 
 function createScript(fileContent, funcName) {
   return vm.createScript(util.format(
-    '(function () { %s; return %s.__esModule ? %s.default : %s; })()',
-    fileContent.toString(), funcName, funcName, funcName
+    '(function () { %s; return %s.default || %s; })()',
+    fileContent.toString(), funcName, funcName
   )).runInNewContext({
     require: require,
     process: Object.assign({}, process, {

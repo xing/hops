@@ -15,7 +15,7 @@
   "scripts": {
     "install": "node bin/setup.js",
     "start": "cd app; npm start",
-    "test": "_mocha \"spec/**/*.js\"",
+    "test": "istanbul test -x \"spec/**/*.js\" --report none --root . _mocha \"spec/**/*.js\"",
     "prestart": "cd app; rm -rf node_modules/hops; npm install",
     "pretest": "npm run cleanup; mkdir -p tmp; cd tmp; npm init -y; npm install file:../",
     "postversion": "git push && git push --tags",
@@ -88,6 +88,7 @@
     "webpack-node-externals": "1.2.0"
   },
   "devDependencies": {
+    "istanbul": "0.4.3",
     "jsdom": "9.2.1",
     "tree-kill": "1.1.0"
   }
