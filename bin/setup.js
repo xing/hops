@@ -10,15 +10,15 @@ var pkgPath = path.resolve(root, 'package.json');
 var pkg = require(pkgPath);
 
 var defaultTest = 'echo "Error: no test specified" && exit 1';
-var hopsTest = 'tape -r hops/shims/test \'!(node_modules)/**/*.test.js\' | faucet';
+var hopsTest = 'mocha-webpack --webpack-config webpack.config.js "src/**/*.test.js"';
 
 Object.assign(pkg, {
   main: (shell.test('-e', pkg.main)) ? pkg.main : 'src/main.js',
   scripts: Object.assign(
     {
-      start: '[ \"$NODE_ENV\" != "production" ] && npm run watch || npm run build',
-      watch: 'BABEL_ENV=webpack webpack-dev-server --hot',
-      build: 'BABEL_ENV=webpack webpack --progress || true'
+      start: '[ "$NODE_ENV" != "production" ] && npm run watch || npm run build',
+      watch: 'webpack-dev-server --hot --config webpack.config.js',
+      build: 'webpack --progress --config webpack.config.js'
     },
     pkg.scripts,
     {

@@ -1,20 +1,4 @@
 /*
- * Variables are being exported and can be reused [1]
- *
- * [1]: https://github.com/css-modules/postcss-modules-values
- */
-@value primary: rebeccapurple;
-
-/*
- * Variables can be imported and renamed from external .css files [1]
- *
- * [1]: https://github.com/css-modules/postcss-modules-values
- *
- * @value secondary as secondary-color from './values.css';
- */
-
-
-/*
  * CSS Custom Properties [1]
  *
  * [1]: https://www.w3.org/TR/css-variables/
@@ -22,6 +6,7 @@
 :root {
   --font-family-sans: 'Helvetica Neue', Arial, sans;
   --font-size: 2rem;
+  --primary: rebeccapurple;
 }
 
 
@@ -40,7 +25,7 @@
  * [1]: https://github.com/css-modules/css-modules
  */
 .highlight {
-  color: primary;
+  color: var(--primary);
 }
 
 
