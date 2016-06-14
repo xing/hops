@@ -1,0 +1,25 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true
+  },
+  "source": {
+    "include": ["lib", "bin", "plugin", "package.json", "README.md"],
+    "includePattern": "\\.js$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "opts": {
+    "encoding": "utf8",
+    "destination": "./docs/",
+    "private": true,
+    "recurse": true,
+    "template": "node_modules/hopsdoc"
+  }
+}

@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/**
+ * @module setup
+ * @author Somebody <somebody@foo.bar>
+ */
 
 var fs = require('fs');
 var path = require('path');
@@ -9,7 +13,15 @@ var root = require('app-root-path').toString();
 var pkgPath = path.resolve(root, 'package.json');
 var pkg = require(pkgPath);
 
+/**
+ * default test string for comparison
+ * @type {String}
+ */
 var defaultTest = 'echo "Error: no test specified" && exit 1';
+/**
+ * hops test is used if no test is specified
+ * @type {String}
+ */
 var hopsTest = 'mocha-webpack --reporter hops/reporter --webpack-config webpack.config.js "src/**/*.test.js"';
 
 Object.assign(pkg, {
@@ -18,14 +30,17 @@ Object.assign(pkg, {
     {
       start: '[ "$NODE_ENV" != "production" ] && npm run watch || npm run build',
       watch: 'webpack-dev-server --hot --config webpack.config.js',
-      build: 'webpack --progress --config webpack.config.js'
+      build: 'webpack --progress --config webpack.config.js',
+      docs: 'rm -rf docs; jsdoc -c jsdoc.json'
     },
     pkg.scripts,
     {
       test: (pkg.scripts.test === defaultTest) ? hopsTest : pkg.scripts.test
     }
   ),
-  babel: Object.assign({ extends: 'hops/etc/babel' }, pkg.babel)
+  babel: Object.assign({
+    extends: 'hops/etc/babel'
+  }, pkg.babel)
 });
 
 var srcDir = path.resolve(__dirname, '..', 'app');
@@ -39,6 +54,9 @@ var template = [{
   source: path.join(srcDir, '.stylelintrc.js'),
   destination: path.join(root, '.stylelintrc.js')
 }, {
+  origin: path.join(srcDir, 'jsdoc.json'),
+  destination: path.join(root, 'jsdoc.json')
+}, {
   source: path.join(srcDir, 'webpack.config.js'),
   destination: path.join(root, 'webpack.config.js')
 }];
@@ -49,7 +67,7 @@ function configure() {
 }
 
 function bootstrap() {
-  template.forEach(function (file) {
+  template.forEach(function(file) {
     if (!shell.test('-e', file.destination)) {
       var destDir = path.dirname(file.destination);
       shell.mkdir('-p', destDir);
@@ -60,7 +78,7 @@ function bootstrap() {
 }
 
 function isBootstrapped() {
-  var index = template.findIndex(function (file) {
+  var index = template.findIndex(function(file) {
     return shell.test('-e', file.destination);
   });
   return index >= 0;

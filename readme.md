@@ -27,7 +27,7 @@ Hops is not yet another boilerplate. Hops is a self-contained but highly extensi
 
 Besides recent versions of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com), hops has no global dependencies. If you need those, we recommend using [nvm](https://github.com/creationix/nvm) or similar.
 
-```
+```shell
 mkdir foo && cd foo
 npm init -y
 npm install -SE hops
@@ -39,7 +39,7 @@ A postinstall script will attempt to bootstrap and configure the project hops is
 
 For developing with hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io) with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
 
-```
+```shell
 npm start (--production)
 ```
 
