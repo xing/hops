@@ -17,6 +17,9 @@ module.exports = helpers.createConfig({
     loaders: [{
       test: /\.jsx?$/,
       loader: 'babel',
+      query: {
+        cacheDirectory: path.resolve(helpers.root, '.tmp', 'babel')
+      },
       exclude: /node_modules\//
     }, {
       test: /\.json$/,

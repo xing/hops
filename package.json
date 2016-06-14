@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "0.14.1",
+  "version": "0.14.2",
   "description": "next generation toolbox for ux craftspeople",
   "keywords": [
     "react",
@@ -14,12 +14,11 @@
   "browser": "lib/browser.js",
   "scripts": {
     "install": "node bin/setup.js",
-    "start": "cd app; npm start",
-    "test": "istanbul test -x \"spec/**/*.js\" --root . _mocha \"spec/**/*.js\"",
-    "prestart": "cd app; rm -rf node_modules/hops; npm install",
-    "pretest": "npm run cleanup; mkdir -p tmp; cd tmp; npm init -y; npm install file:../",
-    "postversion": "git push && git push --tags",
-    "cleanup": "rm -rf coverage tmp/{.eslintrc.js,.stylelintrc.js,webpack.config.js,src,dist,node_modules/hops}"
+    "start": "cd app; rm -rf node_modules/hops; npm install; npm start",
+    "test": "istanbul test -x \"spec/**/*.js\" --root . --dir .tmp/coverage _mocha \"spec/**/*.js\"",
+    "pretest": "npm run cleanup; mkdir -p .tmp/test; cd .tmp/test; npm init -y; npm install file:../../",
+    "cleanup": "rm -rf coverage .tmp/test/{.eslintrc.js,.stylelintrc.js,webpack.config.js,src,dist,node_modules/hops}",
+    "postversion": "git push && git push --tags"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
