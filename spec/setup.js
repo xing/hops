@@ -5,7 +5,7 @@ var path = require('path');
 var assert = require('assert');
 
 
-var appRoot = path.resolve(__dirname, '..', 'tmp');
+var appRoot = path.resolve(__dirname, '..', '.tmp', 'test');
 
 function fileExists(file) {
   try {

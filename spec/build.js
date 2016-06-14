@@ -8,7 +8,7 @@ var assert = require('assert');
 var shell = require('shelljs');
 
 
-var appRoot = path.resolve(__dirname, '..', 'tmp');
+var appRoot = path.resolve(__dirname, '..', '.tmp', 'test');
 
 function fileExists(regex) {
   try {
