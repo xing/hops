@@ -33,7 +33,7 @@ describe('store: register reducer', function () {
       history: require('react-router').createMemoryHistory()
     });
     assert.equal(typeof select, 'function', 'select is a function');
-    assert.equal(actualStore.getState().foo, 'bar', 'reducer is being used');
+    assert.equal(select(actualStore.getState()), 'bar', 'reducer is being used');
   });
 });
 
@@ -41,14 +41,14 @@ describe('store: register reducer', function () {
 describe('store: re-register reducer', function () {
   it('should be capable of re-registering reducers', function () {
     var context = store.createContext();
-    context.register('foo', function () { return 'bar'; });
+    var select = context.register('foo', function () { return 'bar'; });
     var actualStore = context.createStore({
       history: require('react-router').createMemoryHistory()
     });
     assert.equal(actualStore.getState().foo, 'bar', 'initial reducer is being used');
     context.register('foo', function () { return 'baz'; });
     actualStore.dispatch({ type: '' });
-    assert.equal(actualStore.getState().foo, 'baz', 'new reducer is being used');
+    assert.equal(select(actualStore.getState()), 'baz', 'new reducer is being used');
   });
 });
 
