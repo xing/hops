@@ -1,12 +1,11 @@
 
 var path = require('path');
 
-var helpers = require('../plugin/helpers');
+var helpers = require('../config/helpers');
 
-module.exports = helpers.extendConfig(
-  helpers.resolve('webpack.base.js'),
+module.exports = helpers.extend(
+ 'webpack.base.js',
   {
-    filename: __filename,
     entry: require.resolve('../lib/shim'),
     resolve: {
       alias: {
@@ -20,6 +19,7 @@ module.exports = helpers.extendConfig(
       watchOptions: {
         aggregateTimeout: 100
       }
-    }
+    },
+    extend: helpers.extend.bind(null, __filename)
   }
 );

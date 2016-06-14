@@ -2,35 +2,24 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var helpers = require('../plugin/helpers');
+var helpers = require('../config/helpers');
 
-module.exports = helpers.extendConfig(
-  helpers.transform(
-    'webpack.base.js',
-    function (config) {
-      config.module.loaders = config.module.loaders.filter(
-        function (loader) {
-          var json = JSON.stringify(loader);
-          return (json.search(/"css(?=(?:-loader(?:\?|"))|\?|")/) === -1);
-        }
-      );
-      return config;
-    }
-  ),
+module.exports = helpers.extend(
+  'webpack.base.js',
+  helpers.removeLoader.bind(null, 'css'),
   {
-    filename: __filename,
     entry: {
       vendor: 'hops',
       main: helpers.root
     },
     module: {
-      loaders: {
+      loaders: [{
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           'style',
           'css?modules&localIdentName=[name]-[local]-[hash:base64:5]&importLoaders=1!postcss'
         )
-      }
+      }]
     },
     plugins: [
       new webpack.EnvironmentPlugin(['NODE_ENV']),
@@ -50,6 +39,7 @@ module.exports = helpers.extendConfig(
         '[name]-[contenthash].css',
         { allChunks: true }
       )
-    ]
+    ],
+    extend: helpers.extend.bind(null, __filename)
   }
 );

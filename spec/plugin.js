@@ -6,12 +6,16 @@ var assert = require('assert');
 var Plugin = require('../plugin');
 
 
-function mockCompiler(compilationOptions, callback) {
+function mockCompiler(options, callback) {
   var assets = {};
   return {
     plugin: function (_, handle) {
       var compilation = {
-        options: compilationOptions,
+        options: {
+          hops: Object.assign({
+            config: path.resolve(__dirname, '..', 'etc', 'webpack.mock')
+          }, options)
+        },
         plugins: [],
         assets: assets
       };
@@ -21,16 +25,10 @@ function mockCompiler(compilationOptions, callback) {
   };
 }
 
-function mockOptions(options) {
-  return Object.assign({
-    config: path.resolve(__dirname, '..', 'etc', 'webpack.mock')
-  }, options);
-}
-
 
 describe('plugin: basic operation', function () {
   it('should generally work as expected', function (done) {
-    var plugin = new Plugin(mockOptions({ debug: true }));
+    var plugin = new Plugin();
     var compiler = mockCompiler({}, function () {
       var asset = compiler.assets['index.html'];
       assert(asset, 'index.html entry is created');
@@ -49,13 +47,14 @@ describe('plugin: basic operation', function () {
 
 describe('plugin: one good, one bad location', function () {
   it('should only create a single entry', function (done) {
-    var plugin = new Plugin(mockOptions({
-      locations: ['/', '/foo/bar']
-    }));
-    var compiler = mockCompiler({}, function () {
-      assert.equal(Object.keys(compiler.assets).length, 1, 'single entry created');
-      done();
-    });
+    var plugin = new Plugin();
+    var compiler = mockCompiler(
+      { locations: ['/', '/foo/bar']},
+      function () {
+        assert.equal(Object.keys(compiler.assets).length, 1, 'single entry created');
+        done();
+      }
+    );
     plugin.apply(compiler);
   }).timeout(60000);
 });

@@ -1,27 +1,13 @@
 
-var helpers = require('../plugin/helpers');
+var helpers = require('../config/helpers');
 
-module.exports = helpers.extendConfig(
-  helpers.transform(
-    'webpack.node.js',
-    function (config) {
-      config.module.loaders = config.module.loaders.filter(
-        function (loader) {
-          var json = JSON.stringify(loader);
-          return (json.search(/"babel(?=(?:-loader(?:\?|"))|\?|")/) === -1);
-        }
-      );
-      return config;
-    }
-  ),
+module.exports = helpers.extend(
+  'webpack.node.js',
+  helpers.removeLoader.bind(null, 'babel'),
   {
-    filename: __filename,
-    output: {
-      library: false
-    },
     module: {
       preLoaders: [{
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'eslint',
         exclude: /node_modules/
       }, {
@@ -30,7 +16,7 @@ module.exports = helpers.extendConfig(
         exclude: /node_modules/
       }],
       loaders: [{
-        test: /^.*\.test\.jsx?$/,
+        test: /\.test\.jsx?$/,
         loader: 'babel',
         exclude: /node_modules\//
       }, {
@@ -38,13 +24,11 @@ module.exports = helpers.extendConfig(
         loader: 'babel',
         query: {
           cacheDirectory: false,
-          plugins: [
-            ['__coverage__', { only: 'src/**/*.js'}],
-            'typecheck'
-          ]
+          plugins: ['__coverage__', 'typecheck']
         },
-        exclude: [/node_modules\//, /^.*\.test\.jsx?$/]
+        exclude: [/\.test\.jsx?$/, /node_modules\//, /.tmp/]
       }]
-    }
+    },
+    extend: helpers.extend.bind(null, __filename)
   }
 );
