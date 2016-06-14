@@ -24,5 +24,7 @@ module.exports = function (runner) {
     'mocha/lib/reporters', process.env.MOCHA_REPORTER || 'spec'
   ));
   var reporter = new Reporter(runner); // eslint-disable-line no-unused-vars
-  runner.on('end', reportCoverage);
+  if (process.env.npm_config_coverage) {
+    runner.on('end', reportCoverage);
+  }
 };
