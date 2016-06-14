@@ -34,15 +34,16 @@ module.exports = helpers.extendConfig(
         loader: 'babel',
         exclude: /node_modules\//
       }, {
-        test: /^(?:(?!\.test).)*\.jsx?$/,
+        test: /\.jsx?$/,
         loader: 'babel',
         query: {
+          cacheDirectory: false,
           plugins: [
             ['__coverage__', { only: 'src/**/*.js'}],
             'typecheck'
           ]
         },
-        exclude: /node_modules\//
+        exclude: [/node_modules\//, /^.*\.test\.jsx?$/]
       }]
     }
   }

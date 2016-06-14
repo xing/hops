@@ -50,10 +50,10 @@ If called without the `--production` flag, a development server with hot module 
 If you are developing any kind of real application, you certainly want to be able to test your code. For hops, we chose to include a rather simple testing toolchain consisting of [Mocha](https://mochajs.org) and [Enzyme](http://airbnb.io/enzyme/).
 
 ```
-npm test
+npm test (--coverage)
 ```
 
-In hops' default configuration, all files with names ending with `.test.js` (and outside `/node_modules`) are being picked up.
+In hops' default configuration, all files with names ending with `.test.js` (and outside `/node_modules`) are being picked up. As to be expected, the `coverage` flag enables test coverage reporting.
 
 ### API
 
