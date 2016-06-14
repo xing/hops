@@ -1,4 +1,2 @@
 
-module.exports = Object.assign({}, require(
-  'hops/etc/webpack.' + process.env.npm_lifecycle_event
-));
+module.exports = require('hops/config');

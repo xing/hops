@@ -2,16 +2,17 @@
 var path = require('path');
 
 var HopsPlugin = require('../plugin');
-var helpers = require('../plugin/helpers');
+var helpers = require('../config/helpers');
 
-module.exports = helpers.createConfig({
-  filename: __filename,
+module.exports = {
   entry: helpers.root,
   output: {
     path: path.resolve(helpers.root, 'dist'),
     publicPath: '/',
     filename: '[name]-[hash].js',
-    chunkFilename: 'chunk-[id]-[hash].js'
+    chunkFilename: 'chunk-[id]-[hash].js',
+    devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
   module: {
     loaders: [{
@@ -53,7 +54,6 @@ module.exports = helpers.createConfig({
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  plugins: [
-    new HopsPlugin()
-  ]
-});
+  plugins: [ new HopsPlugin() ],
+  extend: helpers.extend.bind(null, __filename)
+};

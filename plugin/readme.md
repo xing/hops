@@ -34,7 +34,3 @@ Full path to the webpack config file for a node build environment. Defaults to `
 ##### `chunkPrefix: string`
 
 Filename prefix to identify non-entry chunks. Defaults to `chunk-` in accordance with hops' webpack configs.
-
-##### `debug: boolean`
-
-Enable error logging to the console. Defaults to `false`.

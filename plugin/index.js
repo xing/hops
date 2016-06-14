@@ -13,11 +13,14 @@ var webpack = require('webpack');
 var MemoryFS = require('memory-fs');
 var ejs = require('ejs');
 
+var helpers = require('../config/helpers');
+
 function createScript(fileContent, funcName) {
-  return vm.createScript(util.format(
+  var script = vm.createScript(util.format(
     '(function () { %s; return %s.default || %s; })()',
     fileContent.toString(), funcName, funcName
-  )).runInNewContext({
+  ));
+  return script.runInNewContext({
     require: require,
     process: Object.assign({}, process, {
       env: Object.assign(process.env, {
@@ -37,12 +40,10 @@ function createRenderer(options) {
       var compiler = webpack(config);
       compiler.outputFileSystem = mfs;
       compiler.run(function(compilerError) {
-        /* istanbul ignore if */
         if (compilerError) { reject(compilerError); }
         else {
           var filePath = path.join(config.output.path, config.output.filename);
           mfs.readFile(filePath, function (readFileError, fileContent) {
-            /* istanbul ignore if */
             if (readFileError) { reject(readFileError); }
             else { resolve(createScript(fileContent, config.output.library)); }
           });
@@ -71,24 +72,27 @@ function getFileName(location) {
   return path.join.apply(path, parts);
 }
 
-function Plugin(options) {
-  this.options = Object.assign(
+
+function Plugin(options) { this.options = options; }
+
+Plugin.prototype.getOptions = function (options) {
+  return Object.assign(
     {
       locations: ['/'],
       template: path.resolve(__dirname, './template.ejs'),
-      config: path.resolve(__dirname, '../etc/webpack.node'),
+      config: helpers.resolve('webpack.node.js'),
       chunkPrefix: 'chunk-'
     },
+    this.options,
     options
   );
-}
+};
 
 Plugin.prototype.apply = function(compiler) {
-  var options = this.options;
-  var renderHTML = ejs.compile(
-    fs.readFileSync(options.template, 'utf-8')
-  );
+  var getOptions = this.getOptions.bind(this);
   compiler.plugin('emit', function(compilation, callback) {
+    var options = getOptions(compilation.options.hops);
+    var renderHTML = ejs.compile(fs.readFileSync(options.template, 'utf-8'));
     var getPaths = getAssetPaths(compilation.assets, options.chunkPrefix);
     Object.keys(require.cache).forEach(function(key) {
       delete require.cache[key];
@@ -108,18 +112,12 @@ Plugin.prototype.apply = function(compiler) {
           };
         });
       }));
-    })
-    .catch(function () {
-      /* istanbul ignore if */
-      if (options.debug) {
-        console.log.apply(console, arguments); // eslint-disable-line no-console
-      }
-    })
+    }) // eslint-disable-next-line no-console
+    .catch(console.log.bind(console, '[HOPS PLUGIN ERROR]:'))
     .then(function () { callback(); });
   });
 };
 
-Plugin.createRenderer = createRenderer;
 Plugin.getAssetPaths = getAssetPaths;
 Plugin.getFileName = getFileName;
 

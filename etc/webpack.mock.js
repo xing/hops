@@ -1,15 +1,15 @@
 
 var path = require('path');
 
-var helpers = require('../plugin/helpers');
+var helpers = require('../config/helpers');
 
-module.exports = helpers.extendConfig(
-  helpers.resolve('webpack.node.js'),
+module.exports = helpers.extend(
+  'webpack.node.js',
   {
-    filename: __filename,
     entry: path.resolve(__dirname, '..', '.tmp', 'test'),
     output: {
       path: path.resolve(__dirname, '..', '.tmp', 'test', 'dist')
-    }
+    },
+    extend: helpers.extend.bind(null, __filename)
   }
 );
