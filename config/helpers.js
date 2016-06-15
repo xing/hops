@@ -10,22 +10,21 @@ function fileExists(filePath) {
   catch (e) { return false; }
 }
 
-function resolve(fileName) {
-  var filePath = fileName;
-  if (!fileExists(filePath)) {
-    filePath = appRoot.resolve(fileName);
-    if (!fileExists(filePath)) {
-      filePath = path.resolve(__dirname, '..', 'etc', fileName);
-    }
-  }
-  return filePath;
-}
-
-module.exports = {
+module.exports = exports = {
   root: appRoot.toString(),
-  resolve: resolve,
+  resolve: function resolve(fileName) {
+    var filePath = fileName;
+    if (!path.isAbsolute(filePath) || !fileExists(filePath)) {
+      filePath = appRoot.resolve(fileName);
+      if (!fileExists(filePath)) {
+        filePath = path.resolve(__dirname, '..', 'etc', fileName);
+      }
+    }
+    return filePath;
+  },
   extend: function (fileName, transform, config) {
-    var base = require(resolve(fileName));
+    var base = require(exports.resolve(fileName));
+    delete base.extend;
     return merge((config) ? transform(base) : base, config || transform);
   },
   removeLoader: function (name, config) {
@@ -41,7 +40,7 @@ module.exports = {
       })
     });
   },
-  removePlugin: function (config, constructor) {
+  removePlugin: function (constructor, config) {
     constructor = constructor || require('../plugin');
     return Object.assign({}, config, {
       plugins: config.plugins.filter(function (plugin) {
