@@ -55,6 +55,42 @@ npm test (--coverage)
 
 In hops' default configuration, all files with names ending with `.test.js` (and outside `/node_modules`) are being picked up. As to be expected, the `coverage` flag enables test coverage reporting.
 
+### Documentation
+
+Hops is documented via the jsdoc dictionary. To add documentation support to your hops project you should install [jsdoc](https://www.npmjs.com/package/jsdoc) and an optional theme.  
+Hops itself uses [hopsdoc](https://www.npmjs.com/package/hopsdoc) as a theme (written especially for hops).
+
+jsdoc is recommended to be installed globally though if you don't mind the dependency clutter you can easily keep it as a dev-dependency.
+
+```
+npm install jsdoc -g
+## or
+npm install jsdoc --save-dev
+```
+
+```
+npm install --save-dev hopsdoc
+```
+
+You can then add a script to your project:
+
+```js
+{"docs": "jsdoc -c jsdoc.json"}
+```
+
+More info about hopsdoc or jsdoc can be found via the following links
+
+#### Hopsdoc:
+* [npm](https://www.npmjs.com/package/hopsdoc)
+* [github](https://github.com/xing/hopsdoc)
+* [example](http://xing.github.io/hops/)
+
+#### jsdoc
+* [npm](https://www.npmjs.com/package/jsdoc)
+* [github](https://github.com/jsdoc3/jsdoc)
+* [API](http://usejsdoc.org/)
+
+
 ### API
 
 #### render(options: object): function|undefined

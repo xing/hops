@@ -30,9 +30,7 @@ Object.assign(pkg, {
     {
       start: '[ "$NODE_ENV" != "production" ] && npm run watch || npm run build',
       watch: 'webpack-dev-server --hot --config webpack.config.js',
-      build: 'webpack --progress --config webpack.config.js',
-      docs: 'rm -rf docs; jsdoc -c jsdoc.json'
-    },
+      build: 'webpack --progress --config webpack.config.js' },
     pkg.scripts,
     {
       test: (pkg.scripts.test === defaultTest) ? hopsTest : pkg.scripts.test
@@ -53,9 +51,6 @@ var template = [{
 }, {
   source: path.join(srcDir, '.stylelintrc.js'),
   destination: path.join(root, '.stylelintrc.js')
-}, {
-  origin: path.join(srcDir, 'jsdoc.json'),
-  destination: path.join(root, 'jsdoc.json')
 }, {
   source: path.join(srcDir, 'webpack.config.js'),
   destination: path.join(root, 'webpack.config.js')
