@@ -5,7 +5,7 @@ var helpers = require('../config/helpers');
 
 module.exports = helpers.extend(
   'webpack.base.js',
-  helpers.removePlugin.bind(null),
+  helpers.removePlugin.bind(null, null),
   {
     target: 'node',
     entry: [
