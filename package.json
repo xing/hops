@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "description": "next generation toolbox for ux craftspeople",
   "keywords": [
     "react",
@@ -25,7 +25,8 @@
     "TobiasKrogh <tobias@krogh.de> (https://www.xing.com/profile/Tobias_Krogh)",
     "matthias-reis <mr@smartr.de> (https://www.xing.com/profile/Matthias_Reis3)",
     "rcsole <ricardsolecasas@gmail.com> (https://www.xing.com/profile/Ricard_soleCasas)",
-    "rudeworks <me@rude.works> (https://www.xing.com/profile/Rude_Ayelo)"
+    "rudeworks <me@rude.works> (https://www.xing.com/profile/Rude_Ayelo)",
+    "pixelass <greg@pixelass.com> (https://www.xing.com/profile/Gregor_Adams2)"
   ],
   "license": "MIT",
   "homepage": "https://github.com/xing/hops",
@@ -40,10 +41,10 @@
     "node": ">5.0.0"
   },
   "dependencies": {
-    "app-root-path": "1.0.0",
+    "app-root-path": "1.2.1",
     "babel-eslint": "6.0.4",
     "babel-loader": "6.2.4",
-    "babel-plugin-__coverage__": "1.11.111",
+    "babel-plugin-__coverage__": "11.0.0",
     "babel-plugin-transform-runtime": "6.9.0",
     "babel-plugin-typecheck": "3.9.0",
     "babel-preset-es2015": "6.9.0",
@@ -54,10 +55,10 @@
     "css-loader": "0.23.1",
     "ejs": "2.4.2",
     "enzyme": "2.3.0",
-    "eslint": "2.12.0",
+    "eslint": "2.13.0",
     "eslint-loader": "1.3.0",
     "eslint-plugin-flowtype": "2.2.7",
-    "eslint-plugin-react": "5.1.1",
+    "eslint-plugin-react": "5.2.2",
     "extract-text-webpack-plugin": "1.0.1",
     "fake-style-loader": "1.0.1",
     "file-loader": "0.8.5",
@@ -65,7 +66,7 @@
     "json-loader": "0.5.4",
     "memory-fs": "0.3.0",
     "mocha": "2.5.3",
-    "mocha-webpack": "0.3.1",
+    "mocha-webpack": "0.4.0",
     "postcss": "5.0.21",
     "postcss-cssnext": "2.6.0",
     "postcss-loader": "0.9.1",
@@ -89,7 +90,7 @@
     "webpack-node-externals": "1.2.0"
   },
   "devDependencies": {
-    "hopsdoc": "0.1.2",
+    "hopsdoc": "0.1.6",
     "jsdoc": "3.4.0",
     "jsdom": "9.2.1",
     "tree-kill": "1.1.0"

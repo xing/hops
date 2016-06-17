@@ -23,7 +23,8 @@ In this repo, we are experimenting with technology that might serve as our next 
 
 Hops is not yet another boilerplate. Hops is a self-contained but highly extensible development and build environment that is packaged as a single module. Batteries included.
 
-### Install
+
+### Installing
 
 Besides recent versions of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com), hops has no global dependencies. If you need those, we recommend using [nvm](https://github.com/creationix/nvm) or similar.
 
@@ -35,6 +36,7 @@ npm install -SE hops
 
 A postinstall script will attempt to bootstrap and configure the project hops is being installed to: after installation, you can instantly start developing.
 
+
 ### Running
 
 For developing with hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io) with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
@@ -45,50 +47,26 @@ npm start (--production)
 
 If called without the `--production` flag, a development server with hot module replacement is started. In production mode, a static build is initialized.
 
+
 ### Testing
 
 If you are developing any kind of real application, you certainly want to be able to test your code. For hops, we chose to include a rather simple testing toolchain consisting of [Mocha](https://mochajs.org) and [Enzyme](http://airbnb.io/enzyme/).
 
-```
+```shell
 npm test (--coverage)
 ```
 
 In hops' default configuration, all files with names ending with `.test.js` (and outside `/node_modules`) are being picked up. As to be expected, the `coverage` flag enables test coverage reporting.
 
-### Documentation
 
-Hops is documented via the jsdoc dictionary. To add documentation support to your hops project you should install [jsdoc](https://www.npmjs.com/package/jsdoc) and an optional theme.  
-Hops itself uses [hopsdoc](https://www.npmjs.com/package/hopsdoc) as a theme (written especially for hops).
+### Documenting
 
-jsdoc is recommended to be installed globally though if you don't mind the dependency clutter you can easily keep it as a dev-dependency.
+Hops is documented using [jsdoc](https://www.npmjs.com/package/jsdoc). To add documentation support to your own project you need to manually install and configure jsdoc and an optional theme. Hops itself uses [hopsdoc](https://www.npmjs.com/package/hopsdoc).
 
-```
+```shell
 npm install jsdoc -g
-## or
-npm install jsdoc --save-dev
+jsdoc -c jsdoc.json
 ```
-
-```
-npm install --save-dev hopsdoc
-```
-
-You can then add a script to your project:
-
-```js
-{"docs": "jsdoc -c jsdoc.json"}
-```
-
-More info about hopsdoc or jsdoc can be found via the following links
-
-#### Hopsdoc:
-* [npm](https://www.npmjs.com/package/hopsdoc)
-* [github](https://github.com/xing/hopsdoc)
-* [example](http://xing.github.io/hops/)
-
-#### jsdoc
-* [npm](https://www.npmjs.com/package/jsdoc)
-* [github](https://github.com/jsdoc3/jsdoc)
-* [API](http://usejsdoc.org/)
 
 
 ### API
