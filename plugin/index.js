@@ -1,6 +1,8 @@
 /**
- * @module Plugin
- * @author Somebody <somebody@foo.bar>
+ * @file plugin/index
+ *
+ * @author Daniel Dembach <daniel@dmbch.net>
+ * @author Gregor Adams <greg@pixelass.com>
  */
 
 var fs = require('fs');
@@ -15,6 +17,7 @@ var ejs = require('ejs');
 
 var helpers = require('../config/helpers');
 
+/** @ignore */
 function createScript(fileContent, funcName) {
   var script = vm.createScript(util.format(
     '(function () { %s; return %s.default || %s; })()',
@@ -32,6 +35,7 @@ function createScript(fileContent, funcName) {
   });
 }
 
+/** @ignore */
 function createRenderer(options) {
   return Promise.resolve().then(function () {
     return new Promise(function (resolve, reject) {
@@ -53,6 +57,7 @@ function createRenderer(options) {
   });
 }
 
+/** @ignore */
 function getAssetPaths(assets, pfx) {
   return function (ext) {
     var regexp = new RegExp(util.format('^(?!(%s)).+\\.%s(?:\\?|$)', pfx, ext));
@@ -62,6 +67,7 @@ function getAssetPaths(assets, pfx) {
   };
 }
 
+/** @ignore */
 function getFileName(location) {
   var parts = location.split('/').filter(function (part) {
     return !!part.length;
@@ -72,9 +78,30 @@ function getFileName(location) {
   return path.join.apply(path, parts);
 }
 
-
+/**
+ * @description creates hops webpack plugin instance
+ *
+ * @class
+ * @param {?Object}   options
+ * @param {?string[]} options.locations
+ * @param {?string}   options.template
+ * @param {?string}   options.config
+ * @param {?string}   options.chunkPrefix
+ */
 function Plugin(options) { this.options = options; }
 
+/**
+ * @description augments compilation options with global and instance defaults
+ *
+ * @private
+ *
+ * @param {?Object}   options
+ * @param {?string[]} options.locations
+ * @param {?string}   options.template
+ * @param {?string}   options.config
+ * @param {?string}   options.chunkPrefix
+ * @return {Object}
+ */
 Plugin.prototype.getOptions = function (options) {
   return Object.assign(
     {
@@ -88,6 +115,14 @@ Plugin.prototype.getOptions = function (options) {
   );
 };
 
+/**
+ * @description hooks into webpack compiler lifecycle and produce html
+ *
+ * @private
+ *
+ * @param {!Object} compiler
+ * @return {undefined}
+ */
 Plugin.prototype.apply = function(compiler) {
   var getOptions = this.getOptions.bind(this);
   compiler.plugin('emit', function(compilation, callback) {
@@ -118,7 +153,10 @@ Plugin.prototype.apply = function(compiler) {
   });
 };
 
+/** @ignore */
 Plugin.getAssetPaths = getAssetPaths;
+
+/** @ignore */
 Plugin.getFileName = getFileName;
 
 module.exports = Plugin;

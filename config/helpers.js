@@ -1,10 +1,10 @@
-
 var fs = require('fs');
 var path = require('path');
 
 var appRoot = require('app-root-path');
 var merge = require('webpack-merge').smart;
 
+/** @ignore */
 function fileExists(filePath) {
   try { fs.accessSync(filePath, fs.F_OK); return true; }
   catch (e) { return false; }

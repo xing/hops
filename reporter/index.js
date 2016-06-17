@@ -1,6 +1,12 @@
+/**
+ * @file reporter/index
+ *
+ * @author Daniel Dembach <daniel@dmbch.net>
+ */
 
 var path = require('path');
 
+/** @ignore */
 function reportCoverage() {
   var coverageVar = '__coverage__';
   if (coverageVar in global) {
@@ -19,6 +25,14 @@ function reportCoverage() {
   }
 }
 
+/**
+ * @description creates mocha reporter instance
+ *
+ * @class
+ * @name Reporter
+ *
+ * @param {!Object} runner
+ */
 module.exports = function (runner) {
   var Reporter = require(path.join(
     'mocha/lib/reporters', process.env.MOCHA_REPORTER || 'spec'

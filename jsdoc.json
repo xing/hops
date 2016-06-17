@@ -11,9 +11,9 @@
     "monospaceLinks": true
   },
   "source": {
-    "include": ["lib", "bin", "plugin", "package.json", "README.md"],
+    "include": ["lib", "plugin", "reporter", "config", "package.json", "readme.md"],
     "includePattern": "\\.js$",
-    "excludePattern": "(node_modules/|docs)"
+    "excludePattern": "(node_modules/|docs/|.tmp/)"
   },
   "opts": {
     "encoding": "utf8",
