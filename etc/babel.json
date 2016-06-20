@@ -3,5 +3,10 @@
     ["transform-runtime", { "polyfill": true }],
     ["typecheck", { "disable": { "production": true }}]
   ],
-  "presets": ["es2015-webpack", "react", "react-optimize"]
+  "presets": ["es2015-webpack", "stage-0", "react"],
+  "env": {
+    "production": {
+      "plugins": ["es2015-webpack", "stage-0", "react", "react-optimize"]
+    }
+  }
 }
