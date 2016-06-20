@@ -6,7 +6,7 @@
   "presets": ["es2015-webpack", "stage-0", "react"],
   "env": {
     "production": {
-      "plugins": ["es2015-webpack", "stage-0", "react", "react-optimize"]
+      "presets": ["es2015-webpack", "stage-0", "react", "react-optimize"]
     }
   }
 }
