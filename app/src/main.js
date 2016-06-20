@@ -6,13 +6,11 @@ import { render, register } from 'hops';
 
 import { headline } from './style.css';
 
+const type = 'updateGreeting';
 const select = register('home', (state = {}, action) => (
-  (action.type !== 'updateGreeting') ? state : Object.assign(
-    {}, state, { greeting: action.payload }
-  )
+  (action.type !== type) ? state : { ...state, greeting: action.payload }
 ));
-
-const update = (payload) => ({ type: 'updateGreeting', payload });
+const update = (payload) => ({ type, payload });
 
 const Home = connect(select, { update })(
   createClass({

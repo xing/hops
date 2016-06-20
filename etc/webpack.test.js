@@ -24,7 +24,7 @@ module.exports = helpers.extend(
         loader: 'babel',
         query: {
           cacheDirectory: false,
-          plugins: ['__coverage__', 'typecheck']
+          plugins: (process.env.npm_config_coverage) ? ['__coverage__'] : []
         },
         exclude: [/\.test\.jsx?$/, /node_modules\//, /.tmp/]
       }]

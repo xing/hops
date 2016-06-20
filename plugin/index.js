@@ -7,8 +7,6 @@
 
 var fs = require('fs');
 var path = require('path');
-
-var vm = require('vm');
 var util = require('util');
 
 var webpack = require('webpack');
@@ -18,21 +16,20 @@ var ejs = require('ejs');
 var helpers = require('../config/helpers');
 
 /** @ignore */
-function createScript(fileContent, funcName) {
-  var script = vm.createScript(util.format(
-    '(function () { %s; return %s.default || %s; })()',
-    fileContent.toString(), funcName, funcName
-  ));
-  return script.runInNewContext({
-    require: require,
-    process: Object.assign({}, process, {
-      env: Object.assign(process.env, {
-        NODE_ENV: 'production'
-      })
-    }),
-    console: console,
-    global: {}
-  });
+function evaluate(fileContent, funcName) {
+  try {
+    Object.keys(require.cache).forEach(function(key) {
+      delete require.cache[key];
+    });
+    // eslint-disable-next-line no-eval
+    return eval(util.format(
+      '(function () { %s; return %s.default || %s; })()',
+      fileContent.toString(), funcName, funcName
+    ));
+  }
+  catch (e) {
+    return function () { return Promise.reject(e); };
+  }
 }
 
 /** @ignore */
@@ -49,7 +46,7 @@ function createRenderer(options) {
           var filePath = path.join(config.output.path, config.output.filename);
           mfs.readFile(filePath, function (readFileError, fileContent) {
             if (readFileError) { reject(readFileError); }
-            else { resolve(createScript(fileContent, config.output.library)); }
+            else { resolve(evaluate(fileContent, config.output.library)); }
           });
         }
       });
@@ -129,9 +126,6 @@ Plugin.prototype.apply = function(compiler) {
     var options = getOptions(compilation.options.hops);
     var renderHTML = ejs.compile(fs.readFileSync(options.template, 'utf-8'));
     var getPaths = getAssetPaths(compilation.assets, options.chunkPrefix);
-    Object.keys(require.cache).forEach(function(key) {
-      delete require.cache[key];
-    });
     createRenderer(options)
     .then(function (renderReact) {
       return Promise.all(options.locations.map(function (location) {
