@@ -18,6 +18,7 @@ module.exports = helpers.extend(
     },
     devtool: 'cheap-module-eval-source-map',
     externals: [nodeExternals()],
+    cache: {},
     resolveLoader: {
       alias: {
         'style-loader': 'fake-style-loader',

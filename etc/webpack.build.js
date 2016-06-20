@@ -12,6 +12,10 @@ module.exports = helpers.extend(
       vendor: 'hops',
       main: helpers.root
     },
+    output: {
+      filename: '[name]-[hash].js',
+      chunkFilename: 'chunk-[id]-[hash].js'
+    },
     module: {
       loaders: [{
         test: /\.css$/,
@@ -35,10 +39,7 @@ module.exports = helpers.extend(
         name: 'vendor',
         filename: '[name]-[hash].js'
       }),
-      new ExtractTextPlugin(
-        '[name]-[contenthash].css',
-        { allChunks: true }
-      )
+      new ExtractTextPlugin('[name]-[contenthash].css')
     ],
     extend: helpers.extend.bind(null, __filename)
   }

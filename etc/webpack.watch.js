@@ -7,6 +7,7 @@ module.exports = helpers.extend(
  'webpack.base.js',
   {
     entry: require.resolve('../lib/shim'),
+    cache: {},
     resolve: {
       alias: {
         'hops-main': helpers.root
