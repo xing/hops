@@ -1,6 +1,8 @@
 
 var path = require('path');
 
+var webpack = require('webpack');
+
 var helpers = require('../config/helpers');
 
 module.exports = helpers.extend(
@@ -21,6 +23,13 @@ module.exports = helpers.extend(
         aggregateTimeout: 100
       }
     },
+    // plugins: [
+    //   new webpack.DllReferencePlugin({
+    //     sourceType: 'commonjs2',
+    //     name: path.resolve(helpers.tmp, 'dll.hops.js'),
+    //     manifest: require(path.resolve(helpers.tmp, 'hops-manifest.json'))
+    //   })
+    // ],
     extend: helpers.extend.bind(null, __filename)
   }
 );

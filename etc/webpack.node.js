@@ -1,4 +1,5 @@
 
+var webpack = require('webpack');
 var nodeExternals = require('webpack-node-externals');
 
 var helpers = require('../config/helpers');
@@ -6,6 +7,7 @@ var helpers = require('../config/helpers');
 module.exports = helpers.extend(
   'webpack.base.js',
   helpers.removePlugin.bind(null, null),
+  helpers.removePlugin.bind(null, webpack.DllReferencePlugin),
   {
     target: 'node',
     entry: [

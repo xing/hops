@@ -1,4 +1,6 @@
 
+var path = require('path');
+
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -26,6 +28,10 @@ module.exports = helpers.extend(
       }]
     },
     plugins: [
+      new webpack.DllReferencePlugin({
+        context: helpers.root,
+        manifest: require(path.resolve(helpers.root, '.tmp', 'webpack', 'hops-manifest.json'))
+      }),
       new webpack.EnvironmentPlugin(['NODE_ENV']),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
