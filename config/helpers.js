@@ -11,6 +11,7 @@ function fileExists(filePath) {
 }
 
 module.exports = exports = {
+  merge: merge,
   root: appRoot.toString(),
   tmp: appRoot.resolve('.tmp/webpack'),
   resolve: function resolve(fileName) {
@@ -23,7 +24,7 @@ module.exports = exports = {
     }
     return filePath;
   },
-  extend: function (/* fileName, transform[], overrides */) {
+  extend: function (/* fileName, ...transform, overrides */) {
     var args = Array.from(arguments);
     var fileName = args.shift();
     var overrides = args.pop();

@@ -11,7 +11,7 @@
     <main><%- dom -%></main>
     <script>INITIAL_STATE = <%- state -%></script>
     <%-js.map(function (path) {
-      return '<script src="/' + path + '" defer></script>';
+      return '<script src="/' + path + '"></script>';
     }).join('\n    ')%>
   </body>
 </html>

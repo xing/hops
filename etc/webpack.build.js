@@ -10,10 +10,7 @@ module.exports = helpers.extend(
   'webpack.base.js',
   helpers.removeLoader.bind(null, 'css'),
   {
-    entry: {
-      vendor: 'hops',
-      main: helpers.root
-    },
+    entry: helpers.root,
     output: {
       filename: '[name]-[hash].js',
       chunkFilename: 'chunk-[id]-[hash].js'
@@ -28,10 +25,6 @@ module.exports = helpers.extend(
       }]
     },
     plugins: [
-      new webpack.DllReferencePlugin({
-        context: helpers.root,
-        manifest: require(path.resolve(helpers.root, '.tmp', 'webpack', 'hops-manifest.json'))
-      }),
       new webpack.EnvironmentPlugin(['NODE_ENV']),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
@@ -40,10 +33,6 @@ module.exports = helpers.extend(
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false }
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        filename: '[name]-[hash].js'
       }),
       new ExtractTextPlugin('[name]-[contenthash].css')
     ],

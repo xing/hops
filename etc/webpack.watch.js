@@ -23,13 +23,12 @@ module.exports = helpers.extend(
         aggregateTimeout: 100
       }
     },
-    // plugins: [
-    //   new webpack.DllReferencePlugin({
-    //     sourceType: 'commonjs2',
-    //     name: path.resolve(helpers.tmp, 'dll.hops.js'),
-    //     manifest: require(path.resolve(helpers.tmp, 'hops-manifest.json'))
-    //   })
-    // ],
+    plugins: [
+      new webpack.DllReferencePlugin({
+        context: helpers.root,
+        manifest: require(path.resolve(helpers.tmp, 'vendor-manifest.json'))
+      })
+    ],
     extend: helpers.extend.bind(null, __filename)
   }
 );
