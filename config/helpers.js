@@ -12,6 +12,7 @@ function fileExists(filePath) {
 
 module.exports = exports = {
   root: appRoot.toString(),
+  tmp: appRoot.resolve('.tmp/webpack'),
   resolve: function resolve(fileName) {
     var filePath = fileName;
     if (!path.isAbsolute(filePath) || !fileExists(filePath)) {
@@ -22,10 +23,18 @@ module.exports = exports = {
     }
     return filePath;
   },
-  extend: function (fileName, transform, config) {
-    var base = require(exports.resolve(fileName));
-    delete base.extend;
-    return merge((config) ? transform(base) : base, config || transform);
+  extend: function (/* fileName, transform[], overrides */) {
+    var args = Array.from(arguments);
+    var fileName = args.shift();
+    var overrides = args.pop();
+    var defaults = args.reduce(
+      function (config, transform) {
+        return transform(config);
+      },
+      require(exports.resolve(fileName))
+    );
+    delete defaults.extend;
+    return merge(defaults, overrides);
   },
   removeLoader: function (name, config) {
     return Object.assign({}, config, {
@@ -42,10 +51,11 @@ module.exports = exports = {
   },
   removePlugin: function (constructor, config) {
     constructor = constructor || require('../plugin');
-    return Object.assign({}, config, {
+    var result = Object.assign({}, config, {
       plugins: config.plugins.filter(function (plugin) {
         return (plugin.constructor !== constructor);
       })
     });
+    return result;
   }
 };
