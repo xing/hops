@@ -7,7 +7,7 @@ var helpers = require('../config/helpers');
 
 module.exports = {
   entry: {
-    vendor: ['hops']
+    hops: ['hops']
   },
   output: {
     filename: '[name].js',
