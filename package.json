@@ -14,10 +14,10 @@
   "browser": "lib/browser.js",
   "scripts": {
     "install": "node bin/setup.js && node bin/precompile.js",
-    "start": "cd app; rm -rf node_modules/hops; npm install; npm start",
+    "start": "cd app; rm -rf .tmp node_modules/hops; npm install; npm start",
     "test": "istanbul test -x \"spec/**/*.js\" --root . --dir .tmp/coverage _mocha \"spec/**/*.js\"",
     "pretest": "npm run cleanup; mkdir -p .tmp/test; cd .tmp/test; npm init -y; npm install file:../../",
-    "cleanup": "rm -rf coverage .tmp/test/{.eslintrc.js,.stylelintrc.js,webpack.config.js,src,dist,node_modules/hops}",
+    "cleanup": "rm -rf .tmp/coverage .tmp/test/{.eslintrc.js,.stylelintrc.js,webpack.config.js,src,dist,.tmp,node_modules/hops}",
     "postversion": "git push && git push --tags"
   },
   "contributors": [

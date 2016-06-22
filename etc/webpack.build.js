@@ -10,7 +10,7 @@ module.exports = helpers.extend(
   'webpack.base.js',
   helpers.removeLoader.bind(null, 'css'),
   {
-    entry: helpers.root,
+    entry: require.resolve('../lib/shim'),
     output: {
       filename: '[name]-[hash].js',
       chunkFilename: 'chunk-[id]-[hash].js'
@@ -30,7 +30,7 @@ module.exports = helpers.extend(
     plugins: [
       new webpack.DllReferencePlugin({
         context: helpers.root,
-        manifest: require(path.resolve(helpers.tmp, 'build', 'vendor-manifest.json'))
+        manifest: require(path.resolve(helpers.tmp, 'build', 'vendor.json'))
       }),
       new webpack.EnvironmentPlugin(['NODE_ENV']),
       new webpack.LoaderOptionsPlugin({ minimize: true, debug: false }),

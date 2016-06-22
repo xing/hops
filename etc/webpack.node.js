@@ -11,8 +11,8 @@ module.exports = helpers.extend(
   {
     target: 'node',
     entry: [
-      require.resolve('source-map-support/register'),
-      helpers.root
+      'source-map-support/register',
+      'hops-entry-point'
     ],
     output: {
       filename: 'bundle.js',

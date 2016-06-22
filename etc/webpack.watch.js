@@ -10,11 +10,6 @@ module.exports = helpers.extend(
   {
     entry: require.resolve('../lib/shim'),
     cache: {},
-    resolve: {
-      alias: {
-        'hops-main': helpers.root
-      }
-    },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
       contentBase: path.resolve(helpers.root, 'dist'),
@@ -29,7 +24,7 @@ module.exports = helpers.extend(
     plugins: [
       new webpack.DllReferencePlugin({
         context: helpers.root,
-        manifest: require(path.resolve(helpers.tmp, 'watch', 'vendor-manifest.json'))
+        manifest: require(path.resolve(helpers.tmp, 'watch', 'vendor.json'))
       })
     ],
     extend: helpers.extend.bind(null, __filename)
