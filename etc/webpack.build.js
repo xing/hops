@@ -24,15 +24,19 @@ module.exports = helpers.extend(
         )
       }]
     },
+    hops: {
+      dll: path.resolve(helpers.tmp, 'build', 'vendor.js')
+    },
     plugins: [
-      new webpack.EnvironmentPlugin(['NODE_ENV']),
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false
+      new webpack.DllReferencePlugin({
+        context: helpers.root,
+        manifest: require(path.resolve(helpers.tmp, 'build', 'vendor-manifest.json'))
       }),
+      new webpack.EnvironmentPlugin(['NODE_ENV']),
+      new webpack.LoaderOptionsPlugin({ minimize: true, debug: false }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false }
+        compress: { warnings: false, unused: true, 'dead_code': true }
       }),
       new ExtractTextPlugin('[name]-[contenthash].css')
     ],

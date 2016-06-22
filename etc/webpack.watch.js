@@ -23,10 +23,13 @@ module.exports = helpers.extend(
         aggregateTimeout: 100
       }
     },
+    hops: {
+      dll: path.resolve(helpers.tmp, 'watch', 'vendor.js')
+    },
     plugins: [
       new webpack.DllReferencePlugin({
         context: helpers.root,
-        manifest: require(path.resolve(helpers.tmp, 'vendor-manifest.json'))
+        manifest: require(path.resolve(helpers.tmp, 'watch', 'vendor-manifest.json'))
       })
     ],
     extend: helpers.extend.bind(null, __filename)
