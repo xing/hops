@@ -58,7 +58,7 @@ function createRenderer(options) {
 function getAssetPaths(assets, ext) {
   return Object.keys(assets).filter(function (key) {
     if (key.indexOf(ext) === (key.length - ext.length)) {
-      return !key.match(/^((chunk-)|(vendor-)|(.+hot-update)).+$/);
+      return !key.match(/^((chunk-)|(.+hot-update)).+$/);
     }
     return false;
   });
@@ -105,8 +105,7 @@ function Plugin(options) { this.options = options; }
  * @param {?string}   options.template
  * @param {?string}   options.config
  * @param {?string}   options.chunkPrefix
- * @param {?string}   options.dllPath
- * @param {?string}   options.dllFile
+ * @param {?Object[]} options.dll
  * @param {?string[]} options.css
  * @param {?string[]} options.js
  * @return {Object}
@@ -117,7 +116,7 @@ Plugin.prototype.getOptions = function (options) {
       locations: ['/'],
       template: path.resolve(__dirname, './template.ejs'),
       config: helpers.resolve('webpack.node.js'),
-      version: require('../package.json').version,
+      dll: [],
       css: [],
       js: []
     },
@@ -139,20 +138,22 @@ Plugin.prototype.apply = function(compiler) {
   compiler.plugin('emit', function(compilation, callback) {
     var options = getOptions(compilation.options.hops);
     var renderEJS = ejs.compile(fs.readFileSync(options.template, 'utf-8'));
-    if (options.dll) {
-      var fileName = util.format('vendor-%s.js', options.version);
-      options.js.unshift(fileName);
-      compilation.assets[fileName] = getAssetObject(
-        fs.readFileSync(options.dll)
-      );
-    }
+    options.dll.forEach(function(dll) {
+      var source = fs.readFileSync(dll.source);
+      compilation.assets[dll.path] = getAssetObject(source);
+      options.js.push(dll.path);
+    });
     createRenderer(options)
     .then(function (renderReact) {
       return Promise.all(options.locations.map(function (location) {
         return renderReact(location, options)
         .then(function (result) {
           var html = renderEJS(Object.assign({}, options, result, {
-            js: options.js.concat(getAssetPaths(compilation.assets, 'js')),
+            js: options.js.concat(
+              getAssetPaths(compilation.assets, 'js').filter(function (js) {
+                return (options.js.indexOf(js) === -1);
+              })
+            ),
             css: options.css.concat(getAssetPaths(compilation.assets, 'css'))
           }));
           compilation.assets[getFileName(location)] = getAssetObject(html);

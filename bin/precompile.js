@@ -8,10 +8,12 @@ var helpers = require('../config/helpers');
 
 if (path.resolve(__dirname, '..') !== helpers.root) {
   // eslint-disable-next-line no-console
-  console.log('precompile dll:');
+  console.log('precompile dll');
+
   var defaults = helpers.extend('webpack.dll.js', {});
   var modes = defaults.modes || {};
   delete defaults.modes;
+
   Object.keys(modes).forEach(function (mode) {
     var config = helpers.merge(defaults, modes[mode]);
     webpack(config).run(function(error) {
