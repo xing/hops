@@ -6,7 +6,7 @@ var helpers = require('../config/helpers');
 
 module.exports = {
   context: helpers.root,
-  entry: helpers.root,
+  entry: 'hops-entry-point',
   output: {
     path: path.resolve(helpers.root, 'dist'),
     publicPath: '/',
@@ -51,6 +51,9 @@ module.exports = {
     require('postcss-cssnext')
   ],
   resolve: {
+    alias: {
+      'hops-entry-point': helpers.root
+    },
     extensions: ['', '.js', '.jsx']
   },
   plugins: [ new HopsPlugin() ],

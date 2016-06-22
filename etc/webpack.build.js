@@ -1,17 +1,19 @@
 
+var path = require('path');
+var util = require('util');
+
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var helpers = require('../config/helpers');
 
+var pkg = require('../package.json');
+
 module.exports = helpers.extend(
   'webpack.base.js',
   helpers.removeLoader.bind(null, 'css'),
   {
-    entry: {
-      vendor: 'hops',
-      main: helpers.root
-    },
+    entry: require.resolve('../lib/shim'),
     output: {
       filename: '[name]-[hash].js',
       chunkFilename: 'chunk-[id]-[hash].js'
@@ -25,19 +27,22 @@ module.exports = helpers.extend(
         )
       }]
     },
+    hops: {
+      dll: [{
+        path: util.format('hops-%s.js', pkg.version),
+        source: path.resolve(helpers.tmp, 'build', 'hops.js')
+      }]
+    },
     plugins: [
-      new webpack.EnvironmentPlugin(['NODE_ENV']),
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false
+      new webpack.DllReferencePlugin({
+        context: helpers.root,
+        manifest: require(path.resolve(helpers.tmp, 'build', 'hops.json'))
       }),
+      new webpack.EnvironmentPlugin(['NODE_ENV']),
+      new webpack.LoaderOptionsPlugin({ minimize: true, debug: false }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false }
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        filename: '[name]-[hash].js'
+        compress: { warnings: false, unused: true, 'dead_code': true }
       }),
       new ExtractTextPlugin('[name]-[contenthash].css')
     ],

@@ -3,8 +3,6 @@
 var assert = require('assert');
 var jsdom = require('jsdom');
 
-var ORIGINAL_ENV = process.env.NODE_ENV;
-
 function setup() {
   global.document = jsdom.jsdom(
     '<html><body><main/></body></html>',
@@ -19,11 +17,8 @@ setup();
 
 function render() {
   setup();
-  process.env.NODE_ENV = 'production';
   var browser = require('../lib/browser');
-  var result = browser.render.apply(window, arguments);
-  process.env.NODE_ENV = ORIGINAL_ENV;
-  return result;
+  return browser.render.apply(window, arguments)();
 }
 
 
@@ -35,7 +30,6 @@ var App = React.createClass({
     return React.createElement('div');
   }
 });
-
 
 
 describe('browser: basic rendering', function () {
