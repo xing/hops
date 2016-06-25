@@ -42,7 +42,8 @@ module.exports = {
         }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
-          compress: { warnings: false, unused: true, 'dead_code': true }
+          compress: { warnings: false, unused: true, 'dead_code': true },
+          output: { comments: false }
         })
       ]
     }
