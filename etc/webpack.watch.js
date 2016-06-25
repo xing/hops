@@ -16,6 +16,8 @@ module.exports = helpers.extend(
     devtool: 'cheap-module-eval-source-map',
     devServer: {
       contentBase: path.resolve(helpers.root, 'dist'),
+      host: '0.0.0.0',
+      port: 8080,
       noInfo: true,
       watchOptions: {
         aggregateTimeout: 100
