@@ -19,7 +19,7 @@
 </p>
 <p>&nbsp;</p>
 
-In this repo, we are experimenting with technology that might serve as our next generation front end technology stack: hops spices our brew (i.e. web front end) with [ECMAScript](https://babeljs.io) and [Flow](http://flowtype.org), [CSS Next](http://cssnext.io) and [CSS Modules](https://github.com/css-modules/css-modules), [JSX](https://facebook.github.io/jsx/)/[React](https://facebook.github.io/react/) and [Flux](https://facebook.github.io/flux/)/[Redux](http://redux.js.org). To get an impression take a look at our [example app](https://github.com/xing/hops/tree/master/app).
+In this repo, we are experimenting with technology that might serve as our next generation front end technology stack: hops spices our brew (i.e. web front end) with [ECMAScript](https://babeljs.io), [CSS Next](http://cssnext.io) and [CSS Modules](https://github.com/css-modules/css-modules), [JSX](https://facebook.github.io/jsx/)/[React](https://facebook.github.io/react/) and [Flux](https://facebook.github.io/flux/)/[Redux](http://redux.js.org). To get an impression take a look at our [example app](https://github.com/xing/hops/tree/master/app).
 
 Hops is not yet another boilerplate. Hops is a self-contained but highly extensible development and build environment that is packaged as a single module. Batteries included.
 

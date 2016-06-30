@@ -70,16 +70,14 @@ module.exports = {
     'react/no-is-mounted': 2,
     'react/no-unknown-property': 2,
     'react/prop-types': 2,
-    'react/react-in-jsx-scope': 2,
-    'flowtype/space-after-type-colon': [1, 'always'],
-    'flowtype/space-before-type-colon': [1, 'never']
+    'react/react-in-jsx-scope': 2
   },
   'env': {
     'es6': true,
     'node': true,
     'browser': true
   },
-  'plugins': ['react', 'flowtype'],
+  'plugins': ['react'],
   'parser': 'babel-eslint',
   'parserOptions': {
     'ecmaFeatures': {
