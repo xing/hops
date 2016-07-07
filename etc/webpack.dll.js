@@ -21,7 +21,7 @@ module.exports = [
     output: {
       path: path.resolve(helpers.tmp, 'watch')
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: '#eval-source-map',
     plugins: [
       new webpack.DllPlugin({
         context: helpers.root,

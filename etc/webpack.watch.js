@@ -13,7 +13,7 @@ module.exports = helpers.extend(
   {
     entry: require.resolve('../lib/shim'),
     cache: {},
-    devtool: 'cheap-module-eval-source-map',
+    devtool: '#eval-source-map',
     devServer: {
       contentBase: path.resolve(helpers.root, 'dist'),
       host: '0.0.0.0',
