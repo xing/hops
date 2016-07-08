@@ -7,7 +7,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var util = require('util');
 
 var webpack = require('webpack');
 var MemoryFS = require('memory-fs');
@@ -16,19 +15,23 @@ var ejs = require('ejs');
 var helpers = require('../config/helpers');
 
 /** @ignore */
-function evaluate(fileContent, funcName) {
+function evaluate(fileContent, filePath) {
   try {
     Object.keys(require.cache).forEach(function(key) {
       delete require.cache[key];
     });
-    // eslint-disable-next-line no-eval
-    return eval(util.format(
-      '(function () { %s; return %s.default || %s; })()',
-      fileContent.toString(), funcName, funcName
-    ));
+    var context = Object.assign(
+      new module.constructor(),
+      { paths: module.paths }
+    );
+    // eslint-disable-next-line no-underscore-dangle
+    context._compile(fileContent.toString(), filePath);
+    return context.exports.default || context.exports;
   }
-  catch (e) {
-    return function () { return Promise.reject(e); };
+  catch (error) {
+    return function () {
+      return Promise.reject(error);
+    };
   }
 }
 
@@ -46,7 +49,7 @@ function createRenderer(options) {
           var filePath = path.join(config.output.path, config.output.filename);
           mfs.readFile(filePath, function (readFileError, fileContent) {
             if (readFileError) { reject(readFileError); }
-            else { resolve(evaluate(fileContent, config.output.library)); }
+            else { resolve(evaluate(fileContent, filePath)); }
           });
         }
       });
@@ -159,8 +162,10 @@ Plugin.prototype.apply = function(compiler) {
           compilation.assets[getFileName(location)] = getAssetObject(html);
         });
       }));
-    }) // eslint-disable-next-line no-console
-    .catch(console.log.bind(console, '[HOPS PLUGIN ERROR]:'))
+    })
+    .catch(function (error) { // eslint-disable-next-line no-console
+      if (error) { console.log('[HOPS PLUGIN ERROR]:', error); }
+    })
     .then(function () { callback(); });
   });
 };
