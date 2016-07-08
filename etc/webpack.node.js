@@ -16,9 +16,9 @@ module.exports = helpers.extend(
     ],
     output: {
       filename: 'bundle.js',
-      library: 'hopsRender'
+      libraryTarget: 'commonjs2'
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: '#inline-source-map',
     externals: [nodeExternals()],
     cache: {},
     resolveLoader: {
