@@ -22,7 +22,7 @@ var defaultTest = 'echo "Error: no test specified" && exit 1';
  * hops test is used if no test is specified
  * @type {String}
  */
-var hopsTest = 'mocha-webpack --reporter hops/reporter --webpack-config webpack.config.js "src/**/*.test.js"';
+var hopsTest = 'mocha-webpack --reporter hops/reporter --webpack-config webpack.config.js "src/**/*.test.js*"';
 
 Object.assign(pkg, {
   main: (shell.test('-e', pkg.main)) ? pkg.main : 'src/main.js',
