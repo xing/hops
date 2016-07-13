@@ -9,11 +9,11 @@ module.exports = helpers.extend(
       preLoaders: [{
         test: /\.jsx?$/,
         loader: 'eslint',
-        exclude: /node_modules/
+        exclude: [/node_modules/, /.tmp/] 
       }, {
         test: /\.css$/,
         loader: 'stylelint',
-        exclude: /node_modules/
+        exclude: [/node_modules/, /.tmp/]
       }],
       loaders: [{
         test: /\.test\.jsx?$/,
