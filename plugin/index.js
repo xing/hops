@@ -8,54 +8,11 @@
 var fs = require('fs');
 var path = require('path');
 
-var webpack = require('webpack');
-var MemoryFS = require('memory-fs');
 var ejs = require('ejs');
 
 var helpers = require('../config/helpers');
 
-/** @ignore */
-function evaluate(fileContent, filePath) {
-  try {
-    Object.keys(require.cache).forEach(function(key) {
-      delete require.cache[key];
-    });
-    var context = Object.assign(
-      new module.constructor(),
-      { paths: module.paths }
-    );
-    // eslint-disable-next-line no-underscore-dangle
-    context._compile(fileContent.toString(), filePath);
-    return context.exports.default || context.exports;
-  }
-  catch (error) {
-    return function () {
-      return Promise.reject(error);
-    };
-  }
-}
-
-/** @ignore */
-function createRenderer(options) {
-  return Promise.resolve().then(function () {
-    return new Promise(function (resolve, reject) {
-      var mfs = new MemoryFS();
-      var config = require(options.config);
-      var compiler = webpack(config);
-      compiler.outputFileSystem = mfs;
-      compiler.run(function(compilerError) {
-        if (compilerError) { reject(compilerError); }
-        else {
-          var filePath = path.join(config.output.path, config.output.filename);
-          mfs.readFile(filePath, function (readFileError, fileContent) {
-            if (readFileError) { reject(readFileError); }
-            else { resolve(evaluate(fileContent, filePath)); }
-          });
-        }
-      });
-    });
-  });
-}
+var renderer = require('./renderer');
 
 /** @ignore */
 function getAssetPaths(assets, ext) {
@@ -146,7 +103,7 @@ Plugin.prototype.apply = function(compiler) {
       compilation.assets[dll.path] = getAssetObject(source);
       options.js.push(dll.path);
     });
-    createRenderer(options)
+    renderer.createRenderer(options.config)
     .then(function (renderReact) {
       return Promise.all(options.locations.map(function (location) {
         return renderReact(location, options)
