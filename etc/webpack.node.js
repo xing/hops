@@ -21,6 +21,9 @@ module.exports = helpers.extend(
     devtool: '#inline-source-map',
     externals: [nodeExternals()],
     cache: {},
+    // resolve: {
+    //   mainFields: ['main']
+    // },
     resolveLoader: {
       alias: {
         'style-loader': 'fake-style-loader',

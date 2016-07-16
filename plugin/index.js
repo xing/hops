@@ -101,7 +101,12 @@ Plugin.prototype.apply = function(compiler) {
     options.dll.forEach(function(dll) {
       var source = fs.readFileSync(dll.source);
       compilation.assets[dll.path] = getAssetObject(source);
-      options.js.push(dll.path);
+      if (dll.path.lastIndexOf('.js') === (dll.path.length - 3)) {
+        options.js.push(dll.path);
+      }
+      else if (dll.path.lastIndexOf('.css') === (dll.path.length - 4)) {
+        options.css.push(dll.path);
+      }
     });
     renderer.createRenderer(options.config)
     .then(function (renderReact) {
