@@ -9,7 +9,7 @@ module.exports = helpers.extend(
       preLoaders: [{
         test: /\.jsx?$/,
         loader: 'eslint',
-        exclude: [/node_modules/, /.tmp/] 
+        exclude: [/node_modules/, /.tmp/]
       }, {
         test: /\.css$/,
         loader: 'stylelint',
@@ -18,7 +18,7 @@ module.exports = helpers.extend(
       loaders: [{
         test: /\.test\.jsx?$/,
         loader: 'babel',
-        exclude: /node_modules\//
+        exclude: [/node_modules/, /.tmp/]
       }, {
         test: /\.jsx?$/,
         loader: 'babel',
@@ -26,7 +26,7 @@ module.exports = helpers.extend(
           cacheDirectory: false,
           plugins: (process.env.npm_config_coverage) ? ['__coverage__'] : []
         },
-        exclude: [/\.test\.jsx?$/, /node_modules\//, /.tmp/]
+        exclude: [/\.test\.jsx?$/, /node_modules/, /.tmp/]
       }]
     },
     extend: helpers.extend.bind(null, __filename)
