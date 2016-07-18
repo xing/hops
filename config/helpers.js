@@ -19,7 +19,7 @@ module.exports = exports = {
     if (!path.isAbsolute(filePath) || !fileExists(filePath)) {
       filePath = appRoot.resolve(fileName);
       if (!fileExists(filePath)) {
-        try { filePath = require.resolve('malt/' + fileName); }
+        try { filePath = require.resolve('malt-config/' + fileName); }
         catch (e) { filePath = null; }
       }
       if (!fileExists(filePath)) {
