@@ -21,10 +21,10 @@ module.exports = helpers.extend(
     module: {
       loaders: [{
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style',
-          'css?modules&localIdentName=[name]-[local]-[hash:base64:5]&importLoaders=1!postcss'
-        )
+        loader: ExtractTextPlugin.extract({
+          notExtractLoader: 'style',
+          loader: 'css?modules&localIdentName=[name]-[local]-[hash:base64:5]&importLoaders=1!postcss'
+        })
       }]
     },
     hops: {
