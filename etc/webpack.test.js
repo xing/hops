@@ -6,15 +6,6 @@ module.exports = helpers.extend(
   helpers.removeLoader.bind(null, 'babel'),
   {
     module: {
-      preLoaders: [{
-        test: /\.jsx?$/,
-        loader: 'eslint',
-        exclude: [/node_modules/, /.tmp/]
-      }, {
-        test: /\.css$/,
-        loader: 'stylelint',
-        exclude: [/node_modules/, /.tmp/]
-      }],
       loaders: [{
         test: /\.test\.jsx?$/,
         loader: 'babel',
