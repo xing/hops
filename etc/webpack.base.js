@@ -47,9 +47,13 @@ module.exports = {
       loader: 'url?limit=100000'
     }]
   },
-  postcss: [
-    require('postcss-cssnext')
-  ],
+  postcss: function () {
+    return [
+      require('postcss-cssnext')({
+        browsers: '> 1%, last 2 versions'
+      })
+    ];
+  },
   resolve: {
     alias: {
       'hops-entry-point': helpers.root
