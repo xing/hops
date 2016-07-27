@@ -6,6 +6,7 @@ var helpers = require('../config/helpers');
 
 module.exports = helpers.extend(
   'webpack.base.js',
+  helpers.removeLoader.bind(null, 'css'),
   helpers.removePlugin.bind(null, null),
   helpers.removePlugin.bind(null, webpack.DllReferencePlugin),
   {
@@ -18,17 +19,28 @@ module.exports = helpers.extend(
       filename: 'bundle.js',
       libraryTarget: 'commonjs2'
     },
+    module: {
+      loaders: [{
+        test: /\.css$/,
+        loaders: [
+          {
+            loader: 'css-loader/locals',
+            query: {
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[name]-[local]-[hash:base64:5]',
+              importLoaders: 1
+            }
+          },
+          'postcss'
+        ]
+      }]
+    },
     devtool: '#inline-source-map',
     externals: [nodeExternals()],
     cache: {},
-    // resolve: {
-    //   mainFields: ['main']
-    // },
-    resolveLoader: {
-      alias: {
-        'style-loader': 'fake-style-loader',
-        'style': 'fake-style-loader'
-      }
+    resolve: {
+      mainFields: ['main']
     },
     extend: helpers.extend.bind(null, __filename)
   }
