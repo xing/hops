@@ -54,7 +54,7 @@ module.exports = {
     'quotes': [ 1, 'single'],
     'semi': [ 2, 'always'],
     'semi-spacing': [2, {'before': false, 'after': true}],
-    'space-after-keyword': 2,
+    'space-after-keywords': 2,
     'space-infix-ops': 2,
     'space-unary-ops': [2, { 'words': true, 'nonwords': false }],
     'strict': [2, 'function'],
