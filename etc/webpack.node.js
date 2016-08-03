@@ -9,6 +9,7 @@ module.exports = helpers.extend(
   helpers.removeLoader.bind(null, 'css'),
   helpers.removePlugin.bind(null, null),
   helpers.removePlugin.bind(null, webpack.DllReferencePlugin),
+  function (config) { delete config.resolve.mainFields; return config; },
   {
     target: 'node',
     entry: [
