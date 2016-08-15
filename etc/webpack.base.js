@@ -33,7 +33,7 @@ module.exports = {
           query: {
             sourceMap: true,
             modules: true,
-            localIdentName: '[name]-[local]-[hash:base64:5]',
+            localIdentName: '[folder]-[name]-[local]-[hash:base64:5]',
             importLoaders: 1
           }
         },
