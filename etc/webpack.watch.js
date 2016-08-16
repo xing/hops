@@ -21,7 +21,8 @@ module.exports = helpers.extend(
       noInfo: true,
       watchOptions: {
         aggregateTimeout: 100
-      }
+      },
+      stats: 'errors-only'
     },
     hops: {
       dll: [{
