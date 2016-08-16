@@ -17,5 +17,11 @@
   "babel": {
     "extends": "hops/etc/babel"
   },
+  "stylelint": {
+    "extends": "hops/etc/stylelint"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/hops/etc/eslint.js"
+  },
   "devDependencies": {}
 }
