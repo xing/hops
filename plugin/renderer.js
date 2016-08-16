@@ -30,6 +30,11 @@ exports.eval = function (fileContent, filePath, callback) {
 
 /** @ignore */
 exports.createRenderer = function (configFile) {
+  if (!configFile) {
+    return Promise.resolve(function () {
+      return Promise.resolve({ state: '{}', dom: ''});
+    });
+  }
   return Promise.resolve().then(function () {
     return new Promise(function (resolve, reject) {
       var mfs = new MemoryFS();

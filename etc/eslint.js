@@ -1,6 +1,6 @@
 
 module.exports = {
-  'extends': 'eslint:recommended',
+  'extends': ['eslint:recommended', 'plugin:react/recommended'],
   'rules': {
     'camelcase': 2,
     'comma-spacing': 2,
@@ -52,8 +52,8 @@ module.exports = {
     'no-unused-vars': [ 2, {'args': 'after-used', 'varsIgnorePattern': '^React$'}],
     'no-use-before-define': 2,
     'no-with': 2,
-    'quotes': [ 1, 'single'],
-    'semi': [ 2, 'always'],
+    'quotes': [1, 'single'],
+    'semi': [2, 'always'],
     'semi-spacing': [2, {'before': false, 'after': true}],
     'space-infix-ops': 2,
     'space-unary-ops': [2, { 'words': true, 'nonwords': false }],
@@ -65,8 +65,8 @@ module.exports = {
     'react/jsx-uses-vars': 2,
     'react/no-danger': 2,
     'react/no-deprecated': 2,
-    'react/no-did-mount-set-state': [2, 'allow-in-func'],
-    'react/no-did-update-set-state': [2, 'allow-in-func'],
+    'react/no-did-mount-set-state': 2,
+    'react/no-did-update-set-state': 2,
     'react/no-direct-mutation-state': 2,
     'react/no-is-mounted': 2,
     'react/no-unknown-property': 2,
