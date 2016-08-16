@@ -9,7 +9,6 @@ module.exports = helpers.extend(
     entry: path.resolve(__dirname, '..', '.tmp', 'test'),
     output: {
       path: path.resolve(__dirname, '..', '.tmp', 'test', 'dist')
-    },
-    extend: helpers.extend.bind(null, __filename)
+    }
   }
 );

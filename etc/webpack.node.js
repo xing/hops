@@ -42,7 +42,6 @@ module.exports = helpers.extend(
     cache: {},
     resolve: {
       mainFields: ['main']
-    },
-    extend: helpers.extend.bind(null, __filename)
+    }
   }
 );

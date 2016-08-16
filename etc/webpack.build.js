@@ -47,7 +47,6 @@ module.exports = helpers.extend(
         output: { comments: false }
       }),
       new ExtractTextPlugin('[name]-[contenthash].css')
-    ],
-    extend: helpers.extend.bind(null, __filename)
+    ]
   }
 );

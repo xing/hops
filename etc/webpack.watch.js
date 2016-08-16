@@ -35,7 +35,6 @@ module.exports = helpers.extend(
         context: helpers.root,
         manifest: require(path.resolve(helpers.tmp, 'watch', 'hops.json'))
       })
-    ],
-    extend: helpers.extend.bind(null, __filename)
+    ]
   }
 );

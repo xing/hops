@@ -19,7 +19,6 @@ module.exports = helpers.extend(
         },
         exclude: [/\.test\.jsx?$/, /node_modules/, /.tmp/]
       }]
-    },
-    extend: helpers.extend.bind(null, __filename)
+    }
   }
 );
