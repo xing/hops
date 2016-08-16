@@ -7,15 +7,21 @@
   "repository": {},
   "scripts": {
     "start": "[ \"$NODE_ENV\" != \"production\" ] && npm run watch || npm run build",
-    "watch": "webpack-dev-server --hot --config webpack.config.js",
-    "build": "webpack --progress --config webpack.config.js",
-    "test": "mocha-webpack --reporter hops/reporter --webpack-config webpack.config.js \"src/**/*.test.js*\""
+    "watch": "webpack-dev-server --hot --config node_modules/hops/config",
+    "build": "webpack --progress --config node_modules/hops/config",
+    "test": "mocha-webpack --reporter hops/reporter --webpack-config node_modules/hops/config \"src/**/*.test.js*\""
   },
   "dependencies": {
     "hops": "file:.."
   },
   "babel": {
     "extends": "hops/etc/babel"
+  },
+  "stylelint": {
+    "extends": "hops/etc/stylelint"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/hops/etc/eslint.js"
   },
   "devDependencies": {}
 }
