@@ -22,23 +22,22 @@ var defaultTest = 'echo "Error: no test specified" && exit 1';
  * hops test is used if no test is specified
  * @type {String}
  */
-var hopsTest = 'mocha-webpack --reporter hops/reporter --webpack-config webpack.config.js "src/**/*.test.js*"';
+var hopsTest = 'mocha-webpack --reporter hops/reporter --webpack-config node_modules/hops/config "src/**/*.test.js*"';
 
 Object.assign(pkg, {
   main: (shell.test('-e', pkg.main)) ? pkg.main : 'src/main.js',
   scripts: Object.assign(
     {
-      start: '[ "$NODE_ENV" != "production" ] && npm run watch || npm run build',
-      watch: 'webpack-dev-server --hot --config webpack.config.js',
-      build: 'webpack --progress --config webpack.config.js' },
+      start: '["$NODE_ENV" != "production"] && npm run watch || npm run build',
+      watch: 'webpack-dev-server --hot --config node_modules/hops/config',
+      build: 'webpack --progress --config node_modules/hops/config'
+    },
     pkg.scripts,
     {
       test: (pkg.scripts.test === defaultTest) ? hopsTest : pkg.scripts.test
     }
   ),
-  babel: Object.assign({
-    extends: 'hops/etc/babel'
-  }, pkg.babel)
+  babel: Object.assign({ extends: 'hops/etc/babel' }, pkg.babel)
 });
 
 var srcDir = path.resolve(__dirname, '..', 'app');
