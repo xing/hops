@@ -10,8 +10,6 @@ var path = require('path');
 
 var ejs = require('ejs');
 
-var helpers = require('../config/helpers');
-
 var renderer = require('./renderer');
 
 /** @ignore */
@@ -75,7 +73,7 @@ Plugin.prototype.getOptions = function (options) {
     {
       locations: ['/'],
       template: path.resolve(__dirname, './template.ejs'),
-      config: helpers.resolve('webpack.node.js'),
+      config: null,
       dll: [],
       css: [],
       js: []

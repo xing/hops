@@ -28,6 +28,7 @@ module.exports = helpers.extend(
       }]
     },
     hops: {
+      config: helpers.resolve('webpack.node.js'),
       dll: [{
         path: util.format('hops-%s.js', pkg.version),
         source: path.resolve(helpers.tmp, 'build', 'hops.js')
