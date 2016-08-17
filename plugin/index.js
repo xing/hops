@@ -71,7 +71,7 @@ function Plugin(options) { this.options = options; }
 Plugin.prototype.getOptions = function (options) {
   return Object.assign(
     {
-      locations: ['/'],
+      locations: [],
       template: path.resolve(__dirname, './template.ejs'),
       config: null,
       dll: [],

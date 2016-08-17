@@ -60,6 +60,6 @@ module.exports = {
     },
     extensions: ['', '.js', '.jsx']
   },
-  plugins: [ new HopsPlugin() ],
+  plugins: [ new HopsPlugin(helpers.getConfig()) ],
   extend: helpers.extend.bind(null, __filename)
 };

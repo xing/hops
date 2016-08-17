@@ -62,5 +62,19 @@ module.exports = exports = {
       })
     });
     return result;
+  },
+  getConfig: function () {
+    var filePath = appRoot.resolve('.hopsrc');
+    var config = Object.assign(
+      {},
+      appRoot.require('package.json').hops,
+      fileExists(filePath) ? require(filePath) : {}
+    );
+    ['config', 'template'].forEach(function (key) {
+      if (config[key] && !fileExists[config[key]]) {
+        config[key] = appRoot.resolve(config[key]);
+      }
+    });
+    return config;
   }
 };

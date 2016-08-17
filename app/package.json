@@ -17,5 +17,10 @@
   "babel": {
     "extends": "hops/etc/babel"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "hops": {
+    "locations": [
+      "/"
+    ]
+  }
 }
