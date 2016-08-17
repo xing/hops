@@ -95,6 +95,7 @@ Plugin.prototype.apply = function(compiler) {
   var getOptions = this.getOptions.bind(this);
   compiler.plugin('emit', function(compilation, callback) {
     var options = getOptions(compilation.options.hops);
+    var publicPath = compilation.outputOptions && compilation.outputOptions.publicPath;
     var renderEJS = ejs.compile(fs.readFileSync(options.template, 'utf-8'));
     options.dll.forEach(function(dll) {
       var source = fs.readFileSync(dll.source);
@@ -116,8 +117,9 @@ Plugin.prototype.apply = function(compiler) {
               getAssetPaths(compilation.assets, 'js').filter(function (js) {
                 return (options.js.indexOf(js) === -1);
               })
-            ),
+            ).map(function(p) { return publicPath + p; }),
             css: options.css.concat(getAssetPaths(compilation.assets, 'css'))
+                 .map(function(p) { return publicPath + p; })
           }));
           compilation.assets[getFileName(location)] = getAssetObject(html);
         });
