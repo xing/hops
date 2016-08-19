@@ -1,3 +1,4 @@
+/* eslint-disable */
 
 module.exports = {
   'extends': ['eslint:recommended', 'plugin:react/recommended'],
@@ -13,6 +14,7 @@ module.exports = {
     'key-spacing': [2, { 'beforeColon': false, 'afterColon': true }],
     'keyword-spacing': 2,
     'linebreak-style': [ 2, 'unix'],
+    'max-len': [2, 80],
     'new-cap': 2,
     'new-parens': 2,
     'no-alert': 2,
