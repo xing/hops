@@ -23,7 +23,7 @@ module.exports = helpers.extend(
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           notExtractLoader: 'style',
-          loader: 'css?modules&localIdentName=[folder]-[name]-[local]-[hash:base64:5]&importLoaders=1!postcss'
+          loader: 'css?modules&localIdentName=[folder]-[name]-[local]-[hash:base64:5]&importLoaders=1!postcss' // eslint-disable-line max-len
         })
       }]
     },

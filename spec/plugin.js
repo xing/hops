@@ -28,7 +28,7 @@ function mockCompiler(options, callback) {
 
 describe('plugin: basic operation', function () {
   it('should generally work as expected', function (done) {
-    var plugin = new Plugin();
+    var plugin = new Plugin({ locations: ['/']});
     var compiler = mockCompiler({}, function () {
       var asset = compiler.assets['index.html'];
       assert(asset, 'index.html entry is created');

@@ -13,21 +13,24 @@ var rootPath = require('app-root-path').toString();
 var pkgPath = path.resolve(rootPath, 'package.json');
 var pkg = require(pkgPath);
 
+/* eslint-disable max-len */
 Object.assign(pkg, {
   main: (shell.test('-e', pkg.main)) ? pkg.main : 'src/main.js',
   scripts: Object.assign(
     {
-      start: '["$NODE_ENV" != "production"] && npm run watch || npm run build',
+      start: '[ "$NODE_ENV" != "production" ] && npm run watch || npm run build',
       watch: 'webpack-dev-server --hot --config node_modules/hops/config',
       build: 'webpack --progress --config node_modules/hops/config',
       test: 'mocha-webpack --reporter hops/reporter --webpack-config node_modules/hops/config "src/**/*.test.js*"'
     },
     pkg.scripts
   ),
-  babel: Object.assign({ extends: 'hops/etc/babel' }, pkg.babel),
-  stylelint: Object.assign({ extends: 'hops/etc/stylelint' }),
-  eslintConfig: Object.assign({ extends: './node_modules/hops/etc/eslint.js' })
+  babel: Object.assign({ extends: 'hops/etc/babel'}, pkg.babel),
+  stylelint: Object.assign({ extends: 'hops/etc/stylelint'}, pkg.babel),
+  eslintConfig: Object.assign({ extends: './node_modules/hops/etc/eslint.js'}, pkg.eslintConfig),
+  hops: Object.assign({ locations: ['/']}, pkg.hops)
 });
+/* eslint-enable */
 
 var srcDir = path.resolve(__dirname, '..', 'app');
 var template = [{
