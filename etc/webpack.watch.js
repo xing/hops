@@ -21,7 +21,8 @@ module.exports = helpers.extend(
       noInfo: true,
       watchOptions: {
         aggregateTimeout: 100
-      }
+      },
+      stats: 'errors-only'
     },
     hops: {
       dll: [{
@@ -34,7 +35,6 @@ module.exports = helpers.extend(
         context: helpers.root,
         manifest: require(path.resolve(helpers.tmp, 'watch', 'hops.json'))
       })
-    ],
-    extend: helpers.extend.bind(null, __filename)
+    ]
   }
 );

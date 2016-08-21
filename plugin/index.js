@@ -23,6 +23,39 @@ function getAssetPaths(assets, ext) {
 }
 
 /** @ignore */
+function getAssetObject(string) {
+  return {
+    source: function() { return string; },
+    size: function() { return string.length; }
+  };
+}
+
+/** @ignore */
+function processAssets(options, compilation) {
+  options.dll.forEach(function(dll) {
+    var source = fs.readFileSync(dll.source);
+    compilation.assets[dll.path] = getAssetObject(source);
+    if (dll.path.lastIndexOf('.js') === (dll.path.length - 3)) {
+      options.js.push(dll.path);
+    }
+    else if (dll.path.lastIndexOf('.css') === (dll.path.length - 4)) {
+      options.css.push(dll.path);
+    }
+  });
+  var jsAssets = getAssetPaths(compilation.assets, 'js').filter(function (js) {
+    return (options.js.indexOf(js) === -1);
+  });
+  var cssAssets = getAssetPaths(compilation.assets, 'css');
+  var toPublic = function (relativePath) {
+    return ((compilation.outputOptions.publicPath || '') + relativePath);
+  };
+  return {
+    js: options.js.concat(jsAssets).map(toPublic),
+    css: options.css.concat(cssAssets).map(toPublic)
+  };
+}
+
+/** @ignore */
 function getFileName(location) {
   var parts = location.split('/').filter(function (part) {
     return !!part.length;
@@ -31,14 +64,6 @@ function getFileName(location) {
     parts.push('index.html');
   }
   return path.join.apply(path, parts);
-}
-
-/** @ignore */
-function getAssetObject(string) {
-  return {
-    source: function() { return string; },
-    size: function() { return string.length; }
-  };
 }
 
 /**
@@ -62,7 +87,6 @@ function Plugin(options) { this.options = options; }
  * @param {?string[]} options.locations
  * @param {?string}   options.template
  * @param {?string}   options.config
- * @param {?string}   options.chunkPrefix
  * @param {?Object[]} options.dll
  * @param {?string[]} options.css
  * @param {?string[]} options.js
@@ -71,7 +95,7 @@ function Plugin(options) { this.options = options; }
 Plugin.prototype.getOptions = function (options) {
   return Object.assign(
     {
-      locations: ['/'],
+      locations: [],
       template: path.resolve(__dirname, './template.ejs'),
       config: null,
       dll: [],
@@ -95,32 +119,14 @@ Plugin.prototype.apply = function(compiler) {
   var getOptions = this.getOptions.bind(this);
   compiler.plugin('emit', function(compilation, callback) {
     var options = getOptions(compilation.options.hops);
-    var publicPath = compilation.outputOptions && compilation.outputOptions.publicPath;
     var renderEJS = ejs.compile(fs.readFileSync(options.template, 'utf-8'));
-    options.dll.forEach(function(dll) {
-      var source = fs.readFileSync(dll.source);
-      compilation.assets[dll.path] = getAssetObject(source);
-      if (dll.path.lastIndexOf('.js') === (dll.path.length - 3)) {
-        options.js.push(dll.path);
-      }
-      else if (dll.path.lastIndexOf('.css') === (dll.path.length - 4)) {
-        options.css.push(dll.path);
-      }
-    });
     renderer.createRenderer(options.config)
     .then(function (renderReact) {
       return Promise.all(options.locations.map(function (location) {
         return renderReact(location, options)
         .then(function (result) {
-          var html = renderEJS(Object.assign({}, options, result, {
-            js: options.js.concat(
-              getAssetPaths(compilation.assets, 'js').filter(function (js) {
-                return (options.js.indexOf(js) === -1);
-              })
-            ).map(function(p) { return publicPath + p; }),
-            css: options.css.concat(getAssetPaths(compilation.assets, 'css'))
-                 .map(function(p) { return publicPath + p; })
-          }));
+          var assets = processAssets(options, compilation);
+          var html = renderEJS(Object.assign({}, options, result, assets));
           compilation.assets[getFileName(location)] = getAssetObject(html);
         });
       }));

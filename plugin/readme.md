@@ -14,7 +14,7 @@ module.exports = {
 };
 ```
 
-The plugin's constructor takes a single options object as an argument, which is also passed along to the template. The supported options are documented below.
+The plugin's constructor takes a single options object as an argument, which is also passed along to the template. These options are also overrideable The supported options are documented below.
 
 
 ### Options
@@ -31,6 +31,10 @@ Full path to an [EJS](http://ejs.co) template file that should at least have the
 
 Full path to the webpack config file for a node build environment. Defaults to `hops/etc/webpack.node.js`.
 
-##### `chunkPrefix: string`
+##### `dll: Array<object>`
 
-Filename prefix to identify non-entry chunks. Defaults to `chunk-` in accordance with hops' webpack configs.
+Array of dll config objects, each containing a static source file path (`source`) and a public http base base (`path`). Using these, static js/css asset files can be added to your build.
+
+##### `js: Array<string>` and `css: Array<string>`
+
+Array of external asset file urls to be injected into the default html template.
