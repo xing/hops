@@ -3,6 +3,7 @@
  *
  * @author Daniel Dembach <daniel@dmbch.net>
  */
+'use strict';
 
 var path = require('path');
 

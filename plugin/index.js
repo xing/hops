@@ -4,6 +4,7 @@
  * @author Daniel Dembach <daniel@dmbch.net>
  * @author Gregor Adams <greg@pixelass.com>
  */
+'use strict';
 
 var fs = require('fs');
 var path = require('path');

@@ -1,11 +1,12 @@
+'use strict';
 
 var webpack = require('webpack');
 var nodeExternals = require('webpack-node-externals');
 
-var helpers = require('../config/helpers');
+var helpers = require('./helpers');
 
 module.exports = helpers.extend(
-  'webpack.base.js',
+  './webpack.base.js',
   helpers.removeLoader.bind(null, 'css'),
   helpers.removePlugin.bind(null, null),
   helpers.removePlugin.bind(null, webpack.DllReferencePlugin),

@@ -1,5 +1,4 @@
 var fs = require('fs');
-var path = require('path');
 
 var appRoot = require('app-root-path');
 var merge = require('webpack-merge').smart;
@@ -14,20 +13,6 @@ module.exports = exports = {
   merge: merge,
   root: appRoot.toString(),
   tmp: appRoot.resolve('.tmp/webpack'),
-  resolve: function resolve(fileName) {
-    var filePath = fileName;
-    if (!path.isAbsolute(filePath) || !fileExists(filePath)) {
-      filePath = appRoot.resolve(fileName);
-      if (!fileExists(filePath)) {
-        try { filePath = require.resolve('malt-config/' + fileName); }
-        catch (e) { filePath = null; }
-      }
-      if (!fileExists(filePath)) {
-        filePath = path.resolve(__dirname, '..', 'etc', fileName);
-      }
-    }
-    return filePath;
-  },
   extend: function (/* fileName, ...transform, overrides */) {
     var args = Array.from(arguments);
     var fileName = args.shift();
@@ -36,9 +21,8 @@ module.exports = exports = {
       function (config, transform) {
         return transform(config);
       },
-      require(exports.resolve(fileName))
+      require(fileName)
     );
-    delete defaults.extend;
     return merge(defaults, overrides);
   },
   removeLoader: function (name, config) {
@@ -64,12 +48,7 @@ module.exports = exports = {
     return result;
   },
   getConfig: function () {
-    var filePath = appRoot.resolve('.hopsrc');
-    var config = Object.assign(
-      {},
-      appRoot.require('package.json').hops,
-      fileExists(filePath) ? require(filePath) : {}
-    );
+    var config = Object.assign({}, appRoot.require('package.json').hops);
     ['config', 'template'].forEach(function (key) {
       if (config[key] && !fileExists[config[key]]) {
         config[key] = appRoot.resolve(config[key]);

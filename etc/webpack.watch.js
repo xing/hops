@@ -1,15 +1,16 @@
+'use strict';
 
 var path = require('path');
 var util = require('util');
 
 var webpack = require('webpack');
 
-var helpers = require('../config/helpers');
+var helpers = require('./helpers');
 
 var pkg = require('../package.json');
 
 module.exports = helpers.extend(
- 'webpack.base.js',
+ './webpack.base.js',
   {
     entry: require.resolve('../lib/shim'),
     cache: {},

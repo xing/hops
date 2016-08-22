@@ -1,8 +1,9 @@
+'use strict';
 
 var path = require('path');
 
 var HopsPlugin = require('../plugin');
-var helpers = require('../config/helpers');
+var helpers = require('./helpers');
 
 module.exports = {
   context: helpers.root,
@@ -17,9 +18,12 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       loader: 'babel',
-      query: {
-        cacheDirectory: path.resolve(helpers.root, '.tmp', 'babel')
-      },
+      query: helpers.merge(
+        {
+          cacheDirectory: path.resolve(helpers.root, '.tmp', 'babel')
+        },
+        require('./babel.json')
+      ),
       exclude: /node_modules\//
     }, {
       test: /\.json$/,

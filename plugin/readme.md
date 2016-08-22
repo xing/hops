@@ -14,7 +14,7 @@ module.exports = {
 };
 ```
 
-The plugin's constructor takes a single options object as an argument, which is also passed along to the template. These options are also overrideable The supported options are documented below.
+The plugin's constructor takes a single options object as an argument, which is also passed along to the template. These options are also overridable using a hops field in your package.json. The supported options are documented below.
 
 
 ### Options

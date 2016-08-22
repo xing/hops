@@ -1,8 +1,9 @@
+'use strict';
 
-var helpers = require('../config/helpers');
+var helpers = require('./helpers');
 
 module.exports = helpers.extend(
-  'webpack.node.js',
+  './webpack.node.js',
   helpers.removeLoader.bind(null, 'babel'),
   {
     module: {
@@ -13,10 +14,13 @@ module.exports = helpers.extend(
       }, {
         test: /\.jsx?$/,
         loader: 'babel',
-        query: {
-          cacheDirectory: false,
-          plugins: (process.env.npm_config_coverage) ? ['__coverage__'] : []
-        },
+        query: helpers.merge(
+          {
+            cacheDirectory: false,
+            plugins: (process.env.npm_config_coverage) ? ['__coverage__'] : []
+          },
+          require('./babel.json')
+        ),
         exclude: [/\.test\.jsx?$/, /node_modules/, /.tmp/]
       }]
     }
