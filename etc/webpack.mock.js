@@ -1,10 +1,11 @@
+'use strict';
 
 var path = require('path');
 
-var helpers = require('../config/helpers');
+var helpers = require('./helpers');
 
 module.exports = helpers.extend(
-  'webpack.node.js',
+  './webpack.node.js',
   {
     entry: path.resolve(__dirname, '..', '.tmp', 'test'),
     output: {

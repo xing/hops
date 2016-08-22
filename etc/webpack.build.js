@@ -1,3 +1,4 @@
+'use strict';
 
 var path = require('path');
 var util = require('util');
@@ -5,12 +6,12 @@ var util = require('util');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var helpers = require('../config/helpers');
+var helpers = require('./helpers');
 
 var pkg = require('../package.json');
 
 module.exports = helpers.extend(
-  'webpack.base.js',
+  './webpack.base.js',
   helpers.removeLoader.bind(null, 'css'),
   {
     entry: require.resolve('../lib/shim'),
@@ -28,7 +29,7 @@ module.exports = helpers.extend(
       }]
     },
     hops: {
-      config: helpers.resolve('webpack.node.js'),
+      config: require.resolve('./webpack.node.js'),
       dll: [{
         path: util.format('hops-%s.js', pkg.version),
         source: path.resolve(helpers.tmp, 'build', 'hops.js')
