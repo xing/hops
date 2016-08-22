@@ -12,6 +12,9 @@ module.exports = helpers.extend(
  'webpack.base.js',
   {
     entry: require.resolve('../lib/shim'),
+    output: {
+      publicPath: 'http://0.0.0.0:8080/'
+    },
     cache: {},
     devtool: '#eval-source-map',
     devServer: {
