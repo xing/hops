@@ -46,11 +46,7 @@ Configuration.prototype.removePlugin = function (constructor) {
   }));
 };
 
-Configuration.create = function (options) {
-  return new Configuration(options);
-};
-
-module.exports = Configuration.create({
+module.exports = new Configuration({
   context: appRoot.toString(),
   entry: 'hops-entry-point',
   output: {
