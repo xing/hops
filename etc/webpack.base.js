@@ -4,7 +4,7 @@
 var path = require('path');
 
 var appRoot = require('app-root-path');
-var merge = require('webpack-merge').smart;
+var merge = require('webpack-merge');
 
 var HopsPlugin = require('../plugin');
 
@@ -63,12 +63,11 @@ module.exports = Configuration.create({
     loaders: [{
       test: /\.jsx?$/,
       loader: 'babel',
-      query: Object.assign(
-        {
-          cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel')
-        },
-        require('./babel.json')
-      ),
+      query: {
+        cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel'),
+        presets: ['es2015', 'stage-0', 'react'],
+        plugins: ['transform-runtime']
+      },
       exclude: /node_modules\//
     }, {
       test: /\.json$/,
