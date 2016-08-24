@@ -1,7 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
-var merge = require('webpack-merge').smart;
+var merge = require('webpack-merge');
 var appRoot = require('app-root-path');
 
 var defaults = {

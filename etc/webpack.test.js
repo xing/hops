@@ -7,17 +7,17 @@ module.exports = require('./webpack.node.js')
     loaders: [{
       test: /\.test\.jsx?$/,
       loader: 'babel',
+      query: {
+        presets: ['es2015', 'stage-0', 'react'],
+      },
       exclude: [/node_modules/, /.tmp/]
     }, {
       test: /\.jsx?$/,
       loader: 'babel',
-      query: Object.assign(
-        {
-          cacheDirectory: false,
-          plugins: (process.env.npm_config_coverage) ? ['__coverage__'] : []
-        },
-        require('./babel.json')
-      ),
+      query: {
+        presets: ['es2015', 'stage-0', 'react'],
+        plugins: (process.env.npm_config_coverage) ? ['__coverage__'] : []
+      },
       exclude: [/\.test\.jsx?$/, /node_modules/, /.tmp/]
     }]
   }

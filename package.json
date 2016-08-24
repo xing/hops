@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "next generation toolbox for ux craftspeople",
   "keywords": [
     "react",
@@ -16,7 +16,7 @@
     "poststart": "[ \"$NODE_ENV\" = \"production\" ] && http-server app/dist",
     "test": "istanbul test -x \"spec/**/*.js\" --root . --dir .tmp/coverage _mocha \"spec/**/*.js\"",
     "pretest": "npm run cleanup; mkdir -p .tmp/test; cd .tmp/test; npm init -y; npm install file:../../",
-    "cleanup": "rm -rf .tmp/coverage .tmp/test/{src,dist,.tmp,node_modules/hops}",
+    "cleanup": "rm -rf .tmp/coverage .tmp/test/{package.json,src,dist,.tmp,node_modules/hops}",
     "postversion": "git push && git push --tags"
   },
   "contributors": [
