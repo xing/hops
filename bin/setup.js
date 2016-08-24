@@ -22,7 +22,7 @@ Object.assign(pkg, {
     start: '[ "$NODE_ENV" != "production" ] && npm run watch || npm run build',
     watch: 'webpack-dev-server --hot --config node_modules/hops/etc/webpack.watch.js',
     build: 'webpack --progress --config node_modules/hops/etc/webpack.build.js',
-    test: 'mocha-webpack --reporter hops/reporter --webpack-config node_modules/hops/etc/webpack.test.js "src/**/*.test.js*"'
+    test: 'mocha-webpack --require source-map-support/register --reporter hops/reporter --webpack-config node_modules/hops/etc/webpack.test.js "src/**/*.test.js*"'
   },
   hops: { locations: ['/']}
 });
@@ -40,7 +40,6 @@ function copyDemoApp() {
 }
 
 if (
-  require.main === module &&
   path.resolve(__dirname, '..') !== rootPath &&
   !shell.test('-e', path.join(rootPath, pkg.main)) &&
   !process.env.HOPS_NO_BOOTSTRAP
@@ -48,6 +47,3 @@ if (
   updatePackage();
   copyDemoApp();
 }
-
-exports.updatePackage = updatePackage;
-exports.copyDemoApp = copyDemoApp;
