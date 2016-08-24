@@ -25,14 +25,12 @@ function fileExists(regex) {
 
 
 var jsRegex = /^main-[0-9a-f]+\.js$/;
-var cssRegex = /^main-[0-9a-f]+\.css$/;
 var htmlRegex = /^index\.html$/;
 
 
 describe('build: file creation', function () {
   it('should not already contain files', function () {
     assert(!fileExists(jsRegex), 'js file not there already');
-    assert(!fileExists(cssRegex), 'css file not there already');
     assert(!fileExists(htmlRegex), 'html shell not there already');
   });
   it('should create expected files', function (done) {
@@ -41,7 +39,6 @@ describe('build: file creation', function () {
       { silent: true },
       function () {
         assert(fileExists(jsRegex), 'js file created');
-        assert(fileExists(cssRegex), 'css file created');
         assert(fileExists(htmlRegex), 'html file created');
         done();
       }

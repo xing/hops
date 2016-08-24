@@ -1,15 +1,60 @@
+/* eslint-disable no-underscore-dangle */
 'use strict';
 
 var path = require('path');
 
-var HopsPlugin = require('../plugin');
-var helpers = require('./helpers');
+var appRoot = require('app-root-path');
+var merge = require('webpack-merge').smart;
 
-module.exports = {
-  context: helpers.root,
+var HopsPlugin = require('../plugin');
+
+function Configuration(options) {
+  Object.assign(this, options || {}, { _raw: options });
+}
+
+Configuration.prototype.expose = function () {
+  return Object.assign({}, this, { _wrapped: this });
+};
+
+Configuration.prototype.merge = function (options) {
+  return new Configuration(merge(this, options));
+};
+
+Configuration.prototype.modify = function (modify) {
+  return new Configuration(modify(Object.assign({}, this)));
+};
+
+Configuration.prototype.removeLoader = function (name) {
+  return new Configuration(Object.assign({}, this, {
+    module: Object.assign({}, this.module, {
+      loaders: this.module.loaders.filter(
+        function (loader) {
+          var json = JSON.stringify(loader);
+          var regexp = new RegExp('"' + name + '(-loader)?(\\?|")');
+          return (json.search(regexp) === -1);
+        }
+      )
+    })
+  }));
+};
+
+Configuration.prototype.removePlugin = function (constructor) {
+  return new Configuration(Object.assign({}, this, {
+    plugins: this.plugins.filter(function (plugin) {
+      return (plugin.constructor !== (constructor));
+    })
+  }));
+};
+
+Configuration.create = function (options) {
+  return new Configuration(options);
+};
+
+module.exports = Configuration.create({
+  context: appRoot.toString(),
   entry: 'hops-entry-point',
   output: {
-    path: path.resolve(helpers.root, 'dist'),
+    path: path.resolve(appRoot.toString(), 'dist'),
     publicPath: '/',
     filename: '[name].js',
     chunkFilename: 'chunk-[id].js'
@@ -18,9 +63,9 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       loader: 'babel',
-      query: helpers.merge(
+      query: Object.assign(
         {
-          cacheDirectory: path.resolve(helpers.root, '.tmp', 'babel')
+          cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel')
         },
         require('./babel.json')
       ),
@@ -60,9 +105,18 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'hops-entry-point': helpers.root
+      'hops-entry-point': appRoot.toString()
     },
     extensions: ['', '.js', '.jsx']
   },
-  plugins: [ new HopsPlugin(helpers.getConfig()) ]
-};
+  plugins: [
+    new HopsPlugin((function (config) {
+      ['config', 'template'].forEach(function (key) {
+        if (config[key]) {
+          config[key] = appRoot.resolve(config[key]);
+        }
+      });
+      return config;
+    })(appRoot.require('package.json').hops || {}))
+  ]
+});

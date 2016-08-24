@@ -9,7 +9,7 @@
     "start": "[ \"$NODE_ENV\" != \"production\" ] && npm run watch || npm run build",
     "watch": "webpack-dev-server --hot --config node_modules/hops/etc/webpack.watch.js",
     "build": "webpack --progress --config node_modules/hops/etc/webpack.build.js",
-    "test": "mocha-webpack --reporter hops/reporter --webpack-config node_modules/hops/etc/webpack.test.js \"src/**/*.test.js*\""
+    "test": "mocha-webpack --reporter hops/reporter --require source-map-support/register --webpack-config node_modules/hops/etc/webpack.test.js \"src/**/*.test.js*\""
   },
   "dependencies": {
     "hops": "file:.."

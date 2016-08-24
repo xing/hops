@@ -1,10 +1,8 @@
 'use strict';
 
-var path = require('path');
-
 var webpack = require('webpack');
-
-var helpers = require('./helpers');
+var merge = require('webpack-merge').smart;
+var appRoot = require('app-root-path');
 
 var defaults = {
   entry: {
@@ -18,27 +16,27 @@ var defaults = {
 };
 
 module.exports = [
-  helpers.merge(defaults, {
+  merge(defaults, {
     output: {
-      path: path.resolve(helpers.tmp, 'watch')
+      path: appRoot.resolve('.tmp/webpack/watch')
     },
     devtool: '#eval-source-map',
     plugins: [
       new webpack.DllPlugin({
-        context: helpers.root,
-        path: path.resolve(helpers.tmp, 'watch', '[name].json'),
+        context: appRoot.toString(),
+        path: appRoot.resolve('.tmp/webpack/watch/[name].json'),
         name: '__[name]__'
       })
     ]
   }),
-  helpers.merge(defaults, {
+  merge(defaults, {
     output: {
-      path: path.resolve(helpers.tmp, 'build')
+      path: appRoot.resolve('.tmp/webpack/build')
     },
     plugins: [
       new webpack.DllPlugin({
-        context: helpers.root,
-        path: path.resolve(helpers.tmp, 'build', '[name].json'),
+        context: appRoot.toString(),
+        path: appRoot.resolve('.tmp/webpack/build/[name].json'),
         name: '__[name]__'
       }),
       new webpack.DefinePlugin({

@@ -4,11 +4,11 @@
 var path = require('path');
 
 var webpack = require('webpack');
+var rootPath = require('app-root-path').toString();
 
-var helpers = require('../etc/helpers');
 var config = require('../etc/webpack.dll');
 
-if (path.resolve(__dirname, '..') !== helpers.root) {
+if (path.resolve(__dirname, '..') !== rootPath) {
   // eslint-disable-next-line no-console
   console.log('precompile dll');
   webpack(config).run(function(error) {
