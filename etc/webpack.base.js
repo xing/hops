@@ -8,8 +8,8 @@ var merge = require('webpack-merge');
 
 var HopsPlugin = require('../plugin');
 
-function Configuration(options) {
-  Object.assign(this, options || {}, { _raw: options });
+function Configuration(options, delta) {
+  Object.assign(this, options || {}, { _raw: delta || options });
 }
 
 Configuration.prototype.expose = function () {
@@ -17,7 +17,7 @@ Configuration.prototype.expose = function () {
 };
 
 Configuration.prototype.merge = function (options) {
-  return new Configuration(merge(this, options));
+  return new Configuration(merge(this, options), options);
 };
 
 Configuration.prototype.modify = function (modify) {
