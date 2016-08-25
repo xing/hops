@@ -41,7 +41,7 @@ Configuration.prototype.removeLoader = function (name) {
 Configuration.prototype.removePlugin = function (constructor) {
   return new Configuration(Object.assign({}, this, {
     plugins: this.plugins.filter(function (plugin) {
-      return (plugin.constructor !== (constructor));
+      return (String(plugin.constructor) !== String(constructor));
     })
   }));
 };
