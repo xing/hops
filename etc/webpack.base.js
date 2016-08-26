@@ -8,8 +8,8 @@ var merge = require('webpack-merge');
 
 var HopsPlugin = require('../plugin');
 
-function Configuration(options) {
-  Object.assign(this, options || {}, { _raw: options });
+function Configuration(options, delta) {
+  Object.assign(this, options || {}, { _raw: delta || options });
 }
 
 Configuration.prototype.expose = function () {
@@ -17,7 +17,7 @@ Configuration.prototype.expose = function () {
 };
 
 Configuration.prototype.merge = function (options) {
-  return new Configuration(merge(this, options));
+  return new Configuration(merge(this, options), options);
 };
 
 Configuration.prototype.modify = function (modify) {
@@ -41,7 +41,7 @@ Configuration.prototype.removeLoader = function (name) {
 Configuration.prototype.removePlugin = function (constructor) {
   return new Configuration(Object.assign({}, this, {
     plugins: this.plugins.filter(function (plugin) {
-      return (plugin.constructor !== (constructor));
+      return (String(plugin.constructor) !== String(constructor));
     })
   }));
 };
