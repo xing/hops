@@ -10,6 +10,9 @@
   ],
   "main": "lib/node.js",
   "browser": "lib/browser.js",
+  "bin": {
+    "hops": "bin/run.js"
+  },
   "scripts": {
     "install": "node bin/setup.js && node bin/precompile.js",
     "start": "cd app; rm -rf .tmp dist node_modules/hops; npm install; npm start",
