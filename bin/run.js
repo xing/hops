@@ -3,6 +3,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var util = require('util');
 var url = require('url');
 
 var webpack = require('webpack');
@@ -31,26 +32,56 @@ function requireConfig(fileName) {
 }
 
 /** @ignore */
-function build() {}
+function build() {
+  var webpackConfig = requireConfig('webpack.build.js');
+  webpack(webpackConfig).run(function(error, stats) {
+    // eslint-disable-next-line no-console
+    if (error) { console.log(error); }
+    // eslint-disable-next-line no-console
+    else { console.log(stats.toString({ chunks: false })); }
+  });
+}
+
+/** @ignore */
+function watch() {
+  var webpackConfig = requireConfig('webpack.watch.js');
+  webpack(webpackConfig).watch({}, function(error) {
+    // eslint-disable-next-line no-console
+    if (error) { console.log(error); }
+  });
+}
 
 /** @ignore */
 function serve() {
-  var Server = require('webpack-dev-server/lib/Server');
+  var Server = require('webpack-dev-server');
   var webpackConfig = requireConfig('webpack.serve.js');
-  var options = webpackConfig.devServer || {};
+  var options = Object.assign(
+    {},
+    {
+      hot: true,
+      inline: true,
+      contentBase: appRoot.resolve('dist'),
+      publicPath: webpackConfig.output.publicPath,
+      host: '0.0.0.0',
+      port: 8080,
+      noInfo: true,
+      stats: 'errors-only'
+    },
+    webpackConfig.devServer
+  );
   var server = new Server(webpack(webpackConfig), options);
   server.listen(options.port, options.host, function(err) {
     if (err) { throw err; }
     console.log(url.format({ // eslint-disable-line no-console
       protocol: options.https ? 'https' : 'http',
-      host: options.host,
+      hostname: options.host,
       port: options.port
     }));
   });
 }
 
 /** @ignore */
-function runTests() {
+function test() {
   var parseArgv = require('mocha-webpack/lib/cli/parseArgv').default;
   var prepareWebpack = require('mocha-webpack/lib/cli/prepareWebpack').default;
   var runner = require('mocha-webpack/lib/cli/runner');
@@ -65,7 +96,9 @@ function runTests() {
     (appRoot.require('package.json').hops || {}).mocha,
     parseArgv(process.argv.slice(3), true)
   );
-  options.webpackConfig = require('../etc/webpack.test.js');
+  options.webpackConfig = Object.assign(
+    require('../etc/webpack.test.js')
+  );
   prepareWebpack(options, function (err, webpackConfig) {
     if (err) {
       throw err;
@@ -77,14 +110,17 @@ function runTests() {
   });
 }
 
-/** @ignore */
-function start() {
-  return (process.env.NODE_ENV === 'production') ? build() : serve();
-}
+// eslint-disable-next-line no-console
+console.log(util.format(
+  'hops@%s: %s',
+  require('../package.json').version,
+  process.argv[2] || 'start'
+));
 
 switch (process.argv[2]) {
   case 'build': return build();
+  case 'watch': return watch();
   case 'serve': return serve();
-  case 'test': return runTests();
-  default: return start();
+  case 'test': return test();
+  default: return (process.env.NODE_ENV === 'production') ? build() : serve();
 }

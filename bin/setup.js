@@ -11,6 +11,7 @@ var path = require('path');
 
 var shell = require('shelljs');
 var rootPath = require('app-root-path').toString();
+var webpack = require('webpack');
 
 var pkgPath = path.resolve(rootPath, 'package.json');
 var pkg = require(pkgPath);
@@ -20,12 +21,7 @@ function updatePackage() {
   /* eslint-disable max-len */
   var newPkg = Object.assign({}, pkg, {
     main: 'src/main.js',
-    scripts: {
-      start: '[ "$NODE_ENV" != "production" ] && npm run watch || npm run build',
-      watch: 'webpack-dev-server --hot --config node_modules/hops/etc/webpack.watch.js',
-      build: 'webpack --progress --config node_modules/hops/etc/webpack.build.js',
-      test: 'mocha-webpack --require source-map-support/register --reporter hops/reporter --webpack-config node_modules/hops/etc/webpack.test.js "src/**/*.test.js*"'
-    },
+    scripts: { start: 'hops start', test: 'hops test' },
     hops: { locations: ['/']}
   });
   /* eslint-enable */
@@ -40,4 +36,13 @@ function copyDemoApp() {
 if (!pkg.scripts.start && !process.env.HOPS_NO_BOOTSTRAP) {
   updatePackage();
   copyDemoApp();
+}
+
+if (path.resolve(__dirname, '..') !== rootPath) {
+  // eslint-disable-next-line no-console
+  console.log('precompile dll');
+  webpack(require('../etc/webpack.dll')).run(function(error) {
+    // eslint-disable-next-line no-console
+    if (error) { console.log(error); }
+  });
 }
