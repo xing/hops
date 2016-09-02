@@ -6,9 +6,7 @@
   "license": "MIT",
   "repository": {},
   "scripts": {
-    "start": "[ \"$NODE_ENV\" != \"production\" ] && npm run watch || npm run build",
-    "watch": "hops serve",
-    "build": "webpack --progress --config node_modules/hops/etc/webpack.build.js",
+    "start": "hops start",
     "test": "hops test"
   },
   "dependencies": {

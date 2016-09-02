@@ -14,7 +14,7 @@
     "hops": "bin/run.js"
   },
   "scripts": {
-    "install": "node bin/setup.js && node bin/precompile.js",
+    "install": "node bin/setup.js",
     "start": "cd app; rm -rf .tmp dist node_modules/hops; npm install; npm start",
     "poststart": "[ \"$NODE_ENV\" = \"production\" ] && http-server app/dist",
     "test": "istanbul test -x \"spec/**/*.js\" --root . --dir .tmp/coverage _mocha \"spec/**/*.js\"",
