@@ -36,23 +36,18 @@ function processAssets(options, compilation) {
   options.dll.forEach(function(dll) {
     var source = fs.readFileSync(dll.source);
     compilation.assets[dll.path] = getAssetObject(source);
-    if (dll.path.lastIndexOf('.js') === (dll.path.length - 3)) {
-      options.js.push(dll.path);
-    }
-    else if (dll.path.lastIndexOf('.css') === (dll.path.length - 4)) {
-      options.css.push(dll.path);
-    }
   });
-  var jsAssets = getAssetPaths(compilation.assets, 'js').filter(function (js) {
-    return (options.js.indexOf(js) === -1);
-  });
+
+  var jsAssets = getAssetPaths(compilation.assets, 'js');
   var cssAssets = getAssetPaths(compilation.assets, 'css');
+
   var toPublic = function (relativePath) {
     return ((compilation.outputOptions.publicPath || '') + relativePath);
   };
+
   return {
-    js: options.js.concat(jsAssets).map(toPublic),
-    css: options.css.concat(cssAssets).map(toPublic)
+    js: jsAssets.map(toPublic),
+    css: cssAssets.map(toPublic)
   };
 }
 
@@ -121,12 +116,12 @@ Plugin.prototype.apply = function(compiler) {
   compiler.plugin('emit', function(compilation, callback) {
     var options = getOptions(compilation.options.hops);
     var renderEJS = ejs.compile(fs.readFileSync(options.template, 'utf-8'));
+    var assets = processAssets(options, compilation);
     renderer.createRenderer(options.config)
     .then(function (renderReact) {
       return Promise.all(options.locations.map(function (location) {
         return renderReact(location, options)
         .then(function (result) {
-          var assets = processAssets(options, compilation);
           var html = renderEJS(Object.assign({}, options, result, assets));
           compilation.assets[getFileName(location)] = getAssetObject(html);
         });
