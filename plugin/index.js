@@ -117,7 +117,10 @@ Plugin.prototype.apply = function(compiler) {
                 return (options.js.indexOf(js) === -1);
               })
             ),
-            css: options.css.concat(getAssetPaths(compilation.assets, 'css'))
+            css: options.css.concat(
+              getAssetPaths(compilation.assets, 'css').filter(function (css) {
+                return (options.css.indexOf(css) === -1);
+              }))
           }));
           compilation.assets[getFileName(location)] = getAssetObject(html);
         });
