@@ -28,7 +28,7 @@ function requireConfig(fileName) {
       filePath = path.resolve(__dirname, '..', 'etc', fileName);
     }
   }
-  return require(filePath);
+  return Object.assign({}, require(filePath));
 }
 
 /** @ignore */
@@ -67,6 +67,7 @@ function serve() {
       noInfo: true,
       stats: 'errors-only'
     },
+    (appRoot.require('package.json').hops || {}).server,
     webpackConfig.devServer
   );
   var server = new Server(webpack(webpackConfig), options);
@@ -85,27 +86,25 @@ function test() {
   var parseArgv = require('mocha-webpack/lib/cli/parseArgv').default;
   var prepareWebpack = require('mocha-webpack/lib/cli/prepareWebpack').default;
   var runner = require('mocha-webpack/lib/cli/runner');
+  var webpackConfig = requireConfig('webpack.test.js');
   var options = Object.assign(
     parseArgv(),
     {
       reporter: 'hops/reporter',
       require: ['source-map-support/register'],
-      webpackConfig: requireConfig('webpack.test.js'),
+      webpackConfig: webpackConfig,
       files: ['src/**/*.test.js*']
     },
     (appRoot.require('package.json').hops || {}).mocha,
-    parseArgv(process.argv.slice(3), true)
+    webpackConfig.testRunner
   );
-  options.webpackConfig = Object.assign(
-    require('../etc/webpack.test.js')
-  );
-  prepareWebpack(options, function (err, webpackConfig) {
+  prepareWebpack(options, function (err, config) {
     if (err) {
       throw err;
     } else if (options.watch) {
-      runner.watch(options, webpackConfig);
+      runner.watch(options, config);
     } else {
-      runner.run(options, webpackConfig);
+      runner.run(options, config);
     }
   });
 }
