@@ -12,16 +12,6 @@ module.exports = require('./webpack.base.js').merge({
   entry: require.resolve('../lib/shim'),
   cache: {},
   devtool: '#eval-source-map',
-  devServer: {
-    contentBase: appRoot.resolve('dist'),
-    host: '0.0.0.0',
-    port: 8080,
-    noInfo: true,
-    watchOptions: {
-      aggregateTimeout: 100
-    },
-    stats: 'errors-only'
-  },
   hops: {
     dll: [{
       path: util.format('hops-%s.js', pkg.version),

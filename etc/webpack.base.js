@@ -12,10 +12,6 @@ function Configuration(options, delta) {
   Object.assign(this, options || {}, { _raw: delta || options });
 }
 
-Configuration.prototype.expose = function () {
-  return Object.assign({}, this, { _wrapped: this });
-};
-
 Configuration.prototype.merge = function (options) {
   return new Configuration(merge(this, options), options);
 };

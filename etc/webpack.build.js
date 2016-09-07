@@ -31,6 +31,7 @@ module.exports = require('./webpack.base.js').merge({
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false, unused: true, 'dead_code': true },
       output: { comments: false }
-    })
+    }),
+    new webpack.ProgressPlugin()
   ]
 });
