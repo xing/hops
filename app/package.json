@@ -6,8 +6,8 @@
   "license": "MIT",
   "repository": {},
   "scripts": {
-    "start": "hops start",
-    "test": "hops test"
+    "start": "hops",
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "hops": "file:.."
@@ -16,5 +16,33 @@
     "locations": [
       "/"
     ]
+  },
+  "jest": {
+    "cacheDirectory": ".tmp/jest",
+    "moduleNameMapper": {
+      "^.+\\.(html|css|svg|jpg|png|gif)$": "identity-obj-proxy"
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ],
+      "stage-0",
+      "react"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    }
   }
 }

@@ -1,19 +1,18 @@
-/* eslint-env node, mocha */
+/* eslint-env jest */
+
+jest.mock('react/lib/ReactDefaultInjection');
 
 import React from 'react';
-import assert from 'assert';
-import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
-import { Home as HomeContainer } from './main';
-
-const Home = HomeContainer.WrappedComponent;
+import { Home } from './main';
 
 describe('<Home />', () => {
-  var home = shallow(<Home />);
-  it('should contain an h1', () => {
-    assert.equal(home.find('h1').length, 1);
-  });
-  it('should have class', () => {
-    assert.ok(home.props().className.match(/style-headline/));
+  it('works as expected', () => {
+    const component = renderer.create(
+      <Home.WrappedComponent update={()=>{}}/>
+    );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });

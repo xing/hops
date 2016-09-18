@@ -18,14 +18,28 @@ var pkg = require(pkgPath);
 
 function updatePackage() {
   shell.echo('update package.json');
-  /* eslint-disable max-len */
-  var newPkg = Object.assign({}, pkg, {
+  Object.assign(pkg, {
     main: 'src/main.js',
-    scripts: { start: 'hops start', test: 'hops test' },
-    hops: { locations: ['/']}
+    scripts: {
+      start: 'hops',
+      test: 'NODE_ENV=test jest'
+    },
+    hops: {
+      locations: ['/']
+    },
+    jest: {
+      cacheDirectory: '.tmp',
+      moduleNameMapper: {
+        '^.+\\.(html|css|svg|jpg|png|gif)$': 'identity-obj-proxy'
+      }
+    },
+    babel: {
+      presets: [['es2015', { modules: false }], 'stage-0', 'react'],
+      plugins: ['transform-runtime'],
+      env: { test: { plugins: ['transform-es2015-modules-commonjs']}}
+    }
   });
-  /* eslint-enable */
-  fs.writeFileSync(pkgPath, JSON.stringify(newPkg, null, 2));
+  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
 }
 
 function copyDemoApp() {

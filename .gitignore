@@ -1,7 +1,6 @@
-tmp
 .tmp
 coverage
-docs
+__snapshots__
 node_modules
 npm-debug.log
 .DS_Store

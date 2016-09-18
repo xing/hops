@@ -61,7 +61,6 @@ module.exports = {
     'yoda': [2, 'never']
   },
   'env': {
-    'es6': true,
     'node': true,
     'browser': true
   }

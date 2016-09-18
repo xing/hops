@@ -81,34 +81,6 @@ function serve() {
   });
 }
 
-/** @ignore */
-function test() {
-  var parseArgv = require('mocha-webpack/lib/cli/parseArgv').default;
-  var prepareWebpack = require('mocha-webpack/lib/cli/prepareWebpack').default;
-  var runner = require('mocha-webpack/lib/cli/runner');
-  var webpackConfig = requireConfig('webpack.test.js');
-  var options = Object.assign(
-    parseArgv(),
-    {
-      reporter: 'hops/reporter',
-      require: ['source-map-support/register'],
-      webpackConfig: webpackConfig,
-      files: ['src/**/*.test.js*']
-    },
-    (appRoot.require('package.json').hops || {}).mocha,
-    webpackConfig.testRunner
-  );
-  prepareWebpack(options, function (err, config) {
-    if (err) {
-      throw err;
-    } else if (options.watch) {
-      runner.watch(options, config);
-    } else {
-      runner.run(options, config);
-    }
-  });
-}
-
 // eslint-disable-next-line no-console
 console.log(util.format(
   'hops@%s: %s',
@@ -120,6 +92,5 @@ switch (process.argv[2]) {
   case 'build': return build();
   case 'watch': return watch();
   case 'serve': return serve();
-  case 'test': return test();
   default: return (process.env.NODE_ENV === 'production') ? build() : serve();
 }

@@ -56,9 +56,7 @@ module.exports = new Configuration({
       test: /\.jsx?$/,
       loader: 'babel',
       query: {
-        cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel'),
-        presets: ['es2015', 'stage-0', 'react'],
-        plugins: ['transform-runtime']
+        cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel')
       },
       exclude: /node_modules\//
     }, {
@@ -80,7 +78,7 @@ module.exports = new Configuration({
         'postcss'
       ]
     }, {
-      test: /\.((html)|(svg)|(jpeg))$/,
+      test: /\.((html)|(svg)|(jpe?g))$/,
       loader: 'file'
     }, {
       test: /\.((png)|(gif))$/,
