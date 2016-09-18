@@ -6,10 +6,8 @@
   "license": "MIT",
   "repository": {},
   "scripts": {
-    "start": "[ \"$NODE_ENV\" != \"production\" ] && npm run watch || npm run build",
-    "watch": "webpack-dev-server --hot --config node_modules/hops/etc/webpack.watch.js",
-    "build": "webpack --progress --config node_modules/hops/etc/webpack.build.js",
-    "test": "mocha-webpack --require source-map-support/register --reporter hops/reporter --webpack-config node_modules/hops/etc/webpack.test.js \"src/**/*.test.js*\""
+    "start": "hops",
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "hops": "file:.."
@@ -18,5 +16,33 @@
     "locations": [
       "/"
     ]
+  },
+  "jest": {
+    "cacheDirectory": ".tmp/jest",
+    "moduleNameMapper": {
+      "^.+\\.(html|css|svg|jpg|png|gif)$": "identity-obj-proxy"
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ],
+      "stage-0",
+      "react"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    }
   }
 }
