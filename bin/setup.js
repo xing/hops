@@ -18,13 +18,11 @@ var pkg = require(pkgPath);
 
 function updatePackage() {
   shell.echo('update package.json');
-  /* eslint-disable max-len */
   var newPkg = Object.assign({}, pkg, {
     main: 'src/main.js',
     scripts: { start: 'hops start', test: 'hops test' },
     hops: { locations: ['/']}
   });
-  /* eslint-enable */
   fs.writeFileSync(pkgPath, JSON.stringify(newPkg, null, 2));
 }
 
