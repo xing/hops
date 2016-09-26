@@ -16,7 +16,7 @@ var options = Object.assign(
     webpackConfig: webpackConfig,
     files: ['src/**/*.test.js*']
   },
-  util.pkg.testRunner,
+  util.config.testRunner,
   webpackConfig.testRunner
 );
 

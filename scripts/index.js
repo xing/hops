@@ -12,13 +12,10 @@ function fileExists(filePath) {
 }
 
 /** @ignore */
-function findFile(fileName, _prefixes) {
+function findFile(fileName, prefixes) {
   var filePath = fileName;
-  var prefixes = [].concat(_prefixes);
   while (!fileExists(filePath) && prefixes.length) {
-    try {
-      filePath = require.resolve(path.join(prefixes.shift(), fileName));
-    }
+    try { filePath = require.resolve(path.join(prefixes.shift(), fileName)); }
     catch (e) {} // eslint-disable-line no-empty
   }
   if (!fileExists(filePath)) {
@@ -27,20 +24,22 @@ function findFile(fileName, _prefixes) {
   return filePath;
 }
 
+var config = appRoot.require('package.json').hops || {};
+
 module.exports = {
   requireConfig: function (fileName) {
-    return Object.assign({}, require(findFile(fileName, [
+    return Object.assign({}, require(findFile(fileName, [].concat(
       appRoot.toString(),
-      'malt-config',
+      config.configPath || [],
       path.resolve(__dirname, '..', 'etc')
-    ])));
+    ))));
   },
   runScript: function (fileName) {
-    return require(findFile(fileName, [
+    return require(findFile(fileName, [].concat(
       appRoot.resolve('scripts'),
-      'malt-scripts',
+      config.scriptPath || [],
       __dirname
-    ]));
+    )));
   },
-  pkg: appRoot.require('package.json').hops || {}
+  config: config
 };

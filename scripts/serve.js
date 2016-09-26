@@ -22,7 +22,7 @@ var options = Object.assign(
     noInfo: true,
     stats: 'errors-only'
   },
-  util.pkg.devServer,
+  util.config.devServer,
   webpackConfig.devServer
 );
 
