@@ -21,5 +21,4 @@ module.exports = require('./webpack.node.js')
       exclude: [/\.test\.jsx?$/, /node_modules/, /.tmp/]
     }]
   }
-})
-.expose();
+});
