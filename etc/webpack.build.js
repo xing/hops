@@ -26,7 +26,11 @@ module.exports = require('./webpack.base.js').merge({
       manifest: appRoot.require('.tmp/webpack/build/hops.json')
     }),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new webpack.LoaderOptionsPlugin({ minimize: true, debug: false }),
+    new webpack.LoaderOptionsPlugin({
+      debug: false,
+      minimize: true,
+      sourceMap: false
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false, unused: true, 'dead_code': true },
