@@ -57,8 +57,7 @@ module.exports = new Configuration({
       loader: 'babel',
       query: {
         cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel'),
-        presets: ['es2015', 'stage-0', 'react'],
-        plugins: ['transform-runtime']
+        presets: ['es2015', 'stage-0', 'react']
       },
       exclude: /node_modules\//
     }, {
