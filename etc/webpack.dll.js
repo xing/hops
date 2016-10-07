@@ -6,7 +6,7 @@ var appRoot = require('app-root-path');
 
 var defaults = {
   entry: {
-    hops: ['hops']
+    hops: ['babel-polyfill', 'hops']
   },
   output: {
     filename: '[name].js',

@@ -57,8 +57,7 @@ module.exports = new Configuration({
       loader: 'babel',
       query: {
         cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel'),
-        presets: ['es2015', 'stage-0', 'react'],
-        plugins: ['transform-runtime']
+        presets: ['es2015', 'stage-0', 'react']
       },
       exclude: /node_modules\//
     }, {
@@ -87,13 +86,11 @@ module.exports = new Configuration({
       loader: 'url?limit=100000'
     }]
   },
-  postcss: function () {
-    return [
-      require('postcss-cssnext')({
-        browsers: '> 1%, last 2 versions'
-      })
-    ];
-  },
+  postcss: [
+    require('postcss-cssnext')({
+      browsers: '> 1%, last 2 versions'
+    })
+  ],
   resolve: {
     alias: {
       'hops-entry-point': appRoot.toString()
