@@ -5,6 +5,8 @@ var util = require('util');
 var webpack = require('webpack');
 var appRoot = require('app-root-path');
 
+var HopsPlugin = require('../plugin');
+
 var pkg = require('../package.json');
 
 module.exports = require('./webpack.base.js')
@@ -32,14 +34,14 @@ module.exports = require('./webpack.base.js')
       ]
     }]
   },
-  hops: {
-    config: require.resolve('./webpack.node.js'),
-    dll: [{
-      path: util.format('hops-%s.js', pkg.version),
-      source: appRoot.resolve('.tmp/webpack/build/hops.js')
-    }]
-  },
   plugins: [
+    new HopsPlugin({
+      config: require.resolve('./webpack.node.js'),
+      dll: [{
+        path: util.format('hops-%s.js', pkg.version),
+        source: appRoot.resolve('.tmp/webpack/build/hops.js')
+      }]
+    }),
     new webpack.DllReferencePlugin({
       context: appRoot.toString(),
       manifest: appRoot.require('.tmp/webpack/build/hops.json')
