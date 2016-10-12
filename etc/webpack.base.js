@@ -5,6 +5,7 @@ var path = require('path');
 
 var appRoot = require('app-root-path');
 var merge = require('webpack-merge');
+var webpack = require('webpack');
 
 var HopsPlugin = require('../plugin');
 
@@ -86,13 +87,6 @@ module.exports = new Configuration({
       loader: 'url?limit=100000'
     }]
   },
-  postcss: function () {
-    return [
-      require('postcss-cssnext')({
-        browsers: '> 1%, last 2 versions'
-      })
-    ];
-  },
   resolve: {
     alias: {
       'hops-entry-point': appRoot.toString()
@@ -100,13 +94,14 @@ module.exports = new Configuration({
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
-    new HopsPlugin((function (config) {
-      ['config', 'template'].forEach(function (key) {
-        if (config[key]) {
-          config[key] = appRoot.resolve(config[key]);
-        }
-      });
-      return config;
-    })(appRoot.require('package.json').hops || {}))
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          require('postcss-cssnext')({
+            browsers: '> 1%, last 2 versions'
+          })
+        ]
+      }
+    })
   ]
 });

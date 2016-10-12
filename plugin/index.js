@@ -10,6 +10,7 @@ var fs = require('fs');
 var path = require('path');
 
 var ejs = require('ejs');
+var appRoot = require('app-root-path');
 
 var renderer = require('./renderer');
 
@@ -60,22 +61,22 @@ function getFileName(location) {
   return path.join.apply(path, parts);
 }
 
+/** @ignore */
+function getOptions() {
+  var options = appRoot.require('./package.json').hops || {};
+  if (options.config) {
+    options.config = appRoot.resolve(options.config);
+  }
+  if (options.template) {
+    options.template = appRoot.resolve(options.template);
+  }
+  return options;
+}
+
 /**
  * @description creates hops webpack plugin instance
  *
  * @class
- * @param {?Object}   options
- * @param {?string[]} options.locations
- * @param {?string}   options.template
- * @param {?string}   options.config
- * @param {?string}   options.chunkPrefix
- */
-function Plugin(options) { this.options = options; }
-
-/**
- * @description augments compilation options with global and instance defaults
- *
- * @private
  *
  * @param {?Object}   options
  * @param {?string[]} options.locations
@@ -84,22 +85,21 @@ function Plugin(options) { this.options = options; }
  * @param {?Object[]} options.dll
  * @param {?string[]} options.css
  * @param {?string[]} options.js
- * @return {Object}
  */
-Plugin.prototype.getOptions = function (options) {
-  return Object.assign(
+function Plugin(options) {
+  this.options = Object.assign(
     {
-      locations: [],
+      locations: ['/'],
       template: path.resolve(__dirname, './template.ejs'),
       config: null,
       dll: [],
       css: [],
       js: []
     },
-    this.options,
+    getOptions(),
     options
   );
-};
+}
 
 /**
  * @description hooks into webpack compiler lifecycle and produce html
@@ -110,9 +110,8 @@ Plugin.prototype.getOptions = function (options) {
  * @return {undefined}
  */
 Plugin.prototype.apply = function(compiler) {
-  var getOptions = this.getOptions.bind(this);
+  var options = this.options;
   compiler.plugin('emit', function(compilation, callback) {
-    var options = getOptions(compilation.options.hops);
     var assets = processAssets(options, compilation);
     var renderEJS = ejs.compile(fs.readFileSync(options.template, 'utf-8'));
     Object.assign(compilation.assets, assets.dll);
