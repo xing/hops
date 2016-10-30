@@ -40,7 +40,7 @@ exports.createRenderer = function (configFile) {
     return new Promise(function (resolve, reject) {
       var mfs = new MemoryFS();
       var config = require(configFile);
-      var compiler = webpack(config);
+      var compiler = webpack(config.clean ? config.clean() : config);
       compiler.outputFileSystem = mfs;
       compiler.run(function(compileError) {
         if (compileError) { reject(compileError); }

@@ -28,11 +28,12 @@ var config = appRoot.require('package.json').hops || {};
 
 module.exports = {
   requireConfig: function (fileName) {
-    return Object.assign({}, require(findFile(fileName, [].concat(
+    var result = require(findFile(fileName, [].concat(
       appRoot.toString(),
       config.configPath || [],
       path.resolve(__dirname, '..', 'etc')
-    ))));
+    )));
+    return result.clean ? result.clean() : result;
   },
   runScript: function (fileName) {
     return require(findFile(fileName, [].concat(

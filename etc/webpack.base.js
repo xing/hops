@@ -5,9 +5,6 @@ var path = require('path');
 
 var appRoot = require('app-root-path');
 var merge = require('webpack-merge');
-var webpack = require('webpack');
-
-var HopsPlugin = require('../plugin');
 
 function Configuration(options, delta) {
   Object.assign(this, options || {}, { _raw: delta || options });
@@ -21,12 +18,18 @@ Configuration.prototype.modify = function (modify) {
   return new Configuration(modify(Object.assign({}, this)));
 };
 
+Configuration.prototype.clean = function () {
+  var config = Object.assign({}, this);
+  delete config._raw;
+  return config;
+};
+
 Configuration.prototype.removeLoader = function (name) {
   return new Configuration(Object.assign({}, this, {
     module: Object.assign({}, this.module, {
-      loaders: this.module.loaders.filter(
-        function (loader) {
-          var json = JSON.stringify(loader);
+      rules: this.module.rules.filter(
+        function (rule) {
+          var json = JSON.stringify(rule);
           var regexp = new RegExp('"' + name + '(-loader)?(\\?|")');
           return (json.search(regexp) === -1);
         }
@@ -53,55 +56,66 @@ module.exports = new Configuration({
     chunkFilename: 'chunk-[id].js'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
-      loader: 'babel',
-      query: {
-        cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel'),
-        presets: ['es2015', 'stage-0', 'react']
-      },
+      use: [{
+        loader: 'babel',
+        options: {
+          cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel'),
+          presets: ['es2015', 'stage-0', 'react']
+        }
+      }],
       exclude: /node_modules\//
     }, {
       test: /\.json$/,
-      loader: 'json'
+      use: {
+        loader: 'json'
+      }
     }, {
       test: /\.css$/,
-      loaders: [
+      use: [
         'style',
         {
           loader: 'css',
-          query: {
+          options: {
             sourceMap: true,
             modules: true,
             localIdentName: '[folder]-[name]-[local]-[hash:base64:5]',
             importLoaders: 1
           }
         },
-        'postcss'
+        {
+          loader: 'postcss',
+          options: {
+            plugins: function () {
+              return [
+                require('postcss-cssnext')({
+                  browsers: '> 1%, last 2 versions'
+                })
+              ];
+            }
+          }
+        }
       ]
     }, {
       test: /\.((html)|(svg)|(jpeg))$/,
-      loader: 'file'
+      use: {
+        loader: 'file'
+      }
     }, {
       test: /\.((png)|(gif))$/,
-      loader: 'url?limit=100000'
+      use: {
+        loader: 'url',
+        options: {
+          limit: 10000
+        }
+      }
     }]
   },
   resolve: {
     alias: {
       'hops-entry-point': appRoot.toString()
     },
-    extensions: ['', '.js', '.jsx']
-  },
-  plugins: [
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [
-          require('postcss-cssnext')({
-            browsers: '> 1%, last 2 versions'
-          })
-        ]
-      }
-    })
-  ]
+    extensions: ['.js', '.jsx']
+  }
 });
