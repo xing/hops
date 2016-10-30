@@ -42,7 +42,6 @@ module.exports = [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': '"production"'
       }),
-      new webpack.LoaderOptionsPlugin({ minimize: true, debug: false }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false, unused: true, 'dead_code': true },

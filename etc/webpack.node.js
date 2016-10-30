@@ -1,13 +1,12 @@
 'use strict';
 
-var nodeExternals = require('webpack-node-externals');
-
-var HopsPlugin = require('../plugin');
-
 module.exports = require('./webpack.base.js')
-.removePlugin(HopsPlugin)
 .removeLoader('css')
-.modify(function (config) { delete config.resolve.mainFields; return config; })
+.modify(function (config) {
+  delete config.resolve.mainFields;
+  config.resolve.aliasFields = [];
+  return config;
+})
 .merge({
   target: 'node',
   output: {
@@ -15,25 +14,24 @@ module.exports = require('./webpack.base.js')
     libraryTarget: 'commonjs2'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.css$/,
-      loaders: [
+      use: [
+        'style',
         {
           loader: 'css-loader/locals',
-          query: {
-            sourceMap: true,
+          options: {
+            sourceMap: false,
             modules: true,
-            localIdentName: '[folder]-[name]-[local]-[hash:base64:5]',
-            importLoaders: 1
+            localIdentName: '[folder]-[name]-[local]-[hash:base64:5]'
           }
-        },
-        'postcss'
+        }
       ]
     }]
   },
   devtool: '#inline-source-map',
-  externals: [nodeExternals()],
-  cache: {},
+  externals: [require('webpack-node-externals')()],
+  cache: false,
   resolve: {
     mainFields: ['main']
   }
