@@ -17,7 +17,6 @@ module.exports = require('./webpack.base.js')
     rules: [{
       test: /\.css$/,
       use: [
-        'style',
         {
           loader: 'css-loader/locals',
           options: {
@@ -31,7 +30,6 @@ module.exports = require('./webpack.base.js')
   },
   devtool: '#inline-source-map',
   externals: [require('webpack-node-externals')()],
-  cache: false,
   resolve: {
     mainFields: ['main']
   }
