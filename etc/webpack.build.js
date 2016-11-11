@@ -31,18 +31,7 @@ module.exports = require('./webpack.base.js')
             importLoaders: 1
           }
         },
-        {
-          loader: 'postcss',
-          options: {
-            plugins: function () {
-              return [
-                require('postcss-cssnext')({
-                  browsers: '> 1%, last 2 versions'
-                })
-              ];
-            }
-          }
-        }
+        'postcss'
       ]
     }]
   },
