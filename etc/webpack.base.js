@@ -4,6 +4,8 @@
 var path = require('path');
 
 var appRoot = require('app-root-path');
+
+var webpack = require('webpack');
 var merge = require('webpack-merge');
 
 function Configuration(options, delta) {
@@ -84,18 +86,7 @@ module.exports = new Configuration({
             importLoaders: 1
           }
         },
-        {
-          loader: 'postcss',
-          options: {
-            plugins: function () {
-              return [
-                require('postcss-cssnext')({
-                  browsers: '> 1%, last 2 versions'
-                })
-              ];
-            }
-          }
-        }
+        'postcss'
       ]
     }, {
       test: /\.((html)|(svg)|(jpeg))$/,
@@ -117,5 +108,16 @@ module.exports = new Configuration({
       'hops-entry-point': appRoot.toString()
     },
     extensions: ['.js', '.jsx']
-  }
+  },
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      test: /\.css$/,
+      options: {
+        postcss: {
+          plugins: [require('postcss-cssnext')]
+        },
+        context: __dirname
+      }
+    })
+  ]
 });
