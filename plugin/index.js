@@ -120,8 +120,12 @@ Plugin.prototype.apply = function(compiler) {
       return Promise.all(options.locations.map(function (location) {
         return renderReact(location, options)
         .then(function (result) {
-          var html = renderEJS(Object.assign({}, options, result, assets));
-          compilation.assets[getFileName(location)] = getAssetObject(html);
+          try {
+            var html = renderEJS(Object.assign({}, options, result, assets));
+            compilation.assets[getFileName(location)] = getAssetObject(html);
+          } catch (error) { // eslint-disable-next-line no-console
+            console.log('[HOPS PLUGIN ERROR]:', error);
+          }
         });
       }));
     })
