@@ -16,7 +16,7 @@ module.exports = require('./webpack.node.js')
     }, {
       test: /\.jsx?$/,
       use: {
-        loader: 'babel',
+        loader: 'babel-loader',
         options: {
           presets: ['es2015', 'stage-0', 'react'],
           plugins: (process.env.npm_config_coverage) ? ['__coverage__'] : []
