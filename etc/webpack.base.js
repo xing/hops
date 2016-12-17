@@ -61,7 +61,7 @@ module.exports = new Configuration({
     rules: [{
       test: /\.jsx?$/,
       use: [{
-        loader: 'babel',
+        loader: 'babel-loader',
         options: {
           cacheDirectory: path.resolve(appRoot.toString(), '.tmp', 'babel'),
           presets: ['es2015', 'stage-0', 'react']
@@ -76,9 +76,9 @@ module.exports = new Configuration({
     }, {
       test: /\.css$/,
       use: [
-        'style',
+        'style-loader',
         {
-          loader: 'css',
+          loader: 'css-loader',
           options: {
             sourceMap: true,
             modules: true,
@@ -86,17 +86,17 @@ module.exports = new Configuration({
             importLoaders: 1
           }
         },
-        'postcss'
+        'postcss-loader'
       ]
     }, {
       test: /\.((html)|(svg)|(jpeg))$/,
       use: {
-        loader: 'file'
+        loader: 'file-loader'
       }
     }, {
       test: /\.((png)|(gif))$/,
       use: {
-        loader: 'url',
+        loader: 'url-loader',
         options: {
           limit: 10000
         }

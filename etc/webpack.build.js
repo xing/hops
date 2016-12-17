@@ -21,9 +21,9 @@ module.exports = require('./webpack.base.js')
     rules: [{
       test: /\.css$/,
       use: [
-        'style',
+        'style-loader',
         {
-          loader: 'css',
+          loader: 'css-loader',
           options: {
             sourceMap: false,
             modules: true,
@@ -31,7 +31,7 @@ module.exports = require('./webpack.base.js')
             importLoaders: 1
           }
         },
-        'postcss'
+        'postcss-loader'
       ]
     }]
   },
