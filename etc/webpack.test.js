@@ -7,7 +7,7 @@ module.exports = require('./webpack.node.js')
     rules: [{
       test: /\.test\.jsx?$/,
       use: {
-        loader: 'babel',
+        loader: 'babel-loader',
         options: {
           presets: ['es2015', 'stage-0', 'react'],
         }
