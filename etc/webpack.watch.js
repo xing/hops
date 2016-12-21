@@ -14,6 +14,9 @@ module.exports = require('./webpack.base.js').merge({
   entry: require.resolve('../lib/shim'),
   cache: {},
   devtool: '#eval-source-map',
+  performance: {
+    hints: false
+  },
   plugins: [
     new HopsPlugin({
       config: require.resolve('./webpack.node.js'),
