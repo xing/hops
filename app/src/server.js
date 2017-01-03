@@ -20,9 +20,9 @@ export default (req, res) => {
     const result = context.getResult();
 
     if (result.redirect) {
-      res.writeHead(301, {
-        Location: result.redirect.pathname
-      });
+
+      res.writeHead(301, { Location: result.redirect.pathname });
+
       res.end();
     }
     else {
@@ -50,9 +50,8 @@ const template = markup => (
       <title>Hops Example</title>
     </head>
     <body>
-      <div id="main">
-        ${markup}
-      </div>
+      <div id="main">${markup}</div>
+      <script src="/main-${ require('../package.json').version }.js"></script>
     </body>
-  </html>`;
-)
+  </html>`
+);

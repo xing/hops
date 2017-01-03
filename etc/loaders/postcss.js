@@ -9,7 +9,7 @@ var cssLoaderOptions = {
 };
 
 
-exports.default = {
+exports.build = {
   test: /\.css$/,
   use: [
     'style-loader',

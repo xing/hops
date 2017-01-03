@@ -1,22 +1,36 @@
 'use strict';
 
 var webpack = require('webpack');
+var appRoot = require('app-root-path');
 
 var HopsPlugin = require('../plugin');
+
+var pkg = appRoot.require('package.json');
 
 
 module.exports = {
   entry: require.resolve('../lib/shim'),
-  output: require('./partials/output').default,
-  context: require('./partials/context').default,
-  resolve: require('./partials/resolve').default,
+  output: {
+    path: appRoot.resolve('dist'),
+    publicPath: '/',
+    filename: '[name]-' + pkg.version + '.js',
+    chunkFilename: 'chunk-[id]-' + pkg.version + '.js'
+  },
+  context: appRoot.toString(),
+  resolve: {
+    alias: {
+      'hops-entry-point': appRoot.toString()
+    },
+    mainFields: ['hopsBrowser', 'browser', 'main'],
+    extensions: ['.js', '.jsx']
+  },
   module: {
     rules: [
-      require('./partials/babel').default,
-      require('./partials/postcss').build,
-      require('./partials/json').default,
-      require('./partials/file').default,
-      require('./partials/url').default
+      require('./loaders/babel').default,
+      require('./loaders/postcss').build,
+      require('./loaders/json').default,
+      require('./loaders/file').default,
+      require('./loaders/url').default
     ]
   },
   plugins: [
@@ -27,7 +41,6 @@ module.exports = {
       minimize: true,
       sourceMap: false
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false, unused: true, 'dead_code': true },
       output: { comments: false }

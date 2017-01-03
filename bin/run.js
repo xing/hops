@@ -16,20 +16,24 @@ function runCommand(command, config) {
   switch (command) {
     case 'start':
       command = (process.env.NODE_ENV === 'production') ? 'build' : 'develop';
-      return runCommand(command);
+      runCommand(command, config);
+      break;
     case 'build':
       var buildConfig = require(config.configs.build);
-      return webpack(buildConfig).run(function(error, stats) {
+      webpack(buildConfig).run(function(error, stats) {
         if (error) { util.log(error); }
         else {
           util.log(stats.toString({ chunks: false }));
         }
       });
+      break;
     case 'develop':
       var developConfig = require(config.configs.develop);
       var serverConfig = developConfig.devServer;
-      var server = new WebpackServer(webpack(developConfig), serverConfig);
-      return server.listen(serverConfig.port, serverConfig.host, function(err) {
+      var compiler = webpack(developConfig);
+      var server = new WebpackServer(compiler, serverConfig);
+
+      server.listen(serverConfig.port, serverConfig.host, function(err) {
         if (err) { throw err; }
         util.log(url.format({
           protocol: serverConfig.https ? 'https' : 'http',
@@ -37,6 +41,7 @@ function runCommand(command, config) {
           port: serverConfig.port
         }));
       });
+      break;
     default:
       throw new Error('unknown command: ' + command);
   }
