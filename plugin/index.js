@@ -61,6 +61,10 @@ Plugin.prototype.apply = function(compiler) {
       var webpackConfig = require(config.configs.render);
       var transpilation = util.transpile(webpackConfig);
       return transpilation.then(function (handle) {
+        // eslint-disable-next-line no-underscore-dangle
+        if (handle.__esModule) {
+          handle = handle.default;
+        }
         return Promise.all(config.locations.map(function (location) {
           return new Promise(function (resolve, reject) {
             var req = mocks.createRequest({

@@ -8,6 +8,10 @@ var promise = util.loadConfig().then(function (config) {
 
 module.exports = function (req, res, next) {
   promise.then(function (handle) {
+    // eslint-disable-next-line no-underscore-dangle
+    if (handle.__esModule) {
+      handle = handle.default;
+    }
     handle(req, res, next);
   });
 };
