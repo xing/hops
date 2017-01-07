@@ -1,45 +1,42 @@
-import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { ServerRouter, createServerRenderContext } from 'react-router'
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { ServerRouter, createServerRenderContext } from 'react-router';
 
 
 import App from './app';
 
 export default (req, res) => {
 
-  return Promise.resolve().then(() => {
+  const context = createServerRenderContext()
 
-    const context = createServerRenderContext()
+  let markup = renderToString(
+    <ServerRouter location={ req.url } context={ context }>
+      <App/>
+    </ServerRouter>
+  );
 
-    let markup = renderToString(
-      <ServerRouter location={ req.url } context={ context }>
-        <App/>
-      </ServerRouter>
-    );
+  const result = context.getResult();
 
-    const result = context.getResult();
+  if (result.redirect) {
 
-    if (result.redirect) {
+    res.writeHead(301, { Location: result.redirect.pathname });
 
-      res.writeHead(301, { Location: result.redirect.pathname });
+    res.end();
+  }
+  else {
+    if (result.missed) {
 
-      res.end();
+      res.writeHead(404);
+
+      markup = renderToString(
+        <ServerRouter location={ req.url } context={ context }>
+          <App/>
+        </ServerRouter>
+      );
     }
-    else {
-      if (result.missed) {
-
-        res.writeHead(404);
-
-        markup = renderToString(
-          <ServerRouter location={ req.url } context={ context }>
-            <App/>
-          </ServerRouter>
-        );
-      }
-      res.write(template(markup));
-      res.end();
-    }
-  });
+    res.write(template(markup));
+    res.end();
+  }
 };
 
 
