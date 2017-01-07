@@ -59,8 +59,7 @@ Plugin.prototype.apply = function(compiler) {
   compiler.plugin('emit', function(compilation, callback) {
     util.loadConfig().then(function (config) {
       var webpackConfig = require(config.configs.render);
-      var transpilation = util.transpile(webpackConfig);
-      return transpilation.then(function (handle) {
+      return util.transpile(webpackConfig).then(function (handle) {
         // eslint-disable-next-line no-underscore-dangle
         if (handle.__esModule) {
           handle = handle.default;
@@ -93,7 +92,7 @@ Plugin.prototype.apply = function(compiler) {
     })
     .catch(function (error) {
       // eslint-disable-next-line no-console
-      if (error) { console.log('[HOPS PLUGIN ERROR]:', error); }
+      if (error) { util.logError(error); }
     })
     .then(function () { callback(); });
   });

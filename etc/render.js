@@ -7,9 +7,11 @@ module.exports = {
   target: 'node',
   entry: appRoot.toString(),
   output: {
-    path: appRoot.resolve('dist'),
+    path: appRoot.toString(),
     filename: 'bundle.js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
+    devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
   context: appRoot.toString(),
   resolve: {
