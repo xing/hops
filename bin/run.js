@@ -15,8 +15,12 @@ var util = require('../lib/util');
 function runCommand(command, config) {
   switch (command) {
     case 'start':
-      command = (process.env.NODE_ENV === 'production') ? 'build' : 'develop';
-      runCommand(command, config);
+      if (process.env.NODE_ENV === 'production') {
+        runCommand('build', config);
+      }
+      else {
+        runCommand('develop', config);
+      }
       break;
     case 'build':
       var buildConfig = require(config.configs.build);
@@ -32,7 +36,6 @@ function runCommand(command, config) {
       var serverConfig = developConfig.devServer;
       var compiler = webpack(developConfig);
       var server = new WebpackServer(compiler, serverConfig);
-
       server.listen(serverConfig.port, serverConfig.host, function(err) {
         if (err) { throw err; }
         util.log(url.format({
