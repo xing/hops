@@ -5,6 +5,11 @@ import { ServerRouter, createServerRenderContext } from 'react-router';
 
 import App from './app';
 
+import template from './template.tpl';
+
+import { version } from '../package.json';
+
+
 export default (req, res) => {
 
   const context = createServerRenderContext()
@@ -34,21 +39,8 @@ export default (req, res) => {
         </ServerRouter>
       );
     }
-    res.write(template(markup));
+
+    res.write(template({ markup, version }));
     res.end();
   }
 };
-
-
-const template = markup => (
-  `<!DOCTYPE html>
-  <html>
-    <head>
-      <title>Hops Example</title>
-    </head>
-    <body>
-      <div id="main">${markup}</div>
-      <script src="/main-${ require('../package.json').version }.js"></script>
-    </body>
-  </html>`
-);

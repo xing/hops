@@ -50,6 +50,7 @@
     "css-loader": "0.26.1",
     "file-loader": "0.9.0",
     "json-loader": "0.5.4",
+    "lodash.template": "4.4.0",
     "memory-fs": "0.4.1",
     "node-mocks-http": "1.5.5",
     "npmlog": "4.0.2",

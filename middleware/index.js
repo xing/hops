@@ -15,6 +15,7 @@ exports.createMiddleware = function createMiddleware(defaultConfig) {
         handle = handle.default;
       }
       handle(req, res, next);
-    });
+    })
+    .catch(util.logError);
   };
 };
