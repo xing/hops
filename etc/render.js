@@ -25,7 +25,8 @@ module.exports = {
       require('./loaders/postcss').render,
       require('./loaders/json').default,
       require('./loaders/file').default,
-      require('./loaders/url').default
+      require('./loaders/url').default,
+      require('./loaders/tpl').default
     ]
   },
   devtool: '#inline-source-map'
