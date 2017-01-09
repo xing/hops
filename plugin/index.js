@@ -12,6 +12,7 @@ var events = require('events');
 var mocks = require('node-mocks-http');
 
 var util = require('../lib/util');
+var middleware = require('../middleware');
 
 
 /**
@@ -19,11 +20,13 @@ var util = require('../lib/util');
  *
  * @class
  *
- * @param {?Object}   options
- * @param {?string[]} options.locations
- * @param {?string}   options.config
+ * @param {?Object}   config
+ * @param {?string[]} config.locations
+ * @param {?string}   config.config
  */
-var Plugin = module.exports = function Plugin() {};
+var Plugin = module.exports = function Plugin(config) {
+  this.config = config;
+};
 
 
 /** @ignore */
@@ -47,6 +50,36 @@ Plugin.getAssetObject = function getAssetObject(string) {
 };
 
 
+/** @ignore */
+Plugin.process = function process(config) {
+  var handle = middleware.createMiddleware(config);
+  return function (location) {
+    return new Promise(function (resolve, reject) {
+      var req = mocks.createRequest({
+        url: location
+      });
+      var res = mocks.createResponse({
+        eventEmitter: events.EventEmitter,
+        request: req
+      });
+      res.on('finish', function () {
+        if (res.statusCode !== 200) {
+          reject('invalid status code: ' + res.statusCode);
+        }
+        else {
+          resolve({
+            fileName: Plugin.getFileName(location),
+            // eslint-disable-next-line no-underscore-dangle
+            assetObject: Plugin.getAssetObject(res._getData())
+          });
+        }
+      });
+      handle(req, res, resolve);
+    });
+  };
+};
+
+
 /**
  * @description hooks into webpack compiler lifecycle and produces html
  *
@@ -56,44 +89,19 @@ Plugin.getAssetObject = function getAssetObject(string) {
  * @return {undefined}
  */
 Plugin.prototype.apply = function(compiler) {
+  var defaultConfig = this.config;
   compiler.plugin('emit', function(compilation, callback) {
-    util.loadConfig().then(function (config) {
-      var webpackConfig = require(config.configs.render);
-      return util.transpile(webpackConfig).then(function (handle) {
-        // eslint-disable-next-line no-underscore-dangle
-        if (handle.__esModule) {
-          handle = handle.default;
-        }
-        return Promise.all(config.locations.map(function (location) {
-          return new Promise(function (resolve, reject) {
-            var req = mocks.createRequest({
-              url: location
-            });
-            var res = mocks.createResponse({
-              eventEmitter: events.EventEmitter,
-              request: req
-            });
-            res.on('finish', function () {
-              if (res.statusCode !== 200) {
-                reject('invalid status code: ' + res.statusCode);
-              }
-              else {
-                var fileName = Plugin.getFileName(location);
-                // eslint-disable-next-line no-underscore-dangle
-                var assetObject = Plugin.getAssetObject(res._getData());
-                compilation.assets[fileName] = assetObject;
-                resolve();
-              }
-            });
-            handle(req, res, resolve);
-          });
-        }));
+    util.loadConfig(defaultConfig).then(function (config) {
+      return Promise.all(config.locations.map(Plugin.process(config)))
+      .then(function (results) {
+        results.forEach(function (result) {
+          if (result) {
+            compilation.assets[result.fileName] = result.assetObject;
+          }
+        });
       });
     })
-    .catch(function (error) {
-      // eslint-disable-next-line no-console
-      if (error) { util.logError(error); }
-    })
-    .then(function () { callback(); });
+    .catch(util.logError)
+    .then(callback);
   });
 };

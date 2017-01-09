@@ -59,7 +59,7 @@
     "source-map-support": "0.4.6",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
-    "webpack": "2.2.0-rc.2",
+    "webpack": "2.2.0-rc.3",
     "webpack-dev-server": "2.2.0-rc.0",
     "webpack-node-externals": "1.5.4"
   },
