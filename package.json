@@ -48,6 +48,7 @@
     "babel-loader": "6.2.10",
     "cosmiconfig": "2.1.1",
     "css-loader": "0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.3",
     "file-loader": "0.9.0",
     "json-loader": "0.5.4",
     "lodash.template": "4.4.0",
