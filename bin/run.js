@@ -55,6 +55,7 @@ function runDevelop(config) {
 
 function run(command, defaultConfig) {
   util.loadConfig(defaultConfig).then(function (config) {
+    util.log('hops@%s: %s', pkg.version, command);
     switch (command) {
       case 'start':
         runStart(config);
@@ -71,7 +72,6 @@ function run(command, defaultConfig) {
       default:
         throw new Error('unknown command: ' + command);
     }
-    return util.log('hops@%s: %s', pkg.version, command);
   })
   .catch(util.logError);
 }

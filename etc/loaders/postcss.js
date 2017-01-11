@@ -1,5 +1,7 @@
 'use strict';
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 var cssLoaderOptions = {
   importLoaders: 1,
@@ -11,14 +13,16 @@ var cssLoaderOptions = {
 
 exports.build = {
   test: /\.css$/,
-  use: [
-    'style-loader',
-    {
-      loader: 'css-loader',
-      options: cssLoaderOptions
-    },
-    'postcss-loader'
-  ]
+  loader: ExtractTextPlugin.extract({
+    fallbackLoader: 'style-loader',
+    loader: [
+      {
+        loader: 'css-loader',
+        query: cssLoaderOptions
+      },
+      'postcss-loader'
+    ]
+  })
 };
 
 exports.develop = {

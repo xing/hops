@@ -3,6 +3,8 @@
 var webpack = require('webpack');
 var appRoot = require('app-root-path');
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 var HopsPlugin = require('../plugin');
 
 var pkg = appRoot.require('package.json');
@@ -35,6 +37,7 @@ module.exports = {
   },
   plugins: [
     new HopsPlugin(),
+    new ExtractTextPlugin('[name]-' + pkg.version + '.css'),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.LoaderOptionsPlugin({
       debug: false,
