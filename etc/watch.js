@@ -1,7 +1,8 @@
 'use strict';
 
-var webpack = require('webpack');
 var appRoot = require('app-root-path');
+
+var webpack = require('webpack');
 
 var HopsPlugin = require('../plugin');
 

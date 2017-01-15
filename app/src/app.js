@@ -4,7 +4,6 @@ import Match from 'react-router/Match';
 
 import { headline } from './styles.css';
 
-
 const Home = () => (
   <h1 className={ headline }>Hello World!</h1>
 );

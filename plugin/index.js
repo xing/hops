@@ -12,7 +12,7 @@ var events = require('events');
 var mocks = require('node-mocks-http');
 
 var util = require('../lib/util');
-var middleware = require('../middleware');
+var createMiddleware = require('../middleware');
 
 
 /**
@@ -51,8 +51,8 @@ Plugin.getAssetObject = function getAssetObject(string) {
 
 
 /** @ignore */
-Plugin.process = function process(config) {
-  var handle = middleware.createMiddleware(config);
+Plugin.getHandler = function getHandler(hopsConfig) {
+  var middleware = createMiddleware(hopsConfig);
   return function (location) {
     return new Promise(function (resolve, reject) {
       var req = mocks.createRequest({
@@ -74,9 +74,26 @@ Plugin.process = function process(config) {
           });
         }
       });
-      handle(req, res, resolve);
+      middleware(req, res, resolve);
     });
   };
+};
+
+
+/** @ignore */
+Plugin.prototype.process = function process(compilation, callback) {
+  util.loadConfig(this.config).then(function (config) {
+    return Promise.all(config.locations.map(Plugin.getHandler(config)))
+    .then(function (results) {
+      results.forEach(function (result) {
+        if (result) {
+          compilation.assets[result.fileName] = result.assetObject;
+        }
+      });
+    });
+  })
+  .catch(util.logError)
+  .then(callback);
 };
 
 
@@ -89,19 +106,5 @@ Plugin.process = function process(config) {
  * @return {undefined}
  */
 Plugin.prototype.apply = function(compiler) {
-  var defaultConfig = this.config;
-  compiler.plugin('emit', function(compilation, callback) {
-    util.loadConfig(defaultConfig).then(function (config) {
-      return Promise.all(config.locations.map(Plugin.process(config)))
-      .then(function (results) {
-        results.forEach(function (result) {
-          if (result) {
-            compilation.assets[result.fileName] = result.assetObject;
-          }
-        });
-      });
-    })
-    .catch(util.logError)
-    .then(callback);
-  });
+  compiler.plugin('emit', this.process.bind(this));
 };
