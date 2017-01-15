@@ -1,8 +1,8 @@
 'use strict';
 
-var webpack = require('webpack');
 var appRoot = require('app-root-path');
 
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var HopsPlugin = require('../plugin');
