@@ -80,23 +80,6 @@ Plugin.getHandler = function getHandler(hopsConfig) {
 };
 
 
-/** @ignore */
-Plugin.prototype.process = function process(compilation, callback) {
-  util.loadConfig(this.config).then(function (config) {
-    return Promise.all(config.locations.map(Plugin.getHandler(config)))
-    .then(function (results) {
-      results.forEach(function (result) {
-        if (result) {
-          compilation.assets[result.fileName] = result.assetObject;
-        }
-      });
-    });
-  })
-  .catch(util.logError)
-  .then(callback);
-};
-
-
 /**
  * @description hooks into webpack compiler lifecycle and produces html
  *
@@ -106,5 +89,17 @@ Plugin.prototype.process = function process(compilation, callback) {
  * @return {undefined}
  */
 Plugin.prototype.apply = function(compiler) {
-  compiler.plugin('emit', this.process.bind(this));
+  var config = util.getConfig(this.config);
+  compiler.plugin('emit', function process(compilation, callback) {
+    Promise.all(config.locations.map(Plugin.getHandler(config)))
+    .then(function (results) {
+      results.forEach(function (result) {
+        if (result) {
+          compilation.assets[result.fileName] = result.assetObject;
+        }
+      });
+    })
+    .catch(util.logError)
+    .then(callback);
+  });
 };

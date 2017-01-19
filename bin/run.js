@@ -32,13 +32,6 @@ function runBuild(config) {
 }
 
 
-function runWatch(config) {
-  webpack(config).watch({}, function(error) {
-    if (error) { util.log(error); }
-  });
-}
-
-
 function runDevelop(config) {
   var serverConfig = config.devServer;
   var server = new WebpackServer(webpack(config), serverConfig);
@@ -54,7 +47,8 @@ function runDevelop(config) {
 
 
 function run(command, defaultConfig) {
-  util.loadConfig(defaultConfig).then(function (config) {
+  var config = util.getConfig(defaultConfig);
+  try {
     util.log('hops@%s: %s', pkg.version, command);
     switch (command) {
       case 'start':
@@ -63,17 +57,16 @@ function run(command, defaultConfig) {
       case 'build':
         runBuild(require(config.webpack.build));
         break;
-      case 'watch':
-        runWatch(require(config.webpack.watch));
-        break;
       case 'develop':
         runDevelop(require(config.webpack.develop));
         break;
       default:
         throw new Error('unknown command: ' + command);
     }
-  })
-  .catch(util.logError);
+  }
+  catch (error) {
+    util.logError(error);
+  }
 }
 
 
@@ -85,7 +78,6 @@ else {
   module.exports = {
     run: run,
     runBuild: runBuild,
-    runWatch: runWatch,
     runDevelop: runDevelop
   };
 }
