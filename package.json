@@ -40,7 +40,7 @@
     "url": "https://github.com/xing/hops/issues"
   },
   "engines": {
-    "node": ">5.0.0"
+    "node": ">6.0.0"
   },
   "dependencies": {
     "app-root-path": "2.0.1",
@@ -61,8 +61,8 @@
     "source-map-support": "0.4.6",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
-    "webpack": "2.2.0-rc.5",
-    "webpack-dev-server": "2.2.0-rc.0",
+    "webpack": "2.2.0",
+    "webpack-dev-server": "2.2.0",
     "webpack-node-externals": "1.5.4"
   },
   "devDependencies": {
