@@ -19,8 +19,8 @@ module.exports = function transpile(config, watchOptions) {
   var compiler = webpack(config);
 
   compiler.outputFileSystem = mfs;
-  compiler.plugin('compile', function () {
-    emitter.emit('start');
+  compiler.plugin('watch-run', function (_, callback) {
+    emitter.emit('recompile'); callback();
   });
 
   function handleCompilation(compileError, stats) {

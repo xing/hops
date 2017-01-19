@@ -4,9 +4,16 @@ var appRoot = require('app-root-path');
 
 var webpack = require('webpack');
 
-var HopsPlugin = require('../plugin');
+var util = require('../lib/util');
+var createMiddleware = require('../middleware');
 
 var pkg = appRoot.require('package.json');
+
+
+var watchOptions = {
+  aggregateTimeout: 300,
+  ignored: /node_modules/
+};
 
 
 module.exports = {
@@ -17,7 +24,7 @@ module.exports = {
   ],
   output: {
     path: appRoot.resolve('dist'),
-    publicPath: '/',
+    publicPath: 'http://localhost:8080/',
     filename: '[name]-' + pkg.version + '.js',
     chunkFilename: 'chunk-[id]-' + pkg.version + '.js'
   },
@@ -39,22 +46,27 @@ module.exports = {
     ]
   },
   plugins: [
-    new HopsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ],
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map',
+  devtool: '#cheap-module-eval-source-map',
   devServer: {
     hot: true,
-    inline: true,
     contentBase: appRoot.resolve('dist'),
-    publicPath: '/',
-    host: '0.0.0.0',
+    host: 'localhost',
     port: 8080,
     noInfo: true,
-    stats: 'errors-only'
+    stats: 'errors-only',
+    watchOptions: watchOptions,
+    setup: function (app) {
+      var config = util.getConfig();
+      var middleware = createMiddleware(config, watchOptions);
+      config.locations.forEach(function (location) {
+        app.all(location, middleware);
+      });
+    }
   }
 };
