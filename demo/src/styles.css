@@ -4,12 +4,10 @@
   --primary-color: rebeccapurple;
 }
 
-
 body {
   text-align: center;
   color: var(--primary-color);
 }
-
 
 .headline {
   margin-top: 2em;
