@@ -37,19 +37,21 @@ Plugin.prototype.process = function process (location) {
 };
 
 Plugin.prototype.apply = function (compiler) {
-  var locations = this.config.locations;
   var process = this.process.bind(this);
+  var locations = this.config.locations;
 
-  compiler.plugin('emit', function (compilation, callback) {
-    Promise.all(locations.map(process))
-    .then(function (results) {
-      results.forEach(function (result) {
-        if (result) {
-          compilation.assets[result.fileName] = result.assetObject;
-        }
-      });
-    })
-    .catch(util.logError)
-    .then(callback);
-  });
+  if (locations && locations.length) {
+    compiler.plugin('emit', function (compilation, callback) {
+      Promise.all(locations.map(process))
+      .then(function (results) {
+        results.forEach(function (result) {
+          if (result) {
+            compilation.assets[result.fileName] = result.assetObject;
+          }
+        });
+      })
+      .catch(util.logError)
+      .then(callback);
+    });
+  }
 };

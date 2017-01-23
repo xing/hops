@@ -18,10 +18,11 @@ module.exports = function createMiddleware (hopsConfig, watchOptions) {
   function getTranspilerPromise () {
     return new Promise(function (resolve, reject) {
       transpiler.on('success', function (result) {
-        var middleware = result.__esModule ? result.default : result;
         transpilerPromise = null;
-        middlewarePromise = Promise.resolve(middleware);
-        resolve(middleware);
+        middlewarePromise = Promise.resolve(
+          result.__esModule ? result.default : result
+        );
+        resolve(middlewarePromise);
       });
       transpiler.on('error', reject);
     });
@@ -40,9 +41,13 @@ module.exports = function createMiddleware (hopsConfig, watchOptions) {
     })
     .catch(function (error) {
       util.logError(error);
-      res.writeHead(500);
-      res.write('<h1>Server Error</h1>');
-      res.end();
+      if (hopsConfig.onError) {
+        hopsConfig.onError(req, res, next);
+      } else {
+        res.writeHead(500);
+        res.write('<h1>Server Error</h1>');
+        res.end();
+      }
     });
   };
 };
