@@ -61,10 +61,12 @@ module.exports = {
     watchOptions: watchOptions,
     setup: function (app) {
       var config = util.getConfig();
-      var middleware = createMiddleware(config, watchOptions);
-      config.locations.forEach(function (location) {
-        app.all(location, middleware);
-      });
+      if (config.locations && config.locations.length) {
+        var middleware = createMiddleware(config, watchOptions);
+        config.locations.forEach(function (location) {
+          app.all(location, middleware);
+        });
+      }
     }
   }
 };
