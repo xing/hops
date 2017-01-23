@@ -2,14 +2,12 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-
 var cssLoaderOptions = {
   importLoaders: 1,
   modules: true,
   localIdentName: '[folder]-[name]-[local]-[hash:base64:5]',
   sourceMap: false
 };
-
 
 exports.build = {
   test: /\.css$/,
