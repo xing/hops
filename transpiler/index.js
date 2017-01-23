@@ -9,36 +9,36 @@ var requireFromString = require('require-from-string');
 var webpack = require('webpack');
 var MemoryFS = require('memory-fs');
 
-
-module.exports = function transpile(config, watchOptions) {
+module.exports = function transpile (webpackConfig, watchOptions) {
   sourceMapSupport.install({ hookRequire: true });
 
   var emitter = new EventEmitter();
 
   var mfs = new MemoryFS();
-  var compiler = webpack(config);
+  var compiler = webpack(webpackConfig);
 
   compiler.outputFileSystem = mfs;
   compiler.plugin('watch-run', function (_, callback) {
-    emitter.emit('recompile'); callback();
+    emitter.emit('recompile');
+    callback();
   });
 
-  function handleCompilation(compileError, stats) {
+  function handleCompilation (compileError, stats) {
     if (compileError) {
       emitter.emit('error', compileError);
-    }
-    else {
-      var filePath = path.join(config.output.path, config.output.filename);
+    } else {
+      var filePath = path.join(
+        webpackConfig.output.path,
+        webpackConfig.output.filename
+      );
       mfs.readFile(filePath, function (readError, fileContent) {
         if (readError) {
           emitter.emit('error', readError);
-        }
-        else {
+        } else {
           try {
             var result = requireFromString(fileContent.toString(), filePath);
             emitter.emit('success', result, stats);
-          }
-          catch (moduleError) {
+          } catch (moduleError) {
             emitter.emit('error', moduleError);
           }
         }
@@ -49,8 +49,7 @@ module.exports = function transpile(config, watchOptions) {
   if (watchOptions) {
     var watcher = compiler.watch(watchOptions, handleCompilation);
     emitter.close = watcher.close.bind(watcher);
-  }
-  else {
+  } else {
     compiler.run(handleCompilation);
   }
 

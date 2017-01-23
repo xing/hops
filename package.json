@@ -14,12 +14,12 @@
     "hops": "bin/run.js"
   },
   "scripts": {
-    "start": "cd app; rm -rf .tmp dist node_modules/hops; npm install; npm start",
+    "start": "cd demo; rm -rf .tmp dist node_modules/hops; npm install; npm start",
     "test": "istanbul test -x \"spec/**/*.js\" --root . --dir .tmp/coverage _mocha \"spec/**/*.js\"",
     "pretest": "npm run cleanup; mkdir -p .tmp/test; cd .tmp/test; npm init -y; npm install file:../../",
     "cleanup": "rm -rf .tmp/coverage .tmp/test/{package.json,src,dist,.tmp,node_modules/hops}",
     "postversion": "git push && git push --tags",
-    "update": "ncu -u && rm -rf node_modules .tmp app/node_modules && npm install && npm test && npm start"
+    "update": "ncu -u && rm -rf node_modules .tmp demo/node_modules && npm install && npm test && npm start"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -66,9 +66,8 @@
     "webpack-node-externals": "1.5.4"
   },
   "devDependencies": {
-    "eslint": "3.13.1",
-    "istanbul": "0.4.5",
     "mocha": "3.2.0",
-    "npm-check-updates": "2.8.9"
+    "npm-check-updates": "2.8.9",
+    "semistandard": "9.2.1"
   }
 }

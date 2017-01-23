@@ -1,9 +1,3 @@
-/**
- * @file plugin/index
- *
- * @author Daniel Dembach <daniel@dmbch.net>
- * @author Gregor Adams <greg@pixelass.com>
- */
 'use strict';
 
 var path = require('path');
@@ -14,23 +8,12 @@ var mocks = require('node-mocks-http');
 var util = require('../lib/util');
 var createMiddleware = require('../middleware');
 
-
-/**
- * @description creates hops webpack plugin instance
- *
- * @class
- *
- * @param {?Object}   config
- * @param {?string[]} config.locations
- * @param {?string}   config.config
- */
-var Plugin = module.exports = function Plugin(config) {
-  this.config = config;
+var Plugin = module.exports = function Plugin (config, watchOptions) {
+  this.config = util.getConfig(config);
+  this.middleware = createMiddleware(this.config, watchOptions);
 };
 
-
-/** @ignore */
-Plugin.getFileName = function getFileName(location) {
+Plugin.getFileName = function getFileName (location) {
   var parts = location.split('/').filter(function (part) {
     return !!part.length;
   });
@@ -40,58 +23,43 @@ Plugin.getFileName = function getFileName(location) {
   return path.join.apply(path, parts);
 };
 
-
-/** @ignore */
-Plugin.getAssetObject = function getAssetObject(string) {
+Plugin.getAssetObject = function getAssetObject (string) {
   return {
-    source: function() { return string; },
-    size: function() { return string.length; }
+    source: function () { return string; },
+    size: function () { return string.length; }
   };
 };
 
-
-/** @ignore */
-Plugin.getHandler = function getHandler(hopsConfig) {
-  var middleware = createMiddleware(hopsConfig);
-  return function (location) {
-    return new Promise(function (resolve, reject) {
-      var req = mocks.createRequest({
-        url: location
-      });
-      var res = mocks.createResponse({
-        eventEmitter: events.EventEmitter,
-        request: req
-      });
-      res.on('finish', function () {
-        if (res.statusCode !== 200) {
-          reject('invalid status code: ' + res.statusCode);
-        }
-        else {
-          resolve({
-            fileName: Plugin.getFileName(location),
-            // eslint-disable-next-line no-underscore-dangle
-            assetObject: Plugin.getAssetObject(res._getData())
-          });
-        }
-      });
-      middleware(req, res, resolve);
+Plugin.prototype.process = function process (location) {
+  var middleware = this.middleware;
+  return new Promise(function (resolve, reject) {
+    var req = mocks.createRequest({
+      url: location
     });
-  };
+    var res = mocks.createResponse({
+      eventEmitter: events.EventEmitter,
+      request: req
+    });
+    res.on('finish', function () {
+      if (res.statusCode !== 200) {
+        reject('invalid status code: ' + res.statusCode);
+      } else {
+        resolve({
+          fileName: Plugin.getFileName(location),
+          // eslint-disable-next-line no-underscore-dangle
+          assetObject: Plugin.getAssetObject(res._getData())
+        });
+      }
+    });
+    middleware(req, res, resolve);
+  });
 };
 
-
-/**
- * @description hooks into webpack compiler lifecycle and produces html
- *
- * @private
- *
- * @param {!Object} compiler
- * @return {undefined}
- */
-Plugin.prototype.apply = function(compiler) {
-  var config = util.getConfig(this.config);
-  compiler.plugin('emit', function process(compilation, callback) {
-    Promise.all(config.locations.map(Plugin.getHandler(config)))
+Plugin.prototype.apply = function (compiler) {
+  var config = this.config;
+  var process = this.process.bind(this);
+  compiler.plugin('emit', function (compilation, callback) {
+    Promise.all(config.locations.map(process))
     .then(function (results) {
       results.forEach(function (result) {
         if (result) {
