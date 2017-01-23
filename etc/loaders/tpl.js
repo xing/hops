@@ -1,6 +1,5 @@
 'use strict';
 
-
 exports.default = {
   test: /\.tpl$/,
   use: {
