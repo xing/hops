@@ -9,34 +9,31 @@ var WebpackServer = require('webpack-dev-server');
 var pkg = require('../package.json');
 var util = require('../lib/util');
 
-
-function runStart(config) {
+function runStart (config) {
   if (process.env.NODE_ENV === 'production') {
-    // eslint-disable-next-line no-use-before-define
     return run('build', config);
-  }
-  else {
-    // eslint-disable-next-line no-use-before-define
+  } else {
     return run('develop', config);
   }
 }
 
-
-function runBuild(config) {
-  webpack(config).run(function(error, stats) {
-    if (error) { util.log(error); }
-    else {
+function runBuild (config) {
+  webpack(config).run(function (error, stats) {
+    if (error) {
+      util.log(error);
+    } else {
       util.log(stats.toString({ chunks: false }));
     }
   });
 }
 
-
-function runDevelop(config) {
+function runDevelop (config) {
   var serverConfig = config.devServer;
   var server = new WebpackServer(webpack(config), serverConfig);
-  server.listen(serverConfig.port, serverConfig.host, function(err) {
-    if (err) { throw err; }
+  server.listen(serverConfig.port, serverConfig.host, function (err) {
+    if (err) {
+      throw err;
+    }
     util.log(url.format({
       protocol: serverConfig.https ? 'https' : 'http',
       hostname: serverConfig.host,
@@ -45,8 +42,7 @@ function runDevelop(config) {
   });
 }
 
-
-function run(command, defaultConfig) {
+function run (command, defaultConfig) {
   var config = util.getConfig(defaultConfig);
   try {
     util.log('hops@%s: %s', pkg.version, command);
@@ -63,18 +59,15 @@ function run(command, defaultConfig) {
       default:
         throw new Error('unknown command: ' + command);
     }
-  }
-  catch (error) {
+  } catch (error) {
     util.logError(error);
   }
 }
 
-
 if (require.main === module) {
   var argv = require('minimist')(process.argv.slice(2));
   run(argv._[0] || process.env.npm_lifecycle_event);
-}
-else {
+} else {
   module.exports = {
     run: run,
     runBuild: runBuild,
