@@ -9,12 +9,10 @@ var createMiddleware = require('../middleware');
 
 var pkg = appRoot.require('package.json');
 
-
 var watchOptions = {
   aggregateTimeout: 300,
   ignored: /node_modules/
 };
-
 
 module.exports = {
   entry: [
