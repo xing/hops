@@ -1,16 +1,13 @@
 'use strict';
 
 var path = require('path');
-var events = require('events');
-
-var mocks = require('node-mocks-http');
 
 var util = require('../lib/util');
-var createMiddleware = require('../middleware');
+var createRenderer = require('../renderer');
 
-var Plugin = module.exports = function Plugin (config, watchOptions) {
-  this.config = util.getConfig(config);
-  this.middleware = createMiddleware(this.config, watchOptions);
+var Plugin = module.exports = function Plugin (hopsConfig, watchOptions) {
+  this.config = util.getConfig(hopsConfig);
+  this.render = createRenderer(this.config, watchOptions);
 };
 
 Plugin.getFileName = function getFileName (location) {
@@ -31,35 +28,20 @@ Plugin.getAssetObject = function getAssetObject (string) {
 };
 
 Plugin.prototype.process = function process (location) {
-  var middleware = this.middleware;
-  return new Promise(function (resolve, reject) {
-    var req = mocks.createRequest({
-      url: location
-    });
-    var res = mocks.createResponse({
-      eventEmitter: events.EventEmitter,
-      request: req
-    });
-    res.on('finish', function () {
-      if (res.statusCode !== 200) {
-        reject('invalid status code: ' + res.statusCode);
-      } else {
-        resolve({
-          fileName: Plugin.getFileName(location),
-          // eslint-disable-next-line no-underscore-dangle
-          assetObject: Plugin.getAssetObject(res._getData())
-        });
-      }
-    });
-    middleware(req, res, resolve);
+  return this.render(location).then(function (result) {
+    return result && {
+      fileName: Plugin.getFileName(location),
+      assetObject: Plugin.getAssetObject(result)
+    };
   });
 };
 
 Plugin.prototype.apply = function (compiler) {
-  var config = this.config;
+  var locations = this.config.locations;
   var process = this.process.bind(this);
+
   compiler.plugin('emit', function (compilation, callback) {
-    Promise.all(config.locations.map(process))
+    Promise.all(locations.map(process))
     .then(function (results) {
       results.forEach(function (result) {
         if (result) {

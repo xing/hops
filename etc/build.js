@@ -9,7 +9,6 @@ var HopsPlugin = require('../plugin');
 
 var pkg = appRoot.require('package.json');
 
-
 module.exports = {
   entry: require.resolve('../lib/shim'),
   output: {

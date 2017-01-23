@@ -2,7 +2,6 @@
 
 var appRoot = require('app-root-path');
 
-
 module.exports = {
   target: 'node',
   entry: appRoot.toString(),
