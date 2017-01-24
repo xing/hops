@@ -36,7 +36,8 @@ module.exports = function transpile (webpackConfig, watchOptions) {
           emitter.emit('error', readError);
         } else {
           try {
-            var result = requireFromString(fileContent.toString(), filePath);
+            var source = fileContent.toString();
+            var result = requireFromString(source, filePath);
             emitter.emit('success', result, stats);
           } catch (moduleError) {
             emitter.emit('error', moduleError);
