@@ -1,0 +1,15 @@
+{
+  "name": "hops-mock",
+  "version": "1.0.0",
+  "description": "example of hops in action",
+  "server": "server.js",
+  "repository": {},
+  "dependencies": {
+    "hops": "file:.."
+  },
+  "hops": {
+    "locations": [
+      "/"
+    ]
+  }
+}
