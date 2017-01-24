@@ -1,25 +1,21 @@
 {
   "name": "hops",
   "version": "2.1.1",
-  "description": "next generation toolbox for ux craftspeople",
+  "description": "universal wrapper for webpack",
   "keywords": [
-    "react",
-    "redux",
     "webpack",
-    "babel"
+    "babel",
+    "postcss"
   ],
-  "main": "lib/node.js",
-  "browser": "lib/browser.js",
+  "main": "bin/run",
   "bin": {
     "hops": "bin/run.js"
   },
   "scripts": {
-    "start": "cd demo; rm -rf .tmp dist node_modules/hops; npm install; npm start",
-    "test": "istanbul test -x \"spec/**/*.js\" --root . --dir .tmp/coverage _mocha \"spec/**/*.js\"",
-    "pretest": "npm run cleanup; mkdir -p .tmp/test; cd .tmp/test; npm init -y; npm install file:../../",
-    "cleanup": "rm -rf .tmp/coverage .tmp/test/{package.json,src,dist,.tmp,node_modules/hops}",
+    "start": "cd demo; rm -rf dist node_modules/hops; npm install; npm start",
+    "test": "mocha -r spec/setup \"spec/*.js\"",
     "postversion": "git push && git push --tags",
-    "update": "ncu -u && rm -rf node_modules .tmp demo/node_modules && npm install && npm test && npm start"
+    "update": "ncu -u && rm -rf node_modules demo/node_modules && npm install && npm test && npm start"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -40,11 +36,11 @@
     "url": "https://github.com/xing/hops/issues"
   },
   "engines": {
-    "node": ">6.0.0"
+    "node": ">5.0.0"
   },
   "dependencies": {
     "app-root-path": "2.0.1",
-    "babel-core": "6.21.0",
+    "babel-core": "6.22.1",
     "babel-loader": "6.2.10",
     "cosmiconfig": "2.1.1",
     "css-loader": "0.26.1",
@@ -53,9 +49,10 @@
     "json-loader": "0.5.4",
     "lodash.template": "4.4.0",
     "memory-fs": "0.4.1",
+    "mocha": "3.2.0",
     "node-mocks-http": "1.5.6",
     "npmlog": "4.0.2",
-    "postcss": "5.2.10",
+    "postcss": "5.2.11",
     "postcss-loader": "1.2.2",
     "require-from-string": "1.2.1",
     "source-map-support": "0.4.10",
@@ -67,7 +64,9 @@
   },
   "devDependencies": {
     "mocha": "3.2.0",
+    "mocha-standard": "1.0.0",
     "npm-check-updates": "2.8.9",
-    "semistandard": "9.2.1"
+    "semistandard": "9.2.1",
+    "touch": "1.0.0"
   }
 }
