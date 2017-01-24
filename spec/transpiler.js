@@ -44,7 +44,7 @@ describe('transpiler', function () {
       });
     });
 
-    it('should emit an error event for bad export', function (done) {
+    it('should emit an error event', function (done) {
       transpile(badExportConfig)
       .on('error', function () {
         assert(true);
