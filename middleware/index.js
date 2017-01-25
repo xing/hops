@@ -3,7 +3,7 @@
 var util = require('../lib/util');
 var transpile = require('../transpiler');
 
-module.exports = function createMiddleware (hopsConfig, watchOptions) {
+function createMiddleware (hopsConfig, watchOptions) {
   var config = util.getConfig(hopsConfig);
 
   var transpilerPromise = null;
@@ -50,4 +50,19 @@ module.exports = function createMiddleware (hopsConfig, watchOptions) {
       }
     });
   };
+}
+
+createMiddleware.register = function (hopsConfig, watchOptions) {
+  return function (app) {
+    var config = util.getConfig(hopsConfig);
+    if (config.locations && config.locations.length) {
+      var middleware = createMiddleware(config, watchOptions);
+      config.locations.forEach(function (location) {
+        app.all(location, middleware);
+      });
+    }
+  };
 };
+
+module.exports = createMiddleware;
+

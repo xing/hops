@@ -4,8 +4,7 @@ var appRoot = require('app-root-path');
 
 var webpack = require('webpack');
 
-var util = require('../lib/util');
-var createMiddleware = require('../middleware');
+var middleware = require('../middleware');
 
 var pkg = appRoot.require('package.json');
 
@@ -59,14 +58,6 @@ module.exports = {
     noInfo: true,
     stats: 'errors-only',
     watchOptions: watchOptions,
-    setup: function (app) {
-      var config = util.getConfig();
-      if (config.locations && config.locations.length) {
-        var middleware = createMiddleware(config, watchOptions);
-        config.locations.forEach(function (location) {
-          app.all(location, middleware);
-        });
-      }
-    }
+    setup: middleware.register(null, watchOptions)
   }
 };
