@@ -1,15 +1,7 @@
 # Hops Example
 
-This folder contains an example hops project. This is almost exactly what you when you create a new hops project:
+This folder contains an example hops project set up for development with [React](http://reactjs.com) and [React Router](https://react-router.now.sh) using the latest ECMAScript and CSS features.
 
-```shell
-mkdir foo
-cd foo
+Babel, PostCSS and hops itself are configured using only `package.json`. During a build, an `index.html` is being generated using the very same React components that are being used within the browser.
 
-npm init -y
-npm install -SE hops
-
-# go grab some coffee...
-
-npm start
-```
+Run this demo by `npm install`ing it and `npm start`ing it afterwards.

@@ -19,14 +19,12 @@
 </p>
 <p>&nbsp;</p>
 
-In this repo, we are experimenting with technology that might serve as our next generation front end technology stack: hops spices our brew (i.e. web front end) with [ECMAScript](https://babeljs.io), [CSS Next](http://cssnext.io) and [CSS Modules](https://github.com/css-modules/css-modules), [JSX](https://facebook.github.io/jsx/)/[React](https://facebook.github.io/react/) and [Flux](https://facebook.github.io/flux/)/[Redux](http://redux.js.org). To get an impression take a look at our [example app](https://github.com/xing/hops/tree/master/app).
-
-Hops is not yet another boilerplate. Hops is a self-contained but highly extensible development and build environment that is packaged as a single module. Batteries included.
+Hops is a universal [Webpack](https://webpack.js.org) wrapper. It additionally leverages both [Babel](https://babeljs.io) and [PostCSS](http://postcss.org). On the one hand, hops is designed to simplify getting started with modern frontend tooling by providing an extensible baseline config for Webpack. On the other hand, hops aims to help with using webpack for code running on servers.
 
 
-### Installing
+### Installation
 
-Besides recent versions of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com), hops has no global dependencies. If you need those, we recommend using [nvm](https://github.com/creationix/nvm) or similar.
+Besides reasonably recent versions of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com), hops has no global dependencies. If you need those, we recommend using [nvm](https://github.com/creationix/nvm) or similar.
 
 ```shell
 mkdir foo && cd foo
@@ -34,68 +32,85 @@ npm init -y
 npm install -SE hops
 ```
 
-A postinstall script will attempt to bootstrap and configure the project hops is being installed to: after installation, you can instantly start developing.
+
+### Setup
+
+After installing hops into your project, you need to set it up. This can be done within your project's `package.json` file. The relevant fields are shown below:
+
+```javascript
+{
+  "browser": "src/browser.js",
+  "server": "src/server.js",
+  "scripts": {
+    "start": "hops start"
+  },
+  "dependencies": {
+    "hops": "*"
+  },
+  "hops": {
+    "locations": [
+      "/"
+    ]
+  },
+  "babel": {},
+  "postcss": {}
+}
+```
+
+Hops relies heavily on this file for configuration. In the example above, there are two entry points for `browser` and `server` - that is, two files that are used for client and server builds. Using two separate files is not strictly required, but it usually makes sense, as you'll have to export an [Express](http://expressjs.com/en/guide/using-middleware.html)-compatible middleware function for server side usage, while for the client, you only need to export a function that intializes your client application.
+
+Hops provides a runner that you can call from the scripts of your `package.json` and is configured using the `hops` object also contained therein. In this example, the only configuration option provided is `locations`, an array of paths that will be used for generating static html files using the middleware you provide.
+
+Additionally, you can configure [Babel](https://babeljs.io/docs/usage/babelrc/) and [PostCSS](https://github.com/postcss/postcss-loader) using the appropriate fields in `package.json` - or whatever other method these projects provide.
 
 
 ### Running
 
-For developing with hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io) with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
+For developing with hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io), probably with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
 
 ```shell
 npm start (--production)
 ```
 
-If called without the `--production` flag, a development server with hot module replacement is started. In production mode, a static build is initialized.
+If called with the `--production` flag, a static build is initialized. Otherwise, a development server featuring hot module replacement is started. Hops generates html pages for all `locations` listed in its config at build time, so you don't need a node server in production, but still can enjoy the benefits of a true universal JavaScript application.
 
-
-### Testing
-
-If you are developing any kind of real application, you certainly want to be able to test your code. For hops, we chose to include a rather simple testing toolchain consisting of [Mocha](https://mochajs.org) and [Enzyme](http://airbnb.io/enzyme/).
-
-```shell
-npm test (--coverage)
-```
-
-In hops' default configuration, all files with names ending with `.test.js` (and outside `/node_modules`) are being picked up. As to be expected, the `coverage` flag enables test coverage reporting.
-
-
-### Documenting
-
-Hops is documented using [jsdoc](https://www.npmjs.com/package/jsdoc). To add documentation support to your own project you need to manually install and configure jsdoc and an optional theme. Hops itself uses [hopsdoc](https://www.npmjs.com/package/hopsdoc).
-
-```shell
-npm install jsdoc -g
-jsdoc -c jsdoc.json
-```
-
-
-### API
-
-#### render(options: object): function|undefined
-
-`render()` is hops' main function: it creates a [Redux](https://github.com/reactjs/redux) store, sets up [React Router](https://github.com/reactjs/react-router) and handles rendering both in the browser and in node. Using it is mandatory and its output must be the default export of your main module. And it's a little magic.
+If, however, you want to serve dynamically generated pages, you can transpile your middleware on the fly by using hops' factory function like so:
 
 ```javascript
-import { render } from 'hops';
+const express = require('express');
+const createMiddleware = require('hops/middleware');
 
-import { routes } from './routes';
+const app = express();
 
-export default render({ routes });
+app.use(express.static('dist'));
+
+app.all('*', createMiddleware());
+
+app.listen(3000);
 ```
 
-In addition to `routes` and `reducers`, an html `mountPoint` selector and some othes may be passed as options. Please check the [defaults](https://github.com/xing/hops/blob/master/lib/defaults.js) for some details.
+### Advanced Usage
 
-#### register(namespace: string[, reducer: function]): object
-
-`register()` is a helper to streamline store/state interactions in hops based projects. It's return value is an object containing a selector function for use in ReactRedux' `connect()`.
+Using the hops config in your `package.json` file, you can supply your own Webpack configuration files.
 
 ```javascript
-import { register } from 'hops';
-
-export const select = register('foo', (state, action) => state);
+{
+  "hops": {
+    "webpack": {
+      "build": "/path/to/your/build/config",
+      "develop": "/path/to/your/development/config",
+      "render": "/path/to/your/server/side/rendering/config"
+    }
+  }
+}
 ```
 
-Hops supports server-side data fetching for route components: it calls their static `fetchData` methods and expects them to return promises. Of course, asynchronous actions are supported by using [thunks](https://github.com/gaearon/redux-thunk).
+Other than that, you can use hops' components on their own. Please refer to their respective readme files:
+
+* [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/plugin)
+* [Hops Renderer](https://github.com/xing/hops/tree/master/renderer)
+* [Hops Middleware](https://github.com/xing/hops/tree/master/middleware)
+* [Hops Transpiler](https://github.com/xing/hops/tree/master/transpiler)
 
 
 ### Thanks!
