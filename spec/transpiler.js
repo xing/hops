@@ -26,7 +26,7 @@ describe('transpiler', function () {
     emitter.close();
   });
 
-  describe('transpilation', function () {
+  describe('instance', function () {
     it('should emit a success event', function (done) {
       transpile(goodConfig)
       .on('success', function () {
