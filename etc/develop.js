@@ -49,7 +49,7 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#cheap-module-eval-source-map',
+  devtool: '#source-map',
   devServer: {
     hot: true,
     contentBase: appRoot.resolve('dist'),
