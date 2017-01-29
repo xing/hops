@@ -1,7 +1,7 @@
 {
   "name": "hops",
   "version": "2.1.1",
-  "description": "universal wrapper for webpack",
+  "description": "universal build tools",
   "keywords": [
     "webpack",
     "babel",
