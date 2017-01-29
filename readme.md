@@ -7,7 +7,7 @@
   />
 </p>
 
-<h1 align="center">Hops UI Toolbox</h1>
+<h1 align="center">Hops Universal Build Tool</h1>
 
 <p align="center">
   <a href="https://travis-ci.org/xing/hops">
