@@ -2,6 +2,8 @@
 
 var appRoot = require('app-root-path');
 
+var webpack = require('webpack');
+
 module.exports = {
   target: 'node',
   entry: appRoot.toString(),
@@ -28,5 +30,10 @@ module.exports = {
       require('./loaders/tpl').default
     ]
   },
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    })
+  ],
   devtool: '#inline-source-map'
 };
