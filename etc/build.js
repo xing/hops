@@ -36,7 +36,10 @@ module.exports = {
   },
   plugins: [
     new HopsPlugin(),
-    new ExtractTextPlugin('[name]-' + pkg.version + '.css'),
+    new ExtractTextPlugin({
+      filename: '[name]-' + pkg.version + '.css',
+      allChunks: true
+    }),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.LoaderOptionsPlugin({
       debug: false,
