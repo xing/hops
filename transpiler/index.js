@@ -23,9 +23,14 @@ module.exports = function transpile (webpackConfig, watchOptions) {
     callback();
   });
 
+  function emitResult () {
+    emitter.emit.apply(emitter, arguments);
+    emitter.emit('result');
+  }
+
   function handleCompilation (compileError, stats) {
     if (compileError) {
-      emitter.emit('error', compileError);
+      emitResult('error', compileError);
     } else {
       var filePath = path.join(
         webpackConfig.output.path,
@@ -33,14 +38,14 @@ module.exports = function transpile (webpackConfig, watchOptions) {
       );
       mfs.readFile(filePath, function (readError, fileContent) {
         if (readError) {
-          emitter.emit('error', readError);
+          emitResult('error', readError);
         } else {
           try {
             var source = fileContent.toString();
             var result = requireFromString(source, filePath);
-            emitter.emit('success', result, stats);
+            emitResult('success', result, stats);
           } catch (moduleError) {
-            emitter.emit('error', moduleError);
+            emitResult('error', moduleError);
           }
         }
       });
