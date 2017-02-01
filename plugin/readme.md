@@ -1,5 +1,5 @@
 
-# Hops Middleware
+# Hops Plugin
 
 Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' plugin is a simple helper to simplify using your custom middleware in a webpack build.
 
