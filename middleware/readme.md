@@ -16,7 +16,8 @@ This example shows how to write and configure a custom middleware and use it in 
 ```javascript
 {
   ...
-  "server": "src/server.js"
+  "server": "src/server.js",
+  "main": "index.js"
   ...
 }
 ```
