@@ -8,19 +8,13 @@ var mocks = require('node-mocks-http');
 var createMiddleware = require('../middleware');
 
 var goodConfig = {
-  webpack: {
-    render: require.resolve('./mock/webpack.good')
-  }
+  renderConfig: require.resolve('./mock/webpack.good')
 };
 var badExportConfig = {
-  webpack: {
-    render: require.resolve('./mock/webpack.bad-export')
-  }
+  renderConfig: require.resolve('./mock/webpack.bad-export')
 };
 var badHandlerConfig = {
-  webpack: {
-    render: require.resolve('./mock/webpack.bad-handler')
-  }
+  renderConfig: require.resolve('./mock/webpack.bad-handler')
 };
 
 describe('middleware', function () {

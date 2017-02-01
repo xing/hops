@@ -5,9 +5,7 @@ var assert = require('assert');
 var Plugin = require('../plugin');
 
 var goodConfig = {
-  webpack: {
-    render: require.resolve('./mock/webpack.good')
-  },
+  renderConfig: require.resolve('./mock/webpack.good'),
   locations: ['/']
 };
 
