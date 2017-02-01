@@ -66,7 +66,9 @@ Additionally, you can configure [Babel](https://babeljs.io/docs/usage/babelrc/) 
 
 ### Running
 
-For developing with hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io), probably with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
+For developing using hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io), probably with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
+
+Assuming you edited your `package.json` as outlined above, you can fire up a dev server or trigger a production build like so:
 
 ```shell
 npm start (--production)
@@ -76,26 +78,15 @@ If called with the `--production` flag, a static build is initialized. Otherwise
 
 If, however, you want to serve dynamically generated pages, you can transpile your middleware on the fly by using hops' factory function like so:
 
-```javascript
-const express = require('express');
-const createMiddleware = require('hops/middleware');
-
-const app = express();
-
-app.use(express.static('dist'));
-
-app.all('*', createMiddleware());
-
-app.listen(3000);
-```
 
 ### Advanced Usage
 
-Using the hops config in your `package.json` file, you can supply your own Webpack configuration files.
+Using the hops config in your `package.json` file, you can supply your own Webpack configuration files. Most important of these probably is `renderConfig` as that is being used for the actual server side rendering.
 
 ```javascript
 {
   "hops": {
+    "locations": ['/some/html/path'],
     "buildConfig": "/path/to/your/build/config",
     "developConfig": "/path/to/your/development/config",
     "renderConfig": "/path/to/your/server/side/rendering/config"
@@ -103,7 +94,7 @@ Using the hops config in your `package.json` file, you can supply your own Webpa
 }
 ```
 
-Other than that, you can use hops' components on their own. Please refer to their respective readme files:
+Other than that, you can use hops' components on their own. These components all accept configs similar to what's supported inside `package.json`. Please refer to their respective readme files for examples:
 
 * [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/plugin)
 * [Hops Renderer](https://github.com/xing/hops/tree/master/renderer)
