@@ -9,7 +9,7 @@ function createMiddleware (hopsConfig, watchOptions) {
   var transpilerPromise = null;
   var middlewarePromise = null;
 
-  var transpiler = transpile(require(config.webpack.render), watchOptions);
+  var transpiler = transpile(require(config.renderConfig), watchOptions);
 
   transpiler.on('recompile', function () {
     middlewarePromise = null;
@@ -41,8 +41,8 @@ function createMiddleware (hopsConfig, watchOptions) {
     })
     .catch(function (error) {
       util.logError(error);
-      if (hopsConfig.onError) {
-        hopsConfig.onError(req, res, next);
+      if (config.onError) {
+        config.onError(req, res, next);
       } else {
         res.writeHead(500);
         res.write('<h1>Server Error</h1>');

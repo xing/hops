@@ -96,11 +96,9 @@ Using the hops config in your `package.json` file, you can supply your own Webpa
 ```javascript
 {
   "hops": {
-    "webpack": {
-      "build": "/path/to/your/build/config",
-      "develop": "/path/to/your/development/config",
-      "render": "/path/to/your/server/side/rendering/config"
-    }
+    "buildConfig": "/path/to/your/build/config",
+    "developConfig": "/path/to/your/development/config",
+    "renderConfig": "/path/to/your/server/side/rendering/config"
   }
 }
 ```

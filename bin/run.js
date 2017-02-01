@@ -51,10 +51,10 @@ function run (command, defaultConfig) {
         runStart(config);
         break;
       case 'build':
-        runBuild(require(config.webpack.build));
+        runBuild(require(config.buildConfig));
         break;
       case 'develop':
-        runDevelop(require(config.webpack.develop));
+        runDevelop(require(config.developConfig));
         break;
       default:
         throw new Error('unknown command: ' + command);
