@@ -46,7 +46,7 @@ function createMiddleware (hopsConfig, watchOptions) {
         try {
           middleware(req, res, next);
         } catch (error) {
-          next(error);
+          next && next(error);
         }
       }
     });
