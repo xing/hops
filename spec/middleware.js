@@ -44,7 +44,7 @@ describe('middleware', function () {
       createMiddleware(goodConfig)(req, res);
     });
 
-    it('should send default error response (bad export)', function (done) {
+    it('should pass errors to next() (bad export)', function (done) {
       var req = mocks.createRequest({
         url: '/'
       });
@@ -52,15 +52,13 @@ describe('middleware', function () {
         eventEmitter: events.EventEmitter,
         request: req
       });
-      res.on('finish', function () {
-        assert.equal(res.statusCode, 500);
-        assert.equal(res._getData(), '<h1>Server Error</h1>');
+      createMiddleware(badExportConfig)(req, res, function (error) {
+        assert(!!error);
         done();
       });
-      createMiddleware(badExportConfig)(req, res);
     });
 
-    it('should send default error response (bad handler)', function (done) {
+    it('should pass errors to next() (bad handler)', function (done) {
       var req = mocks.createRequest({
         url: '/'
       });
@@ -68,29 +66,10 @@ describe('middleware', function () {
         eventEmitter: events.EventEmitter,
         request: req
       });
-      res.on('finish', function () {
-        assert.equal(res.statusCode, 500);
-        assert.equal(res._getData(), '<h1>Server Error</h1>');
+      createMiddleware(badHandlerConfig)(req, res, function (error) {
+        assert(!!error);
         done();
       });
-      createMiddleware(badHandlerConfig)(req, res);
-    });
-
-    it('should call custom error handler', function (done) {
-      var config = Object.assign({}, badExportConfig, {
-        onError: function (req, res) {
-          assert(true);
-          done();
-        }
-      });
-      var req = mocks.createRequest({
-        url: '/'
-      });
-      var res = mocks.createResponse({
-        eventEmitter: events.EventEmitter,
-        request: req
-      });
-      createMiddleware(config)(req, res);
     });
   });
 });

@@ -6,47 +6,48 @@ var transpile = require('../transpiler');
 function createMiddleware (hopsConfig, watchOptions) {
   var config = util.getConfig(hopsConfig);
 
-  var transpilerPromise = null;
-  var middlewarePromise = null;
+  var transpiler = transpile(
+    require(config.renderConfig),
+    watchOptions
+  );
 
-  var transpiler = transpile(require(config.renderConfig), watchOptions);
+  var middleware, error;
 
   transpiler.on('recompile', function () {
-    middlewarePromise = null;
+    middleware = null;
+    error = null;
   });
 
-  function getTranspilerPromise () {
-    return new Promise(function (resolve, reject) {
-      transpiler.on('success', function (result) {
-        transpilerPromise = null;
-        middlewarePromise = Promise.resolve(
-          result.__esModule ? result.default : result
-        );
-        resolve(middlewarePromise);
+  transpiler.on('success', function (result) {
+    middleware = result.__esModule ? result.default : result;
+    error = null;
+  });
+
+  transpiler.on('error', function (result) {
+    middleware = null;
+    error = result;
+  });
+
+  function getMiddleware (callback) {
+    if (middleware || error) {
+      callback(error, middleware);
+    } else {
+      transpiler.once('result', function () {
+        getMiddleware(callback);
       });
-      transpiler.on('error', reject);
-    });
+    }
   }
-
-  function getMiddlewarePromise () {
-    return middlewarePromise || transpilerPromise || getTranspilerPromise();
-  }
-
-  transpilerPromise = getTranspilerPromise().catch(util.logError);
 
   return function (req, res, next) {
-    getMiddlewarePromise()
-    .then(function (middleware) {
-      middleware(req, res, next);
-    })
-    .catch(function (error) {
-      util.logError(error);
-      if (config.onError) {
-        config.onError(req, res, next);
+    getMiddleware(function (error, middleware) {
+      if (error) {
+        next && next(error);
       } else {
-        res.writeHead(500);
-        res.write('<h1>Server Error</h1>');
-        res.end();
+        try {
+          middleware(req, res, next);
+        } catch (error) {
+          next(error);
+        }
       }
     });
   };
@@ -65,4 +66,3 @@ createMiddleware.register = function (hopsConfig, watchOptions) {
 };
 
 module.exports = createMiddleware;
-
