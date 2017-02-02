@@ -28,28 +28,26 @@ function createMiddleware (hopsConfig, watchOptions) {
     error = result;
   });
 
-  function getMiddleware (callback) {
-    if (middleware || error) {
-      callback(error, middleware);
-    } else {
-      transpiler.once('result', function () {
-        getMiddleware(callback);
-      });
+  function getMiddlewarePromise () {
+    if (error) {
+      return Promise.reject(error);
     }
+    if (middleware) {
+      return Promise.resolve(middleware);
+    }
+    return new Promise(function (resolve) {
+      transpiler.once('result', function () {
+        resolve(getMiddlewarePromise());
+      });
+    });
   }
 
   return function (req, res, next) {
-    getMiddleware(function (error, middleware) {
-      if (error) {
-        next && next(error);
-      } else {
-        try {
-          middleware(req, res, next);
-        } catch (error) {
-          next && next(error);
-        }
-      }
-    });
+    getMiddlewarePromise()
+    .then(function (middleware) {
+      middleware(req, res, next);
+    })
+    .catch(next);
   };
 }
 
