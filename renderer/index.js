@@ -26,11 +26,7 @@ module.exports = function createRenderer (hopsConfig, watchOptions) {
         }
       });
       middleware(req, res, function (error) {
-        if (error) {
-          reject(error);
-        } else {
-          resolve();
-        }
+        if (error) { reject(error); } else { resolve(); }
       });
     });
   };
