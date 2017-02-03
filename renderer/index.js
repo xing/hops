@@ -6,8 +6,8 @@ var mocks = require('node-mocks-http');
 
 var createMiddleware = require('../middleware');
 
-module.exports = function createRenderer (hopsConfig, watchOptions) {
-  var middleware = createMiddleware(hopsConfig, watchOptions);
+module.exports = function createRenderer (webpackConfig, watchOptions) {
+  var middleware = createMiddleware(webpackConfig, watchOptions);
 
   return function (location) {
     return new Promise(function (resolve, reject) {

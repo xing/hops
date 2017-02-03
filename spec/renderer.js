@@ -4,15 +4,9 @@ var assert = require('assert');
 
 var createRenderer = require('../renderer');
 
-var goodConfig = {
-  renderConfig: require.resolve('./mock/webpack.good')
-};
-var badExportConfig = {
-  renderConfig: require.resolve('./mock/webpack.bad-export')
-};
-var badHandlerConfig = {
-  renderConfig: require.resolve('./mock/webpack.bad-handler')
-};
+var goodConfig = require('./mock/webpack.good');
+var badExportConfig = require('./mock/webpack.bad-export');
+var badHandlerConfig = require('./mock/webpack.bad-handler');
 
 describe('renderer', function () {
   it('should export a function', function () {
