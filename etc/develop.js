@@ -4,7 +4,7 @@ var appRoot = require('app-root-path');
 
 var webpack = require('webpack');
 
-var middleware = require('../middleware');
+var hops = require('..');
 
 var pkg = appRoot.require('package.json');
 
@@ -58,6 +58,6 @@ module.exports = {
     noInfo: true,
     stats: 'errors-only',
     watchOptions: watchOptions,
-    setup: middleware.register(null, watchOptions)
+    setup: hops.createDevServerSetup({}, watchOptions)
   }
 };

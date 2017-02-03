@@ -7,7 +7,7 @@
     "babel",
     "postcss"
   ],
-  "main": "bin/run",
+  "main": "lib/exports.js",
   "bin": {
     "hops": "bin/run.js"
   },

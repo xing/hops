@@ -7,7 +7,10 @@ var createRenderer = require('../renderer');
 
 var Plugin = module.exports = function Plugin (hopsConfig, watchOptions) {
   this.config = util.getConfig(hopsConfig);
-  this.render = createRenderer(this.config, watchOptions);
+  this.render = createRenderer(
+    require(this.config.renderConfig),
+    watchOptions
+  );
 };
 
 Plugin.getFileName = function getFileName (location) {
