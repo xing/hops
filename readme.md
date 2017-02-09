@@ -94,12 +94,18 @@ Using the hops config in your `package.json` file, you can supply your own Webpa
 }
 ```
 
-Other than that, you can use hops' components on their own. These components all accept configs similar to what's supported inside `package.json`. Please refer to their respective readme files for examples:
+Other than that, you can use hops' components on their own. Please refer to their respective readme files for examples:
 
-* [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/plugin)
-* [Hops Renderer](https://github.com/xing/hops/tree/master/renderer)
-* [Hops Middleware](https://github.com/xing/hops/tree/master/middleware)
 * [Hops Transpiler](https://github.com/xing/hops/tree/master/transpiler)
+* [Hops Middleware](https://github.com/xing/hops/tree/master/middleware)
+* [Hops Renderer](https://github.com/xing/hops/tree/master/renderer)
+* [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/plugin)
+
+
+### Alternatives
+
+* [Backpack](https://www.npmjs.com/package/backpack-core)
+* [static site generator webpack plugin](https://www.npmjs.com/package/static-site-generator-webpack-plugin)
 
 
 ### Thanks!

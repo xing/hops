@@ -1,9 +1,14 @@
 
 # Hops Middleware
 
-Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' middleare is a simple helper to simplify using your custom middleware with an Express server.
+Hops assumes you will write an Express-style middleware, transpiles it using Webpack and makes it easy to use in non-transpiled and even non-server code. Hops' middleware is a simple helper to simplify using your custom middleware with an Express server.
 
-You can override hops' default configuration by passing a config object to the `createMiddleware` function. Supported config options equal those supported in `package.json`.
+You can override hops' default Webpack configuration by passing a `webpackConfig` object to the `createMiddleware` function. You can also enable watch mode by passing a `watchOptions` object.
+
+
+### Target Audience
+
+If you want to write your Express middleware in ECMAScript Next, reuse your Webpack loader config and have your stuff transpiled on the fly to use it in your own Express server (or in Webpack Dev Server), hops' middleware is for you.
 
 
 ### Example
@@ -17,7 +22,16 @@ This example shows how to write and configure a custom middleware and use it in 
 {
   ...
   "server": "src/server.js",
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-es2015": "*",
+    "hops": "*"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
   ...
 }
 ```
@@ -56,3 +70,5 @@ app.all('*', createMiddleware(/* hopsConfig, watchOptions */));
 
 app.listen(3000);
 ```
+
+Hops' own [renderer](https://github.com/xing/hops/blob/master/renderer/index.js) is one example of the middleware in action, another one being hops' [helper](https://github.com/xing/hops/blob/master/middleware/dev-server.js) for registering its middleware with the Webpack Dev Server.
