@@ -5,6 +5,23 @@ var path = require('path');
 var util = require('../lib/util');
 var createRenderer = require('../renderer');
 
+function getFileName (location) {
+  var parts = location.split('/').filter(function (part) {
+    return !!part.length;
+  });
+  if (!parts.length || parts[parts.length - 1].indexOf('.') === -1) {
+    parts.push('index.html');
+  }
+  return path.join.apply(path, parts);
+}
+
+function getAssetObject (string) {
+  return {
+    source: function () { return string; },
+    size: function () { return string.length; }
+  };
+}
+
 var Plugin = module.exports = function Plugin (hopsConfig, watchOptions) {
   this.config = util.getConfig(hopsConfig);
   this.render = createRenderer(
@@ -13,28 +30,11 @@ var Plugin = module.exports = function Plugin (hopsConfig, watchOptions) {
   );
 };
 
-Plugin.getFileName = function getFileName (location) {
-  var parts = location.split('/').filter(function (part) {
-    return !!part.length;
-  });
-  if (!parts.length || parts[parts.length - 1].indexOf('.') === -1) {
-    parts.push('index.html');
-  }
-  return path.join.apply(path, parts);
-};
-
-Plugin.getAssetObject = function getAssetObject (string) {
-  return {
-    source: function () { return string; },
-    size: function () { return string.length; }
-  };
-};
-
 Plugin.prototype.process = function process (location) {
   return this.render(location).then(function (result) {
     return result && {
-      fileName: Plugin.getFileName(location),
-      assetObject: Plugin.getAssetObject(result)
+      fileName: getFileName(location),
+      assetObject: getAssetObject(result)
     };
   });
 };
