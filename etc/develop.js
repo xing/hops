@@ -4,7 +4,8 @@ var appRoot = require('app-root-path');
 
 var webpack = require('webpack');
 
-var hops = require('..');
+var createMiddleware = require('../middleware');
+var config = require('../lib/config')();
 
 var pkg = appRoot.require('package.json');
 
@@ -54,10 +55,15 @@ module.exports = {
     hot: true,
     contentBase: appRoot.resolve('dist'),
     host: 'localhost',
-    port: 8080,
     noInfo: true,
     stats: 'errors-only',
     watchOptions: watchOptions,
-    setup: hops.createDevServerSetup({}, watchOptions)
+    setup: function (app) {
+      var webpackConfig = require(config.renderConfig);
+      var middleware = createMiddleware(webpackConfig, watchOptions);
+      config.locations.forEach(function (location) {
+        app.all(location, middleware);
+      });
+    }
   }
 };

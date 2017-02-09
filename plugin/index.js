@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var util = require('../lib/util');
+var config = require('../lib/config')();
 var createRenderer = require('../renderer');
 
 function getFileName (location) {
@@ -22,10 +22,10 @@ function getAssetObject (string) {
   };
 }
 
-var Plugin = module.exports = function Plugin (hopsConfig, watchOptions) {
-  this.config = util.getConfig(hopsConfig);
+var Plugin = function Plugin (locations, webpackConfig, watchOptions) {
+  this.locations = locations || config.locations;
   this.render = createRenderer(
-    require(this.config.renderConfig),
+    webpackConfig || config.renderConfig,
     watchOptions
   );
 };
@@ -41,7 +41,7 @@ Plugin.prototype.process = function process (location) {
 
 Plugin.prototype.apply = function (compiler) {
   var process = this.process.bind(this);
-  var locations = this.config.locations;
+  var locations = this.locations;
 
   if (locations && locations.length) {
     compiler.plugin('emit', function (compilation, callback) {
@@ -52,9 +52,11 @@ Plugin.prototype.apply = function (compiler) {
             compilation.assets[result.fileName] = result.assetObject;
           }
         });
+        callback();
       })
-      .catch(util.logError)
-      .then(callback);
+      .catch(callback);
     });
   }
 };
+
+module.exports = Plugin;

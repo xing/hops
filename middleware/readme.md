@@ -66,9 +66,9 @@ const app = express();
 
 app.use(express.static('dist'));
 
-app.all('*', createMiddleware(/* hopsConfig, watchOptions */));
+app.all('*', createMiddleware(/* webpackConfig, watchOptions */));
 
 app.listen(3000);
 ```
 
-Hops' own [renderer](https://github.com/xing/hops/blob/master/renderer/index.js) is one example of the middleware in action, another one being hops' [helper](https://github.com/xing/hops/blob/master/middleware/dev-server.js) for registering its middleware with the Webpack Dev Server.
+Hops' own [renderer](https://github.com/xing/hops/blob/master/renderer/index.js) is one example of the middleware in action.
