@@ -24,7 +24,7 @@ module.exports = function transpile (webpackConfig, watchOptions) {
 
   compiler.outputFileSystem = mfs;
   compiler.plugin('watch-run', function (_, callback) {
-    emitter.emit('recompile');
+    emitter.emit('start');
     callback();
   });
 
@@ -62,6 +62,8 @@ module.exports = function transpile (webpackConfig, watchOptions) {
   } else {
     compiler.run(handleCompilation);
   }
+
+  process.nextTick(emitter.emit.bind(emitter, 'start'));
 
   return emitter;
 };
