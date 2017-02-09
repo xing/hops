@@ -1,14 +1,21 @@
 
 # Hops Renderer
 
-Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' renderer is a simple helper to simplify using your custom middleware outside of Express servers.
+Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' renderer is a simple helper to enable you to use your custom middleware outside of Express servers.
 
-You can override hops' default configuration by passing a config object to the `createRenderer` function. Supported config options equal those supported in `package.json`.
+Its export, `createRenderer`, creates a `render` function that, if called with a `location` string, returns a promise that resolves to the full body of your middleware's response.
+
+You can override hops' default Webpack configuration by passing a config object to the `createRenderer` function. You can also enable watch mode by passing a `watchOptions` object.
+
+
+### Target Audience
+
+If you want to use a custom Express middleware that's written in ECMAScript Next and transpiled reusing your Webpack loader config, to generate HTML output during your build, you might want to use this renderer. This way, you can prerender some of your pages at buildtime while using the very same code to dynamically generate other pages at runtime.
 
 
 ### Example
 
-This example shows how to write and configure a custom middleware and use it in a build script of some sort.
+This example shows how to write and configure a custom middleware and use it to prerender pages in a build script of some sort.
 
 
 ##### `package.json`
@@ -16,7 +23,16 @@ This example shows how to write and configure a custom middleware and use it in 
 ```javascript
 {
   ...
-  "server": "src/server.js"
+  "server": "src/server.js",,
+  "dependencies": {
+    "babel-preset-es2015": "*",
+    "hops": "*"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
   ...
 }
 ```
@@ -45,13 +61,15 @@ export default (req, res) => {
 
 ```javascript
 const createRenderer = require('hops/renderer');
-const render = createRenderer(/* hopsConfig, watchOptions */);
+const render = createRenderer(/* webpackConfig, watchOptions */);
 
 render('/foo').then(function (result) {
   // result === 'hello foo'
 });
 
 render('/baz').catch(function (error) {
-  // error === 'invalid status code: 404'
+  // error === new Error('invalid status code: 404')
 });
 ```
+
+Hops' own [Webpack plugin](https://github.com/xing/hops/blob/master/plugin/index.js) is another example of its renderer in action.

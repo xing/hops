@@ -1,9 +1,14 @@
 
 # Hops Plugin
 
-Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' plugin is a simple helper to simplify using your custom middleware in a webpack build.
+Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' plugin is a simple helper to simplify using your custom middleware in a Webpack build.
 
 You can override hops' default configuration by passing a config object to the `Plugin` constructor. Supported config options equal those supported in `package.json`.
+
+
+### Target Audience
+
+If you want to use your Webpack build to generate static pages using your own custom Express middleware, written in ECMAScript and transpiled using Webpack, this plugin might be what you're looking for. Phew.
 
 
 ### Example
