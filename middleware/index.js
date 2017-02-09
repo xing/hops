@@ -7,7 +7,7 @@ module.exports = function createMiddleware (webpackConfig, watchOptions) {
 
   var middleware, error;
 
-  transpiler.on('recompile', function () {
+  transpiler.on('start', function () {
     middleware = null;
     error = null;
   });
