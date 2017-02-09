@@ -4,10 +4,7 @@ var assert = require('assert');
 
 var Plugin = require('../plugin');
 
-var goodConfig = {
-  renderConfig: require.resolve('./mock/webpack.good'),
-  locations: ['/']
-};
+var goodConfig = require('./mock/webpack.good');
 
 function Mockpiler (callback) {
   this.callback = callback;
@@ -31,7 +28,7 @@ describe('plugin', function () {
         assert('index.html' in assets);
         done();
       });
-      var plugin = new Plugin(goodConfig);
+      var plugin = new Plugin(['/'], goodConfig);
       plugin.apply(compiler);
     });
 
@@ -42,7 +39,7 @@ describe('plugin', function () {
         assert('index.html' in assets);
         done();
       });
-      var plugin = new Plugin(goodConfig);
+      var plugin = new Plugin(['/'], goodConfig);
       plugin.apply(compiler);
     });
   });

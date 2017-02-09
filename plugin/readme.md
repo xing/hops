@@ -3,7 +3,7 @@
 
 Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' plugin is a simple helper to simplify using your custom middleware in a Webpack build.
 
-You can override hops' default configuration by passing a config object to the `Plugin` constructor. Supported config options equal those supported in `package.json`.
+You can override hops' default Webpack configuration by passing a config object to the `Plugin` constructor. Supported config options equal those supported in `package.json`.
 
 
 ### Target Audience
@@ -60,7 +60,7 @@ const HopsPlugin = require('hops/plugin');
 module.exports = {
   ...
   plugins: [
-    new HopsPlugin(/* hopsConfig, watchOptions */)
+    new HopsPlugin(/* locations, webpackConfig, watchOptions */)
   ]
   ...
 }

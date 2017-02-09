@@ -3,11 +3,16 @@
 
 var url = require('url');
 
+var npmlog = require('npmlog');
+
 var webpack = require('webpack');
 var WebpackServer = require('webpack-dev-server');
 
+var getConfig = require('../lib/config');
 var pkg = require('../package.json');
-var util = require('../lib/util');
+
+var logInfo = npmlog.log.bind(npmlog, 'info', 'hops');
+var logError = npmlog.log.bind(npmlog, 'error', 'hops');
 
 function runStart (config) {
   if (process.env.NODE_ENV === 'production') {
@@ -20,32 +25,43 @@ function runStart (config) {
 function runBuild (config) {
   webpack(config).run(function (error, stats) {
     if (error) {
-      util.log(error);
+      logError(error.stack.toString());
     } else {
-      util.log(stats.toString({ chunks: false }));
+      logInfo(stats.toString({ chunks: false }));
     }
   });
 }
 
 function runDevelop (config) {
-  var serverConfig = config.devServer;
-  var server = new WebpackServer(webpack(config), serverConfig);
-  server.listen(serverConfig.port, serverConfig.host, function (err) {
-    if (err) {
-      throw err;
+  var serverConfig = Object.assign(
+    { host: '0.0.0.0', port: 8080 },
+    config.devServer
+  );
+  var server = new WebpackServer(
+    webpack(config),
+    serverConfig
+  );
+  server.listen(
+    serverConfig.port,
+    serverConfig.host,
+    function (error) {
+      if (error) {
+        logError(error.stack.toString());
+      } else {
+        logInfo(url.format({
+          protocol: serverConfig.https ? 'https' : 'http',
+          hostname: serverConfig.host,
+          port: serverConfig.port
+        }));
+      }
     }
-    util.log(url.format({
-      protocol: serverConfig.https ? 'https' : 'http',
-      hostname: serverConfig.host,
-      port: serverConfig.port
-    }));
-  });
+  );
 }
 
 function run (command, defaultConfig) {
-  var config = util.getConfig(defaultConfig);
+  var config = getConfig(defaultConfig);
   try {
-    util.log('hops@%s: %s', pkg.version, command);
+    logInfo('hops@%s: %s', pkg.version, command);
     switch (command) {
       case 'start':
         runStart(config);
@@ -60,7 +76,7 @@ function run (command, defaultConfig) {
         throw new Error('unknown command: ' + command);
     }
   } catch (error) {
-    util.logError(error);
+    logError(error.stack.toString());
   }
 }
 
