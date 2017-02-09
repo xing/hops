@@ -14,6 +14,11 @@ module.exports = function transpile (webpackConfig, watchOptions) {
 
   var emitter = new EventEmitter();
 
+  var emitResult = function () {
+    emitter.emit.apply(emitter, arguments);
+    emitter.emit('result');
+  };
+
   var mfs = new MemoryFS();
   var compiler = webpack(webpackConfig);
 
@@ -23,14 +28,13 @@ module.exports = function transpile (webpackConfig, watchOptions) {
     callback();
   });
 
-  function emitResult () {
-    emitter.emit.apply(emitter, arguments);
-    emitter.emit('result');
-  }
-
   function handleCompilation (compileError, stats) {
     if (compileError) {
       emitResult('error', compileError);
+    } else if (stats.hasErrors()) {
+      stats.toJson().errors.forEach(emitResult.bind(null, 'error'));
+    } else if (stats.hasWarnings()) {
+      stats.toJson().warnings.forEach(emitResult.bind(null, 'error'));
     } else {
       var filePath = path.join(
         webpackConfig.output.path,

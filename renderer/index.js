@@ -20,7 +20,7 @@ module.exports = function createRenderer (webpackConfig, watchOptions) {
       });
       res.on('finish', function () {
         if (res.statusCode !== 200) {
-          reject('invalid status code: ' + res.statusCode);
+          reject(new Error('invalid status code: ' + res.statusCode));
         } else {
           resolve(res._getData());
         }
