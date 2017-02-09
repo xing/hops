@@ -36,10 +36,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new HopsPlugin(),
+    new HopsPlugin(
+      config.locations,
+      require(config.renderConfig)
+    ),
     new ExtractTextPlugin({
       filename: '[name]-' + pkg.version + '.css',
-      allChunks: true
+      allChunks: true,
+      ignoreOrder: true
     }),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     new webpack.LoaderOptionsPlugin({
