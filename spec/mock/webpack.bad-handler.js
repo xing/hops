@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var defaultConfig = require('../../etc/render');
+var defaultConfig = require('../../config/render');
 
 var projectDir = path.resolve(__dirname, 'bad-handler');
 

@@ -7,9 +7,9 @@ var appRoot = require('app-root-path');
 
 module.exports = function getConfig (overrides) {
   var config = {
-    buildConfig: require.resolve('../etc/build'),
-    developConfig: require.resolve('../etc/develop'),
-    renderConfig: require.resolve('../etc/render'),
+    buildConfig: require.resolve('./build'),
+    developConfig: require.resolve('./develop'),
+    renderConfig: require.resolve('./render'),
     locations: []
   };
   if (fs.existsSync(appRoot.resolve('package.json'))) {

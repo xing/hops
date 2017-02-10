@@ -52,7 +52,8 @@ export default `hello foo`;
 
 ```javascript
 const transpile = require('hops/transpiler');
-const transpilation = transpile(/* webpackConfig, watchOptions */);
+const webpackConfig = require('hops/config/render');
+const transpilation = transpile(webpackConfig /*, watchOptions */);
 
 transpilation.on('success', function (result) {
   // result === 'hello foo'

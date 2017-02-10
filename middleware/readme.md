@@ -61,12 +61,13 @@ export default (req, res) => {
 ```javascript
 const express = require('express');
 const createMiddleware = require('hops/middleware');
+const webpackConfig = require('hops/config/render');
 
 const app = express();
 
 app.use(express.static('dist'));
 
-app.all('*', createMiddleware(/* webpackConfig, watchOptions */));
+app.all('*', createMiddleware(webpackConfig /*, watchOptions */));
 
 app.listen(3000);
 ```
