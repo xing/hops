@@ -21,13 +21,7 @@ This example shows how to write and configure a custom middleware and use it in 
 ```javascript
 {
   ...
-  "server": "src/server.js",
-  "hops": {
-    "locations": [
-      "/foo",
-      "/bar"
-    ]
-  }
+  "server": "src/server.js"
   ...
 }
 ```
@@ -56,11 +50,14 @@ export default (req, res) => {
 
 ```javascript
 const HopsPlugin = require('hops/plugin');
+const webpackConfig = require('hops/config/render');
+
+const locations = ['foo', 'bar'];
 
 module.exports = {
   ...
   plugins: [
-    new HopsPlugin(/* locations, webpackConfig, watchOptions */)
+    new HopsPlugin(locations, webpackConfig /*, watchOptions */)
   ]
   ...
 }

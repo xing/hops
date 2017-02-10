@@ -61,7 +61,9 @@ export default (req, res) => {
 
 ```javascript
 const createRenderer = require('hops/renderer');
-const render = createRenderer(/* webpackConfig, watchOptions */);
+const webpackConfig = require('hops/config/render');
+
+const render = createRenderer(webpackConfig /*, watchOptions */);
 
 render('/foo').then(function (result) {
   // result === 'hello foo'

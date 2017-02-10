@@ -8,7 +8,7 @@ var npmlog = require('npmlog');
 var webpack = require('webpack');
 var WebpackServer = require('webpack-dev-server');
 
-var getConfig = require('../lib/config');
+var getConfig = require('../config');
 var pkg = require('../package.json');
 
 var logInfo = npmlog.log.bind(npmlog, 'info', 'hops');
@@ -58,8 +58,8 @@ function runDevelop (config) {
   );
 }
 
-function run (command, defaultConfig) {
-  var config = getConfig(defaultConfig);
+function run (command, hopsConfig) {
+  var config = getConfig(hopsConfig);
   try {
     logInfo('hops@%s: %s', pkg.version, command);
     switch (command) {

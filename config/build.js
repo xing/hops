@@ -6,7 +6,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var HopsPlugin = require('../plugin');
-var config = require('../lib/config')();
+var hopsConfig = require('.')();
 
 var pkg = appRoot.require('package.json');
 
@@ -37,8 +37,8 @@ module.exports = {
   },
   plugins: [
     new HopsPlugin(
-      config.locations,
-      require(config.renderConfig)
+      hopsConfig.locations,
+      require(hopsConfig.renderConfig)
     ),
     new ExtractTextPlugin({
       filename: '[name]-' + pkg.version + '.css',

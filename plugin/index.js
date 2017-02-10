@@ -2,7 +2,6 @@
 
 var path = require('path');
 
-var config = require('../lib/config')();
 var createRenderer = require('../renderer');
 
 function getFileName (location) {
@@ -23,11 +22,8 @@ function getAssetObject (string) {
 }
 
 var Plugin = function Plugin (locations, webpackConfig, watchOptions) {
-  this.locations = locations || config.locations;
-  this.render = createRenderer(
-    webpackConfig || config.renderConfig,
-    watchOptions
-  );
+  this.locations = locations;
+  this.render = createRenderer(webpackConfig, watchOptions);
 };
 
 Plugin.prototype.process = function process (location) {
