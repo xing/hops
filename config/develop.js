@@ -5,7 +5,7 @@ var appRoot = require('app-root-path');
 var webpack = require('webpack');
 
 var createMiddleware = require('../middleware');
-var hopsConfig = require('../config')();
+var hopsConfig = require('.');
 
 var pkg = appRoot.require('package.json');
 
@@ -22,7 +22,7 @@ module.exports = {
   ],
   output: {
     path: appRoot.resolve('dist'),
-    publicPath: 'http://localhost:8080/',
+    publicPath: '/',
     filename: '[name]-' + pkg.version + '.js',
     chunkFilename: 'chunk-[id]-' + pkg.version + '.js'
   },
@@ -52,9 +52,8 @@ module.exports = {
   },
   devtool: '#source-map',
   devServer: {
-    hot: true,
     contentBase: appRoot.resolve('dist'),
-    host: 'localhost',
+    hot: true,
     noInfo: true,
     stats: 'errors-only',
     watchOptions: watchOptions,

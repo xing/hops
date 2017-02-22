@@ -6,7 +6,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var HopsPlugin = require('../plugin');
-var hopsConfig = require('.')();
+var hopsConfig = require('.');
 
 var pkg = appRoot.require('package.json');
 
