@@ -12,6 +12,8 @@ var badExportConfig = require('./mock/webpack.bad-export');
 var badHandlerConfig = require('./mock/webpack.bad-handler');
 
 describe('middleware', function () {
+  this.timeout(5000);
+
   it('should export a function', function () {
     assert.equal(typeof createMiddleware, 'function');
   });
