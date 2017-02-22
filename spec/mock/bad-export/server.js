@@ -1,2 +1,1 @@
-/* eslint-disable */
-const foo = bar;
+throw new Error('something went wrong');

@@ -9,6 +9,8 @@ var badExportConfig = require('./mock/webpack.bad-export');
 var badHandlerConfig = require('./mock/webpack.bad-handler');
 
 describe('renderer', function () {
+  this.timeout(5000);
+
   it('should export a function', function () {
     assert.equal(typeof createRenderer, 'function');
   });
