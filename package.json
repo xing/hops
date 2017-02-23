@@ -11,11 +11,21 @@
   "bin": {
     "hops": "bin/run.js"
   },
+  "files": [
+    "bin",
+    "config",
+    "lib",
+    "middleware",
+    "plugin",
+    "renderer",
+    "transpiler"
+  ],
   "scripts": {
     "start": "cd demo; rm -rf dist node_modules/hops; npm install; npm start",
     "test": "mocha -r spec/setup \"spec/*.js\"",
     "postversion": "git push && git push --tags",
-    "update": "ncu -u && rm -rf node_modules demo/node_modules && npm install && npm test && npm start"
+    "update": "ncu -u && rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
+    "dryrun": "tar -tf $(npm pack) && rm hops-*.tgz"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
