@@ -24,7 +24,7 @@ Plugin.prototype.generateAll = function generateAll () {
   return Promise.all(this.locations.map(generate))
   .then(function (results) {
     return results.reduce(function (htmlAssets, result) {
-      if (htmlAssets) {
+      if (result) {
         htmlAssets[result.fileName] = result.assetObject;
       }
       return htmlAssets;
