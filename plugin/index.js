@@ -1,58 +1,47 @@
 'use strict';
 
-var path = require('path');
+var index = require('directory-index');
+var RawSource = require('webpack-sources').RawSource;
 
 var createRenderer = require('../renderer');
 
-function getFileName (location) {
-  var parts = location.split('/').filter(function (part) {
-    return !!part.length;
-  });
-  if (!parts.length || parts[parts.length - 1].indexOf('.') === -1) {
-    parts.push('index.html');
-  }
-  return path.join.apply(path, parts);
-}
-
-function getAssetObject (string) {
-  return {
-    source: function () { return string; },
-    size: function () { return string.length; }
-  };
-}
-
 var Plugin = function Plugin (locations, webpackConfig, watchOptions) {
-  this.locations = locations;
+  this.locations = locations || [];
   this.render = createRenderer(webpackConfig, watchOptions);
 };
 
-Plugin.prototype.process = function process (location) {
+Plugin.prototype.generate = function generate (location) {
   return this.render(location).then(function (result) {
     return result && {
-      fileName: getFileName(location),
-      assetObject: getAssetObject(result)
+      fileName: index(location).replace(/^\//, ''),
+      assetObject: new RawSource(result)
     };
   });
 };
 
-Plugin.prototype.apply = function (compiler) {
-  var process = this.process.bind(this);
-  var locations = this.locations;
+Plugin.prototype.generateAll = function generateAll () {
+  var generate = this.generate.bind(this);
+  return Promise.all(this.locations.map(generate))
+  .then(function (results) {
+    return results.reduce(function (htmlAssets, result) {
+      if (htmlAssets) {
+        htmlAssets[result.fileName] = result.assetObject;
+      }
+      return htmlAssets;
+    }, {});
+  });
+};
 
-  if (locations && locations.length) {
-    compiler.plugin('emit', function (compilation, callback) {
-      Promise.all(locations.map(process))
-      .then(function (results) {
-        results.forEach(function (result) {
-          if (result) {
-            compilation.assets[result.fileName] = result.assetObject;
-          }
-        });
-        callback();
-      })
-      .catch(callback);
-    });
-  }
+Plugin.prototype.apply = function (compiler) {
+  var generateAll = this.generateAll.bind(this);
+  compiler.plugin('emit', function (compilation, callback) {
+    generateAll()
+    .then(function (htmlAssets) {
+      Object.assign(compilation.assets, htmlAssets);
+      callback();
+    })
+    .catch(callback);
+  });
 };
 
 module.exports = Plugin;
