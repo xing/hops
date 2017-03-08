@@ -53,6 +53,7 @@
     "babel-core": "6.23.1",
     "babel-loader": "6.3.2",
     "css-loader": "0.26.2",
+    "directory-index": "0.1.0",
     "extract-text-webpack-plugin": "2.0.0",
     "file-loader": "0.10.1",
     "json-loader": "0.5.4",
@@ -68,7 +69,8 @@
     "url-loader": "0.5.8",
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.1",
-    "webpack-node-externals": "1.5.4"
+    "webpack-node-externals": "1.5.4",
+    "webpack-sources": "0.1.4"
   },
   "devDependencies": {
     "mocha": "3.2.0",
