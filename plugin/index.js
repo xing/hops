@@ -5,41 +5,27 @@ var RawSource = require('webpack-sources').RawSource;
 
 var createRenderer = require('../renderer');
 
+function getFileName (location) {
+  return index(location).replace(/^\//, '');
+}
+
 var Plugin = function Plugin (locations, webpackConfig, watchOptions) {
-  this.locations = locations || [];
   this.render = createRenderer(webpackConfig, watchOptions);
+  this.locations = locations || [];
 };
 
-Plugin.prototype.generate = function generate (location) {
-  return this.render(location).then(function (result) {
-    return result && {
-      fileName: index(location).replace(/^\//, ''),
-      assetObject: new RawSource(result)
-    };
-  });
-};
-
-Plugin.prototype.generateAll = function generateAll () {
-  var generate = this.generate.bind(this);
-  return Promise.all(this.locations.map(generate))
-  .then(function (results) {
-    return results.reduce(function (htmlAssets, result) {
-      if (result) {
-        htmlAssets[result.fileName] = result.assetObject;
-      }
-      return htmlAssets;
-    }, {});
-  });
-};
-
-Plugin.prototype.apply = function (compiler) {
-  var generateAll = this.generateAll.bind(this);
+Plugin.prototype.apply = function apply (compiler) {
+  var render = this.render;
+  var locations = this.locations;
   compiler.plugin('emit', function (compilation, callback) {
-    generateAll()
-    .then(function (htmlAssets) {
-      Object.assign(compilation.assets, htmlAssets);
-      callback();
-    })
+    Promise.all(locations.map(function (location) {
+      return render(location).then(function (html) {
+        if (html) {
+          compilation.assets[getFileName(location)] = new RawSource(html);
+        }
+      });
+    }))
+    .then(function () { callback(); })
     .catch(callback);
   });
 };
