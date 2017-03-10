@@ -10,24 +10,20 @@ function getFileName (location) {
 }
 
 var Plugin = function Plugin (locations, webpackConfig, watchOptions) {
-  this.render = createRenderer(webpackConfig, watchOptions);
-  this.locations = locations || [];
-};
-
-Plugin.prototype.apply = function apply (compiler) {
-  var render = this.render;
-  var locations = this.locations;
-  compiler.plugin('emit', function (compilation, callback) {
-    Promise.all(locations.map(function (location) {
-      return render(location).then(function (html) {
-        if (html) {
-          compilation.assets[getFileName(location)] = new RawSource(html);
-        }
-      });
-    }))
-    .then(function () { callback(); })
-    .catch(callback);
-  });
+  var render = createRenderer(webpackConfig, watchOptions);
+  this.apply = function (compiler) {
+    compiler.plugin('emit', function (compilation, callback) {
+      Promise.all((locations || []).map(function (location) {
+        return render(location).then(function (html) {
+          if (html) {
+            compilation.assets[getFileName(location)] = new RawSource(html);
+          }
+        });
+      }))
+      .then(function () { callback(); })
+      .catch(callback);
+    });
+  };
 };
 
 module.exports = Plugin;
