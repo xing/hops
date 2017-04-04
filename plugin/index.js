@@ -9,7 +9,7 @@ function getFileName (location) {
   return index(location).replace(/^\//, '');
 }
 
-var Plugin = function Plugin (locations, webpackConfig, watchOptions) {
+module.exports = function Plugin (locations, webpackConfig, watchOptions) {
   var render = createRenderer(webpackConfig, watchOptions);
   this.apply = function (compiler) {
     compiler.plugin('emit', function (compilation, callback) {
@@ -25,5 +25,3 @@ var Plugin = function Plugin (locations, webpackConfig, watchOptions) {
     });
   };
 };
-
-module.exports = Plugin;
