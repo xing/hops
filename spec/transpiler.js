@@ -22,13 +22,6 @@ describe('transpiler', function () {
     assert.equal(typeof transpiler.close, 'undefined');
   });
 
-  it('should create a watching transpilation', function () {
-    var transpiler = transpile(goodConfig, {});
-    assert(transpiler instanceof events.EventEmitter);
-    assert.equal(typeof transpiler.close, 'function');
-    transpiler.close();
-  });
-
   describe('instance', function () {
     it('should emit a success event', function (done) {
       transpile(goodConfig)

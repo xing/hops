@@ -3,30 +3,27 @@
 var path = require('path');
 var EventEmitter = require('events');
 
-var sourceMapSupport = require('source-map-support');
-var requireFromString = require('require-from-string');
-
 var webpack = require('webpack');
 var MemoryFS = require('memory-fs');
 
+var sourceMapSupport = require('source-map-support');
+var requireFromString = require('require-from-string');
+
 module.exports = function transpile (webpackConfig, watchOptions) {
-  sourceMapSupport.install({ hookRequire: true });
-
   var emitter = new EventEmitter();
-
-  var emitResult = function () {
-    emitter.emit.apply(emitter, arguments);
-    emitter.emit('result');
-  };
-
-  var mfs = new MemoryFS();
   var compiler = webpack(webpackConfig);
 
-  compiler.outputFileSystem = mfs;
-  compiler.plugin('watch-run', function (_, callback) {
+  compiler.outputFileSystem = new MemoryFS();
+
+  compiler.plugin('watch-run', function (compilation, callback) {
     emitter.emit('start');
     callback();
   });
+
+  function emitResult () {
+    emitter.emit.apply(emitter, arguments);
+    emitter.emit('result');
+  }
 
   function handleCompilation (compileError, stats) {
     if (compileError) {
@@ -40,25 +37,31 @@ module.exports = function transpile (webpackConfig, watchOptions) {
         webpackConfig.output.path,
         webpackConfig.output.filename
       );
-      mfs.readFile(filePath, function (readError, fileContent) {
-        if (readError) {
-          emitResult('error', readError);
-        } else {
-          try {
-            var source = fileContent.toString();
-            var result = requireFromString(source, filePath);
-            emitResult('success', result, stats);
-          } catch (moduleError) {
-            emitResult('error', moduleError);
+      compiler.outputFileSystem.readFile(
+        filePath,
+        function (readError, fileContent) {
+          if (readError) {
+            emitResult('error', readError);
+          } else {
+            try {
+              var source = fileContent.toString();
+              var result = requireFromString(source, filePath);
+              emitResult('success', result, stats);
+            } catch (moduleError) {
+              emitResult('error', moduleError);
+            }
           }
         }
-      });
+      );
     }
   }
 
+  if (webpackConfig.devtool) {
+    sourceMapSupport.install({ hookRequire: true });
+  }
+
   if (watchOptions) {
-    var watcher = compiler.watch(watchOptions, handleCompilation);
-    emitter.close = watcher.close.bind(watcher);
+    compiler.watch(watchOptions, handleCompilation);
   } else {
     compiler.run(handleCompilation);
   }
