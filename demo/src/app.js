@@ -1,5 +1,5 @@
 import React from 'react';
-import Match from 'react-router/Match';
+import { Route, Switch } from 'react-router-dom';
 
 import { headline } from './styles.css';
 
@@ -8,9 +8,9 @@ const Home = () => (
 );
 
 const App = () => (
-  <div>
-    <Match exactly pattern='/' component={Home} />
-  </div>
+  <Switch>
+    <Route exact path='/' component={Home} />
+  </Switch>
 );
 
 export default App;
