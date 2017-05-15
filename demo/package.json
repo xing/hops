@@ -13,7 +13,7 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
     "hops": "file:..",
-    "postcss-cssnext": "2.10.0",
+    "postcss-cssnext": "2.11.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "react-router": "4.1.1",
