@@ -3,6 +3,7 @@
 var appRoot = require('app-root-path');
 
 var webpack = require('webpack');
+var ManifestPlugin = require('webpack-manifest-plugin');
 
 var createMiddleware = require('../middleware');
 var hopsConfig = require('.');
@@ -45,7 +46,10 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new ManifestPlugin({
+      writeToFileEmit: true
+    })
   ],
   performance: {
     hints: false

@@ -3,6 +3,7 @@
 var appRoot = require('app-root-path');
 
 var webpack = require('webpack');
+var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var HopsPlugin = require('../plugin');
@@ -40,6 +41,7 @@ module.exports = {
       hopsConfig.locations,
       require(hopsConfig.renderConfig)
     ),
+    new ManifestPlugin(),
     new ExtractTextPlugin({
       filename: '[name]-' + pkg.version + '.css',
       allChunks: true,
