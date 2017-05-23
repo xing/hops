@@ -3,7 +3,7 @@
 var index = require('directory-index');
 var RawSource = require('webpack-sources').RawSource;
 
-var createRenderer = require('../renderer');
+var createRenderer = require('hops-renderer');
 
 function getFileName (location) {
   return index(location).replace(/^\//, '');

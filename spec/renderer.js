@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 
-var createRenderer = require('../renderer');
+var createRenderer = require('../packages/renderer');
 
 var goodConfig = require('./mock/webpack.good');
 var badExportConfig = require('./mock/webpack.bad-export');

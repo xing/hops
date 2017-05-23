@@ -1,6 +1,6 @@
 'use strict';
 
-var transpile = require('../transpiler');
+var transpile = require('hops-transpiler');
 
 module.exports = function createMiddleware (webpackConfig, watchOptions) {
   var transpiler = transpile(webpackConfig, watchOptions);

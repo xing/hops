@@ -8,8 +8,9 @@ var npmlog = require('npmlog');
 var webpack = require('webpack');
 var WebpackServer = require('webpack-dev-server');
 
-var config = require('../config');
-var pkg = require('../package.json');
+var config = require('hops-config');
+
+var pkg = require('./package.json');
 
 var logInfo = npmlog.log.bind(npmlog, 'info', 'hops');
 var logError = npmlog.log.bind(npmlog, 'error', 'hops');
@@ -60,7 +61,7 @@ function runDevelop (config) {
 
 function run (command) {
   try {
-    logInfo('hops@%s: %s', pkg.version, command);
+    logInfo('hops-cli@%s: %s', pkg.version, command);
     switch (command) {
       case 'start':
         runStart(config);

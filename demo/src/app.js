@@ -1,7 +1,9 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 
 import { headline } from './styles.css';
+
+import { render, Route, Switch } from 'hops-react';
+import { createContext } from 'hops-redux';
 
 const Home = () => (
   <h1 className={headline}>Hello World!</h1>
@@ -13,4 +15,4 @@ const App = () => (
   </Switch>
 );
 
-export default App;
+export default render(<App />, createContext());

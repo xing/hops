@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var defaultConfig = require('../../config/render');
+var defaultConfig = require('../../packages/config/render');
 
 var projectDir = path.resolve(__dirname, 'good');
 
