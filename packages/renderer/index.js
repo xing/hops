@@ -4,7 +4,7 @@ var events = require('events');
 
 var mocks = require('node-mocks-http');
 
-var createMiddleware = require('../middleware');
+var createMiddleware = require('hops-middleware');
 
 module.exports = function createRenderer (webpackConfig, watchOptions) {
   var middleware = createMiddleware(webpackConfig, watchOptions);

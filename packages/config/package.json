@@ -1,0 +1,34 @@
+{
+  "name": "hops-config",
+  "version": "6.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "configs",
+    "lib",
+    "loaders"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "6.24.1",
+    "babel-loader": "7.0.0",
+    "css-loader": "0.28.1",
+    "extract-text-webpack-plugin": "2.1.0",
+    "file-loader": "0.11.1",
+    "json-loader": "0.5.4",
+    "lodash.template": "4.4.0",
+    "postcss": "6.0.1",
+    "postcss-loader": "2.0.5",
+    "style-loader": "0.17.0",
+    "url-loader": "0.5.8",
+    "webpack": "2.5.1",
+    "webpack-manifest-plugin": "1.1.0",
+    "webpack-node-externals": "1.6.0"
+  }
+}

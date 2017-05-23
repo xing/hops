@@ -6,9 +6,9 @@ var path = require('path');
 var appRoot = require('app-root-path');
 
 var config = module.exports = {
-  buildConfig: require.resolve('./build'),
-  developConfig: require.resolve('./develop'),
-  renderConfig: require.resolve('./render'),
+  buildConfig: require.resolve('./configs/build'),
+  developConfig: require.resolve('./configs/develop'),
+  renderConfig: require.resolve('./configs/render'),
   locations: []
 };
 

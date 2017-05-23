@@ -1,39 +1,39 @@
 'use strict';
 
-var appRoot = require('app-root-path');
-
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var HopsPlugin = require('../plugin');
-var hopsConfig = require('.');
+var HopsPlugin = require('hops-plugin');
+var hopsRoot = require('hops-root');
+var hopsConfig = require('..');
 
-var pkg = appRoot.require('package.json');
+var pkg = hopsRoot.require('package.json');
 
 module.exports = {
   entry: require.resolve('../lib/shim'),
   output: {
-    path: appRoot.resolve('dist'),
+    path: hopsRoot.resolve('dist'),
     publicPath: '/',
     filename: '[name]-' + pkg.version + '.js',
     chunkFilename: 'chunk-[id]-' + pkg.version + '.js'
   },
-  context: appRoot.toString(),
+  context: hopsRoot.toString(),
   resolve: {
     alias: {
-      'hops-entry-point': appRoot.toString()
+      'hops-entry-point': hopsRoot.toString()
     },
     mainFields: ['hopsBrowser', 'browser', 'main'],
     extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
-      require('./loaders/babel').default,
-      require('./loaders/postcss').build,
-      require('./loaders/json').default,
-      require('./loaders/file').default,
-      require('./loaders/url').default
+      require('../loaders/babel').default,
+      require('../loaders/postcss').build,
+      require('../loaders/json').default,
+      require('../loaders/file').default,
+      require('../loaders/url').default,
+      require('../loaders/tpl').default
     ]
   },
   plugins: [

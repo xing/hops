@@ -3,6 +3,6 @@
 exports.default = {
   test: /\.tpl$/,
   use: {
-    loader: require.resolve('../../lib/tpl-loader')
+    loader: require.resolve('../lib/tpl-loader')
   }
 };

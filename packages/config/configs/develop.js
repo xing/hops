@@ -1,14 +1,13 @@
 'use strict';
 
-var appRoot = require('app-root-path');
-
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
-var createMiddleware = require('../middleware');
-var hopsConfig = require('.');
+var createMiddleware = require('hops-middleware');
+var hopsRoot = require('hops-root');
+var hopsConfig = require('..');
 
-var pkg = appRoot.require('package.json');
+var pkg = hopsRoot.require('package.json');
 
 var watchOptions = {
   aggregateTimeout: 300,
@@ -22,26 +21,27 @@ module.exports = {
     require.resolve('../lib/shim')
   ],
   output: {
-    path: appRoot.resolve('dist'),
+    path: hopsRoot.resolve('dist'),
     publicPath: '/',
     filename: '[name]-' + pkg.version + '.js',
     chunkFilename: 'chunk-[id]-' + pkg.version + '.js'
   },
-  context: appRoot.toString(),
+  context: hopsRoot.toString(),
   resolve: {
     alias: {
-      'hops-entry-point': appRoot.toString()
+      'hops-entry-point': hopsRoot.toString()
     },
     mainFields: ['hopsBrowser', 'browser', 'main'],
     extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
-      require('./loaders/babel').default,
-      require('./loaders/postcss').develop,
-      require('./loaders/json').default,
-      require('./loaders/file').default,
-      require('./loaders/url').default
+      require('../loaders/babel').default,
+      require('../loaders/postcss').develop,
+      require('../loaders/json').default,
+      require('../loaders/file').default,
+      require('../loaders/url').default,
+      require('../loaders/tpl').default
     ]
   },
   plugins: [
@@ -56,7 +56,7 @@ module.exports = {
   },
   devtool: '#source-map',
   devServer: {
-    contentBase: appRoot.resolve('dist'),
+    contentBase: hopsRoot.resolve('dist'),
     hot: true,
     noInfo: true,
     stats: 'errors-only',
