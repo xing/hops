@@ -3,10 +3,10 @@ var Redux = require('redux');
 var ReactRedux = require('react-redux');
 var ReduxThunkMiddleware = require('redux-thunk').default;
 
-var INITIAL_STATE = 'INITIAL_STATE';
-
 var HopsReact = require('hops-react');
 var Context = HopsReact.Context;
+
+var INITIAL_STATE = 'INITIAL_STATE';
 
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
