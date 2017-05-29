@@ -11,5 +11,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "pkg-dir": "2.0.0"
+  }
 }

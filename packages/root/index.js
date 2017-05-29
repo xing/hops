@@ -1,13 +1,5 @@
-var fs = require('fs');
 var path = require('path');
-
-var root = process.cwd();
-while (
-  root !== path.sep &&
-  !fs.existsSync(path.resolve(root, 'package.json'))
-) {
-  root = path.dirname(root);
-}
+var root = require('pkg-dir').sync();
 
 exports.toString = function () {
   return root;
