@@ -15,7 +15,6 @@
   "dependencies": {
     "hops-react": "6.0.0",
     "react-redux": "5.0.5",
-    "react-side-effect": "1.1.0",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0"
   }
