@@ -65,4 +65,11 @@ exports.Context = exports.createContext = Context.extend({
   }
 });
 
+exports.render = function (reactElement, context) {
+  if (!(context instanceof exports.Context)) {
+    context = new exports.Context(context);
+  }
+  return HopsReact.render(reactElement, context);
+};
+
 exports.connect = ReactRedux.connect;
