@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "start": "cd demo; rm -rf dist node_modules/hops-*; npm install; npm start",
-    "test": "mocha -r spec/setup \"spec/*.js\"",
+    "test": "rm -rf node_modules/hops-*; npm install; mocha -r spec/setup \"spec/*.js\"",
     "update": "ncu -u && (cd demo && ncu -u) && rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
     "dryrun": "tar -tf $(npm pack) && rm hops-*.tgz"
   },
@@ -48,6 +48,15 @@
     "node": ">5.0.0"
   },
   "devDependencies": {
+    "hops-cli": "file:./packages/cli",
+    "hops-config": "file:./packages/config",
+    "hops-middleware": "file:./packages/middleware",
+    "hops-plugin": "file:./packages/plugin",
+    "hops-react": "file:./packages/react",
+    "hops-redux": "file:./packages/redux",
+    "hops-renderer": "file:./packages/renderer",
+    "hops-root": "file:./packages/root",
+    "hops-transpiler": "file:./packages/transpiler",
     "mocha": "3.4.1",
     "mocha-standard": "1.0.0",
     "npm-check-updates": "2.11.1",

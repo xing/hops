@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 
-var Plugin = require('../packages/plugin');
+var Plugin = require('hops-plugin');
 
 var goodConfig = require('./mock/webpack.good');
 var badExportConfig = require('./mock/webpack.bad-export');

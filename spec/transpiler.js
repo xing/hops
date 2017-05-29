@@ -3,7 +3,7 @@
 var assert = require('assert');
 var events = require('events');
 
-var transpile = require('../packages/transpiler');
+var transpile = require('hops-transpiler');
 
 var goodConfig = require('./mock/webpack.good');
 var badExportConfig = require('./mock/webpack.bad-export');
