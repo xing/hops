@@ -16,6 +16,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "hops-config": "6.0.0",
     "npmlog": "4.1.0",
     "webpack": "2.5.1",
     "webpack-dev-server": "2.4.5"
