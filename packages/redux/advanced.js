@@ -3,7 +3,7 @@ var ReactRouter = require('react-router-dom');
 var withSideEffect = require('react-side-effect');
 var createLocation = require('history/LocationUtils').createLocation;
 
-var HopsRedux = require('hops-redux');
+var HopsRedux = require('./basic');
 
 var Context = HopsRedux.Context;
 
