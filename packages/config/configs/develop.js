@@ -3,9 +3,7 @@
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
-var createMiddleware = require('hops-middleware');
 var hopsRoot = require('hops-root');
-var hopsConfig = require('..');
 
 var pkg = hopsRoot.require('package.json');
 
@@ -61,12 +59,6 @@ module.exports = {
     noInfo: true,
     stats: 'errors-only',
     watchOptions: watchOptions,
-    setup: function (app) {
-      var webpackConfig = require(hopsConfig.renderConfig);
-      var middleware = createMiddleware(webpackConfig, watchOptions);
-      hopsConfig.locations.forEach(function (location) {
-        app.all(location, middleware);
-      });
-    }
+    setup: require('../lib/server-setup')(watchOptions)
   }
 };
