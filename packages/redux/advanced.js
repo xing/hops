@@ -26,20 +26,51 @@ var Provider = ReactRouter.withRouter(
   })
 );
 
+function matchPathSpec (spec, location, isServer) {
+  var regExp = /^(?:(\w+?):\/\/)?(.+)$/;
+  var result = false;
+  if (regExp.test(spec)) {
+    var matches = spec.match(regExp);
+    var schemaSpec = matches[1] || 'all';
+    var pathSpec = matches[2];
+    if (
+      (schemaSpec === 'all') ||
+      (schemaSpec === 'server' && isServer) ||
+      (schemaSpec === 'client' && !isServer)
+    ) {
+      result = ReactRouter.matchPath(location.pathname, {
+        path: pathSpec, exact: true, strict: true
+      });
+    }
+  }
+  return result;
+}
+
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
     Context.prototype.initialize.call(this, options);
-    this.actionCreators = options.actionCreators || [];
+    this.actionCreators = Object.assign({}, options.actionCreators);
   },
   bootstrap: function () {
     return this.request ? this.dispatchAll() : Promise.resolve();
   },
   dispatchAll: function () {
-    var store = this.getStore();
-    var location = this.getLocation();
-    var request = this.request;
-    return Promise.all(this.actionCreators.map(function (createAction) {
-      return store.dispatch(createAction(location, request));
+    var self = this;
+    return Promise.all(Object.keys(self.actionCreators).map(function (key) {
+      var location = self.getLocation();
+      var match = matchPathSpec(key, location, !!self.request);
+      if (!match) {
+        return Promise.resolve();
+      }
+      var store = self.getStore();
+      if (Array.isArray(self.actionCreators[key])) {
+        var actionCreators = self.actionCreators[key];
+        return Promise.all(actionCreators[key].map(function (createAction) {
+          return store.dispatch(createAction(match.params, location));
+        }));
+      } else {
+        return store.dispatch(self.actionCreators[key](match.params, location));
+      }
     }));
   },
   setLocation: function (location) {
@@ -60,9 +91,4 @@ exports.Context = exports.createContext = Context.extend({
   }
 });
 
-exports.render = function (reactElement, context) {
-  if (!(context instanceof exports.Context)) {
-    context = new exports.Context(context);
-  }
-  return HopsRedux.render(reactElement, context);
-};
+exports.connect = HopsRedux.connect;

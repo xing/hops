@@ -2,8 +2,8 @@ import React from 'react';
 
 import { headline } from './styles.css';
 
-import { Route, Switch, Miss } from 'hops-react';
-import { render } from 'hops-redux';
+import { render, Route, Switch, Miss } from 'hops-react';
+import { createContext } from 'hops-redux';
 
 const Home = () => (
   <h1 className={headline}>Hello World!</h1>
@@ -21,18 +21,18 @@ const App = () => (
   </Switch>
 );
 
-export default render(<App />, {
+export default render(<App />, createContext({
   reducers: {
     foo: function (state, action) {
       // console.log(state, action);
       return Object.assign({}, state);
     }
   },
-  actionCreators: [
-    function (location) {
+  actionCreators: {
+    '/:foo': function (params, location) {
       return function (dispatch) {
-        // console.log(location);
+        console.log(params, location);
       };
     }
-  ]
-});
+  }
+}));
