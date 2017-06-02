@@ -26,57 +26,42 @@ var Provider = ReactRouter.withRouter(
   })
 );
 
-function matchPathSpec (spec, location, isServer) {
-  var regExp = /^(?:(\w+?):\/\/)?(.+)$/;
-  var result = false;
-  if (regExp.test(spec)) {
-    var matches = spec.match(regExp);
-    var schemaSpec = matches[1] || 'all';
-    var pathSpec = matches[2];
-    if (
-      (schemaSpec === 'all') ||
-      (schemaSpec === 'server' && isServer) ||
-      (schemaSpec === 'client' && !isServer)
-    ) {
-      result = ReactRouter.matchPath(location.pathname, {
-        path: pathSpec, exact: true, strict: true
-      });
-    }
-  }
-  return result;
-}
-
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
     Context.prototype.initialize.call(this, options);
     this.actionCreators = Object.assign({}, options.actionCreators);
   },
   bootstrap: function () {
+    // only dispatchAll serverside
     return this.request ? this.dispatchAll() : Promise.resolve();
   },
   dispatchAll: function () {
-    var self = this;
-    return Promise.all(Object.keys(self.actionCreators).map(function (key) {
-      var location = self.getLocation();
-      var match = matchPathSpec(key, location, !!self.request);
+    var keys = Object.keys(this.actionCreators);
+    var store = this.getStore();
+    var location = this.getLocation();
+    function dispatchOne (key) {
+      var actionCreators = this.actionCreators[key];
+      var match = ReactRouter.matchPath(location.pathname, {
+        path: key, exact: true, strict: true
+      });
       if (!match) {
         return Promise.resolve();
       }
-      var store = self.getStore();
-      if (Array.isArray(self.actionCreators[key])) {
-        var actionCreators = self.actionCreators[key];
+      if (Array.isArray(actionCreators)) {
         return Promise.all(actionCreators[key].map(function (createAction) {
-          return store.dispatch(createAction(match.params, location));
+          return store.dispatch(createAction(match.params));
         }));
       } else {
-        return store.dispatch(self.actionCreators[key](match.params, location));
+        return store.dispatch(actionCreators(match.params));
       }
-    }));
+    }
+    return Promise.all(keys.map(dispatchOne.bind(this)));
   },
   setLocation: function (location) {
     this.location = location;
   },
   getLocation: function () {
+    // location: clientside, request: serverside
     return this.location || createLocation(this.request.path);
   },
   enhanceElement: function (reactElement) {
