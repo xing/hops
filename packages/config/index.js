@@ -13,11 +13,16 @@ var config = module.exports = {
 };
 
 if (fs.existsSync(hopsRoot.resolve('package.json'))) {
-  Object.assign(config, hopsRoot.require('package.json').hops);
-}
-
-if (fs.existsSync(hopsRoot.resolve('hops.config.js'))) {
-  Object.assign(config, hopsRoot.require('hops.config.js'));
+  var pkgConfig = hopsRoot.require('package.json').hops;
+  if (pkgConfig.extend) {
+    if (fs.existsSync(require.resolve(pkgConfig.extend))) {
+      Object.assign(config, require(pkgConfig.extend), pkgConfig);
+    } else {
+      Object.assign(config, hopsRoot.require(pkgConfig.extend), pkgConfig);
+    }
+  } else {
+    Object.assign(config, pkgConfig);
+  }
 }
 
 ['buildConfig', 'developConfig', 'renderConfig'].forEach(function (key) {
