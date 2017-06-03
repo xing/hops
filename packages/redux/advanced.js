@@ -14,8 +14,7 @@ var Provider = ReactRouter.withRouter(
     },
     function handleStateChangeOnClient (props) {
       if (props) {
-        props.setLocation(props.location);
-        props.dispatchAll();
+        props.dispatchAll(props.location);
       }
     },
     function mapStateOnServer (props) {
@@ -32,45 +31,36 @@ exports.Context = exports.createContext = Context.extend({
     this.actionCreators = Object.assign({}, options.actionCreators);
   },
   bootstrap: function () {
-    // only dispatchAll serverside
-    return this.request ? this.dispatchAll() : Promise.resolve();
+    if (this.request) {
+      return this.dispatchAll(createLocation(this.request.path));
+    }
+    return Promise.resolve();
   },
-  dispatchAll: function () {
-    var keys = Object.keys(this.actionCreators);
+  dispatchAll: function (location) {
     var store = this.getStore();
-    var location = this.getLocation();
-    function dispatchOne (key) {
-      var actionCreators = this.actionCreators[key];
-      var match = ReactRouter.matchPath(location.pathname, {
-        path: key, exact: true, strict: true
-      });
+    var keys = Object.keys(this.actionCreators);
+    var actionCreators = this.actionCreators;
+    return Promise.all(keys.map(function dispatchOne (key) {
+      var match = ReactRouter.matchPath(
+        location.pathname,
+        { path: key, exact: true, strict: true }
+      );
       if (!match) {
         return Promise.resolve();
       }
-      if (Array.isArray(actionCreators)) {
+      if (Array.isArray(actionCreators[key])) {
         return Promise.all(actionCreators[key].map(function (createAction) {
           return store.dispatch(createAction(match.params));
         }));
       } else {
-        return store.dispatch(actionCreators(match.params));
+        return store.dispatch(actionCreators[key](match.params));
       }
-    }
-    return Promise.all(keys.map(dispatchOne.bind(this)));
-  },
-  setLocation: function (location) {
-    this.location = location;
-  },
-  getLocation: function () {
-    // location: clientside, request: serverside
-    return this.location || createLocation(this.request.path);
+    }));
   },
   enhanceElement: function (reactElement) {
     return Context.prototype.enhanceElement.call(this, React.createElement(
       Provider,
-      {
-        dispatchAll: this.dispatchAll.bind(this),
-        setLocation: this.setLocation.bind(this)
-      },
+      { dispatchAll: this.dispatchAll.bind(this) },
       reactElement
     ));
   }

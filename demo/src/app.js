@@ -29,9 +29,9 @@ export default render(<App />, createContext({
     }
   },
   actionCreators: {
-    '/:foo': function (params, location) {
+    '/:foo': function (params) {
       return function (dispatch) {
-        console.log(params, location);
+        // console.log(params);
       };
     }
   }
