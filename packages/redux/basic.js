@@ -46,11 +46,11 @@ exports.Context = exports.createContext = Context.extend({
     );
   },
   enhanceElement: function (reactElement) {
-    return React.createElement(
+    return Context.prototype.enhanceElement.call(this, React.createElement(
       ReactRedux.Provider,
       { store: this.getStore() },
-      Context.prototype.enhanceElement.call(this, reactElement)
-    );
+      reactElement
+    ));
   },
   getTemplateData: function () {
     return Object.assign(

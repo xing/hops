@@ -7,7 +7,7 @@ var HopsRedux = require('./basic');
 
 var Context = HopsRedux.Context;
 
-var Provider = ReactRouter.withRouter(
+var Dispatcher = ReactRouter.withRouter(
   withSideEffect(
     function reducePropsToState (propsList) {
       return propsList[propsList.length - 1];
@@ -59,7 +59,7 @@ exports.Context = exports.createContext = Context.extend({
   },
   enhanceElement: function (reactElement) {
     return Context.prototype.enhanceElement.call(this, React.createElement(
-      Provider,
+      Dispatcher,
       { dispatchAll: this.dispatchAll.bind(this) },
       reactElement
     ));
