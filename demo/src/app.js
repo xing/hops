@@ -31,7 +31,7 @@ export default render(<App />, createContext({
   actionCreators: {
     '/:foo': function (params) {
       return function (dispatch) {
-        // console.log(params);
+        console.log(params);
       };
     }
   }
