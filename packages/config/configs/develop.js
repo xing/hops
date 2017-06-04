@@ -4,8 +4,7 @@ var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
 var hopsRoot = require('hops-root');
-
-var pkg = hopsRoot.require('package.json');
+var hopsConfig = require('..');
 
 var watchOptions = {
   aggregateTimeout: 300,
@@ -19,10 +18,10 @@ module.exports = {
     require.resolve('../lib/shim')
   ],
   output: {
-    path: hopsRoot.resolve('dist'),
+    path: hopsRoot.resolve(hopsConfig.buildDir),
     publicPath: '/',
-    filename: '[name]-' + pkg.version + '.js',
-    chunkFilename: 'chunk-[id]-' + pkg.version + '.js'
+    filename: '[name].js',
+    chunkFilename: 'chunk-[id].js'
   },
   context: hopsRoot.toString(),
   resolve: {
@@ -47,6 +46,9 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new ManifestPlugin({
       writeToFileEmit: true
+    }),
+    new webpack.EnvironmentPlugin({
+      'NODE_ENV': 'development'
     })
   ],
   performance: {
@@ -54,7 +56,7 @@ module.exports = {
   },
   devtool: '#source-map',
   devServer: {
-    contentBase: hopsRoot.resolve('dist'),
+    contentBase: hopsRoot.resolve(hopsConfig.buildDir),
     hot: true,
     noInfo: true,
     stats: 'errors-only',

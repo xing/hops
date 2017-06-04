@@ -5,7 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var cssLoaderOptions = {
   importLoaders: 1,
   modules: true,
-  localIdentName: '[folder]-[name]-[local]-[hash:base64:5]',
+  localIdentName: '[folder]-[name]-[local]-[hash:8]',
   sourceMap: false
 };
 
@@ -16,7 +16,7 @@ exports.build = {
     use: [
       {
         loader: 'css-loader',
-        query: cssLoaderOptions
+        options: cssLoaderOptions
       },
       'postcss-loader'
     ]
@@ -37,10 +37,8 @@ exports.develop = {
 
 exports.render = {
   test: /\.css$/,
-  use: [
-    {
-      loader: 'css-loader/locals',
-      options: Object.assign({}, cssLoaderOptions, { importLoaders: 0 })
-    }
-  ]
+  use: {
+    loader: 'css-loader/locals',
+    options: Object.assign({}, cssLoaderOptions, { importLoaders: 0 })
+  }
 };
