@@ -40,10 +40,10 @@ exports.Context = exports.createContext = Context.extend({
     var manifest = hopsRoot.require(hopsConfig.buildDir, 'manifest.json');
     var keys = Object.keys(manifest);
     var assets = { js: [], css: [] };
-    ['manifest.js', 'vendor.js'].forEach(function (item) {
-      if (keys.indexOf(item) !== -1) {
-        keys.splice(keys.indexOf(item), 1);
-        assets.js.push(manifest[item]);
+    ['manifest.js', 'vendor.js'].forEach(function (key) {
+      if (keys.indexOf(key) !== -1) {
+        keys.splice(keys.indexOf(key), 1);
+        assets.js.push(manifest[key]);
       }
     });
     return keys.reduce(function (result, key) {
