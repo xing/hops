@@ -2,8 +2,8 @@
 
 exports.default = {
   test: /\.jsx?$/,
-  use: [{
+  use: {
     loader: 'babel-loader'
-  }],
+  },
   exclude: /node_modules\//
 };

@@ -5,6 +5,7 @@ var Helmet = require('react-helmet').Helmet;
 var minify = require('html-minifier').minify;
 
 var hopsRoot = require('hops-root');
+var hopsConfig = require('hops-config');
 
 var defaultTemplate = require('./template');
 
@@ -24,7 +25,6 @@ exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
     this.request = options.request || {};
     this.template = options.template || defaultTemplate;
-    this.manifest = options.manifest || 'dist/manifest.json';
   },
   bootstrap: function () {
     return Promise.resolve();
@@ -39,11 +39,14 @@ exports.Context = exports.createContext = Context.extend({
   getAssetURLs: function () {
     var assets = { js: [], css: [] };
     try {
-      var manifest = hopsRoot.require(this.manifest);
+      var manifest = hopsRoot.require(
+        hopsConfig.buildDir,
+        'manifest.json'
+      );
       return Object.keys(manifest).reduce(function (result, key) {
-        if (key.match(/\.js$/)) {
+        if (/\.js$/.test(key) && !/^chunk-/.test(key)) {
           result.js.push(manifest[key]);
-        } else if (key.match(/\.css$/)) {
+        } else if (/\.css$/.test(key)) {
           result.css.push(manifest[key]);
         }
         return result;
@@ -87,7 +90,10 @@ exports.render = function (reactElement, context) {
         next();
       } else {
         if (reqContext.url) {
-          res.writeHead(reqContext.status || 301, { Location: reqContext.url });
+          res.writeHead(
+            reqContext.status || 301,
+            { Location: reqContext.url }
+          );
         } else {
           res.writeHead(reqContext.status || 200);
           res.write(reqContext.renderTemplate(markup));

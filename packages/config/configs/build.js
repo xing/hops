@@ -8,15 +8,13 @@ var HopsPlugin = require('hops-plugin');
 var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
 
-var pkg = hopsRoot.require('package.json');
-
 module.exports = {
   entry: require.resolve('../lib/shim'),
   output: {
-    path: hopsRoot.resolve('dist'),
+    path: hopsRoot.resolve(hopsConfig.buildDir),
     publicPath: '/',
-    filename: '[name]-' + pkg.version + '.js',
-    chunkFilename: 'chunk-[id]-' + pkg.version + '.js'
+    filename: '[name]-[hash].js',
+    chunkFilename: 'chunk-[id]-[hash].js'
   },
   context: hopsRoot.toString(),
   resolve: {
@@ -37,17 +35,21 @@ module.exports = {
     ]
   },
   plugins: [
+    new ManifestPlugin({
+      writeToFileEmit: true
+    }),
     new HopsPlugin(
       hopsConfig.locations,
       require(hopsConfig.renderConfig)
     ),
-    new ManifestPlugin(),
     new ExtractTextPlugin({
-      filename: '[name]-' + pkg.version + '.css',
+      filename: '[name]-[hash].css',
       allChunks: true,
       ignoreOrder: true
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    new webpack.EnvironmentPlugin({
+      'NODE_ENV': 'production'
+    }),
     new webpack.LoaderOptionsPlugin({
       debug: false,
       minimize: true,

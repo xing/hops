@@ -3,12 +3,13 @@
 var webpack = require('webpack');
 
 var hopsRoot = require('hops-root');
+var hopsConfig = require('..');
 
 module.exports = {
   target: 'node',
   entry: hopsRoot.toString(),
   output: {
-    path: hopsRoot.toString(),
+    path: hopsRoot.resolve(hopsConfig.buildDir),
     filename: 'bundle.js',
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',

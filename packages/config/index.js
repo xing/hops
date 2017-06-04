@@ -9,20 +9,21 @@ var config = module.exports = {
   buildConfig: require.resolve('./configs/build'),
   developConfig: require.resolve('./configs/develop'),
   renderConfig: require.resolve('./configs/render'),
+  buildDir: 'build',
   locations: []
 };
 
 if (fs.existsSync(hopsRoot.resolve('package.json'))) {
-  var pkgConfig = hopsRoot.require('package.json').hops;
+  var pkgConfig = hopsRoot.require('package.json').hops || {};
   if (pkgConfig.extend) {
-    if (fs.existsSync(require.resolve(pkgConfig.extend))) {
-      Object.assign(config, require(pkgConfig.extend), pkgConfig);
-    } else {
-      Object.assign(config, hopsRoot.require(pkgConfig.extend), pkgConfig);
+    try {
+      require.resolve(pkgConfig.extend);
+      Object.assign(config, require(pkgConfig.extend));
+    } catch (e) {
+      Object.assign(config, hopsRoot.require(pkgConfig.extend));
     }
-  } else {
-    Object.assign(config, pkgConfig);
   }
+  Object.assign(config, pkgConfig);
 }
 
 ['buildConfig', 'developConfig', 'renderConfig'].forEach(function (key) {
