@@ -14,6 +14,25 @@ var Context = common.Context;
 
 Object.assign(exports, common);
 
+function process (manifest, assets) {
+  var assets = { js: [], css: [] };
+  var keys = Object.keys(manifest);
+  ['manifest.js', 'vendor.js'].forEach(function (item) {
+    if (keys.indexOf(item) !== -1) {
+      keys.splice(keys.indexOf(item), 1);
+      assets.js.push(item);
+    }
+  });
+  return keys.reduce(function (result, key) {
+    if (/\.js$/.test(key) && !/^chunk-/.test(key)) {
+      result.js.push(manifest[key]);
+    } else if (/\.css$/.test(key)) {
+      result.css.push(manifest[key]);
+    }
+    return result;
+  }, assets);
+}
+
 exports.Context = exports.createContext = Context.extend({
   clone: function (request) {
     return new this.constructor(Object.assign(
@@ -37,23 +56,23 @@ exports.Context = exports.createContext = Context.extend({
     );
   },
   getAssetURLs: function () {
+    var manifest = hopsRoot.require(hopsConfig.buildDir, 'manifest.json');
+    var keys = Object.keys(manifest);
     var assets = { js: [], css: [] };
-    try {
-      var manifest = hopsRoot.require(
-        hopsConfig.buildDir,
-        'manifest.json'
-      );
-      return Object.keys(manifest).reduce(function (result, key) {
-        if (/\.js$/.test(key) && !/^chunk-/.test(key)) {
-          result.js.push(manifest[key]);
-        } else if (/\.css$/.test(key)) {
-          result.css.push(manifest[key]);
-        }
-        return result;
-      }, assets);
-    } catch (e) {
-      return assets;
-    }
+    ['manifest.js', 'vendor.js'].forEach(function (item) {
+      if (keys.indexOf(item) !== -1) {
+        keys.splice(keys.indexOf(item), 1);
+        assets.js.push(manifest[item]);
+      }
+    });
+    return keys.reduce(function (result, key) {
+      if (/\.js$/.test(key) && !/^chunk-/.test(key)) {
+        result.js.push(manifest[key]);
+      } else if (/\.css$/.test(key)) {
+        result.css.push(manifest[key]);
+      }
+      return result;
+    }, assets);
   },
   getTemplateData: function () {
     return {
