@@ -13,8 +13,8 @@ module.exports = {
   output: {
     path: hopsRoot.resolve(hopsConfig.buildDir),
     publicPath: '/',
-    filename: '[name]-[hash].js',
-    chunkFilename: 'chunk-[id]-[hash].js'
+    filename: '[name]-[chunkhash].js',
+    chunkFilename: 'chunk-[id]-[chunkhash].js'
   },
   context: hopsRoot.toString(),
   resolve: {
@@ -42,8 +42,22 @@ module.exports = {
       hopsConfig.locations,
       require(hopsConfig.renderConfig)
     ),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        if (module.resource && (/^.*\.css$/).test(module.resource)) {
+          return false;
+        }
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      minChunks: Infinity
+    }),
+    new webpack.HashedModuleIdsPlugin(),
     new ExtractTextPlugin({
-      filename: '[name]-[hash].css',
+      filename: '[name]-[contenthash].css',
       allChunks: true,
       ignoreOrder: true
     }),
