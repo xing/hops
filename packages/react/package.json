@@ -17,7 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "html-minifier": "3.5.0",
+    "html-minifier": "3.5.2",
     "react": "15.5.4",
     "react-dom": "15.5.4",
     "react-helmet": "5.1.3",
