@@ -23,6 +23,7 @@ module.exports = function (data) {
     data.globals.map(function (global) {
       return '<script>' + global.name + ' = ' + esc(global.value) + '</script>';
     }).join(''),
+    data.manifest ? ['<script>', data.manifest, '</script>'].join('') : '',
     data.assets.js.map(function (js) {
       return '<script src="/' + js + '"></script>';
     }).join(''),

@@ -7,14 +7,15 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HopsPlugin = require('hops-plugin');
 var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
+var WriteFilePlugin = require('../lib/write-file');
 
 module.exports = {
   entry: require.resolve('../lib/shim'),
   output: {
     path: hopsRoot.resolve(hopsConfig.buildDir),
     publicPath: '/',
-    filename: '[name]-[chunkhash].js',
-    chunkFilename: 'chunk-[id]-[chunkhash].js'
+    filename: '[name]-[chunkhash:16].js',
+    chunkFilename: 'chunk-[id]-[chunkhash:16].js'
   },
   context: hopsRoot.toString(),
   resolve: {
@@ -35,9 +36,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new ManifestPlugin({
-      writeToFileEmit: true
-    }),
+    new ManifestPlugin(),
+    new WriteFilePlugin(/^manifest-?.*?\.js/),
     new HopsPlugin(
       hopsConfig.locations,
       require(hopsConfig.renderConfig)
@@ -57,7 +57,7 @@ module.exports = {
     }),
     new webpack.HashedModuleIdsPlugin(),
     new ExtractTextPlugin({
-      filename: '[name]-[contenthash].css',
+      filename: '[name]-[contenthash:16].css',
       allChunks: true,
       ignoreOrder: true
     }),

@@ -6,7 +6,7 @@ import { render, Route, Switch, Miss } from 'hops-react';
 import { createContext } from 'hops-redux';
 
 const Home = () => (
-  <h1 className={headline}>Hello Worlds!</h1>
+  <h1 className={headline}>Hello World!</h1>
 );
 
 const Foo = () => (
