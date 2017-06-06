@@ -4,8 +4,7 @@ var ReactRouter = require('react-router');
 var Helmet = require('react-helmet').Helmet;
 var minify = require('html-minifier').minify;
 
-var hopsRoot = require('hops-root');
-var hopsConfig = require('hops-config');
+var manifestUtil = require('hops-config/util');
 
 var defaultTemplate = require('./template');
 
@@ -37,29 +36,14 @@ exports.Context = exports.createContext = Context.extend({
     );
   },
   getAssetURLs: function () {
-    var manifest = hopsRoot.require(hopsConfig.buildDir, 'manifest.json');
-    var keys = Object.keys(manifest);
-    var assets = { js: [], css: [] };
-    ['manifest.js', 'vendor.js'].forEach(function (key) {
-      if (keys.indexOf(key) !== -1) {
-        keys.splice(keys.indexOf(key), 1);
-        assets.js.push(manifest[key]);
-      }
-    });
-    return keys.reduce(function (result, key) {
-      if (/\.js$/.test(key) && !/^chunk-/.test(key)) {
-        result.js.push(manifest[key]);
-      } else if (/\.css$/.test(key)) {
-        result.css.push(manifest[key]);
-      }
-      return result;
-    }, assets);
+    return manifestUtil.getManifestData();
   },
   getTemplateData: function () {
     return {
       options: this.options,
       assets: this.getAssetURLs(),
       helmet: Helmet.renderStatic(),
+      manifest: manifestUtil.getManifestScript(),
       globals: []
     };
   },

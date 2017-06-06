@@ -5,6 +5,7 @@
   "main": "index.js",
   "files": [
     "index.js",
+    "util.js",
     "configs",
     "lib",
     "loaders"
@@ -26,6 +27,7 @@
     "hops-root": "6.0.0",
     "json-loader": "0.5.4",
     "lodash.template": "4.4.0",
+    "mkdirp": "0.5.1",
     "postcss": "6.0.1",
     "postcss-loader": "2.0.5",
     "style-loader": "0.18.1",
