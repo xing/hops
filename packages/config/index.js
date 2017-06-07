@@ -9,6 +9,7 @@ var config = module.exports = {
   buildConfig: require.resolve('./configs/build'),
   developConfig: require.resolve('./configs/develop'),
   renderConfig: require.resolve('./configs/render'),
+  browsers: '> 5%, last 1 version',
   buildDir: 'build',
   locations: []
 };

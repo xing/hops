@@ -28,7 +28,7 @@ module.exports = {
     alias: {
       'hops-entry-point': hopsRoot.toString()
     },
-    mainFields: ['hopsBrowser', 'browser', 'main'],
+    mainFields: ['esnext:browser', 'esnext', 'module', 'browser', 'main'],
     extensions: ['.js', '.jsx']
   },
   module: {
