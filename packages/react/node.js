@@ -35,14 +35,11 @@ exports.Context = exports.createContext = Context.extend({
       reactElement
     );
   },
-  getAssetURLs: function () {
-    return manifestUtil.getManifestData();
-  },
   getTemplateData: function () {
     return {
       options: this.options,
-      assets: this.getAssetURLs(),
       helmet: Helmet.renderStatic(),
+      assets: manifestUtil.getManifestData(),
       manifest: manifestUtil.getManifestScript(),
       globals: []
     };
