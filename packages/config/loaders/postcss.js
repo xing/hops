@@ -2,11 +2,23 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var hopsConfig = require('..');
+
 var cssLoaderOptions = {
   importLoaders: 1,
   modules: true,
   localIdentName: '[folder]-[name]-[local]-[hash:8]',
   sourceMap: false
+};
+
+var postcssLoaderOptions = {
+  plugins: function (loader) {
+    return [
+      require('postcss-cssnext')({
+        browsers: hopsConfig.browsers
+      })
+    ];
+  }
 };
 
 exports.build = {
@@ -18,7 +30,10 @@ exports.build = {
         loader: 'css-loader',
         options: cssLoaderOptions
       },
-      'postcss-loader'
+      {
+        loader: 'postcss-loader',
+        options: postcssLoaderOptions
+      }
     ]
   })
 };
@@ -31,7 +46,10 @@ exports.develop = {
       loader: 'css-loader',
       options: Object.assign({}, cssLoaderOptions, { sourceMap: true })
     },
-    'postcss-loader'
+    {
+      loader: 'postcss-loader',
+      options: postcssLoaderOptions
+    }
   ]
 };
 
