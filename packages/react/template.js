@@ -12,7 +12,7 @@ module.exports = function (data) {
     data.helmet.meta.toString(),
     data.helmet.link.toString(),
     data.assets.css.map(function (css) {
-      return '<link rel="stylesheet" href="/' + css + '" />';
+      return '<link rel="stylesheet" href="' + css + '" />';
     }).join(''),
     data.helmet.style.toString(),
     '</head>',
@@ -25,7 +25,7 @@ module.exports = function (data) {
     }).join(''),
     data.manifest ? ['<script>', data.manifest, '</script>'].join('') : '',
     data.assets.js.map(function (js) {
-      return '<script src="/' + js + '"></script>';
+      return '<script src="' + js + '"></script>';
     }).join(''),
     '</body>',
     '</html>'

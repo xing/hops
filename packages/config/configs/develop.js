@@ -45,7 +45,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new ManifestPlugin({
-      writeToFileEmit: true
+      writeToFileEmit: true,
+      publicPath: '/'
     }),
     new webpack.EnvironmentPlugin({
       'NODE_ENV': 'development'

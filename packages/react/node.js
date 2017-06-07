@@ -39,7 +39,7 @@ exports.Context = exports.createContext = Context.extend({
     return {
       options: this.options,
       helmet: Helmet.renderStatic(),
-      assets: manifestUtil.getManifestData(),
+      assets: manifestUtil.getAssetLinks(),
       manifest: manifestUtil.getManifestScript(),
       globals: []
     };

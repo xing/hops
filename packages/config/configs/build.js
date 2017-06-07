@@ -36,7 +36,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new ManifestPlugin(),
+    new ManifestPlugin({
+      publicPath: '/'
+    }),
     new WriteFilePlugin(/^manifest-?.*?\.js/),
     new HopsPlugin(
       hopsConfig.locations,
