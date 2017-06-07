@@ -1,3 +1,5 @@
+'use strict';
+
 function esc (data) {
   return JSON.stringify(data).replace(new RegExp('</', 'g'), '<\\/');
 }

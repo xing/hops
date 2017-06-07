@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var root = require('pkg-dir').sync();
 

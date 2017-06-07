@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 var Redux = require('redux');
 var ReactRedux = require('react-redux');

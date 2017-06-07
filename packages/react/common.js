@@ -1,3 +1,5 @@
+'use strict';
+
 var ReactRouter = require('react-router-dom');
 
 exports.Context = function Context (options) {

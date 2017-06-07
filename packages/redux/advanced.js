@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 var ReactRouter = require('react-router-dom');
 var withSideEffect = require('react-side-effect');
