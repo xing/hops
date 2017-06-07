@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs');
 var hopsRoot = require('hops-root');
 var hopsConfig = require('.');

@@ -17,13 +17,13 @@ module.exports = {
   },
   context: hopsRoot.toString(),
   resolve: {
-    mainFields: ['hopsServer', 'server', 'main'],
+    mainFields: ['esnext:server', 'esnext', 'module', 'server', 'main'],
     extensions: ['.js', '.jsx']
   },
   externals: [require('webpack-node-externals')()],
   module: {
     rules: [
-      require('../loaders/babel').default,
+      require('../loaders/babel').render,
       require('../loaders/postcss').render,
       require('../loaders/json').default,
       require('../loaders/file').default,
