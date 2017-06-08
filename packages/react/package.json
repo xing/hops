@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "hops-config": "6.0.0",
     "html-minifier": "3.5.2",
     "react": "15.5.4",
     "react-dom": "15.5.4",
