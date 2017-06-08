@@ -9,12 +9,15 @@ var manifestScript = '';
 
 function getRawManifestData () {
   if (!manifestData) {
-    manifestData = hopsRoot.require(
+    var filepath = hopsRoot.resolve(
       hopsConfig.buildDir,
       'manifest.json'
     );
+    if (fs.existsSync(filepath)) {
+      manifestData = require(filepath);
+    }
   }
-  return Object.assign({}, manifestData);
+  return manifestData || {};
 }
 
 exports.getManifestScript = function () {
@@ -35,7 +38,7 @@ exports.getManifestScript = function () {
 
 exports.getAssetLinks = function () {
   var vjs = 'vendor.js';
-  var manifest = getRawManifestData();
+  var manifest = getRawManifestData() || {};
   return Object.keys(manifest).sort(function (a, b) {
     return a === vjs ? -1 : b === vjs ? 1 : a < b ? -1 : a > b ? 1 : 0;
   }).reduce(function (assets, key) {
