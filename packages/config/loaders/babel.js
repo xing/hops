@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var crypto = require('crypto');
 
 var pkgDir = require('pkg-dir').sync;
 
@@ -10,6 +11,15 @@ var hopsConfig = require('..');
 
 var appRoot = hopsRoot.toString();
 var appModules = hopsRoot.resolve('node_modules');
+
+function createIdentifier (targets) {
+  var data = JSON.stringify({
+    env: process.env.NODE_ENV + ',' + process.env.BABEL_ENV,
+    version: require('../package.json').version,
+    targets: targets
+  });
+  return crypto.createHash('md5').update(data).digest('hex');
+}
 
 function hasPkgEsnext (filepath) {
   var pkgRoot = pkgDir(path.dirname(filepath));
@@ -30,6 +40,8 @@ function getBabelLoader (targets) {
     use: {
       loader: 'babel-loader',
       options: {
+        cacheDirectory: true,
+        cacheIdentifier: createIdentifier(targets),
         presets: [
           [
             'env',
