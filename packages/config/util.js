@@ -22,15 +22,12 @@ function getRawManifestData () {
 
 exports.getManifestScript = function () {
   if (!manifestScript) {
-    var filename = getRawManifestData()['manifest.js'];
-    if (filename) {
-      var filepath = hopsRoot.resolve(
-        hopsConfig.buildDir,
-        filename.replace(/^\/*/, '')
-      );
-      if (fs.existsSync(filepath)) {
-        manifestScript = fs.readFileSync(filepath, 'utf8');
-      }
+    var filepath = hopsRoot.resolve(
+      hopsConfig.buildDir,
+      'manifest.js'
+    );
+    if (fs.existsSync(filepath)) {
+      manifestScript = fs.readFileSync(filepath, 'utf8');
     }
   }
   return manifestScript;

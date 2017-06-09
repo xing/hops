@@ -39,7 +39,7 @@ module.exports = {
     new ManifestPlugin({
       publicPath: '/'
     }),
-    new WriteFilePlugin(/^manifest-?.*?\.js/),
+    new WriteFilePlugin(/^manifest\.js(on)?$/),
     new HopsPlugin(
       hopsConfig.locations,
       require(hopsConfig.renderConfig)
@@ -55,6 +55,7 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
+      filename: 'manifest.js',
       minChunks: Infinity
     }),
     new webpack.HashedModuleIdsPlugin(),

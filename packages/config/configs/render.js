@@ -10,7 +10,7 @@ module.exports = {
   entry: hopsRoot.toString(),
   output: {
     path: hopsRoot.resolve(hopsConfig.buildDir),
-    filename: 'bundle.js',
+    filename: 'server.js',
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
     devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
@@ -36,5 +36,5 @@ module.exports = {
       maxChunks: 1
     })
   ],
-  devtool: '#inline-source-map'
+  devtool: process.env.NODE_ENV !== 'production' && '#inline-source-map'
 };
