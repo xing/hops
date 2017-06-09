@@ -1,6 +1,6 @@
 {
   "name": "hops-cli",
-  "version": "6.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -16,7 +16,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "hops-config": "6.0.0",
+    "hops-config": "0.1.0",
     "npmlog": "4.1.0",
     "webpack": "2.6.1",
     "webpack-dev-server": "2.4.5"
