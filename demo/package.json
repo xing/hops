@@ -4,6 +4,7 @@
   "description": "example of hops in action",
   "main": "src/app.js",
   "repository": {},
+  "license": "MIT",
   "scripts": {
     "start": "hops start"
   },
@@ -19,9 +20,5 @@
     "hops-transpiler": "file:../packages/transpiler"
   },
   "hops": {
-    "locations": [
-      "/",
-      "/foo"
-    ]
   }
 }
