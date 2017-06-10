@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "5.1.0",
+  "version": "6.0.0-beta.1",
   "description": "universal build tools",
   "keywords": [
     "webpack",
@@ -10,8 +10,12 @@
   "scripts": {
     "start": "cd demo; rm -rf dist node_modules/hops-*; npm install; npm start",
     "test": "rm -rf node_modules/hops-*; npm install; mocha -r spec/setup \"spec/*.js\"",
+    "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
     "update": "ncu -u && find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -u\" \\;",
-    "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start"
+    "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
+    "version": "node scripts/version.js && git add -A packages",
+    "postversion": "git push && git push --tags",
+    "preversion": "npm test"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -36,6 +40,7 @@
     "node": ">5.0.0"
   },
   "devDependencies": {
+    "glob": "^7.1.2",
     "hops-cli": "file:./packages/cli",
     "hops-config": "file:./packages/config",
     "hops-middleware": "file:./packages/middleware",
@@ -45,9 +50,9 @@
     "hops-renderer": "file:./packages/renderer",
     "hops-root": "file:./packages/root",
     "hops-transpiler": "file:./packages/transpiler",
-    "mocha": "3.4.2",
-    "mocha-standard": "1.0.0",
-    "npm-check-updates": "2.11.3",
-    "semistandard": "11.0.0"
+    "mocha": "^3.4.2",
+    "mocha-standard": "^1.0.0",
+    "npm-check-updates": "^2.11.3",
+    "semistandard": "^11.0.0"
   }
 }
