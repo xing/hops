@@ -50,5 +50,3 @@ exports.Switch = ReactRouter.Switch;
 exports.withRouter = ReactRouter.withRouter;
 
 exports.Head = require('react-helmet').Helmet;
-
-exports.React = require('react');
