@@ -1,92 +1,37 @@
 #!/usr/bin/env node
 'use strict';
 
-var url = require('url');
+var program = require('commander');
+var rimraf = require('rimraf');
 
-var npmlog = require('npmlog');
+var hopsConfig = require('hops-config');
 
-var webpack = require('webpack');
-var WebpackServer = require('webpack-dev-server');
-
-var config = require('hops-config');
-
-var pkg = require('./package.json');
-
-var logInfo = npmlog.log.bind(npmlog, 'info', 'hops');
-var logError = npmlog.log.bind(npmlog, 'error', 'hops');
-
-function runStart (config) {
-  if (process.env.NODE_ENV === 'production') {
-    return run('build', config);
-  } else {
-    return run('develop', config);
-  }
-}
-
-function runBuild (config) {
-  webpack(config).run(function (error, stats) {
-    if (error) {
-      logError(error.stack.toString());
-    } else {
-      logInfo(stats.toString({ chunks: false }));
-    }
-  });
-}
-
-function runDevelop (config) {
-  var serverConfig = Object.assign(
-    { host: '0.0.0.0', port: 8080 },
-    config.devServer
-  );
-  var server = new WebpackServer(
-    webpack(config),
-    serverConfig
-  );
-  server.listen(
-    serverConfig.port,
-    serverConfig.host,
-    function (error) {
-      if (error) {
-        logError(error.stack.toString());
-      } else {
-        logInfo(url.format({
-          protocol: serverConfig.https ? 'https' : 'http',
-          hostname: serverConfig.host,
-          port: serverConfig.port
-        }));
-      }
-    }
-  );
-}
+var util = require('./lib/util');
+var version = require('./package.json').version;
 
 function run (command) {
-  try {
-    logInfo('hops-cli@%s: %s', pkg.version, command);
-    switch (command) {
-      case 'start':
-        runStart(config);
-        break;
-      case 'build':
-        runBuild(require(config.buildConfig));
-        break;
-      case 'develop':
-        runDevelop(require(config.developConfig));
-        break;
-      default:
-        throw new Error('unknown command: ' + command);
-    }
-  } catch (error) {
-    logError(error.stack.toString());
+  switch (command) {
+    case 'start':
+      return run(process.env.NODE_ENV === 'production' ? 'serve' : 'develop');
+    case 'serve':
+      return require('./lib/serve')(program.port);
+    case 'develop':
+      return require('./lib/develop')(program.port);
+    case 'build':
+      return require('./lib/build')();
+    default:
+      util.logError('invalid command: ' + command);
+      process.exit(1);
   }
 }
 
-if (require.main === module) {
-  var argv = require('minimist')(process.argv.slice(2));
-  run(argv._[0] || process.env.npm_lifecycle_event);
-} else {
-  module.exports = {
-    run: run,
-    runBuild: runBuild,
-    runDevelop: runDevelop
-  };
-}
+program
+.version(version)
+.description('Commands: start, serve, develop, build')
+.option('-p, --port', 'server TCP port')
+.arguments('<command>')
+.action(run);
+
+rimraf(hopsConfig.buildDir, function () {
+  program.parse(process.argv);
+});

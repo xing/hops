@@ -7,7 +7,8 @@
     "hops": "index.js"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "lib"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,8 +17,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "commander": "2.9.0",
     "hops-config": "0.1.0",
     "npmlog": "4.1.0",
+    "rimraf": "2.6.1",
     "webpack": "2.6.1",
     "webpack-dev-server": "2.4.5"
   }
