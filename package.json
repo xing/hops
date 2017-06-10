@@ -7,25 +7,11 @@
     "babel",
     "postcss"
   ],
-  "main": "lib/exports.js",
-  "bin": {
-    "hops": "bin/run.js"
-  },
-  "files": [
-    "bin",
-    "config",
-    "lib",
-    "middleware",
-    "plugin",
-    "renderer",
-    "transpiler"
-  ],
   "scripts": {
     "start": "cd demo; rm -rf dist node_modules/hops-*; npm install; npm start",
     "test": "rm -rf node_modules/hops-*; npm install; mocha -r spec/setup \"spec/*.js\"",
     "update": "ncu -u && find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -u\" \\;",
-    "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
-    "dryrun": "tar -tf $(npm pack) && rm hops-*.tgz"
+    "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -36,6 +22,7 @@
     "pixelass <greg@pixelass.com> (https://www.xing.com/profile/Gregor_Adams2)",
     "drixsonic <cedric@niriu.com> (https://www.xing.com/profile/Cedric_Trigoso)"
   ],
+  "private": true,
   "license": "MIT",
   "homepage": "https://github.com/xing/hops",
   "repository": {
