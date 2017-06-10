@@ -1,7 +1,7 @@
 'use strict';
 
 exports.default = {
-  test: /\.(ico|png|gif|jpe?g|webp)$/,
+  test: /\.(png|gif|jpe?g|webp)$/,
   use: {
     loader: 'url-loader',
     options: {
