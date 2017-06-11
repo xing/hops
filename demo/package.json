@@ -19,7 +19,8 @@
     "hops-root": "file:../packages/root",
     "hops-transpiler": "file:../packages/transpiler",
     "react": "^15.5.4",
-    "react-redux": "^5.0.5"
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1"
   },
   "hops": {
   }

@@ -21,10 +21,10 @@
     "html-minifier": "^3.5.2",
     "react-dom": "^15.5.4",
     "react-helmet": "^5.1.3",
-    "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1"
   },
   "peerDependencies": {
-    "react": "^15.5.4"
+    "react": "^15.5.4",
+    "react-router": "^4.1.1"
   }
 }

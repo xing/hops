@@ -4,10 +4,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactRouterDOM = require('react-router-dom');
 
-var common = require('./common');
-var Context = common.Context;
-
-Object.assign(exports, common);
+var Context = require('./common').Context;
 
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
@@ -41,4 +38,12 @@ exports.render = function (reactElement, context) {
       );
     });
   };
+};
+
+exports.Miss = function Miss () {
+  return null;
+};
+
+exports.Status = function Status () {
+  return null;
 };

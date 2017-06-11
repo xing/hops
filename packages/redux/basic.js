@@ -5,8 +5,7 @@ var Redux = require('redux');
 var ReactRedux = require('react-redux');
 var ReduxThunkMiddleware = require('redux-thunk').default;
 
-var HopsReact = require('hops-react');
-var Context = HopsReact.Context;
+var Context = require('hops-react').Context;
 
 var INITIAL_STATE = 'INITIAL_STATE';
 
@@ -66,5 +65,3 @@ exports.Context = exports.createContext = Context.extend({
     );
   }
 });
-
-exports.connect = ReactRedux.connect;
