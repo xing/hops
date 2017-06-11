@@ -13,8 +13,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "directory-index": "0.1.0",
+    "directory-index": "^0.1.0",
     "hops-renderer": "6.0.0-beta.1",
-    "webpack-sources": "1.0.1"
+    "webpack-sources": "^1.0.1"
   }
 }
