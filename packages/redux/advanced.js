@@ -5,9 +5,7 @@ var ReactRouter = require('react-router-dom');
 var withSideEffect = require('react-side-effect');
 var createLocation = require('history/LocationUtils').createLocation;
 
-var HopsRedux = require('./basic');
-
-var Context = HopsRedux.Context;
+var Context = require('./basic').Context;
 
 var Dispatcher = ReactRouter.withRouter(
   withSideEffect(
@@ -67,5 +65,3 @@ exports.Context = exports.createContext = Context.extend({
     ));
   }
 });
-
-exports.connect = HopsRedux.connect;

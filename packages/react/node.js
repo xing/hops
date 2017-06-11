@@ -1,19 +1,15 @@
 'use strict';
 
 var React = require('react');
-var ReactDOMServer = require('react-dom/server');
+var ReactDOM = require('react-dom/server');
 var ReactRouter = require('react-router');
 var Helmet = require('react-helmet').Helmet;
 var minify = require('html-minifier').minify;
 
 var manifestUtil = require('hops-config/util');
 
+var Context = require('./common').Context;
 var defaultTemplate = require('./template');
-
-var common = require('./common');
-var Context = common.Context;
-
-Object.assign(exports, common);
 
 exports.Context = exports.createContext = Context.extend({
   clone: function (request) {
@@ -66,7 +62,7 @@ exports.render = function (reactElement, context) {
   return function (req, res, next) {
     var reqContext = context.clone(req);
     reqContext.bootstrap().then(function () {
-      var markup = ReactDOMServer.renderToString(
+      var markup = ReactDOM.renderToString(
         reqContext.enhanceElement(reactElement)
       );
       if (reqContext.miss) {
@@ -86,3 +82,17 @@ exports.render = function (reactElement, context) {
     }).catch(next);
   };
 };
+
+exports.Miss = ReactRouter.withRouter(function Miss (props) {
+  if (props.staticContext) {
+    props.staticContext.miss = true;
+  }
+  return null;
+});
+
+exports.Status = ReactRouter.withRouter(function Status (props) {
+  if (props.staticContext) {
+    props.staticContext.status = props.code || 200;
+  }
+  return null;
+});
