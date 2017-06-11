@@ -1,6 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
+var rimraf = require('rimraf');
 
 var hopsConfig = require('hops-config');
 
@@ -18,5 +19,7 @@ function defaultCallback (error, stats) {
 }
 
 module.exports = function runBuild (callback) {
-  webpack(webpackConfig).run(callback || defaultCallback);
+  rimraf(hopsConfig.buildDir, function () {
+    webpack(webpackConfig).run(callback || defaultCallback);
+  });
 };
