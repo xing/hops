@@ -1,24 +1,15 @@
 'use strict';
 
 var express = require('express');
-var webpack = require('webpack');
 
 var hopsRoot = require('hops-root');
 var hopsConfig = require('hops-config');
 
-var buildConfig = require(hopsConfig.buildConfig);
-var renderConfig = require(hopsConfig.renderConfig);
-
+var build = require('./build');
 var util = require('./util');
 
 module.exports = function runServe (port) {
-  var webpackConfig = [
-    buildConfig,
-    Object.assign({}, renderConfig, {
-      plugins: renderConfig.plugins.concat(new webpack.ProgressPlugin())
-    })
-  ];
-  webpack(webpackConfig).run(function (error, stats) {
+  build(function (error, stats) {
     if (error) {
       util.logError(error.stack.toString());
     } else {
