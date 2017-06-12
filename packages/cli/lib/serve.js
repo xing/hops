@@ -15,13 +15,12 @@ module.exports = function runServe (port) {
     if (error) {
       util.logError(error.stack.toString());
     } else {
-      var app = express();
-      var file = hopsRoot.resolve(hopsConfig.buildDir, 'server.js');
-      if (fs.existsSync(file)) {
-        var middleware = require(file);
+      var app = express().use(express.static(hopsConfig.buildDir));
+      var middlewareFile = hopsRoot.resolve(hopsConfig.buildDir, 'server.js');
+      if (fs.existsSync(middlewareFile)) {
+        var middleware = require(middlewareFile);
         app.use(middleware.__esModule ? middleware.default : middleware);
       }
-      app.use(express.static(hopsConfig.buildDir));
       app.listen(port || 8080, function () {
         util.logInfo('production server listening');
       });
