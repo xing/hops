@@ -17,10 +17,19 @@ module.exports = {
   },
   context: hopsRoot.toString(),
   resolve: {
-    mainFields: ['esnext:server', 'esnext', 'module', 'server', 'main'],
-    extensions: ['.js', '.jsx']
+    mainFields: [
+      'esnext:server',
+      'server',
+      'esnext',
+      'jsnext:main',
+      'module',
+      'main'
+    ],
+    extensions: ['.mjs', '.js', '.jsx']
   },
-  externals: [require('webpack-node-externals')()],
+  externals: [require('webpack-node-externals')({
+    whitelist: require('../lib/check-esnext')
+  })],
   module: {
     rules: [
       require('../loaders/babel').render,
