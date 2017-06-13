@@ -1,6 +1,6 @@
 {
   "name": "hops-renderer",
-  "version": "6.0.0-beta.1",
+  "version": "6.0.0-beta.2",
   "description": "",
   "main": "index.js",
   "files": [
@@ -13,7 +13,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "hops-middleware": "6.0.0-beta.1",
+    "hops-middleware": "6.0.0-beta.2",
     "node-mocks-http": "^1.6.2"
   }
 }
