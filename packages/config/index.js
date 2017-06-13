@@ -16,12 +16,12 @@ var config = module.exports = {
 
 if (fs.existsSync(hopsRoot.resolve('package.json'))) {
   var pkgConfig = hopsRoot.require('package.json').hops || {};
-  if (pkgConfig.extend) {
+  if (pkgConfig.extends) {
     try {
-      require.resolve(pkgConfig.extend);
-      Object.assign(config, require(pkgConfig.extend));
+      require.resolve(pkgConfig.extends);
+      Object.assign(config, require(pkgConfig.extends));
     } catch (e) {
-      Object.assign(config, hopsRoot.require(pkgConfig.extend));
+      Object.assign(config, hopsRoot.require(pkgConfig.extends));
     }
   }
   Object.assign(config, pkgConfig);
