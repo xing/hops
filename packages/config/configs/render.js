@@ -16,17 +16,7 @@ module.exports = {
     devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
   context: hopsRoot.toString(),
-  resolve: {
-    mainFields: [
-      'esnext:server',
-      'server',
-      'esnext',
-      'jsnext:main',
-      'module',
-      'main'
-    ],
-    extensions: ['.mjs', '.js', '.jsx']
-  },
+  resolve: require('../lib/resolve')('server'),
   externals: [require('webpack-node-externals')({
     whitelist: require('../lib/check-esnext')
   })],
