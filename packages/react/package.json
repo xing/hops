@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "6.0.0-beta.1",
+  "version": "6.0.0-beta.2",
   "description": "",
   "main": "node.js",
   "browser": "dom.js",
@@ -17,7 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "hops-config": "6.0.0-beta.1",
+    "hops-config": "6.0.0-beta.2",
     "html-minifier": "^3.5.2",
     "react-dom": "^15.5.4",
     "react-helmet": "^5.1.3"
