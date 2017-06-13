@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import { render, Miss } from 'hops-react';
 
 import { headline } from './styles.css';

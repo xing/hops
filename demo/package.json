@@ -20,7 +20,8 @@
     "hops-transpiler": "file:../packages/transpiler",
     "react": "^15.5.4",
     "react-redux": "^5.0.5",
-    "react-router": "^4.1.1"
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1"
   },
   "hops": {
   }
