@@ -2,6 +2,7 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
 
 var cssLoaderOptions = {
@@ -14,9 +15,19 @@ var cssLoaderOptions = {
 var postcssLoaderOptions = {
   plugins: function (loader) {
     return [
+      require('postcss-import')({
+        addModulesDirectories: hopsRoot.resolve('packages')
+      }),
+      require('postcss-mixins')(),
+      require('postcss-advanced-variables')(),
       require('postcss-cssnext')({
         browsers: hopsConfig.browsers
-      })
+      }),
+      require('postcss-nested')(),
+      require('postcss-atroot')(),
+      require('postcss-property-lookup')(),
+      require('postcss-extend')(),
+      require('postcss-reporter')()
     ];
   }
 };

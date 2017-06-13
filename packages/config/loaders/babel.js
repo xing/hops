@@ -30,6 +30,7 @@ function getBabelLoader (targets) {
           'react'
         ],
         plugins: [
+          'flow-react-proptypes',
           'transform-class-properties',
           'transform-object-rest-spread'
         ]

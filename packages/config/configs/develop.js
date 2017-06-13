@@ -24,20 +24,7 @@ module.exports = {
     chunkFilename: 'chunk-[id].js'
   },
   context: hopsRoot.toString(),
-  resolve: {
-    alias: {
-      'hops-entry-point': hopsRoot.toString()
-    },
-    mainFields: [
-      'esnext:browser',
-      'browser',
-      'esnext',
-      'jsnext:main',
-      'module',
-      'main'
-    ],
-    extensions: ['.js', '.jsx']
-  },
+  resolve: require('../lib/resolve')('browser'),
   module: {
     rules: [
       require('../loaders/babel').default,

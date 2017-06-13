@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 
 var pkgDir = require('pkg-dir').sync;
+var resolve = require('resolve').sync;
 
 var appRoot = pkgDir();
 var appModules = path.resolve(appRoot, 'node_modules');
@@ -23,12 +24,17 @@ function checkEsnext (filepath) {
 }
 
 module.exports = function checkEsnextCached (module) {
-  if (!cache[module]) {
-    var filepath = path.isAbsolute(module) ? module : require.resolve(module);
-    cache[module] = cache[filepath] = (
-      !filepath.indexOf(appRoot) &&
-      (filepath.indexOf(appModules) || checkEsnext(filepath))
-    );
+  if (!(module in cache)) {
+    if (path.isAbsolute(module)) {
+      cache[module] = (
+        (module.indexOf(appRoot) === 0) &&
+        ((module.indexOf(appModules) === -1) || checkEsnext(module))
+      );
+    } else {
+      cache[module] = checkEsnextCached(resolve(module, {
+        moduleDirectory: ['node_modules', path.resolve(appRoot, 'packages')]
+      }));
+    }
   }
   return cache[module];
 };
