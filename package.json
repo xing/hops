@@ -14,8 +14,7 @@
     "update": "ncu -u && find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -u\" \\;",
     "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
     "version": "node scripts/version.js && git add -A packages",
-    "postversion": "git push && git push --tags",
-    "preversion": "npm test"
+    "postversion": "git push && git push --tags"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
