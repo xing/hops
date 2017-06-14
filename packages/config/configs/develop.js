@@ -15,7 +15,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/dev-server',
-    require.resolve('../lib/shim')
+    require.resolve('../lib/hot-shim')
   ],
   output: {
     path: hopsRoot.resolve(hopsConfig.buildDir),
@@ -24,18 +24,11 @@ module.exports = {
     chunkFilename: 'chunk-[id].js'
   },
   context: hopsRoot.toString(),
-  resolve: require('../lib/resolve')('browser'),
+  resolve: require('../lib/resolve-config')('develop'),
   module: {
-    rules: [
-      require('../loaders/babel').default,
-      require('../loaders/postcss').develop,
-      require('../loaders/json').default,
-      require('../loaders/file').default,
-      require('../loaders/url').default,
-      require('../loaders/tpl').default
-    ]
+    rules: require('../lib/loader-config')('develop')
   },
-  plugins: [
+  plugins: require('../lib/plugin-config')('develop', [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new ManifestPlugin({
@@ -45,7 +38,7 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       'NODE_ENV': 'development'
     })
-  ],
+  ]),
   performance: {
     hints: false
   },

@@ -16,24 +16,20 @@ module.exports = {
     devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
   context: hopsRoot.toString(),
-  resolve: require('../lib/resolve')('server'),
+  resolve: require('../lib/resolve-config')('render'),
   externals: [require('webpack-node-externals')({
     whitelist: require('../lib/check-esnext')
   })],
   module: {
-    rules: [
-      require('../loaders/babel').render,
-      require('../loaders/postcss').render,
-      require('../loaders/json').default,
-      require('../loaders/file').default,
-      require('../loaders/url').default,
-      require('../loaders/tpl').default
-    ]
+    rules: require('../lib/loader-config')('render')
   },
-  plugins: [
+  plugins: require('../lib/plugin-config')('render', [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     })
-  ],
+  ]),
+  performance: {
+    hints: false
+  },
   devtool: process.env.NODE_ENV !== 'production' && '#inline-source-map'
 };
