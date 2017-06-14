@@ -19,7 +19,7 @@
   "dependencies": {
     "hops-config": "6.0.0-beta.2",
     "html-minifier": "^3.5.2",
-    "react-dom": "^15.5.4",
+    "react-dom": "^15.6.0",
     "react-helmet": "^5.1.3"
   },
   "peerDependencies": {

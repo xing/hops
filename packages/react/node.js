@@ -49,8 +49,7 @@ exports.Context = exports.createContext = Context.extend({
     );
     return minify(this.template(templateData), {
       collapseWhitespace: true,
-      removeAttributeQuotes: true,
-      removeEmptyAttributes: true
+      removeAttributeQuotes: true
     });
   }
 });
