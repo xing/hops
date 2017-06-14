@@ -10,7 +10,7 @@ var hopsConfig = require('..');
 var WriteFilePlugin = require('../lib/write-file');
 
 module.exports = {
-  entry: require.resolve('../lib/shim'),
+  entry: require.resolve('../lib/hot-shim'),
   output: {
     path: hopsRoot.resolve(hopsConfig.buildDir),
     publicPath: '/',
@@ -18,18 +18,11 @@ module.exports = {
     chunkFilename: 'chunk-[id]-[chunkhash:16].js'
   },
   context: hopsRoot.toString(),
-  resolve: require('../lib/resolve')('browser'),
+  resolve: require('../lib/resolve-config')('build'),
   module: {
-    rules: [
-      require('../loaders/babel').default,
-      require('../loaders/postcss').build,
-      require('../loaders/json').default,
-      require('../loaders/file').default,
-      require('../loaders/url').default,
-      require('../loaders/tpl').default
-    ]
+    rules: require('../lib/loader-config')('build')
   },
-  plugins: [
+  plugins: require('../lib/plugin-config')('build', [
     new ManifestPlugin({
       publicPath: '/'
     }),
@@ -70,5 +63,5 @@ module.exports = {
       compress: { warnings: false, unused: true, 'dead_code': true },
       output: { comments: false }
     })
-  ]
+  ])
 };

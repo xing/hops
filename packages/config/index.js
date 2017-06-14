@@ -11,6 +11,9 @@ var config = module.exports = {
   renderConfig: require.resolve('./configs/render'),
   browsers: '> 5%, last 1 version',
   buildDir: 'build',
+  resolve: {},
+  loaders: {},
+  plugins: {},
   locations: []
 };
 
