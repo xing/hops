@@ -8,23 +8,19 @@ var webpackConfig = require(hopsConfig.developConfig);
 
 var util = require('./util');
 
-module.exports = function runDevelop (port) {
-  var serverConfig = Object.assign(
-    { host: '0.0.0.0', port: port || 8080 },
-    webpackConfig.devServer
-  );
+module.exports = function runDevelop () {
   var server = new WebpackServer(
     webpack(webpackConfig),
-    serverConfig
+    webpackConfig.devServer
   );
   server.listen(
-    serverConfig.port,
-    serverConfig.host,
+    hopsConfig.port,
+    hopsConfig.host,
     function (error) {
       if (error) {
         util.logError(error.stack.toString());
       } else {
-        util.logInfo('development server listening');
+        util.logInfo('development server listening at ' + hopsConfig.address);
       }
     }
   );

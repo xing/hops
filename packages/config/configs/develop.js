@@ -6,14 +6,9 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
 
-var watchOptions = {
-  aggregateTimeout: 300,
-  ignored: /node_modules/
-};
-
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?' + hopsConfig.address,
     'webpack/hot/dev-server',
     require.resolve('../lib/hot-shim')
   ],
@@ -43,15 +38,5 @@ module.exports = {
     hints: false
   },
   devtool: '#source-map',
-  devServer: {
-    contentBase: hopsRoot.resolve(hopsConfig.buildDir),
-    hot: true,
-    overlay: {
-      warnings: true,
-      errors: true
-    },
-    stats: 'errors-only',
-    watchOptions: watchOptions,
-    setup: require('../lib/server-setup')(watchOptions)
-  }
+  devServer: require('../lib/server-config')()
 };

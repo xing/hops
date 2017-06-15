@@ -10,7 +10,6 @@ var hopsRoot = require('hops-root');
 program
 .version(require('./package.json').version)
 .description('Commands: start, serve, develop, build')
-.option('-p, --port', 'server TCP port')
 .arguments('<command>')
 .action(function run (command) {
   rimraf(hopsRoot.resolve(hopsConfig.buildDir), function () {

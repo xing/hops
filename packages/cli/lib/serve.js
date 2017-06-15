@@ -10,7 +10,7 @@ var hopsConfig = require('hops-config');
 var build = require('./build');
 var util = require('./util');
 
-module.exports = function runServe (port) {
+module.exports = function runServe () {
   build(function (error) {
     if (error) {
       util.logError(error.stack.toString());
@@ -21,8 +21,8 @@ module.exports = function runServe (port) {
         var middleware = require(middlewareFile);
         app.use(middleware.__esModule ? middleware.default : middleware);
       }
-      app.listen(port || 8080, function () {
-        util.logInfo('production server listening');
+      app.listen(hopsConfig.port, hopsConfig.host, function () {
+        util.logInfo('production server listening at ' + hopsConfig.address);
       });
     }
   });
