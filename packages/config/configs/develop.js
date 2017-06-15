@@ -46,7 +46,10 @@ module.exports = {
   devServer: {
     contentBase: hopsRoot.resolve(hopsConfig.buildDir),
     hot: true,
-    noInfo: true,
+    overlay: {
+      warnings: true,
+      errors: true
+    },
     stats: 'errors-only',
     watchOptions: watchOptions,
     setup: require('../lib/server-setup')(watchOptions)
