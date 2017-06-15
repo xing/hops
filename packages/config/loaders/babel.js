@@ -24,7 +24,7 @@ function getBabelLoader (targets, plugins) {
             {
               modules: false,
               useBuiltIns: true,
-              targets: { browsers: hopsConfig.browsers }
+              targets: targets
             }
           ],
           'react'
