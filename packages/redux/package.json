@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "6.0.0-beta.4",
+  "version": "6.0.0-beta.5",
   "description": "",
   "main": "advanced.js",
   "files": [
@@ -18,7 +18,7 @@
     "redux-thunk": "^2.2.0"
   },
   "peerDependencies": {
-    "hops-react": "6.0.0-beta.4",
+    "hops-react": "6.0.0-beta.5",
     "react": "^15.5.4",
     "react-redux": "^5.0.5"
   }
