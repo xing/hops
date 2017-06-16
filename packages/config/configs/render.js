@@ -26,6 +26,9 @@ module.exports = {
   plugins: require('../lib/plugin-config')('render', [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
+    }),
+    new webpack.EnvironmentPlugin({
+      'NODE_ENV': 'development'
     })
   ]),
   performance: {
