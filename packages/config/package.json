@@ -43,7 +43,7 @@
     "postcss-cssnext": "^2.11.0",
     "postcss-extend": "^1.0.5",
     "postcss-import": "^10.0.0",
-    "postcss-loader": "^2.0.5",
+    "postcss-loader": "^2.0.6",
     "postcss-mixins": "^6.0.0",
     "postcss-nested": "^2.0.2",
     "postcss-property-lookup": "^1.2.1",
