@@ -13,6 +13,7 @@ var cache = {};
 
 function checkEsnext (filepath) {
   if (/\.mjs$/.test(filepath)) return true;
+  if (filepath === require.resolve('./hot-shim')) return true;
   var pkgRoot = pkgDir(path.dirname(filepath));
   var packageJsonPath = path.resolve(pkgRoot, 'package.json');
   if (fs.existsSync(packageJsonPath)) {

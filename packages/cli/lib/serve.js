@@ -17,6 +17,7 @@ module.exports = function runServe () {
     } else {
       var app = express().use(express.static(hopsConfig.buildDir));
       var middlewareFile = hopsRoot.resolve(hopsConfig.buildDir, 'server.js');
+      hopsConfig.server && hopsConfig.server(app);
       if (fs.existsSync(middlewareFile)) {
         var middleware = require(middlewareFile);
         app.use(middleware.__esModule ? middleware.default : middleware);
