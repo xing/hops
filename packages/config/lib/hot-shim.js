@@ -1,5 +1,7 @@
 'use strict';
 
+require('core-js');
+
 (function render () {
   var handle = require('hops-entry-point');
   if (handle.__esModule) {

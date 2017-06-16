@@ -3,6 +3,7 @@
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var BabiliPlugin = require('babili-webpack-plugin');
 
 var HopsPlugin = require('hops-plugin');
 var hopsRoot = require('hops-root');
@@ -37,7 +38,7 @@ module.exports = {
         if (module.resource && (/^.*\.css$/).test(module.resource)) {
           return false;
         }
-        return module.context && module.context.indexOf('node_modules') !== -1;
+        return module.context && module.context.indexOf('node_modules') > -1;
       }
     }),
     new webpack.optimize.CommonsChunkPlugin({
@@ -59,9 +60,9 @@ module.exports = {
       minimize: true,
       sourceMap: false
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false, unused: true, 'dead_code': true },
-      output: { comments: false }
-    })
+    new BabiliPlugin(
+      { evaluate: false },
+      { comments: false }
+    )
   ])
 };

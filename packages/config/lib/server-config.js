@@ -23,6 +23,7 @@ var defaultDevServerConfig = {
   setup: function (app) {
     var webpackConfig = require(hopsConfig.renderConfig);
     var middleware = createMiddleware(webpackConfig, watchOptions);
+    hopsConfig.server && hopsConfig.server(app);
     if (hopsConfig.locations.length) {
       app.use(function (req, res, next) {
         for (var i = 0; i < hopsConfig.locations.length; i++) {

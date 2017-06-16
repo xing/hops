@@ -5,6 +5,9 @@
   "main": "src/app.js",
   "repository": {},
   "license": "MIT",
+  "config": {
+    "browsers": "last 1 Chrome versions"
+  },
   "scripts": {
     "start": "hops start"
   },
