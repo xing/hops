@@ -1,13 +1,13 @@
 'use strict';
 
-var hopsRoot = require('hops-root');
+var hopsConfig = require('hops-config');
 var resolveConfig = require('..').resolve;
 
 function getDefaultResolveConfig (target) {
   var platform = (target === 'render') ? 'server' : 'browser';
   return {
     alias: {
-      'hops-entry-point': hopsRoot.toString()
+      'hops-entry-point': hopsConfig.appDir
     },
     mainFields: [
       'esnext:' + platform,
@@ -20,10 +20,7 @@ function getDefaultResolveConfig (target) {
       'module',
       'main'
     ],
-    modules: [
-      'node_modules',
-      hopsRoot.resolve('packages')
-    ],
+    modules: ['node_modules'].concat(hopsConfig.modules),
     extensions: ['.mjs', '.js', '.jsx']
   };
 }

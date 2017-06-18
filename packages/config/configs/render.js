@@ -2,20 +2,19 @@
 
 var webpack = require('webpack');
 
-var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
 
 module.exports = {
   target: 'node',
-  entry: hopsRoot.toString(),
+  entry: hopsConfig.appDir,
   output: {
-    path: hopsRoot.resolve(hopsConfig.buildDir),
+    path: hopsConfig.buildDir,
     filename: 'server.js',
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
     devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
-  context: hopsRoot.toString(),
+  context: hopsConfig.appDir,
   resolve: require('../lib/resolve-config')('render'),
   externals: [require('webpack-node-externals')({
     whitelist: require('../lib/check-esnext')

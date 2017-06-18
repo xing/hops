@@ -2,7 +2,6 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
 
 var cssLoaderOptions = {
@@ -16,7 +15,7 @@ var postcssLoaderOptions = {
   plugins: function (loader) {
     return [
       require('postcss-import')({
-        addModulesDirectories: hopsRoot.resolve('packages')
+        addModulesDirectories: hopsConfig.modules
       }),
       require('postcss-mixins')(),
       require('postcss-advanced-variables')(),
