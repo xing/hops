@@ -1,7 +1,7 @@
 var fs = require('fs');
+var path = require('path');
 var mkdirp = require('mkdirp');
 
-var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
 
 module.exports = function Plugin (regExp) {
@@ -11,7 +11,7 @@ module.exports = function Plugin (regExp) {
       var assetKeys = Object.keys(compilation.assets);
       Promise.all(assetKeys.reduce(function (result, assetKey) {
         if (regExp.test(assetKey)) {
-          var fileName = hopsRoot.resolve(hopsConfig.buildDir, assetKey);
+          var fileName = path.resolve(hopsConfig.buildDir, assetKey);
           var fileContent = compilation.assets[assetKey].source();
           result.push(new Promise(function (resolve, reject) {
             fs.writeFile(fileName, fileContent, function (err) {

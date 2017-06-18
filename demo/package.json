@@ -6,7 +6,8 @@
   "repository": {},
   "license": "MIT",
   "config": {
-    "browsers": "last 1 Chrome versions"
+    "browsers": "last 1 Chrome versions",
+    "modules": "packages"
   },
   "scripts": {
     "start": "hops start"

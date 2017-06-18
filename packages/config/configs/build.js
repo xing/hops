@@ -6,19 +6,18 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BabiliPlugin = require('babili-webpack-plugin');
 
 var HopsPlugin = require('hops-plugin');
-var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
 var WriteFilePlugin = require('../lib/write-file');
 
 module.exports = {
   entry: require.resolve('../lib/hot-shim'),
   output: {
-    path: hopsRoot.resolve(hopsConfig.buildDir),
+    path: hopsConfig.buildDir,
     publicPath: '/',
     filename: '[name]-[chunkhash:16].js',
     chunkFilename: 'chunk-[id]-[chunkhash:16].js'
   },
-  context: hopsRoot.toString(),
+  context: hopsConfig.appDir,
   resolve: require('../lib/resolve-config')('build'),
   module: {
     rules: require('../lib/loader-config')('build')

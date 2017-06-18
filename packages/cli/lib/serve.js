@@ -1,10 +1,10 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 
 var express = require('express');
 
-var hopsRoot = require('hops-root');
 var hopsConfig = require('hops-config');
 
 var build = require('./build');
@@ -16,8 +16,7 @@ module.exports = function runServe () {
       util.logError(error.stack.toString());
     } else {
       var app = express().use(express.static(hopsConfig.buildDir));
-      var middlewareFile = hopsRoot.resolve(hopsConfig.buildDir, 'server.js');
-      hopsConfig.server && hopsConfig.server(app);
+      var middlewareFile = path.resolve(hopsConfig.buildDir, 'server.js');
       if (fs.existsSync(middlewareFile)) {
         var middleware = require(middlewareFile);
         app.use(middleware.__esModule ? middleware.default : middleware);

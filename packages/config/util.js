@@ -1,7 +1,8 @@
 'use strict';
 
 var fs = require('fs');
-var hopsRoot = require('hops-root');
+var path = require('path');
+
 var hopsConfig = require('.');
 
 var manifestData = null;
@@ -9,7 +10,7 @@ var manifestScript = '';
 
 function getRawManifestData () {
   if (!manifestData) {
-    var filepath = hopsRoot.resolve(
+    var filepath = path.resolve(
       hopsConfig.buildDir,
       'manifest.json'
     );
@@ -22,7 +23,7 @@ function getRawManifestData () {
 
 exports.getManifestScript = function () {
   if (!manifestScript) {
-    var filepath = hopsRoot.resolve(
+    var filepath = path.resolve(
       hopsConfig.buildDir,
       'manifest.js'
     );

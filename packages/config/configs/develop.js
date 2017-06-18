@@ -3,8 +3,12 @@
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
-var hopsRoot = require('hops-root');
 var hopsConfig = require('..');
+
+var watchOptions = {
+  aggregateTimeout: 300,
+  ignored: /node_modules/
+};
 
 module.exports = {
   entry: [
@@ -13,12 +17,12 @@ module.exports = {
     require.resolve('../lib/hot-shim')
   ],
   output: {
-    path: hopsRoot.resolve(hopsConfig.buildDir),
+    path: hopsConfig.buildDir,
     publicPath: '/',
     filename: '[name].js',
     chunkFilename: 'chunk-[id].js'
   },
-  context: hopsRoot.toString(),
+  context: hopsConfig.appDir,
   resolve: require('../lib/resolve-config')('develop'),
   module: {
     rules: require('../lib/loader-config')('develop')
@@ -38,5 +42,6 @@ module.exports = {
     hints: false
   },
   devtool: '#source-map',
-  devServer: require('../lib/server-config')()
+  watchOptions: watchOptions,
+  devServer: require('../lib/server-config')(watchOptions)
 };
