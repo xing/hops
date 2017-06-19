@@ -10,6 +10,7 @@
   "scripts": {
     "start": "cd demo; rm -rf dist node_modules/hops-*; npm install; npm start",
     "test": "rm -rf node_modules/hops-*; npm install; mocha -r spec/setup \"spec/*.js\"",
+    "check": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && nsp check\" \\;",
     "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
     "update": "ncu -u && find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a\" \\;",
     "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
@@ -53,6 +54,7 @@
     "mocha": "^3.4.2",
     "mocha-standard": "^1.0.0",
     "npm-check-updates": "^2.11.3",
+    "nsp": "^2.6.3",
     "semistandard": "^11.0.0"
   }
 }

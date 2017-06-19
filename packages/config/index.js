@@ -5,7 +5,7 @@ var url = require('url');
 
 var hopsRoot = require('hops-root');
 
-function extendFromNPMConfig (config) {
+function extendWithNPMConfig (config) {
   if (process.env.npm_package_config_extends) {
     var baseFile = process.env.npm_package_config_extends;
     try {
@@ -102,7 +102,7 @@ module.exports = freeze(
     resolvePaths(
       splitStrings(
         overrideWithNPMConfig(
-          extendFromNPMConfig({
+          extendWithNPMConfig({
             https: false,
             host: '0.0.0.0',
             port: 8080,
@@ -116,7 +116,9 @@ module.exports = freeze(
             resolve: {},
             loaders: {},
             plugins: {},
-            devServer: {}
+            devServer: {},
+            bootstrap: function () {},
+            teardown: function () {}
           })
         )
       )

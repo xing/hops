@@ -11,6 +11,7 @@ const Home = () => (
 const App = () => (
   <Switch>
     <Route exact path='/' component={Home} />
+    <Route path='/foo' component={Home} />
     <Miss />
   </Switch>
 );
