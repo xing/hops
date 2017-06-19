@@ -68,12 +68,9 @@ exports.render = function (reactElement, context) {
         next();
       } else {
         if (reqContext.url) {
-          res.writeHead(
-            reqContext.status || 301,
-            { Location: reqContext.url }
-          );
+          res.status(reqContext.status || 301).set('Location', reqContext.url);
         } else {
-          res.writeHead(reqContext.status || 200);
+          res.status(reqContext.status || 200).type('html');
           res.write(reqContext.renderTemplate(markup));
         }
         res.end();
