@@ -1,6 +1,6 @@
 {
   "name": "hops-config",
-  "version": "6.0.0-beta.5",
+  "version": "6.0.0-beta.6",
   "description": "",
   "main": "index.js",
   "files": [
@@ -30,9 +30,9 @@
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
-    "hops-middleware": "6.0.0-beta.5",
-    "hops-plugin": "6.0.0-beta.5",
-    "hops-root": "6.0.0-beta.5",
+    "hops-middleware": "6.0.0-beta.6",
+    "hops-plugin": "6.0.0-beta.6",
+    "hops-root": "6.0.0-beta.6",
     "json-loader": "^0.5.4",
     "lodash.template": "^4.4.0",
     "mkdirp": "^0.5.1",
