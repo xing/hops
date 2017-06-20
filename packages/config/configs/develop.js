@@ -5,11 +5,6 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 
 var hopsConfig = require('..');
 
-var watchOptions = {
-  aggregateTimeout: 300,
-  ignored: /node_modules/
-};
-
 module.exports = {
   entry: [
     'webpack-dev-server/client?' + hopsConfig.address,
@@ -42,6 +37,9 @@ module.exports = {
     hints: false
   },
   devtool: '#source-map',
-  watchOptions: watchOptions,
-  devServer: require('../lib/server-config')(watchOptions)
+  watchOptions: {
+    aggregateTimeout: 300,
+    ignored: /node_modules/
+  },
+  devServer: require('../lib/server-config')()
 };

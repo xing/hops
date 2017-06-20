@@ -6,7 +6,7 @@ var ReactRouter = require('react-router');
 var Helmet = require('react-helmet').Helmet;
 var minify = require('html-minifier').minify;
 
-var manifestUtil = require('hops-config/util');
+var manifestUtil = require('hops-config/manifest');
 
 var Context = require('./common').Context;
 var defaultTemplate = require('./template');
