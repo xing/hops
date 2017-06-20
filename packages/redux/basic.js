@@ -38,11 +38,8 @@ exports.Context = exports.createContext = Context.extend({
     return Redux.createStore(
       Redux.combineReducers(this.reducers),
       global[INITIAL_STATE],
-      Redux.compose(
-        Redux.applyMiddleware(ReduxThunkMiddleware),
-        global.devToolsExtension ? global.devToolsExtension() : function (fn) {
-          return fn;
-        }
+      (global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose)(
+        Redux.applyMiddleware(ReduxThunkMiddleware)
       )
     );
   },
