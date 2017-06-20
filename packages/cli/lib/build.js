@@ -9,11 +9,10 @@ var renderConfig = require(hopsConfig.renderConfig);
 var webpackConfig = [buildConfig, renderConfig];
 
 function defaultCallback (error, stats) {
-  var util = require('./util');
   if (error) {
-    util.logError(error.stack.toString());
+    console.error(error.stack.toString());
   } else {
-    util.logInfo(stats.toString({ chunks: false }));
+    console.log(stats.toString({ chunks: false }));
   }
 }
 

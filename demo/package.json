@@ -22,6 +22,7 @@
     "hops-redux": "file:../packages/redux",
     "hops-renderer": "file:../packages/renderer",
     "hops-root": "file:../packages/root",
+    "hops-server": "file:../packages/server",
     "hops-transpiler": "file:../packages/transpiler",
     "react": "^15.5.4",
     "react-redux": "^5.0.5",
