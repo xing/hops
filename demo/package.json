@@ -6,9 +6,11 @@
   "repository": {},
   "license": "MIT",
   "config": {
-    "browsers": "last 1 Chrome versions",
-    "locations": "/, /foo",
-    "modules": "packages"
+    "hops": {
+      "browsers": "last 1 Chrome versions",
+      "locations": ["/", "/foo"],
+      "modules": "[\"packages\"]"
+    }
   },
   "scripts": {
     "start": "hops start"
