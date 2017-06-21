@@ -12,6 +12,7 @@ var cssLoaderOptions = {
 };
 
 var postcssLoaderOptions = {
+  ident: 'postcss',
   parser: require('postcss-scss'),
   plugins: function (loader) {
     return [
