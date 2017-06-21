@@ -9,7 +9,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?' + hopsConfig.address,
     'webpack/hot/dev-server',
-    require.resolve('../lib/hot-shim')
+    require.resolve('../shims/develop')
   ],
   output: {
     path: hopsConfig.buildDir,

@@ -6,7 +6,7 @@ var hopsConfig = require('..');
 
 module.exports = {
   target: 'node',
-  entry: hopsConfig.appDir,
+  entry: require.resolve('../shims/render'),
   output: {
     path: hopsConfig.buildDir,
     filename: 'server.js',

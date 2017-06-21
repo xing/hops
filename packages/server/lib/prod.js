@@ -30,10 +30,9 @@ module.exports = function () {
       require(hopsConfig.renderConfig).output.filename
     );
     require.resolve(middlewareFile);
-    var middleware = require(middlewareFile);
     common.registerMiddleware(
       app.use(helmet.noCache()),
-      middleware.__esModule ? middleware.default : middleware
+      require(middlewareFile)
     );
   } catch (error) {
     console.error(error.stack.toString());

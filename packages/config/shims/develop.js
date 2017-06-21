@@ -1,6 +1,6 @@
 'use strict';
 
-require('core-js');
+require('babel-polyfill');
 
 (function render () {
   var handle = require('hops-entry-point');

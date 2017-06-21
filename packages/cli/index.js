@@ -16,9 +16,9 @@ program
       case 'start':
         return run(process.env.NODE_ENV === 'production' ? 'serve' : 'develop');
       case 'serve':
-        return require('./lib/serve')(program.port);
+        return require('./lib/serve')();
       case 'develop':
-        return require('./lib/develop')(program.port);
+        return require('./lib/develop')();
       case 'build':
         return require('./lib/build')();
       default:
