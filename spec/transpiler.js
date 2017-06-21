@@ -34,8 +34,7 @@ describe('transpiler', function () {
     it('should provide a function on success', function (done) {
       transpile(goodConfig)
       .on('success', function (result) {
-        assert.equal(typeof result, 'object');
-        assert.equal(typeof result.default, 'function');
+        assert.equal(typeof result, 'function');
         done();
       });
     });
@@ -55,8 +54,7 @@ describe('transpiler', function () {
         done();
       })
       .on('success', function (result) {
-        assert.equal(typeof result, 'object');
-        assert.equal(typeof result.default, 'function');
+        assert.equal(typeof result, 'function');
         done();
       });
     });
