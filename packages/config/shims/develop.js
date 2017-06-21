@@ -3,12 +3,11 @@
 require('babel-polyfill');
 
 (function render () {
-  var handle = require('hops-entry-point');
-  if (handle.__esModule) {
-    handle = handle.default;
+  var entryPoint = require('hops-entry-point');
+  if (entryPoint.__esModule) {
+    entryPoint = entryPoint.default;
   }
-  handle();
-
+  entryPoint();
   if (module.hot) {
     module.hot.accept(
       require.resolve('hops-entry-point'),
