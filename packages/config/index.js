@@ -5,64 +5,24 @@ var url = require('url');
 
 var hopsRoot = require('hops-root');
 
-function extendWithNPMConfig (config) {
-  if (process.env.npm_package_config_extends) {
-    var baseFile = process.env.npm_package_config_extends;
+var npmConfig = require('./lib/parse-env')('hops');
+
+function applyNPMConfig (config) {
+  if (npmConfig.extends) {
     try {
-      require.resolve(baseFile);
-      Object.assign(config, require(baseFile));
+      require.resolve(npmConfig.extends);
+      Object.assign(config, require(npmConfig.extends));
     } catch (e) {
-      Object.assign(config, hopsRoot.require(baseFile));
+      Object.assign(config, hopsRoot.require(npmConfig.extends));
     }
   }
-  return config;
-}
-
-function overrideWithNPMConfig (config) {
-  [
-    'https',
-    'host',
-    'port',
-    'locations',
-    'browsers',
-    'modules',
-    'buildDir',
-    'buildConfig',
-    'developConfig',
-    'renderConfig'
-  ]
-  .forEach(function (key) {
-    var envVar = 'npm_package_config_' + key;
-    if (envVar in process.env) {
-      config[key] = process.env[envVar];
-    }
-  });
-  return config;
-}
-
-function splitStrings (config) {
-  [
-    'locations',
-    'modules'
-  ]
-  .forEach(function (key) {
-    if (typeof config[key] === 'string') {
-      config[key] = config[key].split(/,\s?/).filter(function (item) {
-        return !!item;
-      });
-    }
-  });
-  return config;
+  return Object.assign(config, npmConfig);
 }
 
 function resolvePaths (config) {
-  [
-    'modules',
-    'buildDir',
-    'buildConfig',
-    'developConfig',
-    'renderConfig'
-  ]
+  Object.keys(config).filter(function (key) {
+    return /(^modules$|Config$|Dir$|Path$)/.test(key);
+  })
   .forEach(function (key) {
     config[key] = (function resolve (item) {
       if (typeof item === 'string') {
@@ -100,28 +60,24 @@ function freeze (config) {
 module.exports = freeze(
   addConstants(
     resolvePaths(
-      splitStrings(
-        overrideWithNPMConfig(
-          extendWithNPMConfig({
-            https: false,
-            host: '0.0.0.0',
-            port: 8080,
-            locations: [],
-            browsers: '> 1%, last 2 versions, Firefox ESR',
-            modules: [],
-            buildDir: hopsRoot.resolve('build'),
-            buildConfig: require.resolve('./configs/build'),
-            developConfig: require.resolve('./configs/develop'),
-            renderConfig: require.resolve('./configs/render'),
-            resolve: {},
-            loaders: {},
-            plugins: {},
-            devServer: {},
-            bootstrap: function () {},
-            teardown: function () {}
-          })
-        )
-      )
+      applyNPMConfig({
+        https: false,
+        host: '0.0.0.0',
+        port: 8080,
+        locations: [],
+        browsers: '> 1%, last 2 versions, Firefox ESR',
+        modules: [],
+        buildDir: hopsRoot.resolve('build'),
+        buildConfig: require.resolve('./configs/build'),
+        developConfig: require.resolve('./configs/develop'),
+        renderConfig: require.resolve('./configs/render'),
+        resolve: {},
+        loaders: {},
+        plugins: {},
+        devServer: {},
+        bootstrap: function () {},
+        teardown: function () {}
+      })
     )
   )
 );
