@@ -13,7 +13,7 @@ module.exports = function createMiddleware (webpackConfig, watchOptions) {
   });
 
   transpiler.on('success', function (result) {
-    middleware = result.__esModule ? result.default : result;
+    middleware = result;
     error = null;
   });
 

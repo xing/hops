@@ -10,7 +10,7 @@ var hopsConfig = require('..');
 var WriteFilePlugin = require('../lib/write-file');
 
 module.exports = {
-  entry: require.resolve('../lib/hot-shim'),
+  entry: require.resolve('../shims/build'),
   output: {
     path: hopsConfig.buildDir,
     publicPath: '/',
