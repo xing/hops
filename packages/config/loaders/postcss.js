@@ -13,24 +13,15 @@ var cssLoaderOptions = {
 
 var postcssLoaderOptions = {
   ident: 'postcss',
-  parser: require('postcss-scss'),
-  plugins: function (loader) {
-    return [
-      require('postcss-import')({
-        addModulesDirectories: hopsConfig.modules
-      }),
-      require('postcss-mixins')(),
-      require('postcss-advanced-variables')(),
-      require('postcss-cssnext')({
-        browsers: hopsConfig.browsers
-      }),
-      require('postcss-nested')(),
-      require('postcss-atroot')(),
-      require('postcss-property-lookup')(),
-      require('postcss-extend')(),
-      require('postcss-reporter')()
-    ];
-  }
+  plugins: [
+    require('postcss-import')({
+      addModulesDirectories: hopsConfig.modules
+    }),
+    require('postcss-cssnext')({
+      browsers: hopsConfig.browsers
+    }),
+    require('postcss-reporter')()
+  ]
 };
 
 exports.build = {
