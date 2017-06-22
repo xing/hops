@@ -1,5 +1,7 @@
 'use strict';
 
+var url = require('url');
+
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
@@ -7,7 +9,11 @@ var hopsConfig = require('..');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?' + hopsConfig.address,
+    'webpack-dev-server/client?' + url.format({
+      protocol: hopsConfig.https ? 'https' : 'http',
+      hostname: hopsConfig.host,
+      port: hopsConfig.port
+    }),
     'webpack/hot/dev-server',
     require.resolve('../shims/develop')
   ],

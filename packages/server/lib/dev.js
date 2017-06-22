@@ -14,8 +14,8 @@ module.exports = function () {
     webpack(developConfig),
     Object.assign({}, developConfig.devServer, {
       setup: function (app) {
-        hopsConfig.bootstrap(app);
         app.use(common.rewritePath);
+        hopsConfig.bootstrap(app);
         common.registerMiddleware(app, createMiddleware(
           require(hopsConfig.renderConfig),
           developConfig.watchOptions
@@ -25,11 +25,5 @@ module.exports = function () {
       watchOptions: developConfig.watchOptions
     })
   );
-  app.listen(hopsConfig.port, hopsConfig.host, function (error) {
-    if (error) {
-      console.error(error.stack.toString());
-    } else {
-      console.log('development server listening at ' + hopsConfig.address);
-    }
-  });
+  common.runServer(app);
 };

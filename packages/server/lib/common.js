@@ -1,5 +1,7 @@
 'use strict';
 
+var url = require('url');
+
 var hopsConfig = require('hops-config');
 
 exports.rewritePath = function rewritePath (req, res, next) {
@@ -20,4 +22,18 @@ exports.registerMiddleware = function registerMiddleware (app, middleware) {
   } else {
     app.all('*', middleware);
   }
+};
+
+exports.runServer = function runServer (app) {
+  app.listen(hopsConfig.port, hopsConfig.host, function (error) {
+    if (error) {
+      console.error(error.stack.toString());
+    } else {
+      console.log('hops server listening at ' + url.format({
+        protocol: hopsConfig.https ? 'https' : 'http',
+        hostname: hopsConfig.host,
+        port: hopsConfig.port
+      }));
+    }
+  });
 };
