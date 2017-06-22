@@ -12,6 +12,7 @@ var common = require('./common');
 
 module.exports = function () {
   var app = express();
+  app.use(common.rewritePath);
   app.use(helmet({ noCache: false }));
   app.use(express.static(hopsConfig.buildDir, {
     maxAge: '1y',
@@ -23,7 +24,6 @@ module.exports = function () {
     redirect: false
   }));
   hopsConfig.bootstrap(app);
-  app.use(common.rewritePath);
   try {
     var middlewareFile = path.resolve(
       hopsConfig.buildDir,
@@ -38,11 +38,5 @@ module.exports = function () {
     console.error(error.stack.toString());
   }
   hopsConfig.teardown(app);
-  app.listen(hopsConfig.port, hopsConfig.host, function (error) {
-    if (error) {
-      console.error(error.stack.toString());
-    } else {
-      console.log('production server listening at ' + hopsConfig.address);
-    }
-  });
+  common.runServer(app);
 };
