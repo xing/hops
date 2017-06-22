@@ -17,7 +17,12 @@ glob(globPattern, function (err, matches) {
     matches.forEach(function (pkgPath) {
       var pkg = Object.assign({}, require(pkgPath));
       pkg.version = version;
-      ['dependencies', 'peerDependencies'].forEach(function (key) {
+      [
+        'dependencies',
+        'optionalDependencies',
+        'peerDependencies'
+      ]
+      .forEach(function (key) {
         pkg[key] && Object.keys(pkg[key]).forEach(function (dependency) {
           if (!dependency.indexOf('hops-')) {
             pkg[key][dependency] = version;

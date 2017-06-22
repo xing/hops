@@ -5,31 +5,31 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BabiliPlugin = require('babili-webpack-plugin');
 
+var hopsEnv = require('hops-env');
 var HopsPlugin = require('hops-plugin');
-var hopsConfig = require('..');
 var WriteFilePlugin = require('../lib/write-file');
 
 module.exports = {
   entry: require.resolve('../shims/build'),
   output: {
-    path: hopsConfig.buildDir,
+    path: hopsEnv.buildDir,
     publicPath: '/',
     filename: '[name]-[chunkhash:16].js',
     chunkFilename: 'chunk-[id]-[chunkhash:16].js'
   },
-  context: hopsConfig.appDir,
-  resolve: require('../lib/resolve-config')('build'),
+  context: hopsEnv.appDir,
+  resolve: require('../sections/resolve')('build'),
   module: {
-    rules: require('../lib/loader-config')('build')
+    rules: require('../sections/module-rules')('build')
   },
-  plugins: require('../lib/plugin-config')('build', [
+  plugins: [
     new ManifestPlugin({
       publicPath: '/'
     }),
     new WriteFilePlugin(/^manifest\.js(on)?$/),
     new HopsPlugin(
-      hopsConfig.locations,
-      require(hopsConfig.nodeConfig)
+      hopsEnv.locations,
+      require(hopsEnv.nodeConfig)
     ),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -63,5 +63,5 @@ module.exports = {
       { evaluate: false },
       { comments: false }
     )
-  ])
+  ]
 };

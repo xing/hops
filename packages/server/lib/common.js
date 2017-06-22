@@ -2,10 +2,10 @@
 
 var url = require('url');
 
-var hopsConfig = require('hops-config');
+var hopsEnv = require('hops-env');
 
 exports.rewritePath = function rewritePath (req, res, next) {
-  var location = hopsConfig.locations.find(function (location) {
+  var location = hopsEnv.locations.find(function (location) {
     return (location !== '/' && req.url.indexOf(location) === 0);
   });
   if (location) {
@@ -15,8 +15,8 @@ exports.rewritePath = function rewritePath (req, res, next) {
 };
 
 exports.registerMiddleware = function registerMiddleware (app, middleware) {
-  if (hopsConfig.locations.length) {
-    hopsConfig.locations.forEach(function (location) {
+  if (hopsEnv.locations.length) {
+    hopsEnv.locations.forEach(function (location) {
       app.get(location === '/' ? location : location + '*', middleware);
     });
   } else {
@@ -24,16 +24,20 @@ exports.registerMiddleware = function registerMiddleware (app, middleware) {
   }
 };
 
-exports.runServer = function runServer (app) {
-  app.listen(hopsConfig.port, hopsConfig.host, function (error) {
+exports.run = function run (app) {
+  app.listen(hopsEnv.port, hopsEnv.host, function (error) {
     if (error) {
       console.error(error.stack.toString());
     } else {
       console.log('hops server listening at ' + url.format({
-        protocol: hopsConfig.https ? 'https' : 'http',
-        hostname: hopsConfig.host,
-        port: hopsConfig.port
+        protocol: hopsEnv.https ? 'https' : 'http',
+        hostname: hopsEnv.host,
+        port: hopsEnv.port
       }));
     }
   });
 };
+
+exports.bootstrap = hopsEnv.bootstrapServer || function () {};
+
+exports.teardown = hopsEnv.teardownServer || function () {};

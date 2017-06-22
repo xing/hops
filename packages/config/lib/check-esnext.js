@@ -3,11 +3,11 @@
 var fs = require('fs');
 var path = require('path');
 
-var pkgDir = require('pkg-dir').sync;
+var getPkgDir = require('pkg-dir').sync;
 var resolve = require('resolve').sync;
 
-var appRoot = pkgDir();
-var appModules = path.resolve(appRoot, 'node_modules');
+var appDir = getPkgDir();
+var appModuleDir = path.resolve(appDir, 'node_modules');
 
 var cache = {};
 
@@ -18,8 +18,8 @@ function checkEsnext (filepath) {
   ) {
     return true;
   }
-  var pkgRoot = pkgDir(path.dirname(filepath));
-  var packageJsonPath = path.resolve(pkgRoot, 'package.json');
+  var pkgDir = getPkgDir(path.dirname(filepath));
+  var packageJsonPath = path.resolve(pkgDir, 'package.json');
   if (fs.existsSync(packageJsonPath)) {
     var json = fs.readFileSync(packageJsonPath);
     return /"(module|((e|j)snext(:(browser|server|main))?))":/m.test(json);
@@ -32,12 +32,12 @@ module.exports = function checkEsnextCached (module) {
   if (!(module in cache)) {
     if (path.isAbsolute(module)) {
       cache[module] = (
-        (module.indexOf(appRoot) === 0) &&
-        ((module.indexOf(appModules) === -1) || checkEsnext(module))
+        (module.indexOf(appDir) === 0) &&
+        ((module.indexOf(appModuleDir) === -1) || checkEsnext(module))
       );
     } else {
       cache[module] = checkEsnextCached(resolve(module, {
-        moduleDirectory: ['node_modules', path.resolve(appRoot, 'packages')]
+        moduleDirectory: ['node_modules', path.resolve(appDir, 'packages')]
       }));
     }
   }

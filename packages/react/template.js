@@ -5,6 +5,7 @@ function esc (data) {
 }
 
 module.exports = function (data) {
+  data.assets = data.assets || { css: [], js: [] };
   return [
     '<!doctype html>',
     '<html ', data.helmet.htmlAttributes.toString(), '>',
