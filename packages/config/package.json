@@ -9,6 +9,7 @@
     "configs",
     "lib",
     "loaders",
+    "sections",
     "shims"
   ],
   "scripts": {
@@ -32,13 +33,14 @@
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
+    "hops-env": "6.0.0-beta.8",
     "hops-middleware": "6.0.0-beta.8",
     "hops-plugin": "6.0.0-beta.8",
-    "hops-root": "6.0.0-beta.8",
     "json-loader": "^0.5.4",
     "lodash.template": "^4.4.0",
     "mkdirp": "^0.5.1",
     "node-resolve": "^1.3.3",
+    "pkg-dir": "^2.0.0",
     "postcss": "^6.0.2",
     "postcss-cssnext": "^2.11.0",
     "postcss-import": "^10.0.0",

@@ -5,30 +5,30 @@ var url = require('url');
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
-var hopsConfig = require('..');
+var hopsEnv = require('hops-env');
 
 module.exports = {
   entry: [
     'webpack-dev-server/client?' + url.format({
-      protocol: hopsConfig.https ? 'https' : 'http',
-      hostname: hopsConfig.host,
-      port: hopsConfig.port
+      protocol: hopsEnv.https ? 'https' : 'http',
+      hostname: hopsEnv.host,
+      port: hopsEnv.port
     }),
     'webpack/hot/dev-server',
     require.resolve('../shims/develop')
   ],
   output: {
-    path: hopsConfig.buildDir,
+    path: hopsEnv.buildDir,
     publicPath: '/',
     filename: '[name].js',
     chunkFilename: 'chunk-[id].js'
   },
-  context: hopsConfig.appDir,
-  resolve: require('../lib/resolve-config')('develop'),
+  context: hopsEnv.appDir,
+  resolve: require('../sections/resolve')('develop'),
   module: {
-    rules: require('../lib/loader-config')('develop')
+    rules: require('../sections/module-rules')('develop')
   },
-  plugins: require('../lib/plugin-config')('develop', [
+  plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new ManifestPlugin({
@@ -38,7 +38,7 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       'NODE_ENV': 'development'
     })
-  ]),
+  ],
   performance: {
     hints: false
   },
@@ -47,5 +47,13 @@ module.exports = {
     aggregateTimeout: 300,
     ignored: /node_modules/
   },
-  devServer: require('../lib/server-config')()
+  devServer: {
+    contentBase: hopsEnv.buildDir,
+    hot: true,
+    overlay: {
+      warnings: true,
+      errors: true
+    },
+    stats: 'errors-only'
+  }
 };

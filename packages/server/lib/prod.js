@@ -6,7 +6,7 @@ var express = require('express');
 var mime = require('mime');
 var helmet = require('helmet');
 
-var hopsConfig = require('hops-config');
+var hopsEnv = require('hops-env');
 
 var common = require('./common');
 
@@ -14,7 +14,7 @@ module.exports = function () {
   var app = express();
   app.use(common.rewritePath);
   app.use(helmet({ noCache: false }));
-  app.use(express.static(hopsConfig.buildDir, {
+  app.use(express.static(hopsEnv.buildDir, {
     maxAge: '1y',
     setHeaders: function (res, filepath) {
       if (mime.lookup(filepath) === 'text/html') {
@@ -23,11 +23,11 @@ module.exports = function () {
     },
     redirect: false
   }));
-  hopsConfig.bootstrap(app);
+  common.bootstrap(app);
   try {
     var middlewareFile = path.resolve(
-      hopsConfig.buildDir,
-      require(hopsConfig.nodeConfig).output.filename
+      hopsEnv.buildDir,
+      require(hopsEnv.nodeConfig).output.filename
     );
     require.resolve(middlewareFile);
     common.registerMiddleware(
@@ -37,6 +37,6 @@ module.exports = function () {
   } catch (error) {
     console.error(error.stack.toString());
   }
-  hopsConfig.teardown(app);
-  common.runServer(app);
+  common.teardown(app);
+  common.run(app);
 };
