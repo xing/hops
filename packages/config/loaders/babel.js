@@ -45,7 +45,7 @@ exports.default = getBabelLoader(
   'syntax-dynamic-import'
 );
 
-exports.render = getBabelLoader(
+exports.node = getBabelLoader(
   { node: 'current' },
   'dynamic-import-node'
 );

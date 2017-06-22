@@ -17,7 +17,7 @@ module.exports = function () {
         app.use(common.rewritePath);
         hopsConfig.bootstrap(app);
         common.registerMiddleware(app, createMiddleware(
-          require(hopsConfig.renderConfig),
+          require(hopsConfig.nodeConfig),
           developConfig.watchOptions
         ));
         hopsConfig.teardown(app);

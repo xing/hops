@@ -29,7 +29,7 @@ module.exports = {
     new WriteFilePlugin(/^manifest\.js(on)?$/),
     new HopsPlugin(
       hopsConfig.locations,
-      require(hopsConfig.renderConfig)
+      require(hopsConfig.nodeConfig)
     ),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

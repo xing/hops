@@ -4,7 +4,7 @@ var hopsConfig = require('hops-config');
 var resolveConfig = require('..').resolve;
 
 function getDefaultResolveConfig (target) {
-  var platform = (target === 'render') ? 'server' : 'browser';
+  var platform = (target === 'node') ? 'server' : 'browser';
   return {
     alias: {
       'hops-entry-point': hopsConfig.appDir

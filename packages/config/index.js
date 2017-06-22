@@ -58,7 +58,7 @@ module.exports = freeze(
       buildDir: 'build',
       buildConfig: require.resolve('./configs/build'),
       developConfig: require.resolve('./configs/develop'),
-      renderConfig: require.resolve('./configs/render'),
+      nodeConfig: require.resolve('./configs/node'),
       resolve: {},
       loaders: {},
       plugins: {},
