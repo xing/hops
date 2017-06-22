@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var defaultConfig = require('hops-config/configs/render');
+var defaultConfig = require('hops-config/configs/node');
 
 var projectDir = path.resolve(__dirname, 'bad-export');
 

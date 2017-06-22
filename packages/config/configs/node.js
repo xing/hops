@@ -6,7 +6,7 @@ var hopsConfig = require('..');
 
 module.exports = {
   target: 'node',
-  entry: require.resolve('../shims/render'),
+  entry: require.resolve('../shims/node'),
   output: {
     path: hopsConfig.buildDir,
     filename: 'server.js',
@@ -15,14 +15,14 @@ module.exports = {
     devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
   context: hopsConfig.appDir,
-  resolve: require('../lib/resolve-config')('render'),
+  resolve: require('../lib/resolve-config')('node'),
   externals: [require('webpack-node-externals')({
     whitelist: require('../lib/check-esnext')
   })],
   module: {
-    rules: require('../lib/loader-config')('render')
+    rules: require('../lib/loader-config')('node')
   },
-  plugins: require('../lib/plugin-config')('render', [
+  plugins: require('../lib/plugin-config')('node', [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),

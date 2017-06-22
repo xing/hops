@@ -65,7 +65,7 @@ exports.develop = {
   ]
 };
 
-exports.render = {
+exports.node = {
   test: /\.css$/,
   use: {
     loader: 'css-loader/locals',

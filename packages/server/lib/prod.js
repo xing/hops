@@ -27,7 +27,7 @@ module.exports = function () {
   try {
     var middlewareFile = path.resolve(
       hopsConfig.buildDir,
-      require(hopsConfig.renderConfig).output.filename
+      require(hopsConfig.nodeConfig).output.filename
     );
     require.resolve(middlewareFile);
     common.registerMiddleware(
