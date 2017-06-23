@@ -1,6 +1,6 @@
 {
   "name": "hops-cli",
-  "version": "6.0.0-beta.8",
+  "version": "6.0.0-beta.9",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -18,8 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
-    "hops-config": "6.0.0-beta.8",
-    "hops-server": "6.0.0-beta.8",
+    "hops-config": "6.0.0-beta.9",
+    "hops-server": "6.0.0-beta.9",
     "rimraf": "^2.6.1",
     "webpack": "^2.6.1"
   }
