@@ -6,7 +6,7 @@ var ReactRouter = require('react-router');
 var Helmet = require('react-helmet').Helmet;
 var minify = require('html-minifier').minify;
 
-var hopsEnv = require('hops-env');
+var hopsConfig = require('hops-config');
 
 var Context = require('./common').Context;
 var defaultTemplate = require('./template');
@@ -39,10 +39,10 @@ exports.Context = exports.createContext = Context.extend({
       helmet: Helmet.renderStatic(),
       globals: []
     };
-    if (hopsEnv.manifestUtil) {
+    if (hopsConfig.manifestUtil) {
       Object.assign(templateData, {
-        assets: hopsEnv.manifestUtil.getAssetURLs(),
-        manifest: hopsEnv.manifestUtil.getManifestScript()
+        assets: hopsConfig.manifestUtil.getAssetURLs(),
+        manifest: hopsConfig.manifestUtil.getManifestScript()
       });
     }
     return templateData;

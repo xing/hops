@@ -1,6 +1,6 @@
 'use strict';
 
-var hopsEnv = require('hops-env');
+var hopsConfig = require('..');
 
 function createIdentifier (targets) {
   return JSON.stringify({
@@ -41,7 +41,7 @@ function getBabelLoader (targets, plugins) {
 }
 
 exports.default = getBabelLoader(
-  { browsers: hopsEnv.browsers },
+  { browsers: hopsConfig.browsers },
   'syntax-dynamic-import'
 );
 

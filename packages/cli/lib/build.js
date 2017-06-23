@@ -2,10 +2,10 @@
 
 var webpack = require('webpack');
 
-var hopsEnv = require('hops-env');
+var hopsConfig = require('hops-config');
 
-var buildConfig = require(hopsEnv.buildConfig);
-var nodeConfig = require(hopsEnv.nodeConfig);
+var buildConfig = require(hopsConfig.buildConfig);
+var nodeConfig = require(hopsConfig.nodeConfig);
 var webpackConfig = [buildConfig, nodeConfig];
 
 function defaultCallback (error, stats) {

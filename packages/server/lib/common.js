@@ -2,10 +2,10 @@
 
 var url = require('url');
 
-var hopsEnv = require('hops-env');
+var hopsConfig = require('hops-config');
 
 exports.rewritePath = function rewritePath (req, res, next) {
-  var location = hopsEnv.locations.find(function (location) {
+  var location = hopsConfig.locations.find(function (location) {
     return (location !== '/' && req.url.indexOf(location) === 0);
   });
   if (location) {
@@ -15,8 +15,8 @@ exports.rewritePath = function rewritePath (req, res, next) {
 };
 
 exports.registerMiddleware = function registerMiddleware (app, middleware) {
-  if (hopsEnv.locations.length) {
-    hopsEnv.locations.forEach(function (location) {
+  if (hopsConfig.locations.length) {
+    hopsConfig.locations.forEach(function (location) {
       app.get(location === '/' ? location : location + '*', middleware);
     });
   } else {
@@ -25,19 +25,19 @@ exports.registerMiddleware = function registerMiddleware (app, middleware) {
 };
 
 exports.run = function run (app) {
-  app.listen(hopsEnv.port, hopsEnv.host, function (error) {
+  app.listen(hopsConfig.port, hopsConfig.host, function (error) {
     if (error) {
       console.error(error.stack.toString());
     } else {
       console.log('hops server listening at ' + url.format({
-        protocol: hopsEnv.https ? 'https' : 'http',
-        hostname: hopsEnv.host,
-        port: hopsEnv.port
+        protocol: hopsConfig.https ? 'https' : 'http',
+        hostname: hopsConfig.host,
+        port: hopsConfig.port
       }));
     }
   });
 };
 
-exports.bootstrap = hopsEnv.bootstrapServer || function () {};
+exports.bootstrap = hopsConfig.bootstrapServer || function () {};
 
-exports.teardown = hopsEnv.teardownServer || function () {};
+exports.teardown = hopsConfig.teardownServer || function () {};

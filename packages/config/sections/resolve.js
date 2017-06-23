@@ -1,12 +1,12 @@
 'use strict';
 
-var hopsEnv = require('hops-env');
+var hopsConfig = require('..');
 
 module.exports = function getResolveConfig (target) {
   var platform = (target === 'node') ? 'server' : 'browser';
   return {
     alias: {
-      'hops-entry-point': hopsEnv.appDir
+      'hops-entry-point': hopsConfig.appDir
     },
     mainFields: [
       'esnext:' + platform,
@@ -19,7 +19,7 @@ module.exports = function getResolveConfig (target) {
       'module',
       'main'
     ],
-    modules: ['node_modules'].concat(hopsEnv.moduleDirs),
+    modules: ['node_modules'].concat(hopsConfig.moduleDirs),
     extensions: ['.mjs', '.js', '.jsx']
   };
 };

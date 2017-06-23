@@ -2,7 +2,7 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var hopsEnv = require('hops-env');
+var hopsConfig = require('..');
 
 var cssLoaderOptions = {
   importLoaders: 1,
@@ -15,10 +15,10 @@ var postcssLoaderOptions = {
   ident: 'postcss',
   plugins: [
     require('postcss-import')({
-      addModulesDirectories: [].concat(hopsEnv.moduleDirs)
+      addModulesDirectories: [].concat(hopsConfig.moduleDirs)
     }),
     require('postcss-cssnext')({
-      browsers: hopsEnv.browsers
+      browsers: hopsConfig.browsers
     }),
     require('postcss-reporter')()
   ]
