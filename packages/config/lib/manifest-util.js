@@ -7,9 +7,9 @@ var manifestData = null;
 var manifestScript = null;
 
 function getManifestData () {
-  var hopsEnv = require('hops-env');
+  var hopsConfig = require('..');
   if (!manifestData) {
-    var filepath = path.resolve(hopsEnv.buildDir, 'manifest.json');
+    var filepath = path.resolve(hopsConfig.buildDir, 'manifest.json');
     if (fs.existsSync(filepath)) {
       manifestData = require(filepath);
     }
@@ -18,9 +18,9 @@ function getManifestData () {
 }
 
 exports.getManifestScript = function () {
-  var hopsEnv = require('hops-env');
+  var hopsConfig = require('..');
   if (!manifestScript) {
-    var filepath = path.resolve(hopsEnv.buildDir, 'manifest.js');
+    var filepath = path.resolve(hopsConfig.buildDir, 'manifest.js');
     if (fs.existsSync(filepath)) {
       manifestScript = fs.readFileSync(filepath, 'utf8');
     }

@@ -18,7 +18,6 @@
   "dependencies": {
     "hops-cli": "file:../packages/cli",
     "hops-config": "file:../packages/config",
-    "hops-env": "file:../packages/env",
     "hops-middleware": "file:../packages/middleware",
     "hops-plugin": "file:../packages/plugin",
     "hops-react": "file:../packages/react",

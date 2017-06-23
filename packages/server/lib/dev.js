@@ -3,13 +3,13 @@
 var webpack = require('webpack');
 var WebpackServer = require('webpack-dev-server');
 
-var hopsEnv = require('hops-env');
+var hopsConfig = require('hops-config');
 var createMiddleware = require('hops-middleware');
 
 var common = require('./common');
 
 module.exports = function () {
-  var config = require(hopsEnv.developConfig);
+  var config = require(hopsConfig.developConfig);
   var watchOptions = config.devServer.watchOptions || config.watchOptions;
   var app = new WebpackServer(
     webpack(config),
@@ -18,7 +18,7 @@ module.exports = function () {
         app.use(common.rewritePath);
         common.bootstrap(app);
         common.registerMiddleware(app, createMiddleware(
-          require(hopsEnv.nodeConfig),
+          require(hopsConfig.nodeConfig),
           watchOptions
         ));
         common.teardown(app);
