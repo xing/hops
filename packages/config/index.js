@@ -57,7 +57,6 @@ module.exports = freeze(
       https: false,
       host: '0.0.0.0',
       port: 8080,
-      publicPath: '/assets/',
       locations: [],
       browsers: '> 1%, last 2 versions, Firefox ESR',
       moduleDirs: [],
