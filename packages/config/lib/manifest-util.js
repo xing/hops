@@ -3,19 +3,15 @@
 var fs = require('fs');
 var path = require('path');
 
-var manifestData = null;
-var manifestScript = null;
-
 function getManifestData () {
   var hopsConfig = require('..');
-  if (!manifestData) {
-    var filepath = path.resolve(hopsConfig.buildDir, 'manifest.json');
-    if (fs.existsSync(filepath)) {
-      manifestData = require(filepath);
-    }
+  var filepath = path.resolve(hopsConfig.buildDir, 'manifest.json');
+  if (fs.existsSync(filepath)) {
+    return require(filepath);
   }
-  return manifestData || {};
 }
+
+var manifestScript = null;
 
 exports.getManifestScript = function () {
   var hopsConfig = require('..');
@@ -28,20 +24,28 @@ exports.getManifestScript = function () {
   return manifestScript || '';
 };
 
+var assetURLs = null;
+
 exports.getAssetURLs = function () {
   var vjs = 'vendor.js';
-  var manifest = getManifestData();
-  return Object.keys(manifest).sort(function (a, b) {
-    return a === vjs ? -1 : b === vjs ? 1 : a < b ? -1 : a > b ? 1 : 0;
-  }).reduce(function (assets, key) {
-    if (!/^(?:chunk.*|manifest)\.js/.test(key)) {
-      if (/\.js$/.test(key)) {
-        assets.js.push(manifest[key]);
-      }
-      if (/\.css$/.test(key)) {
-        assets.css.push(manifest[key]);
-      }
+  var defaults = { js: [], css: [] };
+  if (!assetURLs) {
+    var manifest = getManifestData();
+    if (manifest) {
+      assetURLs = Object.keys(manifest).sort(function (a, b) {
+        return a === vjs ? -1 : b === vjs ? 1 : a < b ? -1 : a > b ? 1 : 0;
+      }).reduce(function (assets, key) {
+        if (!/^(?:chunk.*|manifest)\.js/.test(key)) {
+          if (/\.js$/.test(key)) {
+            assets.js.push(manifest[key]);
+          }
+          if (/\.css$/.test(key)) {
+            assets.css.push(manifest[key]);
+          }
+        }
+        return assets;
+      }, defaults);
     }
-    return assets;
-  }, { js: [], css: [] });
+  }
+  return assetURLs || defaults;
 };

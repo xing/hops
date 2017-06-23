@@ -37,14 +37,10 @@ exports.Context = exports.createContext = Context.extend({
     var templateData = {
       options: this.options,
       helmet: Helmet.renderStatic(),
+      assets: hopsConfig.assets,
+      manifest: hopsConfig.manifest,
       globals: []
     };
-    if (hopsConfig.manifestUtil) {
-      Object.assign(templateData, {
-        assets: hopsConfig.manifestUtil.getAssetURLs(),
-        manifest: hopsConfig.manifestUtil.getManifestScript()
-      });
-    }
     return templateData;
   },
   renderTemplate: function (markup) {

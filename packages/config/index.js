@@ -5,6 +5,7 @@ var path = require('path');
 var hopsRoot = require('hops-root');
 
 var npmConfig = require('./lib/parse-env')('hops');
+var manifestUtil = require('./lib/manifest-util');
 
 function extendConfig (config) {
   if (npmConfig.extends) {
@@ -20,7 +21,7 @@ function extendConfig (config) {
 
 function resolvePaths (config) {
   Object.keys(config).filter(function (key) {
-    return /(?:config|file|dir|path)s?$/i.test(key);
+    return /(?:config|script|file|dir)s?$/i.test(key);
   })
   .forEach(function (key) {
     config[key] = (function resolve (item) {
@@ -28,6 +29,8 @@ function resolvePaths (config) {
         return path.isAbsolute(item) ? item : hopsRoot.resolve(item);
       } else if (Array.isArray(item)) {
         return item.map(resolve);
+      } else {
+        return config[key];
       }
     })(config[key]);
   });
@@ -36,11 +39,14 @@ function resolvePaths (config) {
 
 function freeze (config) {
   return Object.freeze(
-    Object.keys(config).sort().reduce(function (result, key) {
-      return Object.defineProperty(result, key, {
-        value: Object.freeze(config[key]),
-        enumerable: true
-      });
+    Object.keys(config).reduce(function (result, key) {
+      var descriptor = { enumerable: true };
+      if (typeof config[key] === 'function') {
+        descriptor.get = config[key];
+      } else {
+        descriptor.value = config[key];
+      }
+      return Object.defineProperty(result, key, descriptor);
     }, {})
   );
 }
@@ -51,6 +57,7 @@ module.exports = freeze(
       https: false,
       host: '0.0.0.0',
       port: 8080,
+      publicPath: '/assets/',
       locations: [],
       browsers: '> 1%, last 2 versions, Firefox ESR',
       moduleDirs: [],
@@ -59,7 +66,8 @@ module.exports = freeze(
       buildConfig: require.resolve('./configs/build'),
       developConfig: require.resolve('./configs/develop'),
       nodeConfig: require.resolve('./configs/node'),
-      manifestUtil: require('./lib/manifest-util')
+      manifest: manifestUtil.getManifestScript,
+      assets: manifestUtil.getAssetURLs
     })
   )
 );
