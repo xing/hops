@@ -19,8 +19,7 @@ var postcssLoaderOptions = {
     }),
     require('postcss-cssnext')({
       browsers: hopsConfig.browsers
-    }),
-    require('postcss-reporter')()
+    })
   ]
 };
 
