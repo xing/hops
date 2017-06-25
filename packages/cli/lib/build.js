@@ -6,7 +6,10 @@ var hopsConfig = require('hops-config');
 
 var buildConfig = require(hopsConfig.buildConfig);
 var nodeConfig = require(hopsConfig.nodeConfig);
-var webpackConfig = [buildConfig, nodeConfig];
+var webpackConfig = [buildConfig, nodeConfig].map(function (config) {
+  config.plugins.push(new webpack.ProgressPlugin());
+  return config;
+});
 
 function defaultCallback (error, stats) {
   if (error) {
