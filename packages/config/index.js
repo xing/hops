@@ -40,7 +40,7 @@ function resolvePaths (config) {
 function normalizeURLs (config) {
   return Object.assign(config, {
     locations: config.locations.map(function (location) {
-      return location.replace(/^\/*/, '/');
+      return location.replace(/\/*$/, '').replace(/^\/*/, '/');
     }),
     basePath: config.basePath.replace(/^\/*/, '/').replace(/\/*$/, ''),
     assetPath: config.assetPath.replace(/(?:^\/*|\/*$)/g, '')

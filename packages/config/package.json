@@ -31,6 +31,7 @@
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "babili-webpack-plugin": "^0.1.1",
+    "camelcase": "^4.1.0",
     "caniuse-api": "^2.0.0",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
