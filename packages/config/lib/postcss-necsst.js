@@ -3,6 +3,7 @@
 var postcss = require('postcss');
 var autoprefixer = require('autoprefixer');
 var isSupported = require('caniuse-api').isSupported;
+var camelize = require('camelize');
 
 var features = [
   ['css-variables', 'postcss-custom-properties'],
@@ -36,11 +37,16 @@ module.exports = postcss.plugin('postcss-necsst', function (options) {
     if (!conditions.length || conditions.find(function (condition) {
       return !isSupported(condition, options.browsers);
     })) {
-      processor.use(require(feature)());
+      processor.use(require(feature)(
+        options[camelize(feature.replace(/^postcss-/, ''))]
+      ));
     }
   });
   processor.use(
-    autoprefixer(options.browsers ? { browsers: options.browsers } : {})
+    autoprefixer(Object.assign(
+      options.browsers ? { browsers: options.browsers } : {},
+      options.autoprefixer
+    ))
   );
   return processor;
 });
