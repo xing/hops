@@ -31,15 +31,11 @@ var features = [
 module.exports = postcss.plugin('postcss-necsst', function (options) {
   var processor = postcss();
   features.forEach(function (feature) {
-    if (Array.isArray(feature)) {
-      var conditions = feature;
-      feature = conditions.pop();
-      if (conditions.find(function (condition) {
-        return !isSupported(condition, options.browsers);
-      })) {
-        processor.use(require(feature)());
-      }
-    } else {
+    var conditions = [].concat(feature);
+    feature = conditions.pop();
+    if (!conditions.length || conditions.find(function (condition) {
+      return !isSupported(condition, options.browsers);
+    })) {
       processor.use(require(feature)());
     }
   });
