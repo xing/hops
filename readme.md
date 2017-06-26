@@ -96,10 +96,10 @@ Using the hops config in your `package.json` file, you can supply your own Webpa
 
 Other than that, you can use hops' components on their own. Please refer to their respective readme files for examples:
 
-* [Hops Transpiler](https://github.com/xing/hops/tree/master/transpiler)
-* [Hops Middleware](https://github.com/xing/hops/tree/master/middleware)
-* [Hops Renderer](https://github.com/xing/hops/tree/master/renderer)
-* [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/plugin)
+* [Hops Transpiler](https://github.com/xing/hops/tree/master/packages/transpiler)
+* [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware)
+* [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)
+* [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/packages/plugin)
 
 
 ### Alternatives
