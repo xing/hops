@@ -4,7 +4,6 @@ var React = require('react');
 var ReactDOM = require('react-dom/server');
 var ReactRouter = require('react-router');
 var Helmet = require('react-helmet').Helmet;
-var minify = require('html-minifier').minify;
 
 var hopsConfig = require('hops-config');
 
@@ -29,7 +28,11 @@ exports.Context = exports.createContext = Context.extend({
   enhanceElement: function (reactElement) {
     return React.createElement(
       ReactRouter.StaticRouter,
-      { location: this.request.path, context: this },
+      {
+        location: this.request.path,
+        basename: hopsConfig.basePath,
+        context: this
+      },
       reactElement
     );
   },
@@ -39,19 +42,18 @@ exports.Context = exports.createContext = Context.extend({
       helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
       manifest: hopsConfig.manifest,
-      globals: []
+      globals: [{
+        name: 'BASENAME',
+        value: hopsConfig.basePath
+      }]
     };
     return templateData;
   },
   renderTemplate: function (markup) {
-    var templateData = Object.assign(
+    return this.template(Object.assign(
       this.getTemplateData(),
       { markup: markup }
-    );
-    return minify(this.template(templateData), {
-      collapseWhitespace: true,
-      removeAttributeQuotes: true
-    });
+    ));
   }
 });
 

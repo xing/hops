@@ -51,14 +51,12 @@ exports.Context = exports.createContext = Context.extend({
     ));
   },
   getTemplateData: function () {
-    return Object.assign(
-      Context.prototype.getTemplateData.call(this),
-      {
-        globals: [{
-          name: INITIAL_STATE,
-          value: this.getStore().getState()
-        }]
-      }
-    );
+    var templateData = Context.prototype.getTemplateData.call(this);
+    return Object.assign(templateData, {
+      globals: templateData.globals.concat([{
+        name: INITIAL_STATE,
+        value: this.getStore().getState()
+      }])
+    });
   }
 });

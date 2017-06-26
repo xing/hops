@@ -16,7 +16,7 @@ exports.Context = exports.createContext = Context.extend({
   enhanceElement: function (reactElement) {
     return React.createElement(
       ReactRouterDOM.BrowserRouter,
-      {},
+      { basename: global.BASENAME },
       reactElement
     );
   },
