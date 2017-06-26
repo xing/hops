@@ -1,6 +1,6 @@
 {
   "name": "hops-middleware",
-  "version": "6.0.0-beta.9",
+  "version": "6.0.0-beta.10",
   "description": "",
   "main": "index.js",
   "files": [
@@ -13,6 +13,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "hops-transpiler": "6.0.0-beta.9"
+    "hops-transpiler": "6.0.0-beta.10"
   }
 }
