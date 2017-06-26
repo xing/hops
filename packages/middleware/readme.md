@@ -72,4 +72,4 @@ app.all('*', createMiddleware(webpackConfig /*, watchOptions */));
 app.listen(3000);
 ```
 
-Hops' own [renderer](https://github.com/xing/hops/blob/master/renderer/index.js) is one example of the middleware in action.
+Hops' own [renderer](https://github.com/xing/hops/blob/master/packages/renderer/index.js) is one example of the middleware in action.

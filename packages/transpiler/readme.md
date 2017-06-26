@@ -60,4 +60,4 @@ transpilation.on('success', function (result) {
 });
 ```
 
-Hops' own [middleware](https://github.com/xing/hops/blob/master/middleware/index.js) probably is the best example of the transpiler in action.
+Hops' own [middleware](https://github.com/xing/hops/blob/master/packages/middleware/index.js) probably is the best example of the transpiler in action.

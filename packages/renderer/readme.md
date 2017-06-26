@@ -74,4 +74,4 @@ render('/baz').catch(function (error) {
 });
 ```
 
-Hops' own [Webpack plugin](https://github.com/xing/hops/blob/master/plugin/index.js) is another example of its renderer in action.
+Hops' own [Webpack plugin](https://github.com/xing/hops/blob/master/packages/plugin/index.js) is another example of its renderer in action.
