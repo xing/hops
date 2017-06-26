@@ -1,5 +1,7 @@
 'use strict';
 
+var path = require('path');
+
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -9,13 +11,15 @@ var HopsPlugin = require('hops-plugin');
 var WriteFilePlugin = require('../lib/write-file');
 var hopsConfig = require('..');
 
+var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
+
 module.exports = {
   entry: require.resolve('../shims/build'),
   output: {
     path: hopsConfig.buildDir,
     publicPath: '/',
-    filename: '[name]-[chunkhash:16].js',
-    chunkFilename: 'chunk-[id]-[chunkhash:16].js'
+    filename: getAssetPath('[name]-[chunkhash:16].js'),
+    chunkFilename: getAssetPath('chunk-[id]-[chunkhash:16].js')
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('build'),
@@ -28,7 +32,9 @@ module.exports = {
     }),
     new WriteFilePlugin(/^manifest\.js(on)?$/),
     new HopsPlugin(
-      hopsConfig.locations,
+      hopsConfig.locations.map(function (location) {
+        return hopsConfig.basePath + location;
+      }),
       require(hopsConfig.nodeConfig)
     ),
     new webpack.optimize.CommonsChunkPlugin({
@@ -47,7 +53,7 @@ module.exports = {
     }),
     new webpack.HashedModuleIdsPlugin(),
     new ExtractTextPlugin({
-      filename: '[name]-[contenthash:16].css',
+      filename: getAssetPath('[name]-[contenthash:16].css'),
       allChunks: true,
       ignoreOrder: true
     }),

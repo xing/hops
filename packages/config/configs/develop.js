@@ -1,11 +1,14 @@
 'use strict';
 
+var path = require('path');
 var url = require('url');
 
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
 var hopsConfig = require('..');
+
+var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
 module.exports = {
   entry: [
@@ -20,8 +23,8 @@ module.exports = {
   output: {
     path: hopsConfig.buildDir,
     publicPath: '/',
-    filename: '[name].js',
-    chunkFilename: 'chunk-[id].js'
+    filename: getAssetPath('[name].js'),
+    chunkFilename: getAssetPath('chunk-[id].js')
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('develop'),
@@ -36,7 +39,7 @@ module.exports = {
       publicPath: '/'
     }),
     new webpack.EnvironmentPlugin({
-      'NODE_ENV': 'development'
+      NODE_ENV: 'development'
     })
   ],
   performance: {
