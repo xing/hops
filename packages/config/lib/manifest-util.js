@@ -35,7 +35,7 @@ exports.getAssetURLs = function () {
       assetURLs = Object.keys(manifest).sort(function (a, b) {
         return a === vjs ? -1 : b === vjs ? 1 : a < b ? -1 : a > b ? 1 : 0;
       }).reduce(function (assets, key) {
-        if (!/^(?:chunk.*|manifest)\.js/.test(key)) {
+        if (!/\/(?:chunk.*|manifest)\.js/.test(key)) {
           if (/\.js$/.test(key)) {
             assets.js.push(manifest[key]);
           }
