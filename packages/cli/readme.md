@@ -4,7 +4,7 @@ hops-cli provides a small set of commands to manage your hops project. Installin
 
 # Installation
 ## Minimum installation for any project
-We assume that you already created a folder for your project and initialized it with `npm init`. Go to the root folder of your project and install hops-cli. This installs hops-config and hops-server as dependencies as well:
+We assume that you already created a folder for your project and initialized it with `npm init -y`. Go to the root folder of your project and install hops-cli. This installs hops-config and hops-server as dependencies as well:
 ``` bash
 npm install --save hops-cli
 ```
@@ -39,6 +39,8 @@ To actually use the hops-cli commands, you have to add them to the scripts secti
   }
 ```
 
+However, for most projects, it should be sufficient to just add `"start": "hops start"` here.
+
 ## Use via npm
 After that, you can execute them via npm like so:
 
@@ -51,7 +53,7 @@ npm start --production
 ```
 
 ## Very basic example app
-To try out the [minimum installation described above](#minimum-installation-for-any-project), create a main.js file in the root folder of your project and put the following code in there:
+To try out the [minimum installation described above](#minimum-installation-for-any-project), create an index.js file in the root folder of your project and put the following code in there:
 
 ``` js
 export default function (req, res, next) {
@@ -70,10 +72,4 @@ export default function (req, res, next) {
 
 ```
 
-After that, define main.js as entry point of your app in the package.json's `main` field:
-
-``` js
-"main": "main.js"
-```
-
-Don't forget to [configure the scripts section](#configure-package.json) of your package.json. And you're done!
+Don't forget to [configure the scripts section](#configure-packagejson) of your package.json. And you're done!
