@@ -12,7 +12,7 @@ function extendConfig (config) {
     try {
       require.resolve(npmConfig.extends);
       Object.assign(config, require(npmConfig.extends));
-    } catch (e) {
+    } catch (_) {
       Object.assign(config, hopsRoot.require(npmConfig.extends));
     }
   }
@@ -21,7 +21,7 @@ function extendConfig (config) {
 
 function resolvePaths (config) {
   Object.keys(config).filter(function (key) {
-    return /(?:config|script|file|dir)s?$/i.test(key);
+    return /(?:config|file|dir)s?$/i.test(key);
   })
   .forEach(function (key) {
     config[key] = (function resolve (item) {
@@ -30,7 +30,7 @@ function resolvePaths (config) {
       } else if (Array.isArray(item)) {
         return item.map(resolve);
       } else {
-        return config[key];
+        return item;
       }
     })(config[key]);
   });
@@ -43,7 +43,7 @@ function normalizeURLs (config) {
       return location.replace(/\/*$/, '').replace(/^\/*/, '/');
     }),
     basePath: config.basePath.replace(/^\/*/, '/').replace(/\/*$/, ''),
-    assetPath: config.assetPath.replace(/(?:^\/*|\/*$)/g, '')
+    assetPath: config.assetPath.replace(/(^\/*|\/*$)/g, '')
   });
 }
 
@@ -52,11 +52,9 @@ function freeze (config) {
     Object.keys(config).reduce(function (result, key) {
       var descriptor = { enumerable: true };
       if (typeof config[key] === 'function') {
-        descriptor.get = function () {
-          return Object.freeze(config[key]());
-        };
+        descriptor.get = config[key];
       } else {
-        descriptor.value = Object.freeze(config[key]);
+        descriptor.value = config[key];
       }
       return Object.defineProperty(result, key, descriptor);
     }, {})
@@ -71,8 +69,8 @@ module.exports = freeze(
         host: '0.0.0.0',
         port: 8080,
         locations: [],
-        basePath: '/',
-        assetPath: '/',
+        basePath: '',
+        assetPath: '',
         browsers: '> 1%, last 2 versions, Firefox ESR',
         moduleDirs: [],
         appDir: '.',

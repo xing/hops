@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { render, Miss } from 'hops-react';
-import { createContext } from 'hops-redux';
 
 import { headline } from './styles.css';
 
@@ -17,8 +16,4 @@ const App = () => (
   </Switch>
 );
 
-export default render(<App />, createContext({
-  reducers: {
-    foo: function () { return {}; }
-  }
-}));
+export default render(<App />);

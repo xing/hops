@@ -36,7 +36,6 @@
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
-    "hops-middleware": "6.0.0-beta.13",
     "hops-plugin": "6.0.0-beta.13",
     "hops-root": "6.0.0-beta.13",
     "json-loader": "^0.5.4",
