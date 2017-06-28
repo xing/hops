@@ -8,8 +8,7 @@
   "config": {
     "hops": {
       "browsers": "last 1 Chrome versions",
-      "locations": ["/", "/foo"],
-      "modulesDirs": "[\"packages\"]"
+      "locations": ["/", "/foo"]
     }
   },
   "scripts": {

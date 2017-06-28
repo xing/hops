@@ -12,7 +12,6 @@ function getManifestData () {
 }
 
 var manifestScript = null;
-
 exports.getManifestScript = function () {
   var hopsConfig = require('..');
   if (!manifestScript) {
@@ -25,23 +24,30 @@ exports.getManifestScript = function () {
 };
 
 var assetURLs = null;
-
 exports.getAssetURLs = function () {
-  var vjs = 'vendor.js';
   var defaults = { js: [], css: [] };
   if (!assetURLs) {
     var manifest = getManifestData();
     if (manifest) {
-      assetURLs = Object.keys(manifest).sort(function (a, b) {
-        return a === vjs ? -1 : b === vjs ? 1 : a < b ? -1 : a > b ? 1 : 0;
-      }).reduce(function (assets, key) {
-        if (!/\/(?:chunk.*|manifest)\.js/.test(key)) {
-          if (/\.js$/.test(key)) {
-            assets.js.push(manifest[key]);
-          }
-          if (/\.css$/.test(key)) {
-            assets.css.push(manifest[key]);
-          }
+      assetURLs = Object.keys(manifest)
+      .filter(function (key) {
+        // eslint-disable-next-line no-useless-escape
+        return !/(chunk\-.+|manifest)\.js$/.test(key);
+      })
+      .sort(function (a, b) {
+        switch (true) {
+          case a === 'vendor.js': return -1;
+          case b === 'vendor.js': return 1;
+          case a < b: return -1;
+          case a > b: return 1;
+          default: return 0;
+        }
+      })
+      .reduce(function (assets, key) {
+        if (/\.js$/.test(key)) {
+          assets.js.push(manifest[key]);
+        } else if (/\.css$/.test(key)) {
+          assets.css.push(manifest[key]);
         }
         return assets;
       }, defaults);

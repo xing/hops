@@ -1,17 +1,18 @@
 'use strict';
 
 function isBooleanIsh (object) {
-  return ['true', 'false'].indexOf(object) !== -1;
+  return /(true|false)/.test(object);
 }
 
 function isNumberIsh (object) {
-  return /^\d+$/.test(object);
+  // eslint-disable-next-line no-useless-escape
+  return /^(\-|\+)?(\d+(\.\d+)?|Infinity)$/.test(object);
 }
 
 function isArrayIsh (object) {
-  return !Object.keys(object).find(function (key) {
-    return !isNumberIsh(key);
-  });
+  return !Object.keys(object).filter(function (key) {
+    return !/\d+/.test(key);
+  }).length;
 }
 
 function typify (object) {
@@ -19,12 +20,13 @@ function typify (object) {
     if (isBooleanIsh(object)) {
       return object === 'true';
     } else if (isNumberIsh(object)) {
-      return parseInt(object, 10);
-    }
-    try {
-      return JSON.parse(object);
-    } catch (error) {
-      return object;
+      return parseFloat(object);
+    } else {
+      try {
+        return JSON.parse(object);
+      } catch (_) {
+        return object;
+      }
     }
   } else if (isArrayIsh(object)) {
     return Object.keys(object).sort().map(function (key) {
@@ -44,10 +46,7 @@ module.exports = function parseEnv (namespace) {
       var segments = key.replace(prefix, '').split('_');
       segments.reduce(function (result, segment, index) {
         if (index < segments.length - 1) {
-          if (!result[segment]) {
-            result[segment] = {};
-          }
-          result = result[segment];
+          result = result[segment] || (result[segment] = {});
         } else {
           result[segment] = process.env[key];
         }
