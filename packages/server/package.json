@@ -1,6 +1,6 @@
 {
   "name": "hops-server",
-  "version": "6.0.0-beta.13",
+  "version": "6.0.0-beta.14",
   "description": "",
   "main": "index.js",
   "files": [
@@ -16,8 +16,8 @@
   "dependencies": {
     "express": "^4.15.3",
     "helmet": "^3.6.1",
-    "hops-config": "6.0.0-beta.13",
-    "hops-middleware": "6.0.0-beta.13",
+    "hops-config": "6.0.0-beta.14",
+    "hops-middleware": "6.0.0-beta.14",
     "mime": "^1.3.6",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.5.0"
