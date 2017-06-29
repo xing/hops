@@ -11,28 +11,27 @@ function getManifestData () {
   }
 }
 
-var manifestScript = null;
-exports.getManifestScript = function () {
+var manifest = '';
+exports.getManifest = function () {
   var hopsConfig = require('..');
-  if (!manifestScript) {
+  if (!manifest) {
     var filepath = path.resolve(hopsConfig.buildDir, 'manifest.js');
     if (fs.existsSync(filepath)) {
-      manifestScript = fs.readFileSync(filepath, 'utf8');
+      manifest = fs.readFileSync(filepath, 'utf8');
     }
   }
-  return manifestScript || '';
+  return manifest;
 };
 
-var assetURLs = null;
-exports.getAssetURLs = function () {
-  var defaults = { js: [], css: [] };
-  if (!assetURLs) {
-    var manifest = getManifestData();
-    if (manifest) {
-      assetURLs = Object.keys(manifest)
+var assets = { js: [], css: [] };
+exports.getAssets = function () {
+  if (!assets.js.length) {
+    var manifestData = getManifestData();
+    if (manifestData) {
+      Object.keys(manifestData)
       .filter(function (key) {
         // eslint-disable-next-line no-useless-escape
-        return !/(chunk\-.+|manifest)\.js$/.test(key);
+        return /^(?!(.*\/)?chunk\-|(.*\/)?manifest).*\.(cs|j)s$/.test(key);
       })
       .sort(function (a, b) {
         switch (true) {
@@ -45,13 +44,13 @@ exports.getAssetURLs = function () {
       })
       .reduce(function (assets, key) {
         if (/\.js$/.test(key)) {
-          assets.js.push(manifest[key]);
+          assets.js.push(manifestData[key]);
         } else if (/\.css$/.test(key)) {
-          assets.css.push(manifest[key]);
+          assets.css.push(manifestData[key]);
         }
         return assets;
-      }, defaults);
+      }, assets);
     }
   }
-  return assetURLs || defaults;
+  return assets;
 };
