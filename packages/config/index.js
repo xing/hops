@@ -78,8 +78,8 @@ module.exports = freeze(
         buildConfig: require.resolve('./configs/build'),
         developConfig: require.resolve('./configs/develop'),
         nodeConfig: require.resolve('./configs/node'),
-        manifest: manifestUtil.getManifestScript,
-        assets: manifestUtil.getAssetURLs
+        manifest: manifestUtil.getManifest,
+        assets: manifestUtil.getAssets
       })
     )
   )
