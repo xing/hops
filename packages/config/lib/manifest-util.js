@@ -34,20 +34,11 @@ exports.getAssets = function () {
         return /^(?!(.*\/)?chunk\-|(.*\/)?manifest).*\.(cs|j)s$/.test(key);
       })
       .sort(function (a, b) {
-        switch (true) {
-          case a === 'vendor.js': return -1;
-          case b === 'vendor.js': return 1;
-          case a < b: return -1;
-          case a > b: return 1;
-          default: return 0;
-        }
+        var vjs = 'vendor.js';
+        return a === vjs ? -1 : b === vjs ? 1 : a < b ? -1 : a > b ? 1 : 0;
       })
       .reduce(function (assets, key) {
-        if (/\.js$/.test(key)) {
-          assets.js.push(manifestData[key]);
-        } else if (/\.css$/.test(key)) {
-          assets.css.push(manifestData[key]);
-        }
+        assets[key.match(/\.(css|js)$/)[1]].push(manifestData[key]);
         return assets;
       }, assets);
     }
