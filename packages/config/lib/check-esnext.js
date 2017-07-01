@@ -6,23 +6,21 @@ var path = require('path');
 var getPkgDir = require('pkg-dir').sync;
 
 var appDir = getPkgDir();
-var moduleDir = path.resolve(appDir, 'node_modules');
-var shimDir = path.resolve(__dirname, '..', 'shims');
+var moduleDir = path.join(appDir, 'node_modules');
 
 function checkESnextPath (filepath) {
   return (
-    (filepath.indexOf(appDir) === 0) &&
+    (filepath.indexOf('.mjs') === filepath.length - 4) ||
     (
-      (filepath.indexOf(shimDir) === 0) ||
-      (filepath.indexOf(moduleDir) === -1) ||
-      (filepath.indexOf('.mjs') === filepath.length - 4)
+      (filepath.indexOf(appDir) === 0) &&
+      (filepath.indexOf(moduleDir) === -1)
     )
   );
 }
 
 function checkEsnextConfig (filepath) {
   var pkgDir = getPkgDir(path.dirname(filepath));
-  var packageJsonPath = path.resolve(pkgDir, 'package.json');
+  var packageJsonPath = path.join(pkgDir, 'package.json');
   if (fs.existsSync(packageJsonPath)) {
     var json = fs.readFileSync(packageJsonPath, 'utf8');
     return /"(module|((e|j)snext(:(browser|server|main))?))":/m.test(json);
