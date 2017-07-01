@@ -12,7 +12,7 @@
     "test": "rm -rf node_modules/hops-*; npm install; mocha \"spec/*.js\"",
     "check": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && nsp check\" \\;",
     "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
-    "update": "ncu -u && find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a\" \\;",
+    "update": "ncu -a && (cd demo && ncu -a) && find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a\" \\;",
     "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
     "version": "node scripts/version.js && git add -A packages",
     "postversion": "git push && git push --tags"
