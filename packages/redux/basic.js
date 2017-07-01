@@ -30,7 +30,7 @@ exports.Context = exports.createContext = Context.extend({
   },
   getStore: function () {
     if (module.hot) {
-      return global.store || (global.store = (this.store = this.createStore()));
+      this.store = global.store || (global.store = this.createStore());
     }
     return this.store || (this.store = this.createStore());
   },
