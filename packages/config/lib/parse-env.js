@@ -11,7 +11,7 @@ function isNumberIsh (object) {
 
 function isArrayIsh (object) {
   return !Object.keys(object).filter(function (key) {
-    return !/\d+/.test(key);
+    return !/^\d+$/.test(key);
   }).length;
 }
 
