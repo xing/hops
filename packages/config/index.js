@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var hopsRoot = require('hops-root');
+var root = require('pkg-dir').sync();
 
 var npmConfig = require('./lib/parse-env')('hops');
 var manifestUtil = require('./lib/manifest-util');
@@ -13,7 +13,7 @@ function extendConfig (config) {
       require.resolve(npmConfig.extends);
       Object.assign(config, require(npmConfig.extends));
     } catch (_) {
-      Object.assign(config, hopsRoot.require(npmConfig.extends));
+      Object.assign(config, require(path.join(root, npmConfig.extends)));
     }
   }
   return Object.assign(config, npmConfig);
@@ -21,12 +21,12 @@ function extendConfig (config) {
 
 function resolvePaths (config) {
   Object.keys(config).filter(function (key) {
-    return /(?:config|file|dir)s?$/i.test(key);
+    return /(config|file|dir)s?$/i.test(key);
   })
   .forEach(function (key) {
     config[key] = (function resolve (item) {
       if (typeof item === 'string') {
-        return path.isAbsolute(item) ? item : hopsRoot.resolve(item);
+        return path.isAbsolute(item) ? item : path.join(root, item);
       } else if (Array.isArray(item)) {
         return item.map(resolve);
       } else {
