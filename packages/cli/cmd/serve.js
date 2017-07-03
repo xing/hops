@@ -1,6 +1,6 @@
 'use strict';
 
-var startServer = require('hops-server').startProdServer;
+var startServer = require('../lib/server');
 
 var build = require('./build');
 
