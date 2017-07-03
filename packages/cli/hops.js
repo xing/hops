@@ -16,11 +16,11 @@ program
       case 'start':
         return run(process.env.NODE_ENV === 'production' ? 'serve' : 'develop');
       case 'serve':
-        return require('./cmd/serve')();
+        return require('./commands/serve')();
       case 'develop':
-        return require('./cmd/develop')();
+        return require('./commands/develop')();
       case 'build':
-        return require('./cmd/build')();
+        return require('./commands/build')();
       default:
         console.error('invalid command: ' + command);
         process.exit(1);
