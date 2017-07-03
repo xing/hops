@@ -51,7 +51,6 @@
     "hops-react": "file:./packages/react",
     "hops-redux": "file:./packages/redux",
     "hops-renderer": "file:./packages/renderer",
-    "hops-server": "file:./packages/server",
     "hops-transpiler": "file:./packages/transpiler",
     "mocha": "^3.4.2",
     "mocha-standard": "^1.0.0",

@@ -8,7 +8,10 @@
   "config": {
     "hops": {
       "browsers": "last 1 Chrome versions",
-      "locations": ["/", "/foo"]
+      "locations": [
+        "/",
+        "/foo"
+      ]
     }
   },
   "scripts": {
@@ -22,8 +25,8 @@
     "hops-react": "file:../packages/react",
     "hops-redux": "file:../packages/redux",
     "hops-renderer": "file:../packages/renderer",
-    "hops-server": "file:../packages/server",
     "hops-transpiler": "file:../packages/transpiler",
+    "pm2": "^2.5.0",
     "react": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",

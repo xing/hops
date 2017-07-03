@@ -6,7 +6,7 @@ var WebpackServer = require('webpack-dev-server');
 var hopsConfig = require('hops-config');
 var createMiddleware = require('hops-middleware');
 
-var common = require('./common');
+var common = require('../lib/common');
 
 module.exports = function () {
   var config = require(hopsConfig.developConfig);
