@@ -9,7 +9,7 @@
   "files": [
     "hops.js",
     "index.js",
-    "cmd",
+    "commands",
     "lib"
   ],
   "scripts": {
