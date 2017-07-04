@@ -7,8 +7,8 @@ var Helmet = require('react-helmet').Helmet;
 
 var hopsConfig = require('hops-config');
 
-var Context = require('./common').Context;
-var defaultTemplate = require('./template');
+var Context = require('./lib/common').Context;
+var defaultTemplate = require('./lib/template');
 
 exports.Context = exports.createContext = Context.extend({
   clone: function (request) {
@@ -78,4 +78,4 @@ exports.render = function (reactElement, context) {
   };
 };
 
-Object.assign(exports, require('./components'));
+Object.assign(exports, require('./lib/components'));
