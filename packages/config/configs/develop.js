@@ -53,6 +53,7 @@ module.exports = {
   devServer: {
     contentBase: hopsConfig.buildDir,
     hot: true,
+    disableHostCheck: true,
     overlay: {
       warnings: true,
       errors: true
