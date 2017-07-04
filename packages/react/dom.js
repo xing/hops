@@ -4,11 +4,13 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactRouterDOM = require('react-router-dom');
 
+var hopsConfig = require('hops-config');
+
 var Context = require('./common').Context;
 
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
-    this.mountpoint = options.mountpoint;
+    this.mountpoint = options.mountpoint || '#main';
   },
   bootstrap: function () {
     return Promise.resolve();
@@ -16,13 +18,12 @@ exports.Context = exports.createContext = Context.extend({
   enhanceElement: function (reactElement) {
     return React.createElement(
       ReactRouterDOM.BrowserRouter,
-      { basename: global.BASENAME },
+      { basename: hopsConfig.basePath },
       reactElement
     );
   },
   getMountpoint: function () {
-    var selector = this.mountpoint || '#main';
-    return document.querySelector(selector);
+    return document.querySelector(this.mountpoint);
   }
 });
 
@@ -40,10 +41,4 @@ exports.render = function (reactElement, context) {
   };
 };
 
-exports.Miss = function Miss () {
-  return null;
-};
-
-exports.Status = function Status () {
-  return null;
-};
+Object.assign(exports, require('./components'));
