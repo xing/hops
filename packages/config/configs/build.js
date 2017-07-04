@@ -40,8 +40,13 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {
-        if (module.resource && (/^.*\.css$/).test(module.resource)) {
-          return false;
+        if (module.resource) {
+          if (
+            (module.resource.indexOf('hops-config') > -1) ||
+            (module.resource.indexOf('.css') === module.resource.length - 4)
+          ) {
+            return false;
+          }
         }
         return module.context && module.context.indexOf('node_modules') > -1;
       }
