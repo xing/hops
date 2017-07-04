@@ -29,25 +29,21 @@ exports.Context = exports.createContext = Context.extend({
     return React.createElement(
       ReactRouter.StaticRouter,
       {
-        location: this.request.path,
         basename: hopsConfig.basePath,
+        location: this.request.path,
         context: this
       },
       reactElement
     );
   },
   getTemplateData: function () {
-    var templateData = {
+    return {
       options: this.options,
       helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
       manifest: hopsConfig.manifest,
-      globals: [{
-        name: 'BASENAME',
-        value: hopsConfig.basePath
-      }]
+      globals: []
     };
-    return templateData;
   },
   renderTemplate: function (markup) {
     return this.template(Object.assign(
@@ -82,16 +78,4 @@ exports.render = function (reactElement, context) {
   };
 };
 
-exports.Miss = ReactRouter.withRouter(function Miss (props) {
-  if (props.staticContext) {
-    props.staticContext.miss = true;
-  }
-  return null;
-});
-
-exports.Status = ReactRouter.withRouter(function Status (props) {
-  if (props.staticContext) {
-    props.staticContext.status = props.code || 200;
-  }
-  return null;
-});
+Object.assign(exports, require('./components'));
