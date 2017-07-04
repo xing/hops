@@ -6,7 +6,7 @@ var ReactRouterDOM = require('react-router-dom');
 
 var hopsConfig = require('hops-config');
 
-var Context = require('./common').Context;
+var Context = require('./lib/common').Context;
 
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
@@ -41,4 +41,4 @@ exports.render = function (reactElement, context) {
   };
 };
 
-Object.assign(exports, require('./components'));
+Object.assign(exports, require('./lib/components'));
