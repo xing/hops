@@ -9,6 +9,7 @@ module.exports = {
   entry: require.resolve('../shims/node'),
   output: {
     path: hopsConfig.buildDir,
+    publicPath: '/',
     filename: 'server.js',
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
