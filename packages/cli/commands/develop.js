@@ -8,7 +8,7 @@ var createMiddleware = require('hops-middleware');
 
 var common = require('../lib/common');
 
-module.exports = function () {
+module.exports = function (program) {
   var config = require(hopsConfig.developConfig);
   var watchOptions = config.devServer.watchOptions || config.watchOptions;
   var app = new WebpackServer(
