@@ -2,26 +2,30 @@
 
 var React = require('react');
 var ReactRouter = require('react-router-dom');
-var withSideEffect = require('react-side-effect');
+var createReactClass = require('create-react-class');
+
 var createLocation = require('history/LocationUtils').createLocation;
 
 var Context = require('./basic').Context;
 
 var Dispatcher = ReactRouter.withRouter(
-  withSideEffect(
-    function reducePropsToState(propsList) {
-      return propsList[propsList.length - 1];
-    },
-    function handleStateChangeOnClient(props) {
-      if (props) {
-        props.dispatchAll(props.location);
+  createReactClass({
+    dispatchAll: function() {
+      if (this.props) {
+        this.props.dispatchAll(this.props.location);
       }
     },
-    function mapStateOnServer(props) {
-      return undefined;
+    componentDidMount: function() {
+      this.dispatchAll();
+    },
+    componentDidUpdate: function() {
+      this.dispatchAll();
+    },
+    render: function() {
+      return this.props.children
+        ? React.Children.only(this.props.children)
+        : null;
     }
-  )(function(props) {
-    return props.children ? React.Children.only(props.children) : null;
   })
 );
 
