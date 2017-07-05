@@ -12,15 +12,10 @@ var INITIAL_STATE = 'INITIAL_STATE';
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
     Context.prototype.initialize.call(this, options);
-    this.reducers = {};
-    if (options.reducers) {
-      Object.keys(options.reducers || {}).forEach(function (key) {
-        this.registerReducer(key, options.reducers[key]);
-      }.bind(this));
-    }
-  },
-  bootstrap: function () {
-    return Promise.resolve();
+    this.reducers = options.reducers || (options.reducers = {});
+    Object.keys(this.reducers).forEach(function (key) {
+      this.registerReducer(key, this.reducers[key]);
+    }.bind(this));
   },
   registerReducer: function (namespace, reducer) {
     this.reducers[namespace] = reducer;
