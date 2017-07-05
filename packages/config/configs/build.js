@@ -7,7 +7,6 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BabiliPlugin = require('babili-webpack-plugin');
 
-var HopsPlugin = require('hops-plugin');
 var WriteFilePlugin = require('../lib/write-file');
 var hopsConfig = require('..');
 
@@ -31,12 +30,6 @@ module.exports = {
       publicPath: '/'
     }),
     new WriteFilePlugin(/^manifest\.js(on)?$/),
-    new HopsPlugin(
-      hopsConfig.locations.map(function (location) {
-        return hopsConfig.basePath + location;
-      }),
-      require(hopsConfig.nodeConfig)
-    ),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {

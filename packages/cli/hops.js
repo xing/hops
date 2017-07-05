@@ -9,6 +9,7 @@ var hopsConfig = require('hops-config');
 program
 .version(require('./package.json').version)
 .description('Commands: start, serve, develop, build')
+.option('-s, --static', 'Statically build locations')
 .arguments('<command>')
 .action(function run (command) {
   rimraf(hopsConfig.buildDir, function () {
@@ -16,11 +17,11 @@ program
       case 'start':
         return run(process.env.NODE_ENV === 'production' ? 'serve' : 'develop');
       case 'serve':
-        return require('./commands/serve')();
+        return require('./commands/serve')(program);
       case 'develop':
-        return require('./commands/develop')();
+        return require('./commands/develop')(program);
       case 'build':
-        return require('./commands/build')();
+        return require('./commands/build')(program);
       default:
         console.error('invalid command: ' + command);
         process.exit(1);
