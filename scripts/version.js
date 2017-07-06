@@ -8,7 +8,7 @@ var glob = require('glob');
 var version = require('../package.json').version;
 
 var packageDir = path.resolve(__dirname, '..', 'packages');
-var globPattern = path.resolve(packageDir, '**', 'package.json');
+var globPattern = path.resolve(packageDir, '*', 'package.json');
 
 glob(globPattern, function (err, matches) {
   if (err) {
