@@ -25,7 +25,7 @@ module.exports = function () {
     },
     redirect: false
   }));
-  common.bootstrap(app);
+  common.bootstrap(app, hopsConfig);
   var filePath = path.join(
     webpackConfig.output.path,
     webpackConfig.output.filename
@@ -36,6 +36,6 @@ module.exports = function () {
       require(filePath)
     );
   }
-  common.teardown(app);
+  common.teardown(app, hopsConfig);
   common.run(app);
 };
