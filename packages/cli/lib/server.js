@@ -8,6 +8,7 @@ var mime = require('mime');
 var helmet = require('helmet');
 
 var hopsConfig = require('hops-config');
+var webpackConfig = require(hopsConfig.nodeConfig);
 
 var common = require('./common');
 
@@ -25,14 +26,14 @@ module.exports = function () {
     redirect: false
   }));
   common.bootstrap(app);
-  var middlewareFile = path.join(
-    hopsConfig.buildDir,
-    require(hopsConfig.nodeConfig).output.filename
+  var filePath = path.join(
+    webpackConfig.output.path,
+    webpackConfig.output.filename
   );
-  if (fs.existsSync(middlewareFile)) {
+  if (fs.existsSync(filePath)) {
     common.registerMiddleware(
       app.use(helmet.noCache()),
-      require(middlewareFile)
+      require(filePath)
     );
   }
   common.teardown(app);

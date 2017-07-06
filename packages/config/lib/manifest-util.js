@@ -5,7 +5,7 @@ var path = require('path');
 
 function getManifestData () {
   var hopsConfig = require('..');
-  var filepath = path.resolve(hopsConfig.buildDir, 'manifest.json');
+  var filepath = path.resolve(hopsConfig.cacheDir, 'manifest.json');
   if (fs.existsSync(filepath)) {
     return require(filepath);
   }
@@ -15,7 +15,7 @@ var manifest = '';
 exports.getManifest = function () {
   var hopsConfig = require('..');
   if (!manifest) {
-    var filepath = path.resolve(hopsConfig.buildDir, 'manifest.js');
+    var filepath = path.resolve(hopsConfig.cacheDir, 'manifest.js');
     if (fs.existsSync(filepath)) {
       manifest = fs.readFileSync(filepath, 'utf8');
     }

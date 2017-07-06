@@ -6,6 +6,7 @@ var url = require('url');
 var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
+var WriteFilePlugin = require('../lib/write-file');
 var hopsConfig = require('..');
 
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
@@ -35,9 +36,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new ManifestPlugin({
-      writeToFileEmit: true,
       publicPath: '/'
     }),
+    new WriteFilePlugin(/^manifest\.js(on)?$/),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development'
     })
