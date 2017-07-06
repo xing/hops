@@ -25,7 +25,6 @@
     "hops-redux": "file:../packages/redux",
     "hops-renderer": "file:../packages/renderer",
     "hops-transpiler": "file:../packages/transpiler",
-    "pm2": "^2.5.0",
     "react": "^15.6.1",
     "react-helmet": "^5.1.3",
     "react-redux": "^5.0.5",
