@@ -8,7 +8,7 @@ module.exports = {
   target: 'node',
   entry: require.resolve('../shims/node'),
   output: {
-    path: hopsConfig.buildDir,
+    path: hopsConfig.cacheDir,
     publicPath: '/',
     filename: 'server.js',
     libraryTarget: 'commonjs2',
