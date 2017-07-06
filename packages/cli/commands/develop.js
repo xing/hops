@@ -16,12 +16,12 @@ module.exports = function (program) {
     Object.assign({}, config.devServer, {
       setup: function (app) {
         app.use(common.rewritePath);
-        common.bootstrap(app);
+        common.bootstrap(app, hopsConfig);
         common.registerMiddleware(app, createMiddleware(
           require(hopsConfig.nodeConfig),
           watchOptions
         ));
-        common.teardown(app);
+        common.teardown(app, hopsConfig);
       },
       watchOptions: watchOptions
     })
