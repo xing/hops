@@ -1,4 +1,3 @@
 {
-  "esnext": "...",
-  "version": "6.0.0-beta.21"
+  "esnext": "this file only exists to trigger babelification of the shims"
 }
