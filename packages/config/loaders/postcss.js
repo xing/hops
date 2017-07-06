@@ -17,7 +17,7 @@ var postcssLoaderOptions = {
     require('postcss-import')({
       addModulesDirectories: [].concat(hopsConfig.moduleDirs)
     }),
-    require('../lib/postcss-necsst')({
+    require('postcss-cssnext')({
       browsers: hopsConfig.browsers
     })
   ]
