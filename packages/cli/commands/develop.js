@@ -1,5 +1,12 @@
 'use strict';
 
+if (!process.env.LISTENING_TO_UNHANDLED_REJECTION) {
+  process.on('unhandledRejection', function (err) {
+    throw err;
+  });
+  process.env.LISTENING_TO_UNHANDLED_REJECTION = true;
+}
+
 var webpack = require('webpack');
 var WebpackServer = require('webpack-dev-server');
 
