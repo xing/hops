@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "6.0.0-beta.23",
+  "version": "6.0.0-beta.24",
   "description": "",
   "main": "index.js",
   "files": [
@@ -12,10 +12,9 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "hops-react": "6.0.0-beta.23",
+    "hops-react": "6.0.0-beta.24",
     "react": "^15.5.4",
     "react-redux": "^5.0.5",
     "redux": "^3.7.1",
