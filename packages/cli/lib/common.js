@@ -8,6 +8,22 @@ var hopsLocations = hopsConfig.locations.map(function (location) {
   return hopsConfig.basePath + location;
 });
 
+function defaultCallback (error) {
+  if (error) {
+    console.error(error.stack.toString());
+  } else {
+    console.log('hops server listening at ' + url.format({
+      protocol: hopsConfig.https ? 'https' : 'http',
+      hostname: hopsConfig.host,
+      port: hopsConfig.port
+    }));
+  }
+}
+
+exports.run = function run (app, callback) {
+  app.listen(hopsConfig.port, hopsConfig.host, callback || defaultCallback);
+};
+
 exports.rewritePath = function rewritePath (req, res, next) {
   var location = hopsLocations.find(function (location) {
     return (
@@ -29,20 +45,6 @@ exports.registerMiddleware = function registerMiddleware (app, middleware) {
   } else {
     app.all('*', middleware);
   }
-};
-
-exports.run = function run (app) {
-  app.listen(hopsConfig.port, hopsConfig.host, function (error) {
-    if (error) {
-      console.error(error.stack.toString());
-    } else {
-      console.log('hops server listening at ' + url.format({
-        protocol: hopsConfig.https ? 'https' : 'http',
-        hostname: hopsConfig.host,
-        port: hopsConfig.port
-      }));
-    }
-  });
 };
 
 exports.bootstrap = hopsConfig.bootstrapServer || function () {};

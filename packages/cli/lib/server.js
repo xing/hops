@@ -12,10 +12,10 @@ var webpackConfig = require(hopsConfig.nodeConfig);
 
 var common = require('./common');
 
-module.exports = function () {
+module.exports = function startServer (callback) {
   var app = express();
-  app.use(common.rewritePath);
   app.use(helmet());
+  app.use(common.rewritePath);
   app.use(express.static(hopsConfig.buildDir, {
     maxAge: '1y',
     setHeaders: function (res, filepath) {
@@ -37,5 +37,5 @@ module.exports = function () {
     );
   }
   common.teardown(app, hopsConfig);
-  common.run(app);
+  common.run(app, callback);
 };
