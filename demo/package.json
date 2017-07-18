@@ -26,9 +26,12 @@
     "hops-renderer": "file:../packages/renderer",
     "hops-transpiler": "file:../packages/transpiler",
     "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-helmet": "^5.1.3",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
   }
 }
