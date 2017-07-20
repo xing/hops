@@ -2,7 +2,7 @@
 
 hops-redux extends [hops-react](https://github.com/xing/hops/tree/master/packages/react) by providing a rendering context injecting a Redux `Provider` and some helpers.
 
-Additionally, hops-redux registers the [redux-thunk](https://github.com/gaearon/redux-thunk) middleware and supports [Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension) out of the box.
+Additionally, hops-redux registers the [Thunk](https://github.com/gaearon/redux-thunk) middleware and supports [Redux DevTools](https://github.com/zalmoxisus/redux-devtools-extension) out of the box.
 
 # Installation
 ``` bash
