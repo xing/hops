@@ -30,7 +30,7 @@ If you pass an object literal instead of a context instance, `render()` itself c
 `createContext()` generates a rendering context containing most of the actual implementation used by `render`. It takes a couple of options:
 
 | Field | Type | Default | Description |
-|-------|------|-------------|
+|-------|------|---------|-------------|
 | mountpoint | String | '#main' | querySelector identifying the root DOM node |
 | template | Function | defaultTemplate | template function supporting all React Helmet and hops-react features |
 
