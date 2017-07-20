@@ -14,7 +14,7 @@ That's it - at least this is sufficient to get you started with a very basic set
 ## Additional setup for a React project
 In case you are going to implement a project with React, you need to install further packages:
 ``` bash
-npm install --save react react-router-dom hops-react
+npm install --save react react-dom react-helmet react-router react-router-dom hops-react
 ```
 
 # Usage
@@ -25,13 +25,22 @@ The following commands are provided by hops-cli:
 - `hops develop` - starts a Webpack development server
 - `hops serve` - initiates a project build, stores the build artifacts in the file system and starts a production (Express) server
 - `hops start` - if NODE_ENV is set to production, this runs `hops serve`. Otherwise, `hops develop` gets executed
-- `hops start --production` - this overrides the NODE_ENV setting and runs `hops serve`
+
+Please note that hops-cli is not meant to be called directly, but rather to be added to your project's package.json file and then called indirectly by using npm or yarn (see below).
+
+## Static mode
+hops-cli can be used as a static site generator, too. To enable static mode, pass `--static` or `-s` to the above commands and configure a `locations` array to your package.json file.
 
 ## Configure package.json
 To actually use the hops-cli commands, you have to add them to the scripts section of your project's package.json:
 
 ``` JSON
-"scripts": {
+  "config": {
+    "hops": {
+      "locations": ["/"]
+    }
+  }
+  "scripts": {
     "build": "hops build",
     "develop": "hops develop",
     "serve": "hops serve",
@@ -39,7 +48,9 @@ To actually use the hops-cli commands, you have to add them to the scripts secti
   }
 ```
 
-However, for most projects, it should be sufficient to just add `"start": "hops start"` here.
+However, for simple projects, it should be sufficient to just add `"start": "hops start"` here.
+
+To learn what configuration options are supported, please see the [`hops-config` docs](https://github.com/xing/hops/tree/master/packages/config#hops-config).
 
 ## Use via npm
 After that, you can execute them via npm like so:

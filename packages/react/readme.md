@@ -1,4 +1,90 @@
-
 # Hops React
 
-T.B.D. (To Be Documented)
+hops-react works in tandem with hops-cli and hops-config to make an integrated solution for universal ("isomorphic") rendering using React. It provides a minimal API and hides the tricky bits of setting up React for such use-cases.
+
+Out of the box, hops-react additionally supports [React Router](https://github.com/ReactTraining/react-router) and [React Helmet](https://github.com/nfl/react-helmet).
+
+# Installation
+``` bash
+npm install --save react react-dom react-helmet react-router react-router-dom hops-react
+```
+
+# API
+## `render(reactElement, context)`
+`render()` is the main hops-react API. Its return value differs depending on the environment: in a browser context, it returns a plain function also handling hot module replacement. In a Node.js context, it returns an Express style middleware function. In both cases, its return value is meant to be the default export of your application's main entry file.
+
+`render()` accepts two arguments: `reactElement`, your React application's root element, and `context`, an optional hops-react rendering context instance.
+
+``` js
+import React from 'react';
+import { render } from 'hops-react';
+
+const App = () => (<h1>Hello World!</h1>);
+
+export default render(<App />)
+```
+
+If you pass an object literal instead of a context instance, `render()` itself creates a context using said object as options.
+
+## `createContext(options)`
+`createContext()` generates a rendering context containing most of the actual implementation used by `render`. It takes a couple of options:
+
+| Field | Type | Default | Description |
+|-------|------|-------------|
+| mountpoint | String | '#main' | querySelector identifying the root DOM node |
+| template | Function | defaultTemplate | template function supporting all React Helmet and hops-react features |
+
+## `Context(options)`
+If you, for whatever strange reason, prefer object-oriented syntax, you can alternatively import the `Context` constructor and use it instead of `createContext()`.
+
+If you need or want to change hops-react behavior, providing a custom Context is the way to go. To do that, you can simply use `Context.extend()`, creating a bespoke context constructor and factory function:
+
+``` js
+import React from 'react';
+import { render, Context } from 'hops-react';
+
+const App = () => (<h1>Hello World!</h1>);
+
+const createContext = Context.extend({
+  bootstrap: () => Promise.resolve();
+});
+
+export default render(<App />, createContext())
+```
+
+Check out [hops-redux](https://github.com/xing/hops/blob/master/packages/redux/index.js) for a more elaborate example.
+
+## `<Miss />` and `<Status code={200} />`
+To declaratively control server behavior from your application, you can use two React components provided by hops-react. Neither of these components produces any html output, both are effectively no-ops if used in the browser.
+
+On the server, however, `<Miss />` makes sure Express' `next()` middleware function is being called, signalling Express that your application is not responsible for handling the current request. `<Status />`, however controls the HTTP status code returned by the server.
+
+# Full Example
+
+``` js
+import React from 'react';
+import Helmet from 'react-helmet';
+import { Route, Switch } from 'react-router-dom';
+import { render, Miss } from 'hops-react';
+
+import { headline } from './styles.css';
+import { template } from './template.tpl';
+
+const Home = () => (
+  <div>
+    <Helmet>
+      <title>Example</title>
+    </Helmet>
+    <h1 className={headline}>Hello World!</h1>
+  </div>
+);
+
+const App = () => (
+  <Switch>
+    <Route exact path='/' component={Home} />
+    <Miss />
+  </Switch>
+);
+
+export default render(<App />, { template });
+```
