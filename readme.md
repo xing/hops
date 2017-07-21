@@ -13,9 +13,6 @@
   <a href="https://travis-ci.org/xing/hops">
     <img src="https://travis-ci.org/xing/hops.svg?branch=master">
   </a>
-  <a href="https://david-dm.org/xing/hops">
-    <img src="https://david-dm.org/xing/hops.svg">
-  </a>
 </p>
 <p>&nbsp;</p>
 
@@ -87,7 +84,7 @@ Hops is quite modular, its component being independently published on npm. Its m
 * [Hops React](https://github.com/xing/hops/tree/master/packages/react)
 * [Hops Redux](https://github.com/xing/hops/tree/master/packages/redux)
 
-The following packages are rather low-level and you'll probably never need to install and use them directly.
+The following additional packages are rather low-level and you'll probably never need to install and use them directly.
 
 * [Hops Transpiler](https://github.com/xing/hops/tree/master/packages/transpiler)
 * [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware)
