@@ -12,7 +12,7 @@ var hopsConfig = require('..');
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
 module.exports = {
-  entry: [
+  entry: require('../sections/entry')([
     'webpack-dev-server/client?' + url.format({
       protocol: hopsConfig.https ? 'https' : 'http',
       hostname: hopsConfig.host,
@@ -20,7 +20,7 @@ module.exports = {
     }),
     'webpack/hot/dev-server',
     require.resolve('../shims/develop')
-  ],
+  ]),
   output: {
     path: hopsConfig.buildDir,
     publicPath: '/',
