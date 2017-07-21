@@ -28,29 +28,38 @@ The following commands are provided by hops-cli:
 
 Please note that hops-cli is not meant to be called directly, but rather to be added to your project's package.json file and then called indirectly by using npm or yarn (see below).
 
-## Static mode
-hops-cli can be used as a static site generator, too. To enable static mode, pass `--static` or `-s` to the above commands and configure a `locations` array to your package.json file.
-
 ## Configure package.json
-To actually use the hops-cli commands, you have to add them to the scripts section of your project's package.json:
+To actually use the hops-cli commands, you have to add them to the scripts section of your project's package.json. Hops is designed to leverage npm/yarn features, so it does not make much sense to call the hops executable directly.
 
 ``` JSON
-  "config": {
-    "hops": {
-      "locations": ["/"]
-    }
-  }
   "scripts": {
     "build": "hops build",
     "develop": "hops develop",
     "serve": "hops serve",
     "start": "hops start"
+  },
+  "config": {
+    "hops": {}
   }
 ```
 
 However, for simple projects, it should be sufficient to just add `"start": "hops start"` here.
 
 To learn what configuration options are supported, please see the [`hops-config` docs](https://github.com/xing/hops/tree/master/packages/config#hops-config).
+
+## Static mode
+hops-cli can be used as a static site generator, too. To enable static mode, pass `--static` or `-s` to the above commands and configure a `locations` array to your package.json file.
+
+``` JSON
+  "scripts": {
+    "start": "hops start --static"
+  },
+  "config": {
+    "hops": {
+      "locations": ["/"]
+    }
+  }
+```
 
 ## Use via npm
 After that, you can execute them via npm like so:

@@ -16,9 +16,9 @@
 </p>
 <p>&nbsp;</p>
 
-Hops is an universal [Webpack](https://webpack.js.org) wrapper. It additionally leverages both [Babel](https://babeljs.io) and [PostCSS](http://postcss.org). On the one hand, hops is designed to simplify getting started with modern frontend tooling by providing flexible baseline configs for Webpack. On the other hand, it sets up a scalable universal ("isomorphic") development environment.
+Hops is a modular development and build environment for universal ("isomorphic") web applications. It leverages [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org).
 
-Additionally, hops provides extensible runtime components allowing you to use [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org) in your isomorphic frontend project.
+Hops is designed to simplify getting started with modern frontend tooling. It streamlines [Webpack](https://webpack.js.org) configuration and features [Babel](https://babeljs.io) and [PostCSS](http://postcss.org).
 
 
 ### Installation
@@ -95,7 +95,8 @@ The following additional packages are rather low-level and you'll probably never
 ### Alternatives
 
 * [Next](https://github.com/zeit/next.js/)
-* [Backpack](https://www.npmjs.com/package/backpack-core)
+* [Gatsby](https://github.com/gatsbyjs/gatsby)
+* [Backpack](https://github.com/palmerhq/backpack)
 
 
 ### Thanks!
