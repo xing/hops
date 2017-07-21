@@ -1,9 +1,9 @@
 # Hops Config
 
-hops-config exposes options to configure the other Hops packages and Webpack.
+hops-config exposes options to configure the other Hops packages and your own application. It is quite flexible and highly extensible.
 
 # Installation
-When you install [hops-cli](https://www.npmjs.com/package/hops-cli), hops-config will be installed as a dependency as well - so you don't have to separately install hops-config. If you want to use it without hops-cli, install it by doing
+When you install [hops-cli](https://github.com/xing/hops/tree/master/packages/cli), hops-config will be installed as a dependency as well - so you don't necessarily have to separately install hops-config. If you want to use it in your app directly, install it by running
 
 ```
 npm install --save hops-config
@@ -11,7 +11,7 @@ npm install --save hops-config
 
 # Usage
 
-Please find a list of all available options below. They can be set in your project's package.json and can be overridden by using [npm config](https://docs.npmjs.com/cli/config) in the command line. You can import and extend hops-config within your project allowing you to use it to configure your isomorphic applications. The configuration is immutable at runtime.
+Please find a list of the default options below. They can be set in your project's package.json and can be overridden by using [npm config](https://docs.npmjs.com/cli/config) in the command line. You can import and extend hops-config within your project allowing you to use it to configure your isomorphic applications. The configuration is immutable at runtime.
 
 ## Available options
 | Field | Type | Description |
@@ -34,7 +34,7 @@ Please find a list of all available options below. They can be set in your proje
 | `assets` | `Object literal` | The applications's `.js` and `.css` assets. Defaults to a getter function that returns the assets contained in the automatically generated `manifest.json` |
 | `extends` | `String` | Path to a baseline configuration (could be for example a node module or a project-specific file), allowing you join the current configuration with that baseline |
 
-Everything matching `/(config|file|dir)s?$/i` will be treated as a filesystem path (or array thereof) and resolved relative to app root. This only applies if the respective value is not an absolute path already.
+Everything matching `/(config|file|dir)s?$/i` will be treated as a filesystem path (or array thereof) and resolved relative to your app's root folder. This only applies if the respective value is not an absolute path already.
 
 ## Configure via package.json
 
@@ -77,13 +77,13 @@ The following example package.json shows how the config object might look like:
 
 You can override the configuration values defined in your `package.json`. Consider the above package.json and let's say you want to want to override the `port` value. Note that this only works in an "npm like" context, i.e. with npm and yarn.
 
-To permanently override the port value, set the respective npm environment variable...
+To override the port value for your local environment without actually changing your package.json, set the respective npm environment variable...
 
 ```
 npm config set my-application:hops:port 1337
 ```
 
-... and then do...
+... and then run...
 
 ```
 npm start
@@ -101,22 +101,21 @@ hops-config provides a minimal, yet convenient default configuration. Furthermor
 - [flow-react-proptypes](https://www.npmjs.com/package/babel-plugin-flow-react-proptypes) plugin
 - [transform-class-properties](https://www.npmjs.com/package/babel-plugin-transform-class-properties) plugin
 - [transform-object-rest-spread](https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread) plugin
-- [esnext](https://www.npmjs.com/package/esnext)
 - [syntax-dynamic-import](https://www.npmjs.com/package/babel-plugin-syntax-dynamic-import) plugin (used in the browser)
 - [dynamic-import-node](https://www.npmjs.com/package/babel-plugin-dynamic-import-node) plugin (used on the server)
-
-### Files/assets
-
-| File type | What the loader does with it |
-| --------- | --------|
-| `html` `svg` `otf` `ttf` `woff` `woff2` `ico` | Files of these types are emitted to the directory defined in `assetPath` |
-| `png` `gif` `jpeg` `jpg` `webp` | Same as above, except when a file of this type is smaller than 10kb in size. In that case, it will be converted to a base64-encoded data URL and embedded inline in the referencing document |
-| `json` | Files of this type are loaded and their content is returned |
-| `tpl` | Files of this type are parsed by [_.template](https://lodash.com/docs/4.17.4#template) and their content is returned as a function. By providing such a file, you can override the default template provided by [hops-react](https://www.npmjs.com/package/hops-react) |
 
 ### PostCSS
 
 PostCSS in Hops is configured to use [cssnext](http://cssnext.io/) and [CSS Modules](https://github.com/css-modules/css-modules) by default.
+
+### Files/assets
+
+| File type | Loader action |
+|-----------|---------------|
+| `html` `svg` `otf` `ttf` `woff` `woff2` `ico` | Files of these types are emitted to the directory defined in `assetPath` |
+| `png` `gif` `jpeg` `jpg` `webp` | Same as above, except when a file of this type is smaller than 10kb in size. In that case, it will be converted to a base64-encoded data URL and embedded inline in the referencing document |
+| `json` | Files of this type are loaded and their content is returned |
+| `tpl` | Files of this type are parsed by [_.template](https://lodash.com/docs/4.17.4#template) and their content is returned as a function. By providing such a file, you can override the default template provided by [hops-react](https://www.npmjs.com/package/hops-react) |
 
 ## Custom Webpack configuration
 Webpack configurations can be nasty to handle, therefore we recommend using [webpack-merge](https://www.npmjs.com/package/webpack-merge) if you want to extend one of the existing Webpack configurations.

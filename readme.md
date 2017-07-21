@@ -19,17 +19,23 @@
 </p>
 <p>&nbsp;</p>
 
-Hops is a universal [Webpack](https://webpack.js.org) wrapper. It additionally leverages both [Babel](https://babeljs.io) and [PostCSS](http://postcss.org). On the one hand, hops is designed to simplify getting started with modern frontend tooling by providing an extensible baseline config for Webpack. On the other hand, hops aims to help with using webpack for code running on servers.
+Hops is an universal [Webpack](https://webpack.js.org) wrapper. It additionally leverages both [Babel](https://babeljs.io) and [PostCSS](http://postcss.org). On the one hand, hops is designed to simplify getting started with modern frontend tooling by providing flexible baseline configs for Webpack. On the other hand, it sets up a scalable universal ("isomorphic") development environment.
+
+Additionally, hops provides extensible runtime components allowing you to use [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org) in your isomorphic frontend project.
 
 
 ### Installation
 
 Besides reasonably recent versions of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com), hops has no global dependencies. If you need those, we recommend using [nvm](https://github.com/creationix/nvm) or similar.
 
+If you want to go all in with hops, here's what you have to do and install to create a basic project..:
+
 ```shell
 mkdir foo && cd foo
 npm init -y
-npm install -SE hops
+npm install -S hops-cli hops-config \
+  hops-react react react-dom react-helmet react-router react-router-dom \
+  hops-redux react-redux redux redux-thunk
 ```
 
 
@@ -44,24 +50,19 @@ After installing hops into your project, you need to set it up. This can be done
   "scripts": {
     "start": "hops start"
   },
-  "dependencies": {
-    "hops": "*"
-  },
-  "hops": {
-    "locations": [
-      "/"
-    ]
-  },
-  "babel": {},
-  "postcss": {}
+  "config": {
+    "hops": {
+      "locations": [
+        "/"
+      ]
+    }
+  }
 }
 ```
 
-Hops relies heavily on this file for configuration. In the example above, there are two entry points for `browser` and `server` - that is, two files that are used for client and server builds. Using two separate files is not strictly required, but it usually makes sense, as you'll have to export an [Express](http://expressjs.com/en/guide/using-middleware.html)-compatible middleware function for server side usage, while for the client, you only need to export a function that intializes your client application.
+Hops relies heavily on this file for configuration. In the example above, there are two entry points for `browser` and `server` - that is, two files that are used for client and server builds.
 
-Hops provides a runner that you can call from the scripts of your `package.json` and is configured using the `hops` object also contained therein. In this example, the only configuration option provided is `locations`, an array of paths that will be used for generating static html files using the middleware you provide.
-
-Additionally, you can configure [Babel](https://babeljs.io/docs/usage/babelrc/) and [PostCSS](https://github.com/postcss/postcss-loader) using the appropriate fields in `package.json` - or whatever other method these projects provide.
+Hops provides a runner that you can call from the scripts of your `package.json` and is configured using the `hops` config object also contained therein. In this example, the only configuration option provided is `locations`, an array of paths that will be used for generating static html files using the middleware you provide.
 
 
 ### Running
@@ -74,27 +75,19 @@ Assuming you edited your `package.json` as outlined above, you can fire up a dev
 npm start (--production)
 ```
 
-If called with the `--production` flag, a static build is initialized. Otherwise, a development server featuring hot module replacement is started. Hops generates html pages for all `locations` listed in its config at build time, so you don't need a node server in production, but still can enjoy the benefits of a true universal JavaScript application.
-
-If, however, you want to serve dynamically generated pages, you can transpile your middleware on the fly by using hops' factory function like so:
+If called with the `--production` flag, a production mode server is launched. Otherwise, a development server featuring hot module replacement is started. Hops can generate html pages for all `locations` listed in its config at build time, so you don't need a node server in production, but still can enjoy the benefits of a true universal JavaScript application.
 
 
 ### Advanced Usage
 
-Using the hops config in your `package.json` file, you can supply your own Webpack configuration files. Most important of these probably is `renderConfig` as that is being used for the actual server side rendering.
+Hops is quite modular, its component being independently published on npm. Its main building blocks, however, rely upon each other:
 
-```javascript
-{
-  "hops": {
-    "locations": ['/some/html/path'],
-    "buildConfig": "/path/to/your/build/config",
-    "developConfig": "/path/to/your/development/config",
-    "renderConfig": "/path/to/your/server/side/rendering/config"
-  }
-}
-```
+* [Hops CLI](https://github.com/xing/hops/tree/master/packages/cli)
+* [Hops Config](https://github.com/xing/hops/tree/master/packages/config)
+* [Hops React](https://github.com/xing/hops/tree/master/packages/react)
+* [Hops Redux](https://github.com/xing/hops/tree/master/packages/redux)
 
-Other than that, you can use hops' components on their own. Please refer to their respective readme files for examples:
+The following packages are rather low-level and you'll probably never need to install and use them directly.
 
 * [Hops Transpiler](https://github.com/xing/hops/tree/master/packages/transpiler)
 * [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware)
@@ -104,8 +97,8 @@ Other than that, you can use hops' components on their own. Please refer to thei
 
 ### Alternatives
 
+* [Next](https://github.com/zeit/next.js/)
 * [Backpack](https://www.npmjs.com/package/backpack-core)
-* [static site generator webpack plugin](https://www.npmjs.com/package/static-site-generator-webpack-plugin)
 
 
 ### Thanks!
