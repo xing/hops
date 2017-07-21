@@ -13,7 +13,9 @@ var hopsConfig = require('..');
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
 module.exports = {
-  entry: require.resolve('../shims/build'),
+  entry: require('../sections/entry')(
+    require.resolve('../shims/build')
+  ),
   output: {
     path: hopsConfig.buildDir,
     publicPath: '/',
