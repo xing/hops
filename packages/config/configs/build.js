@@ -63,6 +63,7 @@ module.exports = {
       minimize: true,
       sourceMap: false
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new BabiliPlugin(
       { evaluate: false },
       { comments: false }
