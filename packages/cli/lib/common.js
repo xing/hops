@@ -21,7 +21,9 @@ function defaultCallback (error) {
 }
 
 exports.run = function run (app, callback) {
-  app.listen(hopsConfig.port, hopsConfig.host, callback || defaultCallback);
+  var server = app.listen(hopsConfig.port, hopsConfig.host, function (error) {
+    (callback || defaultCallback)(error, server);
+  });
 };
 
 exports.rewritePath = function rewritePath (req, res, next) {

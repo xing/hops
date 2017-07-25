@@ -7,7 +7,7 @@
   />
 </p>
 
-<h1 align="center">Hops Universal Build Tool</h1>
+<h1 align="center">Hops Universal Development Environment</h1>
 
 <p align="center">
   <a href="https://travis-ci.org/xing/hops">
@@ -32,7 +32,7 @@ mkdir foo && cd foo
 npm init -y
 npm install -S hops-cli hops-config \
   hops-react react react-dom react-helmet react-router react-router-dom \
-  hops-redux react-redux redux redux-thunk
+  hops-redux redux redux-thunk react-redux
 ```
 
 
