@@ -14,7 +14,7 @@ var buildDir = path.resolve(appDir, 'build');
 var cacheDir = path.resolve(appDir, 'node_modules', '.cache', 'hops');
 
 describe('development server', function () {
-  this.timeout(50000);
+  this.timeout(100000);
 
   var app;
   before(function (done) {
