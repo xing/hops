@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var root = require('pkg-dir').sync();
+var root = require('pkg-dir').sync(process.cwd());
 
 var npmConfig = require('./lib/parse-env')('hops');
 var manifestUtil = require('./lib/manifest-util');

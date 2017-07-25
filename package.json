@@ -52,10 +52,21 @@
     "hops-redux": "file:./packages/redux",
     "hops-renderer": "file:./packages/renderer",
     "hops-transpiler": "file:./packages/transpiler",
+    "isomorphic-fetch": "^2.2.1",
+    "mkdirp": "^0.5.1",
     "mocha": "^3.4.2",
     "mocha-standard": "^1.0.0",
     "npm-check-updates": "^2.11.3",
     "nsp": "^2.6.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-helmet": "^5.1.3",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "rimraf": "^2.6.1",
     "semistandard": "^11.0.0"
   }
 }
