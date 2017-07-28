@@ -35,19 +35,6 @@ describe('production server', function () {
     process.chdir(originalDir);
   });
 
-  it('should deliver expected html page', function (done) {
-    fetch('http://localhost:8080/')
-    .then(function (response) {
-      assert(response.ok);
-      return response.text();
-    })
-    .then(function (body) {
-      assert(body.length);
-      assert(body.indexOf('Hello World!') > -1);
-      done();
-    });
-  });
-
   it('should create manifest.json', function () {
     var filePath = path.resolve(cacheDir, 'manifest.json');
     assert(fs.existsSync(filePath));
@@ -65,6 +52,45 @@ describe('production server', function () {
 
   it('should create build files', function () {
     var fileNames = fs.readdirSync(buildDir);
-    assert(fileNames.length = 2);
+    assert.equal(fileNames.length, 3);
+  });
+
+  it('should deliver expected html page', function (done) {
+    fetch('http://localhost:8080/')
+    .then(function (response) {
+      assert(response.ok);
+      return response.text();
+    })
+    .then(function (body) {
+      assert(body.length);
+      assert(body.indexOf('Hello World!') > -1);
+      done();
+    });
+  });
+
+  it('should deliver all asset files', function (done) {
+    var manifest = require(path.resolve(cacheDir, 'manifest.json'));
+    assert.equal(Object.keys(manifest).length, 4);
+    Promise.all(
+      Object.keys(manifest).map(function (key) {
+        if (key === 'manifest.js') return Promise.resolve();
+        return fetch('http://localhost:8080' + manifest[key])
+        .then(function (response) {
+          assert(response.ok);
+          return response.text();
+        })
+        .then(function (body) {
+          assert(body.length);
+          assert(body.indexOf('<!doctype html>') === -1);
+          assert.equal(body, fs.readFileSync(
+            path.resolve(
+              buildDir,
+              manifest[key].replace(/^\/?/, '')
+            ),
+            'utf8'
+          ));
+        });
+      })
+    ).then(function () { done(); });
   });
 });

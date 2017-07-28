@@ -2,11 +2,9 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Miss, render } from 'hops-react';
 
-import hopsConfig from 'hops-config';
+import { headline } from './style.css';
 
-console.log(hopsConfig.appDir);
-
-const Home = () => (<h1>Hello World!</h1>);
+const Home = () => (<h1 className={headline}>Hello World!</h1>);
 
 const App = () => (
   <Switch>

@@ -56,13 +56,15 @@ describe('development server', function () {
     })
     .then(function (body) {
       assert(body.length);
+      assert(body.indexOf('<!doctype html>') === -1);
       assert(body.indexOf('webpack') > -1);
       done();
     });
   });
 
-  it('should create manifest.json', function () {
+  it('should create valid manifest file', function () {
     var filePath = path.resolve(cacheDir, 'manifest.json');
     assert(fs.existsSync(filePath));
+    assert.equal(Object.keys(require(filePath)).length, 2);
   });
 });
