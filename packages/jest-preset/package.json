@@ -1,5 +1,5 @@
 {
-  "name": "hops-jest-preset",
+  "name": "jest-preset-hops",
   "description": "Jest preset to work with hops powered projects",
   "version": "6.0.0",
   "license": "MIT",
