@@ -1,6 +1,5 @@
 var babelJest = require('babel-jest');
 
-// eslint-disable-next-line import/no-internal-modules
 var hopsBabelConfig = require('hops-config/loaders/babel').node.use.options;
 
 // presets look like this
