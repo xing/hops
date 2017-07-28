@@ -1,7 +1,7 @@
-const babelJest = require('babel-jest');
+var babelJest = require('babel-jest');
 
 // eslint-disable-next-line import/no-internal-modules
-const hopsBabelConfig = require('hops-config/loaders/babel').node.use.options;
+var hopsBabelConfig = require('hops-config/loaders/babel').node.use.options;
 
 // presets look like this
 // we try to figure out at which position "env" is and and set modules to "commonjs" to transpile import statements in jest
@@ -18,9 +18,9 @@ const hopsBabelConfig = require('hops-config/loaders/babel').node.use.options;
 //   'react'
 // ]
 
-const envConfig = hopsBabelConfig.presets.find(
-  preset => Array.isArray(preset) && preset[0] === 'env' && preset[1]
-);
+var envConfig = hopsBabelConfig.presets.find(function (preset) {
+  return Array.isArray(preset) && preset[0] === 'env' && preset[1]
+});
 
 if (envConfig) {
   envConfig[1].modules = 'commonjs';
