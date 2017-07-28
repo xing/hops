@@ -1,0 +1,21 @@
+{
+  "name": "hops-jest-preset",
+  "description": "Jest preset to work with hops powered projects",
+  "version": "6.0.0",
+  "license": "MIT",
+  "files": [
+    "jest-preset.json",
+    "transform.js",
+    "fileMock.js"
+  ],
+  "peerDependencies": {
+    "hops-config": "6.0.0",
+    "jest": "18 - 20",
+    "babel-jest": "18 - 20",
+    "identity-obj-proxy": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  }
+}
