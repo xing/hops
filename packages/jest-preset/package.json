@@ -8,11 +8,13 @@
     "transform.js",
     "fileMock.js"
   ],
-  "peerDependencies": {
-    "hops-config": "6.0.0",
-    "jest": "18 - 20",
+  "dependencies": {
     "babel-jest": "18 - 20",
     "identity-obj-proxy": "^3.0.0"
+  },
+  "peerDependencies": {
+    "hops-config": "6.0.0",
+    "jest": "18 - 20"
   },
   "repository": {
     "type": "git",
