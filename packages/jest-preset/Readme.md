@@ -15,5 +15,3 @@ This can for example be done by adding it to your package.json.
   }
 }
 ```
-
-Also you need to install the peer dependencies.
