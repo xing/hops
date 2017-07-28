@@ -1,7 +1,13 @@
 {
   "name": "hops-react",
   "version": "6.1.0",
-  "description": "",
+  "description": "React and ReactRouter setup for Hops",
+  "keywords": [
+    "hops",
+    "react",
+    "react-router"
+  ],
+  "license": "MIT",
   "main": "node.js",
   "browser": "dom.js",
   "files": [
@@ -10,11 +16,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "peerDependencies": {
     "hops-config": "6.1.0",
     "react": "^15.5.4",

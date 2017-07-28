@@ -1,17 +1,19 @@
 {
   "name": "hops-renderer",
   "version": "6.1.0",
-  "description": "",
+  "description": "Hops HTML renderer based on Webpack",
+  "keywords": [
+    "hops",
+    "webpack"
+  ],
+  "license": "MIT",
   "main": "index.js",
   "files": [
     "index.js"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "hops-middleware": "6.1.0",
     "node-mocks-http": "^1.6.4"

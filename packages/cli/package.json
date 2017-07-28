@@ -1,7 +1,12 @@
 {
   "name": "hops-cli",
   "version": "6.1.0",
-  "description": "",
+  "description": "CLI tool to build, run and develop Hops based projects",
+  "keywords": [
+    "hops",
+    "cli"
+  ],
+  "license": "MIT",
   "main": "index.js",
   "bin": {
     "hops": "hops.js"
@@ -13,11 +18,12 @@
     "lib"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
   "dependencies": {
     "commander": "^2.11.0",
     "express": "^4.15.3",
