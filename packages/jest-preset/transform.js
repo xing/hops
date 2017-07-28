@@ -19,7 +19,7 @@ var hopsBabelConfig = require('hops-config/loaders/babel').node.use.options;
 // ]
 
 var envConfig = hopsBabelConfig.presets.find(function (preset) {
-  return Array.isArray(preset) && preset[0] === 'env' && preset[1]
+  return Array.isArray(preset) && preset[0] === 'env' && preset[1];
 });
 
 if (envConfig) {
