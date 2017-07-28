@@ -8,8 +8,8 @@
     "postcss"
   ],
   "scripts": {
-    "start": "cd demo; rm -rf dist node_modules/hops-*; npm install; npm start",
-    "test": "rm -rf node_modules/hops-*; npm install; mocha \"spec/*.js\"",
+    "start": "cd demo; rm -rf dist node_modules/*hops*; npm install; npm start",
+    "test": "rm -rf node_modules/*hops*; npm install; mocha \"spec/*.js\"",
     "check": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && nsp check\" \\;",
     "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
     "update": "ncu -a && (cd demo && ncu -a) && find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a\" \\;",
@@ -53,6 +53,7 @@
     "hops-renderer": "file:./packages/renderer",
     "hops-transpiler": "file:./packages/transpiler",
     "isomorphic-fetch": "^2.2.1",
+    "jest-preset-hops": "file:./packages/jest-preset",
     "mkdirp": "^0.5.1",
     "mocha": "^3.4.2",
     "mocha-standard": "^1.0.0",
