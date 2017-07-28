@@ -1,7 +1,7 @@
 {
   "name": "jest-preset-hops",
   "description": "Jest preset to work with hops powered projects",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "license": "MIT",
   "files": [
     "jest-preset.json",
@@ -13,7 +13,7 @@
     "identity-obj-proxy": "^3.0.0"
   },
   "peerDependencies": {
-    "hops-config": "6.0.0",
+    "hops-config": "6.1.0",
     "jest": "18 - 20"
   },
   "repository": {
