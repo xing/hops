@@ -7,6 +7,7 @@ describe('code style', function () {
 
   it('conforms to semistandard', semistandard.files([
     'packages/**/*.js',
+    'demo/src/*.js',
     'spec/**/*.js'
   ]));
 });
