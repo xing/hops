@@ -5,7 +5,7 @@
     "^.+\\.css$": "identity-obj-proxy"
   },
   "transform": {
-    "^.+\\.(js|jsx)$": "<rootDir>/node_modules/jest-preset-hops/transform.js"
+    "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/jest-preset-hops/transform.js"
   },
   "transformIgnorePatterns": [],
   "setupFiles": [
