@@ -1,6 +1,7 @@
 {
   "moduleNameMapper": {
     "\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$": "<rootDir>/node_modules/jest-preset-hops/fileMock.js",
+    "\\.tpl$": "<rootDir>/node_modules/jest-preset-hops/tplMock.js",
     "^.+\\.css$": "identity-obj-proxy"
   },
   "transform": {
