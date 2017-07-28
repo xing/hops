@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { headline } from './styles.css';
 
-const Home = props =>
+const Home = props => (
   <div>
     <Helmet>
       <title>Hops Demo</title>
@@ -11,7 +11,7 @@ const Home = props =>
     <h1 className={headline}>
       {props.message}
     </h1>
-  </div>;
+  </div>
+);
 
 export default connect(state => state.foo)(Home);
-export { Home };
