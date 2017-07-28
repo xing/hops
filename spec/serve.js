@@ -52,26 +52,34 @@ describe('production server', function () {
 
   it('should create build files', function () {
     var fileNames = fs.readdirSync(buildDir);
-    assert.equal(fileNames.length, 3);
+    assert(fileNames.find(function (name) {
+      return /^main-[0-9a-f]+\.js$/.test(name);
+    }));
+    assert(fileNames.find(function (name) {
+      return /^vendor-[0-9a-f]+\.js$/.test(name);
+    }));
+    assert(fileNames.find(function (name) {
+      return /^main-[0-9a-f]+\.css$/.test(name);
+    }));
   });
 
-  it('should deliver expected html page', function (done) {
-    fetch('http://localhost:8080/')
+  it('should deliver expected html page', function () {
+    return fetch('http://localhost:8080/')
     .then(function (response) {
       assert(response.ok);
       return response.text();
     })
     .then(function (body) {
       assert(body.length);
-      assert(body.indexOf('Hello World!') > -1);
-      done();
+      assert.notEqual(body.indexOf('<!doctype html>'), -1);
+      assert.notEqual(body.indexOf('Hello World!'), -1);
     });
   });
 
-  it('should deliver all asset files', function (done) {
+  it('should deliver all asset files', function () {
     var manifest = require(path.resolve(cacheDir, 'manifest.json'));
-    assert.equal(Object.keys(manifest).length, 4);
-    Promise.all(
+    assert(Object.keys(manifest).length);
+    return Promise.all(
       Object.keys(manifest).map(function (key) {
         if (key === 'manifest.js') return Promise.resolve();
         return fetch('http://localhost:8080' + manifest[key])
@@ -81,7 +89,7 @@ describe('production server', function () {
         })
         .then(function (body) {
           assert(body.length);
-          assert(body.indexOf('<!doctype html>') === -1);
+          assert.equal(body.indexOf('<!doctype html>'), -1);
           assert.equal(body, fs.readFileSync(
             path.resolve(
               buildDir,
@@ -91,6 +99,6 @@ describe('production server', function () {
           ));
         });
       })
-    ).then(function () { done(); });
+    );
   });
 });

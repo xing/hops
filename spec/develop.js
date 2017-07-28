@@ -35,8 +35,8 @@ describe('development server', function () {
     process.chdir(originalDir);
   });
 
-  it('should deliver expected html page', function (done) {
-    fetch('http://localhost:8080/')
+  it('should deliver expected html page', function () {
+    return fetch('http://localhost:8080/')
     .then(function (response) {
       assert(response.ok);
       return response.text();
@@ -44,12 +44,11 @@ describe('development server', function () {
     .then(function (body) {
       assert(body.length);
       assert(body.indexOf('Hello World!') > -1);
-      done();
     });
   });
 
-  it('should deliver main js file', function (done) {
-    fetch('http://localhost:8080/main.js')
+  it('should deliver main js file', function () {
+    return fetch('http://localhost:8080/main.js')
     .then(function (response) {
       assert(response.ok);
       return response.text();
@@ -58,7 +57,6 @@ describe('development server', function () {
       assert(body.length);
       assert(body.indexOf('<!doctype html>') === -1);
       assert(body.indexOf('webpack') > -1);
-      done();
     });
   });
 
