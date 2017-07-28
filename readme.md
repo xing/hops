@@ -7,7 +7,7 @@
   />
 </p>
 
-<h1 align="center">Hops Universal Development Environment</h1>
+<h1 align="center">Hops Development Environment</h1>
 
 <p align="center">
   <a href="https://travis-ci.org/xing/hops">
