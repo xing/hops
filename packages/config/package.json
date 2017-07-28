@@ -1,7 +1,14 @@
 {
   "name": "hops-config",
   "version": "6.1.0",
-  "description": "",
+  "description": "Hops core configuration leveraging Webpack and Babel",
+  "keywords": [
+    "hops",
+    "webpack",
+    "babel",
+    "postcss"
+  ],
+  "license": "MIT",
   "main": "index.js",
   "files": [
     "index.js",
@@ -13,11 +20,12 @@
     "shims"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
   "dependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",

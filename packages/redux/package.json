@@ -1,18 +1,20 @@
 {
   "name": "hops-redux",
   "version": "6.1.0",
-  "description": "",
+  "description": "React and Redux implementation for Hops",
+  "keywords": [
+    "hops",
+    "react",
+    "redux"
+  ],
+  "license": "MIT",
   "main": "index.js",
   "files": [
     "index.js"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {},
   "peerDependencies": {
     "hops-react": "6.1.0",
     "react": "^15.5.4",
