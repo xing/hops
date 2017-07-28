@@ -12,7 +12,8 @@
     "test": "rm -rf node_modules/*hops*; npm install; mocha \"spec/*.js\"",
     "check": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && nsp check\" \\;",
     "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
-    "update": "ncu -a && (cd demo && ncu -a) && find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a\" \\;",
+    "update": "ncu -a && ncu -a --dev && (cd demo && ncu -a)",
+    "preupdate": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a && ncu -a --peer\" \\;",
     "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
     "version": "node scripts/version.js && git add -A packages",
     "postversion": "git push && git push --tags"
@@ -53,6 +54,7 @@
     "hops-renderer": "file:./packages/renderer",
     "hops-transpiler": "file:./packages/transpiler",
     "isomorphic-fetch": "^2.2.1",
+    "jest": "^20.0.4",
     "jest-preset-hops": "file:./packages/jest-preset",
     "mkdirp": "^0.5.1",
     "mocha": "^3.4.2",
