@@ -1,6 +1,6 @@
 {
   "moduleNameMapper": {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/node_modules/jest-preset-hops/fileMock.js",
+    "\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$": "<rootDir>/node_modules/jest-preset-hops/fileMock.js",
     "^.+\\.css$": "identity-obj-proxy"
   },
   "transform": {
