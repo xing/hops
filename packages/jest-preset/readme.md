@@ -5,7 +5,7 @@ It ensures that babel works correctly out of the box and that requiring files su
 
 ## Usage
 
-Add `hops-jest-preset` as [preset](https://facebook.github.io/jest/docs/configuration.html#preset-string) to your jest config. 
+Add `hops-jest-preset` as [preset](https://facebook.github.io/jest/docs/configuration.html#preset-string) to your jest config.
 This can for example be done by adding it to your package.json.
 
 ```json
