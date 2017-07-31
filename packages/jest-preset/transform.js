@@ -1,11 +1,15 @@
 var babelJest = require('babel-jest');
 
-var hopsBabelConfig = require('hops-config/loaders/babel').node.use.options;
+var loaderConfig = require('hops-config/loaders/babel').node;
 
-hopsBabelConfig.presets[0][1].modules = 'commonjs';
+var babelConfig = loaderConfig.use.options;
+
+var presetEnvConfig = babelConfig.presets[0][1];
+
+presetEnvConfig.modules = 'commonjs';
 
 module.exports = babelJest.createTransformer({
-  presets: hopsBabelConfig.presets,
-  plugins: hopsBabelConfig.plugins,
+  presets: babelConfig.presets,
+  plugins: babelConfig.plugins,
   babelrc: false
 });
