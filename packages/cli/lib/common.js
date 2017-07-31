@@ -12,7 +12,7 @@ function defaultCallback (error) {
   if (error) {
     console.error(error.stack.toString());
   } else {
-    console.log('hops server listening at ' + url.format({
+    console.log('hops: Server listening at ' + url.format({
       protocol: hopsConfig.https ? 'https' : 'http',
       hostname: hopsConfig.host,
       port: hopsConfig.port
