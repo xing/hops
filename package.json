@@ -8,13 +8,13 @@
     "postcss"
   ],
   "scripts": {
-    "start": "cd demo; rm -rf dist node_modules/*hops*; npm install; npm start",
-    "test": "rm -rf node_modules/*hops*; npm install; mocha \"spec/*.js\"",
+    "start": "cd demo; rm -rf dist node_modules/*hops*; yarn install --force; yarn start",
+    "test": "rm -rf node_modules/*hops*; yarn install --no-lockfile; mocha \"spec/*.js\"",
     "check": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && nsp check\" \\;",
     "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
     "update": "ncu -a && ncu -a --dev && (cd demo && ncu -a)",
     "preupdate": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a && ncu -a --peer\" \\;",
-    "postupdate": "rm -rf node_modules demo/node_modules && npm install && npm test && npm start",
+    "postupdate": "rm -rf node_modules demo/node_modules && npm test && npm start",
     "version": "node scripts/version.js && git add -A packages",
     "postversion": "git push && git push --tags"
   },
@@ -70,6 +70,7 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "rimraf": "^2.6.1",
-    "semistandard": "^11.0.0"
+    "semistandard": "^11.0.0",
+    "yarn": "^0.27.5"
   }
 }
