@@ -1,6 +1,6 @@
 {
   "name": "hops-plugin",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "Hops Webpack plugin using Webpack to render HTML",
   "keywords": [
     "hops",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "directory-index": "^0.1.0",
-    "hops-renderer": "6.1.0",
+    "hops-renderer": "6.1.1",
     "webpack-sources": "^1.0.1"
   }
 }
