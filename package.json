@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "start": "cd demo; rm -rf dist node_modules/*hops*; yarn install --force; yarn start",
-    "test": "rm -rf node_modules/*hops*; yarn install --no-lockfile; mocha \"spec/*.js\"",
+    "test": "rm -rf node_modules/*hops*; npm install --no-package-lock; mocha \"spec/*.js\"",
     "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
     "update": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a && ncu -a --peer\" \\;",
-    "preupdate": "yarn install --no-lockfile && ncu -a && ncu -a --dev && (cd demo && ncu -a)",
+    "preupdate": "y npm install --no-package-lock && ncu -a && ncu -a --dev && (cd demo && ncu -a)",
     "postupdate": "rm -rf node_modules demo/node_modules && npm test && npm start",
     "nsp": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && nsp check\" \\;",
     "prensp": "nsp check; (cd demo; nsp check); exit 0",
