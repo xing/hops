@@ -33,7 +33,8 @@ module.exports = function checkEsnextCached (module) {
     if (path.isAbsolute(module)) {
       cache[module] = checkESnextPath(module) || checkEsnextConfig(module);
     } else {
-      cache[module] = checkEsnextCached(require.resolve(module));
+      var absModule = require.resolve(module);
+      cache[module] = (absModule !== module) && checkEsnextCached(absModule);
     }
   }
   return cache[module];
