@@ -111,7 +111,7 @@ npm start
 
 Whenever you run ```npm start```, the hops packages used in the demo project are being re-installed locally. When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
 
-Hops uses [semistandard](https://github.com/Flet/semistandard) code style as is written in ECMAScript 5.
+Hops is entirely written in ECMAScript 5 and adheres to [semistandard](https://github.com/Flet/semistandard) code style. Please make sure your contribution does, too.
 
 
 ### Alternatives
