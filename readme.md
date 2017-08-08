@@ -102,7 +102,7 @@ mkdir hops && cd $_
 git clone git@github.com:user/hops.git .
 ```
 
-Afterwards, you can `npm install` Hops' own dev dependencies and start the included demo project.
+Afterwards, you can `npm install` Hops' own dev dependencies and start the included demo project and begin developing.
 
 ``` bash
 npm install
@@ -110,6 +110,8 @@ npm start
 ```
 
 Whenever you run ```npm start```, the hops packages used in the demo project are being re-installed locally. When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
+
+Hops uses [semistandard](https://github.com/Flet/semistandard) code style as is written in ECMAScript 5.
 
 
 ### Alternatives

@@ -45,6 +45,14 @@
   "engines": {
     "node": ">5.0.0"
   },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 5,
+      "env": {
+        "es6": false
+      }
+    }
+  },
   "devDependencies": {
     "glob": "^7.1.2",
     "hops-cli": "file:./packages/cli",
