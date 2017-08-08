@@ -17,7 +17,8 @@
     "lib",
     "loaders",
     "sections",
-    "shims"
+    "shims",
+    "ssl"
   ],
   "scripts": {
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
