@@ -1,6 +1,6 @@
 # Hops React
 
-hops-react works in tandem with [hops-cli](https://github.com/xing/hops/blob/master/packages/cli/index.js) and [hops-config](https://github.com/xing/hops/blob/master/packages/redux/index.js) to make an integrated solution for universal ("isomorphic") rendering using React. It provides a minimal API and hides the tricky bits of setting up React for such use-cases.
+hops-react works in tandem with [hops-cli](https://github.com/xing/hops/blob/master/packages/cli) and [hops-config](https://github.com/xing/hops/blob/master/packages/redux) to make an integrated solution for universal ("isomorphic") rendering using React. It provides a minimal API and hides the tricky bits of setting up React for such use-cases.
 
 Out of the box, hops-react additionally supports [React Router](https://github.com/ReactTraining/react-router) and [React Helmet](https://github.com/nfl/react-helmet).
 
