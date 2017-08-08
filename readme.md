@@ -18,7 +18,7 @@
 
 Hops is a modular development and build environment for universal ("isomorphic") web applications. It leverages [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org).
 
-Hops is designed to simplify getting started with modern frontend tooling. It streamlines [Webpack](https://webpack.js.org) configuration and features [Babel](https://babeljs.io) and [PostCSS](http://postcss.org).
+Hops is designed to simplify getting started with modern frontend tooling. It streamlines [Webpack](https://webpack.js.org) and [Jest](https://facebook.github.io/jest/) configuration featuring [Babel](https://babeljs.io) and [PostCSS](http://postcss.org).
 
 
 ### Installation
@@ -81,6 +81,7 @@ Hops is quite modular, its component being independently published on npm. Its m
 
 * [Hops CLI](https://github.com/xing/hops/tree/master/packages/cli)
 * [Hops Config](https://github.com/xing/hops/tree/master/packages/config)
+* [Hops Jest Preset](https://github.com/xing/hops/tree/master/packages/jest-preset)
 * [Hops React](https://github.com/xing/hops/tree/master/packages/react)
 * [Hops Redux](https://github.com/xing/hops/tree/master/packages/redux)
 
