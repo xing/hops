@@ -1,6 +1,5 @@
 'use strict';
 
-var fs = require('fs');
 var path = require('path');
 var url = require('url');
 
@@ -8,39 +7,10 @@ var webpack = require('webpack');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
 var WriteFilePlugin = require('../lib/write-file');
+var getHttpsConfig = require('../lib/ssl-util');
 var hopsConfig = require('..');
 
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
-
-var defaultHttpsConfig = {
-  key: path.join(__dirname, '..', 'ssl', 'localhost.ssl.key'),
-  cert: path.join(__dirname, '..', 'ssl', 'localhost.ssl.crt'),
-  ca: path.join(__dirname, '..', 'ssl', 'rootca.pem')
-};
-
-function getFileContentsForPath (obj, key) {
-  if (typeof obj[key] === 'string') {
-    return fs.readFileSync(path.resolve(obj[key]));
-  }
-  return obj[key];
-}
-
-function getHttpsConfig (hopsConfig) {
-  if (!hopsConfig.https) {
-    return false;
-  }
-
-  var config =
-    typeof hopsConfig.https === 'object'
-      ? hopsConfig.https
-      : defaultHttpsConfig;
-
-  return {
-    key: getFileContentsForPath(config, 'key'),
-    cert: getFileContentsForPath(config, 'cert'),
-    ca: getFileContentsForPath(config, 'ca')
-  };
-}
 
 module.exports = {
   entry: [
