@@ -92,6 +92,25 @@ The following additional packages are rather low-level and you'll probably never
 * [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/packages/plugin)
 
 
+### Contributing
+
+If you want to contribute to this project, create a fork of its [repository](https://github.com/xing/hops/fork) using the GitHub UI. Check out your new fork to your computer:
+
+``` bash
+mkdir hops && cd $_
+git clone git@github.com:user/hops.git .
+```
+
+Afterwards, you can `npm install` Hops' own dev dependencies and start the included demo project.
+
+``` bash
+npm install
+npm start
+```
+
+Whenever you run ```npm start```, the hops packages used in the demo project are being re-installed locally. When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
+
+
 ### Alternatives
 
 * [Next](https://github.com/zeit/next.js/)
