@@ -17,11 +17,11 @@ module.exports = function (data) {
       return '<link rel="stylesheet" href="' + css + '" />';
     }).join(''),
     data.helmet.style.toString(),
+    data.helmet.script.toString(),
     '</head>',
     '<body ', data.helmet.bodyAttributes.toString(), '>',
     '<div id="main">', data.markup, '</div>',
     data.helmet.noscript.toString(),
-    data.helmet.script.toString(),
     data.globals.map(function (global) {
       return '<script>' + global.name + ' = ' + esc(global.value) + '</script>';
     }).join(''),
