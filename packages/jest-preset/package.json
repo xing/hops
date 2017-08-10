@@ -9,8 +9,9 @@
   "license": "MIT",
   "files": [
     "jest-preset.json",
-    "transform.js",
-    "fileMock.js"
+    "file-mock.js",
+    "tpl-mock.js",
+    "transform.js"
   ],
   "scripts": {
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
