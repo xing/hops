@@ -14,7 +14,7 @@ function defaultCallback (error) {
   } else {
     console.log('hops: Server listening at ' + url.format({
       protocol: hopsConfig.https ? 'https' : 'http',
-      hostname: hopsConfig.host,
+      hostname: hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
       port: hopsConfig.port
     }));
   }
