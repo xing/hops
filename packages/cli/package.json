@@ -33,7 +33,7 @@
     "hops-plugin": "6.2.0",
     "mime": "^1.3.6",
     "rimraf": "^2.6.1",
-    "webpack": "^3.5.1",
+    "webpack": "^3.5.3",
     "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0"
   }
