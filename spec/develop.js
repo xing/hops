@@ -1,6 +1,5 @@
 /* eslint-env node, mocha */
 
-var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 
@@ -61,8 +60,10 @@ describe('development server', function () {
   });
 
   it('should create valid manifest file', function () {
-    var filePath = path.resolve(cacheDir, 'manifest.json');
-    assert(fs.existsSync(filePath));
-    assert.equal(Object.keys(require(filePath)).length, 2);
+    var manifest = require(path.resolve(cacheDir, 'manifest.json'));
+    assert('js' in manifest);
+    assert('css' in manifest);
+    assert.equal(manifest.js.length, 1);
+    assert.equal(manifest.css.length, 0);
   });
 });
