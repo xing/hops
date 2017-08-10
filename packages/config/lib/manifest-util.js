@@ -3,14 +3,6 @@
 var fs = require('fs');
 var path = require('path');
 
-function getManifestData () {
-  var hopsConfig = require('..');
-  var filepath = path.resolve(hopsConfig.cacheDir, 'manifest.json');
-  if (fs.existsSync(filepath)) {
-    return require(filepath);
-  }
-}
-
 var manifest = '';
 exports.getManifest = function () {
   var hopsConfig = require('..');
@@ -25,22 +17,11 @@ exports.getManifest = function () {
 
 var assets = { js: [], css: [] };
 exports.getAssets = function () {
+  var hopsConfig = require('..');
   if (!assets.js.length) {
-    var manifestData = getManifestData();
-    if (manifestData) {
-      Object.keys(manifestData)
-      .filter(function (key) {
-        // eslint-disable-next-line no-useless-escape
-        return /^(?!(.*\/)?chunk\-|(.*\/)?manifest).*\.(cs|j)s$/.test(key);
-      })
-      .sort(function (a, b) {
-        var vjs = 'vendor.js';
-        return a === vjs ? -1 : b === vjs ? 1 : a < b ? -1 : a > b ? 1 : 0;
-      })
-      .reduce(function (assets, key) {
-        assets[key.match(/\.(css|js)$/)[1]].push(manifestData[key]);
-        return assets;
-      }, assets);
+    var filepath = path.resolve(hopsConfig.cacheDir, 'manifest.json');
+    if (fs.existsSync(filepath)) {
+      assets = require(filepath);
     }
   }
   return assets;

@@ -3,11 +3,12 @@
 var path = require('path');
 
 var webpack = require('webpack');
-var ManifestPlugin = require('webpack-manifest-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var BabiliPlugin = require('babili-webpack-plugin');
 
-var WriteFilePlugin = require('../lib/write-file');
+var WriteManifestPlugin = require('../plugins/write-manifest');
+var WriteFilePlugin = require('../plugins/write-file');
+
 var hopsConfig = require('..');
 
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
@@ -26,10 +27,8 @@ module.exports = {
     rules: require('../sections/module-rules')('build')
   },
   plugins: [
-    new ManifestPlugin({
-      publicPath: '/'
-    }),
-    new WriteFilePlugin(/^manifest\.js(on)?$/),
+    new WriteFilePlugin(/^manifest\.js?$/),
+    new WriteManifestPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {
