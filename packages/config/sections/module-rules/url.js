@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var hopsConfig = require('..');
+var hopsConfig = require('../..');
 
 exports.default = {
   test: /\.(png|gif|jpe?g|webp)$/,

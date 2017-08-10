@@ -1,8 +1,10 @@
 'use strict';
 
-exports.default = {
-  test: /hops-config\/index\.js$/,
-  use: {
-    loader: require.resolve('../lib/config-loader')
-  }
+var hopsConfig = require('..');
+
+module.exports = function () {
+  this.cacheable();
+  return 'module.exports = ' + JSON.stringify(hopsConfig).replace(
+    new RegExp(hopsConfig.appDir, 'g'), '.'
+  );
 };
