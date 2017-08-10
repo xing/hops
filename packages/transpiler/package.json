@@ -18,6 +18,6 @@
     "memory-fs": "^0.4.1",
     "require-from-string": "^1.2.1",
     "source-map-support": "^0.4.15",
-    "webpack": "^3.5.1"
+    "webpack": "^3.5.3"
   }
 }
