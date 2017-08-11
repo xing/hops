@@ -16,7 +16,7 @@ Please find a list of the default options below. They can be set in your project
 ## Available options
 | Field | Type | Description |
 |-------|------|-------------|
-| `https` | `Boolean` \| `Object literal` | Whether to use https or not. To use a custom certificate set an object with paths for `key`, `cert` and `ca` (optional). Defaults to `false` |
+| `https` | `Boolean` | Whether to use https or not. Defaults to `false` |
 | `host` | `String` | Host name of your project. Defaults to `0.0.0.0` |
 | `port` | `Number` | Port of your host. Defaults to `8080` |
 | `locations` | `Array<string>` | One or more [application shell](https://developers.google.com/web/fundamentals/architecture/app-shell) locations, e.g. `"/"` and/or `"/profile"` |
