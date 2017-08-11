@@ -4,10 +4,9 @@ var path = require('path');
 var url = require('url');
 
 var webpack = require('webpack');
-var ManifestPlugin = require('webpack-manifest-plugin');
 
-var WriteFilePlugin = require('../lib/write-file');
-var getHttpsConfig = require('../lib/ssl-util');
+var WriteManifestPlugin = require('../plugins/write-manifest');
+
 var hopsConfig = require('..');
 
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
@@ -16,7 +15,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?' + url.format({
       protocol: hopsConfig.https ? 'https' : 'http',
-      hostname: hopsConfig.host,
+      hostname: hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
       port: hopsConfig.port
     }),
     'webpack/hot/dev-server',
@@ -34,12 +33,9 @@ module.exports = {
     rules: require('../sections/module-rules')('develop')
   },
   plugins: [
+    new WriteManifestPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new ManifestPlugin({
-      publicPath: '/'
-    }),
-    new WriteFilePlugin(/^manifest\.js(on)?$/),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development'
     })
@@ -61,6 +57,6 @@ module.exports = {
       errors: true
     },
     stats: 'errors-only',
-    https: getHttpsConfig(hopsConfig)
+    https: require('../sections/dev-server-https')()
   }
 };

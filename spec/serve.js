@@ -78,11 +78,13 @@ describe('production server', function () {
 
   it('should deliver all asset files', function () {
     var manifest = require(path.resolve(cacheDir, 'manifest.json'));
-    assert(Object.keys(manifest).length);
+    assert('js' in manifest);
+    assert('css' in manifest);
+    assert.equal(manifest.js.length, 2);
+    assert.equal(manifest.css.length, 1);
     return Promise.all(
-      Object.keys(manifest).map(function (key) {
-        if (key === 'manifest.js') return Promise.resolve();
-        return fetch('http://localhost:8080' + manifest[key])
+      manifest.css.concat(manifest.js).map(function (filename) {
+        return fetch('http://localhost:8080' + filename)
         .then(function (response) {
           assert(response.ok);
           return response.text();
@@ -91,10 +93,7 @@ describe('production server', function () {
           assert(body.length);
           assert.equal(body.indexOf('<!doctype html>'), -1);
           assert.equal(body, fs.readFileSync(
-            path.resolve(
-              buildDir,
-              manifest[key].replace(/^\/?/, '')
-            ),
+            path.resolve(buildDir, filename.replace(/^\/?/, '')),
             'utf8'
           ));
         });

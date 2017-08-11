@@ -2,7 +2,7 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var hopsConfig = require('..');
+var hopsConfig = require('../..');
 
 var cssLoaderOptions = {
   importLoaders: 1,

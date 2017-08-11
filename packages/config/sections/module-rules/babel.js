@@ -1,11 +1,11 @@
 'use strict';
 
-var hopsConfig = require('..');
+var hopsConfig = require('../..');
 
 function createIdentifier (targets) {
   return JSON.stringify({
     env: process.env.NODE_ENV + ',' + process.env.BABEL_ENV,
-    version: require('../package.json').version,
+    version: require('../../package.json').version,
     targets: targets
   });
 }
@@ -36,7 +36,7 @@ function getBabelLoader (targets, plugins) {
         ])
       }
     },
-    include: require('../lib/check-esnext')
+    include: require('../../lib/check-esnext')
   };
 }
 
