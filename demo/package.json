@@ -9,7 +9,8 @@
     "hops": {
       "browsers": "last 1 Chrome versions",
       "locations": [
-        "/"
+        "/",
+        "/counter"
       ]
     }
   },
