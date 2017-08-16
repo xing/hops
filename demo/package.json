@@ -15,7 +15,8 @@
   },
   "scripts": {
     "start": "hops start",
-    "test": "jest"
+    "test": "jest",
+    "pretest": "flow"
   },
   "dependencies": {
     "hops-cli": "file:../packages/cli",
@@ -36,6 +37,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "flow-bin": "^0.52.0",
     "jest": "^21.0.2",
     "react-test-renderer": "^15.6.1",
     "jest-preset-hops": "file:../packages/jest-preset"
