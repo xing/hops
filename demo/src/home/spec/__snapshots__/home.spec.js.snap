@@ -5,7 +5,7 @@ exports[`renders correctly 1`] = `
   <h1
     className="headline"
   >
-    ey yo captain jack
+    Hello World!
   </h1>
 </div>
 `;
