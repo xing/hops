@@ -21,11 +21,11 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "babel-jest": "18 - 20",
+    "babel-jest": "20",
     "identity-obj-proxy": "^3.0.0"
   },
   "peerDependencies": {
     "hops-config": "6.2.2",
-    "jest": "18 - 20"
+    "jest": "20"
   }
 }
