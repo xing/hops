@@ -17,7 +17,7 @@
   "dependencies": {
     "memory-fs": "^0.4.1",
     "require-from-string": "^1.2.1",
-    "source-map-support": "^0.4.16",
-    "webpack": "^3.5.5"
+    "source-map-support": "^0.4.18",
+    "webpack": "^3.5.6"
   }
 }
