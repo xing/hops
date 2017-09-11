@@ -8,7 +8,7 @@
     "postcss"
   ],
   "scripts": {
-    "start": "cd demo; rm -rf dist node_modules/*hops*; yarn install --force; yarn start",
+    "start": "cd demo; rm -rf dist node_modules/*hops*; npm install --no-package-lock; npm start",
     "test": "rm -rf node_modules/*hops*; npm install --no-package-lock; mocha \"spec/*.js\"",
     "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
     "update": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a && ncu -a --peer\" \\;",
@@ -82,7 +82,6 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "rimraf": "^2.6.1",
-    "semistandard": "^11.0.0",
-    "yarn": "^0.27.5"
+    "semistandard": "^11.0.0"
   }
 }
