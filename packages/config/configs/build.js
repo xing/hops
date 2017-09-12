@@ -64,7 +64,7 @@ module.exports = {
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new MinifyPlugin(
-      { evaluate: false },
+      { evaluate: false, propertyLiterals: false },
       { comments: false }
     )
   ]
