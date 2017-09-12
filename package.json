@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "6.2.3",
+  "version": "6.2.4",
   "description": "universal build tools",
   "keywords": [
     "webpack",

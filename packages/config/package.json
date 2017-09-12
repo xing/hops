@@ -1,6 +1,6 @@
 {
   "name": "hops-config",
-  "version": "6.2.3",
+  "version": "6.2.4",
   "description": "Hops core configuration leveraging Webpack and Babel",
   "keywords": [
     "hops",
