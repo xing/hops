@@ -7,7 +7,7 @@ var hopsConfig = require('../..');
 exports.default = {
   test: /\.(html|svg|((o|t)tf)|woff2?|ico)$/,
   use: {
-    loader: 'file-loader',
+    loader: require.resolve('file-loader'),
     options: {
       name: path.join(hopsConfig.assetPath, '[name]-[hash:16].[ext]')
     }

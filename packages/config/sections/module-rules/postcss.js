@@ -29,11 +29,11 @@ exports.build = {
     fallback: 'style-loader',
     use: [
       {
-        loader: 'css-loader',
+        loader: require.resolve('css-loader'),
         options: cssLoaderOptions
       },
       {
-        loader: 'postcss-loader',
+        loader: require.resolve('postcss-loader'),
         options: postcssLoaderOptions
       }
     ]
@@ -45,11 +45,11 @@ exports.develop = {
   use: [
     'style-loader',
     {
-      loader: 'css-loader',
+      loader: require.resolve('css-loader'),
       options: Object.assign({}, cssLoaderOptions, { sourceMap: true })
     },
     {
-      loader: 'postcss-loader',
+      loader: require.resolve('postcss-loader'),
       options: postcssLoaderOptions
     }
   ]
@@ -58,7 +58,7 @@ exports.develop = {
 exports.node = {
   test: /\.css$/,
   use: {
-    loader: 'css-loader/locals',
+    loader: require.resolve('css-loader/locals'),
     options: Object.assign({}, cssLoaderOptions, { importLoaders: 0 })
   }
 };

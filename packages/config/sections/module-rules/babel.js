@@ -14,7 +14,7 @@ function getBabelLoader (targets, plugins) {
   return {
     test: /\.m?jsx?$/,
     use: {
-      loader: 'babel-loader',
+      loader: require.resolve('babel-loader'),
       options: {
         cacheDirectory: true,
         cacheIdentifier: createIdentifier(targets),
