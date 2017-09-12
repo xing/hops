@@ -3,6 +3,6 @@
 exports.default = {
   test: /\.json$/,
   use: {
-    loader: 'json-loader'
+    loader: require.resolve('json-loader')
   }
 };
