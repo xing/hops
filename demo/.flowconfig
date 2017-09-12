@@ -9,4 +9,7 @@
 [lints]
 
 [options]
+module.name_mapper='.*\.css$' -> 'CSSModule'
+module.system=haste
+
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectError
