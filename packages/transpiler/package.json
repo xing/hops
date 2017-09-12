@@ -1,6 +1,6 @@
 {
   "name": "hops-transpiler",
-  "version": "6.2.2",
+  "version": "6.2.3",
   "description": "Hops wrapper for Webpack",
   "keywords": [
     "hops",
