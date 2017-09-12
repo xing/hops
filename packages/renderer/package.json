@@ -1,6 +1,6 @@
 {
   "name": "hops-renderer",
-  "version": "6.2.2",
+  "version": "6.2.3",
   "description": "Hops HTML renderer based on Webpack",
   "keywords": [
     "hops",
@@ -15,7 +15,7 @@
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
   "dependencies": {
-    "hops-middleware": "6.2.2",
+    "hops-middleware": "6.2.3",
     "node-mocks-http": "^1.6.4"
   }
 }

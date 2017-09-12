@@ -1,6 +1,6 @@
 {
   "name": "hops-cli",
-  "version": "6.2.2",
+  "version": "6.2.3",
   "description": "CLI tool to build, run and develop Hops based projects",
   "keywords": [
     "hops",
@@ -28,9 +28,9 @@
     "commander": "^2.11.0",
     "express": "^4.15.4",
     "helmet": "^3.8.1",
-    "hops-config": "6.2.2",
-    "hops-middleware": "6.2.2",
-    "hops-plugin": "6.2.2",
+    "hops-config": "6.2.3",
+    "hops-middleware": "6.2.3",
+    "hops-plugin": "6.2.3",
     "mime": "^1.4.0",
     "rimraf": "^2.6.2",
     "webpack": "^3.5.6",
