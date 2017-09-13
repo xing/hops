@@ -4,8 +4,22 @@ var path = require('path');
 
 var root = require('pkg-dir').sync(process.cwd());
 
-var npmConfig = require('./lib/parse-env')('hops');
 var manifestUtil = require('./lib/manifest-util');
+
+var npmConfig = require('./lib/parse-env')('hops');
+try {
+  require.resolve(path.join(root, 'package.json'));
+  var packageJson = require(path.join(root, 'package.json'));
+  if (packageJson.config.hops && isEmptyObject(npmConfig)) {
+    npmConfig = packageJson.config.hops;
+  }
+} catch (error) {}
+
+function isEmptyObject (input) {
+  return typeof input === 'object' &&
+    input !== null &&
+    Object.keys(input).length === 0;
+}
 
 function extendConfig (config) {
   if (npmConfig.extends) {
