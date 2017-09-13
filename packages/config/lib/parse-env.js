@@ -10,7 +10,8 @@ function isNumberIsh (object) {
 }
 
 function isArrayIsh (object) {
-  return !Object.keys(object).filter(function (key) {
+  var keys = Object.keys(object);
+  return keys.length > 0 && !keys.filter(function (key) {
     return !/^\d+$/.test(key);
   }).length;
 }
