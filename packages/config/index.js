@@ -6,24 +6,23 @@ var root = require('pkg-dir').sync(process.cwd());
 
 var manifestUtil = require('./lib/manifest-util');
 
-var npmConfig = require('./lib/parse-env')('hops');
-if (!Object.keys(npmConfig).length) {
-  try {
-    require.resolve(path.join(root, 'package.json'));
-    npmConfig = require(path.join(root, 'package.json')).config.hops;
-  } catch (_) {}
-}
+var userConfig = require('./lib/parse-env')('hops');
+try {
+  require.resolve(path.join(root, 'package.json'));
+  var packageConfig = require(path.join(root, 'package.json')).config.hops;
+  userConfig = Object.assign({}, packageConfig, userConfig);
+} catch (_) {}
 
 function extendConfig (config) {
-  if (npmConfig.extends) {
+  if (userConfig.extends) {
     try {
-      require.resolve(npmConfig.extends);
-      Object.assign(config, require(npmConfig.extends));
+      require.resolve(userConfig.extends);
+      Object.assign(config, require(userConfig.extends));
     } catch (_) {
-      Object.assign(config, require(path.join(root, npmConfig.extends)));
+      Object.assign(config, require(path.join(root, userConfig.extends)));
     }
   }
-  return Object.assign(config, npmConfig);
+  return Object.assign(config, userConfig);
 }
 
 function resolvePaths (config) {
