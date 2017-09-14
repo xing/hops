@@ -8,7 +8,7 @@ Additionally, hops-redux registers the [Thunk](https://github.com/gaearon/redux-
 To use hops-redux, you need to add it and its dependencies to an existing project that already has [hops-react](https://github.com/xing/hops/tree/master/packages/react) installed.
 
 ``` bash
-npm install --save hops-redux react-redux redux redux-thunk
+npm install --save hops-redux react react-redux redux redux-thunk
 ```
 
 # API

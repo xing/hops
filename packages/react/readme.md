@@ -6,7 +6,7 @@ Out of the box, hops-react additionally supports [React Router](https://github.c
 
 # Installation
 ``` bash
-npm install --save react react-dom react-helmet react-router react-router-dom hops-react
+npm install --save react react-dom react-helmet react-router react-router-dom hops-react hops-config
 ```
 
 # API
