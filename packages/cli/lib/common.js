@@ -4,10 +4,6 @@ var url = require('url');
 
 var hopsConfig = require('hops-config');
 
-var hopsLocations = hopsConfig.locations.map(function (location) {
-  return hopsConfig.basePath + location;
-});
-
 function defaultCallback (error) {
   if (error) {
     console.error(error.stack.toString());
@@ -27,7 +23,7 @@ exports.run = function run (app, callback) {
 };
 
 exports.rewritePath = function rewritePath (req, res, next) {
-  var location = hopsLocations.find(function (location) {
+  var location = hopsConfig.locations.find(function (location) {
     return (
       location !== hopsConfig.basePath + '/' &&
       req.url.indexOf(location) === 0
@@ -40,8 +36,8 @@ exports.rewritePath = function rewritePath (req, res, next) {
 };
 
 exports.registerMiddleware = function registerMiddleware (app, middleware) {
-  if (hopsLocations.length) {
-    hopsLocations.forEach(function (location) {
+  if (hopsConfig.locations.length) {
+    hopsConfig.locations.forEach(function (location) {
       app.get(location === '/' ? location : location + '*', middleware);
     });
   } else {

@@ -18,9 +18,7 @@ function getWebpackConfig (program) {
       {
         plugins: [
           new HopsPlugin(
-            hopsConfig.locations.map(function (location) {
-              return hopsConfig.basePath + location;
-            }),
+            hopsConfig.locations,
             nodeConfig
           ),
           new webpack.ProgressPlugin()
