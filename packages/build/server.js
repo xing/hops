@@ -12,7 +12,7 @@ process.on('unhandledRejection', function (error) {
   throw error;
 });
 
-module.exports = function runDevelop (program, callback) {
+module.exports = function runDevelop (options, callback) {
   var config = require(hopsConfig.developConfig);
   var watchOptions = config.devServer.watchOptions || config.watchOptions;
   var app = new WebpackServer(

@@ -2,10 +2,10 @@
 
 var startServer = require('../lib/server');
 
-var build = require('./build');
+var runBuild = require('../').runBuild;
 
 module.exports = function runServe (program, callback) {
-  build(program, function (error) {
+  runBuild(program, function (error) {
     if (error) {
       callback ? callback(error) : console.error(error.stack.toString());
     } else {
