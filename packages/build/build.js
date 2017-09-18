@@ -11,8 +11,8 @@ var nodeConfig = require(hopsConfig.nodeConfig);
 
 var mergeWithPlugins = merge.strategy({ plugins: 'append' });
 
-function getWebpackConfig (program) {
-  if (program.static) {
+function getWebpackConfig (options) {
+  if (options.static) {
     return mergeWithPlugins(
       buildConfig,
       {
@@ -47,6 +47,6 @@ function defaultCallback (error, stats) {
   }
 }
 
-module.exports = function runBuild (program, callback) {
-  webpack(getWebpackConfig(program)).run(callback || defaultCallback);
+module.exports = function runBuild (options, callback) {
+  webpack(getWebpackConfig(options)).run(callback || defaultCallback);
 };
