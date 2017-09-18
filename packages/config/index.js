@@ -45,14 +45,17 @@ function resolvePaths (config) {
 }
 
 function normalizeURLs (config) {
+  var basePath = config.basePath.replace(/^\/*/, '/').replace(/\/*$/, '');
+  var assetPath = config.assetPath.replace(/(^\/*|\/*$)/g, '');
+
   return Object.assign(config, {
     locations: config.locations.map(function (location) {
-      return location.replace(/\/*$/, '').replace(/^\/*/, '/');
+      return basePath + location.replace(/\/*$/, '').replace(/^\/*/, '/');
     }).sort(function (locationA, locationB) {
       return locationB.length - locationA.length;
     }),
-    basePath: config.basePath.replace(/^\/*/, '/').replace(/\/*$/, ''),
-    assetPath: config.assetPath.replace(/(^\/*|\/*$)/g, '')
+    basePath: basePath,
+    assetPath: assetPath
   });
 }
 
