@@ -6,7 +6,7 @@ var WebpackServer = require('webpack-dev-server');
 var hopsConfig = require('hops-config');
 var createMiddleware = require('hops-middleware');
 
-var common = require('../lib/common');
+var server = require('hops-server');
 
 process.on('unhandledRejection', function (error) {
   throw error;
@@ -19,16 +19,16 @@ module.exports = function runDevelop (program, callback) {
     webpack(config),
     Object.assign({}, config.devServer, {
       after: function (app) {
-        app.use(common.rewritePath);
-        common.bootstrap(app, hopsConfig);
-        common.registerMiddleware(app, createMiddleware(
+        app.use(server.rewritePath);
+        server.bootstrap(app, hopsConfig);
+        server.registerMiddleware(app, createMiddleware(
           require(hopsConfig.nodeConfig),
           watchOptions
         ));
-        common.teardown(app, hopsConfig);
+        server.teardown(app, hopsConfig);
       },
       watchOptions: watchOptions
     })
   );
-  common.run(app, callback);
+  server.run(app, callback);
 };
