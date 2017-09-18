@@ -1,0 +1,25 @@
+{
+  "name": "hops-server",
+  "version": "6.2.8",
+  "description": "Provides common functionality for express-like servers",
+  "keywords": [
+    "hops",
+    "webpack",
+    "express"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "peerDependencies": {
+    "hops-config": "6.2.8"
+  }
+}

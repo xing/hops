@@ -10,12 +10,12 @@ var helmet = require('helmet');
 var hopsConfig = require('hops-config');
 var webpackConfig = require(hopsConfig.nodeConfig);
 
-var common = require('./common');
+var server = require('hops-server');
 
 module.exports = function startServer (callback) {
   var app = express();
   app.use(helmet());
-  app.use(common.rewritePath);
+  app.use(server.rewritePath);
   app.use(express.static(hopsConfig.buildDir, {
     maxAge: '1y',
     setHeaders: function (res, filepath) {
@@ -25,17 +25,17 @@ module.exports = function startServer (callback) {
     },
     redirect: false
   }));
-  common.bootstrap(app, hopsConfig);
+  server.bootstrap(app, hopsConfig);
   var filePath = path.join(
     webpackConfig.output.path,
     webpackConfig.output.filename
   );
   if (fs.existsSync(filePath)) {
-    common.registerMiddleware(
+    server.registerMiddleware(
       app.use(helmet.noCache()),
       require(filePath)
     );
   }
-  common.teardown(app, hopsConfig);
-  common.run(app, callback);
+  server.teardown(app, hopsConfig);
+  server.run(app, callback);
 };
