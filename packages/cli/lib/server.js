@@ -19,7 +19,7 @@ module.exports = function startServer (callback) {
   app.use(express.static(hopsConfig.buildDir, {
     maxAge: '1y',
     setHeaders: function (res, filepath) {
-      if (mime.lookup(filepath) === 'text/html') {
+      if (mime.getType(filepath) === 'text/html') {
         helmet.noCache()(null, res, function () {});
       }
     },
