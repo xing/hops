@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "6.2.5",
+  "version": "6.2.6",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -19,7 +19,7 @@
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
   "peerDependencies": {
-    "hops-config": "6.2.5",
+    "hops-config": "6.2.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-helmet": "^5.2.0",
