@@ -31,10 +31,10 @@
     "hops-config": "6.2.5",
     "hops-middleware": "6.2.5",
     "hops-plugin": "6.2.5",
-    "mime": "^1.4.0",
+    "mime": "^2.0.2",
     "rimraf": "^2.6.2",
-    "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
     "webpack-merge": "^4.1.0"
   }
 }
