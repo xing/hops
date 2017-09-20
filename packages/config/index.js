@@ -88,9 +88,6 @@ module.exports = freeze(
         appDir: '.',
         buildDir: 'build',
         cacheDir: 'node_modules/.cache/hops',
-        buildConfig: require.resolve('./configs/build'),
-        developConfig: require.resolve('./configs/develop'),
-        nodeConfig: require.resolve('./configs/node'),
         manifest: manifestUtil.getManifest,
         assets: manifestUtil.getAssets
       })

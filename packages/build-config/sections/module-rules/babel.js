@@ -1,6 +1,6 @@
 'use strict';
 
-var hopsConfig = require('../..');
+var hopsConfig = require('hops-config');
 
 function createIdentifier (targets) {
   return JSON.stringify({

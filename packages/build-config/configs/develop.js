@@ -7,7 +7,7 @@ var webpack = require('webpack');
 
 var WriteManifestPlugin = require('../plugins/write-manifest');
 
-var hopsConfig = require('..');
+var hopsConfig = require('hops-config');
 
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 

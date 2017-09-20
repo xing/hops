@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var WebpackServer = require('webpack-dev-server');
 
 var hopsConfig = require('hops-config');
+var hopsBuildConfig = require('hops-build-config');
 var createMiddleware = require('hops-middleware');
 var server = require('hops-server');
 
@@ -14,7 +15,7 @@ process.on('unhandledRejection', function (error) {
 });
 
 function runDevelop (options, callback) {
-  var config = require(hopsConfig.developConfig);
+  var config = require(hopsBuildConfig.developConfig);
   var watchOptions = config.devServer.watchOptions || config.watchOptions;
   var app = new WebpackServer(
     webpack(config),
@@ -23,7 +24,7 @@ function runDevelop (options, callback) {
         app.use(server.rewritePath);
         server.bootstrap(app, hopsConfig);
         server.registerMiddleware(app, createMiddleware(
-          require(hopsConfig.nodeConfig),
+          require(hopsBuildConfig.nodeConfig),
           watchOptions
         ));
         server.teardown(app, hopsConfig);

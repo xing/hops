@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 
-var hopsConfig = require('..');
+var hopsConfig = require('hops-config');
 
 function readSSLFile (fileName) {
   var filePath = path.resolve(__dirname, '..', 'ssl', fileName);

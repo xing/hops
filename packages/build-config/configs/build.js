@@ -9,7 +9,7 @@ var MinifyPlugin = require('babel-minify-webpack-plugin');
 var WriteManifestPlugin = require('../plugins/write-manifest');
 var WriteFilePlugin = require('../plugins/write-file');
 
-var hopsConfig = require('..');
+var hopsConfig = require('hops-config');
 
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
