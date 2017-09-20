@@ -4,10 +4,11 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 
 var hopsConfig = require('hops-config');
+var hopsBuildConfig = require('hops-build-config');
 var HopsPlugin = require('hops-plugin');
 
-var buildConfig = require(hopsConfig.buildConfig);
-var nodeConfig = require(hopsConfig.nodeConfig);
+var buildConfig = require(hopsBuildConfig.buildConfig);
+var nodeConfig = require(hopsBuildConfig.nodeConfig);
 
 var cleanup = require('./lib/cleanup');
 

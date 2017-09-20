@@ -3,7 +3,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var hopsConfig = require('..');
+var hopsConfig = require('hops-config');
 
 var hopsConfigInstallDir = path.dirname(require.resolve('hops-config'));
 var modulesDir = path.resolve(hopsConfigInstallDir, '..');

@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
 
-var hopsConfig = require('..');
+var hopsConfig = require('hops-config');
 
 module.exports = function Plugin (regExp) {
   this.apply = function (compiler) {

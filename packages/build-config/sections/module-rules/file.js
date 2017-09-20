@@ -2,14 +2,13 @@
 
 var path = require('path');
 
-var hopsConfig = require('../..');
+var hopsConfig = require('hops-config');
 
 exports.default = {
-  test: /\.(png|gif|jpe?g|webp)$/,
+  test: /\.(html|svg|((o|t)tf)|woff2?|ico)$/,
   use: {
-    loader: require.resolve('url-loader'),
+    loader: require.resolve('file-loader'),
     options: {
-      limit: 10000,
       name: path.join(hopsConfig.assetPath, '[name]-[hash:16].[ext]')
     }
   }
