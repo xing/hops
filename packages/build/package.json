@@ -20,6 +20,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "hops-build-config": "6.2.8",
     "hops-middleware": "6.2.8",
     "hops-plugin": "6.2.8",
     "hops-server": "6.2.8",

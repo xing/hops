@@ -8,7 +8,8 @@ var mime = require('mime');
 var helmet = require('helmet');
 
 var hopsConfig = require('hops-config');
-var webpackConfig = require(hopsConfig.nodeConfig);
+var hopsBuildConfig = require('hops-build-config');
+var webpackConfig = require(hopsBuildConfig.nodeConfig);
 
 var server = require('hops-server');
 

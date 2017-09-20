@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var defaultConfig = require('hops-config/configs/node');
+var defaultConfig = require('hops-build-config/configs/node');
 
 var projectDir = path.resolve(__dirname, 'good');
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var hopsConfig = require('..');
+var hopsConfig = require('hops-config');
 
 module.exports = function getResolveConfig (target) {
   var platform = (target === 'node') ? 'server' : 'browser';
