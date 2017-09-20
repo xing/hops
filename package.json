@@ -19,6 +19,9 @@
     "version": "node scripts/version.js && git add -A packages",
     "postversion": "git push && git push --tags"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
     "TobiasKrogh <tobias@krogh.de> (https://www.xing.com/profile/Tobias_Krogh)",
@@ -72,6 +75,7 @@
     "mkdirp": "^0.5.1",
     "mocha": "^3.5.3",
     "mocha-standard": "^1.0.0",
+    "lerna": "^2.2.0",
     "npm-check-updates": "^2.12.1",
     "nsp": "^2.8.1",
     "react": "^15.6.2",
