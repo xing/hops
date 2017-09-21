@@ -24,7 +24,7 @@ describe('development server', function () {
     Object.keys(require.cache).forEach(function (key) {
       delete require.cache[key];
     });
-    require('hops-cli').runDevelop({}, function (_, _app) {
+    require('hops-local-cli').run(['develop', '--clean'], function (_, _app) {
       app = _app;
       done();
     });
