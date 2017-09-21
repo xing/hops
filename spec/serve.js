@@ -25,9 +25,12 @@ describe('production server', function () {
     Object.keys(require.cache).forEach(function (key) {
       delete require.cache[key];
     });
-    require('hops-cli').runServe({}, function (_, _app) {
-      app = _app;
-      done();
+    var localCli = require('hops-local-cli');
+    localCli.run(['build', '--clean'], function () {
+      localCli.run(['serve'], function (_, _app) {
+        app = _app;
+        done();
+      });
     });
   });
   after(function () {
