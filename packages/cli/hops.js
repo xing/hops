@@ -1,41 +1,183 @@
 #!/usr/bin/env node
 'use strict';
 
-var program = require('commander');
-var rimraf = require('rimraf');
+var fs = require('fs');
+var path = require('path');
+var execSync = require('child_process').execSync;
+var resolveCwd = require('resolve-cwd');
+var validatePackageName = require('validate-npm-package-name');
 
-var hopsConfig = require('hops-config');
-var commands = require('./');
+var packageManifest = require('./package.json');
 
-function cleanup () {
-  var dirs = [hopsConfig.buildDir, hopsConfig.cacheDir];
-  return Promise.all(dirs.map(function (dir) {
-    return new Promise(function (resolve) {
-      rimraf(dir, resolve);
-    });
-  }));
+var getLocalCliPath = function () {
+  try {
+    return resolveCwd('hops-local-cli');
+  } catch (error) {
+    return null;
+  }
+};
+
+var PACKAGES_TO_INSTALL = [
+  'hops-local-cli'
+];
+
+function globalCLI (argv) {
+  return require('yargs')
+    .version(packageManifest.version)
+    .usage('Usage: $0 <command> [options]')
+    .command('init <project-name>', 'Generates a new project with the specified name')
+    .option('template', {
+      type: 'string',
+      describe: 'Use this with the npm package name of a template to ' +
+        'initialize with a different template',
+      default: 'hops-template-default'
+    })
+    .option('verbose', {
+      type: 'boolean',
+      describe: 'Increase verbosity of command',
+      default: false
+    })
+    .option('npm', {
+      type: 'boolean',
+      describe: 'Force usage of `npm` instead of yarn',
+      default: false
+    })
+    .example(
+      '$0 init my-project',
+      'Creates the folder my-project inside the current directory and ' +
+        'initializes a sample hops project inside it.'
+    )
+    .example(
+      '$0 init --template hops-template-malt my-project',
+      'Creates the folder my-project inside the current directory and ' +
+        'initializes an example project using malt inside it.'
+    )
+    .help('h')
+    .alias('h', 'help')
+    .demandCommand()
+    .wrap(72)
+    .parse(argv);
 }
 
-program
-.version(require('./package.json').version)
-.description('Commands: start, serve, develop, build')
-.option('-s, --static', 'Statically build locations')
-.arguments('<command>')
-.action(function run (command) {
-  cleanup().then(function () {
-    switch (command) {
-      case 'start':
-        return run(process.env.NODE_ENV === 'production' ? 'serve' : 'develop');
-      case 'serve':
-        return commands.runServe(program);
-      case 'develop':
-        return commands.runDevelop(program);
-      case 'build':
-        return commands.runBuild(program);
-      default:
-        console.error('invalid command: ' + command);
-        process.exit(1);
+function validateName (name) {
+  var validationResult = validatePackageName(name);
+  if (!validationResult.validForNewPackages) {
+    console.error(
+      'Cannot create a project with the name:',
+      name,
+      'because of the following npm restrictions:'
+    );
+    if (validationResult.errors) {
+      validationResult.errors.forEach(function (msg) { console.error(msg); });
     }
-  });
-})
-.parse(process.argv);
+    if (validationResult.warnings) {
+      validationResult.warnings.forEach(function (msg) { console.warn(msg); });
+    }
+    process.exit(1);
+  }
+}
+
+function createDirectory (root) {
+  if (fs.existsSync(root)) {
+    console.error(
+      'A directory with the name:',
+      name,
+      'already exists in:',
+      process.cwd(),
+      '\nPlease remove this directory or choose a different project-name.'
+    );
+    process.exit(1);
+  }
+
+  fs.mkdirSync(root);
+}
+
+function writePackageManifest (root) {
+  fs.writeFileSync(
+    path.join(root, 'package.json'),
+    JSON.stringify({
+      name: name,
+      version: '1.0.0',
+      private: true
+    }, null, 2)
+  );
+}
+
+function isYarnAvailable () {
+  try {
+    execSync('yarn --version', { stdio: 'ignore' });
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+function installPackages (packages, options) {
+  var command = null;
+  if (isYarnAvailable() && !options.npm) {
+    command = [
+      'yarn',
+      'add',
+      '--exact'
+    ];
+  } else {
+    command = [
+      'npm',
+      'install',
+      '--save',
+      '--save-exact'
+    ];
+  }
+  if (options.verbose) {
+    command.push('--verbose');
+  }
+  Array.prototype.push.apply(command, packages);
+
+  try {
+    execSync(command.join(' '), { stdio: 'inherit' });
+  } catch (error) {
+    console.error(error.message);
+    if (options.verbose) {
+      console.error(error);
+      console.error('Command: "', command.join(' '), 'has failed.');
+    }
+    process.exit(1);
+  }
+}
+
+var localCliPath = getLocalCliPath();
+var argv = process.argv.slice(2);
+
+var isInsideHopsProject = false;
+try {
+  var manifest = require(path.resolve(process.cwd(), 'package.json'));
+  if (manifest.dependencies) {
+    isInsideHopsProject = Boolean(manifest.dependencies['hops-local-cli']);
+  }
+} catch (error) {
+  isInsideHopsProject = false;
+}
+
+if (isInsideHopsProject) {
+  if (localCliPath) {
+    require(localCliPath).run(argv);
+  } else {
+    console.error(
+      'It appears that we are inside a hops project but the dependencies have',
+      'not been installed.\n',
+      'Please execute "yarn install" or "npm install" and retry.'
+    );
+    process.exit(1);
+  }
+} else {
+  var options = globalCLI(argv);
+  var name = options.projectName;
+  var root = process.cwd();
+
+  validateName(name);
+  createDirectory(path.resolve(root, name));
+  writePackageManifest(path.resolve(root, name));
+  process.chdir(path.resolve(root, name));
+  installPackages(PACKAGES_TO_INSTALL, options);
+  require(getLocalCliPath()).init(root, name, options);
+}
