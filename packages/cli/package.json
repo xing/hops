@@ -7,15 +7,12 @@
     "cli"
   ],
   "license": "MIT",
-  "main": "index.js",
   "bin": {
     "hops": "hops.js"
   },
+  "preferGlobal": true,
   "files": [
-    "hops.js",
-    "index.js",
-    "commands",
-    "lib"
+    "hops.js"
   ],
   "scripts": {
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
@@ -25,10 +22,8 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "commander": "^2.11.0",
-    "hops-build": "6.2.8",
-    "hops-express": "6.2.8",
-    "hops-config": "6.2.8",
-    "rimraf": "^2.6.2"
+    "resolve-cwd": "^2.0.0",
+    "validate-npm-package-name": "^3.0.0",
+    "yargs": "^9.0.1"
   }
 }
