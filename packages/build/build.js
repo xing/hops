@@ -9,6 +9,8 @@ var HopsPlugin = require('hops-plugin');
 var buildConfig = require(hopsConfig.buildConfig);
 var nodeConfig = require(hopsConfig.nodeConfig);
 
+var cleanup = require('./lib/cleanup');
+
 var mergeWithPlugins = merge.strategy({ plugins: 'append' });
 
 function getWebpackConfig (options) {
@@ -48,5 +50,14 @@ function defaultCallback (error, stats) {
 }
 
 module.exports = function runBuild (options, callback) {
-  webpack(getWebpackConfig(options)).run(callback || defaultCallback);
+  function build () {
+    return webpack(getWebpackConfig(options)).run(callback || defaultCallback);
+  }
+
+  if (options.clean) {
+    var dirs = [hopsConfig.buildDir, hopsConfig.cacheDir];
+    return cleanup(dirs).then(build);
+  } else {
+    return build();
+  }
 };

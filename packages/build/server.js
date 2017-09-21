@@ -5,14 +5,15 @@ var WebpackServer = require('webpack-dev-server');
 
 var hopsConfig = require('hops-config');
 var createMiddleware = require('hops-middleware');
-
 var server = require('hops-server');
+
+var cleanup = require('./lib/cleanup');
 
 process.on('unhandledRejection', function (error) {
   throw error;
 });
 
-module.exports = function runDevelop (options, callback) {
+function runDevelop (options, callback) {
   var config = require(hopsConfig.developConfig);
   var watchOptions = config.devServer.watchOptions || config.watchOptions;
   var app = new WebpackServer(
@@ -31,4 +32,13 @@ module.exports = function runDevelop (options, callback) {
     })
   );
   server.run(app, callback);
+}
+
+module.exports = function (options, callback) {
+  if (options.clean) {
+    var dirs = [hopsConfig.buildDir, hopsConfig.cacheDir];
+    return cleanup(dirs).then(runDevelop.bind(null, options, callback));
+  } else {
+    return runDevelop(options, callback);
+  }
 };
