@@ -1,7 +1,7 @@
 'use strict';
 
 function esc (data) {
-  return JSON.stringify(data).replace(/</g, '\\u003c');
+  return JSON.stringify(data).replace(/<\//g, '\\u003c');
 }
 
 module.exports = function (data) {
