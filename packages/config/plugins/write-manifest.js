@@ -7,7 +7,6 @@ var mkdirp = require('mkdirp');
 var hopsConfig = require('..');
 
 module.exports = function Plugin (regExp) {
-  mkdirp.sync(hopsConfig.cacheDir);
   this.apply = function (compiler) {
     compiler.plugin('emit', function (compilation, callback) {
       var paths = Object.keys(compilation.assets);
@@ -32,6 +31,7 @@ module.exports = function Plugin (regExp) {
       }, { css: [], js: [] });
       var fileName = path.resolve(hopsConfig.cacheDir, 'manifest.json');
       var fileContent = JSON.stringify(assets, null, 2);
+      mkdirp.sync(hopsConfig.cacheDir);
       fs.writeFile(fileName, fileContent, callback);
     });
   };
