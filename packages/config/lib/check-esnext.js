@@ -6,7 +6,8 @@ var path = require('path');
 var getPkgDir = require('pkg-dir').sync;
 
 var appDir = getPkgDir();
-var moduleDir = path.join(appDir, 'node_modules');
+var hopsConfigInstallDir = path.dirname(require.resolve('hops-config'));
+var moduleDir = path.resolve(hopsConfigInstallDir, '..');
 
 function checkESnextPath (filepath) {
   return (
