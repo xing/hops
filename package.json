@@ -8,16 +8,15 @@
     "postcss"
   ],
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "start": "cd demo; rm -rf dist node_modules/*hops*; npm install --no-package-lock; npm start",
-    "test": "rm -rf node_modules/*hops*; npm install --no-package-lock; mocha \"spec/*.js\"",
-    "release": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && npm publish\" \\;",
-    "update": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && ncu -a && ncu -a --peer\" \\;",
-    "preupdate": "ncu -a && ncu -a --dev && (cd demo && ncu -a && ncu -a --dev)",
-    "postupdate": "rm -rf node_modules demo/node_modules && npm install --no-package-lock",
-    "nsp": "find packages -depth 1 -type d -exec bash -c \"cd '{}' && nsp check\" \\;",
-    "prensp": "nsp check; (cd demo; nsp check); exit 0",
-    "version": "node scripts/version.js && git add -A packages",
-    "postversion": "git push && git push --tags"
+    "test": "mocha \"spec/*.js\"",
+    "release": "lerna publish",
+    "update": "lerna exec -- \"ncu -a && ncu -a --dev && ncu -a --peer\"",
+    "preupdate": "ncu -a && ncu -a --dev",
+    "postupdate": "lerna clean --yes && lerna bootstrap",
+    "nsp": "lerna exec -- \"nsp check\"",
+    "prensp": "nsp check; exit 0"
   },
   "workspaces": [
     "packages/*"
