@@ -20,6 +20,7 @@
     "pretest": "flow"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
     "hops-cli": "file:../packages/cli",
     "hops-config": "file:../packages/config",
     "hops-middleware": "file:../packages/middleware",
