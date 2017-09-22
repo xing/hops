@@ -1,8 +1,12 @@
 'use strict';
 
+var path = require('path');
 var webpack = require('webpack');
 
 var hopsConfig = require('..');
+
+var hopsConfigInstallDir = path.dirname(require.resolve('hops-config'));
+var modulesDir = path.resolve(hopsConfigInstallDir, '..');
 
 module.exports = {
   target: 'node',
@@ -18,6 +22,7 @@ module.exports = {
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('node'),
   externals: [require('webpack-node-externals')({
+    modulesDir: modulesDir,
     whitelist: require('../lib/check-esnext')
   })],
   module: {
