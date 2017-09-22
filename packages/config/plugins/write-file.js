@@ -7,7 +7,6 @@ var mkdirp = require('mkdirp');
 var hopsConfig = require('..');
 
 module.exports = function Plugin (regExp) {
-  mkdirp.sync(hopsConfig.cacheDir);
   this.apply = function (compiler) {
     compiler.plugin('emit', function (compilation, callback) {
       var assetKeys = Object.keys(compilation.assets);
@@ -17,6 +16,7 @@ module.exports = function Plugin (regExp) {
           var fileContent = compilation.assets[assetKey].source();
           delete compilation.assets[assetKey];
           result.push(new Promise(function (resolve, reject) {
+            mkdirp.sync(hopsConfig.cacheDir);
             fs.writeFile(fileName, fileContent, function (err) {
               err ? reject(err) : resolve();
             });
