@@ -8,9 +8,6 @@ var mime = require('mime');
 var helmet = require('helmet');
 
 var hopsConfig = require('hops-config');
-var hopsBuildConfig = require('hops-build-config');
-var webpackConfig = require(hopsBuildConfig.nodeConfig);
-
 var server = require('hops-server');
 
 function createApp () {
@@ -27,10 +24,7 @@ function createApp () {
     redirect: false
   }));
   server.bootstrap(app, hopsConfig);
-  var filePath = path.join(
-    webpackConfig.output.path,
-    webpackConfig.output.filename
-  );
+  var filePath = path.join(hopsConfig.cacheDir, 'server.js');
   if (fs.existsSync(filePath)) {
     server.registerMiddleware(
       app.use(helmet.noCache()),
