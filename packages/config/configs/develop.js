@@ -43,7 +43,7 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#source-map',
+  devtool: 'cheap-module-eval-source-map',
   watchOptions: {
     aggregateTimeout: 300,
     ignored: /node_modules/
