@@ -1,4 +1,14 @@
 language: node_js
+
+before_install:
+  - npm install -g yarn@1
+
+install:
+  - yarn install
+
+before_script:
+  - yarn run bootstrap
+
 node_js:
 - '5'
 - '6'
