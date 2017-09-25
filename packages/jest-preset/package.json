@@ -21,6 +21,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
     "babel-jest": "21",
     "identity-obj-proxy": "^3.0.0"
   },
