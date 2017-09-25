@@ -45,20 +45,29 @@ function installPackages (packages, options) {
     command = options.installCommand.split(' ');
   } else {
     if (options.yarn) {
-      command = [
-        'yarn',
-        'add',
-        '--exact'
-      ];
+      if (packages.length) {
+        command = [
+          'yarn',
+          'add',
+          '--exact'
+        ];
+      } else {
+        command = [
+          'yarn',
+          'install'
+        ];
+      }
       if (options.dev) {
         command.push('--dev');
       }
     } else {
       command = [
         'npm',
-        'install',
-        '--save-exact'
+        'install'
       ];
+      if (packages.length) {
+        command.push('--save-exact');
+      }
       if (options.dev) {
         command.push('--save-dev');
       } else {
@@ -87,6 +96,20 @@ function installPackages (packages, options) {
   return false;
 }
 module.exports.installPackages = installPackages;
+
+function getTarball (name, options) {
+  var command = 'npm pack ' + name;
+  try {
+    if (options.verbose) {
+      console.log('Executing:', command);
+    }
+    return execIgnoreStdError(command, options);
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+module.exports.getTarball = getTarball;
 
 function isPackageInstalled (name) {
   try {

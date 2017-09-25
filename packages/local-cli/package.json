@@ -26,6 +26,8 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "tar": "^4.0.1",
+    "validate-npm-package-name": "^3.0.0",
     "yargs": "^9.0.1"
   },
   "optionalDependencies": {
