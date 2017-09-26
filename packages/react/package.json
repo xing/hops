@@ -18,6 +18,9 @@
   "scripts": {
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
+  "dependencies": {
+    "serialize-javascript": "^1.4.0"
+  },
   "peerDependencies": {
     "hops-config": "6.2.6",
     "react": "^15.6.1",
