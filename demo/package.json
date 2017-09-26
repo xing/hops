@@ -28,8 +28,8 @@
     "hops-redux": "file:../packages/redux",
     "hops-renderer": "file:../packages/renderer",
     "hops-transpiler": "file:../packages/transpiler",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
@@ -38,9 +38,9 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "flow-bin": "^0.54.1",
+    "flow-bin": "^0.55.0",
     "jest": "^21.1.0",
-    "react-test-renderer": "^15.6.1",
+    "react-test-renderer": "^15.6.2",
     "jest-preset-hops": "file:../packages/jest-preset"
   },
   "jest": {
