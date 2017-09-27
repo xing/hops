@@ -23,6 +23,13 @@ module.exports = function run (argv, callback) {
     args.command(require('./commands/serve')(callback));
   }
 
+  if (
+    pm.isPackageInstalled('hops-build') &&
+    pm.isPackageInstalled('hops-express')
+  ) {
+    args.command(require('./commands/start')(callback));
+  }
+
   args.parse(argv);
 };
 
