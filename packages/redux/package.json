@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "6.2.7",
+  "version": "6.2.8",
   "description": "React and Redux implementation for Hops",
   "keywords": [
     "hops",
@@ -16,7 +16,7 @@
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
   },
   "peerDependencies": {
-    "hops-react": "6.2.7",
+    "hops-react": "6.2.8",
     "react": "^15.6.2",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
