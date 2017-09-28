@@ -54,7 +54,7 @@
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2",
+    "webpack-dev-server": "^2.9.1",
     "webpack-node-externals": "^1.6.0"
   }
 }
