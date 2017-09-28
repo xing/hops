@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "6.2.7",
+  "version": "6.2.8",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -22,7 +22,7 @@
     "serialize-javascript": "^1.4.0"
   },
   "peerDependencies": {
-    "hops-config": "6.2.7",
+    "hops-config": "6.2.8",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-helmet": "^5.2.0",
