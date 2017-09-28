@@ -12,9 +12,6 @@
   "files": [
     "index.js"
   ],
-  "scripts": {
-    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
-  },
   "peerDependencies": {
     "hops-react": "6.2.8",
     "react": "^15.6.2",

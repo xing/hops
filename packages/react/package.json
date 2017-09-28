@@ -15,9 +15,6 @@
     "node.js",
     "lib"
   ],
-  "scripts": {
-    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
-  },
   "dependencies": {
     "serialize-javascript": "^1.4.0"
   },
