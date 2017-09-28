@@ -1,16 +1,18 @@
 {
   "name": "hops-build",
   "version": "6.2.8",
-  "description": "",
+  "description": "Hops wrapper around webpack to execute a build",
   "keywords": [
     "hops",
-    "webpack",
-    "express"
+    "webpack"
   ],
   "license": "MIT",
   "main": "index.js",
   "files": [
-    "index.js"
+    "build.js",
+    "index.js",
+    "server.js",
+    "lib"
   ],
   "scripts": {
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"

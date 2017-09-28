@@ -1,25 +1,16 @@
 {
   "name": "hops-config",
   "version": "6.2.8",
-  "description": "Hops core configuration leveraging Webpack and Babel",
+  "description": "Hops core configuration",
   "keywords": [
     "hops",
-    "webpack",
-    "babel",
-    "postcss"
+    "config"
   ],
   "license": "MIT",
   "main": "index.js",
   "files": [
     "index.js",
-    "manifest.js",
-    "configs",
-    "lib",
-    "loaders",
-    "plugins",
-    "sections",
-    "shims",
-    "ssl"
+    "lib"
   ],
   "scripts": {
     "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"

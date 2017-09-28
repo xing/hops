@@ -30,13 +30,8 @@ This example shows how to create a generic ECMAScript Next module and use it in 
   "server": "src/server.js",
   "main": "index.js",
   "dependencies": {
-    "babel-preset-es2015": "*",
-    "hops": "*"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
+    "hops-build-config": "*",
+    "hops-transpiler": "*"
   }
   ...
 }
@@ -51,8 +46,8 @@ export default `hello foo`;
 ##### `index.js`
 
 ```javascript
-const transpile = require('hops/transpiler');
-const webpackConfig = require('hops/config/render');
+const transpile = require('hops-transpiler');
+const webpackConfig = require('hops-build-config').nodeConfig;
 const transpilation = transpile(webpackConfig /*, watchOptions */);
 
 transpilation.on('success', function (result) {

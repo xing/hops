@@ -49,8 +49,8 @@ export default (req, res) => {
 ##### `webpack.config.js`
 
 ```javascript
-const HopsPlugin = require('hops/plugin');
-const webpackConfig = require('hops/config/render');
+const HopsPlugin = require('hops-plugin');
+const webpackConfig = require('hops-build-config').nodeConfig;
 
 const locations = ['foo', 'bar'];
 

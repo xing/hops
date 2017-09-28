@@ -24,13 +24,8 @@ This example shows how to write and configure a custom middleware and use it in 
   "server": "src/server.js",
   "main": "index.js",
   "dependencies": {
-    "babel-preset-es2015": "*",
-    "hops": "*"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
+    "hops-build-config": "*",
+    "hops-middleware": "*"
   }
   ...
 }
@@ -60,8 +55,8 @@ export default (req, res) => {
 
 ```javascript
 const express = require('express');
-const createMiddleware = require('hops/middleware');
-const webpackConfig = require('hops/config/render');
+const createMiddleware = require('hops-middleware');
+const webpackConfig = require('hops-build-config').nodeConfig;
 
 const app = express();
 
