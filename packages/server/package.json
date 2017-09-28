@@ -4,7 +4,7 @@
   "description": "Provides common functionality for express-like servers",
   "keywords": [
     "hops",
-    "webpack",
+    "webpack-dev-server",
     "express"
   ],
   "license": "MIT",

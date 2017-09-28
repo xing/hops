@@ -1,7 +1,7 @@
 {
   "name": "hops-build-config",
   "version": "6.2.8",
-  "description": "Hops core configuration leveraging Webpack and Babel",
+  "description": "Hops build configuration leveraging Webpack and Babel",
   "keywords": [
     "hops",
     "webpack",
@@ -12,7 +12,6 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "manifest.js",
     "configs",
     "lib",
     "loaders",

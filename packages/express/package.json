@@ -1,15 +1,15 @@
 {
   "name": "hops-express",
   "version": "6.2.8",
-  "description": "",
+  "description": "Express server to enable server-side rendering of hops applications",
   "keywords": [
     "hops",
-    "webpack",
     "express"
   ],
   "license": "MIT",
   "main": "index.js",
   "files": [
+    "app.js",
     "index.js"
   ],
   "scripts": {
