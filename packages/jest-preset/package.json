@@ -13,9 +13,6 @@
     "tpl-mock.js",
     "transform.js"
   ],
-  "scripts": {
-    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
