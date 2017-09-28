@@ -13,7 +13,7 @@ npm install --save hops-redux react react-redux redux redux-thunk
 
 # API
 ## `createContext(options)`
-`createContext()` is hops-redux's main export. Of course, it is based on the implementation in [hops-react](https://github.com/xing/hops/tree/update-readmes/packages/react#contextoptions), but takes an additional `reducers` option.
+`createContext()` is hops-redux's main export. Of course, it is based on the implementation in [hops-react](https://github.com/xing/hops/tree/master/packages/react#contextoptions), but takes an additional `reducers` option.
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
@@ -22,7 +22,7 @@ npm install --save hops-redux react react-redux redux redux-thunk
 | reducers | Object | `{}` | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html) |
 
 ## `Context(options)`
-`Context()` works the same way as `createContext()`, but with an object-oriented API. Additionally, you can use its [`Context.extend()`](https://github.com/xing/hops/tree/update-readmes/packages/react#contextoptions) method to build upon hops-redux and create advanced context implementations.
+`Context()` works the same way as `createContext()`, but with an object-oriented API. Additionally, you can use its [`Context.extend()`](https://github.com/xing/hops/tree/master/packages/react#contextoptions) method to build upon hops-redux and create advanced context implementations.
 
 # Example
 
