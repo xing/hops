@@ -30,9 +30,9 @@ function getBabelLoader (targets, plugins) {
           'react'
         ],
         plugins: [].concat(plugins || [], [
-          'flow-react-proptypes',
-          'transform-class-properties',
-          'transform-object-rest-spread'
+          require.resolve('babel-plugin-flow-react-proptypes'),
+          require.resolve('babel-plugin-transform-class-properties'),
+          require.resolve('babel-plugin-transform-object-rest-spread')
         ])
       }
     },
@@ -42,10 +42,10 @@ function getBabelLoader (targets, plugins) {
 
 exports.default = getBabelLoader(
   { browsers: hopsConfig.browsers },
-  'syntax-dynamic-import'
+  require.resolve('babel-plugin-syntax-dynamic-import')
 );
 
 exports.node = getBabelLoader(
   { node: 'current' },
-  'dynamic-import-node'
+  require.resolve('babel-plugin-dynamic-import-node')
 );
