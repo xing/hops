@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "flow-bin": "^0.55.0",
-    "jest": "^21.1.0",
+    "jest": "^21.2.1",
     "react-test-renderer": "^15.6.2",
     "jest-preset-hops": "file:../packages/jest-preset"
   },

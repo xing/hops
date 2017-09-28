@@ -26,15 +26,15 @@
   },
   "dependencies": {
     "commander": "^2.11.0",
-    "express": "^4.15.5",
-    "helmet": "^3.8.1",
+    "express": "^4.16.0",
+    "helmet": "^3.8.2",
     "hops-config": "6.2.7",
     "hops-middleware": "6.2.7",
     "hops-plugin": "6.2.7",
     "mime": "^2.0.3",
     "rimraf": "^2.6.2",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2",
+    "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   }
 }
