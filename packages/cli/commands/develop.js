@@ -18,7 +18,7 @@ module.exports = function runDevelop (program, callback) {
   var app = new WebpackServer(
     webpack(config),
     Object.assign({}, config.devServer, {
-      setup: function (app) {
+      after: function (app) {
         app.use(common.rewritePath);
         common.bootstrap(app, hopsConfig);
         common.registerMiddleware(app, createMiddleware(
