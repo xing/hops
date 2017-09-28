@@ -11,9 +11,6 @@
   "files": [
     "index.js"
   ],
-  "scripts": {
-    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
-  },
   "dependencies": {
     "memory-fs": "^0.4.1",
     "require-from-string": "^2.0.1",
