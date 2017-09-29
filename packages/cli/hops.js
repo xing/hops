@@ -5,7 +5,7 @@ var program = require('commander');
 var rimraf = require('rimraf');
 
 var hopsConfig = require('hops-config');
-var hopsBuild = require('hops-build');
+var commands = require('./');
 
 function cleanup () {
   var dirs = [hopsConfig.buildDir, hopsConfig.cacheDir];
@@ -27,11 +27,11 @@ program
       case 'start':
         return run(process.env.NODE_ENV === 'production' ? 'serve' : 'develop');
       case 'serve':
-        return require('./commands/serve')(program);
+        return commands.runServe(program);
       case 'develop':
-        return hopsBuild.runServer(program);
+        return commands.runDevelop(program);
       case 'build':
-        return hopsBuild.runBuild(program);
+        return commands.runBuild(program);
       default:
         console.error('invalid command: ' + command);
         process.exit(1);

@@ -12,7 +12,7 @@ var webpackConfig = require(hopsConfig.nodeConfig);
 
 var server = require('hops-server');
 
-module.exports = function startServer (callback) {
+function createApp () {
   var app = express();
   app.use(helmet());
   app.use(server.rewritePath);
@@ -37,5 +37,8 @@ module.exports = function startServer (callback) {
     );
   }
   server.teardown(app, hopsConfig);
-  server.run(app, callback);
-};
+
+  return app;
+}
+
+module.exports = createApp;
