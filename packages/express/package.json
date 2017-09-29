@@ -1,0 +1,31 @@
+{
+  "name": "hops-express",
+  "version": "6.2.8",
+  "description": "",
+  "keywords": [
+    "hops",
+    "webpack",
+    "express"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests in xing/hops repo\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "express": "^4.16.0",
+    "helmet": "^3.8.2",
+    "hops-server": "6.2.8",
+    "mime": "^2.0.3"
+  },
+  "peerDependencies": {
+    "hops-config": "6.2.8"
+  }
+}
