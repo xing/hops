@@ -1,5 +1,5 @@
 {
-  "name": "hops-example",
+  "name": "hops-template-default",
   "version": "1.0.0",
   "description": "example of hops in action",
   "main": "src/app.js",
@@ -20,14 +20,11 @@
     "pretest": "flow"
   },
   "dependencies": {
-    "hops-cli": "file:../packages/cli",
-    "hops-config": "file:../packages/config",
-    "hops-middleware": "file:../packages/middleware",
-    "hops-plugin": "file:../packages/plugin",
-    "hops-react": "file:../packages/react",
-    "hops-redux": "file:../packages/redux",
-    "hops-renderer": "file:../packages/renderer",
-    "hops-transpiler": "file:../packages/transpiler",
+    "hops-config": "6.2.8",
+    "hops-express": "6.2.8",
+    "hops-local-cli": "6.2.8",
+    "hops-react": "6.2.8",
+    "hops-redux": "6.2.8",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-helmet": "^5.2.0",
@@ -39,9 +36,10 @@
   },
   "devDependencies": {
     "flow-bin": "^0.55.0",
+    "hops-build": "6.2.8",
     "jest": "^21.2.1",
-    "react-test-renderer": "^15.6.2",
-    "jest-preset-hops": "file:../packages/jest-preset"
+    "jest-preset-hops": "6.2.8",
+    "react-test-renderer": "^15.6.2"
   },
   "jest": {
     "preset": "jest-preset-hops"
