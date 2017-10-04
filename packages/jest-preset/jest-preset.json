@@ -1,14 +1,14 @@
 {
   "moduleNameMapper": {
-    "^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$": "<rootDir>/node_modules/jest-preset-hops/file-mock.js",
-    "^.+\\.tpl$": "<rootDir>/node_modules/jest-preset-hops/tpl-mock.js",
+    "^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$": "jest-preset-hops/file-mock.js",
+    "^.+\\.tpl$": "jest-preset-hops/tpl-mock.js",
     "^.+\\.css$": "identity-obj-proxy"
   },
   "transform": {
-    "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/jest-preset-hops/transform.js"
+    "^.+\\.(js|jsx|mjs)$": "jest-preset-hops/transform.js"
   },
   "transformIgnorePatterns": [],
   "setupFiles": [
-    "<rootDir>/node_modules/regenerator-runtime/runtime"
+    "regenerator-runtime/runtime"
   ]
 }
