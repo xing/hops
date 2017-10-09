@@ -3,5 +3,5 @@ npm-debug.log
 .DS_Store
 yarn.lock
 package-lock.json
-spec/mock/integration/build
+packages/spec/mock/integration/build
 .vscode
