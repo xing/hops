@@ -1,0 +1,40 @@
+{
+  "name": "hops-spec",
+  "version": "6.2.8",
+  "private": true,
+  "scripts": {
+    "test": "mocha --exit '*.js'"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "hops-build": "6.2.8",
+    "hops-build-config": "6.2.8",
+    "hops-cli": "6.2.8",
+    "hops-config": "6.2.8",
+    "hops-express": "6.2.8",
+    "hops-local-cli": "6.2.8",
+    "hops-middleware": "6.2.8",
+    "hops-plugin": "6.2.8",
+    "hops-react": "6.2.8",
+    "hops-redux": "6.2.8",
+    "hops-renderer": "6.2.8",
+    "hops-server": "6.2.8",
+    "hops-transpiler": "6.2.8",
+    "isomorphic-fetch": "^2.2.1",
+    "jest": "^21.2.1",
+    "jest-preset-hops": "6.2.8",
+    "mkdirp": "^0.5.1",
+    "mocha": "^4.0.1",
+    "mocha-standard": "^1.0.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "semistandard": "^11.0.0"
+  }
+}
