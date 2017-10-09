@@ -39,6 +39,7 @@
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
+    "hops-config": "6.2.8",
     "json-loader": "^0.5.7",
     "lodash.template": "^4.4.0",
     "mkdirp": "^0.5.1",
@@ -52,8 +53,5 @@
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-node-externals": "^1.6.0"
-  },
-  "peerDependencies": {
-    "hops-config": "6.2.8"
   }
 }

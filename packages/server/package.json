@@ -16,7 +16,7 @@
     "type": "git",
     "url": "https://github.com/xing/hops.git"
   },
-  "peerDependencies": {
+  "dependencies": {
     "hops-config": "6.2.8"
   }
 }

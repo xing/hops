@@ -19,10 +19,8 @@
   "dependencies": {
     "express": "^4.16.0",
     "helmet": "^3.8.2",
+    "hops-config": "6.2.8",
     "hops-server": "6.2.8",
     "mime": "^2.0.3"
-  },
-  "peerDependencies": {
-    "hops-config": "6.2.8"
   }
 }
