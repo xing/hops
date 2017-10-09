@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "start": "cd packages/hops-template-default; yarn run start",
+    "start": "cd packages/template-default; yarn run start",
     "test": "mocha \"spec/*.js\"",
     "release": "lerna publish",
     "update": "lerna exec -- \"ncu -a && ncu -a --dev && ncu -a --peer\"",
