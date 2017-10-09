@@ -16,10 +16,10 @@
     "lib"
   ],
   "dependencies": {
+    "hops-config": "6.2.8",
     "serialize-javascript": "^1.4.0"
   },
   "peerDependencies": {
-    "hops-config": "6.2.8",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-helmet": "^5.2.0",

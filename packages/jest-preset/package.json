@@ -20,10 +20,10 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-jest": "21",
+    "hops-build-config": "6.2.8",
     "identity-obj-proxy": "^3.0.0"
   },
   "peerDependencies": {
-    "hops-build-config": "6.2.8",
     "jest": "21"
   }
 }

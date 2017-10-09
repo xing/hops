@@ -27,8 +27,8 @@
     "validate-npm-package-name": "^3.0.0",
     "yargs": "^9.0.1"
   },
-  "optionalDependencies": {
-    "hops-build": "6.2.8",
-    "hops-express": "6.2.8"
+  "peerDependencies": {
+    "hops-build": "*",
+    "hops-express": "*"
   }
 }
