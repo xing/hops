@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "7.0.0-0",
+  "version": "7.0.0-1",
   "private": true,
   "scripts": {
     "test": "mocha --exit '*.js'"
@@ -10,10 +10,10 @@
     "eslint-plugin-flowtype": "^2.39.1",
     "hops-build": "7.0.0-0",
     "hops-build-config": "7.0.0-0",
-    "hops-cli": "7.0.0-0",
+    "hops-cli": "7.0.0-1",
     "hops-config": "7.0.0-0",
-    "hops-express": "7.0.0-0",
-    "hops-local-cli": "7.0.0-0",
+    "hops-express": "7.0.0-1",
+    "hops-local-cli": "7.0.0-1",
     "hops-middleware": "7.0.0-0",
     "hops-plugin": "7.0.0-0",
     "hops-react": "7.0.0-0",
