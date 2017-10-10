@@ -10,8 +10,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start": "cd packages/template-default; yarn run start",
-    "test": "mocha \"spec/*.js\"",
-    "release": "lerna publish",
+    "test": "lerna run test --stream",
+    "release": "lerna publish --exact",
     "update": "lerna exec -- \"ncu -a && ncu -a --dev && ncu -a --peer\"",
     "preupdate": "ncu -a && ncu -a --dev",
     "postupdate": "lerna clean --yes && lerna bootstrap",
