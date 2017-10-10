@@ -16,81 +16,23 @@ function execIgnoreStdError (command, options) {
   return result.toString('utf-8').trim();
 }
 
-function getYarnVersionIfAvailable (options) {
-  try {
-    return execIgnoreStdError('yarn --version', options);
-  } catch (error) {
-    return null;
-  }
-}
-module.exports.getYarnVersionIfAvailable = getYarnVersionIfAvailable;
-
-function getNpmVersionIfAvailable (options) {
-  try {
-    return execIgnoreStdError('npm --version', options);
-  } catch (error) {
-    return null;
-  }
-}
-module.exports.getNpmVersionIfAvailable = getNpmVersionIfAvailable;
-
 function isGlobalCliUsingYarn (projectPath, options) {
   return fs.existsSync(path.join(projectPath, 'yarn.lock'));
 }
 module.exports.isGlobalCliUsingYarn = isGlobalCliUsingYarn;
 
-function installPackages (packages, options) {
-  var command = null;
-  if (options.installCommand) {
-    command = options.installCommand.split(' ');
-  } else {
-    if (options.yarn) {
-      if (packages.length) {
-        command = [
-          'yarn',
-          'add',
-          '--exact'
-        ];
-      } else {
-        command = [
-          'yarn',
-          'install'
-        ];
-      }
-      if (options.dev) {
-        command.push('--dev');
-      }
-    } else {
-      command = [
-        'npm',
-        'install'
-      ];
-      if (packages.length) {
-        command.push('--save-exact');
-      }
-      if (options.dev) {
-        command.push('--save-dev');
-      } else {
-        command.push('--save');
-      }
-    }
-    if (options.verbose) {
-      command.add('--verbose');
-    }
-  }
-  Array.prototype.push.apply(command, packages);
-
+function installPackages (options) {
+  var command = options.npm ? 'npm install' : 'yarn install';
   try {
     if (options.verbose) {
-      console.log('Executing:', command.join(' '));
+      console.log('Executing:', command);
     }
-    (options.execSync || execSync)(command.join(' '), { stdio: 'inherit' });
+    (options.execSync || execSync)(command, { stdio: 'inherit' });
     return true;
   } catch (error) {
     console.error(error.message);
     if (options.verbose) {
       console.error(error);
-      console.error('Command: "', command.join(' '), 'has failed.');
     }
   }
   return false;
@@ -100,12 +42,12 @@ module.exports.installPackages = installPackages;
 function getTarball (name, options) {
   var command = 'npm pack ' + name;
   try {
-    if (options.verbose) {
-      console.log('Executing:', command);
-    }
     return execIgnoreStdError(command, options);
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
+    if (options.verbose) {
+      console.error(error);
+    }
     return null;
   }
 }
