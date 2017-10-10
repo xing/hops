@@ -55,6 +55,7 @@ function init (root, appName, options) {
   var pathToPackageManifest = path.resolve(appRoot, 'package.json');
   var oldPackageManifest = readPackageManifest(pathToPackageManifest);
   var tarball = null;
+  options.npm = options.npm || !pm.isGlobalCliUsingYarn(appRoot, options);
 
   if (template) {
     tarball = pm.getTarball(template, options);
@@ -77,7 +78,14 @@ function init (root, appName, options) {
         pathToPackageManifest,
         mergePackageManifest(oldPackageManifest, newPackageManifest)
       );
-      pm.installPackages([], options);
+      pm.installPackages(options);
+
+      console.log('Hooray \\o/');
+      console.log('Your project has been successfully created.');
+      console.log(
+        'You should change into its directory and execute "hops" to see a list of',
+        'available commands.'
+      );
     }).catch(function (error) {
       console.error(
         'Error while unpacking tar archive:',
@@ -92,12 +100,5 @@ function init (root, appName, options) {
     );
     process.exit(1);
   }
-
-  console.log('Hooray \\o/');
-  console.log('Your project has been successfully created.');
-  console.log(
-    'You should change into its directory and execute "hops" to see a list of',
-    'available commands.'
-  );
 }
 module.exports = init;

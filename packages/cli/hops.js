@@ -25,7 +25,8 @@ function globalCLI (argv) {
   return require('yargs')
     .version(packageManifest.version)
     .usage('Usage: $0 <command> [options]')
-    .command('init <project-name>', 'Generates a new project with the specified name')
+    .command('init <project-name>', 'Generates a new project with the ' +
+      'specified name')
     .option('template', {
       type: 'string',
       describe: 'Use this with the npm package name of a template to ' +
@@ -114,7 +115,8 @@ function isYarnAvailable () {
 
 function installPackages (packages, options) {
   var command = null;
-  if (isYarnAvailable() && !options.npm) {
+  var shouldUseYarn = isYarnAvailable() && !options.npm;
+  if (shouldUseYarn) {
     command = [
       'yarn',
       'add',
@@ -134,12 +136,15 @@ function installPackages (packages, options) {
   Array.prototype.push.apply(command, packages);
 
   try {
+    if (options.verbose) {
+      console.log('Executing command: "', command.join(' '), '"');
+    }
     execSync(command.join(' '), { stdio: 'inherit' });
   } catch (error) {
     console.error(error.message);
     if (options.verbose) {
       console.error(error);
-      console.error('Command: "', command.join(' '), 'has failed.');
+      console.error('Command: "', command.join(' '), '" has failed.');
     }
     process.exit(1);
   }
@@ -165,7 +170,8 @@ if (isInsideHopsProject) {
     console.error(
       'It appears that we are inside a hops project but the dependencies have',
       'not been installed.\n',
-      'Please execute "yarn install" or "npm install" and retry.'
+      'Please execute "' + (isYarnAvailable() ? 'yarn' : 'npm') + ' install"',
+      'and retry.'
     );
     process.exit(1);
   }
