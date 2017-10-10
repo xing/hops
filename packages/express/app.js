@@ -30,6 +30,13 @@ function createApp () {
       app.use(helmet.noCache()),
       require(filePath)
     );
+  } else {
+    console.error(
+      'Could not find generated server middleware at',
+      '"' + filePath + '"'
+    );
+    console.error('Did you forget to run "hops build"?');
+    process.exit(1);
   }
   server.teardown(app, hopsConfig);
 
