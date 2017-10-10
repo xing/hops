@@ -1,6 +1,6 @@
 {
   "name": "hops-server",
-  "version": "6.2.8",
+  "version": "7.0.0-0",
   "description": "Provides common functionality for express-like servers",
   "keywords": [
     "hops",
@@ -17,6 +17,6 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-config": "6.2.8"
+    "hops-config": "7.0.0-0"
   }
 }

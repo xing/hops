@@ -1,6 +1,6 @@
 {
   "name": "hops-cli",
-  "version": "6.2.8",
+  "version": "7.0.0-0",
   "description": "Global CLI module to initialize new hops projects",
   "keywords": [
     "hops",
