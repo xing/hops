@@ -33,6 +33,11 @@ function globalCLI (argv) {
         'initialize with a different template',
       default: 'hops-template-default'
     })
+    .option('hops-version', {
+      type: 'string',
+      describe: 'Which version (or npm dist-tag) of hops-local-cli to use',
+      default: 'latest'
+    })
     .option('verbose', {
       type: 'boolean',
       describe: 'Increase verbosity of command',
@@ -179,11 +184,14 @@ if (isInsideHopsProject) {
   var options = globalCLI(argv);
   var name = options.projectName;
   var root = process.cwd();
+  var versionedPackages = PACKAGES_TO_INSTALL.map(function (name) {
+    return name + '@' + options.hopsVersion;
+  });
 
   validateName(name);
   createDirectory(path.resolve(root, name));
   writePackageManifest(path.resolve(root, name));
   process.chdir(path.resolve(root, name));
-  installPackages(PACKAGES_TO_INSTALL, options);
+  installPackages(versionedPackages, options);
   require(getLocalCliPath()).init(root, name, options);
 }
