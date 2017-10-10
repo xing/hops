@@ -1,6 +1,6 @@
 {
   "name": "jest-preset-hops",
-  "version": "6.2.8",
+  "version": "7.0.0-0",
   "description": "Jest preset to work with Hops powered projects",
   "keywords": [
     "hops",
@@ -20,7 +20,7 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-jest": "21",
-    "hops-build-config": "6.2.8",
+    "hops-build-config": "7.0.0-0",
     "identity-obj-proxy": "^3.0.0"
   },
   "peerDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "hops-middleware",
-  "version": "6.2.8",
+  "version": "7.0.0-0",
   "description": "Hops Express middleware leveraging Webpack",
   "keywords": [
     "hops",
@@ -17,6 +17,6 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-transpiler": "6.2.8"
+    "hops-transpiler": "7.0.0-0"
   }
 }
