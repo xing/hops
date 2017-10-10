@@ -35,6 +35,11 @@ function mergePackageManifest (oldManifest, newManifest) {
 }
 
 function getValidatedTemplateName (name, root) {
+  if (name.indexOf('@') > -1) {
+    if (!fs.existsSync(path.resolve(root, name))) {
+      return name;
+    }
+  }
   var validationResult = validatePackageName(name);
   if (
     !(
