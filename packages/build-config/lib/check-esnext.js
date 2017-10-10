@@ -6,15 +6,13 @@ var path = require('path');
 var getPkgDir = require('pkg-dir').sync;
 
 var appDir = getPkgDir();
-var hopsConfigInstallDir = path.dirname(require.resolve('hops-config'));
-var moduleDir = path.resolve(hopsConfigInstallDir, '..');
 
 function checkESnextPath (filepath) {
   return (
     (filepath.indexOf('.mjs') === filepath.length - 4) ||
     (
       (filepath.indexOf(appDir) === 0) &&
-      (filepath.indexOf(moduleDir) === -1)
+      (filepath.indexOf('node_modules') === -1)
     )
   );
 }
