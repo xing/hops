@@ -18,7 +18,7 @@
     "postinstall": "flow-typed install --overwrite",
     "start": "hops start",
     "test": "jest",
-    "pretest": "flow"
+    "flow": "flow"
   },
   "dependencies": {
     "hops-config": "6.2.8",
