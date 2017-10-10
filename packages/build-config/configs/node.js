@@ -1,12 +1,25 @@
 'use strict';
 
+var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
+var findUp = require('find-up');
 
 var hopsConfig = require('hops-config');
 
-var hopsConfigInstallDir = path.dirname(require.resolve('hops-config'));
-var modulesDir = path.resolve(hopsConfigInstallDir, '..');
+function findNodeModules (start) {
+  var modulesDir = findUp.sync('node_modules', { cwd: start });
+  var files = fs.readdirSync(modulesDir);
+  var containsModules = files.some(function (file) {
+    return file.indexOf('.') !== 0;
+  });
+  if (!containsModules) {
+    return findNodeModules(path.dirname(path.dirname(modulesDir)));
+  }
+  return modulesDir;
+}
+
+var modulesDir = findNodeModules(process.cwd());
 
 module.exports = {
   target: 'node',
