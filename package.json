@@ -57,8 +57,6 @@
     }
   },
   "devDependencies": {
-    "lerna": "^2.4.0",
-    "npm-check-updates": "^2.13.0",
-    "nsp": "^2.8.1"
+    "lerna": "^2.4.0"
   }
 }
