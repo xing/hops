@@ -1,6 +1,6 @@
 {
   "name": "hops-template-default",
-  "version": "7.0.0-0",
+  "version": "7.0.0-1",
   "description": "example of hops in action",
   "main": "src/app.js",
   "repository": {},
@@ -22,8 +22,8 @@
   },
   "dependencies": {
     "hops-config": "7.0.0-0",
-    "hops-express": "7.0.0-0",
-    "hops-local-cli": "7.0.0-0",
+    "hops-express": "7.0.0-1",
+    "hops-local-cli": "7.0.0-1",
     "hops-react": "7.0.0-0",
     "hops-redux": "7.0.0-0",
     "react": "^15.6.2",
