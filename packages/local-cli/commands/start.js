@@ -7,7 +7,14 @@ module.exports = function startCommand (callback) {
   return {
     command: 'start',
     describe: 'Starts a development or production server, based on NODE_ENV',
-    builder: {},
+    builder: {
+      clean: {
+        alias: 'c',
+        default: true,
+        describe: 'Clean up artifacts in build / cache directories before building',
+        type: 'boolean'
+      }
+    },
     handler: function startHandler (argv) {
       if (process.env.NODE_ENV === 'production') {
         hopsExpress.startServer(callback);
