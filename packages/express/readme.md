@@ -1,7 +1,7 @@
 
 # Hops Express
 
-hops-express creates a minimal [Express](https://expressjs.com/) server which takes care of serving static assets and registering the (through [hops-build](https://github.com/xing/hops/tree/master/packages/build) generated) middleware.
+hops-express creates a minimal [Express](https://expressjs.com/) server which takes care of serving static assets and registering a middleware built using [hops-build](https://github.com/xing/hops/tree/master/packages/build).
 
 hops-express doesn't generate the middleware itself but assumes that it is named `server.js` inside the `hopsConfig.cacheDir` (see [hops-config](https://github.com/xing/hops/tree/master/packages/config) for more details).
 
@@ -17,9 +17,9 @@ hops-express doesn't generate the middleware itself but assumes that it is named
 
 ### Target Audience
 
-This package is intended for users that want to use server-side rendering with hops - be it on lambda, a local machine, heroku or anywhere else.
+This package is intended for users that want to use server-side rendering with hops - be it on your own machine, Heroku, Lambda or anywhere else.
 
-The node server contained in this app should be ready for production usage.
+The server contained in this app is meant for production usage. During development, use [hops-build](https://github.com/xing/hops/tree/master/packages/build) directly.
 
 
 ### Example

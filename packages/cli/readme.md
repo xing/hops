@@ -23,11 +23,12 @@ hops init my-new-hops-project [--verbose] [--npm] [--template hops-template-*]
 This will create a very basic hops example project that is ready to go.
 
 The following arguments are optional:
-* `--verbose` - to increase the verbosity of the output for debugging purposes
-* `--npm` - to force usage of `npm` instead of `yarn` even if yarn is available
-* `--template` - to specify a different template for the intial structure.
-  * available templates:
-    * [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react)
-    * [hops-template-minimal](https://github.com/xing/hops/tree/master/packages/template-minimal)
+
+- `--verbose` - to increase the verbosity of the output for debugging purposes
+- `--npm` - to force usage of `npm` instead of `yarn` even if yarn is available
+- `--template` - to specify a different template for the intial structure.
+  available templates:
+    - [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react)
+    - [hops-template-minimal](https://github.com/xing/hops/tree/master/packages/template-minimal)
 
 Then `cd` into `my-new-hops-project` and execute `hops --help` again to see a list of supported commands. These commands are provided by [hops-local-cli](https://github.com/xing/hops/tree/master/packages/local-cli).

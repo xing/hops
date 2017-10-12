@@ -5,7 +5,7 @@ This is a minimal example of how [hops](https://github.com/xing/hops) can be use
 
 ## Target audience
 
-You might want to use this if you plan to use something other than react, for example when you want to build a vue.js or preact application - or if you disagree with / want to make more extensive customizations than those done in [hops-react](https://github.com/xing/hops/tree/master/packages/react) and [hops-redux](https://github.com/xing/hops/tree/master/packages/redux).
+You might want to use this if you plan to use something other than React, for example when you want to build a [Vue.js](https://vuejs.org) or [Preact](https://preactjs.com) application - or if the choices made for [hops-react](https://github.com/xing/hops/tree/master/packages/react) or [hops-redux](https://github.com/xing/hops/tree/master/packages/redux) do not match your requirements.
 
 
 ## Overview
