@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "7.0.0-0",
+  "version": "7.0.0-3",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -16,7 +16,7 @@
     "lib"
   ],
   "dependencies": {
-    "hops-config": "7.0.0-0",
+    "hops-config": "7.0.0-3",
     "serialize-javascript": "^1.4.0"
   },
   "peerDependencies": {
