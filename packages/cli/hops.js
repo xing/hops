@@ -31,7 +31,7 @@ function globalCLI (argv) {
       type: 'string',
       describe: 'Use this with the npm package name of a template to ' +
         'initialize with a different template',
-      default: 'hops-template-default'
+      default: 'hops-template-react'
     })
     .option('hops-version', {
       type: 'string',
@@ -51,12 +51,12 @@ function globalCLI (argv) {
     .example(
       '$0 init my-project',
       'Creates the folder my-project inside the current directory and ' +
-        'initializes a sample hops project inside it.'
+        'initializes a sample hops react project inside it.'
     )
     .example(
-      '$0 init --template hops-template-malt my-project',
+      '$0 init --template hops-template-minimal my-project',
       'Creates the folder my-project inside the current directory and ' +
-        'initializes an example project using malt inside it.'
+        'initializes a minimal hops example inside it.'
     )
     .help('h')
     .alias('h', 'help')
