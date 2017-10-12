@@ -17,6 +17,7 @@
   "scripts": {
     "postinstall": "flow-typed install --overwrite",
     "start": "hops start",
+    "build": "hops build",
     "test": "jest",
     "flow": "flow"
   },
