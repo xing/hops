@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "start": "cd packages/template-default; yarn start",
+    "start": "cd packages/template-react; yarn start",
     "test": "lerna run test --stream",
     "lint": "eslint \"packages/**/*.js\"",
     "release": "lerna publish --exact",
@@ -67,7 +67,7 @@
   },
   "eslintIgnore": [
     "**/node_modules/**",
-    "**/template-default/**",
+    "**/template-*/**",
     "**/spec/mock/**"
   ],
   "devDependencies": {

@@ -1,5 +1,5 @@
 {
-  "name": "hops-template-default",
+  "name": "hops-template-react",
   "version": "7.0.0-2",
   "main": "src/app.js",
   "license": "MIT",
