@@ -1,9 +1,7 @@
 {
   "name": "hops-template-default",
   "version": "7.0.0-2",
-  "description": "example of hops in action",
   "main": "src/app.js",
-  "repository": {},
   "license": "MIT",
   "config": {
     "hops": {
