@@ -1,17 +1,17 @@
 {
   "name": "hops-spec",
-  "version": "7.0.0-1",
+  "version": "7.0.0-2",
   "private": true,
   "scripts": {
     "test": "mocha --exit '*.js'"
   },
   "devDependencies": {
-    "hops-build": "7.0.0-0",
-    "hops-build-config": "7.0.0-0",
-    "hops-cli": "7.0.0-1",
+    "hops-build": "7.0.0-2",
+    "hops-build-config": "7.0.0-2",
+    "hops-cli": "7.0.0-2",
     "hops-config": "7.0.0-0",
     "hops-express": "7.0.0-1",
-    "hops-local-cli": "7.0.0-1",
+    "hops-local-cli": "7.0.0-2",
     "hops-middleware": "7.0.0-0",
     "hops-plugin": "7.0.0-0",
     "hops-react": "7.0.0-0",
@@ -21,7 +21,7 @@
     "hops-transpiler": "7.0.0-0",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^21.2.1",
-    "jest-preset-hops": "7.0.0-0",
+    "jest-preset-hops": "7.0.0-2",
     "mkdirp": "^0.5.1",
     "mocha": "^4.0.1",
     "react": "^15.6.2",
