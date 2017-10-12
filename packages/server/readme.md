@@ -7,7 +7,7 @@ express-like interfaces to register the hops-middleware.
 It also exports a simple middleware that takes care of rewriting the paths of
 incoming http requests based on the values set in hops-config.
 
-*exports:*
+#### Exports:
 - `rewritePath(request, response, next) => void`  
 `rewritePath` is an express-style middleware that adds a trailing slash to the
 url of the incoming request.

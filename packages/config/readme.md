@@ -3,8 +3,9 @@
 hops-config exposes options to configure the other Hops packages and your own application. It is quite flexible and highly extensible.
 
 # Installation
-When you use any of the other hops packages, it is highly likely that you need to install `hops-config` as a peerDependency yourself.
-Please have a look at the package.json files of the other hops packages that you use or check your npm/yarn logs to see if you need to install hops-config as a peerDependency.
+
+In case you want to extend the configuration or access it from your server/browser code, you should explicitly add `hops-config` as a dependency to your project.  
+Otherwise it will be installed through the other hops packages and doesn't need to be installed directly.
 
 ```
 npm install --save hops-config
@@ -32,7 +33,7 @@ Please find a list of the default options below. They can be set in your project
 | `assets` | `Object literal` | The applications's `.js` and `.css` assets. Defaults to a getter function that returns the assets contained in the automatically generated `manifest.json` |
 | `extends` | `String` | Path to a baseline configuration (could be for example a node module or a project-specific file), allowing you join the current configuration with that baseline |
 
-Everything matching `/(config|file|dir)s?$/i` will be treated as a filesystem path (or array thereof) and resolved relative to your app's root folder. This only applies if the respective value is not an absolute path already.
+All keys matching `/(config|file|dir)s?$/i` will be treated as a filesystem path (or array thereof) and resolved relative to your app's root folder. This only applies if the respective value is not an absolute path already.
 
 ## Configure via package.json
 

@@ -1,7 +1,89 @@
-# Hops Example
+# Hops Template React
 
-This folder contains an example hops project set up for development with [React](http://reactjs.com) and [React Router](https://react-router.now.sh) using the latest ECMAScript and CSS features.
+This is a small example application showing [hops](https://github.com/xing/hops) in action.
+It demonstrates how to use hops with react, redux, flow and jest.
 
-Babel, PostCSS and hops itself are configured using only `package.json`. During a build, an `index.html` is being generated using the very same React components that are being used within the browser.
+It has the following folder structure:
+```
+├── flow-typed
+├── node_modules
+├── package.json
+├── readme.md
+└── src
+    ├── app.js
+    ├── counter
+    │   ├── actions.js
+    │   ├── constants.js
+    │   ├── counterContainer.js
+    │   ├── counter.js
+    │   ├── index.js
+    │   ├── reducer.js
+    │   └── spec
+    │       ├── actions.spec.js
+    │       ├── counterContainer.spec.js
+    │       ├── counter.spec.js
+    │       ├── reducer.spec.js
+    │       └── __snapshots__
+    │           ├── counterContainer.spec.js.snap
+    │           └── counter.spec.js.snap
+    ├── home
+    │   ├── home.js
+    │   ├── index.js
+    │   ├── spec
+    │   │   ├── home.spec.js
+    │   │   └── __snapshots__
+    │   │       └── home.spec.js.snap
+    │   └── styles.css
+    └── reducers.js
+```
 
-Run this demo by `npm install`ing it and `npm start`ing it afterwards.
+This example uses `hops-react` to render in the browser or on the server via the same entry file `src/app.js`.
+
+It contains a small example of the `react-router` with two routes: `/` (home) and `/counter`.
+
+You can customize it to your needs - or use it as a reference guide when creating your own hops react project.
+
+
+## Package.json scripts
+
+### `npm start` / `yarn start`
+
+This command can be used to start a development server with hot-code reloading or to start a production server.
+
+* starting a development server: `npm start`
+* starting a production server: `npm start --production`
+
+Before you start a production server you need to build your JS bundle files.
+
+
+### `npm run build` / `yarn build`
+
+This command will generate the browser and server bundles that are required for deploying your code or running the production server through `npm start --production`.
+
+It can also be used to statically build HTML pages for all `locations` that are configured in the `"config"` section of the `package.json`.
+
+In this scenario it will iterate through the `locations` and render each location to a HTML document that will be placed in the `build/` folder.
+
+To make use of this execute `npm run build -- --static` or `yarn build --static`.
+
+
+### `npm test` / `yarn test`
+
+This command will test your code with [jest](https://facebook.github.io/jest/) a testrunner by facebook that integrates nicely with react.
+
+
+### `npm run flow` / `yarn flow`
+
+This command will run flow to typecheck your code and warn you about errors early on.
+
+
+### (`postinstall`)
+
+This script isn't really meant to be executed by the user. Instead it will run every time that you install the project or a new dependency and download the latest type definitions from [flow-typed](https://github.com/flowtype/flow-typed) for all of your dependencies.
+
+
+## Configuration
+
+Please refer to [hops-config](https://github.com/xing/hops/tree/master/packages/config) to see a list of all supported options.
+
+In this project we configure `babel` and `postcss` through the `"browsers"` field and we specify two loctions `/` and `/counter` through the `"locations"` hash.

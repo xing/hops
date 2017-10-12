@@ -21,24 +21,35 @@ Hops is a modular development and build environment for universal ("isomorphic")
 Hops is designed to simplify getting started with modern frontend tooling. It streamlines [Webpack](https://webpack.js.org) and [Jest](https://facebook.github.io/jest/) configuration featuring [Babel](https://babeljs.io) and [PostCSS](http://postcss.org).
 
 
+### Quick start
+
+If you just want to get started with hops + react you can execute the following command to initialize a small example app:
+```shell
+npm install -g hops-cli
+hops init my-awesome-project
+cd my-awesome-project
+npm start
+```
+This will start hops in development mode. Visit [http://localhost:8080](http://localhost:8080) to see your app in the browser and make some changes to the code in your editor to see it live-reloading.
+
+If you want to build the JS bundles for production, run `npm run build` in your terminal and to start a Node.js server just type in `npm start --production`.
+
+
 ### Installation
 
 Besides reasonably recent versions of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com), hops has no global dependencies. If you need those, we recommend using [nvm](https://github.com/creationix/nvm) or similar.
 
-If you want to go all in with hops, here's what you have to do and install to create a basic project..:
-
-```shell
-mkdir foo && cd foo
-npm init -y
-npm install -S hops-cli hops-config \
-  hops-react react react-dom react-helmet react-router react-router-dom \
-  hops-redux redux redux-thunk react-redux
-```
+Install the `hops-cli` globally via npm `npm install --global hops-cli` or yarn `yarn global add hops-cli`:
 
 
-### Setup
+### Project creation
 
-After installing hops into your project, you need to set it up. This can be done within your project's `package.json` file. The relevant fields are shown below:
+`hops init my-project` will create a directory called `my-project` and initialize an example react project inside it.
+
+
+### Configuration
+
+Hops is configured via the `package.json`s `"config"` field (read more about it at [hops-config](https://github.com/xing/hops/tree/master/packages/config):
 
 ```javascript
 {
@@ -66,7 +77,7 @@ Hops provides a runner that you can call from the scripts of your `package.json`
 
 For developing using hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io), probably with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
 
-Assuming you edited your `package.json` as outlined above, you can fire up a dev server or trigger a production build like so:
+Assuming you edited your `package.json` as outlined above, you can fire up a dev or production server like so:
 
 ```shell
 npm start (--production)
@@ -79,21 +90,28 @@ If called with the `--production` flag, a production mode server is launched. Ot
 
 Hops is quite modular, its component being independently published on npm. Its main building blocks, however, rely upon each other:
 
-* [Hops CLI](https://github.com/xing/hops/tree/master/packages/cli)
+* [Hops Build](https://github.com/xing/hops/tree/master/packages/build)
+* [Hops Build Config](https://github.com/xing/hops/tree/master/packages/build-config)
+* [Hops Global CLI](https://github.com/xing/hops/tree/master/packages/cli)
 * [Hops Config](https://github.com/xing/hops/tree/master/packages/config)
+* [Hops Express](https://github.com/xing/hops/tree/master/packages/express)
 * [Hops Jest Preset](https://github.com/xing/hops/tree/master/packages/jest-preset)
+* [Hops Local CLI](https://github.com/xing/hops/tree/master/packages/local-cli)
 * [Hops React](https://github.com/xing/hops/tree/master/packages/react)
 * [Hops Redux](https://github.com/xing/hops/tree/master/packages/redux)
 
 The following additional packages are rather low-level and you'll probably never need to install and use them directly.
 
-* [Hops Transpiler](https://github.com/xing/hops/tree/master/packages/transpiler)
 * [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware)
-* [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)
 * [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/packages/plugin)
+* [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)
+* [Hops Server](https://github.com/xing/hops/tree/master/packages/server)
+* [Hops Transpiler](https://github.com/xing/hops/tree/master/packages/transpiler)
 
 
 ### Contributing
+
+Hops uses [lerna](https://github.com/lerna/lerna) and [yarn](https://yarnpkg.com/en/) for development and publishing of the packages. Therefore it is required to have `yarn` globally available.
 
 If you want to contribute to this project, create a fork of its [repository](https://github.com/xing/hops/fork) using the GitHub UI. Check out your new fork to your computer:
 
@@ -102,14 +120,11 @@ mkdir hops && cd $_
 git clone git@github.com:user/hops.git .
 ```
 
-Afterwards, you can `npm install` Hops' own dev dependencies and start the included demo project and begin developing.
+Afterwards, you can `yarn install` the required dependencies and then run `yarn bootstrap` to install the dependencies of all packages and link the packages together.
 
-``` bash
-npm install
-npm start
-```
+Using `yarn start` will execute the `start` script in the [hops-template-react](https://github.com/xing/hops/template-react) so that you can verify your changes in the browser.
 
-Whenever you run ```npm start```, the hops packages used in the demo project are being re-installed locally. When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
+When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
 
 Hops is entirely written in ECMAScript 5 and adheres to [semistandard](https://github.com/Flet/semistandard) code style. Please make sure your contribution does, too.
 
@@ -119,6 +134,7 @@ Hops is entirely written in ECMAScript 5 and adheres to [semistandard](https://g
 * [Next](https://github.com/zeit/next.js/)
 * [Gatsby](https://github.com/gatsbyjs/gatsby)
 * [Backpack](https://github.com/palmerhq/backpack)
+* [Create React App](https://github.com/facebookincubator/create-react-app)
 
 
 ### Thanks!

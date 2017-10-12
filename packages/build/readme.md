@@ -1,7 +1,7 @@
 
 # Hops Build
 
-hops-build is a wrapper around webpack and [hops-build-config](https://github.com/xing/hops/tree/master/packages/build-config) which exports a function to execute a single build.
+hops-build is a wrapper around webpack and [hops-build-config](https://github.com/xing/hops/tree/master/packages/build-config) which exports functions to execute a single build or start a `webpack-dev-server`.
 
 
 ### API
@@ -16,7 +16,7 @@ If being used without the `static` option it will run the webpack build for the 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
 | static | boolean | `false` | Whether to statically build app shells for all locations |
-| clean | boolean | `false` | Whether to clean the build and cache directories before starting the build |
+| clean | boolean | `true` | Whether to clean the build and cache directories before starting the build |
 
 The `callback` is being called after the build has finished and can be used to schedule further work.
 
@@ -28,7 +28,7 @@ It will take the `developConfig` with its `watchConfig` (see [hops-build-config]
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| clean | boolean | `false` | Whether to clean the build and cache directories before starting the server |
+| clean | boolean | `true` | Whether to clean the build and cache directories before starting the server |
 
 The `callback` is being called after the server has started and can be used to schedule further work.
 
