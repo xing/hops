@@ -3,7 +3,9 @@
 hops-build-config exposes webpack configurations for Node.js, browser and webpack-dev-server.
 
 # Installation
-When you install [hops-build](https://github.com/xing/hops/tree/master/packages/build), hops-build-config will be installed as a dependency as well - so you don't necessarily have to separately install hops-build-config. If you want to use it in your app directly, install it by running
+When you install [hops-build](https://github.com/xing/hops/tree/master/packages/build), hops-build-config will be installed as a dependency as well - so you don't necessarily have to separately install hops-build-config.
+
+However iff you want to use it in your app directly (for example to extend it), install it by running
 
 ```
 npm install --save hops-build-config
@@ -21,7 +23,8 @@ Please find a list of the default configs below. If you use [hops-config](https:
 | `nodeConfig` | `String` | Path to your Webpack node/server-side rendering configuration file. Defaults to `./node_modules/hops-build-config/configs/node.js` |
 
 
-## Overwrite configs via package.json
+## Custom Webpack configuration
+Webpack configurations can be nasty to handle, therefore we recommend using [webpack-merge](https://www.npmjs.com/package/webpack-merge) if you want to extend one of the existing Webpack configurations.
 
 The following example shows how to overwrite / extend the webpack configurations:
 
@@ -86,6 +89,3 @@ PostCSS in Hops is configured to use [cssnext](http://cssnext.io/) and [CSS Modu
 | `png` `gif` `jpeg` `jpg` `webp` | Same as above, except when a file of this type is smaller than 10kb in size. In that case, it will be converted to a base64-encoded data URL and embedded inline in the referencing document |
 | `json` | Files of this type are loaded and their content is returned |
 | `tpl` | Files of this type are parsed by [_.template](https://lodash.com/docs/4.17.4#template) and their content is returned as a function. By providing such a file, you can override the default template provided by [hops-react](https://www.npmjs.com/package/hops-react) |
-
-## Custom Webpack configuration
-Webpack configurations can be nasty to handle, therefore we recommend using [webpack-merge](https://www.npmjs.com/package/webpack-merge) if you want to extend one of the existing Webpack configurations.
