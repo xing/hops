@@ -4,5 +4,5 @@ node_modules
 yarn.lock
 package-lock.json
 packages/spec/mock/integration/build
-packages/template-default/flow-typed/npm
+packages/template-react/flow-typed/npm
 .vscode
