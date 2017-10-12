@@ -13,7 +13,7 @@ npm install --save hops-build-config
 
 # Usage
 
-Please find a list of the default configs below. If you use [hops-config](https://github.com/xing/hops/tree/master/packages/config), too, you can easily [ovewrite / extend](#overwrite-configs-via-packagejson) these configurations.
+Please find a list of the default configs below. If you use [hops-config](https://github.com/xing/hops/tree/master/packages/config), too, you can easily [overwrite / extend](#overwrite-configs-via-packagejson) these configurations.
 
 ## Available options
 | Field | Type | Description |
@@ -61,6 +61,7 @@ module.exports = merge.strategy(
   myCustomBuildConfig
 );
 ```
+
 Please head over to the documentation of [webpack-merge](https://www.npmjs.com/package/webpack-merge) to see the full list of merge strategies to find out which one to use.
 
 
@@ -69,8 +70,8 @@ Please head over to the documentation of [webpack-merge](https://www.npmjs.com/p
 hops-build-config provides a minimal, yet convenient default configuration. Furthermore, when starting a development server, source maps will be generated.
 
 ### Babel
-- [Env preset](http://babeljs.io/docs/plugins/preset-env/)
-- [React preset](https://www.npmjs.com/package/babel-preset-react) 
+- [Env](http://babeljs.io/docs/plugins/preset-env/) preset
+- [React](https://www.npmjs.com/package/babel-preset-react) preset
 - [flow-react-proptypes](https://www.npmjs.com/package/babel-plugin-flow-react-proptypes) plugin
 - [transform-class-properties](https://www.npmjs.com/package/babel-plugin-transform-class-properties) plugin
 - [transform-object-rest-spread](https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread) plugin
@@ -79,13 +80,13 @@ hops-build-config provides a minimal, yet convenient default configuration. Furt
 
 ### PostCSS
 
-PostCSS in Hops is configured to use [cssnext](http://cssnext.io/) and [CSS Modules](https://github.com/css-modules/css-modules) by default.
+PostCSS in Hops is configured to use [cssnext](http://cssnext.io/) and [CSS modules](https://github.com/css-modules/css-modules) by default.
 
-### Files/assets
+### Files/Assets
 
 | File type | Loader action |
 |-----------|---------------|
 | `html` `svg` `otf` `ttf` `woff` `woff2` `ico` | Files of these types are emitted to the directory defined in `assetPath` |
-| `png` `gif` `jpeg` `jpg` `webp` | Same as above, except when a file of this type is smaller than 10kb in size. In that case, it will be converted to a base64-encoded data URL and embedded inline in the referencing document |
+| `png` `gif` `jpeg` `jpg` `webp` | Same as above, except when a file of this type is smaller than 10kb in size. In that case, it will be converted to a base64-encoded data URL and embedded inline |
 | `json` | Files of this type are loaded and their content is returned |
 | `tpl` | Files of this type are parsed by [_.template](https://lodash.com/docs/4.17.4#template) and their content is returned as a function. By providing such a file, you can override the default template provided by [hops-react](https://www.npmjs.com/package/hops-react) |

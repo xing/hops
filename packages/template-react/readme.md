@@ -1,9 +1,10 @@
 # Hops Template React
 
 This is a small example application showing [hops](https://github.com/xing/hops) in action.
-It demonstrates how to use hops with react, redux, flow and jest.
+It demonstrates how to use hops with React, Redux, Flow and Jest.
 
 It has the following folder structure:
+
 ```
 ├── flow-typed
 ├── node_modules
