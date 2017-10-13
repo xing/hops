@@ -11,7 +11,8 @@ module.exports = function developCommand (callback) {
       clean: {
         alias: 'c',
         default: true,
-        describe: 'Clean up artifacts in build / cache directories before building',
+        describe: 'Clean up artifacts in build / cache directories before ' +
+          'building',
         type: 'boolean'
       }
     },

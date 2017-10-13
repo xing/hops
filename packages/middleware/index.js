@@ -38,9 +38,9 @@ module.exports = function createMiddleware (webpackConfig, watchOptions) {
 
   return function (req, res, next) {
     getMiddlewarePromise()
-    .then(function (middleware) {
-      middleware(req, res, next);
-    })
-    .catch(next);
+      .then(function (middleware) {
+        middleware(req, res, next);
+      })
+      .catch(next);
   };
 };

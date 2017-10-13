@@ -10,7 +10,7 @@ module.exports = function getModuleRules (target) {
     require('./module-rules/tpl'),
     require('./module-rules/config')
   ]
-  .map(function (config) {
-    return config[target] || config.default || config;
-  });
+    .map(function (config) {
+      return config[target] || config.default || config;
+    });
 };

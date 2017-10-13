@@ -30,29 +30,29 @@ describe('renderer', function () {
     it('should render expected result', function (done) {
       var render = createRenderer(goodConfig);
       render('/')
-      .then(function (result) {
-        assert.equal(typeof result, 'string');
-        assert.equal(result, 'Hello World!');
-        done();
-      });
+        .then(function (result) {
+          assert.equal(typeof result, 'string');
+          assert.equal(result, 'Hello World!');
+          done();
+        });
     });
 
     it('should reject promise (bad export)', function (done) {
       var render = createRenderer(badExportConfig);
       render('/')
-      .catch(function () {
-        assert(true);
-        done();
-      });
+        .catch(function () {
+          assert(true);
+          done();
+        });
     });
 
     it('should reject promise (bad handler)', function (done) {
       var render = createRenderer(badHandlerConfig);
       render('/')
-      .catch(function () {
-        assert(true);
-        done();
-      });
+        .catch(function () {
+          assert(true);
+          done();
+        });
     });
   });
 });

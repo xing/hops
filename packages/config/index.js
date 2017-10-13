@@ -30,17 +30,17 @@ function resolvePaths (config) {
   Object.keys(config).filter(function (key) {
     return /(config|file|dir)s?$/i.test(key);
   })
-  .forEach(function (key) {
-    config[key] = (function resolve (item) {
-      if (typeof item === 'string') {
-        return path.isAbsolute(item) ? item : path.join(root, item);
-      } else if (Array.isArray(item)) {
-        return item.map(resolve);
-      } else {
-        return item;
-      }
-    })(config[key]);
-  });
+    .forEach(function (key) {
+      config[key] = (function resolve (item) {
+        if (typeof item === 'string') {
+          return path.isAbsolute(item) ? item : path.join(root, item);
+        } else if (Array.isArray(item)) {
+          return item.map(resolve);
+        } else {
+          return item;
+        }
+      })(config[key]);
+    });
   return config;
 }
 

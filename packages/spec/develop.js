@@ -36,27 +36,27 @@ describe('development server', function () {
 
   it('should deliver expected html page', function () {
     return fetch('http://localhost:8080/')
-    .then(function (response) {
-      assert(response.ok);
-      return response.text();
-    })
-    .then(function (body) {
-      assert(body.length);
-      assert(body.indexOf('Hello World!') > -1);
-    });
+      .then(function (response) {
+        assert(response.ok);
+        return response.text();
+      })
+      .then(function (body) {
+        assert(body.length);
+        assert(body.indexOf('Hello World!') > -1);
+      });
   });
 
   it('should deliver main js file', function () {
     return fetch('http://localhost:8080/main.js')
-    .then(function (response) {
-      assert(response.ok);
-      return response.text();
-    })
-    .then(function (body) {
-      assert(body.length);
-      assert(body.indexOf('<!doctype html>') === -1);
-      assert(body.indexOf('webpack') > -1);
-    });
+      .then(function (response) {
+        assert(response.ok);
+        return response.text();
+      })
+      .then(function (body) {
+        assert(body.length);
+        assert(body.indexOf('<!doctype html>') === -1);
+        assert(body.indexOf('webpack') > -1);
+      });
   });
 
   it('should create valid manifest file', function () {

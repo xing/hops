@@ -1,8 +1,8 @@
 var babelJest = require('babel-jest');
 
-var loaderConfig = require('hops-build-config/sections/module-rules/babel').node;
+var loaderConfig = require('hops-build-config/sections/module-rules/babel');
 
-var babelConfig = loaderConfig.use.options;
+var babelConfig = loaderConfig.node.use.options;
 
 var presetEnvConfig = babelConfig.presets[0][1];
 

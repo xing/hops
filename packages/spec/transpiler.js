@@ -25,38 +25,38 @@ describe('transpiler', function () {
   describe('instance', function () {
     it('should emit a success event', function (done) {
       transpile(goodConfig)
-      .on('success', function () {
-        assert(true);
-        done();
-      });
+        .on('success', function () {
+          assert(true);
+          done();
+        });
     });
 
     it('should provide a function on success', function (done) {
       transpile(goodConfig)
-      .on('success', function (result) {
-        assert.equal(typeof result, 'function');
-        done();
-      });
+        .on('success', function (result) {
+          assert.equal(typeof result, 'function');
+          done();
+        });
     });
 
     it('should emit an error event (bad export)', function (done) {
       transpile(badExportConfig)
-      .on('error', function (error) {
-        assert(error instanceof Error);
-        done();
-      });
+        .on('error', function (error) {
+          assert(error instanceof Error);
+          done();
+        });
     });
 
     it('should not emit an error event (bad handler)', function (done) {
       transpile(badHandlerConfig)
-      .on('error', function () {
-        assert(false);
-        done();
-      })
-      .on('success', function (result) {
-        assert.equal(typeof result, 'function');
-        done();
-      });
+        .on('error', function () {
+          assert(false);
+          done();
+        })
+        .on('success', function (result) {
+          assert.equal(typeof result, 'function');
+          done();
+        });
     });
   });
 });
