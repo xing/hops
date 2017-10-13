@@ -68,15 +68,15 @@ describe('production server', function () {
 
   it('should deliver expected html page', function () {
     return fetch('http://localhost:8080/')
-    .then(function (response) {
-      assert(response.ok);
-      return response.text();
-    })
-    .then(function (body) {
-      assert(body.length);
-      assert.notEqual(body.indexOf('<!doctype html>'), -1);
-      assert.notEqual(body.indexOf('Hello World!'), -1);
-    });
+      .then(function (response) {
+        assert(response.ok);
+        return response.text();
+      })
+      .then(function (body) {
+        assert(body.length);
+        assert.notEqual(body.indexOf('<!doctype html>'), -1);
+        assert.notEqual(body.indexOf('Hello World!'), -1);
+      });
   });
 
   it('should deliver all asset files', function () {
@@ -88,18 +88,18 @@ describe('production server', function () {
     return Promise.all(
       manifest.css.concat(manifest.js).map(function (filename) {
         return fetch('http://localhost:8080' + filename)
-        .then(function (response) {
-          assert(response.ok);
-          return response.text();
-        })
-        .then(function (body) {
-          assert(body.length);
-          assert.equal(body.indexOf('<!doctype html>'), -1);
-          assert.equal(body, fs.readFileSync(
-            path.resolve(buildDir, filename.replace(/^\/?/, '')),
-            'utf8'
-          ));
-        });
+          .then(function (response) {
+            assert(response.ok);
+            return response.text();
+          })
+          .then(function (body) {
+            assert(body.length);
+            assert.equal(body.indexOf('<!doctype html>'), -1);
+            assert.equal(body, fs.readFileSync(
+              path.resolve(buildDir, filename.replace(/^\/?/, '')),
+              'utf8'
+            ));
+          });
       })
     );
   });

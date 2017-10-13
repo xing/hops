@@ -20,8 +20,8 @@ module.exports = function Plugin (locations, webpackConfig, watchOptions) {
           }
         });
       }))
-      .then(function () { callback(); })
-      .catch(callback);
+        .then(function () { callback(); })
+        .catch(callback);
     });
   };
 };

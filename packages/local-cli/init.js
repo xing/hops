@@ -88,8 +88,8 @@ function init (root, appName, options) {
       console.log('Hooray \\o/');
       console.log('Your project has been successfully created.');
       console.log(
-        'You should change into its directory and execute "hops" to see a list of',
-        'available commands.'
+        'You should change into its directory and execute "hops" to see a list',
+        'of available commands.'
       );
     }).catch(function (error) {
       console.error(

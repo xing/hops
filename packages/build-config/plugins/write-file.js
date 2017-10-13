@@ -24,8 +24,8 @@ module.exports = function Plugin (regExp) {
         }
         return result;
       }, []))
-      .then(function () { callback(); })
-      .catch(callback);
+        .then(function () { callback(); })
+        .catch(callback);
     });
   };
 };
