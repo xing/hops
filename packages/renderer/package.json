@@ -13,6 +13,6 @@
   ],
   "dependencies": {
     "hops-middleware": "7.0.0",
-    "node-mocks-http": "^1.6.5"
+    "node-mocks-http": "^1.6.6"
   }
 }
