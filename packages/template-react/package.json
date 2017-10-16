@@ -35,7 +35,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "flow-bin": "^0.55.0",
+    "flow-bin": "^0.57.2",
     "flow-typed": "^2.2.0",
     "hops-build": "7.0.0",
     "jest": "^21.2.1",
