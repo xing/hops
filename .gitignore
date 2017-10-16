@@ -1,7 +1,6 @@
 node_modules
 *.log
 .DS_Store
-yarn.lock
 package-lock.json
 packages/spec/mock/integration/build
 packages/template-react/flow-typed/npm
