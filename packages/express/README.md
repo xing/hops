@@ -1,5 +1,6 @@
-
 # Hops Express
+
+[![npm](https://img.shields.io/npm/v/hops-express.svg)](https://www.npmjs.com/package/hops-express)
 
 hops-express creates a minimal [Express](https://expressjs.com/) server which takes care of serving static assets and registering a middleware built using [hops-build](https://github.com/xing/hops/tree/master/packages/build).
 

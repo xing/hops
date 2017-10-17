@@ -1,5 +1,6 @@
-
 # Hops Server
+
+[![npm](https://img.shields.io/npm/v/hops-server.svg)](https://www.npmjs.com/package/hops-server)
 
 Hops server is a small collection of shared functionality that can be used in express-like interfaces to register the hops-middleware.
 

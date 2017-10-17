@@ -1,5 +1,6 @@
-
 # Hops Renderer
+
+[![npm](https://img.shields.io/npm/v/hops-renderer.svg)](https://www.npmjs.com/package/hops-renderer)
 
 Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' renderer is a simple helper to enable you to use your custom middleware outside of Express servers.
 

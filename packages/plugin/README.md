@@ -1,5 +1,6 @@
-
 # Hops Plugin
+
+[![npm](https://img.shields.io/npm/v/hops-plugin.svg)](https://www.npmjs.com/package/hops-plugin)
 
 Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' plugin is a simple helper to simplify using your custom middleware in a Webpack build.
 

@@ -1,5 +1,7 @@
 # Hops React
 
+[![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)
+
 hops-react works in tandem with [hops-build](https://github.com/xing/hops/blob/master/packages/build) and [hops-config](https://github.com/xing/hops/blob/master/packages/redux) to make an integrated solution for universal ("isomorphic") rendering using React. It provides a minimal API and hides the tricky bits of setting up React for such use-cases.
 
 Out of the box, hops-react additionally supports [React Router](https://github.com/ReactTraining/react-router) and [React Helmet](https://github.com/nfl/react-helmet).

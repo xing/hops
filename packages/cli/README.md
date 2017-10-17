@@ -1,5 +1,6 @@
-
 # Hops CLI
+
+[![npm](https://img.shields.io/npm/v/hops-cli.svg)](https://www.npmjs.com/package/hops-cli)
 
 hops-cli provides a `hops` binary that should be installed globally.
 
