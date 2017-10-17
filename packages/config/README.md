@@ -1,5 +1,7 @@
 # Hops Config
 
+[![npm](https://img.shields.io/npm/v/hops-config.svg)](https://www.npmjs.com/package/hops-config)
+
 hops-config exposes options to configure the other Hops packages and your own application. It is quite flexible and highly extensible.
 
 # Installation

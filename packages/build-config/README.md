@@ -1,5 +1,7 @@
 # Hops Build Config
 
+[![npm](https://img.shields.io/npm/v/hops-build-config.svg)](https://www.npmjs.com/package/hops-build-config)
+
 hops-build-config exposes webpack configurations for Node.js, browser and webpack-dev-server.
 
 # Installation

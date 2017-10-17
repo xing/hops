@@ -1,5 +1,6 @@
-
 # Hops Build
+
+[![npm](https://img.shields.io/npm/v/hops-build.svg)](https://www.npmjs.com/package/hops-build)
 
 hops-build is a wrapper around webpack and [hops-build-config](https://github.com/xing/hops/tree/master/packages/build-config) which exports functions to execute a single build or start a `webpack-dev-server`.
 
