@@ -32,6 +32,7 @@ module.exports = function buildCommand (callback) {
       if (argv.production) {
         process.env.NODE_ENV = 'production';
       }
+      process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
       hopsBuild.runBuild(argv, callback);
     }
   };

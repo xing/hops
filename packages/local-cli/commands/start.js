@@ -8,6 +8,12 @@ module.exports = function startCommand (callback) {
     command: 'start',
     describe: 'Starts a development or production server, based on NODE_ENV',
     builder: {
+      static: {
+        alias: 's',
+        default: false,
+        describe: 'Sets mode to static',
+        type: 'boolean'
+      },
       clean: {
         alias: 'c',
         default: true,
@@ -27,6 +33,7 @@ module.exports = function startCommand (callback) {
       if (argv.production) {
         process.env.NODE_ENV = 'production';
       }
+      process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
       if (process.env.NODE_ENV === 'production') {
         hopsExpress.startServer(callback);
       } else {

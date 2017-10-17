@@ -31,12 +31,9 @@ function createApp () {
       require(filePath)
     );
   } else {
-    console.error(
-      'Could not find generated server middleware at',
-      '"' + filePath + '"'
+    console.log(
+      'No middleware found. Delivering only statically built routes.'
     );
-    console.error('Did you forget to run "hops build"?');
-    process.exit(1);
   }
   server.teardown(app, hopsConfig);
 

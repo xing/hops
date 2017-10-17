@@ -46,7 +46,8 @@ module.exports = {
       maxChunks: 1
     }),
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development'
+      NODE_ENV: 'development',
+      HOPS_MODE: 'dynamic'
     })
   ],
   performance: {

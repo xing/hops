@@ -55,7 +55,8 @@ module.exports = {
       ignoreOrder: true
     }),
     new webpack.EnvironmentPlugin({
-      'NODE_ENV': 'production'
+      NODE_ENV: 'production',
+      HOPS_MODE: 'dynamic'
     }),
     new webpack.LoaderOptionsPlugin({
       debug: false,

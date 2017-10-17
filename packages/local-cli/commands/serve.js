@@ -9,6 +9,12 @@ module.exports = function serveCommand (callback) {
     'application',
     builder: {
       production: {
+        static: {
+          alias: 's',
+          default: false,
+          describe: 'Serve built app with static env variable turned on',
+          type: 'boolean'
+        },
         alias: 'p',
         default: false,
         describe: 'Minifies the output, generates source maps and removes ' +
@@ -20,6 +26,7 @@ module.exports = function serveCommand (callback) {
       if (argv.production) {
         process.env.NODE_ENV = 'production';
       }
+      process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
       hopsExpress.startServer(callback);
     }
   };

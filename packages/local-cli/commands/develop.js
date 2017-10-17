@@ -8,6 +8,12 @@ module.exports = function developCommand (callback) {
     describe: 'Starts a webpack-dev-server to enable local development with ' +
       'hot code reloading',
     builder: {
+      static: {
+        alias: 's',
+        default: false,
+        describe: 'Serve app in hot mode with static env variable turned on',
+        type: 'boolean'
+      },
       clean: {
         alias: 'c',
         default: true,
@@ -17,6 +23,8 @@ module.exports = function developCommand (callback) {
       }
     },
     handler: function developHandler (argv) {
+      process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
+
       hopsBuild.runServer(argv, callback);
     }
   };
