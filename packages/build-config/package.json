@@ -1,6 +1,6 @@
 {
   "name": "hops-build-config",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "description": "Hops build configuration leveraging Webpack and Babel",
   "keywords": [
     "hops",
@@ -41,7 +41,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.5",
     "find-up": "^2.1.0",
-    "hops-config": "7.1.0",
+    "hops-config": "7.2.0",
     "json-loader": "^0.5.7",
     "lodash.template": "^4.4.0",
     "mkdirp": "^0.5.1",
