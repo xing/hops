@@ -8,13 +8,13 @@ It ensures that Babel works correctly out of the box and that requiring files su
 
 ## Usage
 
-Add `hops-jest-preset` as [preset](https://facebook.github.io/jest/docs/configuration.html#preset-string) to your Jest config.
+Add `hops-jest-preset` as [preset](https://facebook.github.io/jest/docs/en/configuration.html#preset-string) to your Jest config.
 This can for example be done by adding it to your package.json.
 
 ```json
 {
   "jest": {
-    "preset": "hops-jest-preset"
+    "preset": "jest-preset-hops"
   }
 }
 ```
