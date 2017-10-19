@@ -38,12 +38,18 @@ exports.Context = exports.createContext = Context.extend({
       )
     );
   },
-  enhanceElement: function (reactElement) {
-    return Context.prototype.enhanceElement.call(this, React.createElement(
+  createProvider: function (reactElement) {
+    return React.createElement(
       ReactRedux.Provider,
       { store: this.getStore() },
       reactElement
-    ));
+    );
+  },
+  enhanceElement: function (reactElement) {
+    return Context.prototype.enhanceElement.call(
+      this,
+      this.createProvider(reactElement)
+    );
   },
   getTemplateData: function () {
     var templateData = Context.prototype.getTemplateData.call(this);
