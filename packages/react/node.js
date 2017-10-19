@@ -59,10 +59,9 @@ exports.render = function (reactElement, context) {
   }
   return function (req, res, next) {
     var reqContext = context.clone(req);
-    reqContext.bootstrap().then(function () {
-      var markup = ReactDOM.renderToString(
-        reqContext.enhanceElement(reactElement)
-      );
+    var enhancedElement = reqContext.enhanceElement(reactElement);
+    reqContext.bootstrap(enhancedElement).then(function () {
+      var markup = ReactDOM.renderToString(enhancedElement);
       if (reqContext.miss) {
         next();
       } else {
