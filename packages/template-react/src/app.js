@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 import { render, Miss } from 'hops-react';
-import { createContext } from 'hops-redux';
+import { createContext } from 'hops-graphql';
 
 import { Home } from './home';
 import { Counter } from './counter';
@@ -27,6 +27,11 @@ const App = () => (
 export default render(
   <App />,
   createContext({
-    reducers
+    reducers,
+    graphql: {
+      network: {
+        uri: 'https://www.graphqlhub.com/graphql'
+      }
+    }
   })
 );
