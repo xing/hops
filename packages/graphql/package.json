@@ -1,0 +1,26 @@
+{
+  "name": "hops-graphql",
+  "version": "7.2.0",
+  "description": "React and GraphQL implementation for Hops",
+  "keywords": [
+    "hops",
+    "react",
+    "redux",
+    "graphql"
+  ],
+  "license": "MIT",
+  "main": "node.js",
+  "browser": "dom.js",
+  "files": [
+    "node.js",
+    "dom.js"
+  ],
+  "dependencies": {
+    "hops-redux": "7.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "merge-options": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react-apollo": "^1.4.16"
+  }
+}
