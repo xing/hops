@@ -38,11 +38,9 @@ exports.render = function (reactElement, context) {
     } else {
       mountpoint.setAttribute('data-hopsroot', '');
     }
-    context.bootstrap().then(function () {
-      ReactDOM.render(
-        context.enhanceElement(reactElement),
-        mountpoint
-      );
+    var enhancedElement = context.enhanceElement(reactElement);
+    context.bootstrap(enhancedElement).then(function () {
+      ReactDOM.render(enhancedElement, mountpoint);
     });
   };
 };
