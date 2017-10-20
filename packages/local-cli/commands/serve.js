@@ -8,13 +8,13 @@ module.exports = function serveCommand (callback) {
     describe: 'Starts a production-ready Node.js server to serve your ' +
     'application',
     builder: {
+      static: {
+        alias: 's',
+        default: false,
+        describe: 'Serve built app with static env variable turned on',
+        type: 'boolean'
+      },
       production: {
-        static: {
-          alias: 's',
-          default: false,
-          describe: 'Serve built app with static env variable turned on',
-          type: 'boolean'
-        },
         alias: 'p',
         default: false,
         describe: 'Minifies the output, generates source maps and removes ' +
