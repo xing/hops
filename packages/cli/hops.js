@@ -161,9 +161,9 @@ var argv = process.argv.slice(2);
 var isInsideHopsProject = false;
 try {
   var manifest = require(path.resolve(process.cwd(), 'package.json'));
-  if (manifest.dependencies) {
-    isInsideHopsProject = Boolean(manifest.dependencies['hops-local-cli']);
-  }
+  var dependencies = Object.keys(manifest.dependencies || {})
+    .concat(Object.keys(manifest.devDependencies || {}));
+  isInsideHopsProject = dependencies.indexOf('hops-local-cli') > -1;
 } catch (error) {
   isInsideHopsProject = false;
 }
