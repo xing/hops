@@ -1,32 +1,12 @@
 // @flow
 import React from 'react';
 import Helmet from 'react-helmet';
-import { gql, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
 
 import styles from './styles.css';
+import query from './commits.gql';
 
-export const withData = graphql(gql`
-  {
-    github {
-      repo(ownerUsername: "xing", name: "hops") {
-        id
-        name
-        commits(limit: 10) {
-          ... on GithubCommit {
-            sha
-            message
-            author {
-              ... on GithubUser {
-                id
-                login
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`);
+export const withData = graphql(query);
 
 export const Home = ({ data: { loading, github } }) => (
   <div>
