@@ -2,12 +2,8 @@ require('isomorphic-fetch');
 
 var React = require('react');
 var ReactApollo = require('react-apollo');
-var Redux = require('redux');
-var ReduxThunkMiddleware = require('redux-thunk').default;
 
 var Context = require('hops-redux').Context;
-
-var INITIAL_STATE = 'INITIAL_STATE';
 
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
@@ -16,7 +12,7 @@ exports.Context = exports.createContext = Context.extend({
       { network: {} },
       options.graphql
     ));
-    this.registerReducer('apollo', this.client.reducer())
+    this.registerReducer('apollo', this.client.reducer());
   },
   createClient: function (options) {
     return new ReactApollo.ApolloClient(
@@ -25,16 +21,6 @@ exports.Context = exports.createContext = Context.extend({
         {
           networkInterface: ReactApollo.createNetworkInterface(options.network)
         }
-      )
-    );
-  },
-  createStore: function () {
-    return Redux.createStore(
-      Redux.combineReducers(this.reducers),
-      global[INITIAL_STATE],
-      (global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose)(
-        Redux.applyMiddleware(this.client.middleware()),
-        Redux.applyMiddleware(ReduxThunkMiddleware)
       )
     );
   },
@@ -47,5 +33,9 @@ exports.Context = exports.createContext = Context.extend({
       },
       reactElement
     );
+  },
+  getMiddlewares: function () {
+    return Context.prototype.getMiddlewares.call(this)
+      .concat(this.client.middleware());
   }
 });
