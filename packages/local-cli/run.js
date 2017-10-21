@@ -3,36 +3,30 @@
 
 var yargs = require('yargs');
 
-var pm = require('./lib/package-manager');
+var commands = require('./lib/commands');
 var packageManifest = require('./package.json');
 
-module.exports = function run (argv, callback) {
+module.exports = function run (definition) {
   var args = yargs
     .version(packageManifest.version)
     .usage('Usage: $0 <command> [options]')
     .help('help')
     .alias('h', 'help')
     .demandCommand();
+  var argv = process.argv.slice(2);
 
-  if (pm.isPackageInstalled('hops-build')) {
-    args.command(require('./commands/build')(callback));
-    args.command(require('./commands/develop')(callback));
-  }
-
-  if (pm.isPackageInstalled('hops-express')) {
-    args.command(require('./commands/serve')(callback));
-  }
-
-  if (
-    pm.isPackageInstalled('hops-build') &&
-    pm.isPackageInstalled('hops-express')
-  ) {
-    args.command(require('./commands/start')(callback));
+  if (definition && definition.command) {
+    args.command(definition);
+    argv.unshift(definition.command);
+  } else {
+    commands.forEach(function (command) {
+      args.command(require(command));
+    });
   }
 
   args.parse(argv);
 };
 
 if (require.main === module) {
-  module.exports(process.argv.slice(2));
+  module.exports();
 }

@@ -8,7 +8,8 @@
   ],
   "license": "MIT",
   "bin": {
-    "hops": "run.js"
+    "hops": "run.js",
+    "hops-start": "commands/start.js"
   },
   "main": "index.js",
   "files": [
