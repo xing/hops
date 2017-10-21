@@ -88,7 +88,8 @@ PostCSS in Hops is configured to use [cssnext](http://cssnext.io/) and [CSS modu
 
 | File type | Loader action |
 |-----------|---------------|
+| `graphql` `gql` | Files of these types are interpreted as GraphQL. You need to manually install [Hops' GraphQL](https://www.npmjs.com/package/hops-graphql) for this to work |
 | `html` `svg` `otf` `ttf` `woff` `woff2` `ico` | Files of these types are emitted to the directory defined in `assetPath` |
 | `png` `gif` `jpeg` `jpg` `webp` | Same as above, except when a file of this type is smaller than 10kb in size. In that case, it will be converted to a base64-encoded data URL and embedded inline |
 | `json` | Files of this type are loaded and their content is returned |
-| `tpl` | Files of this type are parsed by [_.template](https://lodash.com/docs/4.17.4#template) and their content is returned as a function. By providing such a file, you can override the default template provided by [hops-react](https://www.npmjs.com/package/hops-react) |
+| `tpl` | Files of this type are parsed by [_.template](https://lodash.com/docs/4.17.4#template) and their content is returned as a function. By providing such a file, you can for example override the default template provided by [hops-react](https://www.npmjs.com/package/hops-react) |
