@@ -14,7 +14,8 @@
     "lint": "eslint \"packages/**/*.js\"",
     "release": "lerna publish --exact --conventional-commits",
     "update": "yarn upgrade-interactive --latest && yarn",
-    "postupdate": "lerna clean --yes && lerna bootstrap"
+    "postupdate": "lerna clean --yes && lerna bootstrap",
+    "reset": "git clean -dfx && yarn && yarn bootstrap"
   },
   "workspaces": [
     "packages/*"
