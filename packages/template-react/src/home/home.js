@@ -5,7 +5,7 @@ import { gql, graphql } from 'react-apollo';
 
 import styles from './styles.css';
 
-const withData = graphql(gql`
+export const withData = graphql(gql`
   {
     github {
       repo(ownerUsername: "xing", name: "hops") {
@@ -28,7 +28,7 @@ const withData = graphql(gql`
   }
 `);
 
-const Home = ({ data: { loading, github }}) => (
+export const Home = ({ data: { loading, github } }) => (
   <div>
     <Helmet>
       <title>Hops Demo</title>
@@ -38,8 +38,8 @@ const Home = ({ data: { loading, github }}) => (
     </h1>
     {
       (loading)
-      ? (<p>Loading...</p>)
-      : (github.repo.commits.map(commit => (
+        ? (<p>Loading...</p>)
+        : (github.repo.commits.map(commit => (
           <p key={commit.sha}>
             "{commit.message}" by <b>{commit.author.login}</b>
           </p>
@@ -48,4 +48,4 @@ const Home = ({ data: { loading, github }}) => (
   </div>
 );
 
-export default withData(Home)
+export default withData(Home);
