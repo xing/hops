@@ -1,0 +1,20 @@
+{
+  github {
+    repo(ownerUsername: "xing", name: "hops") {
+      id
+      name
+      commits(limit: 10) {
+        ... on GithubCommit {
+          sha
+          message
+          author {
+            ... on GithubUser {
+              id
+              login
+            }
+          }
+        }
+      }
+    }
+  }
+}
