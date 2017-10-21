@@ -12,9 +12,9 @@ var INITIAL_STATE = 'INITIAL_STATE';
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
     Context.prototype.initialize.call(this, options);
-    this.reducers = options.reducers || (options.reducers = {});
-    Object.keys(this.reducers).forEach(function (key) {
-      this.registerReducer(key, this.reducers[key]);
+    this.reducers = {};
+    Object.keys(options.reducers).forEach(function (key) {
+      this.registerReducer(key, options.reducers[key]);
     }.bind(this));
   },
   registerReducer: function (namespace, reducer) {
@@ -33,10 +33,26 @@ exports.Context = exports.createContext = Context.extend({
     return Redux.createStore(
       Redux.combineReducers(this.reducers),
       global[INITIAL_STATE],
-      (global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose)(
-        Redux.applyMiddleware(ReduxThunkMiddleware)
-      )
+      this.createEnhancer()
     );
+  },
+  createEnhancer: function () {
+    return this.composeMiddlewares();
+  },
+  composeEnhancers: function () {
+    var compose = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose;
+    return compose.apply(null, arguments);
+  },
+  composeMiddlewares: function () {
+    return this.composeEnhancers.apply(this, this.applyMiddlewares());
+  },
+  applyMiddlewares: function () {
+    return this.getMiddlewares().map(function (middleware) {
+      return Redux.applyMiddleware(middleware);
+    });
+  },
+  getMiddlewares: function () {
+    return [ReduxThunkMiddleware];
   },
   createProvider: function (reactElement) {
     return React.createElement(
