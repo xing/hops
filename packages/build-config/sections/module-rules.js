@@ -3,6 +3,7 @@
 module.exports = function getModuleRules (target) {
   return [
     require('./module-rules/babel'),
+    require('./module-rules/graphql'),
     require('./module-rules/postcss'),
     require('./module-rules/json'),
     require('./module-rules/file'),
