@@ -7,11 +7,16 @@
     "webpack"
   ],
   "license": "MIT",
+  "bin": {
+    "hops-build": "commands/build.js",
+    "hops-develop": "commands/develop.js"
+  },
   "main": "index.js",
   "files": [
     "build.js",
     "index.js",
     "server.js",
+    "commands",
     "lib"
   ],
   "repository": {
