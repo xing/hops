@@ -12,7 +12,10 @@ describe('jest-preset', function () {
   it('should export tpl-mock', function () {
     assert(require('jest-preset-hops/tpl-mock'));
   });
-  it('should export transform', function () {
-    assert(require('jest-preset-hops/transform'));
+  it('should export babel transform', function () {
+    assert(require('jest-preset-hops/transforms/babel'));
+  });
+  it('should export graphql transform', function () {
+    assert(require('jest-preset-hops/transforms/graphql'));
   });
 });

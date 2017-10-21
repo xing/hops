@@ -5,7 +5,8 @@
     "^.+\\.css$": "identity-obj-proxy"
   },
   "transform": {
-    "^.+\\.(js|jsx|mjs)$": "jest-preset-hops/transform.js"
+    "^.+\\.(js|jsx|mjs)$": "jest-preset-hops/transforms/babel.js",
+    "^.+\\.(gql|graphql)$": "jest-preset-hops/transforms/graphql.js"
   },
   "transformIgnorePatterns": [],
   "setupFiles": [
