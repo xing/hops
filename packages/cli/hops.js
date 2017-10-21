@@ -156,7 +156,6 @@ function installPackages (packages, options) {
 }
 
 var localCliPath = getLocalCliPath();
-var argv = process.argv.slice(2);
 
 var isInsideHopsProject = false;
 try {
@@ -170,7 +169,7 @@ try {
 
 if (isInsideHopsProject) {
   if (localCliPath) {
-    require(localCliPath).run(argv);
+    require(localCliPath).run();
   } else {
     console.error(
       'It appears that we are inside a hops project but the dependencies have',
@@ -181,7 +180,7 @@ if (isInsideHopsProject) {
     process.exit(1);
   }
 } else {
-  var options = globalCLI(argv);
+  var options = globalCLI(process.argv.slice(2));
   var name = options.projectName;
   var root = process.cwd();
   var versionedPackages = PACKAGES_TO_INSTALL.map(function (name) {
