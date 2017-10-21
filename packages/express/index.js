@@ -5,7 +5,7 @@ var createApp = require('./app');
 
 module.exports = {
   createApp: createApp,
-  startServer: function startServer (callback) {
+  runServer: function runServer (options, callback) {
     server.run(createApp(), callback);
   }
 };

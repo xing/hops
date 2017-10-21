@@ -7,10 +7,14 @@
     "express"
   ],
   "license": "MIT",
+  "bin": {
+    "hops-serve": "commands/serve.js"
+  },
   "main": "index.js",
   "files": [
     "app.js",
-    "index.js"
+    "index.js",
+    "commands"
   ],
   "repository": {
     "type": "git",
