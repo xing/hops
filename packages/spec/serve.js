@@ -25,9 +25,8 @@ describe('production server', function () {
     Object.keys(require.cache).forEach(function (key) {
       delete require.cache[key];
     });
-    var localCli = require('hops-local-cli');
-    localCli.run(['build', '--clean'], function () {
-      localCli.run(['serve'], function (_, _app) {
+    require('hops-build').runBuild({ clean: true }, function () {
+      require('hops-express').runServer({}, function (_, _app) {
         app = _app;
         done();
       });
