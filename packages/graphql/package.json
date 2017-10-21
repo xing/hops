@@ -21,6 +21,7 @@
     "merge-options": "^1.0.0"
   },
   "peerDependencies": {
+    "graphql-tag": "^2.5.0",
     "react-apollo": "^1.4.16"
   }
 }
