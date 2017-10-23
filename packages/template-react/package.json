@@ -9,7 +9,8 @@
       "locations": [
         "/",
         "/counter"
-      ]
+      ],
+      "graphqlUri": "https://www.graphqlhub.com/graphql"
     }
   },
   "scripts": {
