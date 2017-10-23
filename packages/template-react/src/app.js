@@ -26,12 +26,5 @@ const App = () => (
 
 export default render(
   <App />,
-  createContext({
-    reducers,
-    graphql: {
-      network: {
-        uri: 'https://www.graphqlhub.com/graphql'
-      }
-    }
-  })
+  createContext({ reducers })
 );
