@@ -9,6 +9,9 @@
     "graphql"
   ],
   "license": "MIT",
+  "bin": {
+    "hops-graphql": "commands/graphql.js"
+  },
   "main": "node.js",
   "browser": "dom.js",
   "files": [
@@ -17,8 +20,7 @@
   ],
   "dependencies": {
     "hops-redux": "7.2.0",
-    "isomorphic-fetch": "^2.2.1",
-    "merge-options": "^1.0.0"
+    "isomorphic-fetch": "^2.2.1"
   },
   "peerDependencies": {
     "graphql-tag": "^2.5.0",
