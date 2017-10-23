@@ -3,10 +3,10 @@
 
 var yargs = require('yargs');
 
-var commands = require('./lib/commands');
+var findCommands = require('./lib/commands');
 var packageManifest = require('./package.json');
 
-module.exports = function run (definition) {
+module.exports = function run (defineCommand, command) {
   var args = yargs
     .version(packageManifest.version)
     .usage('Usage: $0 <command> [options]')
@@ -15,12 +15,12 @@ module.exports = function run (definition) {
     .demandCommand();
   var argv = process.argv.slice(2);
 
-  if (definition && definition.command) {
-    args.command(definition);
-    argv.unshift(definition.command);
+  if (defineCommand && command) {
+    defineCommand(args);
+    argv.unshift(command);
   } else {
-    commands.forEach(function (command) {
-      args.command(require(command));
+    findCommands().forEach(function (commandPath) {
+      require(commandPath)(args);
     });
   }
 
