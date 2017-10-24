@@ -1,13 +1,11 @@
 'use strict';
 
 var fs = require('fs');
-var path = require('path');
 
 var ReactApollo = require('react-apollo');
 
-var hopsConfig = require('hops-config');
-
 var common = require('./lib/common');
+var fragmentsFile = require('./lib/util').getFragmentsFile();
 
 exports.Context = exports.createContext = common.Context.extend({
   bootstrap: function (enhancedComponent) {
@@ -18,9 +16,8 @@ exports.Context = exports.createContext = common.Context.extend({
     return common.Context.prototype.createClient.call(this, options);
   },
   getIntrospectionResult: function () {
-    var filePath = path.join(hopsConfig.appDir, 'fragmentTypes.json');
-    if (fs.existsSync(filePath)) {
-      return require(filePath);
+    if (fs.existsSync(fragmentsFile)) {
+      return require(fragmentsFile);
     }
   },
   getTemplateData: function () {
