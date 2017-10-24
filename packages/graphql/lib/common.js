@@ -19,6 +19,7 @@ exports.Context = exports.createContext = Context.extend({
   createClient: function (options) {
     return new ReactApollo.ApolloClient(
       Object.assign(
+        {},
         options,
         {
           networkInterface: options.networkInterface ||
