@@ -6,7 +6,7 @@ import { graphql } from 'react-apollo';
 import styles from './styles.css';
 import query from './commits.gql';
 
-export const withData = graphql(query);
+export const withCommits = graphql(query);
 
 export const Home = ({ data: { loading, github } }) => (
   <div>
@@ -28,4 +28,4 @@ export const Home = ({ data: { loading, github } }) => (
   </div>
 );
 
-export default withData(Home);
+export default withCommits(Home);
