@@ -19,11 +19,15 @@
     "dom.js"
   ],
   "dependencies": {
+    "apollo-cache-inmemory": "^0.2.0-rc.4",
+    "apollo-client": "^2.0.0-rc.7",
+    "apollo-link-http": "^1.0.0",
+    "graphql": "^0.11.7",
     "hops-redux": "7.2.0",
     "isomorphic-fetch": "^2.2.1"
   },
   "peerDependencies": {
     "graphql-tag": "^2.5.0",
-    "react-apollo": "^1.4.16"
+    "react-apollo": "^2.0.0-rc.0"
   }
 }
