@@ -28,7 +28,7 @@
     "hops-react": "7.2.0",
     "hops-graphql": "7.2.0",
     "react": "^15.6.2",
-    "react-apollo": "^1.4.16",
+    "react-apollo": "^2.0.0-rc.0",
     "react-dom": "^15.6.2",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
