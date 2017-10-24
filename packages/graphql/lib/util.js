@@ -1,7 +1,9 @@
 'use strict';
 
+var path = require('path');
+
 var hopsConfig = require('hops-config');
 
 exports.getFragmentsFile = function getFragmentsFile () {
-  return [hopsConfig.appDir, 'fragmentTypes.json'].join('/');
+  return path.join(hopsConfig.appDir, 'fragmentTypes.json');
 };
