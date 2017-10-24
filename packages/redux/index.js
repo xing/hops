@@ -7,7 +7,7 @@ var ReduxThunkMiddleware = require('redux-thunk').default;
 
 var Context = require('hops-react').Context;
 
-var INITIAL_STATE = 'INITIAL_STATE';
+var REDUX_STATE = 'REDUX_STATE';
 
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
@@ -32,7 +32,7 @@ exports.Context = exports.createContext = Context.extend({
   createStore: function () {
     return Redux.createStore(
       Redux.combineReducers(this.reducers),
-      global[INITIAL_STATE],
+      global[REDUX_STATE],
       this.createEnhancer()
     );
   },
@@ -54,24 +54,20 @@ exports.Context = exports.createContext = Context.extend({
   getMiddlewares: function () {
     return [ReduxThunkMiddleware];
   },
-  createProvider: function (reactElement) {
+  enhanceElement: function (reactElement) {
     return React.createElement(
       ReactRedux.Provider,
-      { store: this.getStore() },
-      reactElement
-    );
-  },
-  enhanceElement: function (reactElement) {
-    return Context.prototype.enhanceElement.call(
-      this,
-      this.createProvider(reactElement)
+      {
+        store: this.getStore()
+      },
+      Context.prototype.enhanceElement.call(this, reactElement)
     );
   },
   getTemplateData: function () {
     var templateData = Context.prototype.getTemplateData.call(this);
     return Object.assign(templateData, {
       globals: templateData.globals.concat([{
-        name: INITIAL_STATE,
+        name: REDUX_STATE,
         value: this.getStore().getState()
       }])
     });
