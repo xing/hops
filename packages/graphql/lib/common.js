@@ -4,57 +4,59 @@ require('isomorphic-fetch');
 var React = require('react');
 var ReactApollo = require('react-apollo');
 
+var ApolloClient = require('apollo-client').default;
+var ApolloCache = require('apollo-cache-inmemory');
+var ApolloLink = require('apollo-link-http');
+
 var hopsConfig = require('hops-config');
 
 var Context = require('hops-redux').Context;
 
-exports.INTROSPECTION_RESULT = 'INTROSPECTION_RESULT';
+exports.APOLLO_STATE = 'APOLLO_STATE';
+exports.APOLLO_IQRD = 'APOLLO_IQRD';
 
 exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
     Context.prototype.initialize.call(this, options);
     this.client = this.createClient(options.graphql || {});
-    this.registerReducer('apollo', this.client.reducer());
   },
   createClient: function (options) {
-    return new ReactApollo.ApolloClient(
-      Object.assign(
-        {},
-        options,
-        {
-          networkInterface: options.networkInterface ||
-            this.createNetworkInterface(),
-          fragmentMatcher: options.fragmentMatcher ||
-            this.createFragmentMatcher()
-        }
-      )
-    );
+    return new ApolloClient(Object.assign(
+      {},
+      options,
+      {
+        link: options.link || this.createLink(),
+        cache: options.cache || this.createCache()
+      }
+    ));
   },
-  createNetworkInterface: function () {
-    return ReactApollo.createNetworkInterface({
+  createLink: function () {
+    return new ApolloLink.HttpLink({
       uri: hopsConfig.graphqlUri
+    });
+  },
+  createCache: function () {
+    return new ApolloCache.InMemoryCache({
+      fragmentMatcher: this.createFragmentMatcher()
     });
   },
   createFragmentMatcher: function () {
     var result = this.getIntrospectionResult();
     if (result) {
-      return new ReactApollo.IntrospectionFragmentMatcher({
+      return new ApolloCache.IntrospectionFragmentMatcher({
         introspectionQueryResultData: this.getIntrospectionResult()
       });
+    } else {
+      return new ApolloCache.HeuristicFragmentMatcher();
     }
   },
-  createProvider: function (reactElement) {
+  enhanceElement: function (reactElement) {
     return React.createElement(
       ReactApollo.ApolloProvider,
       {
-        client: this.client,
-        store: this.getStore()
+        client: this.client
       },
-      reactElement
+      Context.prototype.enhanceElement.call(this, reactElement)
     );
-  },
-  getMiddlewares: function () {
-    return Context.prototype.getMiddlewares.call(this)
-      .concat(this.client.middleware());
   }
 });

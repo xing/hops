@@ -23,10 +23,16 @@ exports.Context = exports.createContext = common.Context.extend({
   getTemplateData: function () {
     var templateData = common.Context.prototype.getTemplateData.call(this);
     return Object.assign(templateData, {
-      globals: templateData.globals.concat([{
-        name: common.INTROSPECTION_RESULT,
-        value: this.getIntrospectionResult()
-      }])
+      globals: templateData.globals.concat([
+        {
+          name: common.APOLLO_IQRD,
+          value: this.getIntrospectionResult()
+        },
+        {
+          name: common.APOLLO_STATE,
+          value: this.client.cache.extract()
+        }
+      ])
     });
   }
 });
