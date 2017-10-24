@@ -6,7 +6,7 @@ var fetchFragments = require('../lib/fragments');
 module.exports = function defineGraphQLCommand (args) {
   args.command('graphql', 'Execute GraphQL specific tasks', function (yargs) {
     return yargs
-      .usage('Usage: $0 graphql <command>')
+      .usage('Usage: hops-graphql <command>')
       .command({
         command: 'introspect',
         describe: 'Fetches GraphQL schema information for introspection',
