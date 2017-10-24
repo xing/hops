@@ -3,15 +3,15 @@
 
 var fetchFragments = require('../lib/fragments');
 
-module.exports = function defineDevelopCommand (args) {
+module.exports = function defineGraphQLCommand (args) {
   args.command('graphql', 'Execute GraphQL specific tasks', function (yargs) {
     return yargs
       .usage('Usage: $0 graphql <command>')
       .command({
         command: 'introspect',
-        describe: 'Fetches GrqphQL schema information for introspection',
+        describe: 'Fetches GraphQL schema information for introspection',
         builder: {},
-        handler: function developHandler (argv) {
+        handler: function graphqlHandler (argv) {
           fetchFragments()
             .then(function () {
               console.log('Fetched and saved GraphQL fragments');
