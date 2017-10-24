@@ -1,5 +1,5 @@
 
-var common = require('./common');
+var common = require('./lib/common');
 
 exports.Context = exports.createContext = common.Context.extend({
   getIntrospectionResult: function () {

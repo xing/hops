@@ -7,7 +7,7 @@ var ReactApollo = require('react-apollo');
 
 var hopsConfig = require('hops-config');
 
-var common = require('./common');
+var common = require('./lib/common');
 
 exports.Context = exports.createContext = common.Context.extend({
   bootstrap: function (enhancedComponent) {
