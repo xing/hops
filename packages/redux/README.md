@@ -15,7 +15,7 @@ npm install --save hops-redux react react-redux redux redux-thunk
 
 # API
 ## `createContext(options)`
-`createContext()` is hops-redux's main export. Of course, it is based on the implementation in [hops-react](https://github.com/xing/hops/tree/master/packages/react#contextoptions), but takes an additional `reducers` option.
+`createContext()` is hops-redux's main export. Of course, it is based on the implementation in [hops-react](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions), but takes an additional `reducers` option.
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
