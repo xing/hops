@@ -41,23 +41,30 @@ hops graphql introspect
 
 The generated file, `fragmentTypes.json` will be picked up automatically by hops-graphql. Please make sure to commit it to version control.
 
-
 # API
 ## `createContext(options)`
-`createContext()` is hops-graphql's main export. It is based on the implementation in [hops-redux](https://github.com/xing/hops/tree/master/packages/redux#createcontextoptions) and accepts the same options.
+`createContext()` is hops-graphql's main export. It is based on the implementation in [hops-redux](https://github.com/xing/hops/tree/master/packages/redux#createcontextoptions) and accepts the same options plus a `graphql` config.
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| mountpoint | String | `'#main'` | querySelector identifying the root DOM node |
+| template | Function | `defaultTemplate` | template function supporting all React Helmet and hops-react features |
+| reducers | Object | `{}` | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html) |
+| graphql | Object | `{ cache, link }` | object literal containing options directly passed to the `ApolloClient` constructor |
+
+Defaults for the `graphql` config are very similar to those in the [default implementation](https://www.npmjs.com/package/apollo-client-preset) with the exception that `hopsConfig.graphqlUri` is being used as HTTP endpoint.
 
 ## `Context(options)`
 `Context()` works the same way as `createContext()`, but with an object-oriented API. Additionally, you can use its [`Context.extend()`](https://github.com/xing/hops/tree/master/packages/react#contextoptions) method to build upon hops-redux and create advanced context implementations.
 
 # Example
 
-###
-
 ``` js
 import React from 'react';
 import { graphql } from 'react-apollo';
 
 import styles from './styles.css';
+
 import query from './query.gql';
 
 export const withData = graphql(query);
