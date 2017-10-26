@@ -36,6 +36,9 @@ exports.Context = exports.createContext = Context.extend({
       reactElement
     );
   },
+  prepareEnhancedElement: function (enhancedElement) {
+    return Promise.resolve();
+  },
   getTemplateData: function () {
     return {
       options: this.options,
@@ -59,20 +62,24 @@ exports.render = function (reactElement, context) {
   }
   return function (req, res, next) {
     var reqContext = context.clone(req);
-    var enhancedElement = reqContext.enhanceElement(reactElement);
-    reqContext.bootstrap(enhancedElement).then(function () {
-      var markup = ReactDOM.renderToString(enhancedElement);
-      if (reqContext.miss) {
-        next();
-      } else {
-        if (reqContext.url) {
-          res.status(reqContext.status || 301).set('Location', reqContext.url);
+    reqContext.bootstrap().then(function () {
+      var enhancedElement = reqContext.enhanceElement(reactElement);
+      return context.prepareEnhancedElement(enhancedElement).then(function () {
+        var markup = ReactDOM.renderToString(enhancedElement);
+        if (reqContext.miss) {
+          next();
         } else {
-          res.status(reqContext.status || 200).type('html');
-          res.write(reqContext.renderTemplate(markup));
+          if (reqContext.url) {
+            res.status(reqContext.status || 301)
+              .set('Location', reqContext.url);
+          } else {
+            res.status(reqContext.status || 200)
+              .type('html');
+            res.write(reqContext.renderTemplate(markup));
+          }
+          res.end();
         }
-        res.end();
-      }
+      });
     }).catch(next);
   };
 };

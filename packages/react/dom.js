@@ -22,6 +22,9 @@ exports.Context = exports.createContext = Context.extend({
       reactElement
     );
   },
+  prepareEnhancedElement: function (enhancedElement) {
+    return Promise.resolve();
+  },
   getMountpoint: function () {
     return document.querySelector(this.mountpoint);
   }
@@ -38,9 +41,11 @@ exports.render = function (reactElement, context) {
     } else {
       mountpoint.setAttribute('data-hopsroot', '');
     }
-    var enhancedElement = context.enhanceElement(reactElement);
-    context.bootstrap(enhancedElement).then(function () {
-      ReactDOM.render(enhancedElement, mountpoint);
+    return context.bootstrap().then(function () {
+      var enhancedElement = context.enhanceElement(reactElement);
+      return context.prepareEnhancedElement(enhancedElement).then(function () {
+        ReactDOM.render(enhancedElement, mountpoint);
+      });
     });
   };
 };
