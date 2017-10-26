@@ -84,6 +84,7 @@ module.exports = freeze(
         basePath: '',
         assetPath: '',
         browsers: '> 1%, last 2 versions, Firefox ESR',
+        node: 'current',
         moduleDirs: [],
         appDir: '.',
         buildDir: 'build',
