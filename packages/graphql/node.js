@@ -8,8 +8,8 @@ var common = require('./lib/common');
 var fragmentsFile = require('./lib/util').getFragmentsFile();
 
 exports.Context = exports.createContext = common.Context.extend({
-  prepareEnhancedElement: function (enhancedComponent) {
-    return ReactApollo.getDataFromTree(enhancedComponent);
+  prepareRender: function (enhancedElement) {
+    return ReactApollo.getDataFromTree(enhancedElement);
   },
   createClient: function (options) {
     options.ssrMode = true;
