@@ -27,6 +27,6 @@
     "hops-config": "7.2.0",
     "tar": "^4.0.1",
     "validate-npm-package-name": "^3.0.0",
-    "yargs": "^9.0.1"
+    "yargs": "^10.0.3"
   }
 }

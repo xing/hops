@@ -21,6 +21,6 @@
   "dependencies": {
     "resolve-cwd": "^2.0.0",
     "validate-npm-package-name": "^3.0.0",
-    "yargs": "^9.0.1"
+    "yargs": "^10.0.3"
   }
 }
