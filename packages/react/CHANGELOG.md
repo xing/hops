@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="7.3.2"></a>
+## [7.3.2](https://github.com/xing/hops/compare/v7.3.1...v7.3.2) (2017-10-26)
+
+
+### Bug Fixes
+
+* **react:** fix render context life cycle ([b725d93](https://github.com/xing/hops/commit/b725d93))
+
+
+
+
 <a name="7.3.0"></a>
 # [7.3.0](https://github.com/xing/hops/compare/v7.2.0...v7.3.0) (2017-10-26)
 
