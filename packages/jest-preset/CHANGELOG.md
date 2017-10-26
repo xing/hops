@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="7.3.1"></a>
+## [7.3.1](https://github.com/xing/hops/compare/v7.3.0...v7.3.1) (2017-10-26)
+
+
+### Bug Fixes
+
+* **jest-preset:** add missing transforms folder to npm package ([e855c51](https://github.com/xing/hops/commit/e855c51))
+
+
+
+
 <a name="7.3.0"></a>
 # [7.3.0](https://github.com/xing/hops/compare/v7.2.0...v7.3.0) (2017-10-26)
 
