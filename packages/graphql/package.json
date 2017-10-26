@@ -16,7 +16,9 @@
   "browser": "dom.js",
   "files": [
     "node.js",
-    "dom.js"
+    "dom.js",
+    "commands",
+    "lib"
   ],
   "dependencies": {
     "apollo-cache-inmemory": "^1.0.0",
