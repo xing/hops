@@ -1,6 +1,6 @@
 {
   "name": "hops-template-react",
-  "version": "7.3.2",
+  "version": "7.3.3",
   "main": "src/app.js",
   "license": "MIT",
   "config": {
@@ -24,7 +24,7 @@
     "graphql-tag": "^2.5.0",
     "hops-config": "7.2.0",
     "hops-express": "7.3.2",
-    "hops-graphql": "7.3.2",
+    "hops-graphql": "7.3.3",
     "hops-local-cli": "7.3.2",
     "hops-react": "7.3.2",
     "react": "^15.6.2",
