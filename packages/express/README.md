@@ -12,8 +12,8 @@ hops-express doesn't generate the middleware itself but assumes that it is named
 ## `createApp()`
 `createApp()` creates an Express app, applies all the middleware configuration and returns the app object ready to call `app.listen(host, port)` on it.
 
-## `startServer(callback)`
-`startServer()` is a small wrapper around `createApp()` and executes `app.listen()` with the values provided through hops-config.
+## `runServer(callback)`
+`runServer()` is a small wrapper around `createApp()` and executes `app.listen()` with the values provided through hops-config.
 
 
 ### Target Audience
@@ -29,7 +29,7 @@ The server contained in this app is meant for production usage. During developme
 ```javascript
 var hopsExpress = require('hops-express');
 
-hopsExpress.startServer(function (error) {
+hopsExpress.runServer(function (error) {
   if (error) {
     console.error(error);
   } else {
