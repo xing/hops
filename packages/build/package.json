@@ -1,6 +1,6 @@
 {
   "name": "hops-build",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "description": "Hops wrapper around webpack to execute a build",
   "keywords": [
     "hops",
@@ -24,7 +24,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-build-config": "7.2.0",
+    "hops-build-config": "7.3.0",
     "hops-config": "7.2.0",
     "hops-middleware": "7.2.0",
     "hops-plugin": "7.2.0",

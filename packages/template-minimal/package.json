@@ -1,6 +1,6 @@
 {
   "name": "hops-template-minimal",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "browser": "src/browser.js",
   "server": "src/server.js",
   "license": "MIT",
@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "hops-config": "7.2.0",
-    "hops-express": "7.2.0",
-    "hops-local-cli": "7.2.0"
+    "hops-express": "7.3.0",
+    "hops-local-cli": "7.3.0"
   },
   "devDependencies": {
-    "hops-build": "7.2.0"
+    "hops-build": "7.3.0"
   }
 }

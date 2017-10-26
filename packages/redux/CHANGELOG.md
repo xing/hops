@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="7.3.0"></a>
+# [7.3.0](https://github.com/xing/hops/compare/v7.2.0...v7.3.0) (2017-10-26)
+
+
+### Features
+
+* **redux:** add support for hops-graphql ([807966e](https://github.com/xing/hops/commit/807966e))
+* **redux:** simplify custom store setup ([f11cac8](https://github.com/xing/hops/commit/f11cac8))
+
+
+
+
 <a name="7.2.0"></a>
 # [7.2.0](https://github.com/xing/hops/compare/v7.1.0...v7.2.0) (2017-10-18)
 

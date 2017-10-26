@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="7.3.0"></a>
+# [7.3.0](https://github.com/xing/hops/compare/v7.2.0...v7.3.0) (2017-10-26)
+
+
+### Bug Fixes
+
+* **cli:** lookup "hops-local-cli" in dependencies + devDependencies ([9aa136e](https://github.com/xing/hops/commit/9aa136e))
+
+
+### Features
+
+* **cli:** update cli for extensible local-cli ([aa794fc](https://github.com/xing/hops/commit/aa794fc))
+
+
+
+
 <a name="7.2.0"></a>
 # [7.2.0](https://github.com/xing/hops/compare/v7.1.0...v7.2.0) (2017-10-18)
 

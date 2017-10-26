@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="7.3.0"></a>
+# [7.3.0](https://github.com/xing/hops/compare/v7.2.0...v7.3.0) (2017-10-26)
+
+
+### Features
+
+* **express:** add standalone command compatible with local-cli ([95fa0c6](https://github.com/xing/hops/commit/95fa0c6))
+
+
+
+
 <a name="7.2.0"></a>
 # [7.2.0](https://github.com/xing/hops/compare/v7.1.0...v7.2.0) (2017-10-18)
 
