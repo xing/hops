@@ -46,6 +46,6 @@ exports.default = getBabelLoader(
 );
 
 exports.node = getBabelLoader(
-  { node: 'current' },
+  { node: hopsConfig.node },
   require.resolve('babel-plugin-dynamic-import-node')
 );
