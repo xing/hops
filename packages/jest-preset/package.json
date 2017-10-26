@@ -11,7 +11,7 @@
     "jest-preset.json",
     "file-mock.js",
     "tpl-mock.js",
-    "transform.js"
+    "transforms"
   ],
   "repository": {
     "type": "git",
