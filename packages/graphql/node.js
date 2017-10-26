@@ -8,7 +8,7 @@ var common = require('./lib/common');
 var fragmentsFile = require('./lib/util').getFragmentsFile();
 
 exports.Context = exports.createContext = common.Context.extend({
-  bootstrap: function (enhancedComponent) {
+  prepareEnhancedElement: function (enhancedComponent) {
     return ReactApollo.getDataFromTree(enhancedComponent);
   },
   createClient: function (options) {
