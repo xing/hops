@@ -36,7 +36,7 @@ exports.Context = exports.createContext = Context.extend({
       reactElement
     );
   },
-  prepareEnhancedElement: function (enhancedElement) {
+  prepareRender: function (enhancedElement) {
     return Promise.resolve();
   },
   getTemplateData: function () {
@@ -64,7 +64,7 @@ exports.render = function (reactElement, context) {
     var reqContext = context.clone(req);
     reqContext.bootstrap().then(function () {
       var enhancedElement = reqContext.enhanceElement(reactElement);
-      return context.prepareEnhancedElement(enhancedElement).then(function () {
+      return context.prepareRender(enhancedElement).then(function () {
         var markup = ReactDOM.renderToString(enhancedElement);
         if (reqContext.miss) {
           next();

@@ -22,7 +22,7 @@ exports.Context = exports.createContext = Context.extend({
       reactElement
     );
   },
-  prepareEnhancedElement: function (enhancedElement) {
+  prepareRender: function (enhancedElement) {
     return Promise.resolve();
   },
   getMountpoint: function () {
@@ -43,7 +43,7 @@ exports.render = function (reactElement, context) {
     }
     return context.bootstrap().then(function () {
       var enhancedElement = context.enhanceElement(reactElement);
-      return context.prepareEnhancedElement(enhancedElement).then(function () {
+      return context.prepareRender(enhancedElement).then(function () {
         ReactDOM.render(enhancedElement, mountpoint);
       });
     });
