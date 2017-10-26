@@ -1,7 +1,7 @@
 {
   "name": "hops-graphql",
   "version": "7.3.5",
-  "description": "React and GraphQL implementation for Hops",
+  "description": "React, Redux and GraphQL implementation for Hops",
   "keywords": [
     "hops",
     "react",
@@ -30,6 +30,7 @@
   },
   "peerDependencies": {
     "graphql-tag": "^2.5.0",
+    "react": ">=15.0.0 <17.0.0",
     "react-apollo": "^2.0.0"
   }
 }
