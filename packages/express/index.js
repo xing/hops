@@ -10,5 +10,5 @@ function runServer (options, callback) {
 module.exports = {
   createApp: createApp,
   runServer: runServer,
-  startServer: runServer
+  startServer: runServer // added for backwards compat - remove a.s.a.p.
 };
