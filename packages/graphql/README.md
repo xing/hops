@@ -7,7 +7,7 @@ hops-graphql extends [hops-react](https://github.com/xing/hops/tree/master/packa
 Additionally, hops-graphql features a CLI tool to help working with GraphQL schemas.
 
 # Installation
-To use hops-redux, you need to add it and its dependencies to an existing project that already has [hops-react](https://github.com/xing/hops/tree/master/packages/react) installed.
+To use hops-graphql, you need to add it and its dependencies to an existing project that already has [hops-react](https://github.com/xing/hops/tree/master/packages/react) installed.
 
 ``` bash
 npm install --save hops-graphql graphql-tag react react-redux redux redux-thunk
@@ -59,19 +59,31 @@ Defaults for the `graphql` config are very similar to those in the [default impl
 
 # Example
 
+
+### `hero.gql`
+
+``` graphql
+{
+  hero {
+    name
+    height
+  }
+}
+```
+
+### `hero.js`
+
 ``` js
 import React from 'react';
 import { graphql } from 'react-apollo';
 
-import styles from './styles.css';
+import query from './hero.gql';
 
-import query from './query.gql';
+export const withHero = graphql(query);
 
-export const withData = graphql(query);
-
-export const Home = ({ data: { loading } }) => (
-  (loading) ? (<p>Loading...</p>) : (<p>{/* Do things with data */}</p>)
+export const Home = ({ data: { loading, hero } }) => (
+  (loading) ? (<p>Loading...</p>) : (<p>{ hero.name }: { hero.height }</p>)
 );
 
-export default withData(Home);
+export default withHero(Home);
 ```
