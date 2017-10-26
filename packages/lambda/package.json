@@ -1,0 +1,20 @@
+{
+  "name": "hops-lambda",
+  "version": "9.1.1",
+  "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "hops-lambda": "commands/lambda.js"
+  },
+  "dependencies": {
+    "archiver": "^2.1.0",
+    "aws-sdk": "^2.135.0",
+    "aws-serverless-express": "^3.0.2",
+    "hops-config": "9.1.1",
+    "prompt": "^1.0.0",
+    "resolve-tree": "^0.1.13"
+  },
+  "peerDependencies": {
+    "hops-express": "9.1.1"
+  }
+}
