@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "7.3.2",
+  "version": "7.3.4",
   "private": true,
   "scripts": {
     "test": "mocha --exit '*.js'"
@@ -10,7 +10,7 @@
     "hops-build-config": "7.3.0",
     "hops-cli": "7.3.0",
     "hops-config": "7.2.0",
-    "hops-express": "7.3.2",
+    "hops-express": "7.3.4",
     "hops-local-cli": "7.3.2",
     "hops-middleware": "7.2.0",
     "hops-plugin": "7.2.0",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="7.3.4"></a>
+## [7.3.4](https://github.com/xing/hops/compare/v7.3.3...v7.3.4) (2017-10-27)
+
+
+### Bug Fixes
+
+* **express:** fix startServer method signature ([4692910](https://github.com/xing/hops/commit/4692910))
+
+
+
+
 <a name="7.3.2"></a>
 ## [7.3.2](https://github.com/xing/hops/compare/v7.3.1...v7.3.2) (2017-10-26)
 
