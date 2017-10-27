@@ -13,9 +13,11 @@ exports.Context = exports.createContext = Context.extend({
   initialize: function (options) {
     Context.prototype.initialize.call(this, options);
     this.reducers = {};
-    Object.keys(options.reducers).forEach(function (key) {
-      this.registerReducer(key, options.reducers[key]);
-    }.bind(this));
+    Object.keys(options.reducers || {}).forEach(
+      function (key) {
+        this.registerReducer(key, options.reducers[key]);
+      }.bind(this)
+    );
   },
   registerReducer: function (namespace, reducer) {
     this.reducers[namespace] = reducer;
