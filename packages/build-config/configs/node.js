@@ -7,6 +7,8 @@ var findUp = require('find-up');
 
 var hopsConfig = require('hops-config');
 
+var checkEsnext = require('../lib/check-esnext');
+
 function findNodeModules (start) {
   var modulesDir = findUp.sync('node_modules', { cwd: start });
   var files = fs.readdirSync(modulesDir);
@@ -17,6 +19,12 @@ function findNodeModules (start) {
     return findNodeModules(path.dirname(path.dirname(modulesDir)));
   }
   return modulesDir;
+}
+
+function shouldIncludeExternalModuleInBundle (module) {
+  return module.indexOf('core-js') === 0 ||
+    module.indexOf('babel-polyfill') === 0 ||
+    checkEsnext(module);
 }
 
 var modulesDir = findNodeModules(process.cwd());
@@ -36,7 +44,7 @@ module.exports = {
   resolve: require('../sections/resolve')('node'),
   externals: [require('webpack-node-externals')({
     modulesDir: modulesDir,
-    whitelist: require('../lib/check-esnext')
+    whitelist: shouldIncludeExternalModuleInBundle
   })],
   module: {
     rules: require('../sections/module-rules')('node')
