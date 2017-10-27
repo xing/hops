@@ -3,20 +3,29 @@
 var path = require('path');
 var hopsConfig = require('hops-config');
 
+var DEFAULT_REGION = 'us-east-1';
+
 module.exports = function getAWSConfig () {
-  var config = hopsConfig.aws;
+  var awsConfig = hopsConfig.aws;
   var manifest = require(path.join(hopsConfig.appDir, 'package.json'));
 
-  var namePrefix = 'hops-' + manifest.name + '-';
+  var region = awsConfig.region || process.env.AWS_REGION ||
+    process.env.AWS_DEFAULT_REGION;
 
-  return config ? {
-    region: config.region || process.env.AWS_REGION,
-    stackName: namePrefix + config.uniqueName,
-    bucketName: namePrefix + config.uniqueName,
-    credentials: config.accessKeyId ? {
-      accessKeyId: config.accessKeyId || null,
-      secretAccessKey: config.secretAccessKey || null,
-      sessionToken: config.sessionToken || null
+  var name = 'hops-lambda-' + manifest.name;
+
+  if (!region) {
+    console.warn('No AWS region is configured, defaulting to "us-east-1".');
+  }
+
+  return awsConfig ? {
+    region: region || DEFAULT_REGION,
+    stackName: awsConfig.uniqueName ? awsConfig.uniqueName : name,
+    bucketName: awsConfig.uniqueName ? awsConfig.uniqueName : name,
+    credentials: awsConfig.accessKeyId ? {
+      accessKeyId: awsConfig.accessKeyId || null,
+      secretAccessKey: awsConfig.secretAccessKey || null,
+      sessionToken: awsConfig.sessionToken || null
     } : {}
   } : null;
 };
