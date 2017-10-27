@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="7.3.5"></a>
+## [7.3.5](https://github.com/xing/hops/compare/v7.3.4...v7.3.5) (2017-10-27)
+
+
+### Bug Fixes
+
+* **hops-redux:** make options.reducers optional again ([06dae00](https://github.com/xing/hops/commit/06dae00))
+
+
+
+
 <a name="7.3.2"></a>
 ## [7.3.2](https://github.com/xing/hops/compare/v7.3.1...v7.3.2) (2017-10-26)
 
