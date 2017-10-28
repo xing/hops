@@ -9,12 +9,6 @@ var createLambdaBundle = require('./lib/create-lambda-bundle');
 var progressWriter = require('./lib/progress-writer');
 var fsUtils = require('./lib/fs-utils');
 
-function getAccountId (sts) {
-  return sts.getCallerIdentity().promise().then(function (data) {
-    return data.Account;
-  });
-}
-
 function createBucketIfNotExists (s3, bucketName) {
   return s3.getBucketLocation({ Bucket: bucketName }).promise()
     .then(function () { return bucketName; })
@@ -39,10 +33,7 @@ function uploadFile (s3, bucketName, file) {
       Body: fs.createReadStream(file)
     }).promise().then(function (result) {
       progress(1, 1);
-      return {
-        S3URI: 's3://' + result.Bucket + '/' + result.Key,
-        Location: result.Location
-      };
+      return result;
     });
   });
 }
@@ -96,7 +87,7 @@ function getStackOutput (cloudformation, stackName) {
   });
 }
 
-function createOrUpdateStack (cloudformation, stackName, templateUrl) {
+function createOrUpdateStack (cloudformation, stackName, templateUrl, params) {
   return cloudformation.describeStacks({ StackName: stackName }).promise()
     .then(function () { return 'UPDATE'; })
     .catch(function () { return 'CREATE'; })
@@ -108,7 +99,8 @@ function createOrUpdateStack (cloudformation, stackName, templateUrl) {
         ChangeSetType: changeSetType,
         StackName: stackName,
         TemplateURL: templateUrl,
-        Capabilities: ['CAPABILITY_IAM']
+        Capabilities: ['CAPABILITY_IAM'],
+        Parameters: params
       }).promise().then(function () {
         return waitForChangeSetComplete(
           cloudformation,
@@ -154,12 +146,10 @@ module.exports = function deploy (options) {
 
   AWS.config.apiVersions = {
     cloudformation: '2010-05-15',
-    s3: '2006-03-01',
-    sts: '2011-06-15'
+    s3: '2006-03-01'
   };
 
   var s3 = new AWS.S3(awsConfig.credentials);
-  var sts = new AWS.STS(awsConfig.credentials);
   var cloudformation = new AWS.CloudFormation(awsConfig.credentials);
 
   return fsUtils.createTmpDirectory().then(function (tmpDirectory) {
@@ -172,7 +162,6 @@ module.exports = function deploy (options) {
     }
 
     return Promise.all([
-      getAccountId(sts),
       createLambdaBundle(
         projectDirectory,
         zippedBundleLocation,
@@ -182,42 +171,36 @@ module.exports = function deploy (options) {
       ),
       createBucketIfNotExists(s3, awsConfig.bucketName)
     ])
-      .then(function (values) {
-        var accountId = values[0];
-
+      .then(function () {
         return Promise.all([
           uploadFile(s3, awsConfig.bucketName, zippedBundleLocation),
-          fsUtils.templateFile(
-            path.join(__dirname, 'swagger.yaml'),
-            path.join(tmpDirectory, 'swagger.yaml'),
-            function (template) {
-              return template
-                .replace(/YOUR_ACCOUNT_ID/g, accountId)
-                .replace(/YOUR_AWS_REGION/g, awsConfig.region);
-            }
-          ).then(uploadFile.bind(null, s3, awsConfig.bucketName))
+          uploadFile(
+            s3,
+            awsConfig.bucketName,
+            path.join(__dirname, 'cloudformation.yaml')
+          )
         ]);
       })
       .then(function (values) {
-        var zippedBundleUri = values[0].S3URI;
-        var apiDefinitionUri = values[1].S3URI;
+        var parameters = [{
+          ParameterKey: 'LambdaMemorySize',
+          ParameterValue: String(awsConfig.memorySize)
+        }, {
+          ParameterKey: 'StageName',
+          ParameterValue: awsConfig.stageName
+        }, {
+          ParameterKey: 'BucketName',
+          ParameterValue: values[0].Bucket
+        }, {
+          ParameterKey: 'BundleName',
+          ParameterValue: values[0].Key
+        }];
 
-        return fsUtils.templateFile(
-          path.join(__dirname, 'cloudformation.yaml'),
-          path.join(tmpDirectory, 'cloudformation.yaml'),
-          function (template) {
-            return template
-              .replace('S3_LOCATION_OF_SWAGGER_FILE', apiDefinitionUri)
-              .replace('S3_LOCATION_OF_ZIPPED_CODE', zippedBundleUri);
-          }
-        );
-      })
-      .then(uploadFile.bind(null, s3, awsConfig.bucketName))
-      .then(function (s3Response) {
         return createOrUpdateStack(
           cloudformation,
           awsConfig.stackName,
-          s3Response.Location
+          values[1].Location,
+          parameters
         );
       });
   }).then(function (url) {

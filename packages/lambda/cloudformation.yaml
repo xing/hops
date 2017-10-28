@@ -1,15 +1,62 @@
----
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Hops Serverless Express Application / Powered by hops-lambda
+
+Parameters:
+  LambdaMemorySize:
+    Type: Number
+    MinValue: 128
+    MaxValue: 1536
+    Default: 128
+    Description: Specify the amount of memory available to your Lambda function
+  StageName:
+    Type: String
+    Default: prod
+    Description: The name of the API Gateway stage (used as basePath)
+  BucketName:
+    Type: String
+  BundleName:
+    Type: String
+
 Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
     Properties:
-      DefinitionUri: S3_LOCATION_OF_SWAGGER_FILE
-      StageName: prod
-      Variables:
-        ServerlessExpressLambdaFunctionName: !Ref ServerlessFunction
+      DefinitionBody:
+        swagger: 2.0
+        info:
+          title: Hops Serverless Express
+        basePath: !Sub '/${StageName}'
+        schemes:
+        - https
+        paths:
+          '/':
+            x-amazon-apigateway-any-method:
+              produces:
+              - text/html
+              responses: {}
+              x-amazon-apigateway-integration:
+                uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${HopsLambdaHandler}/invocations'
+                passthroughBehavior: when_no_match
+                httpMethod: POST
+                type: aws_proxy
+          '/{proxy+}':
+            x-amazon-apigateway-any-method:
+              parameters:
+              - name: proxy
+                in: path
+                required: true
+                type: string
+              produces:
+              - text/html
+              responses: {}
+              x-amazon-apigateway-integration:
+                uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${HopsLambdaHandler}/invocations'
+                httpMethod: POST
+                type: aws_proxy
+        x-amazon-apigateway-binary-media-types:
+          - '*/*'
+      StageName: !Ref StageName
 
   LambdaExecutionRole:
     Type: AWS::IAM::Role
@@ -21,7 +68,7 @@ Resources:
           Principal:
             Service: lambda.amazonaws.com
           Action: sts:AssumeRole
-      Path: "/"
+      Path: '/'
       Policies:
       - PolicyName: root
         PolicyDocument:
@@ -38,24 +85,18 @@ Resources:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
-      FunctionName: !GetAtt ServerlessFunction.Arn
+      FunctionName: !GetAtt HopsLambdaHandler.Arn
       Principal: apigateway.amazonaws.com
-      SourceArn: !Join
-        - ''
-        - - 'arn:aws:execute-api:'
-          - !Ref AWS::Region
-          - ":"
-          - !Ref AWS::AccountId
-          - ":"
-          - !Ref ApiGatewayApi
-          - "/*/*"
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ApiGatewayApi}/*/*'
 
-  ServerlessFunction:
+  HopsLambdaHandler:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: S3_LOCATION_OF_ZIPPED_CODE
+      CodeUri:
+        Bucket: !Ref BucketName
+        Key: !Ref BundleName
       Handler: node_modules/hops-lambda/lambda.handler
-      MemorySize: 1024
+      MemorySize: !Ref LambdaMemorySize
       Role: !GetAtt LambdaExecutionRole.Arn
       Runtime: nodejs6.10
       Timeout: 30
@@ -75,10 +116,4 @@ Resources:
 
 Outputs:
   ApiUrl:
-    Value: !Join
-      - ''
-      - - https://
-        - !Ref ApiGatewayApi
-        - ".execute-api."
-        - !Ref AWS::Region
-        - ".amazonaws.com/prod/"
+    Value: !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/'
