@@ -22,6 +22,8 @@ module.exports = function getAWSConfig () {
     region: region || DEFAULT_REGION,
     stackName: awsConfig.uniqueName ? awsConfig.uniqueName : name,
     bucketName: awsConfig.uniqueName ? awsConfig.uniqueName : name,
+    memorySize: 128,
+    stageName: 'prod',
     credentials: awsConfig.accessKeyId ? {
       accessKeyId: awsConfig.accessKeyId || null,
       secretAccessKey: awsConfig.secretAccessKey || null,
