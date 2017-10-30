@@ -69,14 +69,14 @@ function getStackOutput (cloudformation, stackName) {
         if (
           stack.StackStatus === 'CREATE_FAILED' ||
           stack.StackStatus === 'ROLLBACK_FAILED' ||
-          stack.StackStatus === 'UPDATE_ROLLBACK_FAILED'
+          stack.StackStatus === 'UPDATE_ROLLBACK_FAILED' ||
+          stack.StackStatus === 'ROLLBACK_COMPLETE' ||
+          stack.StackStatus === 'UPDATE_ROLLBACK_COMPLETE'
         ) {
           return reject(stack);
         } else if (
           stack.StackStatus === 'CREATE_COMPLETE' ||
-          stack.StackStatus === 'UPDATE_COMPLETE' ||
-          stack.StackStatus === 'ROLLBACK_COMPLETE' ||
-          stack.StackStatus === 'UPDATE_ROLLBACK_COMPLETE'
+          stack.StackStatus === 'UPDATE_COMPLETE'
         ) {
           return resolve(stack);
         }
@@ -115,21 +115,15 @@ function createOrUpdateStack (cloudformation, stackName, templateUrl, params) {
       }).then(function () {
         return getStackOutput(cloudformation, stackName);
       }).then(function (stack) {
-        return stack.Outputs[0].OutputValue;
+        return stack.Outputs.reduce(function (result, output) {
+          result[output.OutputKey] = output.OutputValue;
+        }, {});
       });
     });
 }
 
 module.exports = function deploy (options) {
   var awsConfig = getAWSConfig();
-
-  if (!awsConfig) {
-    console.error(
-      'No AWS config found in hops config. Please make sure to set up your ' +
-        'AWS config in the config.hops.aws section of your package.json.'
-    );
-    return process.exit(1);
-  }
 
   if (
     !fs.existsSync(hopsConfig.buildDir) ||
@@ -189,11 +183,20 @@ module.exports = function deploy (options) {
           ParameterKey: 'StageName',
           ParameterValue: awsConfig.stageName
         }, {
+          ParameterKey: 'BasePath',
+          ParameterValue: awsConfig.basePath
+        }, {
           ParameterKey: 'BucketName',
           ParameterValue: values[0].Bucket
         }, {
           ParameterKey: 'BundleName',
           ParameterValue: values[0].Key
+        }, {
+          ParameterKey: 'DomainName',
+          ParameterValue: awsConfig.domainName
+        }, {
+          ParameterKey: 'CertificateArn',
+          ParameterValue: awsConfig.certificateArn
         }];
 
         return createOrUpdateStack(
@@ -203,12 +206,20 @@ module.exports = function deploy (options) {
           parameters
         );
       });
-  }).then(function (url) {
+  }).then(function (outputs) {
     console.log('Your application has been deployed!');
-    console.log('Visit', url, 'in your browser.');
+
+    if (outputs.DistributionDomainName) {
+      console.log(
+        'Now you need to set your domain\'s A-Record or CNAME-Record to:',
+        outputs.DistributionDomainName
+      );
+    } else {
+      console.log('Visit', outputs.Url, 'in your browser.');
+    }
 
     return {
-      url: url
+      url: outputs.Url
     };
   }).catch(function (error) {
     console.error(error);

@@ -36,14 +36,6 @@ function deleteStack (cloudFormation, stackName) {
 module.exports = function destroy (options) {
   var awsConfig = getAWSConfig();
 
-  if (!awsConfig) {
-    console.error(
-      'No AWS config found in hops config. Please make sure to set up your ' +
-        'AWS config in the config.hops.aws section of your package.json.'
-    );
-    return process.exit(1);
-  }
-
   AWS.config.update({ region: awsConfig.region });
 
   AWS.config.apiVersions = {
