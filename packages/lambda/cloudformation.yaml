@@ -10,17 +10,22 @@ Parameters:
     Description: Specify the amount of memory available to your Lambda function
   StageName:
     Type: String
-    Description: The name of the API Gateway stage (used as basePath)
+    Description: The name of the API Gateway stage
   BasePath:
     Type: String
+    Description: The base path to append to your domain, when using a custom domain
   BucketName:
     Type: String
+    Description: Name of the S3 bucket where your CloudFormation template and zip bundle are stored
   BundleName:
     Type: String
+    Description: Name of the zip bundle with your Lambda code
   DomainName:
     Type: String
+    Description: A custom domain name
   CertificateArn:
     Type: String
+    Description: The Amazon resource name (ARN) of your SSL certificate in ACM
 
 Conditions:
   ShouldAddCustomDomain: !Not [!Equals [!Ref DomainName, '']]

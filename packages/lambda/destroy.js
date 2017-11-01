@@ -61,8 +61,8 @@ module.exports = function destroy (options) {
   }
 
   function onError (error) {
-    console.error('AWS:', error.code, error.message);
-    process.exit(1);
+    console.error('AWS:', '(' + error.code + ')', error.message);
+    process.exitCode = 1;
   }
 
   return options.yes ? main().catch(onError) : prompt(

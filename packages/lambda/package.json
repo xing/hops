@@ -1,11 +1,28 @@
 {
   "name": "hops-lambda",
   "version": "9.1.1",
+  "description": "Quick and easy deployment of Hops applications to AWS Lambda",
+  "keywords": [
+    "hops",
+    "express",
+    "aws",
+    "lambda",
+    "serverless"
+  ],
   "license": "MIT",
-  "main": "index.js",
   "bin": {
     "hops-lambda": "commands/lambda.js"
   },
+  "main": "index.js",
+  "files": [
+    "commands",
+    "lib",
+    "cloudformation.yaml",
+    "deploy.js",
+    "destroy.js",
+    "index.js",
+    "lambda.js"
+  ],
   "dependencies": {
     "archiver": "^2.1.0",
     "aws-sdk": "^2.135.0",

@@ -9,6 +9,15 @@ var createLambdaBundle = require('./lib/create-lambda-bundle');
 var progressWriter = require('./lib/progress-writer');
 var fsUtils = require('./lib/fs-utils');
 
+function formatParameters(params) {
+  return Object.keys(params).map(function (key) {
+    return {
+      ParameterKey: key,
+      ParameterValue: String(params[key])
+    };
+  });
+}
+
 function createBucketIfNotExists (s3, bucketName) {
   return s3.getBucketLocation({ Bucket: bucketName }).promise()
     .then(function () { return bucketName; })
@@ -117,12 +126,13 @@ function createOrUpdateStack (cloudformation, stackName, templateUrl, params) {
       }).then(function (stack) {
         return stack.Outputs.reduce(function (result, output) {
           result[output.OutputKey] = output.OutputValue;
+          return result;
         }, {});
       });
     });
 }
 
-module.exports = function deploy (options) {
+module.exports = function deploy (options, parametersOverrides) {
   var awsConfig = getAWSConfig();
 
   if (
@@ -171,33 +181,20 @@ module.exports = function deploy (options) {
           uploadFile(
             s3,
             awsConfig.bucketName,
-            path.join(__dirname, 'cloudformation.yaml')
+            awsConfig.cloudformationTemplateFile
           )
         ]);
       })
       .then(function (values) {
-        var parameters = [{
-          ParameterKey: 'LambdaMemorySize',
-          ParameterValue: String(awsConfig.memorySize)
-        }, {
-          ParameterKey: 'StageName',
-          ParameterValue: awsConfig.stageName
-        }, {
-          ParameterKey: 'BasePath',
-          ParameterValue: awsConfig.basePath
-        }, {
-          ParameterKey: 'BucketName',
-          ParameterValue: values[0].Bucket
-        }, {
-          ParameterKey: 'BundleName',
-          ParameterValue: values[0].Key
-        }, {
-          ParameterKey: 'DomainName',
-          ParameterValue: awsConfig.domainName
-        }, {
-          ParameterKey: 'CertificateArn',
-          ParameterValue: awsConfig.certificateArn
-        }];
+        var parameters = formatParameters(Object.assign({
+          LambdaMemorySize: awsConfig.memorySize,
+          StageName: awsConfig.stageName,
+          BasePath: awsConfig.basePath,
+          BucketName: awsConfig.bucketName,
+          BundleName: values[0].Key,
+          DomainName: awsConfig.domainName,
+          CertificateArn: awsConfig.certificateArn
+        }, parametersOverrides || {}));
 
         return createOrUpdateStack(
           cloudformation,
@@ -218,11 +215,13 @@ module.exports = function deploy (options) {
       console.log('Visit', outputs.Url, 'in your browser.');
     }
 
-    return {
-      url: outputs.Url
-    };
+    return outputs;
   }).catch(function (error) {
-    console.error(error);
-    process.exit(1);
+    if (error.code) {
+      console.error('AWS:', '(' + error.code + ')', error.message);
+    } else {
+      console.error(error);
+    }
+    process.exitCode = 1;
   });
 };
