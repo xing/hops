@@ -1,6 +1,6 @@
 {
   "name": "hops-local-cli",
-  "version": "7.3.2",
+  "version": "7.4.0",
   "description": "CLI tool to build, run and develop Hops based projects",
   "keywords": [
     "hops",
