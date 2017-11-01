@@ -6,9 +6,14 @@ var hopsConfig = require('hops-config');
 var DEFAULT_REGION = 'us-east-1';
 var DEFAULT_MEMORY_SIZE = 128;
 var DEFAULT_STAGE_NAME = 'prod';
+var DEFAULT_CF_TEMPLATE = path.resolve(
+  __dirname,
+  '..',
+  'cloudformation.yaml'
+);
 
 module.exports = function getAWSConfig () {
-  var awsConfig = hopsConfig.aws;
+  var awsConfig = hopsConfig.aws || {};
   var manifest = require(path.join(hopsConfig.appDir, 'package.json'));
 
   var region = awsConfig.region || process.env.AWS_REGION ||
@@ -16,7 +21,7 @@ module.exports = function getAWSConfig () {
 
   var name = 'hops-lambda-' + manifest.name;
 
-  var config = awsConfig ? {
+  var config = {
     region: region || DEFAULT_REGION,
     stackName: awsConfig.uniqueName || name,
     bucketName: awsConfig.uniqueName || name,
@@ -25,12 +30,9 @@ module.exports = function getAWSConfig () {
     domainName: awsConfig.domainName || '',
     certificateArn: awsConfig.certificateArn || '',
     basePath: hopsConfig.basePath.slice(1) || '(none)',
-    credentials: awsConfig.accessKeyId ? {
-      accessKeyId: awsConfig.accessKeyId || null,
-      secretAccessKey: awsConfig.secretAccessKey || null,
-      sessionToken: awsConfig.sessionToken || null
-    } : {}
-  } : null;
+    cloudformationTemplateFile: awsConfig.cloudformationTemplateFile ||
+      DEFAULT_CF_TEMPLATE
+  };
 
   if (!region) {
     console.warn(
@@ -47,12 +49,12 @@ module.exports = function getAWSConfig () {
     process.exit(1);
   }
 
-  if (!config) {
+  if (config.domainName && !config.certificateArn) {
     console.error(
-      'No AWS config found in hops config. Please make sure to set up your ' +
-        'AWS config in the config.hops.aws section of your package.json.'
+      'Setting a custom domain name also requires to specify the ACM',
+      'certificate ARN.'
     );
-    return process.exit(1);
+    process.exit(1);
   }
 
   return config;
