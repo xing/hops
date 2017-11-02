@@ -38,8 +38,8 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "flow-bin": "^0.57.2",
-    "flow-typed": "^2.2.1",
+    "flow-bin": "^0.58.0",
+    "flow-typed": "^2.2.3",
     "hops-build": "7.4.0",
     "jest": "^21.2.1",
     "jest-preset-hops": "7.4.0",

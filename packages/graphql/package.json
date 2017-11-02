@@ -23,7 +23,7 @@
   "dependencies": {
     "apollo-cache-inmemory": "^1.0.0",
     "apollo-client": "^2.0.1",
-    "apollo-link-http": "^1.0.0",
+    "apollo-link-http": "^1.1.0",
     "graphql": "^0.11.7",
     "hops-redux": "7.4.0",
     "isomorphic-fetch": "^2.2.1"
