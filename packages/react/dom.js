@@ -8,12 +8,9 @@ var hopsConfig = require('hops-config');
 
 var Context = require('./lib/common').Context;
 
-exports.Context = exports.createContext = Context.extend({
+exports.Context = exports.createContext = Context.mixin({
   initialize: function (options) {
     this.mountpoint = options.mountpoint || '#main';
-  },
-  bootstrap: function () {
-    return Promise.resolve();
   },
   enhanceElement: function (reactElement) {
     return React.createElement(
@@ -22,17 +19,15 @@ exports.Context = exports.createContext = Context.extend({
       reactElement
     );
   },
-  prepareRender: function (enhancedElement) {
-    return Promise.resolve();
-  },
   getMountpoint: function () {
     return document.querySelector(this.mountpoint);
   }
 });
 
-exports.render = function (reactElement, context) {
-  if (!(context instanceof exports.Context)) {
-    context = new exports.Context(context);
+exports.render = function (reactElement, _context) {
+  var context = _context;
+  if (!(_context instanceof exports.Context)) {
+    context = new exports.Context(_context);
   }
   return function () {
     var mountpoint = context.getMountpoint();
@@ -42,14 +37,15 @@ exports.render = function (reactElement, context) {
       mountpoint.setAttribute('data-hopsroot', '');
     }
     return context.bootstrap().then(function () {
-      var enhancedElement = context.enhanceElement(reactElement);
-      return context.prepareRender(enhancedElement).then(function () {
-        if (ReactDOM.hydrate) {
-          ReactDOM.hydrate(enhancedElement, mountpoint);
-        } else {
-          ReactDOM.render(enhancedElement, mountpoint);
+      return context.enhanceElement(reactElement).then(
+        function (enhancedElement) {
+          if (ReactDOM.hydrate) {
+            ReactDOM.hydrate(enhancedElement, mountpoint);
+          } else {
+            ReactDOM.render(enhancedElement, mountpoint);
+          }
         }
-      });
+      );
     });
   };
 };

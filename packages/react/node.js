@@ -10,7 +10,7 @@ var hopsConfig = require('hops-config');
 var Context = require('./lib/common').Context;
 var defaultTemplate = require('./lib/template');
 
-exports.Context = exports.createContext = Context.extend({
+exports.Context = exports.createContext = Context.mixin({
   clone: function (request) {
     return new this.constructor(Object.assign(
       {},
@@ -19,11 +19,8 @@ exports.Context = exports.createContext = Context.extend({
     ));
   },
   initialize: function (options) {
-    this.request = options.request || {};
+    this.request = options.request;
     this.template = options.template || defaultTemplate;
-  },
-  bootstrap: function () {
-    return Promise.resolve();
   },
   enhanceElement: function (reactElement) {
     return React.createElement(
@@ -35,9 +32,6 @@ exports.Context = exports.createContext = Context.extend({
       },
       reactElement
     );
-  },
-  prepareRender: function (enhancedElement) {
-    return Promise.resolve();
   },
   getTemplateData: function () {
     return {
@@ -56,30 +50,32 @@ exports.Context = exports.createContext = Context.extend({
   }
 });
 
-exports.render = function (reactElement, context) {
-  if (!(context instanceof exports.Context)) {
-    context = new exports.Context(context);
+exports.render = function (reactElement, _context) {
+  var context = _context;
+  if (!(_context instanceof exports.Context)) {
+    context = new exports.Context(_context);
   }
   return function (req, res, next) {
     var reqContext = context.clone(req);
     reqContext.bootstrap().then(function () {
-      var enhancedElement = reqContext.enhanceElement(reactElement);
-      return context.prepareRender(enhancedElement).then(function () {
-        var markup = ReactDOM.renderToString(enhancedElement);
-        if (reqContext.miss) {
-          next();
-        } else {
-          if (reqContext.url) {
-            res.status(reqContext.status || 301)
-              .set('Location', reqContext.url);
+      return reqContext.enhanceElement(reactElement).then(
+        function (enhancedElement) {
+          var markup = ReactDOM.renderToString(enhancedElement);
+          if (reqContext.miss) {
+            next();
           } else {
-            res.status(reqContext.status || 200)
-              .type('html');
-            res.write(reqContext.renderTemplate(markup));
+            if (reqContext.url) {
+              res.status(reqContext.status || 301)
+                .set('Location', reqContext.url);
+            } else {
+              res.status(reqContext.status || 200)
+                .type('html');
+              res.write(reqContext.renderTemplate(markup));
+            }
+            res.end();
           }
-          res.end();
         }
-      });
+      );
     }).catch(next);
   };
 };
