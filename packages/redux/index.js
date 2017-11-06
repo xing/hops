@@ -9,9 +9,8 @@ var Context = require('hops-react').Context;
 
 var REDUX_STATE = 'REDUX_STATE';
 
-exports.Context = exports.createContext = Context.extend({
+exports.Context = exports.createContext = Context.mixin({
   initialize: function (options) {
-    Context.prototype.initialize.call(this, options);
     this.reducers = {};
     Object.keys(options.reducers || {}).forEach(
       function (key) {
@@ -62,11 +61,10 @@ exports.Context = exports.createContext = Context.extend({
       {
         store: this.getStore()
       },
-      Context.prototype.enhanceElement.call(this, reactElement)
+      reactElement
     );
   },
-  getTemplateData: function () {
-    var templateData = Context.prototype.getTemplateData.call(this);
+  getTemplateData: function (templateData) {
     return Object.assign(templateData, {
       globals: templateData.globals.concat([{
         name: REDUX_STATE,
