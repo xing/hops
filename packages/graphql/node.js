@@ -5,19 +5,24 @@ var ReactApollo = require('react-apollo');
 var common = require('./lib/common');
 var introspectionResult = require('./lib/util').getIntrospectionResult();
 
-exports.Context = exports.createContext = common.Context.extend({
-  prepareRender: function (enhancedElement) {
-    return ReactApollo.getDataFromTree(enhancedElement);
+exports.Context = exports.createContext = common.Context.mixin({
+  enhanceElement: function (reactElement) {
+    return ReactApollo.getDataFromTree(reactElement).then(function () {
+      return reactElement;
+    });
   },
-  createClient: function (options) {
-    options.ssrMode = true;
-    return common.Context.prototype.createClient.call(this, options);
+  enhanceClientOptions: function (options) {
+    return Object.assign(
+      options,
+      {
+        ssrMode: true
+      }
+    );
   },
   getIntrospectionResult: function () {
     return introspectionResult;
   },
-  getTemplateData: function () {
-    var templateData = common.Context.prototype.getTemplateData.call(this);
+  getTemplateData: function (templateData) {
     return Object.assign(templateData, {
       globals: templateData.globals.concat([
         {
