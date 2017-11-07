@@ -5,11 +5,9 @@ var Redux = require('redux');
 var ReactRedux = require('react-redux');
 var ReduxThunkMiddleware = require('redux-thunk').default;
 
-var Context = require('hops-react').Context;
-
 var REDUX_STATE = 'REDUX_STATE';
 
-exports.Context = exports.createContext = Context.mixin({
+module.exports = {
   initialize: function (options) {
     this.reducers = {};
     Object.keys(options.reducers || {}).forEach(
@@ -72,4 +70,4 @@ exports.Context = exports.createContext = Context.mixin({
       }])
     });
   }
-});
+};
