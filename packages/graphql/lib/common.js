@@ -8,23 +8,16 @@ var ApolloClient = require('apollo-client').default;
 var ApolloCache = require('apollo-cache-inmemory');
 var ApolloLink = require('apollo-link-http');
 
-var mixin = require('mixinable');
-
 var hopsConfig = require('hops-config');
 
-var Context = require('hops-redux').Context;
-
-exports.APOLLO_STATE = 'APOLLO_STATE';
-exports.APOLLO_IQRD = 'APOLLO_IQRD';
-
-exports.Context = exports.createContext = Context.mixin({
+module.exports = {
   initialize: function (options) {
     this.client = this.createClient(options.graphql || {});
   },
   createClient: function (options) {
     return new ApolloClient(this.enhanceClientOptions(options));
   },
-  enhanceClientOptions: mixin.pipe(function (options) {
+  enhanceClientOptions: function (options) {
     return Object.assign(
       {},
       options,
@@ -33,7 +26,7 @@ exports.Context = exports.createContext = Context.mixin({
         cache: options.cache || this.createCache()
       }
     );
-  }),
+  },
   createLink: function () {
     return new ApolloLink.HttpLink({
       uri: hopsConfig.graphqlUri
@@ -63,4 +56,4 @@ exports.Context = exports.createContext = Context.mixin({
       reactElement
     );
   }
-});
+};
