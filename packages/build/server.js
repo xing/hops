@@ -19,7 +19,7 @@ function runDevelop (options, callback) {
   var watchOptions = config.devServer.watchOptions || config.watchOptions;
   var app = new WebpackServer(
     webpack(config),
-    Object.assign({}, config.devServer, {
+    Object.assign({}, {
       after: function (app) {
         app.use(server.rewritePath);
         server.bootstrap(app, hopsConfig);
@@ -30,7 +30,7 @@ function runDevelop (options, callback) {
         server.teardown(app, hopsConfig);
       },
       watchOptions: watchOptions
-    })
+    }, config.devServer)
   );
   server.run(app, callback);
 }
