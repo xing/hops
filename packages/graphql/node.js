@@ -3,17 +3,19 @@
 var ReactApollo = require('react-apollo');
 
 var common = require('./lib/common');
+var constants = require('./lib/constants');
 var introspectionResult = require('./lib/util').getIntrospectionResult();
 
-exports.Context = exports.createContext = common.Context.mixin({
+module.exports = Object.assign({}, common, {
   enhanceElement: function (reactElement) {
-    return ReactApollo.getDataFromTree(reactElement).then(function () {
-      return reactElement;
+    var enhancedElement = common.enhanceElement.call(this, reactElement);
+    return ReactApollo.getDataFromTree(enhancedElement).then(function () {
+      return enhancedElement;
     });
   },
   enhanceClientOptions: function (options) {
     return Object.assign(
-      options,
+      common.enhanceClientOptions.call(this, options),
       {
         ssrMode: true
       }
@@ -26,11 +28,11 @@ exports.Context = exports.createContext = common.Context.mixin({
     return Object.assign(templateData, {
       globals: templateData.globals.concat([
         {
-          name: common.APOLLO_IQRD,
+          name: constants.APOLLO_IQRD,
           value: this.getIntrospectionResult()
         },
         {
-          name: common.APOLLO_STATE,
+          name: constants.APOLLO_STATE,
           value: this.client.cache.extract()
         }
       ])

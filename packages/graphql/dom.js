@@ -1,14 +1,15 @@
 'use strict';
 
 var common = require('./lib/common');
+var constants = require('./lib/constants');
 
-exports.Context = exports.createContext = common.Context.mixin({
+module.exports = Object.assign({}, common, {
   createCache: function () {
-    return common.Context.prototype.createCache.call(this).restore(
-      global[common.APOLLO_STATE]
+    return common.createCache.call(this).restore(
+      global[constants.APOLLO_STATE]
     );
   },
   getIntrospectionResult: function () {
-    return global[common.APOLLO_IQRD];
+    return global[constants.APOLLO_IQRD];
   }
 });
