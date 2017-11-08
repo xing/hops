@@ -2,12 +2,23 @@
 
 var events = require('events');
 
+var express = require('express');
 var mocks = require('node-mocks-http');
 
 var createMiddleware = require('hops-middleware');
 
-module.exports = function createRenderer (webpackConfig, watchOptions) {
-  var middleware = createMiddleware(webpackConfig, watchOptions);
+module.exports = function createRenderer (options) {
+  var hopsConfig = options.hopsConfig || {};
+  var router = new express.Router();
+
+  if (hopsConfig.bootstrapServer) {
+    hopsConfig.bootstrapServer(router, hopsConfig);
+  }
+
+  router.use(createMiddleware(
+    options.webpackConfig,
+    options.watchOptions
+  ));
 
   return function (location) {
     return new Promise(function (resolve, reject) {
@@ -25,7 +36,7 @@ module.exports = function createRenderer (webpackConfig, watchOptions) {
           resolve(res._getData());
         }
       });
-      middleware(req, res, function (error) {
+      router.handle(req, res, function (error) {
         if (error) { reject(error); } else { resolve(); }
       });
     });
