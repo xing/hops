@@ -122,7 +122,7 @@ git clone git@github.com:user/hops.git .
 
 Afterwards, you can `yarn install` the required dependencies and then run `yarn bootstrap` to install the dependencies of all packages and link the packages together.
 
-Using `yarn start` will execute the `start` script in the [hops-template-react](https://github.com/xing/hops/template-react) so that you can verify your changes in the browser.
+Using `yarn start` will execute the `start` script in the [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react) so that you can verify your changes in the browser.
 
 When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
 
