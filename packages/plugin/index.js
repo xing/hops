@@ -9,11 +9,11 @@ function getFileName (location) {
   return index(location).replace(/^\//, '');
 }
 
-module.exports = function Plugin (locations, webpackConfig, watchOptions) {
-  var render = createRenderer(webpackConfig, watchOptions);
+module.exports = function Plugin (options) {
+  var render = createRenderer(options);
   this.apply = function (compiler) {
     compiler.plugin('emit', function (compilation, callback) {
-      Promise.all((locations || []).map(function (location) {
+      Promise.all((options.locations || []).map(function (location) {
         return render(location).then(function (html) {
           if (html) {
             compilation.assets[getFileName(location)] = new RawSource(html);
