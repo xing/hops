@@ -16,19 +16,19 @@ describe('renderer', function () {
   });
 
   it('should create a renderer function', function () {
-    var render = createRenderer(goodConfig);
+    var render = createRenderer({ webpackConfig: goodConfig });
     assert.equal(typeof render, 'function');
   });
 
   describe('function', function () {
     it('should return a promise', function () {
-      var render = createRenderer(goodConfig);
+      var render = createRenderer({ webpackConfig: goodConfig });
       var promise = render('/');
       assert(promise instanceof Promise);
     });
 
     it('should render expected result', function (done) {
-      var render = createRenderer(goodConfig);
+      var render = createRenderer({ webpackConfig: goodConfig });
       render('/')
         .then(function (result) {
           assert.equal(typeof result, 'string');
@@ -38,7 +38,7 @@ describe('renderer', function () {
     });
 
     it('should reject promise (bad export)', function (done) {
-      var render = createRenderer(badExportConfig);
+      var render = createRenderer({ webpackConfig: badExportConfig });
       render('/')
         .catch(function () {
           assert(true);
@@ -47,7 +47,7 @@ describe('renderer', function () {
     });
 
     it('should reject promise (bad handler)', function (done) {
-      var render = createRenderer(badHandlerConfig);
+      var render = createRenderer({ webpackConfig: badHandlerConfig });
       render('/')
         .catch(function () {
           assert(true);

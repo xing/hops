@@ -32,7 +32,10 @@ describe('plugin', function () {
         assert('index.html' in assets);
         done();
       });
-      var plugin = new Plugin(['/'], goodConfig);
+      var plugin = new Plugin({
+        locations: ['/'],
+        webpackConfig: goodConfig
+      });
       plugin.apply(compiler);
     });
 
@@ -43,7 +46,10 @@ describe('plugin', function () {
         assert.equal(result, 'Hello World!');
         done();
       });
-      var plugin = new Plugin(['/'], goodConfig);
+      var plugin = new Plugin({
+        locations: ['/'],
+        webpackConfig: goodConfig
+      });
       plugin.apply(compiler);
     });
 
@@ -52,7 +58,10 @@ describe('plugin', function () {
         assert(error instanceof Error);
         done();
       });
-      var plugin = new Plugin(['/'], badExportConfig);
+      var plugin = new Plugin({
+        locations: ['/'],
+        webpackConfig: badExportConfig
+      });
       plugin.apply(compiler);
     });
 
@@ -61,7 +70,10 @@ describe('plugin', function () {
         assert(error instanceof Error);
         done();
       });
-      var plugin = new Plugin(['/'], badHandlerConfig);
+      var plugin = new Plugin({
+        locations: ['/'],
+        webpackConfig: badHandlerConfig
+      });
       plugin.apply(compiler);
     });
   });
