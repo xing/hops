@@ -20,10 +20,11 @@ function getWebpackConfig (options) {
       buildConfig,
       {
         plugins: [
-          new HopsPlugin(
-            hopsConfig.locations,
-            nodeConfig
-          ),
+          new HopsPlugin({
+            locations: hopsConfig.locations,
+            webpackConfig: nodeConfig,
+            hopsConfig: hopsConfig
+          }),
           new webpack.ProgressPlugin()
         ]
       }
