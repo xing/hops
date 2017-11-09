@@ -20,11 +20,12 @@ module.exports = function createRenderer (options) {
     options.watchOptions
   ));
 
-  return function (location) {
+  return function (options) {
+    if (typeof options === 'string') {
+      options = { url: options };
+    }
     return new Promise(function (resolve, reject) {
-      var req = mocks.createRequest({
-        url: location
-      });
+      var req = mocks.createRequest(options);
       var res = mocks.createResponse({
         eventEmitter: events.EventEmitter,
         request: req
