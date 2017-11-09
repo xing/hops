@@ -27,6 +27,22 @@ describe('renderer', function () {
       assert(promise instanceof Promise);
     });
 
+    it('should call middleware', function () {
+      var render = createRenderer({
+        webpackConfig: goodConfig,
+        hopsConfig: {
+          bootstrapServer: function (app) {
+            assert(true);
+            app.use(function (req, res, next) {
+              assert(true);
+              next();
+            });
+          }
+        }
+      });
+      render('/');
+    });
+
     it('should render expected result', function (done) {
       var render = createRenderer({ webpackConfig: goodConfig });
       render('/')
