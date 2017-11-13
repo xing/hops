@@ -27,7 +27,7 @@ describe('renderer', function () {
       assert(promise instanceof Promise);
     });
 
-    it('should call middleware', function () {
+    it('should call middleware', function (done) {
       var render = createRenderer({
         webpackConfig: goodConfig,
         hopsConfig: {
@@ -36,6 +36,7 @@ describe('renderer', function () {
             app.use(function (req, res, next) {
               assert(true);
               next();
+              done();
             });
           }
         }
