@@ -2,11 +2,13 @@
 
 var ReactApollo = require('react-apollo');
 
+var hopsReact = require('hops-react');
+
 var common = require('./lib/common');
 var constants = require('./lib/constants');
 var introspectionResult = require('./lib/util').getIntrospectionResult();
 
-module.exports = Object.assign({}, common, {
+exports.mixin = Object.assign({}, common, {
   enhanceElement: function (reactElement) {
     var enhancedElement = common.enhanceElement.call(this, reactElement);
     return ReactApollo.getDataFromTree(enhancedElement).then(function () {
@@ -39,3 +41,5 @@ module.exports = Object.assign({}, common, {
     });
   }
 });
+
+exports.createContext = hopsReact.createContext.mixin(exports.mixin);

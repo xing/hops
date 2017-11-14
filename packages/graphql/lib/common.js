@@ -11,7 +11,8 @@ var ApolloLink = require('apollo-link-http');
 var hopsConfig = require('hops-config');
 
 module.exports = {
-  initialize: function (options) {
+  constructor: function (options) {
+    if (!options) { options = {}; }
     this.client = this.createClient(options.graphql || {});
   },
   createClient: function (options) {
