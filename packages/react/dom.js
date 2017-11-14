@@ -3,32 +3,41 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactRouterDOM = require('react-router-dom');
+var define = require('mixinable');
 
 var hopsConfig = require('hops-config');
 
-var Context = require('./lib/common').Context;
+var mixin = define({
+  bootstrap: define.parallel,
+  enhanceElement: define.pipe,
+  getMountpoint: function (functions) {
+    return functions.pop()();
+  }
+});
 
-exports.Context = exports.createContext = Context.mixin({
-  initialize: function (options) {
+exports.mixin = {
+  constructor: function (options) {
+    if (!options) { options = {}; }
     this.mountpoint = options.mountpoint || '#main';
   },
+  bootstrap: function () {
+    return Promise.resolve();
+  },
   enhanceElement: function (reactElement) {
-    return React.createElement(
+    return Promise.resolve(React.createElement(
       ReactRouterDOM.BrowserRouter,
       { basename: hopsConfig.basePath },
       reactElement
-    );
+    ));
   },
   getMountpoint: function () {
     return document.querySelector(this.mountpoint);
   }
-});
+};
 
-exports.render = function (reactElement, _context) {
-  var context = _context;
-  if (!(_context instanceof exports.Context)) {
-    context = new exports.Context(_context);
-  }
+exports.createContext = mixin(exports.mixin);
+
+exports.render = function (reactElement, context) {
   return function () {
     var mountpoint = context.getMountpoint();
     if (mountpoint.hasAttribute('data-hopsroot')) {
