@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Miss, render } from 'hops-react';
+import { Miss, render, createContext } from 'hops-react';
 
 import { headline } from './style.css';
 
@@ -13,4 +13,4 @@ const App = () => (
   </Switch>
 );
 
-export default render(<App />);
+export default render(<App />, createContext());
