@@ -4,26 +4,33 @@ var React = require('react');
 var ReactDOM = require('react-dom/server');
 var ReactRouter = require('react-router');
 var Helmet = require('react-helmet').Helmet;
+var define = require('mixinable');
 
 var hopsConfig = require('hops-config');
 
-var Context = require('./lib/common').Context;
 var defaultTemplate = require('./lib/template');
 
-exports.Context = exports.createContext = Context.mixin({
-  clone: function (request) {
-    return new this.constructor(Object.assign(
-      {},
-      this.options,
-      { request: request }
-    ));
-  },
-  initialize: function (options) {
-    this.request = options.request;
+var mixin = define({
+  bootstrap: define.parallel,
+  enhanceElement: define.pipe,
+  getTemplateData: define.pipe,
+  renderTemplate: function (functions, data) {
+    return this.getTemplateData(data).then(functions.pop());
+  }
+});
+
+exports.mixin = {
+  constructor: function () {
+    var args = Array.prototype.slice.call(arguments);
+    var options = Object.assign.apply(Object, [{}].concat(args));
     this.template = options.template || defaultTemplate;
+    this.request = options.request;
+  },
+  bootstrap: function () {
+    return Promise.resolve();
   },
   enhanceElement: function (reactElement) {
-    return React.createElement(
+    return Promise.resolve(React.createElement(
       ReactRouter.StaticRouter,
       {
         basename: hopsConfig.basePath,
@@ -31,48 +38,48 @@ exports.Context = exports.createContext = Context.mixin({
         context: this
       },
       reactElement
-    );
-  },
-  getTemplateData: function () {
-    return {
-      options: this.options,
-      helmet: Helmet.renderStatic(),
-      assets: hopsConfig.assets,
-      manifest: hopsConfig.manifest,
-      globals: []
-    };
-  },
-  renderTemplate: function (markup) {
-    return this.template(Object.assign(
-      this.getTemplateData(),
-      { markup: markup }
     ));
+  },
+  getTemplateData: function (data) {
+    return Promise.resolve(Object.assign(
+      data,
+      {
+        options: this.options,
+        helmet: Helmet.renderStatic(),
+        assets: hopsConfig.assets,
+        manifest: hopsConfig.manifest,
+        globals: []
+      }
+    ));
+  },
+  renderTemplate: function (data) {
+    return this.template(data);
   }
-});
+};
+
+exports.createContext = mixin(exports.mixin);
 
 exports.render = function (reactElement, _context) {
-  var context = _context;
-  if (!(_context instanceof exports.Context)) {
-    context = new exports.Context(_context);
-  }
   return function (req, res, next) {
-    var reqContext = context.clone(req);
-    reqContext.bootstrap().then(function () {
-      return reqContext.enhanceElement(reactElement).then(
+    var context = _context.clone({ request: req });
+    context.bootstrap().then(function () {
+      return context.enhanceElement(reactElement).then(
         function (enhancedElement) {
-          var markup = ReactDOM.renderToString(enhancedElement);
-          if (reqContext.miss) {
+          var data = {
+            markup: ReactDOM.renderToString(enhancedElement)
+          };
+          if (context.miss) {
             next();
-          } else {
-            if (reqContext.url) {
-              res.status(reqContext.status || 301)
-                .set('Location', reqContext.url);
-            } else {
-              res.status(reqContext.status || 200)
-                .type('html');
-              res.write(reqContext.renderTemplate(markup));
-            }
+          } else if (context.url) {
+            res.status(context.status || 301);
+            res.set('Location', context.url);
             res.end();
+          } else {
+            return context.renderTemplate(data).then(function (html) {
+              res.status(context.status || 200);
+              res.type('html');
+              res.send(html);
+            });
           }
         }
       );
