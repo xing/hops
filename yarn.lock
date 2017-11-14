@@ -14,10 +14,14 @@
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.45.tgz#0cfe971d7ed5542695740338e0455c91078a0e83"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
 =======
 "@types/zen-observable@^0.5.3":
 >>>>>>> chore(react): add mixinable as dependency
+=======
+"@types/zen-observable@0.5.3", "@types/zen-observable@^0.5.3":
+>>>>>>> chore: update lockfile to include latest mixinable
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.3.tgz#91b728599544efbb7386d8b6633693a3c2e7ade5"
 
@@ -198,17 +202,41 @@ apollo-link-http@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.2.0.tgz#48464c2ebfa6474f7a89908696827d66b2deb5cc"
 
+<<<<<<< HEAD
 apollo-link@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.0.3.tgz#759c36abeeb99e227eca45f919ee07fb8fee911e"
+=======
+apollo-link@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.0.0.tgz#3d334285789c217f95712ebce434d56ce7f3e991"
+>>>>>>> chore: update lockfile to include latest mixinable
   dependencies:
     "@types/zen-observable" "0.5.3"
     apollo-utilities "^1.0.0"
     zen-observable "^0.6.0"
 
+<<<<<<< HEAD
 apollo-utilities@^1.0.0, apollo-utilities@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.2.tgz#bcf348a7e613e82e2624ddb5be2b9f6bf1259c6d"
+=======
+apollo-link@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.0.2.tgz#66e7718c41d06768efcf18080c99ee4f3246b385"
+  dependencies:
+    "@types/zen-observable" "0.5.3"
+    apollo-utilities "^1.0.1"
+    zen-observable "^0.6.0"
+
+apollo-utilities@^0.2.0-beta.0:
+  version "0.2.0-rc.3"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-0.2.0-rc.3.tgz#7bd93be0f587f20c5b46e21880272e305759fdc2"
+
+apollo-utilities@^1.0.0, apollo-utilities@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.1.tgz#34b4df0bd6ed71d0afaa7c62489173dca5d07e92"
+>>>>>>> chore: update lockfile to include latest mixinable
 
 append-transform@^0.4.0:
   version "0.4.0"
@@ -560,6 +588,18 @@ babel-plugin-dynamic-import-node@^1.1.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-1.2.0.tgz#f91631e703e0595e47d4beafbb088576c87fbeee"
   dependencies:
     babel-plugin-syntax-dynamic-import "^6.18.0"
+<<<<<<< HEAD
+=======
+
+babel-plugin-flow-react-proptypes@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-flow-react-proptypes/-/babel-plugin-flow-react-proptypes-7.0.1.tgz#f7fda24bc1a072160fb53ec33fb5fa99cd022e59"
+  dependencies:
+    babel-core "^6.25.0"
+    babel-template "^6.25.0"
+    babel-traverse "^6.25.0"
+    babel-types "^6.25.0"
+>>>>>>> chore: update lockfile to include latest mixinable
 
 babel-plugin-istanbul@^4.0.0:
   version "4.1.5"
@@ -1288,6 +1328,7 @@ caniuse-api@^2.0.0:
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "1.0.30000766"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000766.tgz#4c911aa3747f01388452fa4b927b78fcf1430680"
 
@@ -1302,6 +1343,14 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000748, caniuse-lite@^1.0.30000757:
   version "1.0.30000758"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000758.tgz#e261140076651049cf6891ed4bc649b5c8c26c69"
 >>>>>>> chore(react): add mixinable as dependency
+=======
+  version "1.0.30000764"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000764.tgz#d73ab11ae62f6a9e2f69867d6d9c23ae3f2e5d8d"
+
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000748, caniuse-lite@^1.0.30000757, caniuse-lite@^1.0.30000760:
+  version "1.0.30000764"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000764.tgz#97ea7472f9d3e691eede34f21983cfc219ac7842"
+>>>>>>> chore: update lockfile to include latest mixinable
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -4519,6 +4568,7 @@ minizlib@^1.0.4:
     minipass "^2.2.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 mississippi@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/mississippi/-/mississippi-1.3.0.tgz#d201583eb12327e3c5c1642a404a9cacf94e34f5"
@@ -4539,6 +4589,11 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
 mixinable@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-0.0.2.tgz#7002d76f7a9f26900f41f81cd00b5cd2f92be017"
+=======
+mixinable@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-0.4.0.tgz#632e16062edf0392b368ff9c7fd6d7392b88c538"
+>>>>>>> chore: update lockfile to include latest mixinable
 
 mkdirp@0.5, mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
 >>>>>>> chore(react): add mixinable as dependency
@@ -4569,6 +4624,7 @@ modify-values@^1.0.0:
 moment@^2.6.0:
   version "2.19.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.2.tgz#8a7f774c95a64550b4c7ebd496683908f9419dbe"
+<<<<<<< HEAD
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -4580,6 +4636,8 @@ move-concurrently@^1.0.1:
     mkdirp "^0.5.1"
     rimraf "^2.5.4"
     run-queue "^1.0.3"
+=======
+>>>>>>> chore: update lockfile to include latest mixinable
 
 ms@2.0.0:
   version "2.0.0"
@@ -5788,6 +5846,20 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+<<<<<<< HEAD
+=======
+react-apollo@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.0.1.tgz#43997db9f294d81bd229eb705944fb36d5164607"
+  dependencies:
+    apollo-link "^1.0.0"
+    hoist-non-react-statics "^2.2.0"
+    invariant "^2.2.1"
+    lodash.flowright "^3.5.0"
+    lodash.pick "^4.4.0"
+    prop-types "^15.5.8"
+
+>>>>>>> chore: update lockfile to include latest mixinable
 react-dom@^16.0.0:
   version "16.1.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.1.1.tgz#b2e331b6d752faf1a2d31399969399a41d8d45f8"
