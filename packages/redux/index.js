@@ -5,12 +5,14 @@ var Redux = require('redux');
 var ReactRedux = require('react-redux');
 var ReduxThunkMiddleware = require('redux-thunk').default;
 
+var hopsReact = require('hops-react');
+
 var REDUX_STATE = 'REDUX_STATE';
 
-module.exports = {
-  initialize: function (options) {
+exports.mixin = {
+  constructor: function (options) {
     this.reducers = {};
-    Object.keys(options.reducers || {}).forEach(
+    Object.keys((options && options.reducers) || {}).forEach(
       function (key) {
         this.registerReducer(key, options.reducers[key]);
       }.bind(this)
@@ -62,12 +64,14 @@ module.exports = {
       reactElement
     );
   },
-  getTemplateData: function (templateData) {
-    return Object.assign(templateData, {
-      globals: templateData.globals.concat([{
+  getTemplateData: function (data) {
+    return Object.assign(data, {
+      globals: data.globals.concat([{
         name: REDUX_STATE,
         value: this.getStore().getState()
       }])
     });
   }
 };
+
+exports.createContext = hopsReact.createContext.mixin(exports.mixin);
