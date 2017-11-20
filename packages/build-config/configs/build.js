@@ -26,6 +26,7 @@ module.exports = {
   module: {
     rules: require('../sections/module-rules')('build')
   },
+  devtool: 'source-map',
   plugins: [
     new WriteFilePlugin(/^manifest\.js?$/),
     new WriteManifestPlugin(),
@@ -61,9 +62,9 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       debug: false,
       minimize: true,
-      sourceMap: false
+      sourceMap: true
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new UglifyPlugin()
+    new UglifyPlugin({ sourceMap: true })
   ]
 };
