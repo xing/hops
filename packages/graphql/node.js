@@ -1,11 +1,9 @@
 'use strict';
 
-var fs = require('fs');
-
 var ReactApollo = require('react-apollo');
 
 var common = require('./lib/common');
-var fragmentsFile = require('./lib/util').getFragmentsFile();
+var introspectionResult = require('./lib/util').getIntrospectionResult();
 
 exports.Context = exports.createContext = common.Context.extend({
   prepareRender: function (enhancedElement) {
@@ -16,9 +14,7 @@ exports.Context = exports.createContext = common.Context.extend({
     return common.Context.prototype.createClient.call(this, options);
   },
   getIntrospectionResult: function () {
-    if (fs.existsSync(fragmentsFile)) {
-      return require(fragmentsFile);
-    }
+    return introspectionResult;
   },
   getTemplateData: function () {
     var templateData = common.Context.prototype.getTemplateData.call(this);
