@@ -4,7 +4,7 @@ var path = require('path');
 
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var MinifyPlugin = require('babel-minify-webpack-plugin');
+var UglifyPlugin = require('uglifyjs-webpack-plugin');
 
 var WriteManifestPlugin = require('../plugins/write-manifest');
 var WriteFilePlugin = require('../plugins/write-file');
@@ -64,9 +64,6 @@ module.exports = {
       sourceMap: false
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new MinifyPlugin(
-      { evaluate: false, propertyLiterals: false },
-      { comments: false }
-    )
+    new UglifyPlugin()
   ]
 };
