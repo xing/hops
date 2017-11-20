@@ -8,7 +8,7 @@ var common = require('./lib/common');
 var constants = require('./lib/constants');
 var introspectionResult = require('./lib/util').getIntrospectionResult();
 
-exports.mixin = Object.assign({}, common, {
+exports.contextDefinition = Object.assign({}, common, {
   enhanceElement: function (reactElement) {
     var enhancedElement = common.enhanceElement.call(this, reactElement);
     return ReactApollo.getDataFromTree(enhancedElement).then(function () {
@@ -42,4 +42,7 @@ exports.mixin = Object.assign({}, common, {
   }
 });
 
-exports.createContext = hopsReact.createContext.mixin(exports.mixin);
+exports.createContext = hopsReact.combineContexts(
+  hopsReact.contextDefinition,
+  exports.contextDefinition
+);
