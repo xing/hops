@@ -6,3 +6,5 @@ exports.default = {
     loader: require.resolve('../../loaders/config')
   }
 };
+
+exports.node = {};
