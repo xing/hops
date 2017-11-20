@@ -10,7 +10,7 @@ var hopsConfig = require('hops-config');
 
 var defaultTemplate = require('./lib/template');
 
-var mixin = define({
+exports.combineContexts = define({
   bootstrap: define.parallel,
   enhanceElement: define.pipe,
   getTemplateData: define.pipe,
@@ -19,7 +19,7 @@ var mixin = define({
   }
 });
 
-exports.mixin = {
+exports.contextDefinition = {
   constructor: function () {
     var args = Array.prototype.slice.call(arguments);
     var options = Object.assign.apply(Object, [{}].concat(args));
@@ -57,7 +57,9 @@ exports.mixin = {
   }
 };
 
-exports.createContext = mixin(exports.mixin);
+exports.createContext = exports.combineContexts(
+  exports.contextDefinition
+);
 
 exports.render = function (reactElement, _context) {
   return function (req, res, next) {
