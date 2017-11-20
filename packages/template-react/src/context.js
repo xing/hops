@@ -1,6 +1,19 @@
 // @flow
-import { createContext } from 'hops-react';
-import { mixin as reduxMixin } from 'hops-redux';
-import { mixin as graphqlMixin } from 'hops-graphql';
+import {
+  combineContexts,
+  contextDefinition as reactContext
+} from 'hops-react';
 
-export default createContext.mixin(reduxMixin, graphqlMixin);
+import {
+  contextDefinition as reduxContext
+} from 'hops-redux';
+
+import {
+  contextDefinition as graphqlContext
+} from 'hops-graphql';
+
+export default combineContexts(
+  reactContext,
+  reduxContext,
+  graphqlContext
+);
