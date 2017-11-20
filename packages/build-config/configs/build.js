@@ -5,7 +5,7 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var UglifyPlugin = require('uglifyjs-webpack-plugin');
-
+var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 var WriteManifestPlugin = require('../plugins/write-manifest');
 var WriteFilePlugin = require('../plugins/write-file');
 
@@ -28,6 +28,7 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
+    new StatsWriterPlugin({ fields: null }),
     new WriteFilePlugin(/^manifest\.js?$/),
     new WriteManifestPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
