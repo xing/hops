@@ -7,7 +7,7 @@ var define = require('mixinable');
 
 var hopsConfig = require('hops-config');
 
-var mixin = define({
+exports.combineContexts = define({
   bootstrap: define.parallel,
   enhanceElement: define.pipe,
   getMountpoint: function (functions) {
@@ -15,7 +15,7 @@ var mixin = define({
   }
 });
 
-exports.mixin = {
+exports.contextDefinition = {
   constructor: function (options) {
     if (!options) { options = {}; }
     this.mountpoint = options.mountpoint || '#main';
@@ -35,7 +35,9 @@ exports.mixin = {
   }
 };
 
-exports.createContext = mixin(exports.mixin);
+exports.createContext = exports.combineContexts(
+  exports.contextDefinition
+);
 
 exports.render = function (reactElement, context) {
   return function () {
