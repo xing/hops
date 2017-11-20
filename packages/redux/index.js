@@ -9,7 +9,7 @@ var hopsReact = require('hops-react');
 
 var REDUX_STATE = 'REDUX_STATE';
 
-exports.mixin = {
+exports.contextDefinition = {
   constructor: function (options) {
     this.reducers = {};
     Object.keys((options && options.reducers) || {}).forEach(
@@ -74,4 +74,7 @@ exports.mixin = {
   }
 };
 
-exports.createContext = hopsReact.createContext.mixin(exports.mixin);
+exports.createContext = hopsReact.combineContexts(
+  hopsReact.contextDefinition,
+  exports.contextDefinition
+);
