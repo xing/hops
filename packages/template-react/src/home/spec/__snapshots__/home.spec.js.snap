@@ -1,32 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders loaded state correctly 1`] = `
+exports[`renders correctly 1`] = `
 <div>
   <h1
     className="headline"
   >
     Hello World!
   </h1>
-  <p>
-    "
-    bar
-    " by 
-    <b>
-      baz
-    </b>
-  </p>
-</div>
-`;
-
-exports[`renders loading state correctly 1`] = `
-<div>
-  <h1
-    className="headline"
-  >
-    Hello World!
-  </h1>
-  <p>
-    Loading...
-  </p>
 </div>
 `;

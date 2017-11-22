@@ -9,8 +9,7 @@
       "locations": [
         "/",
         "/counter"
-      ],
-      "graphqlUri": "https://www.graphqlhub.com/graphql"
+      ]
     }
   },
   "scripts": {
@@ -21,12 +20,10 @@
     "flow": "flow"
   },
   "dependencies": {
-    "graphql-tag": "^2.5.0",
     "hops-express": "7.3.4",
-    "hops-graphql": "7.4.1",
     "hops-react": "7.4.0",
+    "hops-redux": "7.4.0",
     "react": "^16.0.0",
-    "react-apollo": "^2.0.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
