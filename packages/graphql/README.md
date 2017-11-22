@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-graphql.svg)](https://www.npmjs.com/package/hops-graphql)
 
-hops-graphql extends [hops-react](https://github.com/xing/hops/tree/master/packages/react) and [hops-redux](https://github.com/xing/hops/tree/master/packages/redux) by providing a rendering context injecting a [GraphQL](http://graphql.org) [`Provider`](https://github.com/apollographql/react-apollo) and some helpers.
+hops-graphql extends [hops-react](https://github.com/xing/hops/tree/master/packages/react) by providing a rendering context injecting a [GraphQL](http://graphql.org) [`Provider`](https://github.com/apollographql/react-apollo) and some helpers.
 
 Additionally, hops-graphql features a CLI tool to help working with GraphQL schemas.
 
@@ -10,7 +10,7 @@ Additionally, hops-graphql features a CLI tool to help working with GraphQL sche
 To use hops-graphql, you need to add it and its dependencies to an existing project that already has [hops-react](https://github.com/xing/hops/tree/master/packages/react) installed.
 
 ``` bash
-npm install --save hops-graphql graphql-tag react react-redux redux redux-thunk
+npm install --save hops-graphql react react-apollo graphql-tag
 ```
 
 # Usage
@@ -49,7 +49,6 @@ The generated file, `fragmentTypes.json` will be picked up automatically by hops
 |-------|------|---------|-------------|
 | mountpoint | String | `'#main'` | querySelector identifying the root DOM node |
 | template | Function | `defaultTemplate` | template function supporting all React Helmet and hops-react features |
-| reducers | Object | `{}` | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html) |
 | graphql | Object | `{ cache, link }` | object literal containing options directly passed to the `ApolloClient` constructor |
 
 Defaults for the `graphql` config are very similar to those in the [default implementation](https://www.npmjs.com/package/apollo-client-preset) with the exception that `hopsConfig.graphqlUri` is being used as HTTP endpoint.
