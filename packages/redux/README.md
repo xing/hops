@@ -23,9 +23,6 @@ npm install --save hops-redux react react-redux redux redux-thunk
 | template | Function | `defaultTemplate` | template function supporting all React Helmet and hops-react features |
 | reducers | Object | `{}` | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html) |
 
-## `Context(options)`
-`Context()` works the same way as `createContext()`, but with an object-oriented API. Additionally, you can use its [`Context.extend()`](https://github.com/xing/hops/tree/master/packages/react#contextoptions) method to build upon hops-redux and create advanced context implementations.
-
 # Example
 
 ``` js
