@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="8.0.0"></a>
+# [8.0.0](https://github.com/xing/hops/compare/v7.4.1...v8.0.0) (2017-11-22)
+
+
+
+
+**Note:** Version bump only for package hops-express
+
 <a name="7.3.4"></a>
 ## [7.3.4](https://github.com/xing/hops/compare/v7.3.3...v7.3.4) (2017-10-27)
 

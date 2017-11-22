@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="8.0.0"></a>
+# [8.0.0](https://github.com/xing/hops/compare/v7.4.1...v8.0.0) (2017-11-22)
+
+
+### Bug Fixes
+
+* **template-react:** add missing prop-types dependency ([5fb80f2](https://github.com/xing/hops/commit/5fb80f2))
+* **template-react:** keep gitignore after publish by renaming it ([afb28ae](https://github.com/xing/hops/commit/afb28ae))
+
+
+### Code Refactoring
+
+* **template-react:** remove flow type annotations ([4f7bba9](https://github.com/xing/hops/commit/4f7bba9))
+* **template-react:** remove graphql from default template ([4533445](https://github.com/xing/hops/commit/4533445))
+
+
+### BREAKING CHANGES
+
+* **template-react:** The template `hops-template-react` now no longer contains flow type
+annotations.
+
+Closes: #277
+* **template-react:** `hops-template-react` (default template) now no longer supports graphql
+out of the box. You can add the support yourself again or use a
+different template (we will provide a new `hops-template-graphql`
+shortly).
+
+Closes: #276
+
+
+
+
 <a name="7.4.1"></a>
 ## [7.4.1](https://github.com/xing/hops/compare/v7.4.0...v7.4.1) (2017-11-08)
 

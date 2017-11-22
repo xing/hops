@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="8.0.0"></a>
+# [8.0.0](https://github.com/xing/hops/compare/v7.4.1...v8.0.0) (2017-11-22)
+
+
+### Code Refactoring
+
+* **graphql:** make main export a context mixin ([d097d2d](https://github.com/xing/hops/commit/d097d2d))
+* **graphql:** rename mixin definition export ([dfd1d4b](https://github.com/xing/hops/commit/dfd1d4b))
+
+
+### Features
+
+* **graphql:** implement simplified mixin support ([509c1b5](https://github.com/xing/hops/commit/509c1b5))
+* **graphql:** introduce mixin support ([813196f](https://github.com/xing/hops/commit/813196f))
+
+
+### Performance Improvements
+
+* **graphql:** remove fs.existsSync() check from context ([1441d20](https://github.com/xing/hops/commit/1441d20))
+
+
+### BREAKING CHANGES
+
+* **graphql:** export naming changed
+* **graphql:** exports changed
+* **graphql:** main export changed
+* **graphql:** Context.extends is removed, Context.mixin is added
+
+
+
+
 <a name="7.4.1"></a>
 ## [7.4.1](https://github.com/xing/hops/compare/v7.4.0...v7.4.1) (2017-11-08)
 

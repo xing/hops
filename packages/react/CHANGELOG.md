@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="8.0.0"></a>
+# [8.0.0](https://github.com/xing/hops/compare/v7.4.1...v8.0.0) (2017-11-22)
+
+
+### Bug Fixes
+
+* **react:** make sure to only hydrate on first pass ([561cb89](https://github.com/xing/hops/commit/561cb89))
+
+
+### Features
+
+* **react:** add combineContexts, refactor exports ([8bd2955](https://github.com/xing/hops/commit/8bd2955))
+* **react:** implement simplified mixin support ([6f8bf5c](https://github.com/xing/hops/commit/6f8bf5c))
+* **react:** introduce mixin support ([3a575b1](https://github.com/xing/hops/commit/3a575b1))
+
+
+### BREAKING CHANGES
+
+* **react:** some exports have been renamed
+* **react:** a context arguments is now required for render()
+* **react:** Context.extends is removed, Context.mixin is added
+
+
+
+
 <a name="7.4.0"></a>
 # [7.4.0](https://github.com/xing/hops/compare/v7.3.5...v7.4.0) (2017-11-01)
 

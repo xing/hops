@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="8.0.0"></a>
+# [8.0.0](https://github.com/xing/hops/compare/v7.4.1...v8.0.0) (2017-11-22)
+
+
+### Code Refactoring
+
+* **redux:** make main export a context mixin ([f5edae6](https://github.com/xing/hops/commit/f5edae6))
+* **redux:** rename mixin definition export ([321e733](https://github.com/xing/hops/commit/321e733))
+
+
+### Features
+
+* **redux:** implement simplified mixin support ([dfed624](https://github.com/xing/hops/commit/dfed624))
+* **redux:** introduce mixin support ([c0da538](https://github.com/xing/hops/commit/c0da538))
+
+
+### BREAKING CHANGES
+
+* **redux:** export naming changed
+* **redux:** exports changed
+* **redux:** main export changed
+* **redux:** Context.extends is removed, Context.mixin is added
+
+
+
+
 <a name="7.4.0"></a>
 # [7.4.0](https://github.com/xing/hops/compare/v7.3.5...v7.4.0) (2017-11-01)
 

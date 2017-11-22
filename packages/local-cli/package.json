@@ -1,6 +1,6 @@
 {
   "name": "hops-local-cli",
-  "version": "7.4.0",
+  "version": "8.0.0",
   "description": "CLI tool to build, run and develop Hops based projects",
   "keywords": [
     "hops",
@@ -24,7 +24,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-config": "7.2.0",
+    "hops-config": "8.0.0",
     "tar": "^4.0.1",
     "validate-npm-package-name": "^3.0.0",
     "yargs": "^10.0.3"
