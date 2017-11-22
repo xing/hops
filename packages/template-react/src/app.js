@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 import { render, Miss } from 'hops-react';
-import { createContext } from 'hops-graphql';
+import { createContext } from 'hops-redux';
 
 import { Home } from './home';
 import { Counter } from './counter';
