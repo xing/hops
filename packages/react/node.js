@@ -38,17 +38,14 @@ exports.contextDefinition = {
       reactElement
     ));
   },
-  getTemplateData: function (data) {
-    return Promise.resolve(Object.assign(
-      data,
-      {
-        options: this.options,
-        helmet: Helmet.renderStatic(),
-        assets: hopsConfig.assets,
-        manifest: hopsConfig.manifest,
-        globals: []
-      }
-    ));
+  getTemplateData: function (templateData) {
+    return Promise.resolve(Object.assign({}, templateData, {
+      options: this.options,
+      helmet: Helmet.renderStatic(),
+      assets: hopsConfig.assets,
+      manifest: hopsConfig.manifest,
+      globals: []
+    }));
   },
   renderTemplate: function (data) {
     return this.template(data);
