@@ -4,19 +4,17 @@ var React = require('react');
 var ReactDOM = require('react-dom/server');
 var ReactRouter = require('react-router');
 var Helmet = require('react-helmet').Helmet;
-var define = require('mixinable');
+var mixinable = require('mixinable');
 
 var hopsConfig = require('hops-config');
 
 var defaultTemplate = require('./lib/template');
 
-exports.combineContexts = define({
-  bootstrap: define.parallel,
-  enhanceElement: define.pipe,
-  getTemplateData: define.pipe,
-  renderTemplate: function (functions, data) {
-    return this.getTemplateData(data).then(functions.pop());
-  }
+exports.combineContexts = mixinable({
+  bootstrap: mixinable.parallel,
+  enhanceElement: mixinable.pipe,
+  getTemplateData: mixinable.pipe,
+  renderTemplate: mixinable.override
 });
 
 exports.contextDefinition = {
@@ -63,7 +61,7 @@ exports.createContext = exports.combineContexts(
 
 exports.render = function (reactElement, _context) {
   return function (req, res, next) {
-    var context = _context.clone({ request: req });
+    var context = mixinable.clone(_context, { request: req });
     context.bootstrap().then(function () {
       return context.enhanceElement(reactElement).then(
         function (enhancedElement) {
@@ -77,11 +75,13 @@ exports.render = function (reactElement, _context) {
             res.set('Location', context.url);
             res.end();
           } else {
-            return context.renderTemplate(data).then(function (html) {
-              res.status(context.status || 200);
-              res.type('html');
-              res.send(html);
-            });
+            return context.getTemplateData(data)
+              .then(context.renderTemplate.bind(context))
+              .then(function (html) {
+                res.status(context.status || 200);
+                res.type('html');
+                res.send(html);
+              });
           }
         }
       );

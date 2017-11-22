@@ -3,16 +3,14 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactRouterDOM = require('react-router-dom');
-var define = require('mixinable');
+var mixinable = require('mixinable');
 
 var hopsConfig = require('hops-config');
 
-exports.combineContexts = define({
-  bootstrap: define.parallel,
-  enhanceElement: define.pipe,
-  getMountpoint: function (functions) {
-    return functions.pop()();
-  }
+exports.combineContexts = mixinable({
+  bootstrap: mixinable.parallel,
+  enhanceElement: mixinable.pipe,
+  getMountpoint: mixinable.override
 });
 
 exports.contextDefinition = {
