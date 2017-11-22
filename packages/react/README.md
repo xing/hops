@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)
 
-hops-react works in tandem with [hops-build](https://github.com/xing/hops/blob/master/packages/build) and [hops-config](https://github.com/xing/hops/blob/master/packages/redux) to make an integrated solution for universal ("isomorphic") rendering using React. It provides a minimal API and hides the tricky bits of setting up React for such use-cases.
+hops-react works in tandem with [hops-build](https://github.com/xing/hops/blob/master/packages/build) and [hops-config](https://github.com/xing/hops/blob/master/packages/config) to make an integrated solution for universal ("isomorphic") rendering using React. It provides a minimal API and hides the tricky bits of setting up React for such use-cases.
 
 Out of the box, hops-react additionally supports [React Router](https://github.com/ReactTraining/react-router) and [React Helmet](https://github.com/nfl/react-helmet).
 
@@ -36,26 +36,6 @@ If you pass an object literal instead of a context instance, `render()` itself c
 | mountpoint | String | '#main' | querySelector identifying the root DOM node |
 | template | Function | [defaultTemplate](https://github.com/xing/hops/blob/master/packages/react/lib/template.js) | template function supporting all relevant React Helmet and hops-react features |
 
-## `Context(options)`
-If you, for whatever strange reason, prefer object-oriented syntax, you can alternatively import the `Context` constructor and use it instead of `createContext()`.
-
-If you need or want to change hops-react behavior, providing a custom Context is the way to go. To do that, you can simply use `Context.extend()`, creating a bespoke context constructor and factory function:
-
-``` js
-import React from 'react';
-import { render, Context } from 'hops-react';
-
-const App = () => (<h1>Hello World!</h1>);
-
-const createContext = Context.extend({
-  bootstrap: () => Promise.resolve();
-});
-
-export default render(<App />, createContext())
-```
-
-Check out [hops-redux](https://github.com/xing/hops/blob/master/packages/redux/index.js) for a more elaborate example.
-
 ## `<Miss />` and `<Status code={200} />`
 To declaratively control server behavior from your application, you can use two React components provided by hops-react. Neither of these components produces any html output, both are effectively no-ops if used in the browser.
 
@@ -67,7 +47,7 @@ On the server, however, `<Miss />` makes sure Express' `next()` middleware funct
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
-import { render, Miss } from 'hops-react';
+import { render, createContext, Miss } from 'hops-react';
 
 import { headline } from './styles.css';
 import { template } from './template.tpl';
@@ -88,5 +68,5 @@ const App = () => (
   </Switch>
 );
 
-export default render(<App />, { template });
+export default render(<App />, createContext({ template }));
 ```
