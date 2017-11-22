@@ -27,7 +27,7 @@ exports.contextDefinition = Object.assign({}, common, {
     return introspectionResult;
   },
   getTemplateData: function (templateData) {
-    return Object.assign(templateData, {
+    return Object.assign({}, templateData, {
       globals: templateData.globals.concat([
         {
           name: constants.APOLLO_IQRD,
