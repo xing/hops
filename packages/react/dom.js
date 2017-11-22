@@ -40,7 +40,8 @@ exports.createContext = exports.combineContexts(
 exports.render = function (reactElement, context) {
   return function () {
     var mountpoint = context.getMountpoint();
-    if (mountpoint.hasAttribute('data-hopsroot')) {
+    var isMounted = mountpoint.hasAttribute('data-hopsroot');
+    if (isMounted) {
       ReactDOM.unmountComponentAtNode(mountpoint);
     } else {
       mountpoint.setAttribute('data-hopsroot', '');
@@ -48,7 +49,7 @@ exports.render = function (reactElement, context) {
     return context.bootstrap().then(function () {
       return context.enhanceElement(reactElement).then(
         function (enhancedElement) {
-          if (ReactDOM.hydrate) {
+          if (ReactDOM.hydrate && !isMounted) {
             ReactDOM.hydrate(enhancedElement, mountpoint);
           } else {
             ReactDOM.render(enhancedElement, mountpoint);
