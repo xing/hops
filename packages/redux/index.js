@@ -64,9 +64,9 @@ exports.contextDefinition = {
       reactElement
     );
   },
-  getTemplateData: function (data) {
-    return Object.assign(data, {
-      globals: data.globals.concat([{
+  getTemplateData: function (templateData) {
+    return Object.assign({}, templateData, {
+      globals: templateData.globals.concat([{
         name: REDUX_STATE,
         value: this.getStore().getState()
       }])
