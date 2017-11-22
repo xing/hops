@@ -78,10 +78,10 @@ function init (root, appName, options) {
       strip: 1
     }).then(function () {
       fs.unlinkSync(tarball);
-      if (fs.existsSync(path.resolve(appRoot, '_gitignore'))) {
+      if (fs.existsSync(path.join(appRoot, '_gitignore'))) {
         fs.renameSync(
-          path.resolve(appRoot, '_gitignore'),
-          path.resolve(appRoot, '.gitignore')
+          path.join(appRoot, '_gitignore'),
+          path.join(appRoot, '.gitignore')
         );
       }
       var newPackageManifest = readPackageManifest(pathToPackageManifest);
