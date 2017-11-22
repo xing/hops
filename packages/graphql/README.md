@@ -53,12 +53,7 @@ The generated file, `fragmentTypes.json` will be picked up automatically by hops
 
 Defaults for the `graphql` config are very similar to those in the [default implementation](https://www.npmjs.com/package/apollo-client-preset) with the exception that `hopsConfig.graphqlUri` is being used as HTTP endpoint.
 
-## `Context(options)`
-`Context()` works the same way as `createContext()`, but with an object-oriented API. Additionally, you can use its [`Context.extend()`](https://github.com/xing/hops/tree/master/packages/react#contextoptions) method to build upon hops-redux and create advanced context implementations.
-
 # Example
-
-
 ### `hero.gql`
 
 ``` graphql
