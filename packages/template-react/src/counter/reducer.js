@@ -1,18 +1,12 @@
-// @flow
-
 import { INCREMENT, DECREMENT } from './constants';
-import type { Action } from './actions';
 
-export type State = number;
-
-export default function counter(state: State = 0, action: Action): State {
+export default function counter(state = 0, action) {
   switch (action.type) {
     case INCREMENT:
       return state + action.payload;
     case DECREMENT:
       return state - action.payload;
     default:
-      (action: empty);
       return state;
   }
 }

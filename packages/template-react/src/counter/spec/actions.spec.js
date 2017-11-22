@@ -1,5 +1,3 @@
-// @flow
-
 import { INCREMENT, DECREMENT } from '../constants';
 import { increment, decrement } from '../actions';
 

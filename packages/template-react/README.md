@@ -3,12 +3,11 @@
 [![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)
 
 This is a small example application showing [hops](https://github.com/xing/hops) in action.
-It demonstrates how to use hops with React, Redux, Flow and Jest.
+It demonstrates how to use hops with React, Redux and Jest.
 
 It has the following folder structure:
 
 ```
-├── flow-typed
 ├── node_modules
 ├── package.json
 ├── readme.md
@@ -73,16 +72,6 @@ To make use of this execute `npm run build -- --static` or `yarn build --static`
 ### `npm test` / `yarn test`
 
 This command will test your code with [jest](https://facebook.github.io/jest/) a testrunner by facebook that integrates nicely with react.
-
-
-### `npm run flow` / `yarn flow`
-
-This command will run flow to typecheck your code and warn you about errors early on.
-
-
-### (`postinstall`)
-
-This script isn't really meant to be executed by the user. Instead it will run every time that you install the project or a new dependency and download the latest type definitions from [flow-typed](https://github.com/flowtype/flow-typed) for all of your dependencies.
 
 
 ## Configuration

@@ -13,11 +13,9 @@
     }
   },
   "scripts": {
-    "postinstall": "flow-typed install --overwrite",
     "start": "hops start",
     "build": "hops build",
-    "test": "jest",
-    "flow": "flow"
+    "test": "jest"
   },
   "dependencies": {
     "hops-express": "7.3.4",
@@ -33,8 +31,6 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "flow-bin": "^0.58.0",
-    "flow-typed": "^2.2.3",
     "hops-build": "7.4.1",
     "hops-local-cli": "7.4.0",
     "jest": "^21.2.1",
