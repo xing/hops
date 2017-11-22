@@ -1,13 +1,10 @@
-// @flow
-
 import { connect } from 'react-redux';
 
 import { increment, decrement } from './actions';
-import type { ApplicationState } from '../reducers';
 
 import Counter from './counter';
 
-export const mapStateToProps = ({ counter }: ApplicationState) => ({
+export const mapStateToProps = ({ counter }) => ({
   count: counter,
 });
 

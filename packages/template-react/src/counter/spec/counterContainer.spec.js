@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import renderer from 'react-test-renderer';
 import CounterContainer, { mapStateToProps } from '../counterContainer';

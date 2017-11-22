@@ -1,18 +1,7 @@
-// @flow
-
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export type Props = {
-  count: number;
-  increment: (amount?: number) => void;
-  decrement: (amount?: number) => void;
-};
-
-export default function Counter({
-  count,
-  increment,
-  decrement,
-}: Props) {
+export default function Counter({ count, increment, decrement }) {
   return (
     <div>
       <span>Clicked: {count} times</span>
@@ -21,3 +10,9 @@ export default function Counter({
     </div>
   );
 }
+
+Counter.propTypes = {
+  count: PropTypes.number.isRequired,
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+};
