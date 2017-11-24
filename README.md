@@ -15,7 +15,7 @@
 </p>
 <p>&nbsp;</p>
 
-Hops is a modular development and build environment for universal ("isomorphic") web applications. It leverages [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org).
+Hops is a modular development, build and runtime environment for universal ("isomorphic") web applications. It focuses on [React](https://facebook.github.io/react/).
 
 Hops is designed to simplify getting started with modern frontend tooling. It streamlines [Webpack](https://webpack.js.org) and [Jest](https://facebook.github.io/jest/) configuration featuring [Babel](https://babeljs.io) and [PostCSS](http://postcss.org).
 
@@ -34,74 +34,32 @@ This will start hops in development mode. Visit [http://localhost:8080](http://l
 
 If you want to build the JS bundles for production, run `npm run build` in your terminal and to start a Node.js server just type in `npm start --production`.
 
-### Installation
-
-Besides reasonably recent versions of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com), hops has no global dependencies. If you need those, we recommend using [nvm](https://github.com/creationix/nvm) or similar.
-
-Install the `hops-cli` globally via npm `npm install --global hops-cli` or yarn `yarn global add hops-cli`:
-
-### Project creation
-
-`hops init my-project` will create a directory called `my-project` and initialize an example react project inside it.
-
-### Configuration
-
-Hops is configured via the `package.json`s `"config"` field (read more about it at [hops-config](https://github.com/xing/hops/tree/master/packages/config):
-
-```javascript
-{
-  "browser": "src/browser.js",
-  "server": "src/server.js",
-  "scripts": {
-    "start": "hops start"
-  },
-  "config": {
-    "hops": {
-      "locations": [
-        "/"
-      ]
-    }
-  }
-}
-```
-
-Hops relies heavily on this file for configuration. In the example above, there are two entry points for `browser` and `server` - that is, two files that are used for client and server builds.
-
-Hops provides a runner that you can call from the scripts of your `package.json` and is configured using the `hops` config object also contained therein. In this example, the only configuration option provided is `locations`, an array of paths that will be used for generating static html files using the middleware you provide.
-
-### Running
-
-For developing using hops, you can use any decent editor with up-to-date language support. Those without a favorite we recommend [Atom](https://atom.io), probably with the [linter](https://atom.io/packages/linter), [linter-eslint](https://atom.io/packages/linter-eslint) and [linter-stylelint](https://atom.io/packages/linter-stylelint) plugins.
-
-Assuming you edited your `package.json` as outlined above, you can fire up a dev or production server like so:
-
-```shell
-npm start (--production)
-```
-
-If called with the `--production` flag, a production mode server is launched. Otherwise, a development server featuring hot module replacement is started. Hops can generate html pages for all `locations` listed in its config at build time, so you don't need a node server in production, but still can enjoy the benefits of a true universal JavaScript application.
-
-### Advanced Usage
+### General Usage
 
 Hops is quite modular, its component being independently published on npm. Its main building blocks, however, rely upon each other:
 
-* [Hops Build](https://github.com/xing/hops/tree/master/packages/build)
-* [Hops Build Config](https://github.com/xing/hops/tree/master/packages/build-config)
-* [Hops Global CLI](https://github.com/xing/hops/tree/master/packages/cli)
-* [Hops Config](https://github.com/xing/hops/tree/master/packages/config)
-* [Hops Express](https://github.com/xing/hops/tree/master/packages/express)
-* [Hops Jest Preset](https://github.com/xing/hops/tree/master/packages/jest-preset)
-* [Hops Local CLI](https://github.com/xing/hops/tree/master/packages/local-cli)
-* [Hops React](https://github.com/xing/hops/tree/master/packages/react)
-* [Hops Redux](https://github.com/xing/hops/tree/master/packages/redux)
+| Package                                                                             | NPM                                                                                                           |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [Hops React](https://github.com/xing/hops/tree/master/packages/react)               | [![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)               |
+| [Hops Redux](https://github.com/xing/hops/tree/master/packages/redux)               | [![npm](https://img.shields.io/npm/v/hops-redux.svg)](https://www.npmjs.com/package/hops-redux)               |
+| [Hops GraphQL](https://github.com/xing/hops/tree/master/packages/graphql)           | [![npm](https://img.shields.io/npm/v/hops-graphql.svg)](https://www.npmjs.com/package/hops-graphql)           |
+| [Hops Express](https://github.com/xing/hops/tree/master/packages/express)           | [![npm](https://img.shields.io/npm/v/hops-express.svg)](https://www.npmjs.com/package/hops-express)           |
+| [Hops Global CLI](https://github.com/xing/hops/tree/master/packages/cli)            | [![npm](https://img.shields.io/npm/v/hops-cli.svg)](https://www.npmjs.com/package/hops-cli)                   |
+| [Hops Local CLI](https://github.com/xing/hops/tree/master/packages/local-cli)       | [![npm](https://img.shields.io/npm/v/hops-local-cli.svg)](https://www.npmjs.com/package/hops-local-cli)       |
+| [Hops Build](https://github.com/xing/hops/tree/master/packages/build)               | [![npm](https://img.shields.io/npm/v/hops-build.svg)](https://www.npmjs.com/package/hops-build)               |
+| [Hops Config](https://github.com/xing/hops/tree/master/packages/config)             | [![npm](https://img.shields.io/npm/v/hops-config.svg)](https://www.npmjs.com/package/hops-config)             |
+| [Hops Build Config](https://github.com/xing/hops/tree/master/packages/build-config) | [![npm](https://img.shields.io/npm/v/hops-build-config.svg)](https://www.npmjs.com/package/hops-build-config) |
+| [Hops Jest Preset](https://github.com/xing/hops/tree/master/packages/jest-preset)   | [![npm](https://img.shields.io/npm/v/jest-preset-hops.svg)](https://www.npmjs.com/package/jest-preset-hops)   |
 
 The following additional packages are rather low-level and you'll probably never need to install and use them directly.
 
-* [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware)
-* [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/packages/plugin)
-* [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)
-* [Hops Server](https://github.com/xing/hops/tree/master/packages/server)
-* [Hops Transpiler](https://github.com/xing/hops/tree/master/packages/transpiler)
+| Package                                                                         | NPM                                                                                                       |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| [Hops Server](https://github.com/xing/hops/tree/master/packages/server)         | [![npm](https://img.shields.io/npm/v/hops-server.svg)](https://www.npmjs.com/package/hops-server)         |
+| [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware) | [![npm](https://img.shields.io/npm/v/hops-middleware.svg)](https://www.npmjs.com/package/hops-middleware) |
+| [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/packages/plugin) | [![npm](https://img.shields.io/npm/v/hops-plugin.svg)](https://www.npmjs.com/package/hops-plugin)         |
+| [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)     | [![npm](https://img.shields.io/npm/v/hops-renderer.svg)](https://www.npmjs.com/package/hops-renderer)     |
+| [Hops Transpiler](https://github.com/xing/hops/tree/master/packages/transpiler) | [![npm](https://img.shields.io/npm/v/hops-transpiler.svg)](https://www.npmjs.com/package/hops-transpiler) |
 
 ### Contributing
 
@@ -124,6 +82,7 @@ Hops is entirely written in ECMAScript 5 and its code is formatted using [pretti
 
 ### Alternatives
 
+* [Razzle](https://github.com/jaredpalmer/razzle)
 * [Next](https://github.com/zeit/next.js/)
 * [Gatsby](https://github.com/gatsbyjs/gatsby)
 * [Backpack](https://github.com/palmerhq/backpack)
