@@ -9,7 +9,7 @@ var hopsConfig = require('hops-config');
 
 exports.combineContexts = mixinable({
   bootstrap: mixinable.parallel,
-  enhanceElement: mixinable.pipe,
+  enhanceElement: mixinable.compose,
   getMountpoint: mixinable.override
 });
 
