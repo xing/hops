@@ -12,7 +12,7 @@ var defaultTemplate = require('./lib/template');
 
 exports.combineContexts = mixinable({
   bootstrap: mixinable.parallel,
-  enhanceElement: mixinable.pipe,
+  enhanceElement: mixinable.compose,
   getTemplateData: mixinable.pipe,
   renderTemplate: mixinable.override
 });
@@ -44,7 +44,7 @@ exports.contextDefinition = {
       helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
       manifest: hopsConfig.manifest,
-      globals: []
+      globals: (templateData.globals || [])
     }));
   },
   renderTemplate: function (data) {
