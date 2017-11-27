@@ -11,25 +11,23 @@ var hopsConfig = require('hops-config');
 var defaultTemplate = require('./lib/template');
 
 exports.combineContexts = mixinable({
-  bootstrap: mixinable.parallel,
-  enhanceElement: mixinable.compose,
-  getTemplateData: mixinable.pipe,
+  bootstrap: mixinable.async.parallel,
+  enhanceElement: mixinable.async.compose,
+  getTemplateData: mixinable.async.pipe,
   renderTemplate: mixinable.override
 });
 
-exports.contextDefinition = {
-  constructor: function () {
-    var args = Array.prototype.slice.call(arguments);
-    var options = Object.assign.apply(Object, [{}].concat(args));
-    this.template = options.template || defaultTemplate;
-    this.request = options.request;
-    this.routerContext = {};
-  },
-  bootstrap: function () {
-    return Promise.resolve();
-  },
+exports.contextDefinition = function () {
+  var args = Array.prototype.slice.call(arguments);
+  var options = Object.assign.apply(Object, [{}].concat(args));
+  this.template = options.template || defaultTemplate;
+  this.request = options.request;
+  this.routerContext = {};
+};
+
+exports.contextDefinition.prototype = {
   enhanceElement: function (reactElement) {
-    return Promise.resolve(React.createElement(
+    return React.createElement(
       ReactRouter.StaticRouter,
       {
         basename: hopsConfig.basePath,
@@ -37,17 +35,17 @@ exports.contextDefinition = {
         context: this.routerContext
       },
       reactElement
-    ));
+    );
   },
   getTemplateData: function (templateData) {
-    return Promise.resolve(Object.assign({}, templateData, {
+    return Object.assign({}, templateData, {
       routerContext: this.routerContext,
       options: this.options,
       helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
       manifest: hopsConfig.manifest,
       globals: (templateData.globals || [])
-    }));
+    });
   },
   renderTemplate: function (templateData) {
     return this.template(templateData);
