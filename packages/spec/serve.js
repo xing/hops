@@ -102,4 +102,12 @@ describe('production server', function () {
       })
     );
   });
+
+  it('should deliver 404 when route does not match', function () {
+    return fetch('http://localhost:8080/thisdoesnotexist').then(function (
+      response
+    ) {
+      assert(response.status === 404);
+    });
+  });
 });
