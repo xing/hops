@@ -9,15 +9,16 @@ var hopsReact = require('hops-react');
 
 var REDUX_STATE = 'REDUX_STATE';
 
-exports.contextDefinition = {
-  constructor: function (options) {
-    this.reducers = {};
-    Object.keys((options && options.reducers) || {}).forEach(
-      function (key) {
-        this.registerReducer(key, options.reducers[key]);
-      }.bind(this)
-    );
-  },
+exports.contextDefinition = function (options) {
+  this.reducers = {};
+  Object.keys((options && options.reducers) || {}).forEach(
+    function (key) {
+      this.registerReducer(key, options.reducers[key]);
+    }.bind(this)
+  );
+};
+
+exports.contextDefinition.prototype = {
   registerReducer: function (namespace, reducer) {
     this.reducers[namespace] = reducer;
     if (this.store) {
