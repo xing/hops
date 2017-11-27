@@ -8,25 +8,23 @@ var mixinable = require('mixinable');
 var hopsConfig = require('hops-config');
 
 exports.combineContexts = mixinable({
-  bootstrap: mixinable.parallel,
-  enhanceElement: mixinable.compose,
+  bootstrap: mixinable.async.parallel,
+  enhanceElement: mixinable.async.compose,
   getMountpoint: mixinable.override
 });
 
-exports.contextDefinition = {
-  constructor: function (options) {
-    if (!options) { options = {}; }
-    this.mountpoint = options.mountpoint || '#main';
-  },
-  bootstrap: function () {
-    return Promise.resolve();
-  },
+exports.contextDefinition = function (options) {
+  if (!options) { options = {}; }
+  this.mountpoint = options.mountpoint || '#main';
+};
+
+exports.contextDefinition.prototype = {
   enhanceElement: function (reactElement) {
-    return Promise.resolve(React.createElement(
+    return React.createElement(
       ReactRouterDOM.BrowserRouter,
       { basename: hopsConfig.basePath },
       reactElement
-    ));
+    );
   },
   getMountpoint: function () {
     return document.querySelector(this.mountpoint);
