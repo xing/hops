@@ -8,7 +8,11 @@ var common = require('./lib/common');
 var constants = require('./lib/constants');
 var introspectionResult = require('./lib/util').getIntrospectionResult();
 
-exports.contextDefinition = Object.assign({}, common, {
+exports.contextDefinition = function () {
+  return common.constructor.apply(this, arguments);
+};
+
+exports.contextDefinition.prototype = Object.assign({}, common, {
   enhanceElement: function (reactElement) {
     var enhancedElement = common.enhanceElement.call(this, reactElement);
     return ReactApollo.getDataFromTree(enhancedElement).then(function () {
