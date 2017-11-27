@@ -1,6 +1,6 @@
 {
   "name": "hops-build",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Hops wrapper around webpack to execute a build",
   "keywords": [
     "hops",
@@ -24,11 +24,11 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-build-config": "9.0.0",
-    "hops-config": "8.0.0",
-    "hops-middleware": "7.2.0",
-    "hops-plugin": "8.0.0",
-    "hops-server": "8.0.0",
+    "hops-build-config": "^9.0.1",
+    "hops-config": "^9.0.1",
+    "hops-middleware": "^9.0.1",
+    "hops-plugin": "^9.0.1",
+    "hops-server": "^9.0.1",
     "rimraf": "^2.6.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.4",
