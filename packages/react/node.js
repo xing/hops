@@ -23,6 +23,7 @@ exports.contextDefinition = {
     var options = Object.assign.apply(Object, [{}].concat(args));
     this.template = options.template || defaultTemplate;
     this.request = options.request;
+    this.routerContext = {};
   },
   bootstrap: function () {
     return Promise.resolve();
@@ -33,13 +34,14 @@ exports.contextDefinition = {
       {
         basename: hopsConfig.basePath,
         location: this.request.path,
-        context: this
+        context: this.routerContext
       },
       reactElement
     ));
   },
   getTemplateData: function (templateData) {
     return Promise.resolve(Object.assign({}, templateData, {
+      routerContext: this.routerContext,
       options: this.options,
       helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
@@ -47,8 +49,8 @@ exports.contextDefinition = {
       globals: (templateData.globals || [])
     }));
   },
-  renderTemplate: function (data) {
-    return this.template(data);
+  renderTemplate: function (templateData) {
+    return this.template(templateData);
   }
 };
 
@@ -58,28 +60,26 @@ exports.createContext = exports.combineContexts(
 
 exports.render = function (reactElement, _context) {
   return function (req, res, next) {
-    var context = mixinable.clone(_context, { request: req });
-    context.bootstrap().then(function () {
-      return context.enhanceElement(reactElement).then(
+    var renderContext = mixinable.clone(_context, { request: req });
+    renderContext.bootstrap().then(function () {
+      return renderContext.enhanceElement(reactElement).then(
         function (enhancedElement) {
-          var data = {
+          return renderContext.getTemplateData({
             markup: ReactDOM.renderToString(enhancedElement)
-          };
-          if (context.miss) {
-            next();
-          } else if (context.url) {
-            res.status(context.status || 301);
-            res.set('Location', context.url);
-            res.end();
-          } else {
-            return context.getTemplateData(data)
-              .then(context.renderTemplate.bind(context))
-              .then(function (html) {
-                res.status(context.status || 200);
-                res.type('html');
-                res.send(html);
-              });
-          }
+          }).then(function (templateData) {
+            var routerContext = templateData.routerContext;
+            if (routerContext.miss) {
+              next();
+            } else if (routerContext.url) {
+              res.status(routerContext.status || 301);
+              res.set('Location', routerContext.url);
+              res.end();
+            } else {
+              res.status(routerContext.status || 200);
+              res.type('html');
+              res.send(renderContext.renderTemplate(templateData));
+            }
+          });
         }
       );
     }).catch(next);
