@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.0.0"></a>
+# [9.0.0](https://github.com/xing/hops/compare/v8.0.0...v9.0.0) (2017-11-27)
+
+
+### Bug Fixes
+
+* **graphql:** make getTemplateData order-agnostic ([6d5e0c3](https://github.com/xing/hops/commit/6d5e0c3))
+* **react:** fix context mixin execution order ([506b6dc](https://github.com/xing/hops/commit/506b6dc))
+* **react:** re-enable Miss/Status components ([c6c9c9e](https://github.com/xing/hops/commit/c6c9c9e))
+* **redux:** make getTemplateData order-agnostic ([f60b169](https://github.com/xing/hops/commit/f60b169))
+
+
+### Features
+
+* **graphql:** implement constructor based mixins ([e99ec75](https://github.com/xing/hops/commit/e99ec75))
+* **react:** implement constructor based mixins ([d828883](https://github.com/xing/hops/commit/d828883))
+* **redux:** implement constructor based mixins ([19ef2fc](https://github.com/xing/hops/commit/19ef2fc))
+
+
+### BREAKING CHANGES
+
+* **graphql:** export.contextDefinition is now a constructor function (used to be an object literal)
+* **redux:** export.contextDefinition is now a constructor function (used to be an object literal)
+* **react:** export.contextDefinition is now a constructor function (used to be an object literal)
+
+
+
+
 <a name="8.0.0"></a>
 # [8.0.0](https://github.com/xing/hops/compare/v7.4.1...v8.0.0) (2017-11-22)
 
