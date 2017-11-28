@@ -1,48 +1,20 @@
 /* eslint-env node, mocha */
 var assert = require('assert');
-var React = require('react');
 
-var redux = require('hops-redux');
-var hopsReact = require('hops-react');
+var hopsRedux = require('hops-redux');
 
 describe('redux', function () {
-  var defaultOptions = {
-    someSlice: function () {
-      return null;
-    }
-  };
-
-  function setupContext (options) {
-    return hopsReact.combineContexts(redux.contextDefinition)(
-      Object.assign({}, defaultOptions, options || {})
-    );
-  }
-
   it('allows to set middlewares via option', function () {
-    var called = false;
-    var context = setupContext({
-      middlewares: [
-        function () {
-          return function () {
-            return function () {
-              called = true;
-            };
-          };
-        }
-      ]
+    var middleware = function () {};
+    var context = new hopsRedux.contextDefinition({
+      middlewares: [middleware]
     });
-
-    return context
-      .enhanceElement(React.createElement('span'))
-      .then(function (element) {
-        element.props.store.dispatch({ type: '' });
-        assert.ok(called);
-      });
+    assert.equal(context.getMiddlewares()[0], middleware);
   });
 
-  it('throws an error, when middlewares is provided but not an array', function () {
+  it('throws array when middlewares is not an array', function () {
     assert.throws(function () {
-      setupContext({
+      new hopsRedux.contextDefinition({
         middlewares: function () {}
       });
     });
