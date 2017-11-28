@@ -1,25 +1,20 @@
 {
   "name": "hops",
-  "version": "6.2.8",
   "description": "universal build tools",
-  "keywords": [
-    "webpack",
-    "babel",
-    "postcss"
-  ],
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "start": "cd packages/template-react; yarn start",
-    "test": "lerna run test --stream",
-    "lint": "eslint \"packages/**/*.js\"",
-    "release": "lerna publish --exact --conventional-commits",
-    "update": "yarn upgrade-interactive --latest && rm yarn.lock && yarn",
-    "postupdate": "lerna clean --yes && lerna bootstrap",
-    "reset": "git clean -dfx && yarn && yarn bootstrap"
+  "keywords": ["webpack", "babel", "postcss"],
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://github.com/xing/hops",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "bugs": {
+    "url": "https://github.com/xing/hops/issues"
+  },
+  "engines": {
+    "node": ">5.0.0"
+  },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
     "TobiasKrogh <tobias@krogh.de> (https://www.xing.com/profile/Tobias_Krogh)",
@@ -35,30 +30,40 @@
     "ZauberNerd <zaubernerd@zaubernerd.de> (https://www.xing.com/profile/Bjoern_Brauer5)",
     "ghost23 <mail@ghost23.de> (https://www.xing.com/profile/Sven_Busse)"
   ],
-  "private": true,
-  "license": "MIT",
-  "homepage": "https://github.com/xing/hops",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/xing/hops.git"
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "start": "cd packages/template-react; yarn start",
+    "test": "lerna run test --stream",
+    "lint": "eslint \"packages/**/*.js\"",
+    "release": "lerna publish --exact --conventional-commits",
+    "update": "yarn upgrade-interactive --latest && rm yarn.lock && yarn",
+    "postupdate": "lerna clean --yes && lerna bootstrap",
+    "reset": "git clean -dfx && yarn && yarn bootstrap",
+    "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'",
+    "precommit": "lint-staged"
   },
-  "bugs": {
-    "url": "https://github.com/xing/hops/issues"
+  "lint-staged": {
+    "*.{js,json,css}": ["prettier --write", "git add"],
+    "**/README.md": ["prettier --write", "git add"]
   },
-  "engines": {
-    "node": ">5.0.0"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "jsxBracketSameLine": true,
+    "proseWrap": false,
+    "singleQuote": true
   },
   "eslintConfig": {
-    "extends": "semistandard",
+    "extends": ["semistandard", "prettier"],
+    "plugins": ["react", "prettier"],
     "rules": {
-      "indent": [
-        "warn",
-        2
-      ],
-      "max-len": [
-        "warn",
-        80
-      ]
+      "prettier/prettier": "error",
+      "indent": ["warn", 2],
+      "max-len": ["warn", 80]
     },
     "parserOptions": {
       "ecmaVersion": 5,
@@ -67,26 +72,22 @@
       }
     }
   },
-  "eslintIgnore": [
-    "**/node_modules/**",
-    "**/template-*/**",
-    "**/spec/mock/**"
-  ],
+  "eslintIgnore": ["**/node_modules/**", "**/template-*/**", "**/spec/mock/**"],
+  "workspaces": ["packages/*"],
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^4.10.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-config-semistandard": "^11.0.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
-    "lerna": "^2.5.1"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "husky": "^0.14.3",
+    "lerna": "^2.5.1",
+    "lint-staged": "^5.0.0",
+    "prettier": "1.8.2"
   }
 }
