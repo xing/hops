@@ -14,10 +14,10 @@ exports.combineContexts = mixinable({
   bootstrap: mixinable.async.parallel,
   enhanceElement: mixinable.async.compose,
   getTemplateData: mixinable.async.pipe,
-  renderTemplate: mixinable.override
+  renderTemplate: mixinable.override,
 });
 
-exports.contextDefinition = function () {
+exports.contextDefinition = function() {
   var args = Array.prototype.slice.call(arguments);
   var options = Object.assign.apply(Object, [{}].concat(args));
   this.template = options.template || defaultTemplate;
@@ -26,61 +26,64 @@ exports.contextDefinition = function () {
 };
 
 exports.contextDefinition.prototype = {
-  enhanceElement: function (reactElement) {
+  enhanceElement: function(reactElement) {
     return React.createElement(
       ReactRouter.StaticRouter,
       {
         basename: hopsConfig.basePath,
         location: this.request.path,
-        context: this.routerContext
+        context: this.routerContext,
       },
       reactElement
     );
   },
-  getTemplateData: function (templateData) {
+  getTemplateData: function(templateData) {
     return Object.assign({}, templateData, {
       routerContext: this.routerContext,
       options: this.options,
       helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
       manifest: hopsConfig.manifest,
-      globals: (templateData.globals || [])
+      globals: templateData.globals || [],
     });
   },
-  renderTemplate: function (templateData) {
+  renderTemplate: function(templateData) {
     return this.template(templateData);
-  }
+  },
 };
 
-exports.createContext = exports.combineContexts(
-  exports.contextDefinition
-);
+exports.createContext = exports.combineContexts(exports.contextDefinition);
 
-exports.render = function (reactElement, _context) {
-  return function (req, res, next) {
+exports.render = function(reactElement, _context) {
+  return function(req, res, next) {
     var renderContext = mixinable.clone(_context, { request: req });
-    renderContext.bootstrap().then(function () {
-      return renderContext.enhanceElement(reactElement).then(
-        function (enhancedElement) {
-          return renderContext.getTemplateData({
-            markup: ReactDOM.renderToString(enhancedElement)
-          }).then(function (templateData) {
-            var routerContext = templateData.routerContext;
-            if (routerContext.miss) {
-              next();
-            } else if (routerContext.url) {
-              res.status(routerContext.status || 301);
-              res.set('Location', routerContext.url);
-              res.end();
-            } else {
-              res.status(routerContext.status || 200);
-              res.type('html');
-              res.send(renderContext.renderTemplate(templateData));
-            }
+    renderContext
+      .bootstrap()
+      .then(function() {
+        return renderContext
+          .enhanceElement(reactElement)
+          .then(function(enhancedElement) {
+            return renderContext
+              .getTemplateData({
+                markup: ReactDOM.renderToString(enhancedElement),
+              })
+              .then(function(templateData) {
+                var routerContext = templateData.routerContext;
+                if (routerContext.miss) {
+                  next();
+                } else if (routerContext.url) {
+                  res.status(routerContext.status || 301);
+                  res.set('Location', routerContext.url);
+                  res.end();
+                } else {
+                  res.status(routerContext.status || 200);
+                  res.type('html');
+                  res.send(renderContext.renderTemplate(templateData));
+                }
+              });
           });
-        }
-      );
-    }).catch(next);
+      })
+      .catch(next);
   };
 };
 

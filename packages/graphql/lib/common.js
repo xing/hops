@@ -11,50 +11,48 @@ var ApolloLink = require('apollo-link-http');
 var hopsConfig = require('hops-config');
 
 module.exports = {
-  constructor: function (options) {
-    if (!options) { options = {}; }
+  constructor: function(options) {
+    if (!options) {
+      options = {};
+    }
     this.client = this.createClient(options.graphql || {});
   },
-  createClient: function (options) {
+  createClient: function(options) {
     return new ApolloClient(this.enhanceClientOptions(options));
   },
-  enhanceClientOptions: function (options) {
-    return Object.assign(
-      {},
-      options,
-      {
-        link: options.link || this.createLink(),
-        cache: options.cache || this.createCache()
-      }
-    );
+  enhanceClientOptions: function(options) {
+    return Object.assign({}, options, {
+      link: options.link || this.createLink(),
+      cache: options.cache || this.createCache(),
+    });
   },
-  createLink: function () {
+  createLink: function() {
     return new ApolloLink.HttpLink({
-      uri: hopsConfig.graphqlUri
+      uri: hopsConfig.graphqlUri,
     });
   },
-  createCache: function () {
+  createCache: function() {
     return new ApolloCache.InMemoryCache({
-      fragmentMatcher: this.createFragmentMatcher()
+      fragmentMatcher: this.createFragmentMatcher(),
     });
   },
-  createFragmentMatcher: function () {
+  createFragmentMatcher: function() {
     var result = this.getIntrospectionResult();
     if (result) {
       return new ApolloCache.IntrospectionFragmentMatcher({
-        introspectionQueryResultData: this.getIntrospectionResult()
+        introspectionQueryResultData: this.getIntrospectionResult(),
       });
     } else {
       return new ApolloCache.HeuristicFragmentMatcher();
     }
   },
-  enhanceElement: function (reactElement) {
+  enhanceElement: function(reactElement) {
     return React.createElement(
       ReactApollo.ApolloProvider,
       {
-        client: this.client
+        client: this.client,
       },
       reactElement
     );
-  }
+  },
 };

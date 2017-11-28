@@ -12,18 +12,15 @@ import reducers from './reducers';
 const App = () => (
   <div>
     <nav>
-      <Link to='/'>Home</Link>&nbsp;
-      <Link to='/counter'>Counter</Link>
+      <Link to="/">Home</Link>&nbsp;
+      <Link to="/counter">Counter</Link>
     </nav>
     <Switch>
-      <Route exact path='/' component={Home} />
-      <Route exact path='/counter' component={Counter} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/counter" component={Counter} />
       <Miss />
     </Switch>
   </div>
 );
 
-export default render(
-  <App />,
-  createContext({ reducers })
-);
+export default render(<App />, createContext({ reducers }));

@@ -8,12 +8,12 @@ var projectDir = path.resolve(__dirname, 'bad-export');
 
 module.exports = Object.assign({}, defaultConfig, {
   output: Object.assign({}, defaultConfig.output, {
-    path: projectDir
+    path: projectDir,
   }),
   context: projectDir,
   resolve: Object.assign({}, defaultConfig.resolve, {
     alias: {
-      'hops-entry-point': projectDir
-    }
-  })
+      'hops-entry-point': projectDir,
+    },
+  }),
 });

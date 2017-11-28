@@ -10,26 +10,25 @@ var helmet = require('helmet');
 var hopsConfig = require('hops-config');
 var server = require('hops-server');
 
-function createApp () {
+function createApp() {
   var app = express();
   app.use(helmet());
   app.use(server.rewritePath);
-  app.use(express.static(hopsConfig.buildDir, {
-    maxAge: '1y',
-    setHeaders: function (res, filepath) {
-      if (mime.getType(filepath) === 'text/html') {
-        helmet.noCache()(null, res, function () {});
-      }
-    },
-    redirect: false
-  }));
+  app.use(
+    express.static(hopsConfig.buildDir, {
+      maxAge: '1y',
+      setHeaders: function(res, filepath) {
+        if (mime.getType(filepath) === 'text/html') {
+          helmet.noCache()(null, res, function() {});
+        }
+      },
+      redirect: false,
+    })
+  );
   server.bootstrap(app, hopsConfig);
   var filePath = path.join(hopsConfig.cacheDir, 'server.js');
   if (fs.existsSync(filePath)) {
-    server.registerMiddleware(
-      app.use(helmet.noCache()),
-      require(filePath)
-    );
+    server.registerMiddleware(app.use(helmet.noCache()), require(filePath));
   } else {
     console.log(
       'No middleware found. Delivering only statically built routes.'

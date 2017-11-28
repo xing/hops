@@ -1,4 +1,4 @@
-# Hops Middleware 
+# Hops Middleware
 
 [![npm](https://img.shields.io/npm/v/hops-middleware.svg)](https://www.npmjs.com/package/hops-middleware)
 
@@ -6,16 +6,13 @@ Hops assumes you will write an Express-style middleware, transpiles it using Web
 
 You can override hops' default Webpack configuration by passing a `webpackConfig` object to the `createMiddleware` function. You can also enable watch mode by passing a `watchOptions` object.
 
-
 ### Target Audience
 
 If you want to write your Express middleware in ECMAScript Next, reuse your Webpack loader config and have your stuff transpiled on the fly to use it in your own Express server (or in Webpack Dev Server), hops' middleware is for you.
 
-
 ### Example
 
 This example shows how to write and configure a custom middleware and use it in a stock Express server.
-
 
 ##### `package.json`
 
@@ -49,7 +46,7 @@ export default (req, res) => {
       break;
   }
   res.end();
-}
+};
 ```
 
 ##### `index.js`

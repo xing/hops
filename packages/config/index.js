@@ -14,7 +14,7 @@ if (!Object.keys(npmConfig).length) {
   } catch (_) {}
 }
 
-function extendConfig (config) {
+function extendConfig(config) {
   if (npmConfig.extends) {
     try {
       require.resolve(npmConfig.extends);
@@ -26,12 +26,13 @@ function extendConfig (config) {
   return Object.assign(config, npmConfig);
 }
 
-function resolvePaths (config) {
-  Object.keys(config).filter(function (key) {
-    return /(config|file|dir)s?$/i.test(key);
-  })
-    .forEach(function (key) {
-      config[key] = (function resolve (item) {
+function resolvePaths(config) {
+  Object.keys(config)
+    .filter(function(key) {
+      return /(config|file|dir)s?$/i.test(key);
+    })
+    .forEach(function(key) {
+      config[key] = (function resolve(item) {
         if (typeof item === 'string') {
           return path.isAbsolute(item) ? item : path.join(root, item);
         } else if (Array.isArray(item)) {
@@ -44,24 +45,26 @@ function resolvePaths (config) {
   return config;
 }
 
-function normalizeURLs (config) {
+function normalizeURLs(config) {
   var basePath = config.basePath.replace(/^\/*/, '/').replace(/\/*$/, '');
   var assetPath = config.assetPath.replace(/(^\/*|\/*$)/g, '');
 
   return Object.assign(config, {
-    locations: config.locations.map(function (location) {
-      return basePath + location.replace(/\/*$/, '').replace(/^\/*/, '/');
-    }).sort(function (locationA, locationB) {
-      return locationB.length - locationA.length;
-    }),
+    locations: config.locations
+      .map(function(location) {
+        return basePath + location.replace(/\/*$/, '').replace(/^\/*/, '/');
+      })
+      .sort(function(locationA, locationB) {
+        return locationB.length - locationA.length;
+      }),
     basePath: basePath,
-    assetPath: assetPath
+    assetPath: assetPath,
   });
 }
 
-function freeze (config) {
+function freeze(config) {
   return Object.freeze(
-    Object.keys(config).reduce(function (result, key) {
+    Object.keys(config).reduce(function(result, key) {
       var descriptor = { enumerable: true };
       if (typeof config[key] === 'function') {
         descriptor.get = config[key];
@@ -90,7 +93,7 @@ module.exports = freeze(
         buildDir: 'build',
         cacheDir: 'node_modules/.cache/hops',
         manifest: manifestUtil.getManifest,
-        assets: manifestUtil.getAssets
+        assets: manifestUtil.getAssets,
       })
     )
   )

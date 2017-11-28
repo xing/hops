@@ -8,42 +8,39 @@ var common = require('./lib/common');
 var constants = require('./lib/constants');
 var introspectionResult = require('./lib/util').getIntrospectionResult();
 
-exports.contextDefinition = function () {
+exports.contextDefinition = function() {
   return common.constructor.apply(this, arguments);
 };
 
 exports.contextDefinition.prototype = Object.assign({}, common, {
-  enhanceElement: function (reactElement) {
+  enhanceElement: function(reactElement) {
     var enhancedElement = common.enhanceElement.call(this, reactElement);
-    return ReactApollo.getDataFromTree(enhancedElement).then(function () {
+    return ReactApollo.getDataFromTree(enhancedElement).then(function() {
       return enhancedElement;
     });
   },
-  enhanceClientOptions: function (options) {
-    return Object.assign(
-      common.enhanceClientOptions.call(this, options),
-      {
-        ssrMode: true
-      }
-    );
+  enhanceClientOptions: function(options) {
+    return Object.assign(common.enhanceClientOptions.call(this, options), {
+      ssrMode: true,
+    });
   },
-  getIntrospectionResult: function () {
+  getIntrospectionResult: function() {
     return introspectionResult;
   },
-  getTemplateData: function (templateData) {
+  getTemplateData: function(templateData) {
     return Object.assign({}, templateData, {
       globals: (templateData.globals || []).concat([
         {
           name: constants.APOLLO_IQRD,
-          value: this.getIntrospectionResult()
+          value: this.getIntrospectionResult(),
         },
         {
           name: constants.APOLLO_STATE,
-          value: this.client.cache.extract()
-        }
-      ])
+          value: this.client.cache.extract(),
+        },
+      ]),
     });
-  }
+  },
 });
 
 exports.createContext = hopsReact.combineContexts(

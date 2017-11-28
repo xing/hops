@@ -7,17 +7,14 @@ var getPkgDir = require('pkg-dir').sync;
 
 var appDir = getPkgDir();
 
-function checkESnextPath (filepath) {
+function checkESnextPath(filepath) {
   return (
-    (filepath.indexOf('.mjs') === filepath.length - 4) ||
-    (
-      (filepath.indexOf(appDir) === 0) &&
-      (filepath.indexOf('node_modules') === -1)
-    )
+    filepath.indexOf('.mjs') === filepath.length - 4 ||
+    (filepath.indexOf(appDir) === 0 && filepath.indexOf('node_modules') === -1)
   );
 }
 
-function checkEsnextConfig (filepath) {
+function checkEsnextConfig(filepath) {
   var pkgDir = getPkgDir(path.dirname(filepath));
   var packageJsonPath = path.join(pkgDir, 'package.json');
   if (fs.existsSync(packageJsonPath)) {
@@ -27,13 +24,13 @@ function checkEsnextConfig (filepath) {
 }
 
 var cache = {};
-module.exports = function checkEsnextCached (module) {
+module.exports = function checkEsnextCached(module) {
   if (!(module in cache)) {
     if (path.isAbsolute(module)) {
       cache[module] = checkESnextPath(module) || checkEsnextConfig(module);
     } else {
       var absModule = require.resolve(module);
-      cache[module] = (absModule !== module) && checkEsnextCached(absModule);
+      cache[module] = absModule !== module && checkEsnextCached(absModule);
     }
   }
   return cache[module];

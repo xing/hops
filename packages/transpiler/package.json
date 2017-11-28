@@ -2,15 +2,10 @@
   "name": "hops-transpiler",
   "version": "9.0.1",
   "description": "Hops wrapper for Webpack",
-  "keywords": [
-    "hops",
-    "webpack"
-  ],
+  "keywords": ["hops", "webpack"],
   "license": "MIT",
   "main": "index.js",
-  "files": [
-    "index.js"
-  ],
+  "files": ["index.js"],
   "dependencies": {
     "memory-fs": "^0.4.1",
     "require-from-string": "^2.0.1",

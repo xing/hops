@@ -7,7 +7,7 @@ var mocks = require('node-mocks-http');
 
 var createMiddleware = require('hops-middleware');
 
-module.exports = function createRenderer (options) {
+module.exports = function createRenderer(options) {
   var hopsConfig = options.hopsConfig || {};
   var router = new express.Router();
 
@@ -15,30 +15,31 @@ module.exports = function createRenderer (options) {
     hopsConfig.bootstrapServer(router, hopsConfig);
   }
 
-  router.use(createMiddleware(
-    options.webpackConfig,
-    options.watchOptions
-  ));
+  router.use(createMiddleware(options.webpackConfig, options.watchOptions));
 
-  return function (options) {
+  return function(options) {
     if (typeof options === 'string') {
       options = { url: options };
     }
-    return new Promise(function (resolve, reject) {
+    return new Promise(function(resolve, reject) {
       var req = mocks.createRequest(options);
       var res = mocks.createResponse({
         eventEmitter: events.EventEmitter,
-        request: req
+        request: req,
       });
-      res.on('finish', function () {
+      res.on('finish', function() {
         if (res.statusCode !== 200) {
           reject(new Error('invalid status code: ' + res.statusCode));
         } else {
           resolve(res._getData());
         }
       });
-      router.handle(req, res, function (error) {
-        if (error) { reject(error); } else { resolve(); }
+      router.handle(req, res, function(error) {
+        if (error) {
+          reject(error);
+        } else {
+          resolve();
+        }
       });
     });
   };

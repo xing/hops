@@ -3,7 +3,7 @@
 
 var hopsBuild = require('..');
 
-module.exports = function defineBuildCommand (args) {
+module.exports = function defineBuildCommand(args) {
   args.command({
     command: 'build',
     describe: 'Builds the browser and server JS bundles',
@@ -12,30 +12,32 @@ module.exports = function defineBuildCommand (args) {
         alias: 's',
         default: false,
         describe: 'Statically build locations',
-        type: 'boolean'
+        type: 'boolean',
       },
       clean: {
         alias: 'c',
         default: true,
-        describe: 'Clean up artifacts in build / cache directories before ' +
+        describe:
+          'Clean up artifacts in build / cache directories before ' +
           'building',
-        type: 'boolean'
+        type: 'boolean',
       },
       production: {
         alias: 'p',
         default: false,
-        describe: 'Minifies the output, generates source maps and removes ' +
+        describe:
+          'Minifies the output, generates source maps and removes ' +
           'React developer warnings',
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
-    handler: function buildHandler (argv) {
+    handler: function buildHandler(argv) {
       if (argv.production) {
         process.env.NODE_ENV = 'production';
       }
       process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
       hopsBuild.runBuild(argv);
-    }
+    },
   });
 };
 

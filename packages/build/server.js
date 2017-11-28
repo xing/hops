@@ -10,32 +10,36 @@ var server = require('hops-server');
 
 var cleanup = require('./lib/cleanup');
 
-process.on('unhandledRejection', function (error) {
+process.on('unhandledRejection', function(error) {
   throw error;
 });
 
-function runDevelop (options, callback) {
+function runDevelop(options, callback) {
   var config = require(hopsBuildConfig.developConfig);
   var watchOptions = config.devServer.watchOptions || config.watchOptions;
   var app = new WebpackServer(
     webpack(config),
-    Object.assign({}, {
-      after: function (app) {
-        app.use(server.rewritePath);
-        server.bootstrap(app, hopsConfig);
-        server.registerMiddleware(app, createMiddleware(
-          require(hopsBuildConfig.nodeConfig),
-          watchOptions
-        ));
-        server.teardown(app, hopsConfig);
+    Object.assign(
+      {},
+      {
+        after: function(app) {
+          app.use(server.rewritePath);
+          server.bootstrap(app, hopsConfig);
+          server.registerMiddleware(
+            app,
+            createMiddleware(require(hopsBuildConfig.nodeConfig), watchOptions)
+          );
+          server.teardown(app, hopsConfig);
+        },
+        watchOptions: watchOptions,
       },
-      watchOptions: watchOptions
-    }, config.devServer)
+      config.devServer
+    )
   );
   server.run(app, callback);
 }
 
-module.exports = function (options, callback) {
+module.exports = function(options, callback) {
   if (options.clean) {
     var dirs = [hopsConfig.buildDir, hopsConfig.cacheDir];
     return cleanup(dirs).then(runDevelop.bind(null, options, callback));

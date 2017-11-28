@@ -2,8 +2,8 @@
 
 var hopsConfig = require('hops-config');
 
-function removeAbsolutePaths (config) {
-  return Object.keys(config).reduce(function (browserConfig, key) {
+function removeAbsolutePaths(config) {
+  return Object.keys(config).reduce(function(browserConfig, key) {
     if (!/(config|file|dir)s?$/i.test(key)) {
       browserConfig[key] = config[key];
     }
@@ -12,7 +12,7 @@ function removeAbsolutePaths (config) {
   }, {});
 }
 
-module.exports = function () {
+module.exports = function() {
   this.cacheable();
   return 'module.exports = ' + JSON.stringify(removeAbsolutePaths(hopsConfig));
 };

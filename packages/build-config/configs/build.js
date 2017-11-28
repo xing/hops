@@ -19,12 +19,12 @@ module.exports = {
     path: hopsConfig.buildDir,
     publicPath: '/',
     filename: getAssetPath('[name]-[chunkhash:16].js'),
-    chunkFilename: getAssetPath('chunk-[id]-[chunkhash:16].js')
+    chunkFilename: getAssetPath('chunk-[id]-[chunkhash:16].js'),
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('build'),
   module: {
-    rules: require('../sections/module-rules')('build')
+    rules: require('../sections/module-rules')('build'),
   },
   devtool: 'source-map',
   plugins: [
@@ -33,39 +33,39 @@ module.exports = {
     new WriteManifestPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: function (module) {
+      minChunks: function(module) {
         if (module.resource) {
           if (
-            (module.resource.indexOf('hops-config') > -1) ||
-            (module.resource.indexOf('.css') === module.resource.length - 4)
+            module.resource.indexOf('hops-config') > -1 ||
+            module.resource.indexOf('.css') === module.resource.length - 4
           ) {
             return false;
           }
         }
         return module.context && module.context.indexOf('node_modules') > -1;
-      }
+      },
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       filename: 'manifest.js',
-      minChunks: Infinity
+      minChunks: Infinity,
     }),
     new webpack.HashedModuleIdsPlugin(),
     new ExtractTextPlugin({
       filename: getAssetPath('[name]-[contenthash:16].css'),
       allChunks: true,
-      ignoreOrder: true
+      ignoreOrder: true,
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
-      HOPS_MODE: 'dynamic'
+      HOPS_MODE: 'dynamic',
     }),
     new webpack.LoaderOptionsPlugin({
       debug: false,
       minimize: true,
-      sourceMap: true
+      sourceMap: true,
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new UglifyPlugin({ sourceMap: true })
-  ]
+    new UglifyPlugin({ sourceMap: true }),
+  ],
 };

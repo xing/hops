@@ -14,9 +14,7 @@ describe('Counter', () => {
   });
 
   it('renders correctly', () => {
-    const tree = renderer.create(
-      <Counter {...props} />
-    ).toJSON();
+    const tree = renderer.create(<Counter {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

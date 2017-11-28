@@ -12,16 +12,13 @@ The `error` event is emitted whenever anything goes haywire during transpilation
 
 You can override hops' default Webpack configuration by passing a `webpackConfig` object to the `transpile` function. You can also enable watch mode by passing a `watchOptions` object.
 
-
 ### Target Audience
 
 If you want to use dynamically transpiled ECMAScript Next code (i.e. no Express middleware) in your Node.js code, you'll probably want to use it. Just make sure you export something from your module - whatever it is, the transpiler will emit it with its `success` event.
 
-
 ### Example
 
 This example shows how to create a generic ECMAScript Next module and use it in your code.
-
 
 ##### `package.json`
 
@@ -51,7 +48,7 @@ const transpile = require('hops-transpiler');
 const webpackConfig = require('hops-build-config').nodeConfig;
 const transpilation = transpile(webpackConfig /*, watchOptions */);
 
-transpilation.on('success', function (result) {
+transpilation.on('success', function(result) {
   // result === 'hello foo'
 });
 ```

@@ -3,8 +3,8 @@
 exports.default = {
   test: /(packages\/|hops-)config\/index\.js$/,
   use: {
-    loader: require.resolve('../../loaders/config')
-  }
+    loader: require.resolve('../../loaders/config'),
+  },
 };
 
 exports.node = {};

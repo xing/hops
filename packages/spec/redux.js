@@ -3,19 +3,19 @@ var assert = require('assert');
 
 var hopsRedux = require('hops-redux');
 
-describe('redux', function () {
-  it('allows to set middlewares via option', function () {
-    var middleware = function () {};
+describe('redux', function() {
+  it('allows to set middlewares via option', function() {
+    var middleware = function() {};
     var context = new hopsRedux.contextDefinition({
-      middlewares: [middleware]
+      middlewares: [middleware],
     });
     assert.equal(context.getMiddlewares()[0], middleware);
   });
 
-  it('throws error when middlewares is not an array', function () {
-    assert.throws(function () {
+  it('throws error when middlewares is not an array', function() {
+    assert.throws(function() {
       new hopsRedux.contextDefinition({
-        middlewares: function () {}
+        middlewares: function() {},
       });
     });
   });

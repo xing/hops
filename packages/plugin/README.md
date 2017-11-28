@@ -6,16 +6,13 @@ Hops assumes you will write an Express-style middleware, transpiles it and makes
 
 You can override hops' default Webpack configuration by passing a config object to the `Plugin` constructor. Supported config options equal those supported in `package.json`.
 
-
 ### Target Audience
 
 If you want to use your Webpack build to generate static pages using your own custom Express middleware, written in ECMAScript and transpiled using Webpack, this plugin might be what you're looking for. Phew.
 
-
 ### Example
 
 This example shows how to write and configure a custom middleware and use it in a webpack plugin that will generate two html files (`foo/index.html` and `bar/index.html`) in the webpack output folder.
-
 
 ##### `package.json`
 
@@ -44,7 +41,7 @@ export default (req, res) => {
       break;
   }
   res.end();
-}
+};
 ```
 
 ##### `webpack.config.js`

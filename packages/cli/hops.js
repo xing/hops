@@ -9,7 +9,7 @@ var validatePackageName = require('validate-npm-package-name');
 
 var packageManifest = require('./package.json');
 
-var getLocalCliPath = function () {
+var getLocalCliPath = function() {
   try {
     return resolveCwd('hops-local-cli');
   } catch (error) {
@@ -17,36 +17,37 @@ var getLocalCliPath = function () {
   }
 };
 
-var PACKAGES_TO_INSTALL = [
-  'hops-local-cli'
-];
+var PACKAGES_TO_INSTALL = ['hops-local-cli'];
 
-function globalCLI (argv) {
+function globalCLI(argv) {
   return require('yargs')
     .version(packageManifest.version)
     .usage('Usage: $0 <command> [options]')
-    .command('init <project-name>', 'Generates a new project with the ' +
-      'specified name')
+    .command(
+      'init <project-name>',
+      'Generates a new project with the ' + 'specified name'
+    )
     .option('template', {
       type: 'string',
-      describe: 'Use this with the npm package name of a template to ' +
+      describe:
+        'Use this with the npm package name of a template to ' +
         'initialize with a different template',
-      default: 'hops-template-react'
+      default: 'hops-template-react',
     })
     .option('hops-version', {
       type: 'string',
       describe: 'Which version (or npm dist-tag) of hops-local-cli to use',
-      default: 'latest'
+      default: 'latest',
     })
     .option('verbose', {
       type: 'boolean',
       describe: 'Increase verbosity of command',
-      default: false
+      default: false,
     })
     .option('npm', {
       type: 'boolean',
       describe: 'Force usage of `npm` instead of yarn',
-      default: false
+      default: false,
     })
     .example(
       '$0 init my-project',
@@ -65,7 +66,7 @@ function globalCLI (argv) {
     .parse(argv);
 }
 
-function validateName (name) {
+function validateName(name) {
   var validationResult = validatePackageName(name);
   if (!validationResult.validForNewPackages) {
     console.error(
@@ -74,16 +75,20 @@ function validateName (name) {
       'because of the following npm restrictions:'
     );
     if (validationResult.errors) {
-      validationResult.errors.forEach(function (msg) { console.error(msg); });
+      validationResult.errors.forEach(function(msg) {
+        console.error(msg);
+      });
     }
     if (validationResult.warnings) {
-      validationResult.warnings.forEach(function (msg) { console.warn(msg); });
+      validationResult.warnings.forEach(function(msg) {
+        console.warn(msg);
+      });
     }
     process.exit(1);
   }
 }
 
-function createDirectory (root) {
+function createDirectory(root) {
   if (fs.existsSync(root)) {
     console.error(
       'A directory with the name:',
@@ -98,18 +103,22 @@ function createDirectory (root) {
   fs.mkdirSync(root);
 }
 
-function writePackageManifest (root) {
+function writePackageManifest(root) {
   fs.writeFileSync(
     path.join(root, 'package.json'),
-    JSON.stringify({
-      name: name,
-      version: '1.0.0',
-      private: true
-    }, null, 2)
+    JSON.stringify(
+      {
+        name: name,
+        version: '1.0.0',
+        private: true,
+      },
+      null,
+      2
+    )
   );
 }
 
-function isYarnAvailable () {
+function isYarnAvailable() {
   try {
     execSync('yarn --version', { stdio: 'ignore' });
     return true;
@@ -118,22 +127,13 @@ function isYarnAvailable () {
   }
 }
 
-function installPackages (packages, options) {
+function installPackages(packages, options) {
   var command = null;
   var shouldUseYarn = isYarnAvailable() && !options.npm;
   if (shouldUseYarn) {
-    command = [
-      'yarn',
-      'add',
-      '--exact'
-    ];
+    command = ['yarn', 'add', '--exact'];
   } else {
-    command = [
-      'npm',
-      'install',
-      '--save',
-      '--save-exact'
-    ];
+    command = ['npm', 'install', '--save', '--save-exact'];
   }
   if (options.verbose) {
     command.push('--verbose');
@@ -160,8 +160,9 @@ var localCliPath = getLocalCliPath();
 var isInsideHopsProject = false;
 try {
   var manifest = require(path.resolve(process.cwd(), 'package.json'));
-  var dependencies = Object.keys(manifest.dependencies || {})
-    .concat(Object.keys(manifest.devDependencies || {}));
+  var dependencies = Object.keys(manifest.dependencies || {}).concat(
+    Object.keys(manifest.devDependencies || {})
+  );
   isInsideHopsProject = dependencies.indexOf('hops-local-cli') > -1;
 } catch (error) {
   isInsideHopsProject = false;
@@ -183,7 +184,7 @@ if (isInsideHopsProject) {
   var options = globalCLI(process.argv.slice(2));
   var name = options.projectName;
   var root = process.cwd();
-  var versionedPackages = PACKAGES_TO_INSTALL.map(function (name) {
+  var versionedPackages = PACKAGES_TO_INSTALL.map(function(name) {
     return name + '@' + options.hopsVersion;
   });
 

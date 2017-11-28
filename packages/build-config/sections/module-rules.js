@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function getModuleRules (target) {
+module.exports = function getModuleRules(target) {
   return [
     require('./module-rules/babel'),
     require('./module-rules/graphql'),
@@ -9,9 +9,8 @@ module.exports = function getModuleRules (target) {
     require('./module-rules/file'),
     require('./module-rules/url'),
     require('./module-rules/tpl'),
-    require('./module-rules/config')
-  ]
-    .map(function (config) {
-      return config[target] || config.default || config;
-    });
+    require('./module-rules/config'),
+  ].map(function(config) {
+    return config[target] || config.default || config;
+  });
 };
