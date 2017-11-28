@@ -39,4 +39,12 @@ describe('redux', function () {
         assert.ok(called);
       });
   });
+
+  it('throws an error, when middlewares is provided but not an array', function () {
+    assert.throws(function () {
+      setupContext({
+        middlewares: function () {}
+      });
+    });
+  });
 });
