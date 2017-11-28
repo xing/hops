@@ -8,28 +8,26 @@ It also exports a simple middleware that takes care of rewriting the paths of in
 
 #### Exports:
 
-- `rewritePath(request, response, next) => void`  
+* `rewritePath(request, response, next) => void`\
   `rewritePath` is an express-style middleware that adds a trailing slash to the url of the incoming request.
 
-- `registerMiddleware(app, middleware) => void`  
+* `registerMiddleware(app, middleware) => void`\
   `registerMiddleware` is a helper function that registers a wildcard middleware for every location defined in the hops-config, if available. Otherwise it registers the given middleware for a wildcard route at the root.
 
-- `run(app, callback) => void`  
+* `run(app, callback) => void`\
   `run` is a helper function that starts the express-like server with the parameters defined in hops-config.
 
-- `bootstrap(app, hopsConfig) => void`  
-  `teardown(app, hopsConfig) => void`
-  These functions allow to customize the server through hops-config. It is possible to define `hopsConfig.bootstrapServer` and `hopsConfig.teardownServer`to override these functions and execute some custom logic on the `app` object.
-
+* `bootstrap(app, hopsConfig) => void`\
+  `teardown(app, hopsConfig) => void` These functions allow to customize the server through hops-config. It is possible to define `hopsConfig.bootstrapServer` and `hopsConfig.teardownServer`to override these functions and execute some custom logic on the `app` object.
 
 ### Target Audience
 
 If you want to build an express-like server and reuse the hops-config while doing so, then this middleware will help dealing with the locations and basePath config.
 
-
 ### Example
 
 #### `app.js`
+
 ```javascript
 var path = require('path');
 var express = require('express');

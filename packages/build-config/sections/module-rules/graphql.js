@@ -2,5 +2,5 @@
 
 exports.default = {
   test: /\.(graphql|gql)$/,
-  loader: 'graphql-tag/loader'
+  loader: 'graphql-tag/loader',
 };

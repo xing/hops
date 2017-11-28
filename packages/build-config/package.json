@@ -2,12 +2,7 @@
   "name": "hops-build-config",
   "version": "9.0.1",
   "description": "Hops build configuration leveraging Webpack and Babel",
-  "keywords": [
-    "hops",
-    "webpack",
-    "babel",
-    "postcss"
-  ],
+  "keywords": ["hops", "webpack", "babel", "postcss"],
   "license": "MIT",
   "main": "index.js",
   "files": [

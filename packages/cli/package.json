@@ -2,18 +2,13 @@
   "name": "hops-cli",
   "version": "9.0.1",
   "description": "Global CLI module to initialize new hops projects",
-  "keywords": [
-    "hops",
-    "cli"
-  ],
+  "keywords": ["hops", "cli"],
   "license": "MIT",
   "bin": {
     "hops": "hops.js"
   },
   "preferGlobal": true,
-  "files": [
-    "hops.js"
-  ],
+  "files": ["hops.js"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"

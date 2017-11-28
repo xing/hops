@@ -4,29 +4,32 @@ var url = require('url');
 
 var hopsConfig = require('hops-config');
 
-function defaultCallback (error) {
+function defaultCallback(error) {
   if (error) {
     console.error(error.stack.toString());
   } else {
-    console.log('hops: Server listening at ' + url.format({
-      protocol: hopsConfig.https ? 'https' : 'http',
-      hostname: hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
-      port: hopsConfig.port
-    }));
+    console.log(
+      'hops: Server listening at ' +
+        url.format({
+          protocol: hopsConfig.https ? 'https' : 'http',
+          hostname:
+            hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
+          port: hopsConfig.port,
+        })
+    );
   }
 }
 
-exports.run = function run (app, callback) {
-  var server = app.listen(hopsConfig.port, hopsConfig.host, function (error) {
+exports.run = function run(app, callback) {
+  var server = app.listen(hopsConfig.port, hopsConfig.host, function(error) {
     (callback || defaultCallback)(error, server);
   });
 };
 
-exports.rewritePath = function rewritePath (req, res, next) {
-  var location = hopsConfig.locations.find(function (location) {
+exports.rewritePath = function rewritePath(req, res, next) {
+  var location = hopsConfig.locations.find(function(location) {
     return (
-      location !== hopsConfig.basePath + '/' &&
-      req.url.indexOf(location) === 0
+      location !== hopsConfig.basePath + '/' && req.url.indexOf(location) === 0
     );
   });
   if (location) {
@@ -35,9 +38,9 @@ exports.rewritePath = function rewritePath (req, res, next) {
   next();
 };
 
-exports.registerMiddleware = function registerMiddleware (app, middleware) {
+exports.registerMiddleware = function registerMiddleware(app, middleware) {
   if (hopsConfig.locations.length) {
-    hopsConfig.locations.forEach(function (location) {
+    hopsConfig.locations.forEach(function(location) {
       app.get(location === '/' ? location : location + '*', middleware);
     });
   } else {
@@ -45,6 +48,6 @@ exports.registerMiddleware = function registerMiddleware (app, middleware) {
   }
 };
 
-exports.bootstrap = hopsConfig.bootstrapServer || function () {};
+exports.bootstrap = hopsConfig.bootstrapServer || function() {};
 
-exports.teardown = hopsConfig.teardownServer || function () {};
+exports.teardown = hopsConfig.teardownServer || function() {};

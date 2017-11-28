@@ -9,10 +9,10 @@ var hopsConfig = require('hops-config');
 
 var checkEsnext = require('../lib/check-esnext');
 
-function findNodeModules (start) {
+function findNodeModules(start) {
   var modulesDir = findUp.sync('node_modules', { cwd: start });
   var files = fs.readdirSync(modulesDir);
-  var containsModules = files.some(function (file) {
+  var containsModules = files.some(function(file) {
     return file.indexOf('.') !== 0;
   });
   if (!containsModules) {
@@ -21,10 +21,12 @@ function findNodeModules (start) {
   return modulesDir;
 }
 
-function shouldIncludeExternalModuleInBundle (module) {
-  return module.indexOf('core-js') === 0 ||
+function shouldIncludeExternalModuleInBundle(module) {
+  return (
+    module.indexOf('core-js') === 0 ||
     module.indexOf('babel-polyfill') === 0 ||
-    checkEsnext(module);
+    checkEsnext(module)
+  );
 }
 
 var modulesDir = findNodeModules(process.cwd());
@@ -38,28 +40,30 @@ module.exports = {
     filename: 'server.js',
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]',
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('node'),
-  externals: [require('webpack-node-externals')({
-    modulesDir: modulesDir,
-    whitelist: shouldIncludeExternalModuleInBundle
-  })],
+  externals: [
+    require('webpack-node-externals')({
+      modulesDir: modulesDir,
+      whitelist: shouldIncludeExternalModuleInBundle,
+    }),
+  ],
   module: {
-    rules: require('../sections/module-rules')('node')
+    rules: require('../sections/module-rules')('node'),
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 1
+      maxChunks: 1,
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      HOPS_MODE: 'dynamic'
-    })
+      HOPS_MODE: 'dynamic',
+    }),
   ],
   performance: {
-    hints: false
+    hints: false,
   },
-  devtool: process.env.NODE_ENV !== 'production' && '#inline-source-map'
+  devtool: process.env.NODE_ENV !== 'production' && '#inline-source-map',
 };

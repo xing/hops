@@ -6,35 +6,33 @@ var tar = require('tar');
 var validatePackageName = require('validate-npm-package-name');
 var pm = require('./lib/package-manager');
 
-function readPackageManifest (file) {
+function readPackageManifest(file) {
   return JSON.parse(fs.readFileSync(file).toString('utf-8'));
 }
 
-function writePackageManifest (file, manifest) {
+function writePackageManifest(file, manifest) {
   fs.writeFileSync(file, JSON.stringify(manifest, null, 2));
 }
 
-function sortObjectKeys (input) {
+function sortObjectKeys(input) {
   var result = {};
-  Object.keys(input).sort().forEach(function (k) { result[k] = input[k]; });
+  Object.keys(input)
+    .sort()
+    .forEach(function(k) {
+      result[k] = input[k];
+    });
   return result;
 }
 
-function mergePackageManifest (oldManifest, newManifest) {
-  return Object.assign(
-    {},
-    newManifest,
-    oldManifest,
-    {
-      dependencies: sortObjectKeys(Object.assign(
-        newManifest.dependencies,
-        oldManifest.dependencies
-      ))
-    }
-  );
+function mergePackageManifest(oldManifest, newManifest) {
+  return Object.assign({}, newManifest, oldManifest, {
+    dependencies: sortObjectKeys(
+      Object.assign(newManifest.dependencies, oldManifest.dependencies)
+    ),
+  });
 }
 
-function getValidatedTemplateName (name, root) {
+function getValidatedTemplateName(name, root) {
   if (name.indexOf('@') > -1) {
     if (!fs.existsSync(path.resolve(root, name))) {
       return name;
@@ -54,7 +52,7 @@ function getValidatedTemplateName (name, root) {
   return null;
 }
 
-function init (root, appName, options) {
+function init(root, appName, options) {
   var appRoot = path.resolve(root, appName);
   var template = getValidatedTemplateName(options.template, root);
   var pathToPackageManifest = path.resolve(appRoot, 'package.json');
@@ -73,42 +71,39 @@ function init (root, appName, options) {
   }
 
   if (tarball) {
-    tar.extract({
-      file: tarball,
-      strip: 1
-    }).then(function () {
-      fs.unlinkSync(tarball);
-      if (fs.existsSync(path.join(appRoot, '_gitignore'))) {
-        fs.renameSync(
-          path.join(appRoot, '_gitignore'),
-          path.join(appRoot, '.gitignore')
+    tar
+      .extract({
+        file: tarball,
+        strip: 1,
+      })
+      .then(function() {
+        fs.unlinkSync(tarball);
+        if (fs.existsSync(path.join(appRoot, '_gitignore'))) {
+          fs.renameSync(
+            path.join(appRoot, '_gitignore'),
+            path.join(appRoot, '.gitignore')
+          );
+        }
+        var newPackageManifest = readPackageManifest(pathToPackageManifest);
+        writePackageManifest(
+          pathToPackageManifest,
+          mergePackageManifest(oldPackageManifest, newPackageManifest)
         );
-      }
-      var newPackageManifest = readPackageManifest(pathToPackageManifest);
-      writePackageManifest(
-        pathToPackageManifest,
-        mergePackageManifest(oldPackageManifest, newPackageManifest)
-      );
-      pm.installPackages(options);
+        pm.installPackages(options);
 
-      console.log('Hooray \\o/');
-      console.log('Your project has been successfully created.');
-      console.log(
-        'You should change into its directory and execute "hops" to see a list',
-        'of available commands.'
-      );
-    }).catch(function (error) {
-      console.error(
-        'Error while unpacking tar archive:',
-        tarball
-      );
-      console.error(error);
-    });
+        console.log('Hooray \\o/');
+        console.log('Your project has been successfully created.');
+        console.log(
+          'You should change into its directory and execute "hops" to see a list',
+          'of available commands.'
+        );
+      })
+      .catch(function(error) {
+        console.error('Error while unpacking tar archive:', tarball);
+        console.error(error);
+      });
   } else {
-    console.error(
-      'Could not download tarball for:',
-      template
-    );
+    console.error('Could not download tarball for:', template);
     process.exit(1);
   }
 }

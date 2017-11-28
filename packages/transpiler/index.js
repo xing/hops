@@ -9,23 +9,23 @@ var MemoryFS = require('memory-fs');
 var sourceMapSupport = require('source-map-support');
 var requireFromString = require('require-from-string');
 
-module.exports = function transpile (webpackConfig, watchOptions) {
+module.exports = function transpile(webpackConfig, watchOptions) {
   var emitter = new EventEmitter();
   var compiler = webpack(webpackConfig);
 
   compiler.outputFileSystem = new MemoryFS();
 
-  compiler.plugin('watch-run', function (compilation, callback) {
+  compiler.plugin('watch-run', function(compilation, callback) {
     emitter.emit('start');
     callback();
   });
 
-  function emitResult () {
+  function emitResult() {
     emitter.emit.apply(emitter, arguments);
     emitter.emit('result');
   }
 
-  function handleCompilation (compileError, stats) {
+  function handleCompilation(compileError, stats) {
     if (compileError) {
       emitResult('error', compileError);
     } else if (stats.hasErrors()) {
@@ -37,22 +37,22 @@ module.exports = function transpile (webpackConfig, watchOptions) {
         webpackConfig.output.path,
         webpackConfig.output.filename
       );
-      compiler.outputFileSystem.readFile(
-        filePath,
-        function (readError, fileContent) {
-          if (readError) {
-            emitResult('error', readError);
-          } else {
-            try {
-              var source = fileContent.toString();
-              var result = requireFromString(source, filePath);
-              emitResult('success', result, stats);
-            } catch (moduleError) {
-              emitResult('error', moduleError);
-            }
+      compiler.outputFileSystem.readFile(filePath, function(
+        readError,
+        fileContent
+      ) {
+        if (readError) {
+          emitResult('error', readError);
+        } else {
+          try {
+            var source = fileContent.toString();
+            var result = requireFromString(source, filePath);
+            emitResult('success', result, stats);
+          } catch (moduleError) {
+            emitResult('error', moduleError);
           }
         }
-      );
+      });
     }
   }
 

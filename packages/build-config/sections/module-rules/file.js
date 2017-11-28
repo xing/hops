@@ -9,7 +9,7 @@ exports.default = {
   use: {
     loader: require.resolve('file-loader'),
     options: {
-      name: path.join(hopsConfig.assetPath, '[name]-[hash:16].[ext]')
-    }
-  }
+      name: path.join(hopsConfig.assetPath, '[name]-[hash:16].[ext]'),
+    },
+  },
 };

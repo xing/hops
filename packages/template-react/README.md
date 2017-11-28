@@ -2,8 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)
 
-This is a small example application showing [hops](https://github.com/xing/hops) in action.
-It demonstrates how to use hops with React, Redux and Jest.
+This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React, Redux and Jest.
 
 It has the following folder structure:
 
@@ -45,7 +44,6 @@ It contains a small example of the `react-router` with two routes: `/` (home) an
 
 You can customize it to your needs - or use it as a reference guide when creating your own hops react project.
 
-
 ## Package.json scripts
 
 ### `npm start` / `yarn start`
@@ -57,7 +55,6 @@ This command can be used to start a development server with hot-code reloading o
 
 Before you start a production server you need to build your JS bundle files.
 
-
 ### `npm run build` / `yarn build`
 
 This command will generate the browser and server bundles that are required for deploying your code or running the production server through `npm start --production`.
@@ -68,11 +65,9 @@ In this scenario it will iterate through the `locations` and render each locatio
 
 To make use of this execute `npm run build -- --static` or `yarn build --static`.
 
-
 ### `npm test` / `yarn test`
 
 This command will test your code with [jest](https://facebook.github.io/jest/) a testrunner by facebook that integrates nicely with react.
-
 
 ## Configuration
 

@@ -11,5 +11,5 @@ module.exports = Object.freeze({
     : require.resolve('./configs/develop'),
   nodeConfig: hopsConfig.nodeConfig
     ? hopsConfig.nodeConfig
-    : require.resolve('./configs/node')
+    : require.resolve('./configs/node'),
 });

@@ -2,16 +2,10 @@
   "name": "hops-middleware",
   "version": "9.0.1",
   "description": "Hops Express middleware leveraging Webpack",
-  "keywords": [
-    "hops",
-    "webpack",
-    "express"
-  ],
+  "keywords": ["hops", "webpack", "express"],
   "license": "MIT",
   "main": "index.js",
-  "files": [
-    "index.js"
-  ],
+  "files": ["index.js"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"

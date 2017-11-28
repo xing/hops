@@ -11,5 +11,5 @@ presetEnvConfig.modules = 'commonjs';
 module.exports = babelJest.createTransformer({
   presets: babelConfig.presets,
   plugins: babelConfig.plugins,
-  babelrc: false
+  babelrc: false,
 });

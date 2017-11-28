@@ -8,19 +8,19 @@ var cssLoaderOptions = {
   importLoaders: 1,
   modules: true,
   localIdentName: '[folder]-[name]-[local]-[hash:8]',
-  sourceMap: false
+  sourceMap: false,
 };
 
 var postcssLoaderOptions = {
   ident: 'postcss',
   plugins: [
     require('postcss-import')({
-      addModulesDirectories: [].concat(hopsConfig.moduleDirs)
+      addModulesDirectories: [].concat(hopsConfig.moduleDirs),
     }),
     require('postcss-cssnext')({
-      browsers: hopsConfig.browsers
-    })
-  ]
+      browsers: hopsConfig.browsers,
+    }),
+  ],
 };
 
 exports.build = {
@@ -30,14 +30,14 @@ exports.build = {
     use: [
       {
         loader: require.resolve('css-loader'),
-        options: cssLoaderOptions
+        options: cssLoaderOptions,
       },
       {
         loader: require.resolve('postcss-loader'),
-        options: postcssLoaderOptions
-      }
-    ]
-  })
+        options: postcssLoaderOptions,
+      },
+    ],
+  }),
 };
 
 exports.develop = {
@@ -46,19 +46,19 @@ exports.develop = {
     'style-loader',
     {
       loader: require.resolve('css-loader'),
-      options: Object.assign({}, cssLoaderOptions, { sourceMap: true })
+      options: Object.assign({}, cssLoaderOptions, { sourceMap: true }),
     },
     {
       loader: require.resolve('postcss-loader'),
-      options: postcssLoaderOptions
-    }
-  ]
+      options: postcssLoaderOptions,
+    },
+  ],
 };
 
 exports.node = {
   test: /\.css$/,
   use: {
     loader: require.resolve('css-loader/locals'),
-    options: Object.assign({}, cssLoaderOptions, { importLoaders: 0 })
-  }
+    options: Object.assign({}, cssLoaderOptions, { importLoaders: 0 }),
+  },
 };

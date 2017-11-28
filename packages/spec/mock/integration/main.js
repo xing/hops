@@ -4,11 +4,11 @@ import { Miss, render, createContext } from 'hops-react';
 
 import { headline } from './style.css';
 
-const Home = () => (<h1 className={headline}>Hello World!</h1>);
+const Home = () => <h1 className={headline}>Hello World!</h1>;
 
 const App = () => (
   <Switch>
-    <Route exact path='/' component={Home} />
+    <Route exact path="/" component={Home} />
     <Miss />
   </Switch>
 );

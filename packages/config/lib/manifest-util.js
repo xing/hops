@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 
 var manifest = '';
-exports.getManifest = function () {
+exports.getManifest = function() {
   var hopsConfig = require('..');
   if (!manifest) {
     var filepath = path.resolve(hopsConfig.cacheDir, 'manifest.js');
@@ -16,7 +16,7 @@ exports.getManifest = function () {
 };
 
 var assets = { js: [], css: [] };
-exports.getAssets = function () {
+exports.getAssets = function() {
   var hopsConfig = require('..');
   if (!assets.js.length) {
     var filepath = path.resolve(hopsConfig.cacheDir, 'manifest.json');

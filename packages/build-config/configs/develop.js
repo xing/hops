@@ -13,24 +13,26 @@ var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
 module.exports = {
   entry: [
-    require.resolve('webpack-dev-server/client') + '?' + url.format({
-      protocol: hopsConfig.https ? 'https' : 'http',
-      hostname: hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
-      port: hopsConfig.port
-    }),
+    require.resolve('webpack-dev-server/client') +
+      '?' +
+      url.format({
+        protocol: hopsConfig.https ? 'https' : 'http',
+        hostname: hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
+        port: hopsConfig.port,
+      }),
     require.resolve('webpack/hot/dev-server'),
-    require.resolve('../shims/develop')
+    require.resolve('../shims/develop'),
   ],
   output: {
     path: hopsConfig.buildDir,
     publicPath: '/',
     filename: getAssetPath('[name].js'),
-    chunkFilename: getAssetPath('chunk-[id].js')
+    chunkFilename: getAssetPath('chunk-[id].js'),
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('develop'),
   module: {
-    rules: require('../sections/module-rules')('develop')
+    rules: require('../sections/module-rules')('develop'),
   },
   plugins: [
     new WriteManifestPlugin(),
@@ -38,16 +40,16 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      HOPS_MODE: 'dynamic'
-    })
+      HOPS_MODE: 'dynamic',
+    }),
   ],
   performance: {
-    hints: false
+    hints: false,
   },
   devtool: 'cheap-module-eval-source-map',
   watchOptions: {
     aggregateTimeout: 300,
-    ignored: /node_modules/
+    ignored: /node_modules/,
   },
   devServer: {
     contentBase: hopsConfig.buildDir,
@@ -55,9 +57,9 @@ module.exports = {
     disableHostCheck: true,
     overlay: {
       warnings: true,
-      errors: true
+      errors: true,
     },
     stats: 'errors-only',
-    https: require('../sections/dev-server-https')()
-  }
+    https: require('../sections/dev-server-https')(),
+  },
 };

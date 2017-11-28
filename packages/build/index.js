@@ -5,5 +5,5 @@ var runServer = require('./server');
 
 module.exports = {
   runBuild: runBuild,
-  runServer: runServer
+  runServer: runServer,
 };

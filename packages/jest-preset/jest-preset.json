@@ -1,6 +1,7 @@
 {
   "moduleNameMapper": {
-    "^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$": "jest-preset-hops/file-mock.js",
+    "^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$":
+      "jest-preset-hops/file-mock.js",
     "^.+\\.tpl$": "jest-preset-hops/tpl-mock.js",
     "^.+\\.css$": "identity-obj-proxy"
   },
@@ -9,7 +10,5 @@
     "^.+\\.(gql|graphql)$": "jest-preset-hops/transforms/graphql.js"
   },
   "transformIgnorePatterns": [],
-  "setupFiles": [
-    "regenerator-runtime/runtime"
-  ]
+  "setupFiles": ["regenerator-runtime/runtime"]
 }

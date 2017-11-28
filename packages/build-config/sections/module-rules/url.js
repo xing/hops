@@ -10,7 +10,7 @@ exports.default = {
     loader: require.resolve('url-loader'),
     options: {
       limit: 10000,
-      name: path.join(hopsConfig.assetPath, '[name]-[hash:16].[ext]')
-    }
-  }
+      name: path.join(hopsConfig.assetPath, '[name]-[hash:16].[ext]'),
+    },
+  },
 };

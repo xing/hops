@@ -14,36 +14,28 @@ var cleanup = require('./lib/cleanup');
 
 var mergeWithPlugins = merge.strategy({ plugins: 'append' });
 
-function getWebpackConfig (options) {
+function getWebpackConfig(options) {
   if (options.static) {
-    return mergeWithPlugins(
-      buildConfig,
-      {
-        plugins: [
-          new HopsPlugin({
-            locations: hopsConfig.locations,
-            webpackConfig: nodeConfig,
-            hopsConfig: hopsConfig
-          }),
-          new webpack.ProgressPlugin()
-        ]
-      }
-    );
+    return mergeWithPlugins(buildConfig, {
+      plugins: [
+        new HopsPlugin({
+          locations: hopsConfig.locations,
+          webpackConfig: nodeConfig,
+          hopsConfig: hopsConfig,
+        }),
+        new webpack.ProgressPlugin(),
+      ],
+    });
   } else {
-    return [buildConfig, nodeConfig].map(function (config) {
-      return mergeWithPlugins(
-        config,
-        {
-          plugins: [
-            new webpack.ProgressPlugin()
-          ]
-        }
-      );
+    return [buildConfig, nodeConfig].map(function(config) {
+      return mergeWithPlugins(config, {
+        plugins: [new webpack.ProgressPlugin()],
+      });
     });
   }
 }
 
-function defaultCallback (error, stats) {
+function defaultCallback(error, stats) {
   if (error) {
     console.error(error.stack.toString());
   } else {
@@ -51,8 +43,8 @@ function defaultCallback (error, stats) {
   }
 }
 
-module.exports = function runBuild (options, callback) {
-  function build () {
+module.exports = function runBuild(options, callback) {
+  function build() {
     return webpack(getWebpackConfig(options)).run(callback || defaultCallback);
   }
 

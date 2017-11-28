@@ -2,23 +2,14 @@
   "name": "hops-build",
   "version": "9.0.1",
   "description": "Hops wrapper around webpack to execute a build",
-  "keywords": [
-    "hops",
-    "webpack"
-  ],
+  "keywords": ["hops", "webpack"],
   "license": "MIT",
   "bin": {
     "hops-build": "commands/build.js",
     "hops-develop": "commands/develop.js"
   },
   "main": "index.js",
-  "files": [
-    "build.js",
-    "index.js",
-    "server.js",
-    "commands",
-    "lib"
-  ],
+  "files": ["build.js", "index.js", "server.js", "commands", "lib"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"

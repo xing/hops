@@ -2,15 +2,15 @@
 
 var hopsConfig = require('hops-config');
 
-function createIdentifier (targets) {
+function createIdentifier(targets) {
   return JSON.stringify({
     env: process.env.NODE_ENV + ',' + process.env.BABEL_ENV,
     version: require('../../package.json').version,
-    targets: targets
+    targets: targets,
   });
 }
 
-function getBabelLoader (targets, plugins) {
+function getBabelLoader(targets, plugins) {
   return {
     test: /\.m?jsx?$/,
     use: {
@@ -24,18 +24,18 @@ function getBabelLoader (targets, plugins) {
             {
               modules: false,
               useBuiltIns: true,
-              targets: targets
-            }
+              targets: targets,
+            },
           ],
-          'react'
+          'react',
         ],
         plugins: [].concat(plugins || [], [
           require.resolve('babel-plugin-transform-class-properties'),
-          require.resolve('babel-plugin-transform-object-rest-spread')
-        ])
-      }
+          require.resolve('babel-plugin-transform-object-rest-spread'),
+        ]),
+      },
     },
-    include: require('../../lib/check-esnext')
+    include: require('../../lib/check-esnext'),
   };
 }
 
@@ -44,13 +44,10 @@ exports.develop = getBabelLoader(
   require.resolve('babel-plugin-syntax-dynamic-import')
 );
 
-exports.build = getBabelLoader(
-  { browsers: hopsConfig.browsers },
-  [
-    require.resolve('babel-plugin-syntax-dynamic-import'),
-    require.resolve('babel-plugin-transform-react-remove-prop-types')
-  ]
-);
+exports.build = getBabelLoader({ browsers: hopsConfig.browsers }, [
+  require.resolve('babel-plugin-syntax-dynamic-import'),
+  require.resolve('babel-plugin-transform-react-remove-prop-types'),
+]);
 
 exports.node = getBabelLoader(
   { node: hopsConfig.node },

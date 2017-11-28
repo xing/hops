@@ -14,9 +14,7 @@ describe('Counter container', () => {
   });
 
   it('should render correctly', () => {
-    const tree = renderer.create(
-      <CounterContainer store={store} />
-    ).toJSON();
+    const tree = renderer.create(<CounterContainer store={store} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 

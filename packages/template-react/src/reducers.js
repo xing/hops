@@ -1,7 +1,7 @@
 import counter from './counter/reducer';
 
 const reducer = {
-  counter
+  counter,
 };
 
 export default reducer;

@@ -8,16 +8,13 @@ Its export, `createRenderer`, creates a `render` function that, if called with a
 
 You can override hops' default Webpack configuration by passing a config object to the `createRenderer` function. You can also enable watch mode by passing a `watchOptions` object.
 
-
 ### Target Audience
 
 If you want to use a custom Express middleware that's written in ECMAScript Next and transpiled reusing your Webpack loader config, to generate HTML output during your build, you might want to use this renderer. This way, you can prerender some of your pages at buildtime while using the very same code to dynamically generate other pages at runtime.
 
-
 ### Example
 
 This example shows how to write and configure a custom middleware and use it to prerender pages in a build script of some sort.
-
 
 ##### `package.json`
 
@@ -50,7 +47,7 @@ export default (req, res) => {
       break;
   }
   res.end();
-}
+};
 ```
 
 ##### `srcipts/render.js`
@@ -61,11 +58,11 @@ const webpackConfig = require('hops-build-config').nodeConfig;
 
 const render = createRenderer(webpackConfig /*, watchOptions */);
 
-render('/foo').then(function (result) {
+render('/foo').then(function(result) {
   // result === 'hello foo'
 });
 
-render('/baz').catch(function (error) {
+render('/baz').catch(function(error) {
   // error === new Error('invalid status code: 404')
 });
 ```

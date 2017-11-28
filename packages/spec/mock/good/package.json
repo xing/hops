@@ -9,8 +9,6 @@
     "hops": "file:.."
   },
   "hops": {
-    "locations": [
-      "/"
-    ]
+    "locations": ["/"]
   }
 }

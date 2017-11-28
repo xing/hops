@@ -2,11 +2,11 @@
 
 var hopsConfig = require('hops-config');
 
-module.exports = function getResolveConfig (target) {
-  var platform = (target === 'node') ? 'server' : 'browser';
+module.exports = function getResolveConfig(target) {
+  var platform = target === 'node' ? 'server' : 'browser';
   return {
     alias: {
-      'hops-entry-point': hopsConfig.appDir
+      'hops-entry-point': hopsConfig.appDir,
     },
     mainFields: [
       'esnext:' + platform,
@@ -17,9 +17,9 @@ module.exports = function getResolveConfig (target) {
       'esnext:main',
       'jsnext:main',
       'module',
-      'main'
+      'main',
     ],
     modules: ['node_modules'].concat(hopsConfig.moduleDirs),
-    extensions: ['.mjs', '.js', '.jsx']
+    extensions: ['.mjs', '.js', '.jsx'],
   };
 };

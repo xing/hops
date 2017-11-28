@@ -2,9 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-local-cli.svg)](https://www.npmjs.com/package/hops-local-cli)
 
-hops-local-cli provides a set of commands to manage your hops project.
-hops-local-cli will be automatically installed in projects created by calling [`hops init` (provided by hops-cli)](https://github.com/xing/hops/tree/master/packages/cli). In other projects it needs to be added as a dependency separately.
-
+hops-local-cli provides a set of commands to manage your hops project. hops-local-cli will be automatically installed in projects created by calling [`hops init` (provided by hops-cli)](https://github.com/xing/hops/tree/master/packages/cli). In other projects it needs to be added as a dependency separately.
 
 ## Installation
 
@@ -20,14 +18,14 @@ or
 yarn add hops-local-cli
 ```
 
-
 ## Usage
+
 ### Available Commands
 
-- `hops build` - initiates a project build to generate browser and server JS bundles
-- `hops develop` - starts the webpack development server with hot code reloading for fast local iterations
-- `hops serve` - starts a production Node.js Express server using the generated JS bundle from `hops build`
-- `hops start` - if NODE_ENV is set to production, this runs `hops serve`. Otherwise `hops develop` gets executed
+* `hops build` - initiates a project build to generate browser and server JS bundles
+* `hops develop` - starts the webpack development server with hot code reloading for fast local iterations
+* `hops serve` - starts a production Node.js Express server using the generated JS bundle from `hops build`
+* `hops start` - if NODE_ENV is set to production, this runs `hops serve`. Otherwise `hops develop` gets executed
 
 `hops build` accepts additional arguments: `--static` / `-s` to generate static HTML app shells for all configured hops locations.
 
@@ -38,7 +36,6 @@ So for example `hops build` and `hops develop` are only available if `hops-build
 The command `hops serve` is only available if `hops-express` is installed as a dependency in your project (also included in the default react template).
 
 And the command `hops start` is only available if both `hops-build` and `hops-express` are installed as dependencies.
-
 
 ## Configuration
 
@@ -65,6 +62,7 @@ npm config set my-application:hops:port 1337
 ```
 
 And now you can execute the "start" command through npm or yarn:
+
 ```bash
 npm start
 yarn start

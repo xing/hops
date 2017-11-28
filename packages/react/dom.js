@@ -10,33 +10,33 @@ var hopsConfig = require('hops-config');
 exports.combineContexts = mixinable({
   bootstrap: mixinable.async.parallel,
   enhanceElement: mixinable.async.compose,
-  getMountpoint: mixinable.override
+  getMountpoint: mixinable.override,
 });
 
-exports.contextDefinition = function (options) {
-  if (!options) { options = {}; }
+exports.contextDefinition = function(options) {
+  if (!options) {
+    options = {};
+  }
   this.mountpoint = options.mountpoint || '#main';
 };
 
 exports.contextDefinition.prototype = {
-  enhanceElement: function (reactElement) {
+  enhanceElement: function(reactElement) {
     return React.createElement(
       ReactRouterDOM.BrowserRouter,
       { basename: hopsConfig.basePath },
       reactElement
     );
   },
-  getMountpoint: function () {
+  getMountpoint: function() {
     return document.querySelector(this.mountpoint);
-  }
+  },
 };
 
-exports.createContext = exports.combineContexts(
-  exports.contextDefinition
-);
+exports.createContext = exports.combineContexts(exports.contextDefinition);
 
-exports.render = function (reactElement, context) {
-  return function () {
+exports.render = function(reactElement, context) {
+  return function() {
     var mountpoint = context.getMountpoint();
     var isMounted = mountpoint.hasAttribute('data-hopsroot');
     if (isMounted) {
@@ -44,16 +44,16 @@ exports.render = function (reactElement, context) {
     } else {
       mountpoint.setAttribute('data-hopsroot', '');
     }
-    return context.bootstrap().then(function () {
-      return context.enhanceElement(reactElement).then(
-        function (enhancedElement) {
+    return context.bootstrap().then(function() {
+      return context
+        .enhanceElement(reactElement)
+        .then(function(enhancedElement) {
           if (ReactDOM.hydrate && !isMounted) {
             ReactDOM.hydrate(enhancedElement, mountpoint);
           } else {
             ReactDOM.render(enhancedElement, mountpoint);
           }
-        }
-      );
+        });
     });
   };
 };

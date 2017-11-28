@@ -6,5 +6,5 @@ var run = require('./run');
 
 module.exports = {
   init: init,
-  run: run
+  run: run,
 };
