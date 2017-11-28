@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://travis-ci.org/xing/hops">
-    <img src="https://travis-ci.org/xing/hops.svg?branch=master">
+    <img src="https://img.shields.io/travis/xing/hops.svg">
   </a>
 </p>
 <p>&nbsp;</p>
@@ -120,7 +120,7 @@ Using `yarn start` will execute the `start` script in the [hops-template-react](
 
 When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
 
-Hops is entirely written in ECMAScript 5 and adheres to [semistandard](https://github.com/Flet/semistandard) code style. Please make sure your contribution does, too.
+Hops is entirely written in ECMAScript 5 and its code is formatted using [prettier](https://prettier.io). Please make sure your contribution does, too.
 
 ### Alternatives
 
