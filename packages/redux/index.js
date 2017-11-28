@@ -11,7 +11,14 @@ var REDUX_STATE = 'REDUX_STATE';
 
 exports.contextDefinition = function (options) {
   this.reducers = {};
-  Object.keys((options && options.reducers) || {}).forEach(
+  options = options || {};
+  this.middlewares = options.middlewares || [ReduxThunkMiddleware];
+
+  if (!Array.isArray(this.middlewares)) {
+    throw new Error('middlewares needs to be an array');
+  }
+
+  Object.keys(options.reducers || {}).forEach(
     function (key) {
       this.registerReducer(key, options.reducers[key]);
     }.bind(this)
@@ -54,7 +61,7 @@ exports.contextDefinition.prototype = {
     });
   },
   getMiddlewares: function () {
-    return [ReduxThunkMiddleware];
+    return this.middlewares;
   },
   enhanceElement: function (reactElement) {
     return React.createElement(
@@ -67,10 +74,12 @@ exports.contextDefinition.prototype = {
   },
   getTemplateData: function (templateData) {
     return Object.assign({}, templateData, {
-      globals: (templateData.globals || []).concat([{
-        name: REDUX_STATE,
-        value: this.getStore().getState()
-      }])
+      globals: (templateData.globals || []).concat([
+        {
+          name: REDUX_STATE,
+          value: this.getStore().getState()
+        }
+      ])
     });
   }
 };
