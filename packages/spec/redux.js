@@ -12,7 +12,7 @@ describe('redux', function () {
     assert.equal(context.getMiddlewares()[0], middleware);
   });
 
-  it('throws array when middlewares is not an array', function () {
+  it('throws error when middlewares is not an array', function () {
     assert.throws(function () {
       new hopsRedux.contextDefinition({
         middlewares: function () {}
