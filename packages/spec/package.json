@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "9.0.1",
+  "version": "9.1.0",
   "private": true,
   "scripts": {
     "test": "mocha --exit '*.js'"
@@ -15,7 +15,7 @@
     "hops-middleware": "^9.0.1",
     "hops-plugin": "^9.0.1",
     "hops-react": "^9.0.1",
-    "hops-redux": "^9.0.1",
+    "hops-redux": "9.1.0",
     "hops-renderer": "^9.0.1",
     "hops-server": "^9.0.1",
     "hops-transpiler": "^9.0.1",
