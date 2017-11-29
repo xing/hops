@@ -8,12 +8,11 @@ var common = require('./lib/common');
 var constants = require('./lib/constants');
 var introspectionResult = require('./lib/util').getIntrospectionResult();
 
-exports.contextDefinition = function() {
+exports.GraphQLContext = function () {
   return common.constructor.apply(this, arguments);
 };
-
-exports.contextDefinition.prototype = Object.assign({}, common, {
-  enhanceElement: function(reactElement) {
+exports.GraphQLContext.prototype = Object.assign({}, common, {
+  enhanceElement: function (reactElement) {
     var enhancedElement = common.enhanceElement.call(this, reactElement);
     return ReactApollo.getDataFromTree(enhancedElement).then(function() {
       return enhancedElement;
@@ -43,7 +42,9 @@ exports.contextDefinition.prototype = Object.assign({}, common, {
   },
 });
 
+exports.contextDefinition = exports.GraphQLContext;
+
 exports.createContext = hopsReact.combineContexts(
-  hopsReact.contextDefinition,
-  exports.contextDefinition
+  hopsReact.ReactContext,
+  exports.GraphQLContext
 );
