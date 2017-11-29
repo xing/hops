@@ -9,24 +9,21 @@ var hopsReact = require('hops-react');
 
 var REDUX_STATE = 'REDUX_STATE';
 
-exports.contextDefinition = function(options) {
+exports.ReduxContext = function (options) {
   this.reducers = {};
   options = options || {};
   this.middlewares = options.middlewares || [ReduxThunkMiddleware];
-
   if (!Array.isArray(this.middlewares)) {
     throw new Error('middlewares needs to be an array');
   }
-
   Object.keys(options.reducers || {}).forEach(
     function(key) {
       this.registerReducer(key, options.reducers[key]);
     }.bind(this)
   );
 };
-
-exports.contextDefinition.prototype = {
-  registerReducer: function(namespace, reducer) {
+exports.ReduxContext.prototype = {
+  registerReducer: function (namespace, reducer) {
     this.reducers[namespace] = reducer;
     if (this.store) {
       this.store.replaceReducer(Redux.combineReducers(this.reducers));
@@ -84,7 +81,9 @@ exports.contextDefinition.prototype = {
   },
 };
 
+exports.contextDefinition = exports.ReduxContext;
+
 exports.createContext = hopsReact.combineContexts(
-  hopsReact.contextDefinition,
-  exports.contextDefinition
+  hopsReact.ReactContext,
+  exports.ReduxContext
 );
