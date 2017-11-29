@@ -17,16 +17,15 @@ exports.combineContexts = mixinable({
   renderTemplate: mixinable.override,
 });
 
-exports.contextDefinition = function() {
+exports.ReactContext = function () {
   var args = Array.prototype.slice.call(arguments);
   var options = Object.assign.apply(Object, [{}].concat(args));
   this.template = options.template || defaultTemplate;
   this.request = options.request;
   this.routerContext = {};
 };
-
-exports.contextDefinition.prototype = {
-  enhanceElement: function(reactElement) {
+exports.ReactContext.prototype = {
+  enhanceElement: function (reactElement) {
     return React.createElement(
       ReactRouter.StaticRouter,
       {
@@ -52,7 +51,9 @@ exports.contextDefinition.prototype = {
   },
 };
 
-exports.createContext = exports.combineContexts(exports.contextDefinition);
+exports.contextDefinition = exports.ReactContext;
+
+exports.createContext = exports.combineContexts(exports.ReactContext);
 
 exports.render = function(reactElement, _context) {
   return function(req, res, next) {

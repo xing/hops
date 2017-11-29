@@ -13,15 +13,14 @@ exports.combineContexts = mixinable({
   getMountpoint: mixinable.override,
 });
 
-exports.contextDefinition = function(options) {
+exports.ReactContext = function(options) {
   if (!options) {
     options = {};
   }
   this.mountpoint = options.mountpoint || '#main';
 };
-
-exports.contextDefinition.prototype = {
-  enhanceElement: function(reactElement) {
+exports.ReactContext.prototype = {
+  enhanceElement: function (reactElement) {
     return React.createElement(
       ReactRouterDOM.BrowserRouter,
       { basename: hopsConfig.basePath },
@@ -30,10 +29,12 @@ exports.contextDefinition.prototype = {
   },
   getMountpoint: function() {
     return document.querySelector(this.mountpoint);
-  },
+  }
 };
 
-exports.createContext = exports.combineContexts(exports.contextDefinition);
+exports.contextDefinition = exports.ReactContext;
+
+exports.createContext = exports.combineContexts(exports.ReactContext);
 
 exports.render = function(reactElement, context) {
   return function() {
