@@ -9,7 +9,7 @@ var hopsReact = require('hops-react');
 
 var REDUX_STATE = 'REDUX_STATE';
 
-exports.ReduxContext = function (options) {
+exports.ReduxContext = function(options) {
   this.reducers = {};
   options = options || {};
   this.middlewares = options.middlewares || [ReduxThunkMiddleware];
@@ -23,7 +23,7 @@ exports.ReduxContext = function (options) {
   );
 };
 exports.ReduxContext.prototype = {
-  registerReducer: function (namespace, reducer) {
+  registerReducer: function(namespace, reducer) {
     this.reducers[namespace] = reducer;
     if (this.store) {
       this.store.replaceReducer(Redux.combineReducers(this.reducers));

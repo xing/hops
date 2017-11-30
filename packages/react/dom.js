@@ -20,7 +20,7 @@ exports.ReactContext = function(options) {
   this.mountpoint = options.mountpoint || '#main';
 };
 exports.ReactContext.prototype = {
-  enhanceElement: function (reactElement) {
+  enhanceElement: function(reactElement) {
     return React.createElement(
       ReactRouterDOM.BrowserRouter,
       { basename: hopsConfig.basePath },
@@ -29,7 +29,7 @@ exports.ReactContext.prototype = {
   },
   getMountpoint: function() {
     return document.querySelector(this.mountpoint);
-  }
+  },
 };
 
 exports.contextDefinition = exports.ReactContext;

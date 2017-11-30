@@ -8,11 +8,11 @@ var common = require('./lib/common');
 var constants = require('./lib/constants');
 var introspectionResult = require('./lib/util').getIntrospectionResult();
 
-exports.GraphQLContext = function () {
+exports.GraphQLContext = function() {
   return common.constructor.apply(this, arguments);
 };
 exports.GraphQLContext.prototype = Object.assign({}, common, {
-  enhanceElement: function (reactElement) {
+  enhanceElement: function(reactElement) {
     var enhancedElement = common.enhanceElement.call(this, reactElement);
     return ReactApollo.getDataFromTree(enhancedElement).then(function() {
       return enhancedElement;
