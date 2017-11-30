@@ -148,52 +148,56 @@ anymatch@^1.3.0:
     normalize-path "^2.0.0"
 
 apollo-cache-inmemory@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.1.1.tgz#1511f00eb845da88504abf867f408c3026a909ba"
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.1.2.tgz#555d4d76cbea78b1454013f61aa8a8bc8131601f"
   dependencies:
-    apollo-cache "^1.0.1"
-    apollo-utilities "^1.0.2"
-    graphql-anywhere "^4.0.1"
+    apollo-cache "^1.0.2"
+    apollo-utilities "^1.0.3"
+    graphql-anywhere "^4.0.2"
 
-apollo-cache@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.0.1.tgz#66c16141173bc752d3ad3dce990310c10dfc4076"
+apollo-cache@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.0.2.tgz#e3df98696c648649d16a6c3ca9c19e90a556effa"
   dependencies:
-    apollo-utilities "^1.0.2"
+    apollo-utilities "^1.0.3"
 
 apollo-client@^2.0.1:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.0.3.tgz#f99f32e2c851bbd52da1e1b113ce8f6a0cf94945"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.1.0.tgz#1d3716cb5d4ad70c3a4147da629fdfcb53925e7b"
   dependencies:
     "@types/zen-observable" "^0.5.3"
-    apollo-cache "^1.0.1"
+    apollo-cache "^1.0.2"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.2"
+    apollo-utilities "^1.0.3"
     symbol-observable "^1.0.2"
     zen-observable "^0.6.0"
   optionalDependencies:
     "@types/async" "2.0.45"
 
 apollo-link-dedup@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/apollo-link-dedup/-/apollo-link-dedup-1.0.2.tgz#bab659dde41f8dd627839142d4dad90e55251110"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/apollo-link-dedup/-/apollo-link-dedup-1.0.3.tgz#10df05214afb53ffb19c361451f8ae19d1964c83"
+  dependencies:
+    apollo-link "^1.0.4"
 
 apollo-link-http@^1.1.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.2.0.tgz#48464c2ebfa6474f7a89908696827d66b2deb5cc"
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.3.0.tgz#ce0f79b20e0d31acec1e38146c96fbe541c567f7"
+  dependencies:
+    apollo-link "^1.0.4"
 
-apollo-link@^1.0.0:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.0.3.tgz#759c36abeeb99e227eca45f919ee07fb8fee911e"
+apollo-link@^1.0.0, apollo-link@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.0.4.tgz#32b82f1bf882dcc56fdb430075656c501a906f85"
   dependencies:
     "@types/zen-observable" "0.5.3"
     apollo-utilities "^1.0.0"
     zen-observable "^0.6.0"
 
-apollo-utilities@^1.0.0, apollo-utilities@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.2.tgz#bcf348a7e613e82e2624ddb5be2b9f6bf1259c6d"
+apollo-utilities@^1.0.0, apollo-utilities@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.3.tgz#bf435277609850dd442cf1d5c2e8bc6655eaa943"
 
 app-root-path@^2.0.0:
   version "2.0.1"
@@ -2471,8 +2475,8 @@ eslint-scope@^3.7.1:
     estraverse "^4.1.1"
 
 eslint@^4.10.0:
-  version "4.12.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.12.0.tgz#a7ce78eba8cc8f2443acfbbc870cc31a65135884"
+  version "4.12.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.12.1.tgz#5ec1973822b4a066b353770c3c6d69a2a188e880"
   dependencies:
     ajv "^5.3.0"
     babel-code-frame "^6.22.0"
@@ -3145,11 +3149,11 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-graphql-anywhere@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.0.1.tgz#eb53ed5c56ef42e21d34dc22951e3da38f88a342"
+graphql-anywhere@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.0.2.tgz#1dd13a53a659c5e09d0b6ccecfba771ee4939fa1"
   dependencies:
-    apollo-utilities "^1.0.2"
+    apollo-utilities "^1.0.3"
 
 graphql@^0.11.7:
   version "0.11.7"
@@ -3701,8 +3705,8 @@ is-path-in-cwd@^1.0.0:
     is-path-inside "^1.0.0"
 
 is-path-inside@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/is-path-inside/-/is-path-inside-1.0.0.tgz#fc06e5a1683fbda13de667aff717bbc10a48f37f"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-path-inside/-/is-path-inside-1.0.1.tgz#8ef5b7de50437a3fdca6b4e865ef7aa55cb48036"
   dependencies:
     path-is-inside "^1.0.1"
 
@@ -4108,8 +4112,8 @@ jest@^21.2.1:
     jest-cli "^21.2.1"
 
 js-base64@^2.1.9:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.3.2.tgz#a79a923666372b580f8e27f51845c6f7e8fbfbaf"
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.0.tgz#9e566fee624751a1d720c966cd6226d29d4025aa"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
@@ -4622,8 +4626,8 @@ miller-rabin@^4.0.0:
     brorand "^1.0.1"
 
 "mime-db@>= 1.30.0 < 2":
-  version "1.31.0"
-  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.31.0.tgz#a49cd8f3ebf3ed1a482b60561d9105ad40ca74cb"
+  version "1.32.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.32.0.tgz#485b3848b01a3cda5f968b4882c0771e58e09414"
 
 mime-db@~1.30.0:
   version "1.30.0"
@@ -4708,9 +4712,9 @@ mississippi@^1.3.0:
     stream-each "^1.1.0"
     through2 "^2.0.0"
 
-mixinable@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-1.2.0.tgz#d3b229da98d1155ee398ba03db3bdf40f1f22193"
+mixinable@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-1.2.1.tgz#7efcee0e3d573917b9af2f02dd5fb78b7c93ec27"
 
 mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
@@ -7142,7 +7146,7 @@ ua-parser-js@^0.7.9:
   version "0.7.17"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.17.tgz#e9ec5f9498b9ec910e7ae3ac626a805c4d09ecac"
 
-uglify-es@^3.1.3:
+uglify-es@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.2.0.tgz#fbbfb9dc465ec7e5065701b9720d0de977d0bc24"
   dependencies:
@@ -7171,14 +7175,14 @@ uglifyjs-webpack-plugin@^0.4.6:
     webpack-sources "^1.0.1"
 
 uglifyjs-webpack-plugin@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.1.1.tgz#6167c5aae218ee8109de8920bb769b8acbc55d03"
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.1.2.tgz#8a9abc238d01a33daaf86fa9a84c7ebc1e67b0f9"
   dependencies:
     cacache "^10.0.0"
     find-cache-dir "^1.0.0"
     schema-utils "^0.3.0"
     source-map "^0.6.1"
-    uglify-es "^3.1.3"
+    uglify-es "^3.2.0"
     webpack-sources "^1.0.1"
     worker-farm "^1.4.1"
 
@@ -7442,8 +7446,8 @@ webpack-stats-plugin@^0.1.5:
   resolved "https://registry.yarnpkg.com/webpack-stats-plugin/-/webpack-stats-plugin-0.1.5.tgz#29e5f12ebfd53158d31d656a113ac1f7b86179d9"
 
 webpack@^3.6.0:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.8.1.tgz#b16968a81100abe61608b0153c9159ef8bb2bd83"
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.9.1.tgz#9a60aa544ed5d4d454c069e3f521aa007e02643c"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
