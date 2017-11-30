@@ -17,9 +17,10 @@ exports.combineContexts = mixinable({
   renderTemplate: mixinable.override,
 });
 
-exports.ReactContext = function() {
-  var args = Array.prototype.slice.call(arguments);
-  var options = Object.assign.apply(Object, [{}].concat(args));
+exports.ReactContext = function(options) {
+  if (!options) {
+    options = {};
+  }
   this.template = options.template || defaultTemplate;
   this.request = options.request;
   this.routerContext = {};
@@ -55,9 +56,13 @@ exports.contextDefinition = exports.ReactContext;
 
 exports.createContext = exports.combineContexts(exports.ReactContext);
 
+var cloneContext = mixinable.replicate(function(initialArgs, newArgs) {
+  return [Object.assign({}, initialArgs[0], newArgs[0])];
+});
+
 exports.render = function(reactElement, _context) {
   return function(req, res, next) {
-    var renderContext = mixinable.clone(_context, { request: req });
+    var renderContext = cloneContext(_context, { request: req });
     renderContext
       .bootstrap()
       .then(function() {
