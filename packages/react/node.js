@@ -17,7 +17,7 @@ exports.combineContexts = mixinable({
   renderTemplate: mixinable.override,
 });
 
-exports.ReactContext = function () {
+exports.ReactContext = function() {
   var args = Array.prototype.slice.call(arguments);
   var options = Object.assign.apply(Object, [{}].concat(args));
   this.template = options.template || defaultTemplate;
@@ -25,7 +25,7 @@ exports.ReactContext = function () {
   this.routerContext = {};
 };
 exports.ReactContext.prototype = {
-  enhanceElement: function (reactElement) {
+  enhanceElement: function(reactElement) {
     return React.createElement(
       ReactRouter.StaticRouter,
       {
