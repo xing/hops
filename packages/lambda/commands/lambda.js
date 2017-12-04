@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 'use strict';
 
-module.exports = function defineLambdaCommand (yargs) {
-  yargs.command('lambda', 'manage your lambda deployment', function (yargs) {
-    yargs.usage('Usage: $0 lambda <command>')
+module.exports = function defineLambdaCommand(yargs) {
+  yargs.command('lambda', 'manage your lambda deployment', function(yargs) {
+    yargs
+      .usage('Usage: $0 lambda <command>')
       .command({
         command: 'deploy',
         describe: 'Deploys your hops application to AWS lambda',
         builder: {},
-        handler: require('..').deploy
+        handler: require('..').deploy,
       })
       .command({
         command: 'destroy',
@@ -17,22 +18,24 @@ module.exports = function defineLambdaCommand (yargs) {
           'keep-bucket': {
             type: 'boolean',
             default: false,
-            describe: 'Set this to true if you want to delete all files in ' +
-            'the S3 bucket but keep the bucket itself.'
+            describe:
+              'Set this to true if you want to delete all files in ' +
+              'the S3 bucket but keep the bucket itself.',
           },
           'keep-files': {
             type: 'boolean',
             default: false,
-            describe: 'Set this to true if you want to keep all files in the ' +
-            'S3 bucket.'
+            describe:
+              'Set this to true if you want to keep all files in the ' +
+              'S3 bucket.',
           },
           yes: {
             type: 'boolean',
             default: false,
-            describe: 'Don\'t ask for confirmation.'
-          }
+            describe: "Don't ask for confirmation.",
+          },
         },
-        handler: require('..').destroy
+        handler: require('..').destroy,
       })
       .help('help')
       .demandCommand();

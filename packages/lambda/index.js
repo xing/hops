@@ -5,5 +5,5 @@ var destroy = require('./destroy');
 
 module.exports = {
   deploy: deploy,
-  destroy: destroy
+  destroy: destroy,
 };
