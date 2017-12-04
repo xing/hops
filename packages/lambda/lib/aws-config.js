@@ -6,17 +6,15 @@ var hopsConfig = require('hops-config');
 var DEFAULT_REGION = 'us-east-1';
 var DEFAULT_MEMORY_SIZE = 128;
 var DEFAULT_STAGE_NAME = 'prod';
-var DEFAULT_CF_TEMPLATE = path.resolve(
-  __dirname,
-  '..',
-  'cloudformation.yaml'
-);
+var DEFAULT_CF_TEMPLATE = path.resolve(__dirname, '..', 'cloudformation.yaml');
 
-module.exports = function getAWSConfig () {
+module.exports = function getAWSConfig() {
   var awsConfig = hopsConfig.aws || {};
   var manifest = require(path.join(hopsConfig.appDir, 'package.json'));
 
-  var region = awsConfig.region || process.env.AWS_REGION ||
+  var region =
+    awsConfig.region ||
+    process.env.AWS_REGION ||
     process.env.AWS_DEFAULT_REGION;
 
   var name = 'hops-lambda-' + manifest.name;
@@ -30,8 +28,8 @@ module.exports = function getAWSConfig () {
     domainName: awsConfig.domainName || '',
     certificateArn: awsConfig.certificateArn || '',
     basePath: hopsConfig.basePath.slice(1) || '(none)',
-    cloudformationTemplateFile: awsConfig.cloudformationTemplateFile ||
-      DEFAULT_CF_TEMPLATE
+    cloudformationTemplateFile:
+      awsConfig.cloudformationTemplateFile || DEFAULT_CF_TEMPLATE,
   };
 
   if (!region) {
@@ -42,9 +40,13 @@ module.exports = function getAWSConfig () {
 
   if (!config.domainName && config.stageName !== config.basePath) {
     console.error(
-      'When no custom domain is configured, the basePath (' + config.basePath +
-      '), assetPath (' + hopsConfig.assetPath + ') and stageName (' +
-      config.stageName + ') must have the same value.'
+      'When no custom domain is configured, the basePath (' +
+        config.basePath +
+        '), assetPath (' +
+        hopsConfig.assetPath +
+        ') and stageName (' +
+        config.stageName +
+        ') must have the same value.'
     );
     process.exit(1);
   }

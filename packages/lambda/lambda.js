@@ -27,11 +27,11 @@ var binaryMimeTypes = [
   'text/javascript',
   'text/plain',
   'text/text',
-  'text/xml'
+  'text/xml',
 ];
 var server = awsServerlessExpress.createServer(app, null, binaryMimeTypes);
 
-exports.handler = function (event, context) {
+exports.handler = function(event, context) {
   event.path = event.requestContext.path;
   return awsServerlessExpress.proxy(server, event, context);
 };
