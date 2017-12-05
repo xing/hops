@@ -39,12 +39,13 @@
     "update": "yarn upgrade-interactive --latest && rm yarn.lock && yarn",
     "postupdate": "lerna clean --yes && lerna bootstrap",
     "reset": "git clean -dfx && yarn && yarn bootstrap",
-    "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'",
+    "fmt":
+      "prettier --write --ignore-path .gitignore '**/*.{js,json,css}' '**/README.md'",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"],
-    "**/README.md": ["prettier --write", "git add"]
+    "*.{js,json,css}": ["prettier --write --ignore-path .gitignore", "git add"],
+    "**/README.md": ["prettier --write --ignore-path .gitignore", "git add"]
   },
   "config": {
     "commitizen": {
