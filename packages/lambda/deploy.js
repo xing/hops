@@ -29,6 +29,9 @@ function createBucketIfNotExists(s3, bucketName) {
       return s3
         .createBucket({ Bucket: bucketName })
         .promise()
+        .then(function () {
+          return s3.waitFor('bucketExists', { Bucket: bucketName }).promise();
+        })
         .then(function() {
           return bucketName;
         });
