@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-var pm = require('../lib/package-manager');
-
 module.exports = function defineStartCommand(args) {
   args.command({
     command: 'start',
@@ -38,7 +36,7 @@ module.exports = function defineStartCommand(args) {
       process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
       var packageName =
         process.env.NODE_ENV === 'production' ? 'hops-express' : 'hops-build';
-      if (pm.isPackageInstalled(packageName)) {
+      if (require('../lib/package-manager').isPackageInstalled(packageName)) {
         require(packageName).runServer(argv);
       } else {
         console.error('Package missing: ', packageName);

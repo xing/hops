@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-var hopsBuild = require('..');
-
 module.exports = function defineBuildCommand(args) {
   args.command({
     command: 'build',
@@ -36,7 +34,7 @@ module.exports = function defineBuildCommand(args) {
         process.env.NODE_ENV = 'production';
       }
       process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
-      hopsBuild.runBuild(argv);
+      require('..').runBuild(argv);
     },
   });
 };

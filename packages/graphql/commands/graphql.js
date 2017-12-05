@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-var fetchFragments = require('../lib/fragments');
-
 module.exports = function defineGraphQLCommand(args) {
   args.command('graphql', 'Execute GraphQL specific tasks', function(yargs) {
     return yargs
@@ -12,7 +10,7 @@ module.exports = function defineGraphQLCommand(args) {
         describe: 'Fetches GraphQL schema information for introspection',
         builder: {},
         handler: function graphqlHandler(argv) {
-          fetchFragments()
+          require('../lib/fragments')()
             .then(function() {
               console.log('Fetched and saved GraphQL fragments');
             })
