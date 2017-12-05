@@ -20,6 +20,12 @@ Parameters:
   BasePath:
     Type: String
     Description: The base path to append to your domain, when using a custom domain
+  AssetPath:
+    Type: String
+    Description: The path under which the applications assets can be accessed
+  DistDir:
+    Type: String
+    Description: The build dir path, relative to the project root directory
   BucketName:
     Type: String
     Description: Name of the S3 bucket where your CloudFormation template and zip bundle are stored
@@ -48,12 +54,49 @@ Resources:
           title: !Sub 'Hops Serverless Express (${AWS::StackName})'
         basePath: !Sub '/${BasePath}'
         schemes:
-        - https
+          - https
         paths:
+          '/assets/{proxy+}': # TODO: need to replace '/assets/' with AssetPath
+            get:
+              produces:
+                - application/octet-stream
+              parameters:
+                - name: proxy
+                  in: path
+                  required: true
+                  type: string
+              responses:
+                '200':
+                  description: 200 response
+                '500':
+                  description: 500 response
+              x-amazon-apigateway-integration:
+                credentials: !GetAtt S3ReadOnlyRole.Arn
+                responses:
+                  default:
+                    statusCode: '500'
+                  2\d{2}:
+                    statusCode: '200'
+                requestParameters:
+                  integration.request.path.proxy: method.request.path.proxy
+                uri:
+                  !Join [
+                    '/',
+                    [
+                      !Sub 'arn:${AWS::Partition}:apigateway:${AWS::Region}:s3:path',
+                      !Ref BucketName,
+                      !Ref DistDir,
+                      !Ref AssetPath,
+                      '{proxy}',
+                    ],
+                  ]
+                passthroughBehavior: when_no_match
+                httpMethod: GET
+                type: aws
           '/':
             x-amazon-apigateway-any-method:
               produces:
-              - text/html
+                - text/html
               responses: {}
               x-amazon-apigateway-integration:
                 uri: !Sub 'arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
@@ -63,12 +106,12 @@ Resources:
           '/{proxy+}':
             x-amazon-apigateway-any-method:
               parameters:
-              - name: proxy
-                in: path
-                required: true
-                type: string
+                - name: proxy
+                  in: path
+                  required: true
+                  type: string
               produces:
-              - text/html
+                - text/html
               responses: {}
               x-amazon-apigateway-integration:
                 uri: !Sub 'arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
@@ -108,16 +151,37 @@ Resources:
           Action: sts:AssumeRole
       Path: '/'
       Policies:
-      - PolicyName: root
-        PolicyDocument:
-          Version: '2012-10-17'
-          Statement:
-          - Effect: Allow
-            Action:
-            - logs:CreateLogGroup
-            - logs:CreateLogStream
-            - logs:PutLogEvents
-            Resource: !Sub 'arn:${AWS::Partition}:logs:*:*:*'
+        - PolicyName: root
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub 'arn:${AWS::Partition}:logs:*:*:*'
+
+  S3ReadOnlyRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          Effect: Allow
+          Principal:
+            Service: !Sub 'apigateway.${AWS::URLSuffix}'
+          Action: sts:AssumeRole
+      Path: '/'
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:Get*
+                Resource: '*'
 
   LambdaApiGatewayExecutionPermission:
     Type: AWS::Lambda::Permission
@@ -157,6 +221,8 @@ Resources:
                 "body": ""
               }
 
+
+
 Outputs:
   DistributionDomainName:
     Value: !If
@@ -166,5 +232,9 @@ Outputs:
   Url:
     Value: !If
       - ShouldAddCustomDomain
-      - !If [HasCustomBasePath, !Sub 'https://${DomainName}/${BasePath}/', !Sub 'https://${DomainName}/']
+      - !If [
+          HasCustomBasePath,
+          !Sub 'https://${DomainName}/${BasePath}/',
+          !Sub 'https://${DomainName}/',
+        ]
       - !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/${BasePath}/'
