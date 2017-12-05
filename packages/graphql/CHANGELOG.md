@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.1.1"></a>
+## [9.1.1](https://github.com/xing/hops/compare/v9.1.0...v9.1.1) (2017-12-05)
+
+
+### Performance Improvements
+
+* lazy-require command implementations ([bac93fa](https://github.com/xing/hops/commit/bac93fa))
+
+
+
+
 <a name="9.0.0"></a>
 # [9.0.0](https://github.com/xing/hops/compare/v8.0.0...v9.0.0) (2017-11-27)
 

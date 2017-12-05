@@ -1,6 +1,6 @@
 {
   "name": "hops-cli",
-  "version": "9.0.1",
+  "version": "9.1.1",
   "description": "Global CLI module to initialize new hops projects",
   "keywords": ["hops", "cli"],
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "hops-local-cli",
-  "version": "9.0.1",
+  "version": "9.1.1",
   "description": "CLI tool to build, run and develop Hops based projects",
   "keywords": ["hops", "cli"],
   "license": "MIT",
@@ -15,7 +15,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-config": "^9.0.1",
+    "hops-config": "9.1.1",
     "tar": "^4.0.1",
     "validate-npm-package-name": "^3.0.0",
     "yargs": "^10.0.3"

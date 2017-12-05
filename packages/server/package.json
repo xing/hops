@@ -1,6 +1,6 @@
 {
   "name": "hops-server",
-  "version": "9.0.1",
+  "version": "9.1.1",
   "description": "Provides common functionality for express-like servers",
   "keywords": ["hops", "webpack-dev-server", "express"],
   "license": "MIT",
@@ -11,6 +11,6 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-config": "^9.0.1"
+    "hops-config": "9.1.1"
   }
 }
