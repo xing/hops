@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-var hopsExpress = require('..');
-
 module.exports = function defineServeCommand(args) {
   args.command({
     command: 'serve',
@@ -29,7 +27,7 @@ module.exports = function defineServeCommand(args) {
         process.env.NODE_ENV = 'production';
       }
       process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
-      hopsExpress.runServer();
+      require('..').runServer();
     },
   });
 };
