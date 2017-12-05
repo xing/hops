@@ -50,7 +50,7 @@ Resources:
               - text/html
               responses: {}
               x-amazon-apigateway-integration:
-                uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${HopsLambdaHandler}/invocations'
+                uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
                 passthroughBehavior: when_no_match
                 httpMethod: POST
                 type: aws_proxy
@@ -65,7 +65,7 @@ Resources:
               - text/html
               responses: {}
               x-amazon-apigateway-integration:
-                uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${HopsLambdaHandler}/invocations'
+                uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
                 httpMethod: POST
                 type: aws_proxy
         x-amazon-apigateway-binary-media-types:
@@ -132,6 +132,24 @@ Resources:
       Role: !GetAtt LambdaExecutionRole.Arn
       Runtime: nodejs6.10
       Timeout: 30
+      Events:
+        KeepWarm:
+          Type: Schedule
+          Properties:
+            Schedule: rate(5 minutes)
+            Input: !Sub >
+              {
+                "resource": "/",
+                "httpMethod": "GET",
+                "headers": {
+                  "Accept": "x-keep/warm,*/*",
+                  "Host": "${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com"
+                },
+                "requestContext": {
+                  "path": "/${BasePath}/"
+                },
+                "body": ""
+              }
 
 Outputs:
   DistributionDomainName:
