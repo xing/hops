@@ -3,5 +3,6 @@ node_modules
 .DS_Store
 package-lock.json
 packages/spec/mock/integration/build
-packages/template-react/flow-typed/npm
+packages/template-minimal/build
+packages/template-react/build
 .vscode
