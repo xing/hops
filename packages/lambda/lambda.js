@@ -32,8 +32,8 @@ var binaryMimeTypes = [
 
 exports.handler = serverlessHttp(app, {
   binary: binaryMimeTypes,
-  request: function (request, context) {
+  request: function(request, context) {
     request.url = context.requestContext.path;
     return request;
-  }
+  },
 });
