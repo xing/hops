@@ -15,6 +15,8 @@ var binaryMimeTypes = [
   'font/eot',
   'font/opentype',
   'font/otf',
+  'font/woff',
+  'font/woff2',
   'image/jpeg',
   'image/png',
   'image/svg+xml',
