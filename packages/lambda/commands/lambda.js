@@ -4,7 +4,11 @@
 module.exports = function defineLambdaCommand(yargs) {
   yargs.command('lambda', 'manage your lambda deployment', function(yargs) {
     yargs
-      .usage('Usage: $0 lambda <command>')
+      .usage(
+        'Usage: ' +
+          (require.main === module ? 'hops-lambda' : '$0 lambda') +
+          ' <command>'
+      )
       .command({
         command: 'deploy',
         describe: 'Deploys your hops application to AWS lambda',
