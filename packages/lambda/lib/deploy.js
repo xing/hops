@@ -4,6 +4,7 @@ var inspect = require('util').inspect;
 var fs = require('fs');
 var path = require('path');
 var AWS = require('aws-sdk');
+var mime = require('mime');
 var createLambdaBundle = require('./create-lambda-bundle');
 var progressWriter = require('./progress-writer');
 var fsUtils = require('./fs-utils');
@@ -31,24 +32,73 @@ function createBucketIfNotExists(s3, bucketName) {
     });
 }
 
-function uploadFile(s3, bucketName, file, logger) {
-  var progress = progressWriter('uploading ' + path.basename(file), logger);
+function uploadFile(s3, bucketName, file, logger, destination) {
+  var progress = progressWriter(
+    'uploading ' + path.basename(destination),
+    logger
+  );
+  return s3
+    .upload({
+      ACL: 'public-read',
+      Key: destination,
+      Bucket: bucketName,
+      ContentType: mime.getType(path.extname(file)),
+      CacheControl: 'max-age=' + 365 * 24 * 60 * 60 * 1000,
+      Body: fs.createReadStream(file),
+    })
+    .promise()
+    .then(function (result) {
+      progress(1, 1);
+      return result;
+    });
+}
+
+function uploadHashedFile(s3, bucketName, file, logger) {
+  var parsedPath = path.parse(file);
   return fsUtils.hashFileContents(file).then(function (hash) {
-    var parsedPath = path.parse(file);
-    return s3
-      .upload({
-        Bucket: bucketName,
-        Key: path.format({
-          name: parsedPath.name + '-' + hash,
-          ext: parsedPath.ext,
-        }),
-        Body: fs.createReadStream(file),
+    return uploadFile(
+      s3,
+      bucketName,
+      file,
+      logger,
+      path.format({
+        name: parsedPath.name + '-' + hash,
+        ext: parsedPath.ext,
       })
-      .promise()
-      .then(function (result) {
-        progress(1, 1);
-        return result;
-      });
+    );
+  });
+}
+
+function uploadFolder(s3, bucketName, folder, cwd, logger) {
+  return new Promise(function (resolve, reject) {
+    fs.readdir(folder, function (error, files) {
+      if (error) {
+        return reject(error);
+      }
+      Promise.all(
+        files.map(function (filename) {
+          var file = path.join(folder, filename);
+          fs.stat(file, function (error, stats) {
+            if (error) {
+              return reject(error);
+            }
+            if (stats.isDirectory()) {
+              return uploadFolder(s3, bucketName, file, cwd, logger);
+            } else {
+              return uploadFile(
+                s3,
+                bucketName,
+                file,
+                logger,
+                path.relative(cwd, file)
+              );
+            }
+          });
+        })
+      )
+        .then(resolve)
+        .catch(reject);
+    });
   });
 }
 
@@ -200,11 +250,23 @@ module.exports = function deploy(
       ])
         .then(function () {
           return Promise.all([
-            uploadFile(s3, awsConfig.bucketName, zippedBundleLocation, logger),
-            uploadFile(
+            uploadHashedFile(
+              s3,
+              awsConfig.bucketName,
+              zippedBundleLocation,
+              logger
+            ),
+            uploadHashedFile(
               s3,
               awsConfig.bucketName,
               awsConfig.cloudformationTemplateFile,
+              logger
+            ),
+            uploadFolder(
+              s3,
+              awsConfig.bucketName,
+              hopsConfig.distDir,
+              hopsConfig.rootDir,
               logger
             ),
           ]);
@@ -217,6 +279,8 @@ module.exports = function deploy(
                 LambdaMemorySize: awsConfig.memorySize,
                 StageName: awsConfig.stageName,
                 BasePath: awsConfig.basePath,
+                AssetPath: hopsConfig.assetPath,
+                DistDir: path.relative(hopsConfig.rootDir, hopsConfig.distDir),
                 BucketName: awsConfig.bucketName,
                 BundleName: values[0].Key,
                 DomainName: awsConfig.domainName,

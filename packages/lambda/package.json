@@ -25,6 +25,7 @@
     "hops-config": "^14.0.0-nightly.4",
     "hops-express": "^14.0.0-nightly.4",
     "hops-mixin": "^14.0.0-nightly.4",
+    "mime": "^2.4.4",
     "pathifist": "^1.0.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.14",
