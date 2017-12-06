@@ -22,14 +22,12 @@ npm install --save react react-dom react-helmet react-router react-router-dom ho
 
 ```js
 import React from 'react';
-import { render } from 'hops-react';
+import { render, createContext } from 'hops-react';
 
 const App = () => <h1>Hello World!</h1>;
 
-export default render(<App />);
+export default render(<App />, createContext());
 ```
-
-If you pass an object literal instead of a context instance, `render()` itself creates a context using said object as options.
 
 ## `createContext(options)`
 
