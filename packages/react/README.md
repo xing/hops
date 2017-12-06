@@ -12,7 +12,7 @@ Out of the box, hops-react additionally supports [React Router](https://github.c
 npm install --save react react-dom react-helmet react-router react-router-dom hops-react hops-config
 ```
 
-# API
+# Basic API
 
 ## `render(reactElement, context)`
 
@@ -46,7 +46,7 @@ To declaratively control server behavior from your application, you can use two 
 
 On the server, however, `<Miss />` makes sure Express' `next()` middleware function is being called, signalling Express that your application is not responsible for handling the current request. `<Status />`, however controls the HTTP status code returned by the server.
 
-# Full Example
+# Basic Example
 
 ```js
 import React from 'react';
@@ -75,3 +75,47 @@ const App = () => (
 
 export default render(<App />, createContext({ template }));
 ```
+
+# Render Contexts
+
+Most of `hops-react`'s functionality is implemented in a render context. You can either use one of the `createContext` factory functions provided by hops-react, hops-redux and hops-graphql or you can provide your own implementation. You can even mix-and-match default and custom context definitions.
+
+`hops-react` does not use conventional JavaScript inheritance for its render contexts, but rather relies on [mixinable](https://github.com/dmbch/mixinable) to provide a form of [multiple inheritance](https://en.wikipedia.org/wiki/Multiple_inheritance).
+
+## Composition API
+
+### `combineContexts(...contextDefinition)`
+
+Calling `combineContexts` with one or more `contextDefinition`s creates a context factory function similar to the `createContext` function described above.
+
+`contextDefinition`s can be constructor functions or prototype objects. Both are being used behind the scenes to instantiate specialized sub-contexts. All their methods that do not implement lifecycle hooks (see below) are private, as sub-context instances are hidden.
+
+The sub-context instances are completely isolated and they cannot interfere with one another. Objects created with a `createContext` factory are essentially facades
+
+### `ReactContext`
+
+hops-react exports its basic context definition as a constructor function to allow simple sub-classing and composition using `combineContexts`. For example, by `extend`ing it and overriding its `enhanceElement` method, you can very easily provide your own ReactRouter setup.
+
+## Lifecycle API
+
+### `bootstrap()`
+
+The `bootstrap` lifecyle hook allows you to set up your application and perform data fetching or other asynchronous operations. You are expected to return a `Promise` - and the `bootstrap` operations from all active `contextDefinition`s are performed in parallel. Rendering is blocked until all `Promise`s have been resolved (or rejected).
+
+### `enhanceElement(reactElement)`
+
+By implementing `enhanceElement`, you can wrap your application's root element in additional, usually purely functional components such as Redux's or React-Intl's `Provider`s. This way, you can keep the low-level (plumbing) parts of your application nicely separated from the high-level (porcellain) parts.
+
+### `getTemplateData(templateData)` (Node.js only)
+
+`getTemplateData` is supposed to return an object that is being passed to the server-side template function. Please check out hops-react's default template to get an idea on what keys are supported.
+
+`templateData` are being piped through the different implementations: make sure to extend or modify the object that is being passed into your implementation.
+
+### `renderTemplate(templateData)` (Node.js only)
+
+`renderTemplate` is expected to be a rather simple, synchronous template function: data in, HTML string out. If you want to provide your own implementation, you might want to remember that hops-build-config allows you to simply `require`/`import` [template files](https://github.com/xing/hops/tree/master/packages/build-config#filesassets).
+
+### `getMountpoint()` (Browser only)
+
+`getMountpoint` is meant to synchronously return the DOM-node your application is supposed to be mounted into.
