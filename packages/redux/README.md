@@ -27,6 +27,10 @@ npm install --save hops-redux react react-redux redux redux-thunk
 | reducers    | Object   | `{}`                     | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html)                                                                                                        |
 | middlewares | Array    | `[ReduxThunkMiddleware]` | array specifying the redux middlewares to apply. Uses [redux-thunk](https://github.com/gaearon/redux-thunk) as default. When middlewares is specified redux-thunk will not be included by default and needs to be added as well if needed. |
 
+## `ReduxContext`
+
+This constructor function is an advanced API feature, meant to help you build your own context factory functions. For more info, please read up on hops-react [render contexts](https://github.com/xing/hops/tree/master/packages/react#render-contexts).
+
 # Example
 
 ```js
