@@ -56,6 +56,10 @@ The generated file, `fragmentTypes.json` will be picked up automatically by hops
 
 Defaults for the `graphql` config are very similar to those in the [default implementation](https://www.npmjs.com/package/apollo-client-preset) with the exception that `hopsConfig.graphqlUri` is being used as HTTP endpoint.
 
+## `GraphQLContext`
+
+This constructor function is an advanced API feature, meant to help you build your own context factory functions. For more info, please read up on hops-react [render contexts](https://github.com/xing/hops/tree/master/packages/react#render-contexts).
+
 # Example
 
 ### `hero.gql`
