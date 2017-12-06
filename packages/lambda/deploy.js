@@ -20,20 +20,14 @@ function formatParameters(params) {
 
 function createBucketIfNotExists(s3, bucketName) {
   return s3
-    .getBucketLocation({ Bucket: bucketName })
+    .headBucket({ Bucket: bucketName })
     .promise()
-    .then(function() {
-      return bucketName;
-    })
     .catch(function() {
       return s3
         .createBucket({ Bucket: bucketName })
         .promise()
-        .then(function () {
-          return s3.waitFor('bucketExists', { Bucket: bucketName }).promise();
-        })
         .then(function() {
-          return bucketName;
+          return s3.waitFor('bucketExists', { Bucket: bucketName }).promise();
         });
     });
 }
@@ -56,29 +50,6 @@ function uploadFile(s3, bucketName, file) {
         progress(1, 1);
         return result;
       });
-  });
-}
-
-function waitForChangeSetComplete(cloudformation, stackName, changeSetName) {
-  return new Promise(function(resolve, reject) {
-    function poll() {
-      cloudformation
-        .describeChangeSet({
-          ChangeSetName: changeSetName,
-          StackName: stackName,
-        })
-        .promise()
-        .then(function(result) {
-          console.log('changeset status:', result.Status);
-          if (result.Status === 'CREATE_COMPLETE') {
-            return resolve();
-          } else if (result.Status === 'FAILED') {
-            return reject(result);
-          }
-          setTimeout(poll, 2500);
-        });
-    }
-    poll();
   });
 }
 
@@ -138,13 +109,19 @@ function createOrUpdateStack(cloudformation, stackName, templateUrl, params) {
         })
         .promise()
         .then(function() {
-          return waitForChangeSetComplete(
-            cloudformation,
-            stackName,
-            changeSetName
-          );
+          console.log('Creating stack change set');
+          return cloudformation
+            .waitFor('changeSetCreateComplete', {
+              StackName: stackName,
+              ChangeSetName: changeSetName,
+              $waiter: {
+                delay: 5,
+              },
+            })
+            .promise();
         })
         .then(function() {
+          console.log('Executing stack change set');
           return cloudformation
             .executeChangeSet({
               ChangeSetName: changeSetName,

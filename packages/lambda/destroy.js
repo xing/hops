@@ -5,28 +5,35 @@ var prompt = require('./lib/prompt');
 var getAWSConfig = require('./lib/aws-config');
 
 function emptyBucket(s3, bucketName) {
+  console.log('Deleting objects in S3 bucket');
   return s3
-    .listObjectsV2({ Bucket: bucketName })
+    .headBucket({ Bucket: bucketName })
     .promise()
-    .then(function(data) {
-      return data.Contents.map(function(object) {
-        return { Key: object.Key };
-      });
-    })
-    .then(function(objects) {
+    .then(function() {
       return s3
-        .deleteObjects({
-          Bucket: bucketName,
-          Delete: { Objects: objects },
+        .listObjectsV2({ Bucket: bucketName })
+        .promise()
+        .then(function(data) {
+          return data.Contents.map(function(object) {
+            return { Key: object.Key };
+          });
         })
-        .promise();
+        .then(function(objects) {
+          return s3
+            .deleteObjects({
+              Bucket: bucketName,
+              Delete: { Objects: objects },
+            })
+            .promise();
+        });
     });
 }
 
 function deleteBucket(s3, bucketName) {
+  console.log('Deleting S3 bucket');
   var params = { Bucket: bucketName };
   return s3
-    .getBucketLocation(params)
+    .headBucket(params)
     .promise()
     .then(function() {
       return s3.deleteBucket(params).promise();
@@ -34,11 +41,20 @@ function deleteBucket(s3, bucketName) {
 }
 
 function deleteStack(cloudFormation, stackName) {
+  console.log('Deleting CloudFormation stack');
   return cloudFormation
     .deleteStack({
       StackName: stackName,
     })
-    .promise();
+    .promise()
+    .then(function() {
+      return cloudFormation.waitFor('stackDeleteComplete', {
+        StackName: stackName,
+        $waiter: {
+          delay: 5,
+        },
+      });
+    });
 }
 
 module.exports = function destroy(options) {
