@@ -4,7 +4,7 @@ var server = require('hops-server');
 var createApp = require('./app');
 
 function runServer(options, callback) {
-  server.run(createApp(), callback);
+  server.run(createApp(options), callback);
 }
 
 module.exports = {
