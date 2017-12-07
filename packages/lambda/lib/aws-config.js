@@ -7,6 +7,8 @@ var DEFAULT_REGION = 'us-east-1';
 var DEFAULT_MEMORY_SIZE = 128;
 var DEFAULT_STAGE_NAME = 'prod';
 var DEFAULT_CF_TEMPLATE = path.resolve(__dirname, '..', 'cloudformation.yaml');
+var DEFAULT_INCLUDE = [hopsConfig.cacheDir + '/**'];
+var DEFAULT_EXCLUDE = ['flow-typed/**', 'typings/**'];
 
 module.exports = function getAWSConfig() {
   var awsConfig = hopsConfig.aws || {};
@@ -30,6 +32,8 @@ module.exports = function getAWSConfig() {
     basePath: hopsConfig.basePath.slice(1) || '(none)',
     cloudformationTemplateFile:
       awsConfig.cloudformationTemplateFile || DEFAULT_CF_TEMPLATE,
+    include: awsConfig.include || DEFAULT_INCLUDE,
+    exclude: awsConfig.exclude || DEFAULT_EXCLUDE,
   };
 
   if (!region) {
