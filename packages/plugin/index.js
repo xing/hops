@@ -10,7 +10,7 @@ function getFileName(location) {
 }
 
 module.exports = function Plugin(options) {
-  var render = createRenderer(options);
+  var render = createRenderer(options.webpackConfig, options.watchOptions);
   this.apply = function(compiler) {
     compiler.plugin('emit', function(compilation, callback) {
       Promise.all(
