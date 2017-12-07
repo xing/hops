@@ -28,7 +28,8 @@
     "systemboogie <marcus@marcusnoll.de> (https://www.xing.com/profile/Marcus_Noll3)",
     "KingHenne <mail@hendrik-liebau.de> (https://www.xing.com/profile/Hendrik_Liebau2)",
     "ZauberNerd <zaubernerd@zaubernerd.de> (https://www.xing.com/profile/Bjoern_Brauer5)",
-    "ghost23 <mail@ghost23.de> (https://www.xing.com/profile/Sven_Busse)"
+    "ghost23 <mail@ghost23.de> (https://www.xing.com/profile/Sven_Busse)",
+    "jhiode <mail@jhio.de> (https://www.xing.com/profile/Jonas_Holland)"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",
