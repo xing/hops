@@ -16,36 +16,19 @@ describe('renderer', function() {
   });
 
   it('should create a renderer function', function() {
-    var render = createRenderer({ webpackConfig: goodConfig });
+    var render = createRenderer(goodConfig);
     assert.equal(typeof render, 'function');
   });
 
   describe('function', function() {
     it('should return a promise', function() {
-      var render = createRenderer({ webpackConfig: goodConfig });
+      var render = createRenderer(goodConfig);
       var promise = render('/');
       assert(promise instanceof Promise);
     });
 
-    it('should call middleware', function(done) {
-      var render = createRenderer({
-        webpackConfig: goodConfig,
-        hopsConfig: {
-          bootstrapServer: function(app) {
-            assert(true);
-            app.use(function(req, res, next) {
-              assert(true);
-              next();
-              done();
-            });
-          },
-        },
-      });
-      render('/');
-    });
-
     it('should render expected result', function(done) {
-      var render = createRenderer({ webpackConfig: goodConfig });
+      var render = createRenderer(goodConfig);
       render('/').then(function(result) {
         assert.equal(typeof result, 'string');
         assert.equal(result, 'Hello World!');
@@ -54,7 +37,7 @@ describe('renderer', function() {
     });
 
     it('should reject promise (bad export)', function(done) {
-      var render = createRenderer({ webpackConfig: badExportConfig });
+      var render = createRenderer(badExportConfig);
       render('/').catch(function() {
         assert(true);
         done();
@@ -62,7 +45,7 @@ describe('renderer', function() {
     });
 
     it('should reject promise (bad handler)', function(done) {
-      var render = createRenderer({ webpackConfig: badHandlerConfig });
+      var render = createRenderer(badHandlerConfig);
       render('/').catch(function() {
         assert(true);
         done();
