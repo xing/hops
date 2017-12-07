@@ -1,6 +1,8 @@
 # Hops Plugin
 
-[![npm](https://img.shields.io/npm/v/hops-plugin.svg)](https://www.npmjs.com/package/hops-plugin)
+![deprecated](https://img.shields.io/badge/status-deprecated-red.svg)
+
+**This package is deprecated. Please use [hops-local-cli](https://www.npmjs.com/package/hops-local-cli) and [hops-build](https://www.npmjs.com/package/hops-build) instead.**
 
 Hops assumes you will write an Express-style middleware, transpiles it and makes it easy to use in non-transpiled and even non-server code. Hops' plugin is a simple helper to simplify using your custom middleware in a Webpack build.
 
