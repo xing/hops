@@ -15,11 +15,12 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "directory-index": "^0.1.0",
     "hops-build-config": "9.1.1",
     "hops-config": "9.1.1",
     "hops-middleware": "9.1.1",
-    "hops-plugin": "9.1.1",
     "hops-server": "9.1.1",
+    "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.4",

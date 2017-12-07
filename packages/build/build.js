@@ -5,49 +5,52 @@ var merge = require('webpack-merge');
 
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
-var HopsPlugin = require('hops-plugin');
 
-var buildConfig = require(hopsBuildConfig.buildConfig);
-var nodeConfig = require(hopsBuildConfig.nodeConfig);
-
+var generate = require('./lib/generate');
 var cleanup = require('./lib/cleanup');
 
 var mergeWithPlugins = merge.strategy({ plugins: 'append' });
 
-function getWebpackConfig(options) {
-  if (options.static) {
-    return mergeWithPlugins(buildConfig, {
-      plugins: [
-        new HopsPlugin({
-          locations: hopsConfig.locations,
-          webpackConfig: nodeConfig,
-          hopsConfig: hopsConfig,
-        }),
-        new webpack.ProgressPlugin(),
-      ],
-    });
-  } else {
-    return [buildConfig, nodeConfig].map(function(config) {
-      return mergeWithPlugins(config, {
-        plugins: [new webpack.ProgressPlugin()],
-      });
-    });
-  }
+function injectProgressPlugin(webpackConfig) {
+  return mergeWithPlugins(webpackConfig, {
+    plugins: [new webpack.ProgressPlugin()],
+  });
 }
+
+var buildConfig = injectProgressPlugin(require(hopsBuildConfig.buildConfig));
+var nodeConfig = injectProgressPlugin(require(hopsBuildConfig.nodeConfig));
 
 function defaultCallback(error, stats) {
   if (error) {
     console.error(error.stack.toString());
   } else {
-    console.log(stats.toString({ chunks: false }));
+    console.log(stats.toString({ chunks: false, modules: false }));
+  }
+}
+
+function getBuildFunction(options, _callback) {
+  var callback = _callback || defaultCallback;
+  if (options.static) {
+    return function() {
+      webpack(buildConfig).run(function(error, stats) {
+        if (error) {
+          callback(error, stats);
+        } else {
+          (hopsConfig.generate || generate)(nodeConfig)
+            .then(callback.bind(null, null, stats))
+            .catch(callback);
+        }
+      });
+    };
+  } else {
+    return function() {
+      webpack([buildConfig, nodeConfig]).run(callback);
+    };
   }
 }
 
 module.exports = function runBuild(options, callback) {
-  function build() {
-    return webpack(getWebpackConfig(options)).run(callback || defaultCallback);
-  }
-
+  var build = getBuildFunction(options, callback);
   if (options.clean) {
     var dirs = [hopsConfig.buildDir, hopsConfig.cacheDir];
     return cleanup(dirs).then(build);
