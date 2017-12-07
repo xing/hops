@@ -5,18 +5,24 @@ var events = require('events');
 var express = require('express');
 var mocks = require('node-mocks-http');
 
+var hopsConfig = require('hops-config');
 var createMiddleware = require('hops-middleware');
 
-module.exports = function createRenderer(options) {
-  var hopsConfig = options.hopsConfig || {};
+module.exports = function createRenderer(webpackConfig, watchOptions) {
+  if (arguments.length === 1 && 'webpackConfig' in webpackConfig) {
+    webpackConfig = webpackConfig.webpackConfig;
+    watchOptions = webpackConfig.watchOptions;
+    console.warn(
+      'Calling createRenderer() with just an options hash is deprecated.',
+      'Please refer to the latest docs:',
+      'https://github.com/xing/hops/blob/master/packages/renderer/README.md'
+    );
+  }
   var router = new express.Router();
-
   if (hopsConfig.bootstrapServer) {
     hopsConfig.bootstrapServer(router, hopsConfig);
   }
-
-  router.use(createMiddleware(options.webpackConfig, options.watchOptions));
-
+  router.use(createMiddleware(webpackConfig, watchOptions));
   return function(options) {
     if (typeof options === 'string') {
       options = { url: options };
