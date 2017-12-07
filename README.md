@@ -36,7 +36,7 @@ If you want to build the JS bundles for production, run `npm run build` in your 
 
 ### General Usage
 
-Hops is quite modular, its component being independently published on npm. Its main building blocks, however, rely upon each other:
+Hops is quite modular, its components being independently published on npm. Its main building blocks, however, rely upon each other:
 
 | Package                                                                             | NPM                                                                                                           |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
