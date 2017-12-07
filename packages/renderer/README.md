@@ -6,7 +6,7 @@ Hops assumes you will write an Express-style middleware, transpiles it and makes
 
 Its export, `createRenderer`, creates a `render` function that, if called with a `location` string, returns a promise that resolves to the full body of your middleware's response.
 
-You can override hops' default Webpack configuration by passing a config object to the `createRenderer` function. You can also enable watch mode by passing a `watchOptions` object.
+`createRenderer` expects to be passed a `webpackConfig` as first argument. You can also pass `watchOptions` as its second.
 
 ### Target Audience
 
@@ -66,5 +66,3 @@ render('/baz').catch(function(error) {
   // error === new Error('invalid status code: 404')
 });
 ```
-
-Hops' own [Webpack plugin](https://github.com/xing/hops/blob/master/packages/plugin/index.js) is another example of its renderer in action.
