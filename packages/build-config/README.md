@@ -50,7 +50,7 @@ The following example shows how to overwrite / extend the webpack configurations
 
 ```javascript
 var webpack = require('webpack');
-var hopsBuildConfig = require('hops-build-config');
+var hopsBuildConfig = require('hops-build-config/configs/build');
 var merge = require('webpack-merge');
 
 var myCustomBuildConfig = {
@@ -63,7 +63,7 @@ var myCustomBuildConfig = {
 
 module.exports = merge.strategy(
   { plugins: 'append' },
-  hopsBuildConfig.buildConfig,
+  hopsBuildConfig,
   myCustomBuildConfig
 );
 ```
