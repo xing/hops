@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var globby = require('globby');
 var archiver = require('archiver');
 var resolveTree = require('resolve-tree');
 
@@ -28,13 +29,11 @@ function getProductionDependencies(manifest) {
       }
       resolve(
         resolveTree
-          .flatten(tree)
-          .map(function(dependency) {
-            return dependency.root;
-          })
+          .flattenMap(tree, 'root')
           .filter(function(dependency, i, self) {
             return self.indexOf(dependency) === i;
           })
+          .filter(omitSubPaths)
       );
     });
   });
@@ -43,8 +42,8 @@ function getProductionDependencies(manifest) {
 module.exports = function createLambdaBundle(
   rootDir,
   outFile,
-  additionalDirectories,
-  additionalFiles,
+  include,
+  exclude,
   onProgress
 ) {
   return new Promise(function(resolve, reject) {
@@ -61,23 +60,30 @@ module.exports = function createLambdaBundle(
       archive.on('progress', onProgress);
     }
 
-    var packageJson = path.join(rootDir, 'package.json');
-    var manifest = require(packageJson);
+    var productionDependencies = getProductionDependencies(
+      require(path.join(rootDir, 'package.json'))
+    );
 
-    getProductionDependencies(manifest).then(function(dependencies) {
-      (additionalDirectories || [])
-        .concat(dependencies)
-        .filter(omitSubPaths)
-        .forEach(function(folder) {
-          archive.directory(folder, path.relative(rootDir, folder));
-        });
-
-      (additionalFiles || []).concat(packageJson).forEach(function(file) {
-        archive.file(file, { name: path.relative(rootDir, file) });
-      });
-
+    output.on('open', function() {
       archive.pipe(output);
-      archive.finalize();
+
+      productionDependencies.then(function(paths) {
+        var patterns = paths.map(function(p) {
+          return p + '/**';
+        });
+        globby(['**', '!node_modules/**'].concat(include).concat(patterns), {
+          cwd: rootDir,
+          dot: true,
+          follow: true,
+          nodir: true,
+          ignore: ['.git/**'].concat(exclude),
+        }).then(function(paths) {
+          paths.forEach(function(file) {
+            archive.file(file, { name: path.relative(rootDir, file) });
+          });
+          archive.finalize();
+        });
+      });
     });
   });
 };

@@ -180,8 +180,8 @@ module.exports = function deploy(options, parametersOverrides) {
         createLambdaBundle(
           projectDirectory,
           zippedBundleLocation,
-          [hopsConfig.buildDir, hopsConfig.cacheDir],
-          null,
+          awsConfig.include,
+          awsConfig.exclude,
           onProgress
         ),
         createBucketIfNotExists(s3, awsConfig.bucketName),
