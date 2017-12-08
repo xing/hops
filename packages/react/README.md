@@ -33,10 +33,11 @@ export default render(<App />, createContext());
 
 `createContext()` generates a rendering context containing most of the actual implementation used by `render`. It takes a couple of options:
 
-| Field      | Type     | Default                                                                                    | Description                                                                    |
-| ---------- | -------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| mountpoint | String   | '#main'                                                                                    | querySelector identifying the root DOM node                                    |
-| template   | Function | [defaultTemplate](https://github.com/xing/hops/blob/master/packages/react/lib/template.js) | template function supporting all relevant React Helmet and hops-react features |
+| Field      | Type     | Default                                                                                    | Description                                                                                                                                                                                                                                     |
+| ---------- | -------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| mountpoint | String   | '#main'                                                                                    | querySelector identifying the root DOM node                                                                                                                                                                                                     |
+| template   | Function | [defaultTemplate](https://github.com/xing/hops/blob/master/packages/react/lib/template.js) | template function supporting all relevant React Helmet and hops-react features                                                                                                                                                                  |
+| router     | Object   | {}                                                                                         | props to be passed to one of the relevant ReactRouter implementations: [`<StaticRouter />`](https://reacttraining.com/react-router/web/api/StaticRouter) or [`<BrowserRouter />`](https://reacttraining.com/react-router/web/api/BrowserRouter) |
 
 ## `<Miss />` and `<Status code={200} />`
 
