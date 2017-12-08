@@ -21,26 +21,27 @@ exports.ReactContext = function(options) {
   if (!options) {
     options = {};
   }
+  this.routerOptions = Object.assign(
+    {
+      location: options.request && options.request.path,
+      basename: hopsConfig.basePath,
+      context: {},
+    },
+    options.router
+  );
   this.template = options.template || defaultTemplate;
-  this.request = options.request;
-  this.routerContext = {};
 };
 exports.ReactContext.prototype = {
   enhanceElement: function(reactElement) {
     return React.createElement(
       ReactRouter.StaticRouter,
-      {
-        basename: hopsConfig.basePath,
-        location: this.request.path,
-        context: this.routerContext,
-      },
+      this.routerOptions,
       reactElement
     );
   },
   getTemplateData: function(templateData) {
     return Object.assign({}, templateData, {
-      routerContext: this.routerContext,
-      options: this.options,
+      routerContext: this.routerOptions.context,
       helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
       manifest: hopsConfig.manifest,
