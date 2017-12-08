@@ -17,13 +17,17 @@ exports.ReactContext = function(options) {
   if (!options) {
     options = {};
   }
+  this.routerOptions = Object.assign(
+    { basename: hopsConfig.basePath },
+    options.router
+  );
   this.mountpoint = options.mountpoint || '#main';
 };
 exports.ReactContext.prototype = {
   enhanceElement: function(reactElement) {
     return React.createElement(
       ReactRouterDOM.BrowserRouter,
-      { basename: hopsConfig.basePath },
+      this.routerOptions,
       reactElement
     );
   },
