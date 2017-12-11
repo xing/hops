@@ -56,10 +56,14 @@ module.exports = {
       allChunks: true,
       ignoreOrder: true,
     }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'production',
-      HOPS_MODE: 'dynamic',
-    }),
+    new webpack.EnvironmentPlugin(
+      Object.assign(
+        {
+          NODE_ENV: 'production',
+        },
+        hopsConfig.envVars
+      )
+    ),
     new webpack.LoaderOptionsPlugin({
       debug: false,
       minimize: true,
