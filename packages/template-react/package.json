@@ -1,6 +1,6 @@
 {
   "name": "hops-template-react",
-  "version": "9.1.1",
+  "version": "9.2.0",
   "main": "src/app.js",
   "license": "MIT",
   "config": {
@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "hops-express": "9.1.1",
-    "hops-react": "9.1.1",
-    "hops-redux": "9.1.1",
+    "hops-react": "9.2.0",
+    "hops-redux": "9.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

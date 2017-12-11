@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "9.1.1",
+  "version": "9.2.0",
   "description": "React and ReactRouter setup for Hops",
   "keywords": ["hops", "react", "react-router"],
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "hops-graphql",
-  "version": "9.1.1",
+  "version": "9.2.0",
   "description": "React and GraphQL implementation for Hops",
   "keywords": ["hops", "react", "graphql"],
   "license": "MIT",

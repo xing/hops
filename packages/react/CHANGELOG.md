@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.2.0"></a>
+# [9.2.0](https://github.com/xing/hops/compare/v9.1.1...v9.2.0) (2017-12-11)
+
+
+### Features
+
+* **react:** make ReactRouter configurable ([48988d0](https://github.com/xing/hops/commit/48988d0)), closes [#292](https://github.com/xing/hops/issues/292)
+
+
+
+
 <a name="9.1.1"></a>
 ## [9.1.1](https://github.com/xing/hops/compare/v9.1.0...v9.1.1) (2017-12-05)
 
