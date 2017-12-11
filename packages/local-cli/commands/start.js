@@ -33,7 +33,9 @@ module.exports = function defineStartCommand(args) {
       if (argv.production) {
         process.env.NODE_ENV = 'production';
       }
-      process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
+      if (argv.static) {
+        process.env.HOPS_MODE = 'static';
+      }
       var packageName =
         process.env.NODE_ENV === 'production' ? 'hops-express' : 'hops-build';
       if (require('../lib/package-manager').isPackageInstalled(packageName)) {
