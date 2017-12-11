@@ -9,6 +9,7 @@ var DEFAULT_STAGE_NAME = 'prod';
 var DEFAULT_CF_TEMPLATE = path.resolve(__dirname, '..', 'cloudformation.yaml');
 var DEFAULT_INCLUDE = [hopsConfig.cacheDir + '/**'];
 var DEFAULT_EXCLUDE = ['flow-typed/**', 'typings/**'];
+var AVAILABLE_NODE_RUNTIME = ['6.10.3'];
 
 module.exports = function getAWSConfig() {
   var awsConfig = hopsConfig.aws || {};
@@ -42,15 +43,28 @@ module.exports = function getAWSConfig() {
     );
   }
 
-  if (!config.domainName && config.stageName !== config.basePath) {
+  if (AVAILABLE_NODE_RUNTIME.indexOf(hopsConfig.node) === -1) {
+    console.warn(
+      'AWS Lambda only supports Node.js in version: ' +
+        AVAILABLE_NODE_RUNTIME.join(', ') +
+        '. Please specify one of these versions as node target in your ' +
+        'hopsConfig.node, to enable Babel to transpile to the correct version.'
+    );
+  }
+
+  if (
+    !config.domainName &&
+    config.basePath.indexOf(config.stageName) !== 0 &&
+    hopsConfig.assetPath.indexOf(config.stageName) !== 0
+  ) {
     console.error(
-      'When no custom domain is configured, the basePath (' +
-        config.basePath +
-        '), assetPath (' +
-        hopsConfig.assetPath +
-        ') and stageName (' +
+      'When no custom domain is configured, the stageName (' +
         config.stageName +
-        ') must have the same value.'
+        ') must be the first path segment in basePath (' +
+        config.basePath +
+        ') and assetPath (' +
+        hopsConfig.assetPath +
+        ').'
     );
     process.exit(1);
   }
