@@ -24,7 +24,9 @@ module.exports = function defineDevelopCommand(args) {
       },
     },
     handler: function developHandler(argv) {
-      process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
+      if (argv.static) {
+        process.env.HOPS_MODE = 'static';
+      }
       require('..').runServer(argv);
     },
   });
