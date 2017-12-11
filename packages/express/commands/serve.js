@@ -26,7 +26,9 @@ module.exports = function defineServeCommand(args) {
       if (argv.production) {
         process.env.NODE_ENV = 'production';
       }
-      process.env.HOPS_MODE = argv.static ? 'static' : 'dynamic';
+      if (argv.static) {
+        process.env.HOPS_MODE = 'static';
+      }
       require('..').runServer(argv);
     },
   });
