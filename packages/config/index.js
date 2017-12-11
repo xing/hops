@@ -88,6 +88,7 @@ module.exports = freeze(
         assetPath: '',
         browsers: '> 1%, last 2 versions, Firefox ESR',
         node: 'current',
+        envVars: { HOPS_MODE: 'dynamic' },
         moduleDirs: [],
         appDir: '.',
         buildDir: 'build',
