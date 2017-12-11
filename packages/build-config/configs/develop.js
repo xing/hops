@@ -38,10 +38,14 @@ module.exports = {
     new WriteManifestPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-      HOPS_MODE: 'dynamic',
-    }),
+    new webpack.EnvironmentPlugin(
+      Object.assign(
+        {
+          NODE_ENV: 'development',
+        },
+        hopsConfig.envVars
+      )
+    ),
   ],
   performance: {
     hints: false,

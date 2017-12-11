@@ -57,10 +57,14 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1,
     }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-      HOPS_MODE: 'dynamic',
-    }),
+    new webpack.EnvironmentPlugin(
+      Object.assign(
+        {
+          NODE_ENV: 'development',
+        },
+        hopsConfig.envVars
+      )
+    ),
   ],
   performance: {
     hints: false,
