@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 
 var index = require('directory-index');
+var filesize = require('filesize');
 var mkdirp = require('mkdirp');
 
 var hopsConfig = require('hops-config');
@@ -16,14 +17,13 @@ function getFileName(location) {
   );
 }
 
-function getKBs(s) {
-  return ((encodeURI(s).split(/%..|./).length - 1) / 1024).toFixed(2);
-}
-
 function writeFile(location, html) {
   return new Promise(function(resolve, reject) {
     var filename = getFileName(location);
-    console.log(filename.replace(hopsConfig.buildDir, ''), getKBs(html), 'kB');
+    console.log(
+      filename.replace(hopsConfig.buildDir, ''),
+      filesize(Buffer.byteLength(html))
+    );
     mkdirp(path.dirname(filename), function(err) {
       if (err) {
         reject(err);
@@ -47,6 +47,6 @@ module.exports = function(webpackConfig) {
       });
     })
   ).then(function() {
-    console.log();
+    console.log(/* empty line */);
   });
 };
