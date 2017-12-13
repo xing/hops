@@ -42,14 +42,15 @@ exports.ReactContext.prototype = {
   getTemplateData: function(templateData) {
     return Object.assign({}, templateData, {
       routerContext: this.routerOptions.context,
-      helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
       manifest: hopsConfig.manifest,
       globals: templateData.globals || [],
     });
   },
   renderTemplate: function(templateData) {
-    return this.template(templateData);
+    return this.template(
+      Object.assign({ helmet: Helmet.renderStatic() }, templateData)
+    );
   },
 };
 
@@ -70,11 +71,21 @@ exports.render = function(reactElement, _context) {
         return renderContext.enhanceElement(reactElement);
       })
       .then(function(rootElement) {
-        return renderContext.getTemplateData({
-          markup: ReactDOM.renderToString(rootElement),
+        return renderContext.getTemplateData({}).then(function(templateData) {
+          return { templateData, rootElement };
         });
       })
-      .then(function(templateData) {
+      .then(function(result) {
+        var templateData = result.templateData;
+        var rootElement = result.rootElement;
+        var markup = renderContext.renderTemplate(
+          Object.assign(
+            {
+              markup: ReactDOM.renderToString(rootElement),
+            },
+            templateData
+          )
+        );
         var routerContext = templateData.routerContext;
 
         if (routerContext.miss) {
@@ -86,7 +97,7 @@ exports.render = function(reactElement, _context) {
         } else {
           res.status(routerContext.status || 200);
           res.type('html');
-          res.send(renderContext.renderTemplate(templateData));
+          res.send(markup);
         }
       })
       .catch(next);
