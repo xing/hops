@@ -12,11 +12,8 @@ exports.GraphQLContext = function() {
   return common.constructor.apply(this, arguments);
 };
 exports.GraphQLContext.prototype = Object.assign({}, common, {
-  enhanceElement: function(reactElement) {
-    var enhancedElement = common.enhanceElement.call(this, reactElement);
-    return ReactApollo.getDataFromTree(enhancedElement).then(function() {
-      return enhancedElement;
-    });
+  prepareRender: function(elementTree) {
+    return ReactApollo.getDataFromTree(elementTree);
   },
   enhanceClientOptions: function(options) {
     return Object.assign(common.enhanceClientOptions.call(this, options), {
