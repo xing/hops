@@ -46,6 +46,34 @@ const binaryMimeTypes = [
 exports.handler = serverlessHttp(app, {
   binary: binaryMimeTypes,
   request: function (request, context) {
+    console.log(
+      'INCOMING REQUEST',
+      JSON.stringify(
+        {
+          request: { url: request.url },
+          context: {
+            resource: context.resource,
+            path: context.path,
+            requestContext: {
+              path: context.requestContext.path,
+              stage: context.requestContext.stage,
+            },
+          },
+          shouldIncludeStageInRequest: shouldIncludeStageInRequest,
+          awsConfig: {
+            stageName: awsConfig.stageName,
+            domainName: awsConfig.domainName,
+            basePath: awsConfig.basePath,
+          },
+          hopsConfig: {
+            basePath: config.basePath,
+            assetPath: config.assetPath,
+          },
+        },
+        null,
+        2
+      )
+    );
     if (shouldIncludeStageInRequest) {
       request.url = context.requestContext.path;
     }

@@ -52,7 +52,8 @@ Resources:
         swagger: 2.0
         info:
           title: !Sub 'Hops Serverless Express (${AWS::StackName})'
-        basePath: !Sub '/${BasePath}'
+        basePath:
+          !If [HasCustomBasePath, !Sub '/${BasePath}', !Sub '/${StageName}']
         schemes:
           - https
         paths:
@@ -202,33 +203,92 @@ Resources:
       Role: !GetAtt LambdaExecutionRole.Arn
       Runtime: !Ref Runtime
       Timeout: 30
-      Events:
-        KeepWarm:
-          Type: Schedule
-          Properties:
-            Schedule: rate(5 minutes)
-            Input: !Sub >
-              {
-                "resource": "/",
-                "httpMethod": "GET",
-                "headers": {
-                  "Accept": "x-keep/warm,*/*",
-                  "Host": "${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}"
-                },
-                "requestContext": {
-                  "path": "/${BasePath}/"
-                },
-                "body": ""
-              }
+      # Events:
+      #   KeepWarm:
+      #     Type: Schedule
+      #     Properties:
+      #       Schedule: rate(5 minutes)
+      #       Input: !Sub >
+      #         {
+      #           "resource": "/",
+      #           "httpMethod": "GET",
+      #           "headers": {
+      #             "Accept": "x-keep/warm,*/*",
+      #             "Host": "${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}"
+      #           },
+      #           "requestContext": {
+      #             "path": "/${StageName}/"
+      #           },
+      #           "body": ""
+      #         }
 
-
+  WebCDN:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - DELETE
+            - GET
+            - HEAD
+            - OPTIONS
+            - PATCH
+            - POST
+            - PUT
+          CachedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          Compress: true
+          ForwardedValues:
+            Headers:
+              - Accept
+              - Referer
+              - Athorization
+              - Content-Type
+            QueryString: true
+          TargetOriginId: lambda
+          ViewerProtocolPolicy: redirect-to-https
+        CacheBehaviors:
+          - AllowedMethods:
+              - GET
+              - HEAD
+              - OPTIONS
+            CachedMethods:
+              - GET
+              - HEAD
+              - OPTIONS
+            Compress: true
+            ForwardedValues:
+              QueryString: false
+            PathPattern: !Sub '/${AssetPath}/*'
+            TargetOriginId: assets
+            ViewerProtocolPolicy: redirect-to-https
+        Enabled: true
+        Origins:
+          - Id: assets
+            DomainName: !Sub '${BucketName}.s3.${AWS::URLSuffix}'
+            OriginPath: !Sub '/${DistDir}'
+            S3OriginConfig:
+              OriginAccessIdentity:
+                Ref: AWS::NoValue
+          - Id: lambda
+            DomainName: !Sub '${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}'
+            OriginPath:
+              !If [HasCustomBasePath, !Sub '/${BasePath}', !Sub '/${StageName}']
+            OriginCustomHeaders:
+              - HeaderName: X-Hops-BasePath
+                HeaderValue: !Sub '/${BasePath}'
+            CustomOriginConfig:
+              OriginProtocolPolicy: https-only
+        PriceClass: PriceClass_100
 
 Outputs:
   DistributionDomainName:
     Value: !If
       - ShouldAddCustomDomain
       - !GetAtt CustomDomainName.DistributionDomainName
-      - ''
+      - !GetAtt WebCDN.DomainName
   Url:
     Value: !If
       - ShouldAddCustomDomain
@@ -237,4 +297,4 @@ Outputs:
           !Sub 'https://${DomainName}/${BasePath}/',
           !Sub 'https://${DomainName}/',
         ]
-      - !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/${BasePath}/'
+      - !GetAtt WebCDN.DomainName
