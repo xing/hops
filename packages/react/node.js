@@ -39,7 +39,7 @@ exports.ReactContext.prototype = {
       reactElement
     );
   },
-  getTemplateData: function(templateData) {
+  getTemplateData: function(templateData, rootElement) {
     return Object.assign({}, templateData, {
       routerContext: this.routerOptions.context,
       assets: hopsConfig.assets,
@@ -71,9 +71,11 @@ exports.render = function(reactElement, _context) {
         return renderContext.enhanceElement(reactElement);
       })
       .then(function(rootElement) {
-        return renderContext.getTemplateData({}).then(function(templateData) {
-          return { templateData, rootElement };
-        });
+        return renderContext
+          .getTemplateData({}, rootElement)
+          .then(function(templateData) {
+            return { templateData: templateData, rootElement: rootElement };
+          });
       })
       .then(function(result) {
         var templateData = result.templateData;
