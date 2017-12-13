@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders loaded state correctly 1`] = `
+<div>
+  <h1
+    className="headline"
+  >
+    Hello World!
+  </h1>
+  <p>
+    <a
+      href="https://github.com/xing/hops/commit/commit-sha-0"
+    >
+      "
+      commit message
+      "
+    </a>
+     
+    by 
+    <b>
+      commit author login
+    </b>
+  </p>
+  <p>
+    <a
+      href="https://github.com/xing/hops/commit/commit-sha-1"
+    >
+      "
+      commit message
+      "
+    </a>
+     
+    by 
+    <b>
+      commit author name
+    </b>
+  </p>
+</div>
+`;
+
+exports[`renders loading state correctly 1`] = `
+<div>
+  <h1
+    className="headline"
+  >
+    Hello World!
+  </h1>
+  <div>
+    loading commits...
+  </div>
+</div>
+`;
