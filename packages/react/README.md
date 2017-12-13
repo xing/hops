@@ -105,6 +105,10 @@ The `bootstrap` lifecyle hook allows you to set up your application and perform 
 
 By implementing `enhanceElement`, you can wrap your application's root element in additional, usually purely functional components such as Redux's or React-Intl's `Provider`s. This way, you can keep the low-level (plumbing) parts of your application nicely separated from the high-level (porcellain) parts.
 
+### `prepareRender(elementTree)` (Node.js only)
+
+This method is executed before gathering the template data / rendering the application. It gets passed in the element tree of the entire application that will be rendered (the result of all applied `enhanceElement` methods). You can use this method for example to analyze the component tree and do additional data fetching.
+
 ### `getTemplateData(templateData)` (Node.js only)
 
 `getTemplateData` is supposed to return an object that is being passed to the server-side template function. Please check out hops-react's default template to get an idea on what keys are supported.
