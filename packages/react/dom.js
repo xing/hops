@@ -49,17 +49,21 @@ exports.render = function(reactElement, context) {
     } else {
       mountpoint.setAttribute('data-hopsroot', '');
     }
-    return context.bootstrap().then(function() {
-      return context
-        .enhanceElement(reactElement)
-        .then(function(enhancedElement) {
-          if (ReactDOM.hydrate && !isMounted) {
-            ReactDOM.hydrate(enhancedElement, mountpoint);
-          } else {
-            ReactDOM.render(enhancedElement, mountpoint);
-          }
-        });
-    });
+    return context
+      .bootstrap()
+      .then(function() {
+        return context.enhanceElement(reactElement);
+      })
+      .then(function(enhancedElement) {
+        if (ReactDOM.hydrate && !isMounted) {
+          ReactDOM.hydrate(enhancedElement, mountpoint);
+        } else {
+          ReactDOM.render(enhancedElement, mountpoint);
+        }
+      })
+      .catch(function(error) {
+        console.error('Error while rendering:', error);
+      });
   };
 };
 

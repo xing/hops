@@ -67,28 +67,27 @@ exports.render = function(reactElement, _context) {
     renderContext
       .bootstrap()
       .then(function() {
-        return renderContext
-          .enhanceElement(reactElement)
-          .then(function(enhancedElement) {
-            return renderContext
-              .getTemplateData({
-                markup: ReactDOM.renderToString(enhancedElement),
-              })
-              .then(function(templateData) {
-                var routerContext = templateData.routerContext;
-                if (routerContext.miss) {
-                  next();
-                } else if (routerContext.url) {
-                  res.status(routerContext.status || 301);
-                  res.set('Location', routerContext.url);
-                  res.end();
-                } else {
-                  res.status(routerContext.status || 200);
-                  res.type('html');
-                  res.send(renderContext.renderTemplate(templateData));
-                }
-              });
-          });
+        return renderContext.enhanceElement(reactElement);
+      })
+      .then(function(rootElement) {
+        return renderContext.getTemplateData({
+          markup: ReactDOM.renderToString(rootElement),
+        });
+      })
+      .then(function(templateData) {
+        var routerContext = templateData.routerContext;
+
+        if (routerContext.miss) {
+          next();
+        } else if (routerContext.url) {
+          res.status(routerContext.status || 301);
+          res.set('Location', routerContext.url);
+          res.end();
+        } else {
+          res.status(routerContext.status || 200);
+          res.type('html');
+          res.send(renderContext.renderTemplate(templateData));
+        }
       })
       .catch(next);
   };
