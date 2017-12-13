@@ -13,6 +13,7 @@ var defaultTemplate = require('./lib/template');
 exports.combineContexts = mixinable({
   bootstrap: mixinable.async.parallel,
   enhanceElement: mixinable.async.compose,
+  prepareRender: mixinable.async.parallel,
   getTemplateData: mixinable.async.pipe,
   renderTemplate: mixinable.override,
 });
@@ -42,14 +43,20 @@ exports.ReactContext.prototype = {
   getTemplateData: function(templateData) {
     return Object.assign({}, templateData, {
       routerContext: this.routerOptions.context,
-      helmet: Helmet.renderStatic(),
       assets: hopsConfig.assets,
       manifest: hopsConfig.manifest,
       globals: templateData.globals || [],
     });
   },
   renderTemplate: function(templateData) {
-    return this.template(templateData);
+    return this.template(
+      Object.assign(
+        {
+          helmet: Helmet.renderStatic(),
+        },
+        templateData
+      )
+    );
   },
 };
 
@@ -70,12 +77,27 @@ exports.render = function(reactElement, _context) {
         return renderContext.enhanceElement(reactElement);
       })
       .then(function(elementTree) {
-        return renderContext.getTemplateData({
-          markup: ReactDOM.renderToString(elementTree),
+        renderContext.prepareRender(elementTree).then(function() {
+          return elementTree;
         });
       })
-      .then(function(templateData) {
+      .then(function(elementTree) {
+        return renderContext.getTemplateData({}).then(function(templateData) {
+          return { elementTree, templateData };
+        });
+      })
+      .then(function(data) {
+        var elementTree = data.elementTree;
+        var templateData = data.templateData;
         var routerContext = templateData.routerContext;
+        var markup = renderContext.renderTemplate(
+          Object.assign(
+            {
+              markup: ReactDOM.renderToString(elementTree),
+            },
+            templateData
+          )
+        );
 
         if (routerContext.miss) {
           next();
@@ -86,7 +108,7 @@ exports.render = function(reactElement, _context) {
         } else {
           res.status(routerContext.status || 200);
           res.type('html');
-          res.send(renderContext.renderTemplate(templateData));
+          res.send(markup);
         }
       })
       .catch(next);
