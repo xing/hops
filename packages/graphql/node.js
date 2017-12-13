@@ -12,12 +12,6 @@ exports.GraphQLContext = function() {
   return common.constructor.apply(this, arguments);
 };
 exports.GraphQLContext.prototype = Object.assign({}, common, {
-  enhanceElement: function(reactElement) {
-    var enhancedElement = common.enhanceElement.call(this, reactElement);
-    return ReactApollo.getDataFromTree(enhancedElement).then(function() {
-      return enhancedElement;
-    });
-  },
   enhanceClientOptions: function(options) {
     return Object.assign(common.enhanceClientOptions.call(this, options), {
       ssrMode: true,
@@ -26,19 +20,23 @@ exports.GraphQLContext.prototype = Object.assign({}, common, {
   getIntrospectionResult: function() {
     return introspectionResult;
   },
-  getTemplateData: function(templateData) {
-    return Object.assign({}, templateData, {
-      globals: (templateData.globals || []).concat([
-        {
-          name: constants.APOLLO_IQRD,
-          value: this.getIntrospectionResult(),
-        },
-        {
-          name: constants.APOLLO_STATE,
-          value: this.client.cache.extract(),
-        },
-      ]),
-    });
+  getTemplateData: function(templateData, rootElement) {
+    return ReactApollo.getDataFromTree(rootElement).then(
+      function() {
+        return Object.assign({}, templateData, {
+          globals: (templateData.globals || []).concat([
+            {
+              name: constants.APOLLO_IQRD,
+              value: this.getIntrospectionResult(),
+            },
+            {
+              name: constants.APOLLO_STATE,
+              value: this.client.cache.extract(),
+            },
+          ]),
+        });
+      }.bind(this)
+    );
   },
 });
 
