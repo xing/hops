@@ -44,6 +44,12 @@ Hops comes with a couple of different project templates you can use with `hops i
 | [Hops Template React](https://github.com/xing/hops/tree/master/packages/template-react)     | [![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)     |
 | [Hops Template GraphQL](https://github.com/xing/hops/tree/master/packages/template-graphql) | [![npm](https://img.shields.io/npm/v/hops-template-graphql.svg)](https://www.npmjs.com/package/hops-template-graphql) |
 
+If, for example, you want to bootstrap your project to use both React and GraphQL, you will have to call `hops init` like this:
+
+```shell
+hops init my-graphql-project --template hops-template-graphql
+```
+
 ### General Usage
 
 Hops is quite modular, its components being independently published on npm. Its main building blocks, however, rely upon each other:
