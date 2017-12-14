@@ -7,4 +7,10 @@ exports.default = {
   },
 };
 
-exports.node = {};
+exports.node = {
+  test: /(packages\/|hops-)config\/index\.js$/,
+  use: {
+    loader: require.resolve('../../loaders/config'),
+    options: { target: 'node' },
+  },
+};

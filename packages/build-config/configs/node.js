@@ -25,6 +25,7 @@ function shouldIncludeExternalModuleInBundle(module) {
   return (
     module.indexOf('core-js') === 0 ||
     module.indexOf('babel-polyfill') === 0 ||
+    module.indexOf('hops-config') === 0 ||
     checkEsnext(module)
   );
 }
