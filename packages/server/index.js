@@ -27,19 +27,28 @@ exports.run = function run(app, callback) {
 };
 
 exports.rewritePath = function rewritePath(req, res, next) {
-  var location = hopsConfig.locations.find(function(location) {
-    return (
-      location !== hopsConfig.basePath + '/' && req.url.indexOf(location) === 0
-    );
-  });
-  if (location) {
-    req.url = location.replace(/([^\\/])$/, '$1/');
+  if (
+    process.env.HOPS_MODE === 'static' &&
+    Array.isArray(hopsConfig.locations)
+  ) {
+    var location = hopsConfig.locations.find(function(location) {
+      return (
+        location !== hopsConfig.basePath + '/' &&
+        req.url.indexOf(location) === 0
+      );
+    });
+    if (location) {
+      req.url = location.replace(/([^\\/])$/, '$1/');
+    }
   }
   next();
 };
 
 exports.registerMiddleware = function registerMiddleware(app, middleware) {
-  if (hopsConfig.locations.length) {
+  if (
+    process.env.HOPS_MODE === 'static' &&
+    Array.isArray(hopsConfig.locations)
+  ) {
     hopsConfig.locations.forEach(function(location) {
       app.get(location === '/' ? location : location + '*', middleware);
     });
