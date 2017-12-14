@@ -34,6 +34,16 @@ This will start hops in development mode. Visit [http://localhost:8080](http://l
 
 If you want to build the JS bundles for production, run `npm run build` in your terminal and to start a Node.js server just type in `npm start --production`.
 
+### Project Templates
+
+Hops comes with a couple of different project templates you can use with `hops init --template`. If you do not explicitly select one, `hops init` defaults to `hops-template-react`.
+
+| Package                                                                                     | NPM                                                                                                                   |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [Hops Template Minimal](https://github.com/xing/hops/tree/master/packages/template-minimal) | [![npm](https://img.shields.io/npm/v/hops-template-minimal.svg)](https://www.npmjs.com/package/hops-template-minimal) |
+| [Hops Template React](https://github.com/xing/hops/tree/master/packages/template-react)     | [![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)     |
+| [Hops Template GraphQL](https://github.com/xing/hops/tree/master/packages/template-graphql) | [![npm](https://img.shields.io/npm/v/hops-template-graphql.svg)](https://www.npmjs.com/package/hops-template-graphql) |
+
 ### General Usage
 
 Hops is quite modular, its components being independently published on npm. Its main building blocks, however, rely upon each other:
