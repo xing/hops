@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.3.0"></a>
+# [9.3.0](https://github.com/xing/hops/compare/v9.2.0...v9.3.0) (2017-12-14)
+
+
+### Features
+
+* **build-config:** make environment variables configurable ([27de5fe](https://github.com/xing/hops/commit/27de5fe))
+
+
+
+
 <a name="9.1.1"></a>
 ## [9.1.1](https://github.com/xing/hops/compare/v9.1.0...v9.1.1) (2017-12-05)
 

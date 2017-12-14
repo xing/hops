@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.3.0"></a>
+# [9.3.0](https://github.com/xing/hops/compare/v9.2.0...v9.3.0) (2017-12-14)
+
+
+### Bug Fixes
+
+* **server:** only rewrite path if run in static mode ([0bf7073](https://github.com/xing/hops/commit/0bf7073))
+
+
+### Features
+
+* **build-config:** make environment variables configurable ([27de5fe](https://github.com/xing/hops/commit/27de5fe))
+* **config:** add envVars config ([a619eb4](https://github.com/xing/hops/commit/a619eb4))
+* **template-graphql:** Add grapqhl example template ([0a65138](https://github.com/xing/hops/commit/0a65138))
+
+
+
+
 <a name="9.2.0"></a>
 # [9.2.0](https://github.com/xing/hops/compare/v9.1.1...v9.2.0) (2017-12-11)
 

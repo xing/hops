@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "9.2.0",
+  "version": "9.3.0",
   "description": "React and ReactRouter setup for Hops",
   "keywords": ["hops", "react", "react-router"],
   "license": "MIT",
@@ -8,7 +8,7 @@
   "browser": "dom.js",
   "files": ["dom.js", "node.js", "lib"],
   "dependencies": {
-    "hops-config": "9.1.1",
+    "hops-config": "9.3.0",
     "mixinable": "1.2.1",
     "serialize-javascript": "^1.4.0"
   },

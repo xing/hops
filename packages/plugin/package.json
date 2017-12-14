@@ -1,6 +1,6 @@
 {
   "name": "hops-plugin",
-  "version": "9.1.1",
+  "version": "9.3.0",
   "description": "Hops Webpack plugin using Webpack to render HTML",
   "keywords": ["hops", "webpack"],
   "license": "MIT",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "directory-index": "^0.1.0",
-    "hops-renderer": "9.1.1",
+    "hops-renderer": "9.3.0",
     "webpack-sources": "^1.0.1"
   }
 }
