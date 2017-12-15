@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.3.1"></a>
+## [9.3.1](https://github.com/xing/hops/compare/v9.3.0...v9.3.1) (2017-12-15)
+
+
+### Bug Fixes
+
+* **build:** add missing hops-renderer dependency ([7420e0b](https://github.com/xing/hops/commit/7420e0b))
+
+
+
+
 <a name="9.3.0"></a>
 # [9.3.0](https://github.com/xing/hops/compare/v9.2.0...v9.3.0) (2017-12-14)
 
