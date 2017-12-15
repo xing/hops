@@ -1,7 +1,7 @@
 'use strict';
 
 var serverlessHttp = require('serverless-http');
-var app = require('hops-express').createApp();
+var app = require('hops-express').createApp({});
 
 // NOTE: If you get ERR_CONTENT_DECODING_FAILED in your browser, this is likely
 // due to a compressed response (e.g. gzip) which has not been handled correctly
