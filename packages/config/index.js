@@ -4,8 +4,6 @@ var path = require('path');
 
 var root = require('pkg-dir').sync(process.cwd());
 
-var manifestUtil = require('./lib/manifest-util');
-
 var npmConfig = require('./lib/parse-env')('hops');
 if (!Object.keys(npmConfig).length) {
   try {
@@ -93,8 +91,6 @@ module.exports = freeze(
         appDir: '.',
         buildDir: 'build',
         cacheDir: 'node_modules/.cache/hops',
-        manifest: manifestUtil.getManifest,
-        assets: manifestUtil.getAssets,
       })
     )
   )
