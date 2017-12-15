@@ -20,6 +20,7 @@
     "hops-build-config": "9.3.0",
     "hops-config": "9.3.0",
     "hops-middleware": "9.1.1",
+    "hops-renderer": "9.3.0",
     "hops-server": "9.3.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2",
