@@ -159,11 +159,14 @@ var localCliPath = getLocalCliPath();
 
 var isInsideHopsProject = false;
 try {
-  var manifest = require(path.resolve(process.cwd(), 'package.json'));
+  var hopsRoot = require('pkg-dir').sync(process.cwd());
+  var manifest = require(path.join(hopsRoot, 'package.json'));
   var dependencies = Object.keys(manifest.dependencies || {}).concat(
     Object.keys(manifest.devDependencies || {})
   );
-  isInsideHopsProject = dependencies.indexOf('hops-local-cli') > -1;
+  isInsideHopsProject = PACKAGES_TO_INSTALL.every(function(dependency) {
+    return dependencies.indexOf(dependency) > -1;
+  });
 } catch (error) {
   isInsideHopsProject = false;
 }
@@ -189,9 +192,9 @@ if (isInsideHopsProject) {
   });
 
   validateName(name);
-  createDirectory(path.resolve(root, name));
-  writePackageManifest(path.resolve(root, name));
-  process.chdir(path.resolve(root, name));
+  createDirectory(path.join(root, name));
+  writePackageManifest(path.join(root, name));
+  process.chdir(path.join(root, name));
   installPackages(versionedPackages, options);
   require(getLocalCliPath()).init(root, name, options);
 }
