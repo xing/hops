@@ -5,8 +5,8 @@ var loaderUtils = require('loader-utils');
 var hopsConfig = require('hops-config');
 
 function getConfig() {
-  return (
-    'module.exports = ' +
+  return [
+    'module.exports = ',
     JSON.stringify(
       Object.assign(
         {},
@@ -28,15 +28,60 @@ function getConfig() {
             return result;
           }, {})
       )
-    )
-  );
+    ),
+    ';',
+  ].join('');
 }
 
 function getNodeConfig() {
   return [
+    'var fs = require("fs");',
     'var path = require("path");',
-    'var expand = path.join.bind(path, process.cwd());',
-    getConfig().replace(/(config|file|dir)":"(\.[^"]+)"/gi, '$1":expand("$2")'),
+    'var root = require("pkg-dir").sync(process.cwd());',
+    'var expand = path.join.bind(path, root);',
+    getConfig()
+      .replace(/(config|file|dir)s?":"(\.[^"]*)"/gi, '$1":expand("$2")')
+      .replace(/((?:config|file|dir)s?":)\[([^\]]+)\]/gi, function() {
+        return (
+          arguments[1] +
+          '[' +
+          arguments[2]
+            .split(',')
+            .map(function(p) {
+              return 'expand(' + p + ')';
+            })
+            .join(',') +
+          ']'
+        );
+      }),
+    'var manifest = "";',
+    'var assets = { js: [], css: [] };',
+    'Object.defineProperties(module.exports, {',
+    '  manifest: {',
+    '    enumerable: true,',
+    '    get: function() {',
+    '      if (!manifest) {',
+    '        var fp = path.resolve(module.exports.cacheDir, "manifest.js");',
+    '        if (fs.existsSync(fp)) {',
+    '          manifest = fs.readFileSync(fp, "utf8");',
+    '        }',
+    '      }',
+    '      return manifest;',
+    '    },',
+    '  },',
+    '  assets: {',
+    '    enumerable: true,',
+    '    get: function() {',
+    '      if (!assets.js.length) {',
+    '        var fp = path.resolve(module.exports.cacheDir, "manifest.json");',
+    '        if (fs.existsSync(fp)) {',
+    '          assets = JSON.parse(fs.readFileSync(fp, "utf8"));',
+    '        }',
+    '      }',
+    '      return assets;',
+    '    },',
+    '  },',
+    '});',
   ].join('');
 }
 
