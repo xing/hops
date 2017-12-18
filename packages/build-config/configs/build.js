@@ -29,7 +29,7 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new StatsWriterPlugin({ fields: null }),
-    new WriteFilePlugin(/^manifest\.js?$/),
+    new WriteFilePlugin(/^manifest\.js(\.map)?$/),
     new WriteManifestPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
