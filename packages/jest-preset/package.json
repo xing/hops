@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "babel-core": "^6.26.0",
-    "babel-jest": "21",
+    "babel-jest": "^22.0.4",
     "hops-build-config": "9.3.2",
     "identity-obj-proxy": "^3.0.0"
   },
   "peerDependencies": {
-    "jest": "^21.0.0 || ^22.0.0"
+    "jest": ">= 21.0.0 < 23.0.0"
   }
 }
