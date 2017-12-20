@@ -29,6 +29,9 @@ function mergePackageManifest(oldManifest, newManifest) {
     dependencies: sortObjectKeys(
       Object.assign(newManifest.dependencies, oldManifest.dependencies)
     ),
+    devDependencies: sortObjectKeys(
+      Object.assign(newManifest.devDependencies, oldManifest.devDependencies)
+    ),
   });
 }
 
@@ -89,7 +92,7 @@ function init(root, appName, options) {
           pathToPackageManifest,
           mergePackageManifest(oldPackageManifest, newPackageManifest)
         );
-        pm.installPackages(options);
+        pm.installPackages([], null, options);
 
         console.log('Hooray \\o/');
         console.log('Your project has been successfully created.');

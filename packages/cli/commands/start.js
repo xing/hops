@@ -49,5 +49,5 @@ module.exports = function defineStartCommand(args) {
 };
 
 if (require.main === module) {
-  require('hops-local-cli').run(module.exports, 'start');
+  require('..').run(module.exports, 'start');
 }

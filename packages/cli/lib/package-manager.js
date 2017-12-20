@@ -17,18 +17,52 @@ function execIgnoreStdError(command, options) {
   return result.toString('utf-8').trim();
 }
 
+function isYarnAvailable() {
+  try {
+    execSync('yarn --version', { stdio: 'ignore' });
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+module.exports.isYarnAvailable = isYarnAvailable;
+
 function isGlobalCliUsingYarn(projectPath, options) {
   return fs.existsSync(path.join(projectPath, 'yarn.lock'));
 }
 module.exports.isGlobalCliUsingYarn = isGlobalCliUsingYarn;
 
-function installPackages(options) {
-  var command = options.npm ? 'npm install' : 'yarn install';
+function installPackages(packages, type, options) {
+  var command = null;
+
+  if (isYarnAvailable() && !options.npm) {
+    command =
+      packages.length === 0 ? ['yarn', 'install'] : ['yarn', 'add', '--exact'];
+    if (type === 'dev') {
+      command.push('--dev');
+    }
+  } else {
+    command =
+      packages.length === 0
+        ? ['npm', 'install']
+        : [
+            'npm',
+            'install',
+            type === 'dev' ? '--save-dev' : '--save',
+            '--save-exact',
+          ];
+  }
+  if (options.verbose) {
+    command.push('--verbose');
+  }
+
+  Array.prototype.push.apply(command, packages);
+
   try {
     if (options.verbose) {
-      console.log('Executing:', command);
+      console.log('Executing:', command.join(' '));
     }
-    (options.execSync || execSync)(command, { stdio: 'inherit' });
+    (options.execSync || execSync)(command.join(' '), { stdio: 'inherit' });
     return true;
   } catch (error) {
     console.error(error.message);

@@ -1,21 +1,23 @@
 {
-  "name": "hops-cli",
+  "name": "hops",
   "version": "9.3.2",
-  "description": "Global CLI module to initialize new hops projects",
+  "description": "CLI tool to create, build and run Hops applications",
   "keywords": ["hops", "cli"],
   "license": "MIT",
   "bin": {
     "hops": "hops.js"
   },
-  "preferGlobal": true,
-  "files": ["hops.js"],
+  "main": "index.js",
+  "files": ["commands", "lib", "hops.js", "index.js", "init.js", "run.js"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "hops-config": "9.3.0",
     "pkg-dir": "^2.0.0",
     "resolve-cwd": "^2.0.0",
+    "tar": "^4.0.1",
     "validate-npm-package-name": "^3.0.0",
     "yargs": "^10.0.3"
   }
