@@ -27,5 +27,10 @@ module.exports = function defineGraphQLCommand(args) {
 };
 
 if (require.main === module) {
-  require('hops-local-cli').run(module.exports, 'graphql');
+  try {
+    require.resolve('hops-local-cli');
+    require('hops-local-cli').run(module.exports, 'graphql');
+  } catch (_) {
+    require('hops').run(module.exports, 'graphql');
+  }
 }
