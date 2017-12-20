@@ -6,12 +6,11 @@
     "test": "mocha --exit '*.js'"
   },
   "devDependencies": {
+    "hops": "9.3.2",
     "hops-build": "9.3.2",
     "hops-build-config": "9.3.2",
-    "hops-cli": "9.3.2",
     "hops-config": "9.3.0",
     "hops-express": "9.3.0",
-    "hops-local-cli": "9.3.2",
     "hops-middleware": "9.1.1",
     "hops-plugin": "9.3.0",
     "hops-react": "9.3.0",

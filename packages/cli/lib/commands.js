@@ -5,7 +5,7 @@ var path = require('path');
 
 var hopsConfig = require('hops-config');
 
-var binDir = path.resolve(hopsConfig.appDir, 'node_modules', '.bin');
+var binDir = path.join(hopsConfig.appDir, 'node_modules', '.bin');
 
 module.exports = function findCommands() {
   if (fs.existsSync(binDir)) {
@@ -16,7 +16,8 @@ module.exports = function findCommands() {
       })
       .map(function(command) {
         return path.join(binDir, command);
-      });
+      })
+      .concat(path.join(__dirname, '..', 'commands', 'start.js'));
   } else {
     return [];
   }

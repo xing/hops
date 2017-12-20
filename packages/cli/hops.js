@@ -3,21 +3,23 @@
 
 var fs = require('fs');
 var path = require('path');
-var execSync = require('child_process').execSync;
 var resolveCwd = require('resolve-cwd');
 var validatePackageName = require('validate-npm-package-name');
+var pm = require('./lib/package-manager');
 
 var packageManifest = require('./package.json');
 
 var getLocalCliPath = function() {
   try {
     return resolveCwd('hops-local-cli');
-  } catch (error) {
-    return null;
-  }
-};
+  } catch (_) {}
 
-var PACKAGES_TO_INSTALL = ['hops-local-cli'];
+  try {
+    return resolveCwd('hops');
+  } catch (_) {}
+
+  return null;
+};
 
 function globalCLI(argv) {
   return require('yargs')
@@ -36,7 +38,7 @@ function globalCLI(argv) {
     })
     .option('hops-version', {
       type: 'string',
-      describe: 'Which version (or npm dist-tag) of hops-local-cli to use',
+      describe: 'Which version (or npm dist-tag) of hops to use',
       default: 'latest',
     })
     .option('verbose', {
@@ -118,53 +120,16 @@ function writePackageManifest(root) {
   );
 }
 
-function isYarnAvailable() {
-  try {
-    execSync('yarn --version', { stdio: 'ignore' });
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
-
-function installPackages(packages, options) {
-  var command = null;
-  var shouldUseYarn = isYarnAvailable() && !options.npm;
-  if (shouldUseYarn) {
-    command = ['yarn', 'add', '--exact'];
-  } else {
-    command = ['npm', 'install', '--save', '--save-exact'];
-  }
-  if (options.verbose) {
-    command.push('--verbose');
-  }
-  Array.prototype.push.apply(command, packages);
-
-  try {
-    if (options.verbose) {
-      console.log('Executing command: "', command.join(' '), '"');
-    }
-    execSync(command.join(' '), { stdio: 'inherit' });
-  } catch (error) {
-    console.error(error.message);
-    if (options.verbose) {
-      console.error(error);
-      console.error('Command: "', command.join(' '), '" has failed.');
-    }
-    process.exit(1);
-  }
-}
-
 var localCliPath = getLocalCliPath();
 
 var isInsideHopsProject = false;
 try {
-  var hopsRoot = require('pkg-dir').sync(process.cwd());
+  var hopsRoot = require('hops-config').appDir;
   var manifest = require(path.join(hopsRoot, 'package.json'));
   var dependencies = Object.keys(manifest.dependencies || {}).concat(
     Object.keys(manifest.devDependencies || {})
   );
-  isInsideHopsProject = PACKAGES_TO_INSTALL.every(function(dependency) {
+  isInsideHopsProject = ['hops', 'hops-local-cli'].some(function(dependency) {
     return dependencies.indexOf(dependency) > -1;
   });
 } catch (error) {
@@ -178,7 +143,9 @@ if (isInsideHopsProject) {
     console.error(
       'It appears that we are inside a hops project but the dependencies have',
       'not been installed.\n',
-      'Please execute "' + (isYarnAvailable() ? 'yarn' : 'npm') + ' install"',
+      'Please execute "' +
+        (pm.isYarnAvailable() ? 'yarn' : 'npm') +
+        ' install"',
       'and retry.'
     );
     process.exit(1);
@@ -187,14 +154,11 @@ if (isInsideHopsProject) {
   var options = globalCLI(process.argv.slice(2));
   var name = options.projectName;
   var root = process.cwd();
-  var versionedPackages = PACKAGES_TO_INSTALL.map(function(name) {
-    return name + '@' + options.hopsVersion;
-  });
 
   validateName(name);
   createDirectory(path.join(root, name));
   writePackageManifest(path.join(root, name));
   process.chdir(path.join(root, name));
-  installPackages(versionedPackages, options);
+  pm.installPackages(['hops@' + options.hopsVersion], 'dev', options);
   require(getLocalCliPath()).init(root, name, options);
 }

@@ -23,8 +23,18 @@ Hops is designed to simplify getting started with modern frontend tooling. It st
 
 If you just want to get started with hops + react you can execute the following command to initialize a small example app:
 
+If you have npm >= 5.2.0 installed:
+
 ```shell
-npm install -g hops-cli
+npx hops init my-awesome-project
+cd my-awesome-project
+npm start
+```
+
+Otherwise:
+
+```shell
+npm install --global hops
 hops init my-awesome-project
 cd my-awesome-project
 npm start
@@ -56,13 +66,12 @@ Hops is quite modular, its components being independently published on npm. Its 
 
 | Package                                                                             | NPM                                                                                                           |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [Hops (CLI)](https://github.com/xing/hops/tree/master/packages/cli)                 | [![npm](https://img.shields.io/npm/v/hops.svg)](https://www.npmjs.com/package/hops-cli)                       |
 | [Hops React](https://github.com/xing/hops/tree/master/packages/react)               | [![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)               |
 | [Hops Redux](https://github.com/xing/hops/tree/master/packages/redux)               | [![npm](https://img.shields.io/npm/v/hops-redux.svg)](https://www.npmjs.com/package/hops-redux)               |
 | [Hops GraphQL](https://github.com/xing/hops/tree/master/packages/graphql)           | [![npm](https://img.shields.io/npm/v/hops-graphql.svg)](https://www.npmjs.com/package/hops-graphql)           |
 | [Hops Express](https://github.com/xing/hops/tree/master/packages/express)           | [![npm](https://img.shields.io/npm/v/hops-express.svg)](https://www.npmjs.com/package/hops-express)           |
 | [Hops Lambda](https://github.com/xing/hops/tree/master/packages/lambda)             | [![npm](https://img.shields.io/npm/v/hops-lambda.svg)](https://www.npmjs.com/package/hops-lambda)             |
-| [Hops Global CLI](https://github.com/xing/hops/tree/master/packages/cli)            | [![npm](https://img.shields.io/npm/v/hops-cli.svg)](https://www.npmjs.com/package/hops-cli)                   |
-| [Hops Local CLI](https://github.com/xing/hops/tree/master/packages/local-cli)       | [![npm](https://img.shields.io/npm/v/hops-local-cli.svg)](https://www.npmjs.com/package/hops-local-cli)       |
 | [Hops Build](https://github.com/xing/hops/tree/master/packages/build)               | [![npm](https://img.shields.io/npm/v/hops-build.svg)](https://www.npmjs.com/package/hops-build)               |
 | [Hops Config](https://github.com/xing/hops/tree/master/packages/config)             | [![npm](https://img.shields.io/npm/v/hops-config.svg)](https://www.npmjs.com/package/hops-config)             |
 | [Hops Build Config](https://github.com/xing/hops/tree/master/packages/build-config) | [![npm](https://img.shields.io/npm/v/hops-build-config.svg)](https://www.npmjs.com/package/hops-build-config) |
