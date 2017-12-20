@@ -32,8 +32,8 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "hops": "9.3.2",
     "hops-build": "9.3.2",
-    "hops-local-cli": "9.3.2",
     "jest": "^21.2.1",
     "jest-preset-hops": "9.3.2",
     "react-test-renderer": "^16.0.0"
