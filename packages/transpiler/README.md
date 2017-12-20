@@ -1,5 +1,9 @@
 # Hops Transpiler
 
+![deprecated](https://img.shields.io/badge/status-deprecated-red.svg)
+
+**This package is deprecated. Please use [hops-middleware](https://www.npmjs.com/package/hops-middleware) instead.**
+
 [![npm](https://img.shields.io/npm/v/hops-transpiler.svg)](https://www.npmjs.com/package/hops-transpiler)
 
 Hops transpiler is a very simple wrapper around Webpack's compiler and it is its most bare-bones, lowest-level component. It exports a function creating an event emitter that is set up to emit three kinds of events: `start`, `success` and `error`.
