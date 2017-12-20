@@ -1,5 +1,9 @@
 # Hops CLI
 
+![deprecated](https://img.shields.io/badge/status-deprecated-red.svg)
+
+**This package is deprecated. Please use the [hops (CLI) package](https://www.npmjs.com/package/hops) instead.**
+
 [![npm](https://img.shields.io/npm/v/hops-cli.svg)](https://www.npmjs.com/package/hops-cli)
 
 hops-cli provides a `hops` binary that should be installed globally.
