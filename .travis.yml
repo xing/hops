@@ -9,6 +9,10 @@ install:
 before_script:
   - yarn run bootstrap
 
+script:
+  - yarn test
+  - yarn lint
+
 node_js:
 - '6'
 - '7'
