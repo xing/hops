@@ -63,9 +63,7 @@
     "extends": ["semistandard", "prettier"],
     "plugins": ["react", "prettier"],
     "rules": {
-      "prettier/prettier": "error",
-      "indent": ["warn", 2],
-      "max-len": ["warn", 80]
+      "prettier/prettier": "error"
     },
     "parserOptions": {
       "ecmaVersion": 5,
