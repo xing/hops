@@ -42,5 +42,10 @@ module.exports = function defineBuildCommand(args) {
 };
 
 if (require.main === module) {
-  require('hops-local-cli').run(module.exports, 'build');
+  try {
+    require.resolve('hops-local-cli');
+    require('hops-local-cli').run(module.exports, 'build');
+  } catch (_) {
+    require('hops').run(module.exports, 'build');
+  }
 }

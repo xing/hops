@@ -33,5 +33,10 @@ module.exports = function defineDevelopCommand(args) {
 };
 
 if (require.main === module) {
-  require('hops-local-cli').run(module.exports, 'develop');
+  try {
+    require.resolve('hops-local-cli');
+    require('hops-local-cli').run(module.exports, 'develop');
+  } catch (_) {
+    require('hops').run(module.exports, 'develop');
+  }
 }
