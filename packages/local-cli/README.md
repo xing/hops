@@ -1,5 +1,9 @@
 # Hops Local CLI
 
+![deprecated](https://img.shields.io/badge/status-deprecated-red.svg)
+
+**This package is deprecated. Please use the [hops (CLI) package](https://www.npmjs.com/package/hops) instead.**
+
 [![npm](https://img.shields.io/npm/v/hops-local-cli.svg)](https://www.npmjs.com/package/hops-local-cli)
 
 hops-local-cli provides a set of commands to manage your hops project. hops-local-cli will be automatically installed in projects created by calling [`hops init` (provided by hops-cli)](https://github.com/xing/hops/tree/master/packages/cli). In other projects it needs to be added as a dependency separately.
