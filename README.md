@@ -85,7 +85,6 @@ The following additional packages are rather low-level and you'll probably never
 | [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware) | [![npm](https://img.shields.io/npm/v/hops-middleware.svg)](https://www.npmjs.com/package/hops-middleware) |
 | [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/packages/plugin) | [![npm](https://img.shields.io/npm/v/hops-plugin.svg)](https://www.npmjs.com/package/hops-plugin)         |
 | [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)     | [![npm](https://img.shields.io/npm/v/hops-renderer.svg)](https://www.npmjs.com/package/hops-renderer)     |
-| [Hops Transpiler](https://github.com/xing/hops/tree/master/packages/transpiler) | [![npm](https://img.shields.io/npm/v/hops-transpiler.svg)](https://www.npmjs.com/package/hops-transpiler) |
 
 ### Contributing
 
