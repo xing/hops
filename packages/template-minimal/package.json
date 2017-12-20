@@ -14,9 +14,9 @@
     "build": "hops build"
   },
   "dependencies": {
+    "hops": "9.3.2",
     "hops-config": "9.3.0",
-    "hops-express": "9.3.0",
-    "hops-local-cli": "9.3.2"
+    "hops-express": "9.3.0"
   },
   "devDependencies": {
     "hops-build": "9.3.2"
