@@ -1,6 +1,6 @@
 {
   "name": "hops-build",
-  "version": "9.4.1",
+  "version": "9.4.2",
   "description": "Hops wrapper around webpack to execute a build",
   "keywords": ["hops", "webpack"],
   "license": "MIT",
@@ -19,8 +19,8 @@
     "filesize": "^3.5.11",
     "hops-build-config": "9.3.2",
     "hops-config": "9.3.0",
-    "hops-middleware": "9.4.1",
-    "hops-renderer": "9.4.1",
+    "hops-middleware": "9.4.2",
+    "hops-renderer": "9.4.2",
     "hops-server": "9.3.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2",

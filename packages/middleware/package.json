@@ -1,6 +1,6 @@
 {
   "name": "hops-middleware",
-  "version": "9.4.1",
+  "version": "9.4.2",
   "description": "Hops Express middleware leveraging Webpack",
   "keywords": ["hops", "webpack", "express"],
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "hops-renderer",
-  "version": "9.4.1",
+  "version": "9.4.2",
   "description": "Hops HTML renderer based on Webpack",
   "keywords": ["hops", "webpack"],
   "license": "MIT",
@@ -8,7 +8,7 @@
   "files": ["index.js"],
   "dependencies": {
     "hops-config": "9.3.0",
-    "hops-middleware": "9.4.1",
+    "hops-middleware": "9.4.2",
     "node-mocks-http": "^1.6.6"
   }
 }
