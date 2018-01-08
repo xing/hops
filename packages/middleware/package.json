@@ -1,6 +1,6 @@
 {
   "name": "hops-middleware",
-  "version": "9.1.1",
+  "version": "9.4.1",
   "description": "Hops Express middleware leveraging Webpack",
   "keywords": ["hops", "webpack", "express"],
   "license": "MIT",
@@ -11,6 +11,6 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-transpiler": "9.1.1"
+    "hops-transpiler": "9.4.1"
   }
 }

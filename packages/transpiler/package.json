@@ -1,6 +1,6 @@
 {
   "name": "hops-transpiler",
-  "version": "9.1.1",
+  "version": "9.4.1",
   "description": "Hops wrapper for Webpack",
   "keywords": ["hops", "webpack"],
   "license": "MIT",
