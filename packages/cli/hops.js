@@ -124,7 +124,7 @@ var localCliPath = getLocalCliPath();
 
 var isInsideHopsProject = false;
 try {
-  var hopsRoot = require('hops-config').appDir;
+  var hopsRoot = require('pkg-dir').sync();
   var manifest = require(path.join(hopsRoot, 'package.json'));
   var dependencies = Object.keys(manifest.dependencies || {}).concat(
     Object.keys(manifest.devDependencies || {})
