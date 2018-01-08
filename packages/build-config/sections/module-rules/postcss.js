@@ -7,7 +7,10 @@ var hopsConfig = require('hops-config');
 var cssLoaderOptions = {
   importLoaders: 1,
   modules: true,
-  localIdentName: '[folder]-[name]-[local]-[hash:8]',
+  localIdentName:
+    process.env.NODE_ENV === 'production'
+      ? '[hash:base64:8]'
+      : '[folder]-[name]-[local]-[hash:8]',
   sourceMap: false,
 };
 
