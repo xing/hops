@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "archiver": "^2.1.0",
-    "aws-sdk": "^2.135.0",
+    "aws-sdk": "^2.177.0",
     "globby": "^7.1.1",
     "hops-config": "9.3.0",
     "prompt": "^1.0.0",

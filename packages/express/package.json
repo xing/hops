@@ -19,6 +19,6 @@
     "helmet": "^3.8.2",
     "hops-config": "9.3.0",
     "hops-server": "9.3.0",
-    "mime": "^2.0.3"
+    "mime": "^2.2.0"
   }
 }
