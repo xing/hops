@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.4.0"></a>
+# [9.4.0](https://github.com/xing/hops/compare/v9.3.2...v9.4.0) (2018-01-08)
+
+
+### Features
+
+* **express:** make CLI commands compatible with hops-local-cli & hops ([2128951](https://github.com/xing/hops/commit/2128951))
+
+
+
+
 <a name="9.3.0"></a>
 # [9.3.0](https://github.com/xing/hops/compare/v9.2.0...v9.3.0) (2017-12-14)
 

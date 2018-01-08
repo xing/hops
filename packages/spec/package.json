@@ -1,18 +1,18 @@
 {
   "name": "hops-spec",
-  "version": "9.3.2",
+  "version": "9.4.0",
   "private": true,
   "scripts": {
     "test": "mocha --exit '*.js'"
   },
   "devDependencies": {
-    "hops": "9.3.2",
-    "hops-build": "9.3.2",
+    "hops": "9.4.0",
+    "hops-build": "9.4.0",
     "hops-build-config": "9.3.2",
     "hops-config": "9.3.0",
-    "hops-express": "9.3.0",
+    "hops-express": "9.4.0",
     "hops-middleware": "9.1.1",
-    "hops-plugin": "9.3.0",
+    "hops-plugin": "9.4.0",
     "hops-react": "9.3.0",
     "hops-redux": "9.3.0",
     "hops-renderer": "9.3.0",
