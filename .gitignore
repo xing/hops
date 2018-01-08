@@ -1,8 +1,7 @@
 node_modules
+packages/*/**/build
+package-lock.json
+fragmentTypes.json
 *.log
 .DS_Store
-package-lock.json
-packages/spec/mock/integration/build
-packages/template-minimal/build
-packages/template-react/build
 .vscode
