@@ -1,5 +1,6 @@
 'use strict';
 
+var fs = require('fs');
 var path = require('path');
 
 var hopsConfig = require('hops-config');
@@ -10,8 +11,7 @@ exports.getFragmentsFile = function getFragmentsFile() {
 
 exports.getIntrospectionResult = function getIntrospectionResult() {
   var file = exports.getFragmentsFile();
-  try {
-    require.resolve(file);
-    return require(file);
-  } catch (_) {}
+  if (fs.existsSync(file)) {
+    return JSON.parse(fs.readFileSync(file));
+  }
 };
