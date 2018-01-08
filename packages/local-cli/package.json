@@ -1,6 +1,6 @@
 {
   "name": "hops-local-cli",
-  "version": "9.3.0",
+  "version": "9.3.2",
   "description": "CLI tool to build, run and develop Hops based projects",
   "keywords": ["hops", "cli"],
   "license": "MIT",
