@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.4.3"></a>
+## [9.4.3](https://github.com/xing/hops/compare/v9.4.2...v9.4.3) (2018-01-08)
+
+
+### Bug Fixes
+
+* **cli:** do not require local packages in global context ([42002a3](https://github.com/xing/hops/commit/42002a3))
+
+
+
+
 <a name="9.4.0"></a>
 # [9.4.0](https://github.com/xing/hops/compare/v9.3.2...v9.4.0) (2018-01-08)
 
