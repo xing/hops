@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "9.4.0",
+  "version": "9.5.0",
   "description":
     "Express server to enable server-side rendering of hops applications",
   "keywords": ["hops", "express"],
@@ -17,8 +17,8 @@
   "dependencies": {
     "express": "^4.16.0",
     "helmet": "^3.8.2",
-    "hops-config": "9.3.0",
-    "hops-server": "9.3.0",
+    "hops-config": "9.5.0",
+    "hops-server": "9.5.0",
     "mime": "^2.2.0"
   }
 }

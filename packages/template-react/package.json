@@ -1,6 +1,6 @@
 {
   "name": "hops-template-react",
-  "version": "9.4.3",
+  "version": "9.5.0",
   "main": "src/app.js",
   "license": "MIT",
   "config": {
@@ -15,9 +15,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "hops-express": "9.4.0",
-    "hops-react": "9.3.0",
-    "hops-redux": "9.3.0",
+    "hops-express": "9.5.0",
+    "hops-react": "9.5.0",
+    "hops-redux": "9.5.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -29,10 +29,10 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "hops": "9.4.3",
-    "hops-build": "9.4.2",
+    "hops": "9.5.0",
+    "hops-build": "9.5.0",
     "jest": "^22.0.4",
-    "jest-preset-hops": "9.3.2",
+    "jest-preset-hops": "9.5.0",
     "react-test-renderer": "^16.0.0"
   },
   "jest": {

@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "9.4.3",
+  "version": "9.5.0",
   "description": "CLI tool to create, build and run Hops applications",
   "keywords": ["hops", "cli"],
   "license": "MIT",
