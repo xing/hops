@@ -39,7 +39,7 @@ Resources:
       DefinitionBody:
         swagger: 2.0
         info:
-          title: Hops Serverless Express
+          title: !Sub 'Hops Serverless Express (${AWS::StackName})'
         basePath: !Sub '/${BasePath}'
         schemes:
         - https
@@ -50,7 +50,7 @@ Resources:
               - text/html
               responses: {}
               x-amazon-apigateway-integration:
-                uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
+                uri: !Sub 'arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
                 passthroughBehavior: when_no_match
                 httpMethod: POST
                 type: aws_proxy
@@ -65,7 +65,7 @@ Resources:
               - text/html
               responses: {}
               x-amazon-apigateway-integration:
-                uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
+                uri: !Sub 'arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
                 httpMethod: POST
                 type: aws_proxy
         x-amazon-apigateway-binary-media-types:
@@ -81,8 +81,8 @@ Resources:
   BasePathMapping:
     Type: AWS::ApiGateway::BasePathMapping
     Condition: ShouldAddCustomDomain
-    # awslabs/serverless-application-model#119
-    # awslabs/serverless-application-model#70
+    # https://github.com/awslabs/serverless-application-model/issues/119
+    # https://github.com/awslabs/serverless-application-model/issues/70
     DependsOn: ApiGatewayApiStage
     Properties:
       BasePath: !Ref BasePath
@@ -98,7 +98,7 @@ Resources:
         Statement:
           Effect: Allow
           Principal:
-            Service: lambda.amazonaws.com
+            Service: !Sub 'lambda.${AWS::UrlSuffix}'
           Action: sts:AssumeRole
       Path: '/'
       Policies:
@@ -111,15 +111,15 @@ Resources:
             - logs:CreateLogGroup
             - logs:CreateLogStream
             - logs:PutLogEvents
-            Resource: arn:aws:logs:*:*:*
+            Resource: !Sub 'arn:${AWS::Partition}:logs:*:*:*'
 
   LambdaApiGatewayExecutionPermission:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName: !GetAtt HopsLambdaHandler.Arn
-      Principal: apigateway.amazonaws.com
-      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ApiGatewayApi}/*/*'
+      Principal: !Sub 'apigateway.${AWS::UrlSuffix}'
+      SourceArn: !Sub 'arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${ApiGatewayApi}/*/*'
 
   HopsLambdaHandler:
     Type: AWS::Serverless::Function
@@ -143,7 +143,7 @@ Resources:
                 "httpMethod": "GET",
                 "headers": {
                   "Accept": "x-keep/warm,*/*",
-                  "Host": "${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com"
+                  "Host": "${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::UrlSuffix}"
                 },
                 "requestContext": {
                   "path": "/${BasePath}/"
@@ -161,4 +161,4 @@ Outputs:
     Value: !If
       - ShouldAddCustomDomain
       - !If [HasCustomBasePath, !Sub 'https://${DomainName}/${BasePath}/', !Sub 'https://${DomainName}/']
-      - !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/${BasePath}/'
+      - !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::UrlSuffix}/${BasePath}/'
