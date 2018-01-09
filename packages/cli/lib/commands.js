@@ -3,9 +3,9 @@
 var fs = require('fs');
 var path = require('path');
 
-var hopsConfig = require('hops-config');
+var root = require('pkg-dir').sync();
 
-var binDir = path.join(hopsConfig.appDir, 'node_modules', '.bin');
+var binDir = path.join(root, 'node_modules', '.bin');
 
 module.exports = function findCommands() {
   if (fs.existsSync(binDir)) {
