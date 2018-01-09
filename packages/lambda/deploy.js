@@ -162,8 +162,8 @@ module.exports = function deploy(options, parametersOverrides) {
     s3: '2006-03-01',
   };
 
-  var s3 = new AWS.S3(awsConfig.credentials);
-  var cloudformation = new AWS.CloudFormation(awsConfig.credentials);
+  var s3 = new AWS.S3();
+  var cloudformation = new AWS.CloudFormation();
 
   return fsUtils
     .createTmpDirectory()
