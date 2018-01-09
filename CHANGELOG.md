@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.6.0"></a>
+# [9.6.0](https://github.com/xing/hops/compare/v9.5.0...v9.6.0) (2018-01-09)
+
+
+### Bug Fixes
+
+* **cli:** use pkg-dir instead of hops-config to figure out app root ([34bd28f](https://github.com/xing/hops/commit/34bd28f))
+* **lambda:** specify peerDependencies also in devDependencies ([6411dc1](https://github.com/xing/hops/commit/6411dc1))
+
+
+### Features
+
+* **server:** print basePath (if configured) in server callback ([af589fc](https://github.com/xing/hops/commit/af589fc))
+
+
+
+
 <a name="9.5.0"></a>
 # [9.5.0](https://github.com/xing/hops/compare/v9.4.3...v9.5.0) (2018-01-09)
 

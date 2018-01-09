@@ -1,6 +1,6 @@
 {
   "name": "hops-server",
-  "version": "9.5.0",
+  "version": "9.6.0",
   "description": "Provides common functionality for express-like servers",
   "keywords": ["hops", "webpack-dev-server", "express"],
   "license": "MIT",
