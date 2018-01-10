@@ -34,9 +34,12 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start": "cd packages/template-react; yarn start",
+    "start:minimal": "cd packages/template-minimal; yarn start",
+    "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "lerna run test --stream",
     "lint": "eslint \"packages/**/*.js\"",
     "release": "lerna publish --exact --conventional-commits",
+    "release:major": "lerna publish --force-publish=* --cd-version major",
     "update": "yarn upgrade-interactive --latest && rm yarn.lock && yarn",
     "postupdate": "lerna clean --yes && lerna bootstrap",
     "reset": "git clean -dfx && yarn && yarn bootstrap",
@@ -55,13 +58,12 @@
   },
   "prettier": {
     "trailingComma": "es5",
-    "jsxBracketSameLine": true,
     "proseWrap": "never",
     "singleQuote": true
   },
   "eslintConfig": {
     "extends": ["semistandard", "prettier"],
-    "plugins": ["react", "prettier"],
+    "plugins": ["prettier"],
     "rules": {
       "prettier/prettier": "error"
     },
@@ -84,7 +86,6 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "lerna": "^2.5.1",
