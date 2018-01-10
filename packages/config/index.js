@@ -24,7 +24,7 @@ function extendConfig(config) {
   return Object.assign(config, npmConfig);
 }
 
-function resolvePaths(config) {
+function resolvePaths(config, replace) {
   Object.keys(config)
     .filter(function(key) {
       return /(config|file|dir)s?$/i.test(key);
@@ -32,7 +32,15 @@ function resolvePaths(config) {
     .forEach(function(key) {
       config[key] = (function resolve(item) {
         if (typeof item === 'string') {
-          return path.isAbsolute(item) ? item : path.join(root, item);
+          if (item.indexOf('<') !== 0) {
+            return path.isAbsolute(item) ? item : path.join(root, item);
+          } else if (replace) {
+            return item.replace(/^(?:<([^>]+)>)(.*)/, function() {
+              return path.join(config[arguments[1]], arguments[2]);
+            });
+          } else {
+            return item;
+          }
         } else if (Array.isArray(item)) {
           return item.map(resolve);
         } else {
@@ -40,13 +48,12 @@ function resolvePaths(config) {
         }
       })(config[key]);
     });
-  return config;
+  return replace ? config : resolvePaths(config, true);
 }
 
 function normalizeURLs(config) {
   var basePath = config.basePath.replace(/^\/*/, '/').replace(/\/*$/, '');
   var assetPath = config.assetPath.replace(/(^\/*|\/*$)/g, '');
-
   return Object.assign(config, {
     locations: config.locations
       .map(function(location) {
@@ -60,38 +67,23 @@ function normalizeURLs(config) {
   });
 }
 
-function freeze(config) {
-  return Object.freeze(
-    Object.keys(config).reduce(function(result, key) {
-      var descriptor = { enumerable: true };
-      if (typeof config[key] === 'function') {
-        descriptor.get = config[key];
-      } else {
-        descriptor.value = config[key];
-      }
-      return Object.defineProperty(result, key, descriptor);
-    }, {})
-  );
-}
-
-module.exports = freeze(
-  normalizeURLs(
-    resolvePaths(
-      extendConfig({
-        https: false,
-        host: '0.0.0.0',
-        port: 8080,
-        locations: [],
-        basePath: '',
-        assetPath: '',
-        browsers: '> 1%, last 2 versions, Firefox ESR',
-        node: 'current',
-        envVars: { HOPS_MODE: 'dynamic' },
-        moduleDirs: [],
-        appDir: '.',
-        buildDir: 'build',
-        cacheDir: 'node_modules/.cache/hops',
-      })
-    )
-  )
+module.exports = [extendConfig, resolvePaths, normalizeURLs].reduce(
+  function(result, step) {
+    return step(Object.assign({}, result));
+  },
+  {
+    https: false,
+    host: '0.0.0.0',
+    port: 8080,
+    locations: [],
+    basePath: '',
+    assetPath: '',
+    browsers: '> 1%, last 2 versions, Firefox ESR',
+    node: 'current',
+    envVars: { HOPS_MODE: 'dynamic' },
+    moduleDirs: [],
+    appDir: '.',
+    buildDir: 'build',
+    cacheDir: 'node_modules/.cache/hops',
+  }
 );

@@ -12,7 +12,6 @@
     "hops-config": "9.5.0",
     "hops-express": "9.6.0",
     "hops-middleware": "9.4.2",
-    "hops-plugin": "9.5.0",
     "hops-react": "9.5.0",
     "hops-redux": "9.5.0",
     "hops-renderer": "9.5.0",
