@@ -32,6 +32,11 @@ function resolvePaths(config) {
     .forEach(function(key) {
       config[key] = (function resolve(item) {
         if (typeof item === 'string') {
+          if (item.indexOf('<') === 0) {
+            item = item.replace(/^(?:<([^>]+)>)(.*)/, function() {
+              return path.join(config[arguments[1]], arguments[2]);
+            });
+          }
           return path.isAbsolute(item) ? item : path.join(root, item);
         } else if (Array.isArray(item)) {
           return item.map(resolve);
@@ -46,7 +51,6 @@ function resolvePaths(config) {
 function normalizeURLs(config) {
   var basePath = config.basePath.replace(/^\/*/, '/').replace(/\/*$/, '');
   var assetPath = config.assetPath.replace(/(^\/*|\/*$)/g, '');
-
   return Object.assign(config, {
     locations: config.locations
       .map(function(location) {
@@ -60,38 +64,23 @@ function normalizeURLs(config) {
   });
 }
 
-function freeze(config) {
-  return Object.freeze(
-    Object.keys(config).reduce(function(result, key) {
-      var descriptor = { enumerable: true };
-      if (typeof config[key] === 'function') {
-        descriptor.get = config[key];
-      } else {
-        descriptor.value = config[key];
-      }
-      return Object.defineProperty(result, key, descriptor);
-    }, {})
-  );
-}
-
-module.exports = freeze(
-  normalizeURLs(
-    resolvePaths(
-      extendConfig({
-        https: false,
-        host: '0.0.0.0',
-        port: 8080,
-        locations: [],
-        basePath: '',
-        assetPath: '',
-        browsers: '> 1%, last 2 versions, Firefox ESR',
-        node: 'current',
-        envVars: { HOPS_MODE: 'dynamic' },
-        moduleDirs: [],
-        appDir: '.',
-        buildDir: 'build',
-        cacheDir: 'node_modules/.cache/hops',
-      })
-    )
-  )
+module.exports = [extendConfig, resolvePaths, normalizeURLs].reduce(
+  function(res, fn) {
+    return fn(res);
+  },
+  {
+    https: false,
+    host: '0.0.0.0',
+    port: 8080,
+    locations: [],
+    basePath: '',
+    assetPath: '',
+    browsers: '> 1%, last 2 versions, Firefox ESR',
+    node: 'current',
+    envVars: { HOPS_MODE: 'dynamic' },
+    moduleDirs: [],
+    appDir: '.',
+    buildDir: 'build',
+    cacheDir: 'node_modules/.cache/hops',
+  }
 );
