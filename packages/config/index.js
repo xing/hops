@@ -4,15 +4,21 @@ var path = require('path');
 
 var root = require('pkg-dir').sync(process.cwd());
 
-var npmConfig = require('./lib/parse-env')('hops');
-if (!Object.keys(npmConfig).length) {
-  try {
-    require.resolve(path.join(root, 'package.json'));
-    npmConfig = require(path.join(root, 'package.json')).config.hops;
-  } catch (_) {}
+var parseEnv = require('./lib/parse-env');
+
+function getNpmConfig() {
+  var npmConfig = parseEnv('hops');
+  if (!Object.keys(npmConfig).length) {
+    try {
+      require.resolve(path.join(root, 'package.json'));
+      npmConfig = require(path.join(root, 'package.json')).config.hops;
+    } catch (_) {}
+  }
+  return npmConfig;
 }
 
 function extendConfig(config) {
+  var npmConfig = getNpmConfig();
   if (npmConfig.extends) {
     try {
       require.resolve(npmConfig.extends);
@@ -21,7 +27,13 @@ function extendConfig(config) {
       Object.assign(config, require(path.join(root, npmConfig.extends)));
     }
   }
-  return Object.assign(config, npmConfig);
+  Object.assign(
+    config,
+    npmConfig,
+    npmConfig.env && npmConfig.env[process.env.NODE_ENV]
+  );
+  delete config.env;
+  return config;
 }
 
 function resolvePaths(config) {
@@ -65,8 +77,8 @@ function normalizeURLs(config) {
 }
 
 module.exports = [extendConfig, resolvePaths, normalizeURLs].reduce(
-  function(res, fn) {
-    return fn(res);
+  function(result, step) {
+    return step(Object.assign({}, result));
   },
   {
     https: false,
