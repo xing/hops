@@ -51,6 +51,10 @@ module.exports = function parseEnv(namespace) {
     Object.keys(process.env).reduce(function(result, key) {
       if (key.indexOf(prefix) === 0) {
         var segments = key.replace(prefix, '').split('_');
+        if (!segments[0]) {
+          segments.shift();
+          segments[0] = '_' + segments[0];
+        }
         segments.reduce(function(result, segment, index) {
           if (index < segments.length - 1) {
             result = result[segment] || (result[segment] = {});
