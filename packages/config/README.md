@@ -15,7 +15,7 @@ npm install --save hops-config
 
 # Usage
 
-Please find a list of the default options below. They can be set in your project's package.json and can be overridden by using [npm config](https://docs.npmjs.com/cli/config) in the command line. You can extend hops-config within your project allowing you to use it to configure your isomorphic applications. The configuration is immutable at runtime - if you import it in your own application, you can only read its values, but you cannot alter them.
+Please find a list of the default options below. They can be set in your project's package.json. You can extend hops-config within your project allowing you to use it to configure your isomorphic applications.
 
 ## Available Options
 
@@ -48,52 +48,61 @@ All keys matching `/(config|file|dir)s?$/i` will be treated as a filesystem path
 The following example package.json shows how the config object might look like:
 
 ```JSON
-"name": "my-application",
-"scripts": {
-    "build": "hops build",
-    "develop": "hops develop",
-    "serve": "hops serve",
-    "start": "hops start",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-"config": {
-    "hops": {
-      "extends": "path-to-my-hops-config/config.js",
-      "https": true,
-      "host": "0.0.0.0",
-      "port": 3000,
-      "locations": [
-        "/",
-        "/foo"
-      ],
-      "basePath": "my-base-path",
-      "assetPath": "my-asset-path",
-      "browsers": "> 2%, last 1 versions, Firefox ESR",
-      "moduleDirs": [
-        "my-unpublished-packages"
-      ],
-      "appDir": "my-app-directory",
-      "buildDir": "my-build-directory",
-      "cacheDir": "my-cache-directory",
-      "buildConfig": "path-to-my-custom-webpack-config/build.js"
+{
+  "hops": {
+    "extends": "path-to-my-hops-config/config.js",
+    "https": true,
+    "host": "0.0.0.0",
+    "port": 3000,
+    "locations": [
+      "/",
+      "/foo"
+    ],
+    "basePath": "my-base-path",
+    "assetPath": "my-asset-path",
+    "browsers": "> 2%, last 1 versions, Firefox ESR",
+    "moduleDirs": [
+      "my-unpublished-packages"
+    ],
+    "appDir": "my-app-directory",
+    "buildDir": "my-build-directory",
+    "cacheDir": "my-cache-directory",
+    "buildConfig": "path-to-my-custom-webpack-config/build.js"
+  }
+}
+```
+
+## Configure via Dedicated File
+
+Hops looks for configuration objects in a couple of different places (starting from `process.cwd()`), in this order:
+
+1. `hops` property in your package.json file
+2. `.hopsrc` (or `.hopsrc.(js|json|ya?ml)`)
+3. `hops.config.js` JS file exporting the object
+
+You can use whatever suits you best, but please only use a single location in your project's root folder. Hops does not attempt to merge configurations stored in different locations: it uses the first config it finds.
+
+## Environment Specific Configuration
+
+Take the above package.json - and let's say you want to want to override the `port` value. To override the port value for your local environment without changing your application's overall config, add an environment specific config...
+
+```JSON
+{
+  "hops": {
+    "port": 3000,
+    "env": {
+      "my-environment": {
+        "port": 1337
+      }
     }
   }
-```
-
-## Configure via CLI
-
-You can override the configuration values defined in your `package.json`. Consider the above package.json and let's say you want to want to override the `port` value. Note that this only works in an "npm like" context, i.e. with npm and yarn.
-
-To override the port value for your local environment without actually changing your package.json, set the respective npm environment variable...
-
-```
-npm config set my-application:hops:port 1337
+}
 ```
 
 ... and then run...
 
 ```
-npm start
+HOPS_ENV=my-environment yarn start
 ```
 
 ... which will start your server on port 1337.
