@@ -3,5 +3,10 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "9.6.1",
-  "registry": "https://registry.npmjs.org/"
+  "registry": "https://registry.npmjs.org/",
+  "commands": {
+    "publish": {
+      "message": "chore: release %s"
+    }
+  }
 }
