@@ -3,12 +3,10 @@
   "version": "9.8.0",
   "main": "src/app.js",
   "license": "MIT",
-  "config": {
-    "hops": {
-      "browsers": "last 1 Chrome versions",
-      "locations": ["/"],
-      "graphqlUri": "https://www.graphqlhub.com/graphql"
-    }
+  "hops": {
+    "browsers": "last 1 Chrome versions",
+    "locations": ["/"],
+    "graphqlUri": "https://www.graphqlhub.com/graphql"
   },
   "scripts": {
     "start": "hops start",
