@@ -11,6 +11,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "cosmiconfig": "^3.1.0",
     "pkg-dir": "^2.0.0"
   }
 }
