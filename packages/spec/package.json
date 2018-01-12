@@ -1,12 +1,12 @@
 {
   "name": "hops-spec",
-  "version": "9.6.0",
+  "version": "9.6.1",
   "private": true,
   "scripts": {
     "test": "mocha --exit '*.js'"
   },
   "devDependencies": {
-    "hops": "9.6.0",
+    "hops": "9.6.1",
     "hops-build": "9.6.0",
     "hops-build-config": "9.5.0",
     "hops-config": "9.5.0",
