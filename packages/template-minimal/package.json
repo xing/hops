@@ -4,10 +4,8 @@
   "browser": "src/browser.js",
   "server": "src/server.js",
   "license": "MIT",
-  "config": {
-    "hops": {
-      "browsers": "last 1 Chrome versions"
-    }
+  "hops": {
+    "browsers": "last 1 Chrome versions"
   },
   "scripts": {
     "start": "hops start",
