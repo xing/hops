@@ -3,11 +3,9 @@
   "version": "9.8.0",
   "main": "src/app.js",
   "license": "MIT",
-  "config": {
-    "hops": {
-      "browsers": "last 1 Chrome versions",
-      "locations": ["/", "/counter"]
-    }
+  "hops": {
+    "browsers": "last 1 Chrome versions",
+    "locations": ["/", "/counter"]
   },
   "scripts": {
     "start": "hops start",
