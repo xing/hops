@@ -1,2 +1,2 @@
-exports.APOLLO_STATE = 'APOLLO_STATE';
-exports.APOLLO_IQRD = 'APOLLO_IQRD';
+export const APOLLO_STATE = 'APOLLO_STATE';
+export const APOLLO_IQRD = 'APOLLO_IQRD';
