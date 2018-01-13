@@ -1,46 +1,29 @@
-'use strict';
+import esc from 'serialize-javascript';
 
-var esc = require('serialize-javascript');
-
-module.exports = function(data) {
-  return [
-    '<!doctype html>',
-    '<html ',
-    data.helmet.htmlAttributes.toString(),
-    '>',
-    '<head>',
-    data.helmet.title.toString(),
-    data.helmet.base.toString(),
-    data.helmet.meta.toString(),
-    data.helmet.link.toString(),
-    data.assets.css
-      .map(function(css) {
-        return '<link rel="stylesheet" href="' + css + '" />';
-      })
-      .join(''),
-    data.helmet.style.toString(),
-    data.helmet.script.toString(),
-    '</head>',
-    '<body ',
-    data.helmet.bodyAttributes.toString(),
-    '>',
-    '<div id="main">',
-    data.markup,
-    '</div>',
-    data.helmet.noscript.toString(),
-    data.globals
-      .map(function(global) {
-        return (
-          '<script>' + global.name + ' = ' + esc(global.value) + '</script>'
-        );
-      })
-      .join(''),
-    data.assets.js
-      .map(function(js) {
-        return '<script src="' + js + '"></script>';
-      })
-      .join(''),
-    '</body>',
-    '</html>',
-  ].join('');
-};
+export default ({
+  helmet,
+  assets,
+  markup,
+  globals,
+  manifest,
+}) => `<!doctype html>
+<html ${helmet.htmlAttributes.toString()}>
+<head>
+${helmet.title.toString()}
+${helmet.base.toString()}
+${helmet.meta.toString()}
+${helmet.link.toString()}
+${assets.css.map(css => `<link rel="stylesheet" href="${css}" />`).join('')}
+${helmet.style.toString()}
+${helmet.script.toString()}
+</head>
+<body ${helmet.bodyAttributes.toString()}>
+<div id="main">${markup}</div>
+${helmet.noscript.toString()}
+${globals
+  .map(({ name, value }) => `<script>${name} = ${esc(value)}</script>`)
+  .join('')}
+${assets.js.map(js => `<script src="${js}"></script>`).join('')}
+</body>
+</html>
+`;

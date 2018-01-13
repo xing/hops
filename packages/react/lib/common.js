@@ -1,22 +1,19 @@
-'use strict';
-
-exports.createCombinedContext = function(
-  config,
+export const createCombinedContext = (
+  config = {},
   ReactContext,
   combineContexts
-) {
-  config = config || {};
-  var mergedConfig = Object.assign({}, config);
+) => {
+  let mergedConfig = Object.assign({}, config);
   delete mergedConfig.extensions;
-  var mergedContexts = [ReactContext];
+  const mergedContexts = [ReactContext];
   if (config.extensions) {
-    config.extensions.forEach(function(extension) {
-      var context = extension.context;
+    config.extensions.forEach(extension => {
+      const context = extension.context;
       mergedContexts.push(context);
-      var extensionConfig = extension.config;
+      const extensionConfig = extension.config;
       mergedConfig = Object.assign(mergedConfig, extensionConfig);
     });
   }
-  var combinedContext = combineContexts.apply(null, mergedContexts);
+  const combinedContext = combineContexts(...mergedContexts);
   return combinedContext(mergedConfig);
 };

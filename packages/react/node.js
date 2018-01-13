@@ -1,100 +1,101 @@
-'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom/server';
+import ReactRouter from 'react-router';
+import { Helmet } from 'react-helmet';
+import mixinable from 'mixinable';
 
-var React = require('react');
-var ReactDOM = require('react-dom/server');
-var ReactRouter = require('react-router');
-var Helmet = require('react-helmet').Helmet;
-var mixinable = require('mixinable');
+import hopsConfig from 'hops-config';
 
-var hopsConfig = require('hops-config');
+import defaultTemplate from './lib/template';
 
-var defaultTemplate = require('./lib/template');
+import { createCombinedContext } from './lib/common';
+export * from './lib/components';
 
-var createCombinedContext = require('./lib/common').createCombinedContext;
-
-exports.combineContexts = mixinable({
+export const combineContexts = mixinable({
   bootstrap: mixinable.async.parallel,
   enhanceElement: mixinable.async.compose,
   getTemplateData: mixinable.async.pipe,
   renderTemplate: mixinable.override,
 });
 
-exports.ReactContext = function(options) {
-  if (!options) {
-    options = {};
+export class ReactContext {
+  constructor(options = {}) {
+    this.routerOptions = Object.assign(
+      {
+        location: options.request && options.request.path,
+        basename: hopsConfig.basePath,
+        context: {},
+      },
+      options.router
+    );
+    this.template = options.template || defaultTemplate;
+    this.assets = options.response && options.response.locals.hops.assets;
   }
-  this.routerOptions = Object.assign(
-    {
-      location: options.request && options.request.path,
-      basename: hopsConfig.basePath,
-      context: {},
-    },
-    options.router
-  );
-  this.template = options.template || defaultTemplate;
-  this.assets = options.response && options.response.locals.hops.assets;
-};
-exports.ReactContext.prototype = {
-  enhanceElement: function(reactElement) {
+
+  enhanceElement(reactElement) {
     return React.createElement(
       ReactRouter.StaticRouter,
       this.routerOptions,
       reactElement
     );
-  },
-  getTemplateData: function(templateData, rootElement) {
+  }
+
+  getTemplateData(templateData, rootElement) {
     return Object.assign({}, templateData, {
       routerContext: this.routerOptions.context,
       globals: templateData.globals || [],
       assets: this.assets,
     });
-  },
-  renderTemplate: function(templateData) {
+  }
+
+  renderTemplate(templateData) {
     return this.template(
       Object.assign({ helmet: Helmet.renderStatic() }, templateData)
     );
-  },
-};
+  }
+}
 
-exports.contextDefinition = exports.ReactContext;
+export const contextDefinition = ReactContext;
 
-exports.createContext = exports.combineContexts(exports.ReactContext);
+export const createContext = combineContexts(ReactContext);
 
-var cloneContext = mixinable.replicate(function(initialArgs, newArgs) {
-  return [Object.assign({}, initialArgs[0], newArgs[0])];
-});
+const cloneContext = mixinable.replicate(([initialArgs], [newArgs]) => [
+  Object.assign({}, initialArgs, newArgs),
+]);
 
-var renderWithContext = function(reactElement, _context) {
-  return function(req, res, next) {
-    var renderContext = cloneContext(_context, { request: req, response: res });
-
-    var timings = res.locals.timings;
+const renderWithContext = (reactElement, _context) => {
+  return (req, res, next) => {
+    const renderContext = cloneContext(_context, {
+      request: req,
+      response: res,
+    });
+    const timings = res.locals.timings;
     timings.start('hops.react.bootstrap');
     return renderContext
       .bootstrap()
-      .then(function() {
+      .then(() => {
         timings.end('hops.react.bootstrap');
         timings.start('hops.react.enhanceElement');
         return renderContext.enhanceElement(reactElement);
       })
-      .then(function(rootElement) {
+      .then(rootElement => {
         timings.end('hops.react.enhanceElement');
         timings.start('hops.react.getTemplateData');
 
         return renderContext
           .getTemplateData({}, rootElement)
-          .then(function(templateData) {
+          .then(templateData => {
             timings.end('hops.react.getTemplateData');
 
             return { templateData: templateData, rootElement: rootElement };
           });
       })
-      .then(function(result) {
+      .then(result => {
         timings.start('hops.react.renderTemplate');
 
-        var templateData = result.templateData;
-        var rootElement = result.rootElement;
-        var markup = renderContext.renderTemplate(
+        const templateData = result.templateData;
+        const rootElement = result.rootElement;
+        const markup = renderContext.renderTemplate(
           Object.assign(
             {
               markup: ReactDOM.renderToString(rootElement),
@@ -102,9 +103,10 @@ var renderWithContext = function(reactElement, _context) {
             templateData
           )
         );
+
         timings.end('hops.react.renderTemplate');
 
-        var routerContext = templateData.routerContext;
+        const routerContext = templateData.routerContext;
         routerContext.headers && res.set(routerContext.headers);
 
         if (routerContext.miss) {
@@ -123,18 +125,16 @@ var renderWithContext = function(reactElement, _context) {
   };
 };
 
-exports.render = function(reactElement, contextOrConfig) {
-  var context;
+export const render = (reactElement, contextOrConfig) => {
+  let context;
   if (mixinable.isMixinable(contextOrConfig)) {
     context = contextOrConfig;
   } else {
     context = createCombinedContext(
       contextOrConfig,
-      exports.ReactContext,
-      exports.combineContexts
+      ReactContext,
+      combineContexts
     );
   }
   return renderWithContext(reactElement, context);
 };
-
-Object.assign(exports, require('./lib/components'));
