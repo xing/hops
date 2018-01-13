@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import ReactRouter from 'react-router';
-import { Helmet } from 'react-helmet';
+import { StaticRouter } from 'react-router/es';
+import Helmet from 'react-helmet';
 import mixinable from 'mixinable';
 
 import hopsConfig from 'hops-config';
@@ -33,11 +33,7 @@ export class ReactContext {
   }
 
   enhanceElement(reactElement) {
-    return React.createElement(
-      ReactRouter.StaticRouter,
-      this.routerOptions,
-      reactElement
-    );
+    return React.createElement(StaticRouter, this.routerOptions, reactElement);
   }
 
   getTemplateData(templateData, rootElement) {
