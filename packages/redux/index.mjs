@@ -8,7 +8,7 @@ import {
 import { Provider } from 'react-redux/es';
 import ReduxThunkMiddleware from 'redux-thunk';
 
-import hopsReact from 'hops-react';
+import { combineContexts, ReactContext } from 'hops-react';
 
 const REDUX_STATE = 'REDUX_STATE';
 
@@ -91,10 +91,7 @@ export class ReduxContext {
 
 export const contextDefinition = ReduxContext;
 
-export const createContext = hopsReact.combineContexts(
-  hopsReact.ReactContext,
-  ReduxContext
-);
+export const createContext = combineContexts(ReactContext, ReduxContext);
 
 export const reduxExtension = config => {
   return {
