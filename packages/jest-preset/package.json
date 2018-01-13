@@ -12,6 +12,9 @@
     "mocks",
     "transforms"
   ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "test": "jest"
   },
