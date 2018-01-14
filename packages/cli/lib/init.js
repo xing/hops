@@ -1,10 +1,10 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var tar = require('tar');
-var validatePackageName = require('validate-npm-package-name');
-var pm = require('./package-manager');
+const fs = require('fs');
+const path = require('path');
+const tar = require('tar');
+const validatePackageName = require('validate-npm-package-name');
+const pm = require('./package-manager');
 
 function readPackageManifest(file) {
   return JSON.parse(fs.readFileSync(file).toString('utf-8'));
@@ -15,10 +15,10 @@ function writePackageManifest(file, manifest) {
 }
 
 function sortObjectKeys(input) {
-  var result = {};
+  const result = {};
   Object.keys(input)
     .sort()
-    .forEach(function(k) {
+    .forEach(k => {
       result[k] = input[k];
     });
   return result;
@@ -41,7 +41,7 @@ function getValidatedTemplateName(name, root) {
       return name;
     }
   }
-  var validationResult = validatePackageName(name);
+  const validationResult = validatePackageName(name);
   if (
     !(
       validationResult.validForNewPackages ||
@@ -56,11 +56,11 @@ function getValidatedTemplateName(name, root) {
 }
 
 function init(root, appName, options) {
-  var appRoot = path.resolve(root, appName);
-  var template = getValidatedTemplateName(options.template, root);
-  var pathToPackageManifest = path.resolve(appRoot, 'package.json');
-  var oldPackageManifest = readPackageManifest(pathToPackageManifest);
-  var tarball = null;
+  const appRoot = path.resolve(root, appName);
+  const template = getValidatedTemplateName(options.template, root);
+  const pathToPackageManifest = path.resolve(appRoot, 'package.json');
+  const oldPackageManifest = readPackageManifest(pathToPackageManifest);
+  let tarball = null;
   options.npm = options.npm || !pm.isGlobalCliUsingYarn(appRoot, options);
 
   if (template) {
@@ -79,10 +79,10 @@ function init(root, appName, options) {
         file: tarball,
         strip: 1,
       })
-      .then(function() {
+      .then(() => {
         fs.unlinkSync(tarball);
 
-        ['_gitignore', '_npmrc'].forEach(function(ignoredFile) {
+        ['_gitignore', '_npmrc'].forEach(ignoredFile => {
           if (fs.existsSync(path.join(appRoot, ignoredFile))) {
             fs.renameSync(
               path.join(appRoot, ignoredFile),
@@ -91,7 +91,7 @@ function init(root, appName, options) {
           }
         });
 
-        var newPackageManifest = readPackageManifest(pathToPackageManifest);
+        const newPackageManifest = readPackageManifest(pathToPackageManifest);
         writePackageManifest(
           pathToPackageManifest,
           mergePackageManifest(oldPackageManifest, newPackageManifest)
@@ -105,7 +105,7 @@ function init(root, appName, options) {
           'of available commands.'
         );
       })
-      .catch(function(error) {
+      .catch(error => {
         console.error('Error while unpacking tar archive:', tarball);
         console.error(error);
       });
