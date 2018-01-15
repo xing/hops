@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "cosmiconfig": "^3.1.0",
+    "deep-assign": "^2.0.0",
     "pkg-dir": "^2.0.0"
   }
 }
