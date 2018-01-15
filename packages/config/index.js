@@ -2,6 +2,7 @@
 
 var path = require('path');
 
+var assign = require('deep-assign');
 var root = require('pkg-dir').sync();
 
 var explorer = require('cosmiconfig')('hops', {
@@ -30,7 +31,7 @@ function getDefaultConfig() {
 
 function applyUserConfig(config) {
   var result = explorer.load(process.cwd());
-  return Object.assign(config, result ? result.config : {});
+  return assign(config, result ? result.config : {});
 }
 
 function applyExtensionConfig(config) {
@@ -38,10 +39,10 @@ function applyExtensionConfig(config) {
   if (config.extends) {
     try {
       require.resolve(config.extends);
-      Object.assign(result, require(config.extends));
+      assign(result, require(config.extends));
     } catch (_) {
       try {
-        Object.assign(result, require(path.join(root, config.extends)));
+        assign(result, require(path.join(root, config.extends)));
       } catch (_) {
         console.error('Failed to extend config using', config.extends);
       }
@@ -52,7 +53,7 @@ function applyExtensionConfig(config) {
 
 function applyEnvironmentConfig(config) {
   var env = process.env.HOPS_ENV || process.env.NODE_ENV;
-  var result = Object.assign({}, config, config.env && config.env[env]);
+  var result = assign({}, config, config.env && config.env[env]);
   delete result.env;
   return result;
 }
