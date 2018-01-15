@@ -1,7 +1,7 @@
 /* eslint-disable */
 var fs = require('fs');
 var path = require('path');
-var root = require('pkg-dir').sync(process.cwd());
+var root = require('pkg-dir').sync();
 var expand = path.join.bind(path, root);
 /* config definition */
 var manifest = '';
