@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var root = require('pkg-dir').sync(process.cwd());
+var root = require('pkg-dir').sync();
 
 var explorer = require('cosmiconfig')('hops', {
   rcExtensions: true,
@@ -10,42 +10,47 @@ var explorer = require('cosmiconfig')('hops', {
   sync: true,
 });
 
-function getRawConfig() {
-  var result = explorer.load(process.cwd());
-  return Object.assign(
-    {
-      https: false,
-      host: '0.0.0.0',
-      port: 8080,
-      locations: [],
-      basePath: '',
-      assetPath: '',
-      browsers: '> 1%, last 2 versions, Firefox ESR',
-      node: 'current',
-      envVars: { HOPS_MODE: 'dynamic' },
-      moduleDirs: [],
-      appDir: '.',
-      buildDir: 'build',
-      cacheDir: 'node_modules/.cache/hops',
-    },
-    result ? result.config : {}
-  );
+function getDefaultConfig() {
+  return {
+    https: false,
+    host: '0.0.0.0',
+    port: 8080,
+    locations: [],
+    basePath: '',
+    assetPath: '',
+    browsers: '> 1%, last 2 versions, Firefox ESR',
+    node: 'current',
+    envVars: { HOPS_MODE: 'dynamic' },
+    moduleDirs: [],
+    appDir: '.',
+    buildDir: 'build',
+    cacheDir: 'node_modules/.cache/hops',
+  };
 }
 
-function applyExtension(config) {
+function applyUserConfig(config) {
+  var result = explorer.load(process.cwd());
+  return Object.assign(config, result ? result.config : {});
+}
+
+function applyExtensionConfig(config) {
   var result = Object.assign({}, config);
   if (config.extends) {
     try {
       require.resolve(config.extends);
       Object.assign(result, require(config.extends));
     } catch (_) {
-      Object.assign(result, require(path.join(root, config.extends)));
+      try {
+        Object.assign(result, require(path.join(root, config.extends)));
+      } catch (_) {
+        console.error('Failed to extend config using', config.extends);
+      }
     }
   }
   return result;
 }
 
-function applyEnvironment(config) {
+function applyEnvironmentConfig(config) {
   var env = process.env.HOPS_ENV || process.env.NODE_ENV;
   var result = Object.assign({}, config, config.env && config.env[env]);
   delete result.env;
@@ -94,9 +99,10 @@ function normalizeURLs(config) {
 }
 
 module.exports = [
-  getRawConfig,
-  applyExtension,
-  applyEnvironment,
+  getDefaultConfig,
+  applyUserConfig,
+  applyExtensionConfig,
+  applyEnvironmentConfig,
   resolvePaths,
   normalizeURLs,
 ].reduce(function(result, step) {
