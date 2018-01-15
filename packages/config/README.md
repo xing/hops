@@ -43,6 +43,8 @@ Please find a list of the default options below. They can be set in your project
 
 All keys matching `/(config|file|dir)s?$/i` will be treated as a filesystem path (or array thereof) and resolved relative to your app's root folder. This only applies if the respective value is not an absolute path already.
 
+Additionally, you can use placeholders within such filesystem configs to reference others. For example, by configuring `"fooDir": "<cacheDir>/foo"`, you can specify a subfolder of cache directory.
+
 ## Configure via `package.json`
 
 The following example package.json shows how the config object might look like:
