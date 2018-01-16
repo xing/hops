@@ -31,12 +31,13 @@ function getDefaultConfig() {
 
 function applyUserConfig(config) {
   var result = explorer.load(process.cwd());
-  return assign(config, result ? result.config : {});
+  return assign({}, config, result ? result.config : {});
 }
 
-function applyExtensionConfig(config) {
+function applyInheritedConfig(config) {
   var result = Object.assign({}, config);
   if (config.extends) {
+    delete result.extends;
     try {
       require.resolve(config.extends);
       assign(result, require(config.extends));
@@ -48,7 +49,7 @@ function applyExtensionConfig(config) {
       }
     }
   }
-  return result;
+  return result.extends ? applyInheritedConfig(result) : result;
 }
 
 function applyEnvironmentConfig(config) {
@@ -102,7 +103,7 @@ function normalizeURLs(config) {
 module.exports = [
   getDefaultConfig,
   applyUserConfig,
-  applyExtensionConfig,
+  applyInheritedConfig,
   applyEnvironmentConfig,
   resolvePaths,
   normalizeURLs,
