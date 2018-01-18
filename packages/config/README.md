@@ -15,7 +15,7 @@ npm install --save hops-config
 
 # Usage
 
-Please find a list of the default options below. They can be set in your project's package.json. You can extend hops-config within your project allowing you to use it to configure your isomorphic applications.
+Please find a list of the default options below. They can be set in your project's package.json (or dedicated files - see below). You can extend hops-config within your project allowing you to use it to configure your isomorphic applications.
 
 ## Available Options
 
@@ -108,6 +108,8 @@ HOPS_ENV=my-environment yarn start
 ```
 
 ... which will start your server on port 1337.
+
+Hops uses environment variables to determine the env it is running in. Specifically, it uses `HOPS_ENV` and if that does not exist, it uses `NODE_ENV`.
 
 ## Custom Webpack Configuration
 
