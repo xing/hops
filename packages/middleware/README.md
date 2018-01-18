@@ -54,7 +54,9 @@ export default (req, res) => {
 ```javascript
 const express = require('express');
 const createMiddleware = require('hops-middleware');
-const webpackConfig = require('hops-build-config').nodeConfig;
+
+const hopsBuildConfig = require('hops-build-config');
+const webpackConfig = require(hopsBuildConfig.nodeConfig);
 
 const app = express();
 
