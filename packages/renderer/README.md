@@ -54,7 +54,9 @@ export default (req, res) => {
 
 ```javascript
 const createRenderer = require('hops-renderer');
-const webpackConfig = require('hops-build-config').nodeConfig;
+
+const hopsBuildConfig = require('hops-build-config');
+const webpackConfig = require(hopsBuildConfig.nodeConfig);
 
 const render = createRenderer(webpackConfig /*, watchOptions */);
 
