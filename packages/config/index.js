@@ -1,15 +1,12 @@
 'use strict';
 
+var fs = require('fs');
 var path = require('path');
 
 var assign = require('deep-assign');
 var root = require('pkg-dir').sync();
 
-var explorer = require('cosmiconfig')('hops', {
-  rcExtensions: true,
-  stopDir: root,
-  sync: true,
-});
+var cosmiconfig = require('cosmiconfig');
 
 function getDefaultConfig() {
   return {
@@ -30,26 +27,38 @@ function getDefaultConfig() {
 }
 
 function applyUserConfig(config) {
+  var explorer = cosmiconfig('hops', {
+    rcExtensions: true,
+    stopDir: root,
+    sync: true,
+  });
   var result = explorer.load(process.cwd());
   return assign({}, config, result ? result.config : {});
 }
 
 function applyInheritedConfig(config) {
-  var result = Object.assign({}, config);
-  if (config.extends) {
-    delete result.extends;
+  var result = assign({}, config);
+  while (result.extends) {
+    var configName = result.extends;
+    var configPath;
     try {
-      require.resolve(config.extends);
-      assign(result, require(config.extends));
+      configPath = require.resolve(configName);
     } catch (_) {
-      try {
-        assign(result, require(path.join(root, config.extends)));
-      } catch (_) {
-        console.error('Failed to extend config using', config.extends);
-      }
+      configPath = path.join(root, configName);
+    }
+    delete result.extends;
+    if (fs.existsSync(configPath)) {
+      var loader = cosmiconfig('hops', {
+        configPath: configPath,
+        sync: true,
+      });
+      var _result = loader.load();
+      assign(result, _result ? _result.config : {});
+    } else {
+      console.error('Failed to load inherited config', configName);
     }
   }
-  return result.extends ? applyInheritedConfig(result) : result;
+  return result;
 }
 
 function applyEnvironmentConfig(config) {
