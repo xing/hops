@@ -23,9 +23,10 @@ function findNodeModules(start) {
 
 function shouldIncludeExternalModuleInBundle(module) {
   return (
+    module.indexOf('hops') === 0 ||
     module.indexOf('core-js') === 0 ||
     module.indexOf('babel-polyfill') === 0 ||
-    module.indexOf('hops') === 0 ||
+    /^.*\.(?!js(?:on)?$)/.test(module) ||
     checkEsnext(module)
   );
 }
