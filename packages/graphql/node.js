@@ -21,7 +21,7 @@ exports.GraphQLContext.prototype = Object.assign({}, common, {
     return introspectionResult;
   },
   getTemplateData: function(templateData, rootElement) {
-    return ReactApollo.getDataFromTree(rootElement).then(
+    return this.prefetchData(rootElement).then(
       function() {
         return Object.assign({}, templateData, {
           globals: (templateData.globals || []).concat([
@@ -37,6 +37,11 @@ exports.GraphQLContext.prototype = Object.assign({}, common, {
         });
       }.bind(this)
     );
+  },
+  prefetchData: function(rootElement) {
+    return process.env.HOPS_MODE !== 'static'
+      ? ReactApollo.getDataFromTree(rootElement)
+      : Promise.resolve();
   },
 });
 
