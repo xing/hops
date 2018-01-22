@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.7.0"></a>
+# [9.7.0](https://github.com/xing/hops/compare/v9.6.1...v9.7.0) (2018-01-22)
+
+
+
+
+**Note:** Version bump only for package hops-express
+
 <a name="9.6.0"></a>
 # [9.6.0](https://github.com/xing/hops/compare/v9.5.0...v9.6.0) (2018-01-09)
 

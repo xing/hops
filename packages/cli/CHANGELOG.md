@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.7.0"></a>
+# [9.7.0](https://github.com/xing/hops/compare/v9.6.1...v9.7.0) (2018-01-22)
+
+
+### Features
+
+* **cli:** execute build to prod start command ([8565081](https://github.com/xing/hops/commit/8565081))
+
+
+
+
 <a name="9.6.1"></a>
 ## [9.6.1](https://github.com/xing/hops/compare/v9.6.0...v9.6.1) (2018-01-12)
 

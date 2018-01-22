@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.7.0"></a>
+# [9.7.0](https://github.com/xing/hops/compare/v9.6.1...v9.7.0) (2018-01-22)
+
+
+### Bug Fixes
+
+* **build-config:** fix dependency asset imports ([4cd4b1d](https://github.com/xing/hops/commit/4cd4b1d)), closes [#342](https://github.com/xing/hops/issues/342)
+* **graphql:** fix console output ([85556fb](https://github.com/xing/hops/commit/85556fb))
+
+
+### Features
+
+* **build-config:** add .node files to exclusion regex ([f59f733](https://github.com/xing/hops/commit/f59f733))
+* **build-config:** optimize exclusion heuristic ([b9bddbb](https://github.com/xing/hops/commit/b9bddbb))
+* **cli:** execute build to prod start command ([8565081](https://github.com/xing/hops/commit/8565081))
+
+
+
+
 <a name="9.6.1"></a>
 ## [9.6.1](https://github.com/xing/hops/compare/v9.6.0...v9.6.1) (2018-01-12)
 
