@@ -6,7 +6,7 @@ var WebpackServer = require('webpack-dev-server');
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
 var createMiddleware = require('hops-middleware');
-var server = require('hops-server');
+var utils = require('hops-express').utils;
 
 var cleanup = require('./lib/cleanup');
 
@@ -23,20 +23,20 @@ function runDevelop(options, callback) {
       {},
       {
         after: function(app) {
-          app.use(server.rewritePath);
-          server.bootstrap(app, hopsConfig);
-          server.registerMiddleware(
+          app.use(utils.rewritePath);
+          utils.bootstrap(app, hopsConfig);
+          utils.registerMiddleware(
             app,
             createMiddleware(require(hopsBuildConfig.nodeConfig), watchOptions)
           );
-          server.teardown(app, hopsConfig);
+          utils.teardown(app, hopsConfig);
         },
         watchOptions: watchOptions,
       },
       config.devServer
     )
   );
-  server.run(app, callback);
+  utils.run(app, callback);
 }
 
 module.exports = function(options, callback) {
