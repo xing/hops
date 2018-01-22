@@ -8,12 +8,12 @@ var mime = require('mime');
 var helmet = require('helmet');
 
 var hopsConfig = require('hops-config');
-var server = require('hops-server');
+var utils = require('./utils');
 
 function createApp(options) {
   var app = express();
   app.use(helmet());
-  app.use(server.rewritePath);
+  app.use(utils.rewritePath);
   app.use(
     express.static(hopsConfig.buildDir, {
       maxAge: '1y',
@@ -25,18 +25,18 @@ function createApp(options) {
       redirect: false,
     })
   );
-  server.bootstrap(app, hopsConfig);
+  utils.bootstrap(app, hopsConfig);
   if (!options.static) {
     var filePath = path.join(hopsConfig.cacheDir, 'server.js');
     if (fs.existsSync(filePath)) {
-      server.registerMiddleware(app.use(helmet.noCache()), require(filePath));
+      utils.registerMiddleware(app.use(helmet.noCache()), require(filePath));
     } else {
       console.log(
         'No middleware found. Delivering only statically built routes.'
       );
     }
   }
-  server.teardown(app, hopsConfig);
+  utils.teardown(app, hopsConfig);
   return app;
 }
 
