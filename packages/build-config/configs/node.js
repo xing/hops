@@ -28,7 +28,7 @@ function shouldIncludeExternalModuleInBundle(module) {
     module.indexOf('babel-polyfill') === 0 ||
     // bundle everything the native require implementation can not handle
     // see: https://nodejs.org/api/modules.html#modules_all_together
-    /^.*\.(?!(?:js|json|mjs|node)$)/.test(module) ||
+    !/\.(?:js|json|mjs|node)$/.test(require.resolve(module)) ||
     checkEsnext(module)
   );
 }
