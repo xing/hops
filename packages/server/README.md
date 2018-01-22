@@ -1,5 +1,9 @@
 # Hops Server
 
+![deprecated](https://img.shields.io/badge/status-deprecated-red.svg)
+
+**This package is deprecated. Please use [hops-express](https://www.npmjs.com/package/hops-express) instead.**
+
 [![npm](https://img.shields.io/npm/v/hops-server.svg)](https://www.npmjs.com/package/hops-server)
 
 Hops server is a small collection of shared functionality that can be used in express-like interfaces to register the hops-middleware.
