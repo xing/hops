@@ -26,7 +26,9 @@ function shouldIncludeExternalModuleInBundle(module) {
     module.indexOf('hops') === 0 ||
     module.indexOf('core-js') === 0 ||
     module.indexOf('babel-polyfill') === 0 ||
-    /^.*\.(?!js(?:on)?$)/.test(module) ||
+    // bundle everything the native require implementation can not handle
+    // see: https://nodejs.org/api/modules.html#modules_all_together
+    /^.*\.(?!(?:js|json|mjs|node)$)/.test(module) ||
     checkEsnext(module)
   );
 }
