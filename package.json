@@ -38,8 +38,12 @@
     "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "lerna run test --stream",
     "lint": "eslint \"packages/**/*.js\"",
-    "release": "lerna publish --exact --conventional-commits",
-    "release:major": "lerna publish --force-publish=* --cd-version major",
+    "release": "lerna publish --conventional-commits",
+    "release:major": "lerna publish --force-publish=* --cd-version=major",
+    "release:candidate":
+      "lerna publish --force-publish=* --cd-version=premajor --preid=rc --npm-tag=next",
+    "release:next":
+      "lerna publish --cd-version=prerelease --preid=rc --npm-tag=next",
     "update": "yarn upgrade-interactive --latest && rm yarn.lock && yarn",
     "postupdate": "lerna clean --yes && lerna bootstrap",
     "reset": "git clean -dfx && yarn && yarn bootstrap",
