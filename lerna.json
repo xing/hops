@@ -6,7 +6,8 @@
   "registry": "https://registry.npmjs.org/",
   "commands": {
     "publish": {
-      "message": "chore: release %s"
+      "message": "chore: release %s",
+      "exact": true
     }
   }
 }
