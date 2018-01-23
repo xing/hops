@@ -110,7 +110,7 @@ Hops is entirely written in ECMAScript 5 and its code is formatted using [pretti
 * [Next](https://github.com/zeit/next.js/)
 * [Gatsby](https://github.com/gatsbyjs/gatsby)
 * [Backpack](https://github.com/palmerhq/backpack)
-* [Create React App](https://github.com/facebookincubator/create-react-app)
+* [Create React App](https://github.com/facebook/create-react-app)
 
 ### Thanks!
 
