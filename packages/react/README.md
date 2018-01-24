@@ -39,11 +39,13 @@ export default render(<App />, createContext());
 | template   | Function | [defaultTemplate](https://github.com/xing/hops/blob/master/packages/react/lib/template.js) | template function supporting all relevant React Helmet and hops-react features                                                                                                                                                                  |
 | router     | Object   | {}                                                                                         | props to be passed to one of the relevant ReactRouter implementations: [`<StaticRouter />`](https://reacttraining.com/react-router/web/api/StaticRouter) or [`<BrowserRouter />`](https://reacttraining.com/react-router/web/api/BrowserRouter) |
 
-## `<Miss />` and `<Status code={200} />`
+## `<Miss />`, `<Status code={200} />` and `<Header name="x-foo" value="bar" />`
 
-To declaratively control server behavior from your application, you can use two React components provided by hops-react. Neither of these components produces any html output, both are effectively no-ops if used in the browser.
+To declaratively control server behavior from your application, you can use the React components provided by hops-react. Neither of these components produces any html output, they are effectively no-ops if used in the browser.
 
 On the server, however, `<Miss />` makes sure Express' `next()` middleware function is being called, signalling Express that your application is not responsible for handling the current request. `<Status />`, however controls the HTTP status code returned by the server.
+
+`<Header />` allows to set abritraty http headers for each request. Elements rendered more deeply will override those included higher up in the rendered tree. Adding the same header (such as `Set-Cookie`) multiple times can be achieved by providing an array as value. `<Header name="x-foo" value={['bar', 'baz']}/>`
 
 # Basic Example
 
