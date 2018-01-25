@@ -1,7 +1,10 @@
 'use strict';
 
+var express = require('express');
+
 var webpack = require('webpack');
-var WebpackServer = require('webpack-dev-server');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
 
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
@@ -16,26 +19,25 @@ process.on('unhandledRejection', function(error) {
 
 function runDevelop(options, callback) {
   var config = require(hopsBuildConfig.developConfig);
-  var watchOptions = config.devServer.watchOptions || config.watchOptions;
-  var app = new WebpackServer(
-    webpack(config),
-    Object.assign(
-      {},
-      {
-        after: function(app) {
-          app.use(utils.rewritePath);
-          utils.bootstrap(app, hopsConfig);
-          utils.registerMiddleware(
-            app,
-            createMiddleware(require(hopsBuildConfig.nodeConfig), watchOptions)
-          );
-          utils.teardown(app, hopsConfig);
-        },
-        watchOptions: watchOptions,
-      },
-      config.devServer
-    )
+  var compiler = webpack(config);
+  var app = express();
+  app.use(
+    webpackDevMiddleware(compiler, {
+      noInfo: true,
+      logLevel: 'warn',
+      publicPath: config.output.publicPath,
+      watchOptions: config.watchOptions,
+    })
   );
+  app.use(webpackHotMiddleware(compiler));
+  app.use(utils.rewritePath);
+  app.use(express.static(hopsConfig.buildDir, { redirect: false }));
+  utils.bootstrap(app, hopsConfig);
+  utils.registerMiddleware(
+    app,
+    createMiddleware(require(hopsBuildConfig.nodeConfig), config.watchOptions)
+  );
+  utils.teardown(app, hopsConfig);
   utils.run(app, callback);
 }
 
