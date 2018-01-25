@@ -1,6 +1,6 @@
 {
   "name": "hops-lambda",
-  "version": "9.8.0",
+  "version": "10.0.0-rc.0",
   "description": "Quick and easy deployment of Hops applications to AWS Lambda",
   "keywords": ["hops", "express", "aws", "lambda", "serverless"],
   "license": "MIT",
@@ -21,15 +21,15 @@
     "archiver": "^2.1.0",
     "aws-sdk": "^2.177.0",
     "globby": "^7.1.1",
-    "hops-config": "9.5.0",
+    "hops-config": "10.0.0-rc.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.13",
     "serverless-http": "^1.5.2"
   },
   "peerDependencies": {
-    "hops-express": "9.8.0"
+    "hops-express": "10.0.0-rc.0"
   },
   "devDependencies": {
-    "hops-express": "9.8.0"
+    "hops-express": "10.0.0-rc.0"
   }
 }

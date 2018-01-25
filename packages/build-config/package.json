@@ -1,6 +1,6 @@
 {
   "name": "hops-build-config",
-  "version": "9.7.0",
+  "version": "10.0.0-rc.0",
   "description": "Hops build configuration leveraging Webpack and Babel",
   "keywords": ["hops", "webpack", "babel", "postcss"],
   "license": "MIT",
@@ -35,7 +35,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "find-up": "^2.1.0",
-    "hops-config": "9.5.0",
+    "hops-config": "10.0.0-rc.0",
     "json-loader": "^0.5.7",
     "loader-utils": "^1.1.0",
     "lodash.template": "^4.4.0",
