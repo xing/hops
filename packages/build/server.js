@@ -1,14 +1,27 @@
 'use strict';
 
 var webpack = require('webpack');
+var merge = require('webpack-merge');
 var WebpackServer = require('webpack-dev-server');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
 var createMiddleware = require('hops-middleware');
 var utils = require('hops-express').utils;
 
-var cleanup = require('./lib/cleanup');
+var mergeWithPlugins = merge.strategy({ plugins: 'append' });
+
+function injectCleanPlugin(webpackConfig) {
+  var dirs = [hopsConfig.buildDir, hopsConfig.cacheDir];
+  return mergeWithPlugins(webpackConfig, {
+    plugins: [
+      new CleanWebpackPlugin(dirs, {
+        root: hopsConfig.appDir,
+      }),
+    ],
+  });
+}
 
 process.on('unhandledRejection', function(error) {
   throw error;
@@ -18,7 +31,7 @@ function runDevelop(options, callback) {
   var config = require(hopsBuildConfig.developConfig);
   var watchOptions = config.devServer.watchOptions || config.watchOptions;
   var app = new WebpackServer(
-    webpack(config),
+    webpack(options.clean ? injectCleanPlugin(config) : config),
     Object.assign(
       {},
       {
@@ -40,10 +53,5 @@ function runDevelop(options, callback) {
 }
 
 module.exports = function(options, callback) {
-  if (options.clean) {
-    var dirs = [hopsConfig.buildDir, hopsConfig.cacheDir];
-    return cleanup(dirs).then(runDevelop.bind(null, options, callback));
-  } else {
-    return runDevelop(options, callback);
-  }
+  return runDevelop(options, callback);
 };

@@ -24,6 +24,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "clean-webpack-plugin": "^0.1.17",
     "directory-index": "^0.1.0",
     "filesize": "^3.5.11",
     "hops-build-config": "10.0.1",
@@ -32,7 +33,6 @@
     "hops-middleware": "10.0.0",
     "hops-renderer": "10.0.1",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.6.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.10.0",
     "webpack-merge": "^4.1.1"
