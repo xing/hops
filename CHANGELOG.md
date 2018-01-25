@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.8.0"></a>
+# [9.8.0](https://github.com/xing/hops/compare/v9.7.0...v9.8.0) (2018-01-25)
+
+
+### Features
+
+* **hops-react:** add header component to allow setting http headers declaratively ([f6dfc34](https://github.com/xing/hops/commit/f6dfc34))
+
+
+
+
 <a name="9.7.0"></a>
 # [9.7.0](https://github.com/xing/hops/compare/v9.6.1...v9.7.0) (2018-01-22)
 

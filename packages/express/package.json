@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "9.7.0",
+  "version": "9.8.0",
   "description":
     "Express server to enable server-side rendering of hops applications",
   "keywords": ["hops", "express"],
