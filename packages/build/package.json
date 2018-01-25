@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "directory-index": "^0.1.0",
+    "express": "^4.16.0",
     "filesize": "^3.5.11",
     "hops-build-config": "10.0.0-rc.0",
     "hops-config": "10.0.0-rc.0",
@@ -25,7 +26,8 @@
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.10.0",
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.1"
   }
 }

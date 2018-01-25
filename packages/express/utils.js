@@ -1,6 +1,10 @@
 'use strict';
 
+var fs = require('fs');
 var url = require('url');
+var path = require('path');
+var http = require('http');
+var https = require('https');
 
 var hopsConfig = require('hops-config');
 
@@ -22,7 +26,21 @@ function defaultCallback(error) {
 }
 
 exports.run = function run(app, callback) {
-  var server = app.listen(hopsConfig.port, hopsConfig.host, function(error) {
+  var server;
+  if (hopsConfig.https) {
+    var options = {
+      key: fs.readFileSync(
+        hopsConfig.keyFile || path.join(__dirname, 'ssl', 'localhost.ssl.key')
+      ),
+      cert: fs.readFileSync(
+        hopsConfig.certFile || path.join(__dirname, 'ssl', 'localhost.ssl.crt')
+      ),
+    };
+    server = https.createServer(options, app);
+  } else {
+    server = http.createServer(app);
+  }
+  server.listen(hopsConfig.port, hopsConfig.host, function(error) {
     (callback || defaultCallback)(error, server);
   });
 };
