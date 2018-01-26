@@ -34,7 +34,7 @@
     "hops-renderer": "10.0.0-rc.4",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2",
-    "webpack": "^3.6.0",
+    "webpack": "^4.0.0-beta.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.1"
