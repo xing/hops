@@ -37,6 +37,7 @@ var modulesDir = findNodeModules(process.cwd());
 
 module.exports = {
   target: 'node',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: require.resolve('../shims/node'),
   output: {
     path: hopsConfig.cacheDir,

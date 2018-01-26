@@ -11,6 +11,7 @@ var hopsConfig = require('hops-config');
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
 module.exports = {
+  mode: 'development',
   entry: [
     require.resolve('webpack-hot-middleware/client'),
     require.resolve('../shims/develop'),
