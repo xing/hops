@@ -1,7 +1,5 @@
 'use strict';
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 var hopsConfig = require('hops-config');
 
 var cssLoaderOptions = {
@@ -25,19 +23,17 @@ var postcssLoaderOptions = {
 
 exports.build = {
   test: /\.css$/,
-  use: ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: [
-      {
-        loader: require.resolve('css-loader'),
-        options: cssLoaderOptions,
-      },
-      {
-        loader: require.resolve('postcss-loader'),
-        options: postcssLoaderOptions,
-      },
-    ],
-  }),
+  use: [
+    'style-loader',
+    {
+      loader: require.resolve('css-loader'),
+      options: cssLoaderOptions,
+    },
+    {
+      loader: require.resolve('postcss-loader'),
+      options: postcssLoaderOptions,
+    },
+  ],
 };
 
 exports.develop = {
