@@ -45,7 +45,6 @@ exports.ReactContext.prototype = {
     return Object.assign({}, templateData, {
       routerContext: this.routerOptions.context,
       assets: hopsConfig.assets,
-      manifest: hopsConfig.manifest,
       globals: templateData.globals || [],
     });
   },
