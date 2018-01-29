@@ -5,7 +5,7 @@ var path = require('path');
 var webpack = require('webpack');
 var UglifyPlugin = require('uglifyjs-webpack-plugin');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
-var WriteFilePlugin = require('../plugins/write-file');
+var WriteManifestPlugin = require('../plugins/write-manifest');
 var ServiceWorkerPlugin = require('../plugins/service-worker');
 
 var hopsConfig = require('hops-config');
@@ -19,7 +19,7 @@ module.exports = {
     path: hopsConfig.buildDir,
     publicPath: '/',
     filename: getAssetPath('[name]-[chunkhash:16].js'),
-    chunkFilename: getAssetPath('[name]-[chunkhash:16].js'),
+    chunkFilename: getAssetPath('[name]-[id]-[chunkhash:16].js'),
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('build'),
@@ -51,7 +51,7 @@ module.exports = {
     },
   },
   plugins: [
-    new WriteFilePlugin(/^manifest\.js(\.map)?$/),
+    new WriteManifestPlugin(),
     new StatsWriterPlugin({ fields: null }),
     new ServiceWorkerPlugin(),
     new webpack.HashedModuleIdsPlugin(),
