@@ -35,7 +35,6 @@ module.exports = function(data) {
         );
       })
       .join(''),
-    data.manifest ? ['<script>', data.manifest, '</script>'].join('') : '',
     data.assets.js
       .map(function(js) {
         return '<script src="' + js + '"></script>';
