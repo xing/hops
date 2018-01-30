@@ -29,6 +29,7 @@ function runDevelop(options, callback) {
       logLevel: 'warn',
       publicPath: developConfig.output.publicPath,
       watchOptions: developConfig.watchOptions,
+      serverSideRender: true,
     })
   );
   app.use(webpackHotMiddleware(compiler));
