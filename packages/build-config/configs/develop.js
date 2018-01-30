@@ -4,8 +4,6 @@ var path = require('path');
 
 var webpack = require('webpack');
 
-var WriteManifestPlugin = require('../plugins/write-manifest');
-
 var hopsConfig = require('hops-config');
 
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
@@ -27,7 +25,6 @@ module.exports = {
     rules: require('../sections/module-rules')('develop'),
   },
   plugins: [
-    new WriteManifestPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.EnvironmentPlugin(
