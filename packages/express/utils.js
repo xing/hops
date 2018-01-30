@@ -8,6 +8,17 @@ var https = require('https');
 
 var hopsConfig = require('hops-config');
 
+var stats;
+function getStatsFromFile() {
+  if (!stats) {
+    var statsFilename = path.join(hopsConfig.buildDir, 'stats.json');
+    if (fs.existsSync(statsFilename)) {
+      stats = require(statsFilename);
+    }
+  }
+  return stats || {};
+}
+
 function defaultCallback(error) {
   if (error) {
     console.error(error.stack.toString());
@@ -64,6 +75,7 @@ exports.rewritePath = function rewritePath(req, res, next) {
 };
 
 exports.registerMiddleware = function registerMiddleware(app, middleware) {
+  app.use(exports.assetsMiddleware);
   if (
     process.env.HOPS_MODE === 'static' &&
     Array.isArray(hopsConfig.locations)
@@ -74,6 +86,32 @@ exports.registerMiddleware = function registerMiddleware(app, middleware) {
   } else {
     app.all('*', middleware);
   }
+};
+
+exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
+  res.locals.hops = {
+    stats:
+      res.locals && res.locals.webpackStats
+        ? res.locals.webpackStats.toJson()
+        : getStatsFromFile(),
+  };
+  res.locals.hops.assets = { js: [], css: [] };
+  ['vendor', 'main'].forEach(function(key) {
+    var asset = res.locals.hops.stats.assetsByChunkName[key];
+    if (Array.isArray(asset)) {
+      var js = asset.find(function(item) {
+        return item.indexOf('.js') === item.length - 3;
+      });
+      js && res.locals.hops.assets.js.push('/' + js);
+      var css = asset.find(function(item) {
+        return item.indexOf('.css') === item.length - 4;
+      });
+      css && res.locals.hops.assets.css.push('/' + css);
+    } else if (asset) {
+      res.locals.hops.assets.js.push('/' + asset);
+    }
+  });
+  next();
 };
 
 exports.bootstrap = hopsConfig.bootstrapServer || function() {};
