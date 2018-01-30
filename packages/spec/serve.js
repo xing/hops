@@ -37,14 +37,17 @@ describe('production server', function() {
     process.chdir(originalDir);
   });
 
-  it('should create manifest.json', function() {
-    var filePath = path.resolve(cacheDir, 'manifest.json');
-    assert(fs.existsSync(filePath));
-  });
-
   it('should create server.js', function() {
     var filePath = path.resolve(cacheDir, 'server.js');
     assert(fs.existsSync(filePath));
+  });
+
+  it('should create manifest file', function() {
+    var filePath = path.join(buildDir, 'stats.json');
+    assert(fs.existsSync(filePath));
+    var manifest = require(filePath);
+    assert('assetsByChunkName' in manifest);
+    assert('main' in manifest.assetsByChunkName);
   });
 
   it('should create build files', function() {
@@ -81,32 +84,31 @@ describe('production server', function() {
   });
 
   it('should deliver all asset files', function() {
-    var manifest = require(path.resolve(cacheDir, 'manifest.json'));
-    assert('js' in manifest);
-    // #TODO: re-enable this!
-    // assert('css' in manifest);
-    assert.equal(manifest.js.length, 2);
-    // #TODO: re-enable this!
-    // assert.equal(manifest.css.length, 1);
+    var manifest = require(path.resolve(buildDir, 'stats.json'));
+    var assetsByChunkName = manifest.assetsByChunkName;
+    assert('main' in assetsByChunkName);
+    assert('vendor' in assetsByChunkName);
     return Promise.all(
-      manifest.css.concat(manifest.js).map(function(filename) {
-        return fetch('http://localhost:8080' + filename)
-          .then(function(response) {
-            assert(response.ok);
-            return response.text();
-          })
-          .then(function(body) {
-            assert(body.length);
-            assert.equal(body.indexOf('<!doctype html>'), -1);
-            assert.equal(
-              body,
-              fs.readFileSync(
-                path.resolve(buildDir, filename.replace(/^\/?/, '')),
-                'utf8'
-              )
-            );
-          });
-      })
+      assetsByChunkName.main
+        .concat(assetsByChunkName.vendor)
+        .map(function(filename) {
+          return fetch('http://localhost:8080/' + filename)
+            .then(function(response) {
+              assert(response.ok);
+              return response.text();
+            })
+            .then(function(body) {
+              assert(body.length);
+              assert.equal(body.indexOf('<!doctype html>'), -1);
+              assert.equal(
+                body,
+                fs.readFileSync(
+                  path.resolve(buildDir, filename.replace(/^\/?/, '')),
+                  'utf8'
+                )
+              );
+            });
+        })
     );
   });
 

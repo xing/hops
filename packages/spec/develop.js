@@ -58,12 +58,4 @@ describe('development server', function() {
         assert(body.indexOf('webpack') > -1);
       });
   });
-
-  it('should create valid manifest file', function() {
-    var manifest = require(path.resolve(cacheDir, 'manifest.json'));
-    assert('js' in manifest);
-    assert('css' in manifest);
-    assert.equal(manifest.js.length, 1);
-    assert.equal(manifest.css.length, 0);
-  });
 });
