@@ -9,7 +9,7 @@
   "files": ["dom.js", "node.js", "lib"],
   "dependencies": {
     "hops-config": "10.0.0-rc.1",
-    "mixinable": "1.2.1",
+    "mixinable": "1.3.0",
     "serialize-javascript": "^1.4.0"
   },
   "peerDependencies": {

@@ -87,3 +87,10 @@ exports.createContext = hopsReact.combineContexts(
   hopsReact.ReactContext,
   exports.ReduxContext
 );
+
+exports.reduxExtension = function(config) {
+  return {
+    context: exports.ReduxContext,
+    config: config,
+  };
+};
