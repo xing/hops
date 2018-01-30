@@ -37,13 +37,11 @@ The following example shows how to overwrite / extend the webpack configurations
 ```JSON
 "name": "my-application",
 "version": "1.0.0",
-"config": {
-    "hops": {
-      "buildConfig": "./path-to-my-custom-webpack-config/build.js",
-      "developConfig": "./path-to-my-custom-webpack-config/develop.js",
-      "nodeConfig": "./path-to-my-custom-webpack-config/node.js"
-    }
-  }
+"hops": {
+  "buildConfig": "./path-to-my-custom-webpack-config/build.js",
+  "developConfig": "./path-to-my-custom-webpack-config/develop.js",
+  "nodeConfig": "./path-to-my-custom-webpack-config/node.js"
+}
 ```
 
 #### `./path-to-my-custom-webpack-config/build.js`
