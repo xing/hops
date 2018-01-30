@@ -83,7 +83,6 @@ The following additional packages are rather low-level and you'll probably never
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | [Hops Server](https://github.com/xing/hops/tree/master/packages/server)         | [![npm](https://img.shields.io/npm/v/hops-server.svg)](https://www.npmjs.com/package/hops-server)         |
 | [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware) | [![npm](https://img.shields.io/npm/v/hops-middleware.svg)](https://www.npmjs.com/package/hops-middleware) |
-| [Hops Webpack Plugin](https://github.com/xing/hops/tree/master/packages/plugin) | [![npm](https://img.shields.io/npm/v/hops-plugin.svg)](https://www.npmjs.com/package/hops-plugin)         |
 | [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)     | [![npm](https://img.shields.io/npm/v/hops-renderer.svg)](https://www.npmjs.com/package/hops-renderer)     |
 
 ### Contributing
@@ -111,7 +110,7 @@ Hops is entirely written in ECMAScript 5 and its code is formatted using [pretti
 * [Next](https://github.com/zeit/next.js/)
 * [Gatsby](https://github.com/gatsbyjs/gatsby)
 * [Backpack](https://github.com/palmerhq/backpack)
-* [Create React App](https://github.com/facebookincubator/create-react-app)
+* [Create React App](https://github.com/facebook/create-react-app)
 
 ### Thanks!
 

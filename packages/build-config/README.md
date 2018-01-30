@@ -16,7 +16,7 @@ npm install --save hops-build-config
 
 # Usage
 
-Please find a list of the default configs below. If you use [hops-config](https://github.com/xing/hops/tree/master/packages/config), too, you can easily [overwrite / extend](#overwrite-configs-via-packagejson) these configurations.
+Please find a list of the default configs below. You can override them to control your build using [hops-config](https://github.com/xing/hops/tree/master/packages/config).
 
 ## Available options
 
@@ -68,7 +68,7 @@ module.exports = merge.strategy(
 );
 ```
 
-Please head over to the documentation of [webpack-merge](https://www.npmjs.com/package/webpack-merge) to see the full list of merge strategies to find out which one to use.
+Please head over to the documentation of [webpack-merge](https://www.npmjs.com/package/webpack-merge) to see the full list of merge strategies to help you decide which one to use.
 
 ## Default configuration
 

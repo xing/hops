@@ -1,6 +1,6 @@
 {
   "name": "hops-config",
-  "version": "9.3.0",
+  "version": "10.0.0-rc.0",
   "description": "Hops core configuration",
   "keywords": ["hops", "config"],
   "license": "MIT",
@@ -11,6 +11,8 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "cosmiconfig": "^3.1.0",
+    "deep-assign": "^2.0.0",
     "pkg-dir": "^2.0.0"
   }
 }

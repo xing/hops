@@ -95,9 +95,12 @@ exports.render = function(reactElement, _context) {
         } else if (routerContext.url) {
           res.status(routerContext.status || 301);
           res.set('Location', routerContext.url);
+          routerContext.headers && res.set(routerContext.headers);
           res.end();
         } else {
           res.status(routerContext.status || 200);
+          routerContext.headers && res.set(routerContext.headers);
+
           res.type('html');
           res.send(markup);
         }

@@ -67,8 +67,8 @@ module.exports = function destroy(options) {
     s3: '2006-03-01',
   };
 
-  var s3 = new AWS.S3(awsConfig.credentials);
-  var cloudFormation = new AWS.CloudFormation(awsConfig.credentials);
+  var s3 = new AWS.S3();
+  var cloudFormation = new AWS.CloudFormation();
 
   function main() {
     return deleteStack(cloudFormation, awsConfig.stackName)

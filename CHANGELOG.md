@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="9.8.0"></a>
+# [9.8.0](https://github.com/xing/hops/compare/v9.7.0...v9.8.0) (2018-01-25)
+
+
+### Features
+
+* **hops-react:** add header component to allow setting http headers declaratively ([f6dfc34](https://github.com/xing/hops/commit/f6dfc34))
+
+
+
+
+<a name="9.7.0"></a>
+# [9.7.0](https://github.com/xing/hops/compare/v9.6.1...v9.7.0) (2018-01-22)
+
+
+### Bug Fixes
+
+* **build-config:** fix dependency asset imports ([4cd4b1d](https://github.com/xing/hops/commit/4cd4b1d)), closes [#342](https://github.com/xing/hops/issues/342)
+* **graphql:** fix console output ([85556fb](https://github.com/xing/hops/commit/85556fb))
+
+
+### Features
+
+* **build-config:** add .node files to exclusion regex ([f59f733](https://github.com/xing/hops/commit/f59f733))
+* **build-config:** optimize exclusion heuristic ([b9bddbb](https://github.com/xing/hops/commit/b9bddbb))
+* **cli:** execute build to prod start command ([8565081](https://github.com/xing/hops/commit/8565081))
+
+
+
+
+<a name="9.6.1"></a>
+## [9.6.1](https://github.com/xing/hops/compare/v9.6.0...v9.6.1) (2018-01-12)
+
+
+### Bug Fixes
+
+* **hops-cli:** allow to add .npmrc in templates ([3a47f3d](https://github.com/xing/hops/commit/3a47f3d))
+
+
+
+
+<a name="9.6.0"></a>
+# [9.6.0](https://github.com/xing/hops/compare/v9.5.0...v9.6.0) (2018-01-09)
+
+
+### Bug Fixes
+
+* **cli:** use pkg-dir instead of hops-config to figure out app root ([34bd28f](https://github.com/xing/hops/commit/34bd28f))
+* **lambda:** specify peerDependencies also in devDependencies ([6411dc1](https://github.com/xing/hops/commit/6411dc1))
+
+
+### Features
+
+* **server:** print basePath (if configured) in server callback ([af589fc](https://github.com/xing/hops/commit/af589fc))
+
+
+
+
+<a name="9.5.0"></a>
+# [9.5.0](https://github.com/xing/hops/compare/v9.4.3...v9.5.0) (2018-01-09)
+
+
+### Bug Fixes
+
+* **graphql:** get rid of webpack warning ([f0aba04](https://github.com/xing/hops/commit/f0aba04))
+
+
+### Features
+
+* **build-config:** move manifest getters into the config loader ([d7e5aa0](https://github.com/xing/hops/commit/d7e5aa0))
+* **build-config:** re-add config to node build ([ebbd930](https://github.com/xing/hops/commit/ebbd930))
+* **jest-preset-hops:** add jest 22 to peerDependency range ([bf58d61](https://github.com/xing/hops/commit/bf58d61))
+
+
+
+
 <a name="9.4.3"></a>
 ## [9.4.3](https://github.com/xing/hops/compare/v9.4.2...v9.4.3) (2018-01-08)
 

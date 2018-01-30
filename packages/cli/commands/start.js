@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
+var pm = require('../lib/package-manager');
+
 module.exports = function defineStartCommand(args) {
   args.command({
     command: 'start',
@@ -16,16 +18,15 @@ module.exports = function defineStartCommand(args) {
         alias: 'c',
         default: true,
         describe:
-          'Clean up artifacts in build / cache directories before ' +
-          'building',
+          'Clean up artifacts in build / cache directories before building',
         type: 'boolean',
       },
       production: {
         alias: 'p',
         default: false,
         describe:
-          'Minifies the output, generates source maps and removes ' +
-          'React developer warnings',
+          'Minifies the output, generates source maps and removes React ' +
+          'developer warnings',
         type: 'boolean',
       },
     },
@@ -36,12 +37,30 @@ module.exports = function defineStartCommand(args) {
       if (argv.static) {
         process.env.HOPS_MODE = 'static';
       }
-      var packageName =
-        process.env.NODE_ENV === 'production' ? 'hops-express' : 'hops-build';
-      if (require('../lib/package-manager').isPackageInstalled(packageName)) {
-        require(packageName).runServer(argv);
+      if (
+        process.env.NODE_ENV === 'production' &&
+        pm.isPackageInstalled('hops-express')
+      ) {
+        if (argv.clean && pm.isPackageInstalled('hops-build')) {
+          require('hops-build').runBuild(argv, function(error, stats) {
+            if (error) {
+              console.error(error.stack.toString());
+              process.exit(1);
+            } else {
+              console.log(stats.toString('minimal'), '\n');
+              require('hops-express').runServer(argv);
+            }
+          });
+        } else {
+          require('hops-express').runServer(argv);
+        }
+      } else if (pm.isPackageInstalled('hops-build')) {
+        require('hops-build').runServer(argv);
       } else {
-        console.error('Package missing: ', packageName);
+        console.error(
+          'Package missing: ',
+          process.env.NODE_ENV === 'production' ? 'hops-express' : 'hops-build'
+        );
         process.exit(1);
       }
     },

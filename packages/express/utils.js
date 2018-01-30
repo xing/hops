@@ -15,6 +15,7 @@ function defaultCallback(error) {
           hostname:
             hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
           port: hopsConfig.port,
+          pathname: hopsConfig.basePath,
         })
     );
   }

@@ -4,7 +4,11 @@
 module.exports = function defineGraphQLCommand(args) {
   args.command('graphql', 'Execute GraphQL specific tasks', function(yargs) {
     return yargs
-      .usage('Usage: hops-graphql <command>')
+      .usage(
+        'Usage: ' +
+          (require.main === module ? 'hops-graphql' : '$0 graphql') +
+          ' <command>'
+      )
       .command({
         command: 'introspect',
         describe: 'Fetches GraphQL schema information for introspection',

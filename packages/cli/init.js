@@ -81,12 +81,17 @@ function init(root, appName, options) {
       })
       .then(function() {
         fs.unlinkSync(tarball);
-        if (fs.existsSync(path.join(appRoot, '_gitignore'))) {
-          fs.renameSync(
-            path.join(appRoot, '_gitignore'),
-            path.join(appRoot, '.gitignore')
-          );
-        }
+
+        // allow templates to provide files that are ignored by npm pack such as .gitignore
+        ['_gitignore', '_npmrc'].forEach(function(ignoredFile) {
+          if (fs.existsSync(path.join(appRoot, ignoredFile))) {
+            fs.renameSync(
+              path.join(appRoot, ignoredFile),
+              path.join(appRoot, '.' + ignoredFile.slice(1))
+            );
+          }
+        });
+
         var newPackageManifest = readPackageManifest(pathToPackageManifest);
         writePackageManifest(
           pathToPackageManifest,
