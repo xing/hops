@@ -5,7 +5,6 @@ var path = require('path');
 var webpack = require('webpack');
 var UglifyPlugin = require('uglifyjs-webpack-plugin');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
-var WriteManifestPlugin = require('../plugins/write-manifest');
 var ServiceWorkerPlugin = require('../plugins/service-worker');
 
 var hopsConfig = require('hops-config');
@@ -51,7 +50,6 @@ module.exports = {
     },
   },
   plugins: [
-    new WriteManifestPlugin(),
     new StatsWriterPlugin({ fields: null }),
     new ServiceWorkerPlugin(),
     new webpack.HashedModuleIdsPlugin(),
