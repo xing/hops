@@ -29,6 +29,25 @@ const App = () => <h1>Hello World!</h1>;
 export default render(<App />, createContext());
 ```
 
+## `render(reactElement, config)`
+
+Simple wrapper for [`render(reactElement, context)`](#renderreactelement-context) shielding the details of context from you. Each package that functions as an optional extension to the core react package offers a so called `extension` which you can pass as an array. Unlike [`React#createContext(options)`](#createcontextoptions) each extension only takes a configuration that is specific to it, not a general one.
+
+Here you have an example of a React application using the Redux extension. The Redux extension takes only the specific set of options (not the general React ones) mentioned in [`Redux#createContext(options)`](../redux/README.md#createcontextoptions). The general options are passed directly in the configuration.
+
+```js
+import React from 'react';
+import { render } from 'hops-react';
+import { reduxExtension } from 'hops-redux';
+
+const App = () => <h1>Hello World!</h1>;
+
+export default render(<App />, {
+  mountpoint: '#main',
+  extensions: [reduxExtension({ reducers })],
+});
+```
+
 ## `createContext(options)`
 
 `createContext()` generates a rendering context containing most of the actual implementation used by `render`. It takes a couple of options:
