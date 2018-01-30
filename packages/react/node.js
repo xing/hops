@@ -32,6 +32,7 @@ exports.ReactContext = function(options) {
     options.router
   );
   this.template = options.template || defaultTemplate;
+  this.assets = options.response && options.response.locals.hops.assets;
 };
 exports.ReactContext.prototype = {
   enhanceElement: function(reactElement) {
@@ -44,8 +45,8 @@ exports.ReactContext.prototype = {
   getTemplateData: function(templateData, rootElement) {
     return Object.assign({}, templateData, {
       routerContext: this.routerOptions.context,
-      assets: hopsConfig.assets,
       globals: templateData.globals || [],
+      assets: this.assets,
     });
   },
   renderTemplate: function(templateData) {
@@ -65,7 +66,7 @@ var cloneContext = mixinable.replicate(function(initialArgs, newArgs) {
 
 var renderWithContext = function(reactElement, _context) {
   return function(req, res, next) {
-    var renderContext = cloneContext(_context, { request: req });
+    var renderContext = cloneContext(_context, { request: req, response: res });
     renderContext
       .bootstrap()
       .then(function() {
@@ -90,7 +91,6 @@ var renderWithContext = function(reactElement, _context) {
           )
         );
         var routerContext = templateData.routerContext;
-
         if (routerContext.miss) {
           next();
         } else if (routerContext.url) {
@@ -101,7 +101,6 @@ var renderWithContext = function(reactElement, _context) {
         } else {
           res.status(routerContext.status || 200);
           routerContext.headers && res.set(routerContext.headers);
-
           res.type('html');
           res.send(markup);
         }
