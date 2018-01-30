@@ -1,7 +1,5 @@
 'use strict';
 
-var fs = require('fs');
-
 var loaderUtils = require('loader-utils');
 
 var hopsConfig = require('hops-config');
@@ -36,24 +34,26 @@ function getConfig(config) {
 }
 
 function getNodeConfig() {
-  var config = getConfig(hopsConfig)
-    .replace(/(config|file|dir)s?":"(\.[^"]*)"/gi, '$1":expand("$2")')
-    .replace(/((?:config|file|dir)s?":)\[([^\]]+)\]/gi, function() {
-      return (
-        arguments[1] +
-        '[' +
-        arguments[2]
-          .split(',')
-          .map(function(p) {
-            return 'expand(' + p + ')';
-          })
-          .join(',') +
-        ']'
-      );
-    });
-  var filepath = require.resolve('../lib/node-config');
-  var template = fs.readFileSync(filepath, 'utf8');
-  return template.replace('/* config definition */', config);
+  return [
+    'var path = require("path");',
+    'var root = require("pkg-dir").sync();',
+    'var expand = path.join.bind(path, root);',
+    getConfig(hopsConfig)
+      .replace(/(config|file|dir)s?":"(\.[^"]*)"/gi, '$1":expand("$2")')
+      .replace(/((?:config|file|dir)s?":)\[([^\]]+)\]/gi, function() {
+        return (
+          arguments[1] +
+          '[' +
+          arguments[2]
+            .split(',')
+            .map(function(p) {
+              return 'expand(' + p + ')';
+            })
+            .join(',') +
+          ']'
+        );
+      }),
+  ].join('');
 }
 
 function getBrowserConfig() {

@@ -5,7 +5,6 @@ var path = require('path');
 var webpack = require('webpack');
 var UglifyPlugin = require('uglifyjs-webpack-plugin');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
-var WriteManifestPlugin = require('../plugins/write-manifest');
 
 var hopsConfig = require('hops-config');
 
@@ -50,7 +49,6 @@ module.exports = {
     },
   },
   plugins: [
-    new WriteManifestPlugin(),
     new StatsWriterPlugin({ fields: null }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.EnvironmentPlugin(
@@ -69,4 +67,9 @@ module.exports = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new UglifyPlugin({ sourceMap: true, cache: true, parallel: true }),
   ],
+  performance: {
+    assetFilter: function(assetFilename) {
+      return assetFilename !== 'stats.json' && !/\.map$/.test(assetFilename);
+    },
+  },
 };
