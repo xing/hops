@@ -6,7 +6,6 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var UglifyPlugin = require('uglifyjs-webpack-plugin');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
-var WriteManifestPlugin = require('../plugins/write-manifest');
 var WriteFilePlugin = require('../plugins/write-file');
 
 var hopsConfig = require('hops-config');
@@ -29,7 +28,6 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new WriteFilePlugin(/^manifest\.js(\.map)?$/),
-    new WriteManifestPlugin(),
     new StatsWriterPlugin({ fields: null }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -72,4 +70,9 @@ module.exports = {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new UglifyPlugin({ sourceMap: true, cache: true, parallel: true }),
   ],
+  performance: {
+    assetFilter: function(assetFilename) {
+      return assetFilename !== 'stats.json' && !/\.map$/.test(assetFilename);
+    },
+  },
 };
