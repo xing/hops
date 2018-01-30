@@ -53,7 +53,7 @@ function applyInheritedConfig(config) {
         sync: true,
       });
       var _result = loader.load();
-      assign(result, _result ? _result.config : {});
+      assign(result, assign(_result ? _result.config : {}, result));
     } else {
       console.error('Failed to load inherited config', configName);
     }
