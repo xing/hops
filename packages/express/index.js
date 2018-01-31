@@ -3,15 +3,13 @@
 var utils = require('./utils');
 var createApp = require('./app');
 
-function runServer(options, callback) {
-  utils.run(createApp(options), callback);
-}
-
 module.exports = {
-  createApp: createApp,
-  runServer: runServer,
-  startServer: function(callback) {
-    runServer({}, callback);
+  runServer: function runServer(options, callback) {
+    utils.run(createApp(options), callback);
   },
+  startServer: function(callback) {
+    module.exports.runServer({}, callback);
+  },
+  createApp: createApp,
   utils: utils,
 };
