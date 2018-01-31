@@ -47,7 +47,10 @@ module.exports = function defineStartCommand(args) {
               console.error(error.stack.toString());
               process.exit(1);
             } else {
-              console.log(stats.toString('minimal'), '\n');
+              console.log(
+                stats.toString({ chunks: false, modules: false }),
+                '\n'
+              );
               require('hops-express').runServer(argv);
             }
           });
