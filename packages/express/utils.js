@@ -89,6 +89,7 @@ exports.registerMiddleware = function registerMiddleware(app, middleware) {
 };
 
 exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
+  res.locals = res.locals || {};
   res.locals.hops = {
     stats:
       res.locals && res.locals.webpackStats
