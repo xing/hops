@@ -5,3 +5,4 @@ fragmentTypes.json
 *.log
 .DS_Store
 .vscode
+.idea
