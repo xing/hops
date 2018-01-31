@@ -5,10 +5,10 @@ var WebpackServer = require('webpack-dev-server');
 
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
-var createMiddleware = require('hops-middleware');
-var utils = require('hops-express').utils;
+var hopsExpressUtils = require('hops-express').utils;
 
-var cleanup = require('./lib/cleanup');
+var createMiddleware = require('./middleware');
+var cleanup = require('./cleanup');
 
 process.on('unhandledRejection', function(error) {
   throw error;
@@ -23,20 +23,20 @@ function runDevelop(options, callback) {
       {},
       {
         after: function(app) {
-          app.use(utils.rewritePath);
-          utils.bootstrap(app, hopsConfig);
-          utils.registerMiddleware(
+          app.use(hopsExpressUtils.rewritePath);
+          hopsExpressUtils.bootstrap(app, hopsConfig);
+          hopsExpressUtils.registerMiddleware(
             app,
             createMiddleware(require(hopsBuildConfig.nodeConfig), watchOptions)
           );
-          utils.teardown(app, hopsConfig);
+          hopsExpressUtils.teardown(app, hopsConfig);
         },
         watchOptions: watchOptions,
       },
       config.devServer
     )
   );
-  utils.run(app, callback);
+  hopsExpressUtils.run(app, callback);
 }
 
 module.exports = function(options, callback) {

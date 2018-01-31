@@ -6,8 +6,8 @@ var merge = require('webpack-merge');
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
 
-var generate = require('./lib/generate');
-var cleanup = require('./lib/cleanup');
+var generate = require('./generate');
+var cleanup = require('./cleanup');
 
 var mergeWithPlugins = merge.strategy({ plugins: 'append' });
 

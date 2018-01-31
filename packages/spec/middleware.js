@@ -5,7 +5,7 @@ var events = require('events');
 
 var mocks = require('node-mocks-http');
 
-var createMiddleware = require('hops-middleware');
+var createMiddleware = require('hops-build').createMiddleware;
 
 var goodConfig = require('./mock/webpack.good');
 var badExportConfig = require('./mock/webpack.bad-export');
