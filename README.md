@@ -17,8 +17,6 @@
 
 Hops is everything you need to develop and deploy a production grade universal web application with [React](https://facebook.github.io/react/). It provides both a **universal runtime** as well as the necessary **build tooling**.
 
-### Philosophy
-
 Hops targets the the professional React developer and follows React mainstream best practices.
 
 The two guiding principles are:
@@ -27,6 +25,8 @@ The two guiding principles are:
 1. Hops fits a broad need by being modular and extensible, it comes with reasonable defaults, but allows you to customize, configure, and extend almost everything when needed
 
 Hops is designed to simplify getting started with modern frontend tooling. It streamlines [Webpack](https://webpack.js.org) and [Jest](https://facebook.github.io/jest/) configuration featuring [Babel](https://babeljs.io) and [PostCSS](http://postcss.org).
+
+Why and how Hops is structured into modules can be found [here](./docs/modules.md) and [here is a more detailed and complete treatise on its concepts](./docs/concepts.md).
 
 ### Quick start
 
@@ -37,6 +37,8 @@ npm start
 ```
 
 This will start hops in development mode. Visit [http://localhost:8080](http://localhost:8080) to see your app in the browser and make some changes to the code in your editor to see it live-reloading.
+
+You can find a complete walk through in our [Getting Started Guide](./docs/getting-started.md).
 
 ### FAQ
 
