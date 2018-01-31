@@ -8,10 +8,10 @@ var webpackHotMiddleware = require('webpack-hot-middleware');
 
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
-var createMiddleware = require('hops-middleware');
-var utils = require('hops-express').utils;
+var hopsExpressUtils = require('hops-express').utils;
 
-var cleanup = require('./lib/cleanup');
+var createMiddleware = require('./middleware');
+var cleanup = require('./cleanup');
 
 process.on('unhandledRejection', function(error) {
   throw error;
@@ -31,15 +31,15 @@ function runDevelop(options, callback) {
     })
   );
   app.use(webpackHotMiddleware(compiler));
-  app.use(utils.rewritePath);
+  app.use(hopsExpressUtils.rewritePath);
   app.use(express.static(hopsConfig.buildDir, { redirect: false }));
-  utils.bootstrap(app, hopsConfig);
-  utils.registerMiddleware(
+  hopsExpressUtils.bootstrap(app, hopsConfig);
+  hopsExpressUtils.registerMiddleware(
     app,
     createMiddleware(require(hopsBuildConfig.nodeConfig), config.watchOptions)
   );
-  utils.teardown(app, hopsConfig);
-  utils.run(app, callback);
+  hopsExpressUtils.teardown(app, hopsConfig);
+  hopsExpressUtils.run(app, callback);
 }
 
 module.exports = function(options, callback) {

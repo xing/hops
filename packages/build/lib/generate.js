@@ -8,7 +8,8 @@ var filesize = require('filesize');
 var mkdirp = require('mkdirp');
 
 var hopsConfig = require('hops-config');
-var createRenderer = require('hops-renderer');
+
+var createRenderer = require('./renderer');
 
 function getFileName(location) {
   return path.join.apply(

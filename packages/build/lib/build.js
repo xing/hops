@@ -5,8 +5,8 @@ var webpack = require('webpack');
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
 
-var generate = require('./lib/generate');
-var cleanup = require('./lib/cleanup');
+var generate = require('./generate');
+var cleanup = require('./cleanup');
 
 var buildConfig = require(hopsBuildConfig.buildConfig);
 var nodeConfig = require(hopsBuildConfig.nodeConfig);
