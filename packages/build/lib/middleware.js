@@ -1,9 +1,9 @@
 'use strict';
 
-var transpile = require('./transpile');
+var createTranspiler = require('./transpiler');
 
 module.exports = function createMiddleware(webpackConfig, watchOptions) {
-  var transpiler = transpile(webpackConfig, watchOptions);
+  var transpiler = createTranspiler(webpackConfig, watchOptions);
 
   var middleware, error;
 

@@ -22,11 +22,3 @@ Hops is modular and its components are independently published on npm. Its main 
 | [Hops Config](https://github.com/xing/hops/tree/master/packages/config)             | [![npm](https://img.shields.io/npm/v/hops-config.svg)](https://www.npmjs.com/package/hops-config)             |
 | [Hops Build Config](https://github.com/xing/hops/tree/master/packages/build-config) | [![npm](https://img.shields.io/npm/v/hops-build-config.svg)](https://www.npmjs.com/package/hops-build-config) |
 | [Hops Jest Preset](https://github.com/xing/hops/tree/master/packages/jest-preset)   | [![npm](https://img.shields.io/npm/v/jest-preset-hops.svg)](https://www.npmjs.com/package/jest-preset-hops)   |
-
-The following additional packages are rather low-level and you'll probably never need to install and use them directly.
-
-| Package                                                                         | NPM                                                                                                       |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| [Hops Server](https://github.com/xing/hops/tree/master/packages/server)         | [![npm](https://img.shields.io/npm/v/hops-server.svg)](https://www.npmjs.com/package/hops-server)         |
-| [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware) | [![npm](https://img.shields.io/npm/v/hops-middleware.svg)](https://www.npmjs.com/package/hops-middleware) |
-| [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)     | [![npm](https://img.shields.io/npm/v/hops-renderer.svg)](https://www.npmjs.com/package/hops-renderer)     |
