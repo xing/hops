@@ -11,7 +11,7 @@ var REDUX_STATE = 'REDUX_STATE';
 
 exports.ReduxContext = function(options) {
   this.reducers = {};
-  options = options || {};
+  options = options.redux || options || {};
   this.middlewares = options.middlewares || [ReduxThunkMiddleware];
   if (!Array.isArray(this.middlewares)) {
     throw new Error('middlewares needs to be an array');
@@ -91,6 +91,8 @@ exports.createContext = hopsReact.combineContexts(
 exports.reduxExtension = function(config) {
   return {
     context: exports.ReduxContext,
-    config: config,
+    config: {
+      redux: config,
+    },
   };
 };
