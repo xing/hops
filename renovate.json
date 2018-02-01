@@ -1,0 +1,9 @@
+{
+  "extends": ["config:base"],
+  "pinVersions": false,
+  "ignorePaths": ["packages/build-config/shims/", "packages/spec/mock/"],
+  "semanticPrefix": "chore:",
+  "dependencies": {
+    "semanticPrefix": "chore:"
+  }
+}
