@@ -27,7 +27,7 @@ npm install --save hops-redux react react-redux redux redux-thunk
 
 ## `createContext(options)`
 
-`createContext()` is hops-redux's advanced export. Additional to the config options of [hops-react's createContext](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions) it takes additional `reducers` and `middlewares` as described [above under `reduxExtension(config)`](#createcontextoptions). Be careful, in this case you have to wrap the config options under the `redux` namespace.
+`createContext()` is hops-redux's advanced export. Additional to the config options of [hops-react's createContext](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions) it takes additional `reducers` and `middlewares` as described [above under `reduxExtension(config)`](#reduxextensionconfig). Be careful, in this case you have to wrap the config options under the `redux` namespace.
 
 ```javascript
 createContext({
