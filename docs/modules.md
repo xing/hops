@@ -1,4 +1,10 @@
-## Modules
+## Hops Core - Modules Overview
+
+Hops can be split at least into the Tooling and the Runtime section. This is an idea of how the individual, non optional components look like:
+
+![Hops Core](./hops-core.png)
+
+## Modules Reference
 
 When you first look at Hops you see the CLI project [Hops (CLI)](https://github.com/xing/hops/tree/master/packages/cli). This is what you might call the core of hops.
 
@@ -24,7 +30,3 @@ The following additional packages are rather low-level and you'll probably never
 | [Hops Server](https://github.com/xing/hops/tree/master/packages/server)         | [![npm](https://img.shields.io/npm/v/hops-server.svg)](https://www.npmjs.com/package/hops-server)         |
 | [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware) | [![npm](https://img.shields.io/npm/v/hops-middleware.svg)](https://www.npmjs.com/package/hops-middleware) |
 | [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)     | [![npm](https://img.shields.io/npm/v/hops-renderer.svg)](https://www.npmjs.com/package/hops-renderer)     |
-
-Hops can be split at least into the Tooling and the Runtime section. This is an idea of how the individual, non optional components look like:
-
-![Hops Core](./hops-core.png)

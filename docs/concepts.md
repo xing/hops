@@ -37,5 +37,5 @@ Server Side:
 3. Getting the template to embed the server side rendering markup into: can be composed by many packages, template itself has extension points
 4. Using the template create a rendered results: the last package having a function to render a template is used
 
-In the [React Package] (../packages/react/README.md) you can find details of the [render function](../packages/react/README.md#renderreactelement-context), 
-[React Context](../packages/react/README.md#reactcontext), and the [life cycle API](../packages/react/README.md#lifecycle-api).
+In the [React Package](https://github.com/xing/hops/tree/master/packages/react/README.md) you can find details of the [render function](https://github.com/xing/hops/tree/master/packages/react/README.md#renderreactelement-config), 
+[React Context](https://github.com/xing/hops/tree/master/packages/react/README.md#reactcontext), and the [life cycle API](https://github.com/xing/hops/tree/master/packages/react/README.md#lifecycle-api).
