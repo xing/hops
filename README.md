@@ -86,6 +86,8 @@ You could say Hops is for React what the Angular eco system and the Angular CLI 
 
 ### Contributing
 
+#### Code
+
 Hops uses [lerna](https://github.com/lerna/lerna) and [yarn](https://yarnpkg.com/en/) for development and publishing of the packages. Therefore it is required to have `yarn` globally available.
 
 If you want to contribute to this project, create a fork of its [repository](https://github.com/xing/hops/fork) using the GitHub UI. Check out your new fork to your computer:
@@ -102,6 +104,20 @@ Using `yarn start` will execute the `start` script in the [hops-template-react](
 When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
 
 Hops is entirely written in ECMAScript 5 and its code is formatted using [prettier](https://prettier.io). Please make sure your contribution does, too.
+
+#### Wiki
+
+The wiki (stored in the `docs/` directory) is a git subtree of the [https://github.com/xing/hops/wiki](projects wiki) which allows to reference and edit the wiki from inside the main repository.
+
+**Initial local setup**: When cloning this repository for the first time the wiki repository must be added as a remote: `git remote add wiki git@github.com:xing/hops.wiki.git`
+
+**Editing the wiki**: When editing files inside the `docs/` directory you must ensure that these files are committed separately from other files outside of the `docs/` directory.  
+Other than that you can edit, add, remove and commit these files like any other file in the repository.
+
+**Pushing the wiki**: After editing and commiting files inside the `docs/` directory you can push these changes to the project wiki by using the `yarn push-wiki` shortcut which we provide as a package.json script.
+
+**Pulling the wiki**: In case the wiki has been edited through the GitHub UI or pushed to separately you may need to pull remote changes into the main repository first before pulling.  
+In these instances you can use the `yarn pull-wiki` shortcut to merge remote changes back into the main repository.
 
 ### Thanks!
 
