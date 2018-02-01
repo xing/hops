@@ -18,14 +18,12 @@ npm install --save hops-redux react react-redux redux redux-thunk
 
 ## `createContext(options)`
 
-`createContext()` is hops-redux's main export. Of course, it is based on the implementation in [hops-react](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions), but takes additional `reducers` and `middlewares` options.
+`createContext()` is hops-redux's main export. Additional to the config options of [hops-react's createContext](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions) it takes additional `reducers` and `middlewares` options under the `redux` namespace.
 
-| Field       | Type     | Default                  | Description                                                                                                                                                                                                                                |
-| ----------- | -------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| mountpoint  | String   | `'#main'`                | querySelector identifying the root DOM node                                                                                                                                                                                                |
-| template    | Function | `defaultTemplate`        | template function supporting all React Helmet and hops-react features                                                                                                                                                                      |
-| reducers    | Object   | `{}`                     | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html)                                                                                                        |
-| middlewares | Array    | `[ReduxThunkMiddleware]` | array specifying the redux middlewares to apply. Uses [redux-thunk](https://github.com/gaearon/redux-thunk) as default. When middlewares is specified redux-thunk will not be included by default and needs to be added as well if needed. |
+| Field             | Type   | Default                  | Description                                                                                                                                                                                                                                |
+| ----------------- | ------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| redux.reducers    | Object | `{}`                     | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html)                                                                                                        |
+| redux.middlewares | Array  | `[ReduxThunkMiddleware]` | array specifying the redux middlewares to apply. Uses [redux-thunk](https://github.com/gaearon/redux-thunk) as default. When middlewares is specified redux-thunk will not be included by default and needs to be added as well if needed. |
 
 ## `ReduxContext`
 
@@ -49,8 +47,10 @@ const App = withMessage(props => <h1>{props.message}</h1>);
 export default render(
   <App />,
   createContext({
-    reducers: {
-      [namespace]: (state = { message: 'Hello World!' }) => state,
+    redux: {
+      reducers: {
+        [namespace]: (state = { message: 'Hello World!' }) => state,
+      },
     },
   })
 );
