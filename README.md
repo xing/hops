@@ -107,7 +107,7 @@ Hops is entirely written in ECMAScript 5 and its code is formatted using [pretti
 
 #### Wiki
 
-The wiki (stored in the `docs/` directory) is a git subtree of the [https://github.com/xing/hops/wiki](projects wiki) which allows to reference and edit the wiki from inside the main repository.
+The wiki (stored in the `docs/` directory) is a git subtree of the [projects wiki](https://github.com/xing/hops/wiki) which allows to reference and edit the wiki from inside the main repository.
 
 **Initial local setup**: When cloning this repository for the first time the wiki repository must be added as a remote: `git remote add wiki git@github.com:xing/hops.wiki.git`
 
