@@ -49,7 +49,10 @@
     "reset": "git clean -dfx && yarn && yarn bootstrap",
     "fmt":
       "prettier --write --ignore-path .gitignore '**/*.{js,json,css}' '**/README.md'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "pull-wiki":
+      "git subtree pull --prefix docs wiki master --squash --message='docs(wiki): update wiki subtree'",
+    "push-wiki": "git subtree push --prefix docs wiki master"
   },
   "lint-staged": {
     "*.{js,json,css}": ["prettier --write --ignore-path .gitignore", "git add"],
