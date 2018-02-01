@@ -52,7 +52,7 @@ Defaults for the `graphql` config are very similar to those in the [default impl
 
 ## `createContext(options)`
 
-`createContext()` is hops-graphql's main export. Additional to the config options of [hops-react's createContext](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions) it takes additional options as described [above under `reduxExtension(config)`](#createcontextoptions). Be careful, in this case you have to wrap the config options under the `graphql` namespace.
+`createContext()` is hops-graphql's main export. Additional to the config options of [hops-react's createContext](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions) it takes additional options as described [above under `graphqlExtension(config)`](#graphqlextensionconfig). Be careful, in this case you have to wrap the config options under the `graphql` namespace.
 
 ## `GraphQLContext`
 
