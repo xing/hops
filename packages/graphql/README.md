@@ -44,17 +44,15 @@ The generated file, `fragmentTypes.json` will be picked up automatically by hops
 
 # API
 
-## `createContext(options)`
+## `graphqlExtension(config)`
 
-`createContext()` is hops-graphql's main export. It is based on the implementation in [hops-redux](https://github.com/xing/hops/tree/master/packages/redux#createcontextoptions) and accepts the same options plus a `graphql` config.
-
-| Field      | Type     | Default           | Description                                                                         |
-| ---------- | -------- | ----------------- | ----------------------------------------------------------------------------------- |
-| mountpoint | String   | `'#main'`         | querySelector identifying the root DOM node                                         |
-| template   | Function | `defaultTemplate` | template function supporting all React Helmet and hops-react features               |
-| graphql    | Object   | `{ cache, link }` | object literal containing options directly passed to the `ApolloClient` constructor |
+`graphqlExtension()` is hops-graphql's main export. It is used as an extension to [`hops-react's render function`](https://github.com/xing/hops/tree/master/packages/react#renderreactelement-config). Its [config options](https://www.apollographql.com/docs/react/reference/index.html#ApolloClientOptions) are directly passed passed in to the [`ApolloClient` constructor](https://www.apollographql.com/docs/react/reference/index.html#ApolloClient)
 
 Defaults for the `graphql` config are very similar to those in the [default implementation](https://www.npmjs.com/package/apollo-client-preset) with the exception that `hopsConfig.graphqlUri` is being used as HTTP endpoint.
+
+## `createContext(options)`
+
+`createContext()` is hops-graphql's main export. Additional to the config options of [hops-react's createContext](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions) it takes additional options as described [above under `reduxExtension(config)`](#createcontextoptions). Be careful, in this case you have to wrap the config options under the `graphql` namespace.
 
 ## `GraphQLContext`
 
