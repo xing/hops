@@ -19,8 +19,12 @@ module.exports = {
   output: {
     path: hopsConfig.buildDir,
     publicPath: '/',
+    pathinfo: true,
     filename: getAssetPath('[name].js'),
     chunkFilename: getAssetPath('chunk-[id].js'),
+    devtoolModuleFilenameTemplate: function(info) {
+      return path.resolve(info.absoluteResourcePath).replace(/\\/g, '/');
+    },
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('develop'),
