@@ -2,7 +2,7 @@
   <img
     width="200"
     height="217"
-    src="https://github.com/xing/hops/blob/master/logo.png?raw=true"
+    src="https://raw.githubusercontent.com/wiki/xing/hops/logo.png"
   />
 </p>
 
@@ -17,7 +17,13 @@
 
 Hops is everything you need to develop and deploy a production grade universal web application with [React](https://facebook.github.io/react/). It provides both a **universal runtime** as well as the necessary **build tooling**.
 
-![Hops Core](https://raw.githubusercontent.com/wiki/xing/hops/hops-core.png)
+<p align="center">
+  <img
+    width="344"
+    height="322"
+    src="https://raw.githubusercontent.com/wiki/xing/hops/hops-core.png"
+  />
+</p>
 
 Hops targets the the professional React developer and follows React mainstream best practices.
 
