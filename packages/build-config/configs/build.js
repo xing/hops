@@ -13,12 +13,19 @@ var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  bail: true,
   entry: require.resolve('../shims/build'),
   output: {
     path: hopsConfig.buildDir,
     publicPath: '/',
+    pathinfo: true,
     filename: getAssetPath('[name]-[chunkhash:16].js'),
     chunkFilename: getAssetPath('[name]-[id]-[chunkhash:16].js'),
+    devtoolModuleFilenameTemplate: function(info) {
+      return path
+        .relative(hopsConfig.appDir, info.absoluteResourcePath)
+        .replace(/\\/g, '/');
+    },
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('build'),
@@ -61,11 +68,6 @@ module.exports = {
         hopsConfig.envVars
       )
     ),
-    new webpack.LoaderOptionsPlugin({
-      debug: false,
-      minimize: true,
-      sourceMap: true,
-    }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new UglifyPlugin({ sourceMap: true, cache: true, parallel: true }),
   ],
