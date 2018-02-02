@@ -97,21 +97,24 @@ exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
         : getStatsFromFile(),
   };
   res.locals.hops.assets = { js: [], css: [] };
-  ['vendor', 'main'].forEach(function(key) {
-    var asset = res.locals.hops.stats.assetsByChunkName[key];
-    if (Array.isArray(asset)) {
-      var js = asset.find(function(item) {
-        return item.indexOf('.js') === item.length - 3;
-      });
-      js && res.locals.hops.assets.js.push('/' + js);
-      var css = asset.find(function(item) {
-        return item.indexOf('.css') === item.length - 4;
-      });
-      css && res.locals.hops.assets.css.push('/' + css);
-    } else if (asset) {
-      res.locals.hops.assets.js.push('/' + asset);
-    }
-  });
+  var assets = res.locals.hops.stats.assetsByChunkName;
+  if (assets) {
+    ['vendor', 'main'].forEach(function(key) {
+      var asset = assets[key];
+      if (Array.isArray(asset)) {
+        var js = asset.find(function(item) {
+          return item.indexOf('.js') === item.length - 3;
+        });
+        js && res.locals.hops.assets.js.push('/' + js);
+        var css = asset.find(function(item) {
+          return item.indexOf('.css') === item.length - 4;
+        });
+        css && res.locals.hops.assets.css.push('/' + css);
+      } else if (asset) {
+        res.locals.hops.assets.js.push('/' + asset);
+      }
+    });
+  }
   next();
 };
 
