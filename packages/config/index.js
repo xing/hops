@@ -68,6 +68,27 @@ function applyEnvironmentConfig(config) {
   return result;
 }
 
+function resolvePlaceholders(config) {
+  var keys = Object.keys(config);
+  var regExp = new RegExp('<(' + keys.join('|') + ')>', 'g');
+  function replaceRecursive(item) {
+    if (Array.isArray(item)) {
+      return item.map(replaceRecursive);
+    }
+    if (typeof item === 'string') {
+      return item.replace(regExp, function(_, match) {
+        var result = config[match].toString();
+        return regExp.test(result) ? replaceRecursive(result) : result;
+      });
+    }
+    return item;
+  }
+  return keys.reduce(function(result, key) {
+    result[key] = replaceRecursive(config[key]);
+    return result;
+  }, {});
+}
+
 function resolvePaths(config) {
   var result = Object.assign({}, config);
   Object.keys(config)
@@ -77,11 +98,6 @@ function resolvePaths(config) {
     .forEach(function(key) {
       result[key] = (function resolve(item) {
         if (typeof item === 'string') {
-          if (item.indexOf('<') === 0) {
-            item = item.replace(/^(?:<([^>]+)>)(.*)/, function() {
-              return path.join(config[arguments[1]], arguments[2]);
-            });
-          }
           return path.isAbsolute(item) ? item : path.join(root, item);
         } else if (Array.isArray(item)) {
           return item.map(resolve);
@@ -114,6 +130,7 @@ module.exports = [
   applyUserConfig,
   applyInheritedConfig,
   applyEnvironmentConfig,
+  resolvePlaceholders,
   resolvePaths,
   normalizeURLs,
 ].reduce(function(result, step) {
