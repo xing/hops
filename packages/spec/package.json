@@ -1,32 +1,30 @@
 {
-  "name": "hops-spec",
-  "version": "10.0.0-rc.4",
-  "private": true,
-  "scripts": {
-    "test": "mocha --exit '*.js'"
-  },
-  "devDependencies": {
-    "hops": "10.0.0-rc.0",
-    "hops-build": "10.0.0-rc.4",
-    "hops-build-config": "10.0.0-rc.4",
-    "hops-config": "10.0.0-rc.4",
-    "hops-express": "10.0.0-rc.4",
-    "hops-middleware": "10.0.0-rc.0",
-    "hops-react": "10.0.0-rc.4",
-    "hops-redux": "10.0.0-rc.4",
-    "hops-renderer": "10.0.0-rc.4",
-    "isomorphic-fetch": "^2.2.1",
-    "jest": "^22.0.4",
-    "jest-preset-hops": "10.0.0-rc.4",
-    "mkdirp": "^0.5.1",
-    "mocha": "^4.1.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-helmet": "^5.2.0",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
-  }
+    "name": "hops-spec",
+    "version": "10.0.0-rc.4",
+    "private": true,
+    "scripts": {
+        "test": "mocha --exit '*.js'"
+    },
+    "devDependencies": {
+        "hops": "10.0.0-rc.0",
+        "hops-build": "10.0.0-rc.4",
+        "hops-build-config": "10.0.0-rc.4",
+        "hops-config": "10.0.0-rc.4",
+        "hops-express": "10.0.0-rc.4",
+        "hops-react": "10.0.0-rc.4",
+        "hops-redux": "10.0.0-rc.4",
+        "isomorphic-fetch": "^2.2.1",
+        "jest": "^22.0.4",
+        "jest-preset-hops": "10.0.0-rc.4",
+        "mkdirp": "^0.5.1",
+        "mocha": "^4.1.0",
+        "react": "^16.0.0",
+        "react-dom": "^16.0.0",
+        "react-helmet": "^5.2.0",
+        "react-redux": "^5.0.6",
+        "react-router": "^4.2.0",
+        "react-router-dom": "^4.2.2",
+        "redux": "^3.7.2",
+        "redux-thunk": "^2.2.0"
+    }
 }

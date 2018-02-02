@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 
-var createRenderer = require('hops-renderer');
+var createRenderer = require('hops-build').createRenderer;
 
 var goodConfig = require('./mock/webpack.good');
 var badExportConfig = require('./mock/webpack.bad-export');
