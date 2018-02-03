@@ -34,8 +34,7 @@
   ],
   "scripts": {
     "preinstall":
-      "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'hops uses yarn workspaces to manage packages.\nPlease use yarn to install dependencies: https://yarnpkg.com/' && exit 1)\"",
-
+      "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'use yarn' && exit 1)\"",
     "bootstrap": "lerna bootstrap",
     "start": "cd packages/template-react; yarn start",
     "start:minimal": "cd packages/template-minimal; yarn start",
