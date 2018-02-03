@@ -2,17 +2,9 @@
   "name": "jest-preset-hops",
   "version": "10.0.0-rc.4",
   "description": "Jest preset to work with Hops powered projects",
-  "keywords": [
-    "hops",
-    "jest"
-  ],
+  "keywords": ["hops", "jest"],
   "license": "MIT",
-  "files": [
-    "jest-preset.json",
-    "file-mock.js",
-    "tpl-mock.js",
-    "transforms"
-  ],
+  "files": ["jest-preset.json", "mocks", "transforms"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
