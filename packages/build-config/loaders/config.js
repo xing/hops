@@ -1,5 +1,7 @@
 'use strict';
 
+var path = require('path');
+
 var loaderUtils = require('loader-utils');
 
 var hopsConfig = require('hops-config');
@@ -18,7 +20,7 @@ function getConfig(config) {
           .reduce(function(result, key) {
             result[key] = (function shorten(item) {
               if (typeof item === 'string') {
-                return item.replace(new RegExp(config.appDir), '.');
+                return path.relative(config.appDir, item);
               } else if (Array.isArray(item)) {
                 return item.map(shorten);
               } else {
@@ -39,19 +41,19 @@ function getNodeConfig() {
     'var root = require("pkg-dir").sync();',
     'var expand = path.join.bind(path, root);',
     getConfig(hopsConfig)
-      .replace(/(config|file|dir)s?":"(\.[^"]*)"/gi, '$1":expand("$2")')
+      .replace(/((?:config|file|dir)s?":)("[^"]*")/gi, '$1expand($2)')
       .replace(/((?:config|file|dir)s?":)\[([^\]]+)\]/gi, function() {
-        return (
-          arguments[1] +
-          '[' +
+        return [
+          arguments[1],
+          '[',
           arguments[2]
             .split(',')
             .map(function(p) {
               return 'expand(' + p + ')';
             })
-            .join(',') +
-          ']'
-        );
+            .join(','),
+          ']',
+        ].join('');
       }),
   ].join('');
 }
