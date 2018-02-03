@@ -5,16 +5,7 @@
   "keywords": ["hops", "webpack", "babel", "postcss"],
   "license": "MIT",
   "main": "index.js",
-  "files": [
-    "index.js",
-    "configs",
-    "lib",
-    "loaders",
-    "plugins",
-    "sections",
-    "shims",
-    "ssl"
-  ],
+  "files": ["index.js", "configs", "lib", "loaders", "sections", "shims"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
