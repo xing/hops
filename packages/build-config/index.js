@@ -2,7 +2,7 @@
 
 var hopsConfig = require('hops-config');
 
-module.exports = Object.freeze({
+module.exports = {
   buildConfig: hopsConfig.buildConfig
     ? hopsConfig.buildConfig
     : require.resolve('./configs/build'),
@@ -12,4 +12,4 @@ module.exports = Object.freeze({
   nodeConfig: hopsConfig.nodeConfig
     ? hopsConfig.nodeConfig
     : require.resolve('./configs/node'),
-});
+};
