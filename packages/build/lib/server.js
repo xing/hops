@@ -13,20 +13,22 @@ var hopsExpressUtils = require('hops-express').utils;
 var createMiddleware = require('./middleware');
 var cleanup = require('./cleanup');
 
+var developConfig = hopsBuildConfig.develop;
+var nodeConfig = hopsBuildConfig.node;
+
 process.on('unhandledRejection', function(error) {
   throw error;
 });
 
 function runDevelop(options, callback) {
-  var config = require(hopsBuildConfig.developConfig);
-  var compiler = webpack(config);
+  var compiler = webpack(developConfig);
   var app = express();
   app.use(
     webpackDevMiddleware(compiler, {
       noInfo: true,
       logLevel: 'warn',
-      publicPath: config.output.publicPath,
-      watchOptions: config.watchOptions,
+      publicPath: developConfig.output.publicPath,
+      watchOptions: developConfig.watchOptions,
       serverSideRender: true,
     })
   );
@@ -36,7 +38,10 @@ function runDevelop(options, callback) {
   hopsExpressUtils.bootstrap(app, hopsConfig);
   hopsExpressUtils.registerMiddleware(
     app,
-    createMiddleware(require(hopsBuildConfig.nodeConfig), config.watchOptions)
+    createMiddleware(
+      nodeConfig,
+      nodeConfig.watchOptions || developConfig.watchOptions
+    )
   );
   hopsExpressUtils.teardown(app, hopsConfig);
   hopsExpressUtils.run(app, callback);

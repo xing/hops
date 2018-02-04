@@ -8,8 +8,8 @@ var hopsBuildConfig = require('hops-build-config');
 var generate = require('./generate');
 var cleanup = require('./cleanup');
 
-var buildConfig = require(hopsBuildConfig.buildConfig);
-var nodeConfig = require(hopsBuildConfig.nodeConfig);
+var buildConfig = hopsBuildConfig.build;
+var nodeConfig = hopsBuildConfig.node;
 
 function defaultCallback(error, stats) {
   if (error) {
