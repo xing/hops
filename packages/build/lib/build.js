@@ -17,8 +17,8 @@ function injectProgressPlugin(webpackConfig) {
   });
 }
 
-var buildConfig = injectProgressPlugin(require(hopsBuildConfig.buildConfig));
-var nodeConfig = injectProgressPlugin(require(hopsBuildConfig.nodeConfig));
+var buildConfig = injectProgressPlugin(hopsBuildConfig.build);
+var nodeConfig = injectProgressPlugin(hopsBuildConfig.node);
 
 function defaultCallback(error, stats) {
   if (error) {
