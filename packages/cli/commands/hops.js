@@ -5,19 +5,18 @@ var fs = require('fs');
 var path = require('path');
 var resolveCwd = require('resolve-cwd');
 var validatePackageName = require('validate-npm-package-name');
-var pm = require('./lib/package-manager');
 
-var packageManifest = require('./package.json');
+var pm = require('../lib/package-manager');
+
+var packageManifest = require('../package.json');
 
 var getLocalCliPath = function() {
   try {
     return resolveCwd('hops-local-cli');
   } catch (_) {}
-
   try {
     return resolveCwd('hops');
   } catch (_) {}
-
   return null;
 };
 
@@ -101,7 +100,6 @@ function createDirectory(root, name) {
     );
     process.exit(1);
   }
-
   fs.mkdirSync(root);
 }
 
@@ -120,8 +118,6 @@ function writePackageManifest(root, name) {
   );
 }
 
-var localCliPath = getLocalCliPath();
-
 var isInsideHopsProject = false;
 try {
   var hopsRoot = require('pkg-dir').sync();
@@ -137,6 +133,7 @@ try {
 }
 
 if (isInsideHopsProject) {
+  var localCliPath = getLocalCliPath();
   if (localCliPath) {
     require(localCliPath).run();
   } else {
