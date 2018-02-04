@@ -1,9 +1,10 @@
 'use strict';
 
-var deploy = require('./deploy');
-var destroy = require('./destroy');
-
 module.exports = {
-  deploy: deploy,
-  destroy: destroy,
+  get deploy() {
+    return require('./lib/deploy');
+  },
+  get destroy() {
+    return require('./lib/destroy');
+  },
 };
