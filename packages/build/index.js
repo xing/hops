@@ -1,19 +1,19 @@
 'use strict';
 
 module.exports = {
-  runBuild: function() {
-    return require('./lib/build').apply(null, arguments);
+  get runBuild() {
+    return require('./lib/build');
   },
-  runServer: function() {
-    return require('./lib/server').apply(null, arguments);
+  get runServer() {
+    return require('./lib/server');
   },
-  createRenderer: function() {
-    return require('./lib/renderer').apply(null, arguments);
+  get createRenderer() {
+    return require('./lib/renderer');
   },
-  createMiddleware: function() {
-    return require('./lib/middleware').apply(null, arguments);
+  get createMiddleware() {
+    return require('./lib/middleware');
   },
-  createTranspiler: function() {
-    return require('./lib/transpiler').apply(null, arguments);
+  get createTranspiler() {
+    return require('./lib/transpiler');
   },
 };
