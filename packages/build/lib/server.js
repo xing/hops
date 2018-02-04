@@ -38,7 +38,10 @@ function runDevelop(options, callback) {
   hopsExpressUtils.bootstrap(app, hopsConfig);
   hopsExpressUtils.registerMiddleware(
     app,
-    createMiddleware(nodeConfig, developConfig.watchOptions)
+    createMiddleware(
+      nodeConfig,
+      nodeConfig.watchOptions || developConfig.watchOptions
+    )
   );
   hopsExpressUtils.teardown(app, hopsConfig);
   hopsExpressUtils.run(app, callback);
