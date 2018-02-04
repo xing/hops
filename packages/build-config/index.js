@@ -2,7 +2,16 @@
 
 var hopsConfig = require('hops-config');
 
-module.exports = {
+module.exports = exports = {
+  get build() {
+    return require(exports.buildConfig);
+  },
+  get develop() {
+    return require(exports.developConfig);
+  },
+  get node() {
+    return require(exports.nodeConfig);
+  },
   buildConfig: hopsConfig.buildConfig
     ? hopsConfig.buildConfig
     : require.resolve('./configs/build'),
