@@ -1,8 +1,8 @@
 'use strict';
 
 var AWS = require('aws-sdk');
-var prompt = require('./lib/prompt');
-var getAWSConfig = require('./lib/aws-config');
+var prompt = require('./prompt');
+var getAWSConfig = require('./aws-config');
 
 function emptyBucket(s3, bucketName) {
   console.log('Deleting objects in S3 bucket');

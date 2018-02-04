@@ -14,15 +14,7 @@
     "hops-lambda": "commands/lambda.js"
   },
   "main": "index.js",
-  "files": [
-    "commands",
-    "lib",
-    "cloudformation.yaml",
-    "deploy.js",
-    "destroy.js",
-    "index.js",
-    "lambda.js"
-  ],
+  "files": ["cloudformation.yaml", "index.js", "lambda.js", "commands", "lib"],
   "dependencies": {
     "archiver": "^2.1.0",
     "aws-sdk": "^2.177.0",
