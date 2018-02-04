@@ -5,10 +5,10 @@
   "keywords": ["hops", "cli"],
   "license": "MIT",
   "bin": {
-    "hops": "hops.js"
+    "hops": "commands/hops.js"
   },
   "main": "index.js",
-  "files": ["commands", "lib", "hops.js", "index.js", "init.js", "run.js"],
+  "files": ["index.js", "commands", "lib"],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
