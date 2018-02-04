@@ -47,10 +47,5 @@ module.exports = function defineLambdaCommand(yargs) {
 };
 
 if (require.main === module) {
-  try {
-    require.resolve('hops-local-cli');
-    require('hops-local-cli').run(module.exports, 'lambda');
-  } catch (_) {
-    require('hops').run(module.exports, 'lambda');
-  }
+  require('hops').run(module.exports, 'lambda');
 }
