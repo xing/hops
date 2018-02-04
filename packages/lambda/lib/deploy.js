@@ -4,10 +4,10 @@ var fs = require('fs');
 var path = require('path');
 var AWS = require('aws-sdk');
 var hopsConfig = require('hops-config');
-var getAWSConfig = require('./lib/aws-config');
-var createLambdaBundle = require('./lib/create-lambda-bundle');
-var progressWriter = require('./lib/progress-writer');
-var fsUtils = require('./lib/fs-utils');
+var getAWSConfig = require('./aws-config');
+var createLambdaBundle = require('./create-lambda-bundle');
+var progressWriter = require('./progress-writer');
+var fsUtils = require('./fs-utils');
 
 function formatParameters(params) {
   return Object.keys(params).map(function(key) {
