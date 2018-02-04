@@ -1,15 +1,13 @@
 'use strict';
 
-var utils = require('./lib/utils');
-var createApp = require('./lib/app');
-
-module.exports = {
+module.exports = exports = {
   runServer: function runServer(options, callback) {
-    utils.run(createApp(options), callback);
+    return exports.utils.run(exports.createApp(options), callback);
   },
-  startServer: function(callback) {
-    module.exports.runServer({}, callback);
+  get createApp() {
+    return require('./lib/app');
   },
-  createApp: createApp,
-  utils: utils,
+  get utils() {
+    return require('./lib/utils');
+  },
 };
