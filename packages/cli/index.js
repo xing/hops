@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = {
-  init: function() {
-    return require('./lib/init').apply(null, arguments);
+  get init() {
+    return require('./lib/init');
   },
-  run: function() {
-    return require('./lib/run').apply(null, arguments);
+  get run() {
+    return require('./lib/run');
   },
 };
