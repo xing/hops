@@ -26,7 +26,7 @@ function createApp(options) {
     })
   );
   utils.bootstrap(app, hopsConfig);
-  if (!options.static) {
+  if (options && !options.static) {
     var filePath = path.join(hopsConfig.cacheDir, 'server.js');
     if (fs.existsSync(filePath)) {
       utils.registerMiddleware(app.use(helmet.noCache()), require(filePath));
