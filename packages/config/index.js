@@ -8,22 +8,25 @@ var root = require('pkg-dir').sync();
 
 var cosmiconfig = require('cosmiconfig');
 
-function getDefaultConfig() {
-  return {
-    https: false,
-    host: '0.0.0.0',
-    port: 8080,
-    locations: [],
-    basePath: '',
-    assetPath: '',
-    browsers: '> 1%, last 2 versions, Firefox ESR',
-    node: 'current',
-    envVars: { HOPS_MODE: 'dynamic' },
-    moduleDirs: [],
-    appDir: '.',
-    buildDir: 'build',
-    cacheDir: 'node_modules/.cache/hops',
-  };
+function applyDefaultConfig(config) {
+  return assign(
+    {
+      https: false,
+      host: '0.0.0.0',
+      port: 8080,
+      locations: [],
+      basePath: '',
+      assetPath: '',
+      browsers: '> 1%, last 2 versions, Firefox ESR',
+      node: 'current',
+      envVars: { HOPS_MODE: 'dynamic' },
+      moduleDirs: [],
+      appDir: '.',
+      buildDir: 'build',
+      cacheDir: 'node_modules/.cache/hops',
+    },
+    config
+  );
 }
 
 function applyUserConfig(config) {
@@ -53,7 +56,7 @@ function applyInheritedConfig(config) {
         sync: true,
       });
       var _result = loader.load();
-      assign(result, assign(_result ? _result.config : {}, result));
+      result = assign(_result ? _result.config : {}, result);
     } else {
       console.error('Failed to load inherited config', configName);
     }
@@ -126,13 +129,13 @@ function normalizeURLs(config) {
 }
 
 module.exports = [
-  getDefaultConfig,
   applyUserConfig,
   applyInheritedConfig,
   applyEnvironmentConfig,
+  applyDefaultConfig,
   resolvePlaceholders,
   resolvePaths,
   normalizeURLs,
 ].reduce(function(result, step) {
   return step(result);
-}, null);
+}, {});
