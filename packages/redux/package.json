@@ -1,13 +1,13 @@
 {
   "name": "hops-redux",
-  "version": "10.0.0-rc.2",
+  "version": "10.0.0-rc.3",
   "description": "React and Redux implementation for Hops",
   "keywords": ["hops", "react", "redux"],
   "license": "MIT",
   "main": "index.js",
   "files": ["index.js"],
   "dependencies": {
-    "hops-react": "10.0.0-rc.2"
+    "hops-react": "10.0.0-rc.3"
   },
   "peerDependencies": {
     "react": ">=15.0.0 <17.0.0",

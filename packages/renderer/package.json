@@ -1,13 +1,13 @@
 {
   "name": "hops-renderer",
-  "version": "10.0.0-rc.2",
+  "version": "10.0.0-rc.3",
   "description": "Hops HTML renderer based on Webpack",
   "keywords": ["hops", "webpack"],
   "license": "MIT",
   "main": "index.js",
   "files": ["index.js"],
   "dependencies": {
-    "hops-config": "10.0.0-rc.2",
+    "hops-config": "10.0.0-rc.3",
     "hops-middleware": "10.0.0-rc.0",
     "node-mocks-http": "^1.6.6"
   }
