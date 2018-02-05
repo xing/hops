@@ -3,10 +3,11 @@
 var fs = require('fs');
 var path = require('path');
 
-var mergeWith = require('lodash.mergewith');
-var root = require('pkg-dir').sync();
-
 var cosmiconfig = require('cosmiconfig');
+var mergeWith = require('lodash.mergewith');
+var isPlainObject = require('is-plain-object');
+
+var root = require('pkg-dir').sync();
 
 function assign() {
   var args = Array.prototype.slice
@@ -81,24 +82,29 @@ function applyEnvironmentConfig(config) {
 }
 
 function resolvePlaceholders(config) {
-  var keys = Object.keys(config);
-  var regExp = new RegExp('<(' + keys.join('|') + ')>', 'g');
+  var regExp = new RegExp('<(' + Object.keys(config).join('|') + ')>', 'g');
   function replaceRecursive(item) {
     if (Array.isArray(item)) {
       return item.map(replaceRecursive);
     }
+    if (isPlainObject(item)) {
+      return Object.keys(item).reduce(function(result, key) {
+        result[key] = replaceRecursive(item[key]);
+        return result;
+      }, {});
+    }
     if (typeof item === 'string') {
-      return item.replace(regExp, function(_, match) {
-        var result = config[match].toString();
+      return item.replace(regExp, function(_, configKey) {
+        var result = config[configKey];
+        if (typeof result !== 'string') {
+          result = String(result).toString();
+        }
         return regExp.test(result) ? replaceRecursive(result) : result;
       });
     }
     return item;
   }
-  return keys.reduce(function(result, key) {
-    result[key] = replaceRecursive(config[key]);
-    return result;
-  }, {});
+  return replaceRecursive(config);
 }
 
 function resolvePaths(config) {
