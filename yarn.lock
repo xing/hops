@@ -2912,9 +2912,10 @@ extglob@^2.0.4:
 
 extract-text-webpack-plugin@webpack-contrib/extract-text-webpack-plugin#next:
   version "4.0.0-beta.0"
-  resolved "https://codeload.github.com/webpack-contrib/extract-text-webpack-plugin/tar.gz/5dbbcd99a5964175f85c302641829cd20e139c09"
+  resolved "https://codeload.github.com/webpack-contrib/extract-text-webpack-plugin/tar.gz/a63fee296899ffc6e9c7c1a5ec760893c8c60445"
   dependencies:
     async "^2.4.1"
+    glob "^7.1.2"
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
     webpack-sources "^1.1.0"
@@ -7872,7 +7873,7 @@ uglify-to-browserify@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
-uglifyjs-webpack-plugin@^1.1.1, uglifyjs-webpack-plugin@^1.1.6:
+uglifyjs-webpack-plugin@^1.1.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.2.4.tgz#5eec941b2e9b8538be0a20fc6eda25b14c7c1043"
   dependencies:
