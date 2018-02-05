@@ -3,7 +3,6 @@
 var path = require('path');
 
 var webpack = require('webpack');
-var UglifyPlugin = require('uglifyjs-webpack-plugin');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 var ServiceWorkerPlugin = require('../plugins/service-worker');
 
@@ -69,7 +68,6 @@ module.exports = {
       )
     ),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new UglifyPlugin({ sourceMap: true, cache: true, parallel: true }),
   ],
   performance: {
     assetFilter: function(assetFilename) {
