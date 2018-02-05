@@ -3,10 +3,19 @@
 var fs = require('fs');
 var path = require('path');
 
-var assign = require('deep-assign');
+var mergeWith = require('lodash.mergewith');
 var root = require('pkg-dir').sync();
 
 var cosmiconfig = require('cosmiconfig');
+
+function assign() {
+  var args = Array.prototype.slice
+    .call(arguments)
+    .concat(function(_, srcValue) {
+      return srcValue;
+    });
+  return mergeWith.apply(null, args);
+}
 
 function applyDefaultConfig(config) {
   return assign(

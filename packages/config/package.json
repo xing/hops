@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "cosmiconfig": "^3.1.0",
-    "deep-assign": "^2.0.0",
+    "lodash.mergewith": "^4.6.1",
     "pkg-dir": "^2.0.0"
   }
 }
