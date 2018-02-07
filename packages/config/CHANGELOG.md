@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.0.0"></a>
+# [10.0.0](https://github.com/xing/hops/compare/v10.0.0-rc.4...v10.0.0) (2018-02-07)
+
+
+### Features
+
+* **config:** apply placeholders to plain objects, too ([b84b60c](https://github.com/xing/hops/commit/b84b60c))
+
+
+
+
 <a name="9.5.0"></a>
 # [9.5.0](https://github.com/xing/hops/compare/v9.4.3...v9.5.0) (2018-01-09)
 

@@ -1,14 +1,24 @@
 {
   "name": "hops",
-  "version": "10.0.0-rc.0",
+  "version": "10.0.0",
   "description": "CLI tool to create, build and run Hops applications",
-  "keywords": ["hops", "cli"],
+  "keywords": [
+    "hops",
+    "cli"
+  ],
   "license": "MIT",
   "bin": {
     "hops": "hops.js"
   },
   "main": "index.js",
-  "files": ["commands", "lib", "hops.js", "index.js", "init.js", "run.js"],
+  "files": [
+    "commands",
+    "lib",
+    "hops.js",
+    "index.js",
+    "init.js",
+    "run.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"

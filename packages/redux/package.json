@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "10.0.0-rc.4",
+  "version": "10.0.0",
   "description": "React and Redux implementation for Hops",
   "keywords": [
     "hops",
@@ -13,7 +13,7 @@
     "index.js"
   ],
   "dependencies": {
-    "hops-react": "10.0.0-rc.4"
+    "hops-react": "10.0.0"
   },
   "peerDependencies": {
     "react": ">=15.0.0 <17.0.0",
