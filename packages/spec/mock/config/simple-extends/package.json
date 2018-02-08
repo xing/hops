@@ -1,0 +1,8 @@
+{
+  "name": "hops-config-package-json",
+  "version": "1.0.0",
+  "hops": {
+    "extends": "./config.js",
+    "port": 8082
+  }
+}
