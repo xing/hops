@@ -7,6 +7,8 @@ var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 
 var hopsConfig = require('hops-config');
 
+var ServiceWorkerPlugin = require('../plugins/worker');
+
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
 module.exports = {
@@ -55,6 +57,7 @@ module.exports = {
     },
   },
   plugins: [
+    new ServiceWorkerPlugin(),
     new StatsWriterPlugin({ fields: null }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.EnvironmentPlugin(
