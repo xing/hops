@@ -11,7 +11,7 @@ function clearRequireCache() {
   });
 }
 
-describe.only('hops-config', function() {
+describe('config', function() {
   beforeEach(clearRequireCache);
 
   afterEach(function() {
