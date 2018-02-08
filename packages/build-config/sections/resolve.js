@@ -7,6 +7,10 @@ module.exports = function getResolveConfig(target) {
   return {
     alias: {
       'hops-entry-point': hopsConfig.appDir,
+      'hops-worker-entry-point':
+        typeof hopsConfig.workerFile === 'boolean'
+          ? require.resolve('../lib/worker')
+          : hopsConfig.workerFile,
     },
     mainFields: [
       'esnext:' + platform,
