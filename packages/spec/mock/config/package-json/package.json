@@ -1,0 +1,7 @@
+{
+  "name": "hops-config-package-json",
+  "version": "1.0.0",
+  "hops": {
+    "port": 1337
+  }
+}
