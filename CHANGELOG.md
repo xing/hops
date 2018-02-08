@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+<a name="10.0.0"></a>
+# [10.0.0](https://github.com/xing/hops/compare/v10.0.0-rc.4...v10.0.0) (2018-02-07)
+
+
+### Features
+
+* **config:** apply placeholders to plain objects, too ([b84b60c](https://github.com/xing/hops/commit/b84b60c))
+
+
+
+
+<a name="10.0.0-rc.4"></a>
+# [10.0.0-rc.4](https://github.com/xing/hops/compare/v10.0.0-rc.3...v10.0.0-rc.4) (2018-02-05)
+
+
+### Bug Fixes
+
+* **config:** deep-merge config without array concatenation ([3a464e8](https://github.com/xing/hops/commit/3a464e8))
+
+
+### Performance Improvements
+
+* **build-config:** enable caching and parallelism in uglify plugin ([0530c24](https://github.com/xing/hops/commit/0530c24))
+
+
+
+
+<a name="10.0.0-rc.3"></a>
+# [10.0.0-rc.3](https://github.com/xing/hops/compare/v10.0.0-rc.2...v10.0.0-rc.3) (2018-02-05)
+
+
+### Bug Fixes
+
+* **config:** fix config extension mechanism ([fcc1a74](https://github.com/xing/hops/commit/fcc1a74))
+* **redux:** missing options no longer crash ([6ba75a7](https://github.com/xing/hops/commit/6ba75a7))
+
+
+### Features
+
+* **redux:** making redux configration scoped ([7813213](https://github.com/xing/hops/commit/7813213))
+
+
+
+
+<a name="10.0.0-rc.2"></a>
+# [10.0.0-rc.2](https://github.com/xing/hops/compare/v10.0.0-rc.1...v10.0.0-rc.2) (2018-02-02)
+
+
+### Features
+
+* **config:** support placeholders everywhere ([d0e47a0](https://github.com/xing/hops/commit/d0e47a0))
+* **react:** render variant hiding contexts from users ([610381d](https://github.com/xing/hops/commit/610381d))
+
+
+
+
+<a name="10.0.0-rc.1"></a>
+# [10.0.0-rc.1](https://github.com/xing/hops/compare/v10.0.0-rc.0...v10.0.0-rc.1) (2018-01-31)
+
+
+### Bug Fixes
+
+* **hops-config:** fix extends overriding previous values instead of extending ([93b8945](https://github.com/xing/hops/commit/93b8945))
+
+
+
+
+<a name="10.0.0-rc.0"></a>
+# [10.0.0-rc.0](https://github.com/xing/hops/compare/v9.8.0...v10.0.0-rc.0) (2018-01-25)
+
+
+### Features
+
+* **build-config:** hide _configs from browser ([e087a49](https://github.com/xing/hops/commit/e087a49))
+* **config:** add env support ([404d262](https://github.com/xing/hops/commit/404d262))
+* **config:** add support for config keys starting with '_' ([42272e5](https://github.com/xing/hops/commit/42272e5))
+* **config:** deeply merge configs ([b9519cd](https://github.com/xing/hops/commit/b9519cd))
+* **config:** improve config "inheritance" ([7ba54ae](https://github.com/xing/hops/commit/7ba54ae))
+* **config:** introduce cosmiconfig ([d9f8c15](https://github.com/xing/hops/commit/d9f8c15))
+* **config:** simplify, add fs placeholders ([f5ccc11](https://github.com/xing/hops/commit/f5ccc11))
+* **config:** use cosmiconfig for inheritance ([db2d39d](https://github.com/xing/hops/commit/db2d39d))
+* **graphql:** disable data fetching in static ssr ([4e5e28a](https://github.com/xing/hops/commit/4e5e28a)), closes [#324](https://github.com/xing/hops/issues/324)
+
+
+### BREAKING CHANGES
+
+* **config:** configs are now being deeply merged (instead of shallowly)
+* **config:** hops-config no longer supports the previous, npm based
+config mechanism. hops now needs to be configured using a `hops` field
+in `package.json` instead of `config.hops`. Local config overrides
+(using npm) are no longer supported.
+* **config:** function config values are no longer treated as getters, but rather returned directly
+* **graphql:** In static mode, during server side rendering, GraphQL
+data is no longer being prefetched. That appears to be the sane default.
+The old behaviour can be restored by extending `GraphQLContext` and
+overriding its 'prefetchData' method.
+
+
+
+
 <a name="9.8.0"></a>
 # [9.8.0](https://github.com/xing/hops/compare/v9.7.0...v9.8.0) (2018-01-25)
 
