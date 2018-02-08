@@ -12,8 +12,10 @@ var root = require('pkg-dir').sync();
 function assign() {
   var args = Array.prototype.slice
     .call(arguments)
-    .concat(function(_, srcValue) {
-      return srcValue;
+    .concat(function(objValue, srcValue) {
+      if (Array.isArray(objValue)) {
+        return srcValue;
+      }
     });
   return mergeWith.apply(null, args);
 }
