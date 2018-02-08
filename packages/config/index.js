@@ -33,6 +33,8 @@ function applyDefaultConfig(config) {
       appDir: '.',
       buildDir: 'build',
       cacheDir: 'node_modules/.cache/hops',
+      workerFile: true,
+      workerPath: '<basePath>/sw.js',
     },
     config
   );
