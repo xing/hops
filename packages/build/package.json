@@ -1,6 +1,6 @@
 {
   "name": "hops-build",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Hops wrapper around webpack to execute a build",
   "keywords": [
     "hops",
@@ -26,11 +26,11 @@
   "dependencies": {
     "directory-index": "^0.1.0",
     "filesize": "^3.5.11",
-    "hops-build-config": "10.0.0",
-    "hops-config": "10.0.0",
-    "hops-express": "10.0.0",
+    "hops-build-config": "10.0.1",
+    "hops-config": "10.0.1",
+    "hops-express": "10.0.1",
     "hops-middleware": "10.0.0",
-    "hops-renderer": "10.0.0",
+    "hops-renderer": "10.0.1",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2",
     "webpack": "^3.6.0",
