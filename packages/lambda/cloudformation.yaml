@@ -98,7 +98,7 @@ Resources:
         Statement:
           Effect: Allow
           Principal:
-            Service: !Sub 'lambda.${AWS::UrlSuffix}'
+            Service: !Sub 'lambda.${AWS::URLSuffix}'
           Action: sts:AssumeRole
       Path: '/'
       Policies:
@@ -118,7 +118,7 @@ Resources:
     Properties:
       Action: lambda:InvokeFunction
       FunctionName: !GetAtt HopsLambdaHandler.Arn
-      Principal: !Sub 'apigateway.${AWS::UrlSuffix}'
+      Principal: !Sub 'apigateway.${AWS::URLSuffix}'
       SourceArn: !Sub 'arn:${AWS::Partition}:execute-api:${AWS::Region}:${AWS::AccountId}:${ApiGatewayApi}/*/*'
 
   HopsLambdaHandler:
@@ -143,7 +143,7 @@ Resources:
                 "httpMethod": "GET",
                 "headers": {
                   "Accept": "x-keep/warm,*/*",
-                  "Host": "${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::UrlSuffix}"
+                  "Host": "${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}"
                 },
                 "requestContext": {
                   "path": "/${BasePath}/"
@@ -161,4 +161,4 @@ Outputs:
     Value: !If
       - ShouldAddCustomDomain
       - !If [HasCustomBasePath, !Sub 'https://${DomainName}/${BasePath}/', !Sub 'https://${DomainName}/']
-      - !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::UrlSuffix}/${BasePath}/'
+      - !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/${BasePath}/'
