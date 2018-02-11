@@ -36,6 +36,7 @@
     "helmet": "^3.8.2",
     "hops-config": "10.4.0",
     "mime": "^2.2.0",
+    "react-router": "^4.2.0",
     "server-timings": "^2.0.1"
   },
   "devDependencies": {

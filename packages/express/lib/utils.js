@@ -6,6 +6,7 @@ var net = require('net');
 var path = require('path');
 var http = require('http');
 var https = require('https');
+var Router = require('react-router');
 
 var hopsConfig = require('hops-config');
 
@@ -94,14 +95,11 @@ exports.rewritePath = function rewritePath(req, res, next) {
     process.env.HOPS_MODE === 'static' &&
     Array.isArray(hopsConfig.locations)
   ) {
-    var location = hopsConfig.locations.find(function(location) {
-      return (
-        location !== hopsConfig.basePath + '/' &&
-        req.url.indexOf(location) === 0
-      );
-    });
+    var location = hopsConfig.locations.map(function(location) {
+      return Router.matchPath(req.url, { path: location, exact: true });
+    })[0];
     if (location) {
-      req.url = location.replace(/([^\\/])$/, '$1/');
+      req.url = location.path.replace(/([^\\/])$/, '$1/').replace(/:/g, '');
     }
   }
   next();
