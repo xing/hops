@@ -19,7 +19,7 @@
     "jest": "^22.0.4",
     "jest-preset-hops": "10.0.1",
     "mkdirp": "^0.5.1",
-    "mocha": "^4.1.0",
+    "mocha": "^5.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
