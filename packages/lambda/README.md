@@ -13,16 +13,12 @@ This is the minimal configuration required to get started with hops-lambda:
 ```diff
 --- a/package.json
 +++ b/package.json
-@@ -6,5 +6,8 @@
-   "config": {
-     "hops": {
-+      "assetPath": "prod",
-+      "basePath": "prod",
-       "browsers": "last 1 Chrome versions",
-+      "node": "6.10.3",
-       "locations": [
-         "/",
-@@ -22,4 +25,5 @@
+   "hops": {
++    "assetPath": "prod",
++    "basePath": "prod",
+     "browsers": "last 1 Chrome versions",
++    "node": "6.10.3"
+   },
    "dependencies": {
      "hops-express": "^9.0.0",
 +    "hops-lambda": "^9.0.0",
@@ -68,27 +64,23 @@ In order to use hops-lambda you need to define the Node.js target version for wh
 
 ```json
 {
-  "config": {
-    "hops": {
-      "node": "6.10.3"
-    }
+  "hops": {
+    "node": "6.10.3"
   }
 }
 ```
 
 ### Available options through Hops npm config
 
-The following options are supported in a [hops-config](https://github.com/xing/hops/tree/master/packages/config) `aws` object.
+The following options are supported in a [hops-config](https://github.com/xing/hops/tree/master/packages/config) `_aws` object.
 
 ```json
 {
   "name": "foo",
   "version": "1.0.0",
-  "config": {
-    "hops": {
-      "aws": {
-        ...
-      }
+  "hops": {
+    "_aws": {
+      ...
     }
   }
 }

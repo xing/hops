@@ -12,7 +12,7 @@ var DEFAULT_EXCLUDE = ['flow-typed/**', 'typings/**'];
 var AVAILABLE_NODE_RUNTIME = ['6.10.3'];
 
 module.exports = function getAWSConfig() {
-  var awsConfig = hopsConfig.aws || {};
+  var awsConfig = hopsConfig._aws || hopsConfig.aws || {};
   var manifest = require(path.join(hopsConfig.appDir, 'package.json'));
 
   var region =
