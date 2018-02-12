@@ -1,7 +1,11 @@
 {
   "name": "hops",
   "description": "universal build tools",
-  "keywords": ["webpack", "babel", "postcss"],
+  "keywords": [
+    "webpack",
+    "babel",
+    "postcss"
+  ],
   "private": true,
   "license": "MIT",
   "homepage": "https://github.com/xing/hops",
@@ -33,8 +37,7 @@
     "DJCordhose <oliver@zeigermann.de> (https://www.xing.com/profile/Oliver_Zeigermann)"
   ],
   "scripts": {
-    "preinstall":
-      "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'use yarn' && exit 1)\"",
+    "preinstall": "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'use yarn' && exit 1)\"",
     "bootstrap": "lerna bootstrap",
     "start": "cd packages/template-react; yarn start",
     "start:minimal": "cd packages/template-minimal; yarn start",
@@ -43,25 +46,26 @@
     "lint": "eslint \"packages/**/*.js\"",
     "release": "lerna publish --conventional-commits",
     "release:major": "lerna publish --force-publish=* --cd-version=major",
-    "release:candidate":
-      "lerna publish --force-publish=* --cd-version=premajor --preid=rc --npm-tag=next",
-    "release:candidate:feature":
-      "lerna publish --cd-version=preminor --preid=rc --npm-tag=next",
-    "release:next":
-      "lerna publish --cd-version=prerelease --preid=rc --npm-tag=next",
+    "release:candidate": "lerna publish --force-publish=* --cd-version=premajor --preid=rc --npm-tag=next",
+    "release:candidate:feature": "lerna publish --cd-version=preminor --preid=rc --npm-tag=next",
+    "release:next": "lerna publish --cd-version=prerelease --preid=rc --npm-tag=next",
     "update": "yarn upgrade-interactive --latest && rm yarn.lock && yarn",
     "postupdate": "lerna clean --yes && lerna bootstrap",
     "reset": "git clean -dfx && yarn && yarn bootstrap",
-    "fmt":
-      "prettier --write --ignore-path .gitignore '**/*.{js,json,css}' '**/README.md'",
+    "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'",
     "precommit": "lint-staged",
-    "pull-wiki":
-      "git subtree pull --prefix docs wiki master --squash --message='docs(wiki): update wiki subtree'",
+    "pull-wiki": "git subtree pull --prefix docs wiki master --squash --message='docs(wiki): update wiki subtree'",
     "push-wiki": "git subtree push --prefix docs wiki master"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier --write --ignore-path .gitignore", "git add"],
-    "**/README.md": ["prettier --write --ignore-path .gitignore", "git add"]
+    "*.{js,json,css}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/README.md": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "config": {
     "commitizen": {
@@ -74,8 +78,14 @@
     "singleQuote": true
   },
   "eslintConfig": {
-    "extends": ["semistandard", "prettier"],
-    "plugins": ["prettier", "mocha-no-only"],
+    "extends": [
+      "semistandard",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier",
+      "mocha-no-only"
+    ],
     "rules": {
       "prettier/prettier": "error",
       "mocha-no-only/mocha-no-only": "error"
@@ -87,8 +97,14 @@
       }
     }
   },
-  "eslintIgnore": ["**/node_modules/**", "**/template-*/**", "**/spec/mock/**"],
-  "workspaces": ["packages/*"],
+  "eslintIgnore": [
+    "**/node_modules/**",
+    "**/template-*/**",
+    "**/spec/mock/**"
+  ],
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^4.15.0",
