@@ -95,7 +95,7 @@
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-mocha-no-only": "^0.0.5",
-    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
