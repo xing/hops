@@ -4,6 +4,8 @@ var path = require('path');
 
 var webpack = require('webpack');
 
+var ServiceWorkerPlugin = require('../plugins/webpack-service-worker');
+
 var hopsConfig = require('hops-config');
 
 var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
@@ -25,6 +27,7 @@ module.exports = {
     rules: require('../sections/module-rules')('develop'),
   },
   plugins: [
+    new ServiceWorkerPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.EnvironmentPlugin(
