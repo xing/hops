@@ -34,6 +34,8 @@ describe('config', function() {
       appDir: process.cwd(),
       buildDir: path.resolve('build'),
       cacheDir: path.resolve(path.join('node_modules', '.cache', 'hops')),
+      workerFile: null,
+      workerPath: '/sw.js',
     });
   });
 

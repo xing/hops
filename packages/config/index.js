@@ -29,6 +29,8 @@ function applyDefaultConfig(config) {
       locations: [],
       basePath: '',
       assetPath: '',
+      workerPath: '<assetPath>/sw.js',
+      workerFile: null,
       browsers: '> 1%, last 2 versions, Firefox ESR',
       node: 'current',
       envVars: { HOPS_MODE: 'dynamic' },
