@@ -22,7 +22,7 @@ var nodeConfig = injectProgressPlugin(require(hopsBuildConfig.nodeConfig));
 
 function defaultCallback(error, stats) {
   if (error) {
-    console.error(error.stack.toString());
+    console.error(error.stack ? error.stack.toString() : error.toString());
   } else {
     console.log(stats.toString({ chunks: false, modules: false }));
   }
