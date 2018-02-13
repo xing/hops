@@ -8,6 +8,7 @@ module.exports = function getModuleRules(target) {
         require('./module-rules/graphql'),
         require('./module-rules/postcss'),
         require('./module-rules/config'),
+        require('./module-rules/webmanifest'),
         require('./module-rules/tpl'),
         require('./module-rules/url'),
         require('./module-rules/file'),
