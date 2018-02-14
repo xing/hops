@@ -24,7 +24,9 @@ function defaultCallback(error, stats) {
   if (error) {
     console.error(error.stack ? error.stack.toString() : error.toString());
   } else {
-    console.log(stats.toString({ chunks: false, modules: false }));
+    console.log(
+      stats.toString({ chunks: false, modules: false, entrypoints: false })
+    );
   }
 }
 
