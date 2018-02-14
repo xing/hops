@@ -5,6 +5,7 @@ var path = require('path');
 var webpack = require('webpack');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 var ServiceWorkerPlugin = require('../plugins/service-worker');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var hopsConfig = require('hops-config');
 
@@ -58,6 +59,11 @@ module.exports = {
   plugins: [
     new StatsWriterPlugin({ fields: null }),
     new ServiceWorkerPlugin(),
+    new ExtractTextPlugin({
+      filename: getAssetPath('[name]-[contenthash:16].css'),
+      allChunks: true,
+      ignoreOrder: true,
+    }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.EnvironmentPlugin(
       Object.assign(
