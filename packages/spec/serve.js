@@ -62,12 +62,11 @@ describe('production server', function() {
         return /^vendor-.+\.js$/.test(name);
       })
     );
-    // #TODO: re-enable this!
-    // assert(
-    //   fileNames.find(function(name) {
-    //     return /^main-[0-9a-f]+\.css$/.test(name);
-    //   })
-    // );
+    assert(
+      fileNames.find(function(name) {
+        return /^main-[0-9a-f]+\.css$/.test(name);
+      })
+    );
   });
 
   it('should deliver expected html page', function() {
