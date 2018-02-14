@@ -2872,9 +2872,9 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-extract-text-webpack-plugin@webpack-contrib/extract-text-webpack-plugin#next:
+extract-text-webpack-plugin@^4.0.0-alpha.0:
   version "4.0.0-alpha.0"
-  resolved "https://codeload.github.com/webpack-contrib/extract-text-webpack-plugin/tar.gz/8ba60e5fa64659b26761ffbf695764e747de59f7"
+  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-4.0.0-alpha.0.tgz#38d6cfa92aef05fdeaec2043a6de9fa5eb47bec8"
   dependencies:
     async "^2.4.1"
     loader-utils "^1.1.0"

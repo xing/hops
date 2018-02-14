@@ -36,7 +36,7 @@
     "babel-preset-react": "^6.24.1",
     "caniuse-lite": "^1.0.30000789",
     "css-loader": "^0.28.8",
-    "extract-text-webpack-plugin": "webpack-contrib/extract-text-webpack-plugin#next",
+    "extract-text-webpack-plugin": "^4.0.0-alpha.0",
     "file-loader": "^1.1.6",
     "find-up": "^2.1.0",
     "hops-config": "10.2.0-rc.0",
