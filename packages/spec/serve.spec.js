@@ -62,10 +62,9 @@ describe('production server', function() {
     expect(fileNames).toContainEqual(
       expect.stringMatching(/^vendor-[0-9a-f]+\.js$/)
     );
-    // #TODO: re-enable this!
-    // expect(fileNames).toContainEqual(
-    //   expect.stringMatching(/^main-[0-9a-f]+\.css$/)
-    // );
+    expect(fileNames).toContainEqual(
+      expect.stringMatching(/^main-[0-9a-f]+\.css$/)
+    );
   });
 
   it('should deliver expected html page', function() {
