@@ -90,7 +90,7 @@ function validateName(name) {
   }
 }
 
-function createDirectory(root) {
+function createDirectory(root, name) {
   if (fs.existsSync(root)) {
     console.error(
       'A directory with the name:',
@@ -105,7 +105,7 @@ function createDirectory(root) {
   fs.mkdirSync(root);
 }
 
-function writePackageManifest(root) {
+function writePackageManifest(root, name) {
   fs.writeFileSync(
     path.join(root, 'package.json'),
     JSON.stringify(
@@ -155,9 +155,18 @@ if (isInsideHopsProject) {
   var name = options.projectName;
   var root = process.cwd();
 
+  if (options._[0] !== 'init') {
+    console.error(
+      'Looks like we are not inside a hops project or the project misses',
+      'either `hops` or `hops-local-cli` in its `devDependencies` or',
+      '`dependencies`.'
+    );
+    process.exit(1);
+  }
+
   validateName(name);
-  createDirectory(path.join(root, name));
-  writePackageManifest(path.join(root, name));
+  createDirectory(path.join(root, name), name);
+  writePackageManifest(path.join(root, name), name);
   process.chdir(path.join(root, name));
   pm.installPackages(['hops@' + options.hopsVersion], 'dev', options);
   require(getLocalCliPath()).init(root, name, options);
