@@ -4,6 +4,7 @@ var hopsConfig = require('hops-config');
 
 var cssLoader = require.resolve('css-loader');
 var postcssLoader = require.resolve('postcss-loader');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var cssLoaderGlobalOptions = {
   importLoaders: 1,
@@ -27,7 +28,44 @@ var postcssLoaderOptions = {
   ],
 };
 
-exports.default = {
+exports.build = {
+  test: /\.css$/,
+  oneOf: [
+    {
+      resourceQuery: /global/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: cssLoader,
+            options: cssLoaderGlobalOptions,
+          },
+          {
+            loader: postcssLoader,
+            options: postcssLoaderOptions,
+          },
+        ],
+      }),
+    },
+    {
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: cssLoader,
+            options: cssLoaderLocalOptions,
+          },
+          {
+            loader: postcssLoader,
+            options: postcssLoaderOptions,
+          },
+        ],
+      }),
+    },
+  ],
+};
+
+exports.develop = {
   test: /\.css$/,
   oneOf: [
     {
