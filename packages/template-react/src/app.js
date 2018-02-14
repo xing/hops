@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 import { render, Miss } from 'hops-react';
-import { createContext } from 'hops-redux';
+import { reduxExtension } from 'hops-redux';
 
 import { Home } from './home';
 import { Counter } from './counter';
@@ -23,4 +23,6 @@ const App = () => (
   </div>
 );
 
-export default render(<App />, createContext({ reducers }));
+export default render(<App />, {
+  extensions: [reduxExtension({ reducers })],
+});

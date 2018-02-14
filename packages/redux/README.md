@@ -16,16 +16,28 @@ npm install --save hops-redux react react-redux redux redux-thunk
 
 # API
 
+## `reduxExtension(config)`
+
+`reduxExtension()` is hops-redux's main export. It is used as an extension to [`hops-react's render function`](https://github.com/xing/hops/tree/master/packages/react#renderreactelement-config). It accepts following options:
+
+| Field       | Type   | Default                  | Description                                                                                                                                                                                                                                |
+| ----------- | ------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| reducers    | Object | `{}`                     | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html)                                                                                                        |
+| middlewares | Array  | `[ReduxThunkMiddleware]` | array specifying the redux middlewares to apply. Uses [redux-thunk](https://github.com/gaearon/redux-thunk) as default. When middlewares is specified redux-thunk will not be included by default and needs to be added as well if needed. |
+
 ## `createContext(options)`
 
-`createContext()` is hops-redux's main export. Of course, it is based on the implementation in [hops-react](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions), but takes additional `reducers` and `middlewares` options.
+`createContext()` is hops-redux's advanced export. Additional to the config options of [hops-react's createContext](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions) it takes additional `reducers` and `middlewares` as described [above under `reduxExtension(config)`](#reduxextensionconfig). Be careful, in this case you have to wrap the config options under the `redux` namespace.
 
-| Field       | Type     | Default                  | Description                                                                                                                                                                                                                                |
-| ----------- | -------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| mountpoint  | String   | `'#main'`                | querySelector identifying the root DOM node                                                                                                                                                                                                |
-| template    | Function | `defaultTemplate`        | template function supporting all React Helmet and hops-react features                                                                                                                                                                      |
-| reducers    | Object   | `{}`                     | object literal containing reducers to be passed to Redux's [`combineReducers()`](http://redux.js.org/docs/api/combineReducers.html)                                                                                                        |
-| middlewares | Array    | `[ReduxThunkMiddleware]` | array specifying the redux middlewares to apply. Uses [redux-thunk](https://github.com/gaearon/redux-thunk) as default. When middlewares is specified redux-thunk will not be included by default and needs to be added as well if needed. |
+```javascript
+createContext({
+    redux {
+      reducers: {
+        [namespace]: (state = { message: 'Hello World!' }) => state,
+      }
+    }
+  })
+```
 
 ## `ReduxContext`
 
@@ -38,7 +50,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { render } from 'hops-react';
-import { createContext } from 'hops-redux';
+import { reduxExtension } from 'hops-redux';
 
 const namespace = 'foo';
 
@@ -46,12 +58,13 @@ const withMessage = connect(state => state[namespace]);
 
 const App = withMessage(props => <h1>{props.message}</h1>);
 
-export default render(
-  <App />,
-  createContext({
-    reducers: {
-      [namespace]: (state = { message: 'Hello World!' }) => state,
-    },
-  })
-);
+export default render(<App />, {
+  extensions: [
+    reduxExtension({
+      reducers: {
+        [namespace]: (state = { message: 'Hello World!' }) => state,
+      },
+    }),
+  ],
+});
 ```

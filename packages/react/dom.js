@@ -7,6 +7,8 @@ var mixinable = require('mixinable');
 
 var hopsConfig = require('hops-config');
 
+var createCombinedContext = require('./lib/common').createCombinedContext;
+
 exports.combineContexts = mixinable({
   bootstrap: mixinable.async.parallel,
   enhanceElement: mixinable.async.compose,
@@ -40,7 +42,7 @@ exports.contextDefinition = exports.ReactContext;
 
 exports.createContext = exports.combineContexts(exports.ReactContext);
 
-exports.render = function(reactElement, context) {
+var renderWithContext = function(reactElement, context) {
   return function() {
     var mountpoint = context.getMountpoint();
     var isMounted = mountpoint.hasAttribute('data-hopsroot');
@@ -65,6 +67,20 @@ exports.render = function(reactElement, context) {
         console.error('Error while rendering:', error);
       });
   };
+};
+
+exports.render = function(reactElement, contextOrConfig) {
+  var context;
+  if (mixinable.isMixinable(contextOrConfig)) {
+    context = contextOrConfig;
+  } else {
+    context = createCombinedContext(
+      contextOrConfig,
+      exports.ReactContext,
+      exports.combineContexts
+    );
+  }
+  return renderWithContext(reactElement, context);
 };
 
 Object.assign(exports, require('./lib/components'));

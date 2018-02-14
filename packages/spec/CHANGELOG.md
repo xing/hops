@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.0.1"></a>
+## [10.0.1](https://github.com/xing/hops/compare/v10.0.0...v10.0.1) (2018-02-09)
+
+
+
+
+**Note:** Version bump only for package hops-spec
+
+<a name="10.0.0"></a>
+# [10.0.0](https://github.com/xing/hops/compare/v10.0.0-rc.4...v10.0.0) (2018-02-07)
+
+
+
+
+**Note:** Version bump only for package hops-spec
+
 <a name="9.8.0"></a>
 # [9.8.0](https://github.com/xing/hops/compare/v9.7.0...v9.8.0) (2018-01-25)
 

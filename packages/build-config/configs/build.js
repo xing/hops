@@ -70,6 +70,6 @@ module.exports = {
       sourceMap: true,
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new UglifyPlugin({ sourceMap: true }),
+    new UglifyPlugin({ sourceMap: true, cache: true, parallel: true }),
   ],
 };

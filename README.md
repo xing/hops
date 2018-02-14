@@ -2,7 +2,7 @@
   <img
     width="200"
     height="217"
-    src="https://github.com/xing/hops/blob/master/logo.png?raw=true"
+    src="https://raw.githubusercontent.com/wiki/xing/hops/logo.png"
   />
 </p>
 
@@ -15,15 +15,28 @@
 </p>
 <p>&nbsp;</p>
 
-Hops is a modular development, build and runtime environment for universal ("isomorphic") web applications. It focuses on [React](https://facebook.github.io/react/).
+Hops is everything you need to develop and deploy a production grade universal web application with [React](https://facebook.github.io/react/). It provides both a **universal runtime** as well as the necessary **build tooling**.
+
+<p align="center">
+  <img
+    width="344"
+    height="322"
+    src="https://raw.githubusercontent.com/wiki/xing/hops/hops-core.png"
+  />
+</p>
+
+Hops targets the the professional React developer and follows React mainstream best practices.
+
+The two guiding principles are:
+
+1. Hops scales with your requirements, from an easy start up to large scale applications with many teams
+1. Hops fits a broad need by being modular and extensible, it comes with reasonable defaults, but allows you to customize, configure, and extend almost everything when needed
 
 Hops is designed to simplify getting started with modern frontend tooling. It streamlines [Webpack](https://webpack.js.org) and [Jest](https://facebook.github.io/jest/) configuration featuring [Babel](https://babeljs.io) and [PostCSS](http://postcss.org).
 
+Why and how Hops is structured into modules can be found [here](https://github.com/xing/hops/wiki/modules) and [here is a more detailed and complete treatise on its concepts](https://github.com/xing/hops/wiki/concepts).
+
 ### Quick start
-
-If you just want to get started with hops + react you can execute the following command to initialize a small example app:
-
-If you have npm >= 5.2.0 installed:
 
 ```shell
 npx hops init my-awesome-project
@@ -31,61 +44,59 @@ cd my-awesome-project
 npm start
 ```
 
-Otherwise:
-
-```shell
-npm install --global hops
-hops init my-awesome-project
-cd my-awesome-project
-npm start
-```
-
 This will start hops in development mode. Visit [http://localhost:8080](http://localhost:8080) to see your app in the browser and make some changes to the code in your editor to see it live-reloading.
 
-If you want to build the JS bundles for production, run `npm run build` in your terminal and to start a Node.js server just type in `npm start --production`.
+You can find a complete walk through in our [Getting Started Guide](https://github.com/xing/hops/wiki/getting-started).
 
-### Project Templates
+### FAQ
 
-Hops comes with a couple of different project templates you can use with `hops init --template`. If you do not explicitly select one, `hops init` defaults to `hops-template-react`.
+#### When is Hops the framework for you?
 
-| Package                                                                                     | NPM                                                                                                                   |
-| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| [Hops Template Minimal](https://github.com/xing/hops/tree/master/packages/template-minimal) | [![npm](https://img.shields.io/npm/v/hops-template-minimal.svg)](https://www.npmjs.com/package/hops-template-minimal) |
-| [Hops Template React](https://github.com/xing/hops/tree/master/packages/template-react)     | [![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)     |
-| [Hops Template GraphQL](https://github.com/xing/hops/tree/master/packages/template-graphql) | [![npm](https://img.shields.io/npm/v/hops-template-graphql.svg)](https://www.npmjs.com/package/hops-template-graphql) |
+When you want to share a consistent setting over more than one project. Either now or in the future. This applies to companies with more than one development team or when you constantly set up projects that should be consistent, e.g. training projects, tutorials, consultant work, etc.
 
-If, for example, you want to bootstrap your project to use both React and GraphQL, you will have to call `hops init` like this:
+Even without striving for consistency across multiple projects you may want to use Hops for a (single) new project when you do not want to write/copy/maintain your own webpack configuration. We feel your pain and have done that for you. However, we try hard to give you all the customizability you may ever need.
 
-```shell
-hops init my-graphql-project --template hops-template-graphql
-```
+#### When is Hops **not** the framework for you?
 
-### General Usage
+If you are new to React and just want a small sample app or mainly want to learn, we recommend to get started with [Create React App](https://github.com/facebook/create-react-app). Once you are getting more serious about your application you can still switch to Hops.
 
-Hops is quite modular, its components being independently published on npm. Its main building blocks, however, rely upon each other:
+#### Why not just use Create React App?
 
-| Package                                                                             | NPM                                                                                                           |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [Hops (CLI)](https://github.com/xing/hops/tree/master/packages/cli)                 | [![npm](https://img.shields.io/npm/v/hops.svg)](https://www.npmjs.com/package/hops-cli)                       |
-| [Hops React](https://github.com/xing/hops/tree/master/packages/react)               | [![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)               |
-| [Hops Redux](https://github.com/xing/hops/tree/master/packages/redux)               | [![npm](https://img.shields.io/npm/v/hops-redux.svg)](https://www.npmjs.com/package/hops-redux)               |
-| [Hops GraphQL](https://github.com/xing/hops/tree/master/packages/graphql)           | [![npm](https://img.shields.io/npm/v/hops-graphql.svg)](https://www.npmjs.com/package/hops-graphql)           |
-| [Hops Express](https://github.com/xing/hops/tree/master/packages/express)           | [![npm](https://img.shields.io/npm/v/hops-express.svg)](https://www.npmjs.com/package/hops-express)           |
-| [Hops Lambda](https://github.com/xing/hops/tree/master/packages/lambda)             | [![npm](https://img.shields.io/npm/v/hops-lambda.svg)](https://www.npmjs.com/package/hops-lambda)             |
-| [Hops Build](https://github.com/xing/hops/tree/master/packages/build)               | [![npm](https://img.shields.io/npm/v/hops-build.svg)](https://www.npmjs.com/package/hops-build)               |
-| [Hops Config](https://github.com/xing/hops/tree/master/packages/config)             | [![npm](https://img.shields.io/npm/v/hops-config.svg)](https://www.npmjs.com/package/hops-config)             |
-| [Hops Build Config](https://github.com/xing/hops/tree/master/packages/build-config) | [![npm](https://img.shields.io/npm/v/hops-build-config.svg)](https://www.npmjs.com/package/hops-build-config) |
-| [Hops Jest Preset](https://github.com/xing/hops/tree/master/packages/jest-preset)   | [![npm](https://img.shields.io/npm/v/jest-preset-hops.svg)](https://www.npmjs.com/package/jest-preset-hops)   |
+[Create React App](https://github.com/facebook/create-react-app) is great when you want to experiment with or learn React. For simplicity it is neither configurable nor extensible and does not evolve with you when you are ready to create a production ready app. Hops on the other hand might be a bit harder to get started, but has the complete potential for even large scale applications.
 
-The following additional packages are rather low-level and you'll probably never need to install and use them directly.
+Additionally, contrary to Create React App, Hops is geared towards universal apps.
 
-| Package                                                                         | NPM                                                                                                       |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| [Hops Server](https://github.com/xing/hops/tree/master/packages/server)         | [![npm](https://img.shields.io/npm/v/hops-server.svg)](https://www.npmjs.com/package/hops-server)         |
-| [Hops Middleware](https://github.com/xing/hops/tree/master/packages/middleware) | [![npm](https://img.shields.io/npm/v/hops-middleware.svg)](https://www.npmjs.com/package/hops-middleware) |
-| [Hops Renderer](https://github.com/xing/hops/tree/master/packages/renderer)     | [![npm](https://img.shields.io/npm/v/hops-renderer.svg)](https://www.npmjs.com/package/hops-renderer)     |
+#### Why a framework and not just a few code snippets describing best practices?
+
+There are two main reasons. Firstly, snippets get outdated. Hops, however, is committed to best practices and to evolve with them. Secondly, Hops is organized in modules that need to run both on the client and on the server. Keeping a track of both sides and at the same time maintaining an in-sync version of a client-side and server-side snippet per module can be really tedious. Using a framework like Hops takes away that pain.
+
+#### Why does Hops not support "eject"?
+
+[Create React App](https://github.com/facebook/create-react-app) offers you the option to "eject". This means dumping Webpack configuration files and scripts, leaving you with a stand-alone project. We Hops people do not think, this is a good idea. Those files still force their philosophy on you while at the same time they are hard to understand. We thus do not believe this to be a practical way to overcome vendor lock-in. Hops instead allows you to customize either by configuration or adding modules.
+
+#### Can we trust in Hops to be around for the forseeable future?
+
+Just as you might put trust into React as Facebook has committed itself to it and eats its own dog food, Hops is being backed and used by a European professional networking site.
+
+Hops being primarily an (extensible) bunch of mainstream best practices, it ought to be rather simple to move off it and do something that better fits the user's requirements. So, the lock-in ought to be way less problematic than, say, with React. Porting a non-trivial app from React to Angular or Vue certainly is a lot more work than replacing Hops with its actual building blocks (Webpack, Babel, etc.)
+
+#### Why so many modules?
+
+First of all some modules are separated from others for ease of development, but can be seen as one logical entity by you. Like `react`, `react-dom`, and `prop-types`. It also enables you to just have a minimal set of modules for each setting. E.g. when deploying your app, you do not need the CLI or the build module. Hops core modules are thus split between build, runtime, and deploy.
+
+There are more modules in the Hops repository except for the core, but they are merely options to give you choices.
+
+#### I like Hops, but I want to use something that is not quite mainstream
+
+Hops allows you to write a package of your own and plug it into Hops' build process. This has been proven to actually work. E.g. people have done this for TypeScript, styled-components and more.
+
+#### How does Hops compare to Angular?
+
+You could say Hops is for React what the Angular eco system and the Angular CLI are for Angular. Hops follows React's mainstream of libraries and best practices, but still allows you to deviate when you really want to or need to.
 
 ### Contributing
+
+#### Code
 
 Hops uses [lerna](https://github.com/lerna/lerna) and [yarn](https://yarnpkg.com/en/) for development and publishing of the packages. Therefore it is required to have `yarn` globally available.
 
@@ -104,13 +115,19 @@ When you are finished, please do go ahead and create a [pull request](https://he
 
 Hops is entirely written in ECMAScript 5 and its code is formatted using [prettier](https://prettier.io). Please make sure your contribution does, too.
 
-### Alternatives
+#### Wiki
 
-* [Razzle](https://github.com/jaredpalmer/razzle)
-* [Next](https://github.com/zeit/next.js/)
-* [Gatsby](https://github.com/gatsbyjs/gatsby)
-* [Backpack](https://github.com/palmerhq/backpack)
-* [Create React App](https://github.com/facebook/create-react-app)
+The wiki (stored in the `docs/` directory) is a git subtree of the [projects wiki](https://github.com/xing/hops/wiki) which allows to reference and edit the wiki from inside the main repository.
+
+**Initial local setup**: When cloning this repository for the first time the wiki repository must be added as a remote: `git remote add wiki git@github.com:xing/hops.wiki.git`
+
+**Editing the wiki**: When editing files inside the `docs/` directory you must ensure that these files are committed separately from other files outside of the `docs/` directory.  
+Other than that you can edit, add, remove and commit these files like any other file in the repository.
+
+**Pushing the wiki**: After editing and commiting files inside the `docs/` directory you can push these changes to the project wiki by using the `yarn push-wiki` shortcut which we provide as a package.json script.
+
+**Pulling the wiki**: In case the wiki has been edited through the GitHub UI or pushed to separately you may need to pull remote changes into the main repository first before pulling.  
+In these instances you can use the `yarn pull-wiki` shortcut to merge remote changes back into the main repository.
 
 ### Thanks!
 

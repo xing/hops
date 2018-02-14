@@ -10,6 +10,8 @@ var hopsConfig = require('hops-config');
 
 var defaultTemplate = require('./lib/template');
 
+var createCombinedContext = require('./lib/common').createCombinedContext;
+
 exports.combineContexts = mixinable({
   bootstrap: mixinable.async.parallel,
   enhanceElement: mixinable.async.compose,
@@ -62,7 +64,7 @@ var cloneContext = mixinable.replicate(function(initialArgs, newArgs) {
   return [Object.assign({}, initialArgs[0], newArgs[0])];
 });
 
-exports.render = function(reactElement, _context) {
+var renderWithContext = function(reactElement, _context) {
   return function(req, res, next) {
     var renderContext = cloneContext(_context, { request: req });
     renderContext
@@ -107,6 +109,20 @@ exports.render = function(reactElement, _context) {
       })
       .catch(next);
   };
+};
+
+exports.render = function(reactElement, contextOrConfig) {
+  var context;
+  if (mixinable.isMixinable(contextOrConfig)) {
+    context = contextOrConfig;
+  } else {
+    context = createCombinedContext(
+      contextOrConfig,
+      exports.ReactContext,
+      exports.combineContexts
+    );
+  }
+  return renderWithContext(reactElement, context);
 };
 
 Object.assign(exports, require('./lib/components'));

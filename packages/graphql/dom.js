@@ -25,3 +25,12 @@ exports.createContext = hopsReact.combineContexts(
   hopsReact.ReactContext,
   exports.GraphQLContext
 );
+
+exports.graphqlExtension = function(config) {
+  return {
+    context: exports.GraphQLContext,
+    config: {
+      graphql: config,
+    },
+  };
+};

@@ -29,9 +29,12 @@
     "KingHenne <mail@hendrik-liebau.de> (https://www.xing.com/profile/Hendrik_Liebau2)",
     "ZauberNerd <zaubernerd@zaubernerd.de> (https://www.xing.com/profile/Bjoern_Brauer5)",
     "ghost23 <mail@ghost23.de> (https://www.xing.com/profile/Sven_Busse)",
-    "jhiode <mail@jhio.de> (https://www.xing.com/profile/Jonas_Holland)"
+    "jhiode <mail@jhio.de> (https://www.xing.com/profile/Jonas_Holland)",
+    "DJCordhose <oliver@zeigermann.de> (https://www.xing.com/profile/Oliver_Zeigermann)"
   ],
   "scripts": {
+    "preinstall":
+      "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'hops uses yarn workspaces to manage packages.\nPlease use yarn to install dependencies: https://yarnpkg.com/' && exit 1)\"",
     "bootstrap": "lerna bootstrap",
     "start": "cd packages/template-react; yarn start",
     "start:minimal": "cd packages/template-minimal; yarn start",
@@ -49,7 +52,10 @@
     "reset": "git clean -dfx && yarn && yarn bootstrap",
     "fmt":
       "prettier --write --ignore-path .gitignore '**/*.{js,json,css}' '**/README.md'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "pull-wiki":
+      "git subtree pull --prefix docs wiki master --squash --message='docs(wiki): update wiki subtree'",
+    "push-wiki": "git subtree push --prefix docs wiki master"
   },
   "lint-staged": {
     "*.{js,json,css}": ["prettier --write --ignore-path .gitignore", "git add"],
@@ -67,9 +73,10 @@
   },
   "eslintConfig": {
     "extends": ["semistandard", "prettier"],
-    "plugins": ["prettier"],
+    "plugins": ["prettier", "mocha-no-only"],
     "rules": {
-      "prettier/prettier": "error"
+      "prettier/prettier": "error",
+      "mocha-no-only/mocha-no-only": "error"
     },
     "parserOptions": {
       "ecmaVersion": 5,
@@ -87,13 +94,14 @@
     "eslint-config-semistandard": "^12.0.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-mocha-no-only": "^0.0.5",
+    "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "lerna": "^2.5.1",
     "lint-staged": "^6.0.0",
-    "prettier": "1.9.2"
+    "prettier": "1.10.2"
   }
 }

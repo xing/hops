@@ -3,27 +3,42 @@
 var fs = require('fs');
 var path = require('path');
 
-var assign = require('deep-assign');
+var cosmiconfig = require('cosmiconfig');
+var mergeWith = require('lodash.mergewith');
+var isPlainObject = require('is-plain-object');
+
 var root = require('pkg-dir').sync();
 
-var cosmiconfig = require('cosmiconfig');
+function assign() {
+  var args = Array.prototype.slice
+    .call(arguments)
+    .concat(function(objValue, srcValue) {
+      if (Array.isArray(objValue)) {
+        return srcValue;
+      }
+    });
+  return mergeWith.apply(null, args);
+}
 
-function getDefaultConfig() {
-  return {
-    https: false,
-    host: '0.0.0.0',
-    port: 8080,
-    locations: [],
-    basePath: '',
-    assetPath: '',
-    browsers: '> 1%, last 2 versions, Firefox ESR',
-    node: 'current',
-    envVars: { HOPS_MODE: 'dynamic' },
-    moduleDirs: [],
-    appDir: '.',
-    buildDir: 'build',
-    cacheDir: 'node_modules/.cache/hops',
-  };
+function applyDefaultConfig(config) {
+  return assign(
+    {
+      https: false,
+      host: '0.0.0.0',
+      port: 8080,
+      locations: [],
+      basePath: '',
+      assetPath: '',
+      browsers: '> 1%, last 2 versions, Firefox ESR',
+      node: 'current',
+      envVars: { HOPS_MODE: 'dynamic' },
+      moduleDirs: [],
+      appDir: '.',
+      buildDir: 'build',
+      cacheDir: 'node_modules/.cache/hops',
+    },
+    config
+  );
 }
 
 function applyUserConfig(config) {
@@ -53,7 +68,7 @@ function applyInheritedConfig(config) {
         sync: true,
       });
       var _result = loader.load();
-      assign(result, _result ? _result.config : {});
+      result = assign(_result ? _result.config : {}, result);
     } else {
       console.error('Failed to load inherited config', configName);
     }
@@ -68,6 +83,32 @@ function applyEnvironmentConfig(config) {
   return result;
 }
 
+function resolvePlaceholders(config) {
+  var regExp = new RegExp('<(' + Object.keys(config).join('|') + ')>', 'g');
+  function replaceRecursive(item) {
+    if (Array.isArray(item)) {
+      return item.map(replaceRecursive);
+    }
+    if (isPlainObject(item)) {
+      return Object.keys(item).reduce(function(result, key) {
+        result[key] = replaceRecursive(item[key]);
+        return result;
+      }, {});
+    }
+    if (typeof item === 'string') {
+      return item.replace(regExp, function(_, configKey) {
+        var result = config[configKey];
+        if (typeof result !== 'string') {
+          result = String(result).toString();
+        }
+        return regExp.test(result) ? replaceRecursive(result) : result;
+      });
+    }
+    return item;
+  }
+  return replaceRecursive(config);
+}
+
 function resolvePaths(config) {
   var result = Object.assign({}, config);
   Object.keys(config)
@@ -77,11 +118,6 @@ function resolvePaths(config) {
     .forEach(function(key) {
       result[key] = (function resolve(item) {
         if (typeof item === 'string') {
-          if (item.indexOf('<') === 0) {
-            item = item.replace(/^(?:<([^>]+)>)(.*)/, function() {
-              return path.join(config[arguments[1]], arguments[2]);
-            });
-          }
           return path.isAbsolute(item) ? item : path.join(root, item);
         } else if (Array.isArray(item)) {
           return item.map(resolve);
@@ -110,12 +146,13 @@ function normalizeURLs(config) {
 }
 
 module.exports = [
-  getDefaultConfig,
   applyUserConfig,
   applyInheritedConfig,
   applyEnvironmentConfig,
+  applyDefaultConfig,
+  resolvePlaceholders,
   resolvePaths,
   normalizeURLs,
 ].reduce(function(result, step) {
   return step(result);
-}, null);
+}, {});
