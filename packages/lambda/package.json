@@ -1,6 +1,6 @@
 {
   "name": "hops-lambda",
-  "version": "10.0.1",
+  "version": "10.0.2",
   "description": "Quick and easy deployment of Hops applications to AWS Lambda",
   "keywords": [
     "hops",
@@ -27,7 +27,7 @@
     "archiver": "^2.1.0",
     "aws-sdk": "^2.177.0",
     "globby": "^7.1.1",
-    "hops-config": "10.0.1",
+    "hops-config": "10.0.2",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.13",
     "serverless-http": "^1.5.2"
@@ -36,6 +36,6 @@
     "hops-express": "10.0.0-rc.3"
   },
   "devDependencies": {
-    "hops-express": "10.0.1"
+    "hops-express": "10.0.2"
   }
 }
