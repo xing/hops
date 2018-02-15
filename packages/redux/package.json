@@ -2,16 +2,10 @@
   "name": "hops-redux",
   "version": "10.2.0-rc.0",
   "description": "React and Redux implementation for Hops",
-  "keywords": [
-    "hops",
-    "react",
-    "redux"
-  ],
+  "keywords": ["hops", "react", "redux"],
   "license": "MIT",
   "main": "index.js",
-  "files": [
-    "index.js"
-  ],
+  "files": ["index.js"],
   "dependencies": {
     "hops-react": "10.2.0-rc.0"
   },
