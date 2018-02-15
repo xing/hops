@@ -5,10 +5,7 @@
   "license": "MIT",
   "hops": {
     "browsers": "last 1 Chrome versions",
-    "locations": [
-      "/",
-      "/counter"
-    ]
+    "locations": ["/", "/counter"]
   },
   "scripts": {
     "start": "hops start",
