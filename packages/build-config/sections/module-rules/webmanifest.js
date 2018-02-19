@@ -14,7 +14,7 @@ exports.default = {
       },
     },
     {
-      loader: require.resolve('web-app-manifest-loader'),
+      loader: require.resolve('../../loaders/webmanifest'),
     },
   ],
 };
@@ -30,7 +30,7 @@ exports.node = {
       },
     },
     {
-      loader: require.resolve('web-app-manifest-loader'),
+      loader: require.resolve('../../loaders/webmanifest'),
     },
   ],
 };

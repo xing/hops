@@ -4,7 +4,7 @@ var path = require('path');
 
 var webpack = require('webpack');
 
-var ServiceWorkerPlugin = require('../plugins/webpack-service-worker');
+var ServiceWorkerPlugin = require('../plugins/service-worker');
 
 var hopsConfig = require('hops-config');
 
