@@ -10,6 +10,8 @@ var helmet = require('helmet');
 var hopsConfig = require('hops-config');
 var utils = require('./utils');
 
+var swRe = new RegExp(hopsConfig.workerPath + '$');
+
 function createApp(options) {
   var app = express();
   app.use(helmet());
@@ -18,7 +20,7 @@ function createApp(options) {
     express.static(hopsConfig.buildDir, {
       maxAge: '1y',
       setHeaders: function(res, filepath) {
-        if (mime.getType(filepath) === 'text/html') {
+        if (mime.getType(filepath) === 'text/html' || filepath.match(swRe)) {
           helmet.noCache()(null, res, function() {});
         }
       },
