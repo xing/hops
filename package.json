@@ -45,6 +45,8 @@
     "release:major": "lerna publish --force-publish=* --cd-version=major",
     "release:candidate":
       "lerna publish --force-publish=* --cd-version=premajor --preid=rc --npm-tag=next",
+    "release:candidate:feature":
+      "lerna publish --cd-version=preminor --preid=rc --npm-tag=next",
     "release:next":
       "lerna publish --cd-version=prerelease --preid=rc --npm-tag=next",
     "update": "yarn upgrade-interactive --latest && rm yarn.lock && yarn",
