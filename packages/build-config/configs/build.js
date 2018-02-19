@@ -7,7 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var UglifyPlugin = require('uglifyjs-webpack-plugin');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 var WriteFilePlugin = require('../plugins/write-file');
-var ServiceWorkerPlugin = require('../plugins/webpack-service-worker');
+var ServiceWorkerPlugin = require('../plugins/service-worker');
 
 var hopsConfig = require('hops-config');
 
