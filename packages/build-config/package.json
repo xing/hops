@@ -1,8 +1,13 @@
 {
   "name": "hops-build-config",
-  "version": "10.2.0-rc.0",
+  "version": "10.2.0-rc.1",
   "description": "Hops build configuration leveraging Webpack and Babel",
-  "keywords": ["hops", "webpack", "babel", "postcss"],
+  "keywords": [
+    "hops",
+    "webpack",
+    "babel",
+    "postcss"
+  ],
   "license": "MIT",
   "main": "index.js",
   "files": [
