@@ -32,7 +32,10 @@ module.exports = function ServiceWorkerPlugin() {
         'HOPS_ASSETS = ' +
           JSON.stringify(
             Object.keys(compilation.assets).filter(function(item) {
-              return !item.match(/\.map|stats\.json$/) && item !== assetPath;
+              return (
+                !item.match(/hot-update\.js(:?on)?|\.map|stats\.json$/) &&
+                item !== assetPath
+              );
             })
           ) +
           ';\n' +
