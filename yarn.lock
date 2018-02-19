@@ -2485,9 +2485,9 @@ eslint-plugin-import@^2.7.0:
     minimatch "^3.0.3"
     read-pkg-up "^2.0.0"
 
-eslint-plugin-mocha-no-only@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-mocha-no-only/-/eslint-plugin-mocha-no-only-0.0.5.tgz#f990702b1ddbd255c214d91cf7dc67fb3cfe28a7"
+eslint-plugin-mocha-no-only@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-mocha-no-only/-/eslint-plugin-mocha-no-only-0.0.6.tgz#d801bf4476cba30ea4bd1b6e2a46cdabf273552f"
   dependencies:
     requireindex "~1.1.0"
 
