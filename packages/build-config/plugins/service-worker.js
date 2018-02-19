@@ -33,8 +33,9 @@ module.exports = function ServiceWorkerPlugin() {
           JSON.stringify(
             Object.keys(compilation.assets).filter(function(item) {
               return (
-                !item.match(/hot-update\.js(:?on)?|\.map|stats\.json$/) &&
-                item !== assetPath
+                !item.match(
+                  /hot-update\.js(:?on)?|\.webmanifest|\.map|stats\.json$/
+                ) && item !== assetPath
               );
             })
           ) +
