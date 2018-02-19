@@ -1,15 +1,21 @@
 {
   "name": "hops-express",
-  "version": "10.0.2",
-  "description":
-    "Express server to enable server-side rendering of hops applications",
-  "keywords": ["hops", "express"],
+  "version": "10.2.0-rc.0",
+  "description": "Express server to enable server-side rendering of hops applications",
+  "keywords": [
+    "hops",
+    "express"
+  ],
   "license": "MIT",
   "bin": {
     "hops-serve": "commands/serve.js"
   },
   "main": "index.js",
-  "files": ["index.js", "commands", "lib"],
+  "files": [
+    "index.js",
+    "commands",
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
@@ -17,7 +23,7 @@
   "dependencies": {
     "express": "^4.16.0",
     "helmet": "^3.8.2",
-    "hops-config": "10.0.2",
+    "hops-config": "10.2.0-rc.0",
     "mime": "^2.2.0"
   }
 }

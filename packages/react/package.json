@@ -1,14 +1,22 @@
 {
   "name": "hops-react",
-  "version": "10.0.2",
+  "version": "10.2.0-rc.0",
   "description": "React and ReactRouter setup for Hops",
-  "keywords": ["hops", "react", "react-router"],
+  "keywords": [
+    "hops",
+    "react",
+    "react-router"
+  ],
   "license": "MIT",
   "main": "node.js",
   "browser": "dom.js",
-  "files": ["dom.js", "node.js", "lib"],
+  "files": [
+    "dom.js",
+    "node.js",
+    "lib"
+  ],
   "dependencies": {
-    "hops-config": "10.0.2",
+    "hops-config": "10.2.0-rc.0",
     "mixinable": "1.3.0",
     "serialize-javascript": "^1.4.0"
   },
