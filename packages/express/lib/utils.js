@@ -41,10 +41,12 @@ exports.run = function run(app, callback) {
   if (hopsConfig.https) {
     var options = {
       key: fs.readFileSync(
-        hopsConfig.keyFile || path.join(__dirname, 'ssl', 'localhost.ssl.key')
+        hopsConfig.keyFile ||
+          path.resolve(path.join(__dirname, '..', 'ssl', 'localhost.ssl.key'))
       ),
       cert: fs.readFileSync(
-        hopsConfig.certFile || path.join(__dirname, 'ssl', 'localhost.ssl.crt')
+        hopsConfig.certFile ||
+          path.resolve(path.join(__dirname, '..', 'ssl', 'localhost.ssl.crt'))
       ),
     };
     server = https.createServer(options, app);
