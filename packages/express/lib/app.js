@@ -6,6 +6,7 @@ var path = require('path');
 var express = require('express');
 var mime = require('mime');
 var helmet = require('helmet');
+var compression = require('compression');
 
 var hopsConfig = require('hops-config');
 var utils = require('./utils');
@@ -15,6 +16,7 @@ var swRe = new RegExp(hopsConfig.workerPath + '$');
 function createApp(options) {
   var app = express();
   app.use(helmet());
+  app.use(compression());
   app.use(utils.rewritePath);
   app.use(
     express.static(hopsConfig.buildDir, {
