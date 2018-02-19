@@ -14,7 +14,8 @@
   "files": [
     "index.js",
     "commands",
-    "lib"
+    "lib",
+    "ssl"
   ],
   "repository": {
     "type": "git",
