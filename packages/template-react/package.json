@@ -1,6 +1,6 @@
 {
   "name": "hops-template-react",
-  "version": "10.0.2",
+  "version": "10.1.0",
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "hops": "10.0.2",
-    "hops-build": "10.0.2",
+    "hops-build": "10.1.0",
     "jest": "^22.0.4",
     "jest-preset-hops": "10.0.2",
     "react-test-renderer": "^16.0.0"
