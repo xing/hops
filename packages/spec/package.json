@@ -1,21 +1,21 @@
 {
   "name": "hops-spec",
-  "version": "10.2.0-rc.2",
+  "version": "10.2.0-rc.3",
   "private": true,
   "scripts": {
     "test": "mocha --exit '*.js'"
   },
   "devDependencies": {
     "hops": "10.2.0-rc.0",
-    "hops-build": "10.2.0-rc.2",
-    "hops-build-config": "10.2.0-rc.2",
+    "hops-build": "10.2.0-rc.3",
+    "hops-build-config": "10.2.0-rc.3",
     "hops-config": "10.2.0-rc.0",
-    "hops-express": "10.2.0-rc.0",
+    "hops-express": "10.2.0-rc.3",
     "hops-react": "10.2.0-rc.0",
     "hops-redux": "10.2.0-rc.0",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^22.0.4",
-    "jest-preset-hops": "10.2.0-rc.2",
+    "jest-preset-hops": "10.2.0-rc.3",
     "mkdirp": "^0.5.1",
     "mocha": "^5.0.0",
     "react": "^16.0.0",
