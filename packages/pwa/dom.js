@@ -11,7 +11,7 @@ module.exports = function installServiceWorker() {
     }
 
     if (
-      window.location.protocol === 'https' ||
+      window.location.protocol === 'https:' ||
       window.location.hostname === 'localhost'
     ) {
       window.addEventListener('load', function() {
