@@ -57,16 +57,15 @@ module.exports = function getAWSConfig() {
     config.basePath.indexOf(config.stageName) !== 0 &&
     hopsConfig.assetPath.indexOf(config.stageName) !== 0
   ) {
-    console.error(
+    console.warn(
       'When no custom domain is configured, the stageName (' +
         config.stageName +
-        ') must be the first path segment in basePath (' +
+        ') should be the first path segment in basePath (' +
         config.basePath +
         ') and assetPath (' +
         hopsConfig.assetPath +
         ').'
     );
-    process.exit(1);
   }
 
   if (config.domainName && !config.certificateArn) {
