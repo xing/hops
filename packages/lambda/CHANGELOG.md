@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.1.1"></a>
+## [10.1.1](https://github.com/xing/hops/compare/v10.1.0...v10.1.1) (2018-02-22)
+
+
+### Bug Fixes
+
+* **lambda:** warn about misconfiguration instead of exiting ([70de25a](https://github.com/xing/hops/commit/70de25a))
+
+
+
+
 <a name="10.1.0"></a>
 # [10.1.0](https://github.com/xing/hops/compare/v10.0.2...v10.1.0) (2018-02-19)
 
