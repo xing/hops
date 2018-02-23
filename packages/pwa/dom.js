@@ -15,7 +15,7 @@ module.exports = function installServiceWorker() {
       window.location.hostname === 'localhost'
     ) {
       window.addEventListener('load', function() {
-        resolve(navigator.serviceWorker.register('/' + hopsConfig.workerPath));
+        resolve(navigator.serviceWorker.register(hopsConfig.workerPath));
       });
     }
   });
