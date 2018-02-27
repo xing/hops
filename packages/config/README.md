@@ -77,9 +77,9 @@ The following example package.json shows how the config object might look like:
 
 Hops looks for configuration objects in a couple of different places (starting from `process.cwd()`), in this order:
 
-1. `hops` property in your package.json file
-2. `.hopsrc` (or `.hopsrc.(js|json|ya?ml)`)
-3. `hops.config.js` JS file exporting the object
+1.  `hops` property in your package.json file
+2.  `.hopsrc` (or `.hopsrc.(js|json|ya?ml)`)
+3.  `hops.config.js` JS file exporting the object
 
 You can use whatever suits you best, but please only use a single location in your project's root folder. Hops does not attempt to merge configurations stored in different locations: it uses the first config it finds.
 
