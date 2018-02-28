@@ -35,10 +35,5 @@ module.exports = function defineServeCommand(args) {
 };
 
 if (require.main === module) {
-  try {
-    require.resolve('hops-local-cli');
-    require('hops-local-cli').run(module.exports, 'serve');
-  } catch (_) {
-    require('hops').run(module.exports, 'serve');
-  }
+  require('hops').run(module.exports, 'serve');
 }

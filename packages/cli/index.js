@@ -1,10 +1,10 @@
-#!/usr/bin/env node
 'use strict';
 
-var init = require('./init');
-var run = require('./run');
-
 module.exports = {
-  init: init,
-  run: run,
+  get init() {
+    return require('./lib/init');
+  },
+  get run() {
+    return require('./lib/run');
+  },
 };

@@ -29,6 +29,8 @@ function applyDefaultConfig(config) {
       locations: [],
       basePath: '',
       assetPath: '',
+      workerPath: '<basePath>/sw.js',
+      workerFile: null,
       browsers: '> 1%, last 2 versions, Firefox ESR',
       node: 'current',
       envVars: { HOPS_MODE: 'dynamic' },
@@ -132,6 +134,8 @@ function resolvePaths(config) {
 function normalizeURLs(config) {
   var basePath = config.basePath.replace(/^\/*/, '/').replace(/\/*$/, '');
   var assetPath = config.assetPath.replace(/(^\/*|\/*$)/g, '');
+  var workerPath = config.workerPath.replace(/^\/*/, '/');
+
   return Object.assign({}, config, {
     locations: config.locations
       .map(function(location) {
@@ -142,6 +146,7 @@ function normalizeURLs(config) {
       }),
     basePath: basePath,
     assetPath: assetPath,
+    workerPath: workerPath,
   });
 }
 

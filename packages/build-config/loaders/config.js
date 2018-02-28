@@ -1,6 +1,7 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 
 var loaderUtils = require('loader-utils');
 
@@ -20,7 +21,7 @@ function getConfig(config) {
           .reduce(function(result, key) {
             result[key] = (function shorten(item) {
               if (typeof item === 'string') {
-                return item.replace(new RegExp(config.appDir), '.');
+                return path.relative(config.appDir, item);
               } else if (Array.isArray(item)) {
                 return item.map(shorten);
               } else {
@@ -37,19 +38,19 @@ function getConfig(config) {
 
 function getNodeConfig() {
   var config = getConfig(hopsConfig)
-    .replace(/(config|file|dir)s?":"(\.[^"]*)"/gi, '$1":expand("$2")')
+    .replace(/((?:config|file|dir)s?":)("[^"]*")/gi, '$1expand($2)')
     .replace(/((?:config|file|dir)s?":)\[([^\]]+)\]/gi, function() {
-      return (
-        arguments[1] +
-        '[' +
+      return [
+        arguments[1],
+        '[',
         arguments[2]
           .split(',')
           .map(function(p) {
             return 'expand(' + p + ')';
           })
-          .join(',') +
-        ']'
-      );
+          .join(','),
+        ']',
+      ].join('');
     });
   var filepath = require.resolve('../lib/node-config');
   var template = fs.readFileSync(filepath, 'utf8');

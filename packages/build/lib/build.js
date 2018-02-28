@@ -1,30 +1,23 @@
 'use strict';
 
 var webpack = require('webpack');
-var merge = require('webpack-merge');
 
 var hopsConfig = require('hops-config');
 var hopsBuildConfig = require('hops-build-config');
 
-var generate = require('./lib/generate');
-var cleanup = require('./lib/cleanup');
+var generate = require('./generate');
+var cleanup = require('./cleanup');
 
-var mergeWithPlugins = merge.strategy({ plugins: 'append' });
-
-function injectProgressPlugin(webpackConfig) {
-  return mergeWithPlugins(webpackConfig, {
-    plugins: [new webpack.ProgressPlugin()],
-  });
-}
-
-var buildConfig = injectProgressPlugin(require(hopsBuildConfig.buildConfig));
-var nodeConfig = injectProgressPlugin(require(hopsBuildConfig.nodeConfig));
+var buildConfig = hopsBuildConfig.build;
+var nodeConfig = hopsBuildConfig.node;
 
 function defaultCallback(error, stats) {
   if (error) {
-    console.error(error.stack.toString());
+    console.error(error.stack ? error.stack.toString() : error.toString());
   } else {
-    console.log(stats.toString({ chunks: false, modules: false }));
+    console.log(
+      stats.toString({ chunks: false, modules: false, entrypoints: false })
+    );
   }
 }
 

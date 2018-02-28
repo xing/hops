@@ -29,8 +29,8 @@ Hops targets the the professional React developer and follows React mainstream b
 
 The two guiding principles are:
 
-1. Hops scales with your requirements, from an easy start up to large scale applications with many teams
-1. Hops fits a broad need by being modular and extensible, it comes with reasonable defaults, but allows you to customize, configure, and extend almost everything when needed
+1.  Hops scales with your requirements, from an easy start up to large scale applications with many teams
+1.  Hops fits a broad need by being modular and extensible, it comes with reasonable defaults, but allows you to customize, configure, and extend almost everything when needed
 
 Hops is designed to simplify getting started with modern frontend tooling. It streamlines [Webpack](https://webpack.js.org) and [Jest](https://facebook.github.io/jest/) configuration featuring [Babel](https://babeljs.io) and [PostCSS](http://postcss.org).
 

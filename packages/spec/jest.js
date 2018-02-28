@@ -7,10 +7,10 @@ describe('jest-preset', function() {
     assert(require('jest-preset-hops/jest-preset.json'));
   });
   it('should export file-mock', function() {
-    assert(require('jest-preset-hops/file-mock'));
+    assert(require('jest-preset-hops/mocks/file'));
   });
   it('should export tpl-mock', function() {
-    assert(require('jest-preset-hops/tpl-mock'));
+    assert(require('jest-preset-hops/mocks/tpl'));
   });
   it('should export babel transform', function() {
     assert(require('jest-preset-hops/transforms/babel'));

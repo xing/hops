@@ -1,17 +1,19 @@
 'use strict';
 
-var utils = require('./utils');
-var createApp = require('./app');
-
-function runServer(options, callback) {
-  utils.run(createApp(options), callback);
-}
-
 module.exports = {
-  createApp: createApp,
-  runServer: runServer,
-  startServer: function(callback) {
-    runServer({}, callback);
+  runServer: function runServer(options, callback) {
+    return this.utils.run(this.createApp(options), callback);
   },
-  utils: utils,
+  startServer: function startServer(callback) {
+    console.warn(
+      'hops-express "startServer" is deprecated, please use "runServer" instead'
+    );
+    this.runServer({}, callback);
+  },
+  get createApp() {
+    return require('./lib/app');
+  },
+  get utils() {
+    return require('./lib/utils');
+  },
 };

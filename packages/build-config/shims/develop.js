@@ -4,7 +4,10 @@ require('babel-polyfill');
 
 (function render() {
   var entryPoint = require('hops-entry-point');
-  if (entryPoint.__esModule) {
+  if (
+    typeof entryPoint !== 'function' &&
+    typeof entryPoint.default === 'function'
+  ) {
     entryPoint = entryPoint.default;
   }
   entryPoint();

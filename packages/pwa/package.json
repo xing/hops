@@ -1,0 +1,22 @@
+{
+  "name": "hops-pwa",
+  "version": "10.2.0-rc.4",
+  "description": "ServiceWorker and Web App Manifest support for Hops",
+  "keywords": [
+    "hops",
+    "serviceworker",
+    "pwa",
+    "web app manifest"
+  ],
+  "license": "MIT",
+  "main": "node.js",
+  "browser": "dom.js",
+  "files": [
+    "dom.js",
+    "node.js",
+    "worker.js"
+  ],
+  "dependencies": {
+    "hops-config": "10.2.0-rc.0"
+  }
+}

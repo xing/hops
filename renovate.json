@@ -5,5 +5,7 @@
   "semanticPrefix": "chore:",
   "dependencies": {
     "semanticPrefix": "chore:"
-  }
+  },
+  "schedule": ["after 10pm and before 5am on every weekday", "every weekend"],
+  "prCreation": "not-pending"
 }

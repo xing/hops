@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "10.0.1",
+  "version": "10.2.0-rc.3",
   "description": "Express server to enable server-side rendering of hops applications",
   "keywords": [
     "hops",
@@ -12,10 +12,10 @@
   },
   "main": "index.js",
   "files": [
-    "app.js",
     "index.js",
-    "utils.js",
-    "commands"
+    "commands",
+    "lib",
+    "ssl"
   ],
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "dependencies": {
     "express": "^4.16.0",
     "helmet": "^3.8.2",
-    "hops-config": "10.0.1",
+    "hops-config": "10.2.0-rc.0",
     "mime": "^2.2.0"
   }
 }

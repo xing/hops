@@ -1,11 +1,10 @@
 'use strict';
 
 var path = require('path');
-var url = require('url');
 
 var webpack = require('webpack');
 
-var WriteManifestPlugin = require('../plugins/write-manifest');
+var ServiceWorkerPlugin = require('../plugins/service-worker');
 
 var hopsConfig = require('hops-config');
 
@@ -13,14 +12,7 @@ var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
 
 module.exports = {
   entry: [
-    require.resolve('webpack-dev-server/client') +
-      '?' +
-      url.format({
-        protocol: hopsConfig.https ? 'https' : 'http',
-        hostname: hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
-        port: hopsConfig.port,
-      }),
-    require.resolve('webpack/hot/dev-server'),
+    require.resolve('webpack-hot-middleware/client'),
     require.resolve('../shims/develop'),
   ],
   output: {
@@ -35,7 +27,7 @@ module.exports = {
     rules: require('../sections/module-rules')('develop'),
   },
   plugins: [
-    new WriteManifestPlugin(),
+    new ServiceWorkerPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.EnvironmentPlugin(
@@ -54,16 +46,5 @@ module.exports = {
   watchOptions: {
     aggregateTimeout: 300,
     ignored: /node_modules/,
-  },
-  devServer: {
-    contentBase: hopsConfig.buildDir,
-    hot: true,
-    disableHostCheck: true,
-    overlay: {
-      warnings: true,
-      errors: true,
-    },
-    stats: 'errors-only',
-    https: require('../sections/dev-server-https')(),
   },
 };

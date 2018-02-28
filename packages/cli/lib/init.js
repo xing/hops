@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var tar = require('tar');
 var validatePackageName = require('validate-npm-package-name');
-var pm = require('./lib/package-manager');
+var pm = require('./package-manager');
 
 function readPackageManifest(file) {
   return JSON.parse(fs.readFileSync(file).toString('utf-8'));
@@ -82,7 +82,6 @@ function init(root, appName, options) {
       .then(function() {
         fs.unlinkSync(tarball);
 
-        // allow templates to provide files that are ignored by npm pack such as .gitignore
         ['_gitignore', '_npmrc'].forEach(function(ignoredFile) {
           if (fs.existsSync(path.join(appRoot, ignoredFile))) {
             fs.renameSync(

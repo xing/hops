@@ -1,9 +1,19 @@
 'use strict';
 
-var runBuild = require('./build');
-var runServer = require('./server');
-
 module.exports = {
-  runBuild: runBuild,
-  runServer: runServer,
+  get runBuild() {
+    return require('./lib/build');
+  },
+  get runServer() {
+    return require('./lib/server');
+  },
+  get createRenderer() {
+    return require('./lib/renderer');
+  },
+  get createMiddleware() {
+    return require('./lib/middleware');
+  },
+  get createTranspiler() {
+    return require('./lib/transpiler');
+  },
 };

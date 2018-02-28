@@ -5,19 +5,18 @@ var fs = require('fs');
 var path = require('path');
 var resolveCwd = require('resolve-cwd');
 var validatePackageName = require('validate-npm-package-name');
-var pm = require('./lib/package-manager');
 
-var packageManifest = require('./package.json');
+var pm = require('../lib/package-manager');
+
+var packageManifest = require('../package.json');
 
 var getLocalCliPath = function() {
   try {
     return resolveCwd('hops-local-cli');
   } catch (_) {}
-
   try {
     return resolveCwd('hops');
   } catch (_) {}
-
   return null;
 };
 
@@ -90,7 +89,7 @@ function validateName(name) {
   }
 }
 
-function createDirectory(root) {
+function createDirectory(root, name) {
   if (fs.existsSync(root)) {
     console.error(
       'A directory with the name:',
@@ -101,11 +100,10 @@ function createDirectory(root) {
     );
     process.exit(1);
   }
-
   fs.mkdirSync(root);
 }
 
-function writePackageManifest(root) {
+function writePackageManifest(root, name) {
   fs.writeFileSync(
     path.join(root, 'package.json'),
     JSON.stringify(
@@ -119,8 +117,6 @@ function writePackageManifest(root) {
     )
   );
 }
-
-var localCliPath = getLocalCliPath();
 
 var isInsideHopsProject = false;
 try {
@@ -137,6 +133,7 @@ try {
 }
 
 if (isInsideHopsProject) {
+  var localCliPath = getLocalCliPath();
   if (localCliPath) {
     require(localCliPath).run();
   } else {
@@ -155,9 +152,18 @@ if (isInsideHopsProject) {
   var name = options.projectName;
   var root = process.cwd();
 
+  if (options._[0] !== 'init') {
+    console.error(
+      'Looks like we are not inside a hops project or the project misses',
+      'either `hops` or `hops-local-cli` in its `devDependencies` or',
+      '`dependencies`.'
+    );
+    process.exit(1);
+  }
+
   validateName(name);
-  createDirectory(path.join(root, name));
-  writePackageManifest(path.join(root, name));
+  createDirectory(path.join(root, name), name);
+  writePackageManifest(path.join(root, name), name);
   process.chdir(path.join(root, name));
   pm.installPackages(['hops@' + options.hopsVersion], 'dev', options);
   require(getLocalCliPath()).init(root, name, options);
