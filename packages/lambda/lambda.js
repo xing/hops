@@ -2,6 +2,13 @@
 
 var serverlessHttp = require('serverless-http');
 var app = require('hops-express').createApp({});
+var hopsConfig = require('hops-config');
+
+var awsConfig = require('./lib/aws-config')();
+
+var shouldIncludeStageInRequest =
+  awsConfig.basePath.indexOf(awsConfig.stageName) === 0 &&
+  hopsConfig.assetPath.indexOf(awsConfig.stageName) === 0;
 
 // NOTE: If you get ERR_CONTENT_DECODING_FAILED in your browser, this is likely
 // due to a compressed response (e.g. gzip) which has not been handled correctly
@@ -35,7 +42,9 @@ var binaryMimeTypes = [
 exports.handler = serverlessHttp(app, {
   binary: binaryMimeTypes,
   request: function(request, context) {
-    request.url = context.requestContext.path;
+    if (shouldIncludeStageInRequest) {
+      request.url = context.requestContext.path;
+    }
     return request;
   },
 });
