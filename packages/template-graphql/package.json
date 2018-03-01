@@ -5,9 +5,7 @@
   "license": "MIT",
   "hops": {
     "browsers": "last 1 Chrome versions",
-    "locations": [
-      "/"
-    ],
+    "locations": ["/"],
     "graphqlUri": "https://www.graphqlhub.com/graphql"
   },
   "scripts": {

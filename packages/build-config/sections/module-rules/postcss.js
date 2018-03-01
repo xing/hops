@@ -1,15 +1,20 @@
 'use strict';
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 var hopsConfig = require('hops-config');
 
-var cssLoaderOptions = {
+var cssLoader = require.resolve('css-loader');
+var postcssLoader = require.resolve('postcss-loader');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+var cssLoaderGlobalOptions = {
   importLoaders: 1,
+  sourceMap: true,
+};
+
+var cssLoaderLocalOptions = Object.assign({}, cssLoaderGlobalOptions, {
   modules: true,
   localIdentName: '[folder]-[name]-[local]-[hash:8]',
-  sourceMap: false,
-};
+});
 
 var postcssLoaderOptions = {
   ident: 'postcss',
@@ -25,40 +30,93 @@ var postcssLoaderOptions = {
 
 exports.build = {
   test: /\.css$/,
-  use: ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: [
-      {
-        loader: require.resolve('css-loader'),
-        options: cssLoaderOptions,
-      },
-      {
-        loader: require.resolve('postcss-loader'),
-        options: postcssLoaderOptions,
-      },
-    ],
-  }),
+  oneOf: [
+    {
+      resourceQuery: /global/,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: cssLoader,
+            options: cssLoaderGlobalOptions,
+          },
+          {
+            loader: postcssLoader,
+            options: postcssLoaderOptions,
+          },
+        ],
+      }),
+    },
+    {
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: cssLoader,
+            options: cssLoaderLocalOptions,
+          },
+          {
+            loader: postcssLoader,
+            options: postcssLoaderOptions,
+          },
+        ],
+      }),
+    },
+  ],
 };
 
 exports.develop = {
   test: /\.css$/,
-  use: [
-    'style-loader',
+  oneOf: [
     {
-      loader: require.resolve('css-loader'),
-      options: Object.assign({}, cssLoaderOptions, { sourceMap: true }),
+      resourceQuery: /global/,
+      use: [
+        'style-loader',
+        {
+          loader: cssLoader,
+          options: cssLoaderGlobalOptions,
+        },
+        {
+          loader: postcssLoader,
+          options: postcssLoaderOptions,
+        },
+      ],
     },
     {
-      loader: require.resolve('postcss-loader'),
-      options: postcssLoaderOptions,
+      use: [
+        'style-loader',
+        {
+          loader: cssLoader,
+          options: cssLoaderLocalOptions,
+        },
+        {
+          loader: postcssLoader,
+          options: postcssLoaderOptions,
+        },
+      ],
     },
   ],
 };
 
 exports.node = {
   test: /\.css$/,
-  use: {
-    loader: require.resolve('css-loader/locals'),
-    options: Object.assign({}, cssLoaderOptions, { importLoaders: 0 }),
-  },
+  oneOf: [
+    {
+      resourceQuery: /global/,
+      use: {
+        loader: require.resolve('css-loader/locals'),
+        options: Object.assign({}, cssLoaderGlobalOptions, {
+          importLoaders: 0,
+        }),
+      },
+    },
+    {
+      use: {
+        loader: require.resolve('css-loader/locals'),
+        options: Object.assign({}, cssLoaderLocalOptions, {
+          importLoaders: 0,
+        }),
+      },
+    },
+  ],
 };

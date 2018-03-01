@@ -26,8 +26,6 @@ function shouldIncludeExternalModuleInBundle(module) {
     module.indexOf('hops') === 0 ||
     module.indexOf('core-js') === 0 ||
     module.indexOf('babel-polyfill') === 0 ||
-    // bundle everything the native require implementation can not handle
-    // see: https://nodejs.org/api/modules.html#modules_all_together
     !/\.(?:js|json|mjs|node)$/.test(require.resolve(module)) ||
     checkEsnext(module)
   );
@@ -37,14 +35,17 @@ var modulesDir = findNodeModules(process.cwd());
 
 module.exports = {
   target: 'node',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: require.resolve('../shims/node'),
   output: {
     path: hopsConfig.cacheDir,
     publicPath: '/',
+    pathinfo: true,
     filename: 'server.js',
     libraryTarget: 'commonjs2',
-    devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]',
+    devtoolModuleFilenameTemplate: function(info) {
+      return path.resolve(info.absoluteResourcePath).replace(/\\/g, '/');
+    },
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('node'),
