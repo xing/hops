@@ -55,6 +55,6 @@
     "webpack": "^3.6.0",
     "webpack-node-externals": "^1.6.0",
     "webpack-sources": "^1.1.0",
-    "webpack-stats-plugin": "^0.1.5"
+    "webpack-stats-plugin": "^0.2.0"
   }
 }

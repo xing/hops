@@ -8273,9 +8273,9 @@ webpack-sources@^1.0.1, webpack-sources@^1.1.0:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack-stats-plugin@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/webpack-stats-plugin/-/webpack-stats-plugin-0.1.5.tgz#29e5f12ebfd53158d31d656a113ac1f7b86179d9"
+webpack-stats-plugin@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/webpack-stats-plugin/-/webpack-stats-plugin-0.2.0.tgz#3d141073f82f34fb3a89f0c49abbd0ab620b8962"
 
 webpack@^3.6.0:
   version "3.10.0"
