@@ -123,4 +123,12 @@ describe('production server', function() {
       assert(response.status === 404);
     });
   });
+
+  it('adds server-timing header', function() {
+    return fetch('http://localhost:8080/').then(function(response) {
+      assert(
+        response.headers.get('server-timing').indexOf('desc="Request"') > -1
+      );
+    });
+  });
 });
