@@ -15,6 +15,7 @@ var swRe = new RegExp(hopsConfig.workerPath + '$');
 
 function createApp(options) {
   var app = express();
+  app.use(utils.timings);
   app.use(helmet());
   app.use(compression());
   app.use(utils.rewritePath);
