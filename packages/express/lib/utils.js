@@ -120,6 +120,13 @@ exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
   next();
 };
 
+exports.timings = hopsConfig.enableServerTimings
+  ? require('server-timings')
+  : function(req, res, next) {
+      res.locals.timings = { start: function() {}, end: function() {} };
+      next();
+    };
+
 exports.bootstrap = hopsConfig.bootstrapServer || function() {};
 
 exports.teardown = hopsConfig.teardownServer || function() {};
