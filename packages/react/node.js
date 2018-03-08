@@ -106,16 +106,16 @@ var renderWithContext = function(reactElement, _context) {
         timings.end('hops.react.renderTemplate');
 
         var routerContext = templateData.routerContext;
+        routerContext.headers && res.set(routerContext.headers);
+
         if (routerContext.miss) {
           next();
         } else if (routerContext.url) {
           res.status(routerContext.status || 301);
           res.set('Location', routerContext.url);
-          routerContext.headers && res.set(routerContext.headers);
           res.end();
         } else {
           res.status(routerContext.status || 200);
-          routerContext.headers && res.set(routerContext.headers);
           res.type('html');
           res.send(markup);
         }
