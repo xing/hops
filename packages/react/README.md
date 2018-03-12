@@ -64,7 +64,7 @@ To declaratively control server behavior from your application, you can use the 
 
 On the server, however, `<Miss />` makes sure Express' `next()` middleware function is being called, signalling Express that your application is not responsible for handling the current request. `<Status />`, however controls the HTTP status code returned by the server.
 
-`<Header />` allows to set abritraty http headers for each request. Elements rendered more deeply will override those included higher up in the rendered tree. Adding the same header (such as `Set-Cookie`) multiple times can be achieved by providing an array as value. `<Header name="x-foo" value={['bar', 'baz']}/>`
+`<Header />` allows to set abritraty http headers for each request. Elements rendered more deeply will override those included higher up in the rendered tree. Adding the same header (such as `Set-Cookie`) multiple times can be achieved by providing an array as value. `<Header name="x-foo" value={['bar', 'baz']}/>` If a function is passed as `value`, it will be called with the headers that have already been set and the return value is used as header value.
 
 # Basic Example
 
