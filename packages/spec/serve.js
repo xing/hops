@@ -131,4 +131,33 @@ describe('production server', function() {
       );
     });
   });
+
+  describe('Header component', function() {
+    it('adds headers', function() {
+      return fetch('http://localhost:8080/headers/simple').then(function(
+        response
+      ) {
+        assert.equal(response.headers.get('foo'), 'bar');
+        assert.equal(response.headers.get('x-accel-expires'), 'no');
+      });
+    });
+
+    it('adds same header multiple times', function() {
+      return fetch('http://localhost:8080/headers/multiple').then(function(
+        response
+      ) {
+        var setCookieHeaders = response.headers.getAll('set-cookie');
+        assert(setCookieHeaders.indexOf('foo=bar') > -1);
+        assert(setCookieHeaders.indexOf('bar=foo') > -1);
+      });
+    });
+
+    it('allows to pass function as value', function() {
+      return fetch('http://localhost:8080/headers/function').then(function(
+        response
+      ) {
+        assert.equal(response.headers.get('foo'), 'bar');
+      });
+    });
+  });
 });
