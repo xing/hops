@@ -23,6 +23,7 @@ process.on('unhandledRejection', function(error) {
 function runDevelop(options, callback) {
   var compiler = webpack(developConfig);
   var app = express();
+  app.use(hopsExpressUtils.timings);
   app.use(
     webpackDevMiddleware(compiler, {
       noInfo: true,

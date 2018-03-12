@@ -68,19 +68,31 @@ var cloneContext = mixinable.replicate(function(initialArgs, newArgs) {
 var renderWithContext = function(reactElement, _context) {
   return function(req, res, next) {
     var renderContext = cloneContext(_context, { request: req, response: res });
+
+    var timings = res.locals.timings;
+    timings.start('hops.react.bootstrap');
     renderContext
       .bootstrap()
       .then(function() {
+        timings.end('hops.react.bootstrap');
+        timings.start('hops.react.enhanceElement');
         return renderContext.enhanceElement(reactElement);
       })
       .then(function(rootElement) {
+        timings.end('hops.react.enhanceElement');
+        timings.start('hops.react.getTemplateData');
+
         return renderContext
           .getTemplateData({}, rootElement)
           .then(function(templateData) {
+            timings.end('hops.react.getTemplateData');
+
             return { templateData: templateData, rootElement: rootElement };
           });
       })
       .then(function(result) {
+        timings.start('hops.react.renderTemplate');
+
         var templateData = result.templateData;
         var rootElement = result.rootElement;
         var markup = renderContext.renderTemplate(
@@ -91,17 +103,19 @@ var renderWithContext = function(reactElement, _context) {
             templateData
           )
         );
+        timings.end('hops.react.renderTemplate');
+
         var routerContext = templateData.routerContext;
+        routerContext.headers && res.set(routerContext.headers);
+
         if (routerContext.miss) {
           next();
         } else if (routerContext.url) {
           res.status(routerContext.status || 301);
           res.set('Location', routerContext.url);
-          routerContext.headers && res.set(routerContext.headers);
           res.end();
         } else {
           res.status(routerContext.status || 200);
-          routerContext.headers && res.set(routerContext.headers);
           res.type('html');
           res.send(markup);
         }

@@ -35,6 +35,7 @@ describe('config', function() {
       buildDir: path.resolve('build'),
       cacheDir: path.resolve(path.join('node_modules', '.cache', 'hops')),
       workerFile: null,
+      enableServerTimings: true,
       workerPath: '/sw.js',
     });
   });
