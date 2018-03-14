@@ -1,0 +1,7 @@
+{
+  "name": "hops-graphql-remote-introspection",
+  "version": "1.0.0",
+  "hops": {
+    "graphqlUri": "https://www.graphqlhub.com/graphql"
+  }
+}
