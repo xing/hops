@@ -2,32 +2,32 @@
   "name": "hops-graphql",
   "version": "10.2.0",
   "description": "React and GraphQL implementation for Hops",
-  "keywords": [
-    "hops",
-    "react",
-    "graphql"
-  ],
+  "keywords": ["hops", "react", "graphql"],
   "license": "MIT",
   "bin": {
     "hops-graphql": "commands/graphql.js"
   },
   "main": "node.js",
   "browser": "dom.js",
-  "files": [
-    "node.js",
-    "dom.js",
-    "commands",
-    "lib"
-  ],
+  "files": ["node.js", "dom.js", "commands", "lib"],
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.5",
     "apollo-client": "^2.2.0",
     "apollo-link-http": "^1.3.2",
     "graphql": "^0.12.3",
-    "isomorphic-fetch": "^2.2.1"
+    "graphql-tools": "^2.20.0",
+    "isomorphic-fetch": "^2.2.1",
+    "pify": "^3.0.0"
   },
   "peerDependencies": {
     "graphql-tag": "^2.5.0",
+    "hops-react": "10.2.0-rc.0",
+    "react": ">=15.0.0 <17.0.0",
+    "react-apollo": "^2.0.0"
+  },
+  "devDependencies": {
+    "graphql-tag": "^2.5.0",
+    "hops-react": "10.2.0-rc.0",
     "react": ">=15.0.0 <17.0.0",
     "react-apollo": "^2.0.0"
   }

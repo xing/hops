@@ -20,12 +20,20 @@ Generally, you will use hops-react exactly as you would use a well configured [A
 
 ## Configuration
 
-Add your GraphQL endpoint to your Hops config - usually, this means adding a line with your GraphQL endpoint's full URL to your project's `package.json` file:
+The following configuration options are available when using this package:
+
+| Field               | Type     | Required | Description                                                                                                                              |
+| ------------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `graphqlUri`        | `String` | yes      | The full URI to your GraphQL endpoint. This will be used when making requests or [generating the introspection result](#CLI)             |
+| `graphqlSchemaFile` | `String` | no       | Path to your GraphQL schema file - defaults to `./schema.graphql`. If set this will be used to [generate the introspection result](#CLI) |
+
+Example:
 
 ```json
 {
-  "config": {
-    "graphqlUri": "https://www.graphqlhub.com/graphql"
+  "hops": {
+    "graphqlUri": "https://www.graphqlhub.com/graphql",
+    "graphqlSchemaFile": "./my-schema.graphql"
   }
 }
 ```
@@ -34,7 +42,7 @@ For more elaborate (e.g. environment specific configs), please refer to the [hop
 
 ## CLI
 
-To allow you to work with fragments on interfaces or unions with GraphQL, you need to provide additional information derived from your actual schema to the client. To fetch and supply that info, please run the command provided by this package in your project's root folder:
+To allow you to work with [fragments on interfaces or unions](https://github.com/apollographql/apollo-client/blob/master/docs/source/recipes/fragment-matching.md#using-fragments-on-unions-and-interfaces) with GraphQL, you need to provide additional information derived from your actual schema to the client. To fetch and supply that info, please run the command provided by this package in your project's root folder:
 
 ```bash
 hops graphql introspect
