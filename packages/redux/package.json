@@ -12,6 +12,12 @@
   "files": [
     "index.js"
   ],
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "hops-react": "10.2.0-rc.5"
   },
@@ -20,5 +26,8 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "jest": "^22.0.4"
   }
 }

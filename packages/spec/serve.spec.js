@@ -8,7 +8,7 @@ var mkdirp = require('mkdirp');
 var fetch = require('isomorphic-fetch');
 
 var originalDir = process.cwd();
-var appDir = path.resolve(__dirname, 'mock', 'integration');
+var appDir = path.resolve(__dirname, 'fixtures', 'integration');
 var buildDir = path.resolve(appDir, 'build');
 var cacheDir = path.resolve(appDir, 'node_modules', '.cache', 'hops');
 
