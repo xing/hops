@@ -1,6 +1,6 @@
 /* eslint-env node, jest */
 
-var hopsRedux = require('hops-redux');
+var hopsRedux = require('..');
 
 describe('redux', function() {
   it('allows to set middlewares via option', function() {

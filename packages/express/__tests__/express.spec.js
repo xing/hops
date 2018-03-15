@@ -1,7 +1,14 @@
 /* eslint-env node, jest */
 
 describe('express', function() {
-  beforeEach(jest.resetModules);
+  var res, req;
+
+  beforeEach(function() {
+    res = { locals: {} };
+    req = {};
+  });
+
+  afterEach(jest.resetModules);
 
   describe('timings', function() {
     it('uses server-timings middleware when enableServerTimings is true', function() {
@@ -9,9 +16,7 @@ describe('express', function() {
         return { enableServerTimings: true };
       });
 
-      var hopsExpressTimings = require('hops-express').utils.timings;
-      var res = { locals: {} };
-      var req = {};
+      var hopsExpressTimings = require('..').utils.timings;
 
       hopsExpressTimings(req, res, function() {});
 
@@ -23,9 +28,7 @@ describe('express', function() {
         return { enableServerTimings: false };
       });
 
-      var hopsExpressTimings = require('hops-express').utils.timings;
-      var res = { locals: {} };
-      var req = {};
+      var hopsExpressTimings = require('..').utils.timings;
 
       hopsExpressTimings(req, res, function() {});
 

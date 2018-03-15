@@ -1,10 +1,10 @@
 /* eslint-env node, jest */
 
-var createRenderer = require('hops-build').createRenderer;
+var createRenderer = require('..').createRenderer;
 
-var goodConfig = require('./mock/webpack.good');
-var badExportConfig = require('./mock/webpack.bad-export');
-var badHandlerConfig = require('./mock/webpack.bad-handler');
+var goodConfig = require('./fixtures/webpack.good');
+var badExportConfig = require('./fixtures/webpack.bad-export');
+var badHandlerConfig = require('./fixtures/webpack.bad-handler');
 
 describe('renderer', function() {
   jest.setTimeout(100000);

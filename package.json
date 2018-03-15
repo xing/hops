@@ -42,7 +42,7 @@
     "start": "cd packages/template-react; yarn start",
     "start:minimal": "cd packages/template-minimal; yarn start",
     "start:graphql": "cd packages/template-graphql; yarn start",
-    "test": "lerna run test --stream",
+    "test": "jest",
     "lint": "eslint \"packages/**/*.js\"",
     "release": "lerna publish --conventional-commits",
     "release:major": "lerna publish --force-publish=* --cd-version=major",
@@ -98,11 +98,15 @@
   "eslintIgnore": [
     "**/node_modules/**",
     "**/template-*/**",
-    "**/spec/mock/**"
+    "**/__tests__/fixtures/**",
+    "**/spec/fixtures/**"
   ],
   "workspaces": [
     "packages/*"
   ],
+  "jest": {
+    "projects": ["packages/*"]
+  },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^4.15.0",

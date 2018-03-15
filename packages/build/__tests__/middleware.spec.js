@@ -3,11 +3,11 @@
 var events = require('events');
 var mocks = require('node-mocks-http');
 
-var createMiddleware = require('hops-build').createMiddleware;
+var createMiddleware = require('..').createMiddleware;
 
-var goodConfig = require('./mock/webpack.good');
-var badExportConfig = require('./mock/webpack.bad-export');
-var badHandlerConfig = require('./mock/webpack.bad-handler');
+var goodConfig = require('./fixtures/webpack.good');
+var badExportConfig = require('./fixtures/webpack.bad-export');
+var badHandlerConfig = require('./fixtures/webpack.bad-handler');
 
 describe('middleware', function() {
   jest.setTimeout(100000);
