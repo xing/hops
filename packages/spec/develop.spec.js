@@ -1,4 +1,4 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest */
 
 var path = require('path');
 var assert = require('assert');
@@ -13,23 +13,21 @@ var buildDir = path.resolve(appDir, 'build');
 var cacheDir = path.resolve(appDir, 'node_modules', '.cache', 'hops');
 
 describe('development server', function() {
-  this.timeout(100000);
+  jest.setTimeout(100000);
 
   var app;
-  before(function(done) {
+  beforeAll(function(done) {
     rimraf.sync(buildDir);
     rimraf.sync(cacheDir);
     mkdirp.sync(cacheDir);
     process.chdir(appDir);
-    Object.keys(require.cache).forEach(function(key) {
-      delete require.cache[key];
-    });
+    jest.resetModules();
     require('hops-build').runServer({ clean: true }, function(_, _app) {
       app = _app;
       done();
     });
   });
-  after(function() {
+  afterAll(function() {
     app.close();
     process.chdir(originalDir);
   });

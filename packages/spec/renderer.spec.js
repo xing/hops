@@ -1,4 +1,4 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest */
 
 var assert = require('assert');
 
@@ -9,7 +9,7 @@ var badExportConfig = require('./mock/webpack.bad-export');
 var badHandlerConfig = require('./mock/webpack.bad-handler');
 
 describe('renderer', function() {
-  this.timeout(5000);
+  jest.setTimeout(100000);
 
   it('should export a function', function() {
     assert.equal(typeof createRenderer, 'function');

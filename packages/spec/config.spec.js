@@ -1,18 +1,14 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest */
 
 var path = require('path');
 var assert = require('assert');
 
 var originalDir = process.cwd();
 
-function clearRequireCache() {
-  Object.keys(require.cache).forEach(function(key) {
-    delete require.cache[key];
-  });
-}
-
 describe('config', function() {
-  beforeEach(clearRequireCache);
+  beforeEach(function() {
+    jest.resetModules();
+  });
 
   afterEach(function() {
     process.chdir(originalDir);
