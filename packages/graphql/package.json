@@ -26,6 +26,7 @@
     "react-apollo": "^2.0.0"
   },
   "devDependencies": {
+    "apollo-cache-inmemory": "^1.1.11",
     "fetch-mock": "^6.3.0",
     "graphql-tag": "^2.5.0",
     "hops-react": "10.2.0-rc.0",
