@@ -21,6 +21,7 @@
     "jest-preset-hops": "10.2.0",
     "mkdirp": "^0.5.1",
     "react": "^16.0.0",
+    "react-apollo": "^2.0.4",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",

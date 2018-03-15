@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
+var util = require('util');
 var fetchMock = require('fetch-mock/es5/server');
 var React = require('react');
 var ReactApollo = require('react-apollo');
@@ -89,13 +90,8 @@ describe('graphql schema introspection', function() {
   });
 });
 
-describe('graphql browser extension', function() {
-  afterEach(function() {
-    var constants = require('hops-graphql/lib/constants');
-    global[constants.APOLLO_IQRD] = undefined;
-  });
-
-  var hopsGraphql = require('hops-graphql/dom');
+describe('graphql extension', function() {
+  var hopsGraphql = require('hops-graphql');
 
   it('should have all the neccessary exports', function() {
     assert.equal(typeof hopsGraphql.GraphQLContext, 'function');
@@ -114,24 +110,6 @@ describe('graphql browser extension', function() {
     assert.ok(context.client);
     assert.ok(context.client.link);
     assert.ok(context.client.cache);
-  });
-
-  it('should use HeuristicFramentMatcher when no introspection result is available', function() {
-    var context = new hopsGraphql.GraphQLContext();
-    assert.ok(
-      context.client.cache.config.fragmentMatcher instanceof
-        ApolloCache.HeuristicFragmentMatcher
-    );
-  });
-
-  it('should use IntrospectionFragmentMatcher when introspection result is available', function() {
-    var constants = require('hops-graphql/lib/constants');
-    global[constants.APOLLO_IQRD] = mockResponse;
-    var context = new hopsGraphql.GraphQLContext();
-    assert.ok(
-      context.client.cache.config.fragmentMatcher instanceof
-        ApolloCache.IntrospectionFragmentMatcher
-    );
   });
 
   it('should allow to override apollo link through options', function() {
@@ -165,5 +143,86 @@ describe('graphql browser extension', function() {
     assert.equal(enhanced.type, ReactApollo.ApolloProvider);
     assert.equal(enhanced.props.children, root);
     assert.equal(enhanced.props.client, context.client);
+  });
+});
+
+describe('graphql browser extension', function() {
+  afterEach(function() {
+    var constants = require('hops-graphql/lib/constants');
+    global[constants.APOLLO_IQRD] = undefined;
+  });
+
+  var hopsGraphql = require('hops-graphql/dom');
+
+  it('should use HeuristicFramentMatcher when no introspection result is available', function() {
+    var context = new hopsGraphql.GraphQLContext();
+    assert.ok(
+      context.client.cache.config.fragmentMatcher instanceof
+        ApolloCache.HeuristicFragmentMatcher
+    );
+  });
+
+  it('should use IntrospectionFragmentMatcher when introspection result is available', function() {
+    var constants = require('hops-graphql/lib/constants');
+    global[constants.APOLLO_IQRD] = mockResponse;
+    var context = new hopsGraphql.GraphQLContext();
+    assert.ok(
+      context.client.cache.config.fragmentMatcher instanceof
+        ApolloCache.IntrospectionFragmentMatcher
+    );
+  });
+});
+
+describe('graphql node extension', function() {
+  var hopsGraphql = require('hops-graphql/node');
+  var constants = require('hops-graphql/lib/constants');
+
+  var Root = function() {
+    React.Component.call(this);
+  };
+  util.inherits(Root, React.Component);
+  Root.prototype.render = function() {
+    return null;
+  };
+
+  it('should set ssrMode', function() {
+    var context = new hopsGraphql.GraphQLContext();
+
+    assert.equal(context.client.ssrMode, true);
+  });
+
+  it('should return template data without prefetching in static mode', function() {
+    var context = new hopsGraphql.GraphQLContext();
+    process.env.HOPS_MODE = 'static';
+
+    Root.prototype.fetchData = function() {
+      return Promise.reject(
+        new Error('fetchData should not be called in static mode')
+      );
+    };
+
+    var root = React.createElement(Root);
+
+    return context.getTemplateData({}, root).then(function(templateData) {
+      assert.deepEqual(templateData.globals, [
+        { name: constants.APOLLO_IQRD, value: undefined },
+        { name: constants.APOLLO_STATE, value: {} },
+      ]);
+    });
+  });
+
+  it('should prefetch templateData when rendering not in static mode', function() {
+    var context = new hopsGraphql.GraphQLContext();
+    process.env.HOPS_MODE = 'dynamic';
+
+    Root.prototype.fetchData = function() {
+      return Promise.reject(new Error('fetchData has been called'));
+    };
+
+    var root = React.createElement(Root);
+
+    return context.getTemplateData({}, root).catch(function(error) {
+      assert.equal(error.message, 'fetchData has been called');
+    });
   });
 });
