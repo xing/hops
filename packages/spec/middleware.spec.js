@@ -1,4 +1,4 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest */
 
 var assert = require('assert');
 var events = require('events');
@@ -12,7 +12,7 @@ var badExportConfig = require('./mock/webpack.bad-export');
 var badHandlerConfig = require('./mock/webpack.bad-handler');
 
 describe('middleware', function() {
-  this.timeout(10000);
+  jest.setTimeout(100000);
 
   it('should export a function', function() {
     assert.equal(typeof createMiddleware, 'function');

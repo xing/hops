@@ -1,5 +1,5 @@
 {
-  "name": "hops-mock",
+  "name": "hops-mock-bad-export",
   "version": "1.0.0",
   "description": "example of hops in action",
   "server": "server.js",

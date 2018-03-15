@@ -1,4 +1,4 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest */
 var assert = require('assert');
 
 var hopsRedux = require('hops-redux');

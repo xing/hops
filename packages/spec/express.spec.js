@@ -1,15 +1,12 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest */
 
 var assert = require('assert');
 
-function clearRequireCache() {
-  Object.keys(require.cache).forEach(function(key) {
-    delete require.cache[key];
-  });
-}
-
 describe('express', function() {
-  beforeEach(clearRequireCache);
+  beforeEach(function() {
+    jest.resetModules();
+  });
+
   describe('timings', function() {
     it('uses server-timings middleware when enableServerTimings is true', function() {
       var hopsConfig = require('hops-config');
