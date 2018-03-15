@@ -1,21 +1,19 @@
 /* eslint-env node, jest */
 
-var assert = require('assert');
-
 describe('jest-preset', function() {
   it('should export jest-preset.json', function() {
-    assert(require('jest-preset-hops/jest-preset.json'));
+    expect(require('jest-preset-hops/jest-preset.json')).toBeDefined();
   });
   it('should export file-mock', function() {
-    assert(require('jest-preset-hops/mocks/file'));
+    expect(require('jest-preset-hops/mocks/file')).toBeDefined();
   });
   it('should export tpl-mock', function() {
-    assert(require('jest-preset-hops/mocks/tpl'));
+    expect(require('jest-preset-hops/mocks/tpl')).toBeDefined();
   });
   it('should export babel transform', function() {
-    assert(require('jest-preset-hops/transforms/babel'));
+    expect(require('jest-preset-hops/transforms/babel')).toBeDefined();
   });
   it('should export graphql transform', function() {
-    assert(require('jest-preset-hops/transforms/graphql'));
+    expect(require('jest-preset-hops/transforms/graphql')).toBeDefined();
   });
 });

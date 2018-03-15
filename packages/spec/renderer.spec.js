@@ -1,7 +1,5 @@
 /* eslint-env node, jest */
 
-var assert = require('assert');
-
 var createRenderer = require('hops-build').createRenderer;
 
 var goodConfig = require('./mock/webpack.good');
@@ -12,44 +10,34 @@ describe('renderer', function() {
   jest.setTimeout(100000);
 
   it('should export a function', function() {
-    assert.equal(typeof createRenderer, 'function');
+    expect(typeof createRenderer).toBe('function');
   });
 
   it('should create a renderer function', function() {
     var render = createRenderer(goodConfig);
-    assert.equal(typeof render, 'function');
+    expect(typeof render).toBe('function');
   });
 
   describe('function', function() {
     it('should return a promise', function() {
       var render = createRenderer(goodConfig);
       var promise = render('/');
-      assert(promise instanceof Promise);
+      expect(promise).toBeInstanceOf(Promise);
     });
 
-    it('should render expected result', function(done) {
+    it('should render expected result', function() {
       var render = createRenderer(goodConfig);
-      render('/').then(function(result) {
-        assert.equal(typeof result, 'string');
-        assert.equal(result, 'Hello World!');
-        done();
-      });
+      return expect(render('/')).resolves.toBe('Hello World!');
     });
 
-    it('should reject promise (bad export)', function(done) {
+    it('should reject promise (bad export)', function() {
       var render = createRenderer(badExportConfig);
-      render('/').catch(function() {
-        assert(true);
-        done();
-      });
+      return expect(render('/')).rejects.toThrow();
     });
 
-    it('should reject promise (bad handler)', function(done) {
+    it('should reject promise (bad handler)', function() {
       var render = createRenderer(badHandlerConfig);
-      render('/').catch(function() {
-        assert(true);
-        done();
-      });
+      return expect(render('/')).rejects.toThrow();
     });
   });
 });
