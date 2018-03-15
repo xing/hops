@@ -1,5 +1,4 @@
 /* eslint-env node, jest */
-var assert = require('assert');
 
 var hopsRedux = require('hops-redux');
 
@@ -9,15 +8,15 @@ describe('redux', function() {
     var context = new hopsRedux.ReduxContext({
       middlewares: [middleware],
     });
-    assert.equal(context.getMiddlewares()[0], middleware);
+    expect(context.getMiddlewares()[0]).toBe(middleware);
   });
 
   it('throws error when middlewares is not an array', function() {
-    assert.throws(function() {
+    expect(function() {
       // eslint-disable-next-line no-new
       new hopsRedux.ReduxContext({
         middlewares: function() {},
       });
-    });
+    }).toThrow();
   });
 });

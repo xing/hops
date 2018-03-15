@@ -2,7 +2,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var assert = require('assert');
 
 var rimraf = require('rimraf');
 var mkdirp = require('mkdirp');
@@ -37,73 +36,80 @@ describe('production server', function() {
 
   it('should create server.js', function() {
     var filePath = path.resolve(cacheDir, 'server.js');
-    assert(fs.existsSync(filePath));
+
+    expect(fs.existsSync(filePath)).toBe(true);
   });
 
   it('should create manifest.js', function() {
     var filePath = path.resolve(cacheDir, 'manifest.js');
-    assert(fs.existsSync(filePath));
+
+    expect(fs.existsSync(filePath)).toBe(true);
   });
 
   it('should create manifest file', function() {
     var filePath = path.join(buildDir, 'stats.json');
-    assert(fs.existsSync(filePath));
+
+    expect(fs.existsSync(filePath)).toBe(true);
     var manifest = require(filePath);
-    assert('assetsByChunkName' in manifest);
-    assert('main' in manifest.assetsByChunkName);
+
+    expect(manifest).toMatchObject({
+      assetsByChunkName: {
+        main: expect.any(Array),
+      },
+    });
   });
 
   it('should create build files', function() {
     var fileNames = fs.readdirSync(buildDir);
-    assert(
-      fileNames.find(function(name) {
-        return /^main-[0-9a-f]+\.js$/.test(name);
-      })
+
+    expect(fileNames).toContainEqual(
+      expect.stringMatching(/^main-[0-9a-f]+\.js$/)
     );
-    assert(
-      fileNames.find(function(name) {
-        return /^vendor-[0-9a-f]+\.js$/.test(name);
-      })
+    expect(fileNames).toContainEqual(
+      expect.stringMatching(/^vendor-[0-9a-f]+\.js$/)
     );
-    assert(
-      fileNames.find(function(name) {
-        return /^main-[0-9a-f]+\.css$/.test(name);
-      })
+    expect(fileNames).toContainEqual(
+      expect.stringMatching(/^main-[0-9a-f]+\.css$/)
     );
   });
 
   it('should deliver expected html page', function() {
     return fetch('http://localhost:8080/')
       .then(function(response) {
-        assert(response.ok);
+        expect(response.ok).toBe(true);
         return response.text();
       })
       .then(function(body) {
-        assert(body.length);
-        assert.notEqual(body.indexOf('<!doctype html>'), -1);
-        assert.notEqual(body.indexOf('Hello World!'), -1);
+        expect(body.length).toBeGreaterThan(0);
+        expect(body).toMatch('<!doctype html>');
+        expect(body).toMatch('Hello World!');
       });
   });
 
   it('should deliver all asset files', function() {
     var manifest = require(path.resolve(buildDir, 'stats.json'));
     var assetsByChunkName = manifest.assetsByChunkName;
-    assert('main' in assetsByChunkName);
-    assert('vendor' in assetsByChunkName);
+
+    expect(manifest).toMatchObject({
+      assetsByChunkName: {
+        main: expect.any(Array),
+        vendor: expect.any(Array),
+      },
+    });
+
     return Promise.all(
       assetsByChunkName.main
         .concat(assetsByChunkName.vendor)
         .map(function(filename) {
           return fetch('http://localhost:8080/' + filename)
             .then(function(response) {
-              assert(response.ok);
+              expect(response.ok).toBe(true);
               return response.text();
             })
             .then(function(body) {
-              assert(body.length);
-              assert.equal(body.indexOf('<!doctype html>'), -1);
-              assert.equal(
-                body,
+              expect(body.length).toBeGreaterThan(0);
+              expect(body).not.toMatch('<!doctype html>');
+              expect(body).toBe(
                 fs.readFileSync(
                   path.resolve(buildDir, filename.replace(/^\/?/, '')),
                   'utf8'
@@ -115,18 +121,16 @@ describe('production server', function() {
   });
 
   it('should deliver 404 when route does not match', function() {
-    return fetch('http://localhost:8080/thisdoesnotexist').then(function(
-      response
-    ) {
-      assert(response.status === 404);
+    return expect(
+      fetch('http://localhost:8080/thisdoesnotexist')
+    ).resolves.toMatchObject({
+      status: 404,
     });
   });
 
   it('adds server-timing header', function() {
     return fetch('http://localhost:8080/').then(function(response) {
-      assert(
-        response.headers.get('server-timing').indexOf('desc="Request"') > -1
-      );
+      expect(response.headers.get('server-timing')).toMatch('desc="Request"');
     });
   });
 });

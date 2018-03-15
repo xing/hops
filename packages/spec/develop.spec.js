@@ -1,16 +1,15 @@
 /* eslint-env node, jest */
 
 var path = require('path');
-var assert = require('assert');
 
 var rimraf = require('rimraf');
 var mkdirp = require('mkdirp');
 var fetch = require('isomorphic-fetch');
 
 var originalDir = process.cwd();
-var appDir = path.resolve(__dirname, 'mock', 'integration');
-var buildDir = path.resolve(appDir, 'build');
-var cacheDir = path.resolve(appDir, 'node_modules', '.cache', 'hops');
+var appDir = path.join(__dirname, 'mock', 'integration');
+var buildDir = path.join(appDir, 'build');
+var cacheDir = path.join(appDir, 'node_modules', '.cache', 'hops');
 
 describe('development server', function() {
   jest.setTimeout(100000);
@@ -35,25 +34,25 @@ describe('development server', function() {
   it('should deliver expected html page', function() {
     return fetch('http://localhost:8080/')
       .then(function(response) {
-        assert(response.ok);
+        expect(response.ok).toBe(true);
         return response.text();
       })
       .then(function(body) {
-        assert(body.length);
-        assert(body.indexOf('Hello World!') > -1);
+        expect(body.length).toBeGreaterThan(0);
+        expect(body).toMatch('Hello World!');
       });
   });
 
   it('should deliver main js file', function() {
     return fetch('http://localhost:8080/main.js')
       .then(function(response) {
-        assert(response.ok);
+        expect(response.ok).toBe(true);
         return response.text();
       })
       .then(function(body) {
-        assert(body.length);
-        assert(body.indexOf('<!doctype html>') === -1);
-        assert(body.indexOf('webpack') > -1);
+        expect(body.length).toBeGreaterThan(0);
+        expect(body).not.toMatch('<!doctype html>');
+        expect(body).toMatch('webpack');
       });
   });
 });
