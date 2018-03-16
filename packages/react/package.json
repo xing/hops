@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "10.2.0-rc.0",
+  "version": "10.2.0-rc.5",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -16,7 +16,7 @@
     "lib"
   ],
   "dependencies": {
-    "hops-config": "10.2.0-rc.0",
+    "hops-config": "10.2.0-rc.5",
     "mixinable": "1.5.2",
     "serialize-javascript": "^1.4.0"
   },

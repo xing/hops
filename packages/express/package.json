@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "10.2.0-rc.3",
+  "version": "10.2.0-rc.5",
   "description": "Express server to enable server-side rendering of hops applications",
   "keywords": [
     "hops",
@@ -25,7 +25,7 @@
     "compression": "^1.7.2",
     "express": "^4.16.0",
     "helmet": "^3.8.2",
-    "hops-config": "10.2.0-rc.0",
+    "hops-config": "10.2.0-rc.5",
     "mime": "^2.2.0",
     "server-timings": "^2.0.1"
   }
