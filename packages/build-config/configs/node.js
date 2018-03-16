@@ -35,12 +35,14 @@ function shouldIncludeExternalModuleInBundle(module) {
 
 var modulesDir = findNodeModules(process.cwd());
 
+var publicPath = ('/' + hopsConfig.assetPath + '/').replace(/\/\//, '/');
+
 module.exports = {
   target: 'node',
   entry: require.resolve('../shims/node'),
   output: {
     path: hopsConfig.cacheDir,
-    publicPath: '/',
+    publicPath: publicPath,
     filename: 'server.js',
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '[absolute-resource-path]',

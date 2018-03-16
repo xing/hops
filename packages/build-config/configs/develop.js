@@ -7,8 +7,7 @@ var webpack = require('webpack');
 var ServiceWorkerPlugin = require('../plugins/service-worker');
 
 var hopsConfig = require('hops-config');
-
-var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
+var publicPath = ('/' + hopsConfig.assetPath + '/').replace(/\/\//, '/');
 
 module.exports = {
   entry: [
@@ -16,10 +15,10 @@ module.exports = {
     require.resolve('../shims/develop'),
   ],
   output: {
-    path: hopsConfig.buildDir,
-    publicPath: '/',
-    filename: getAssetPath('[name].js'),
-    chunkFilename: getAssetPath('chunk-[id].js'),
+    path: path.join(hopsConfig.buildDir, hopsConfig.assetPath),
+    publicPath: publicPath,
+    filename: '[name].js',
+    chunkFilename: 'chunk-[id].js',
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('develop'),
