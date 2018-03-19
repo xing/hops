@@ -15,6 +15,12 @@
     "node.js",
     "lib"
   ],
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "hops-config": "10.3.0-rc.0",
     "mixinable": "1.5.2",
@@ -26,5 +32,9 @@
     "react-helmet": "^5.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "jest": "^22.0.4",
+    "react-test-renderer": "^16.2.0"
   }
 }
