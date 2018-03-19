@@ -23,9 +23,9 @@ describe('production server', function() {
     process.chdir(appDir);
     jest.resetModules();
     require('hops-build').runBuild({ clean: true }, function() {
-      require('hops-express').runServer({}, function(_, _app) {
+      require('hops-express').runServer({}, function(error, _app) {
         app = _app;
-        done();
+        done(error);
       });
     });
   });
