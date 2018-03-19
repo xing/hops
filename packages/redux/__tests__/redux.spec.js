@@ -1,7 +1,6 @@
-/* eslint-env node, mocha */
-var assert = require('assert');
+/* eslint-env node, jest */
 
-var hopsRedux = require('hops-redux');
+var hopsRedux = require('..');
 
 describe('redux', function() {
   it('allows to set middlewares via option', function() {
@@ -9,15 +8,15 @@ describe('redux', function() {
     var context = new hopsRedux.ReduxContext({
       middlewares: [middleware],
     });
-    assert.equal(context.getMiddlewares()[0], middleware);
+    expect(context.getMiddlewares()[0]).toBe(middleware);
   });
 
   it('throws error when middlewares is not an array', function() {
-    assert.throws(function() {
+    expect(function() {
       // eslint-disable-next-line no-new
       new hopsRedux.ReduxContext({
         middlewares: function() {},
       });
-    });
+    }).toThrow();
   });
 });

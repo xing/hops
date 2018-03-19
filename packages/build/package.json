@@ -1,6 +1,6 @@
 {
   "name": "hops-build",
-  "version": "10.2.0-rc.3",
+  "version": "10.2.0-rc.5",
   "description": "Hops wrapper around webpack to execute a build",
   "keywords": [
     "hops",
@@ -19,6 +19,13 @@
     "commands",
     "lib"
   ],
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": ["/node_modules/", "__tests__/fixtures"]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
@@ -27,9 +34,9 @@
     "directory-index": "^0.1.0",
     "express": "^4.16.0",
     "filesize": "^3.5.11",
-    "hops-build-config": "10.2.0-rc.3",
-    "hops-config": "10.2.0-rc.0",
-    "hops-express": "10.2.0-rc.3",
+    "hops-build-config": "10.2.0-rc.5",
+    "hops-config": "10.2.0-rc.5",
+    "hops-express": "10.2.0-rc.5",
     "memory-fs": "^0.4.1",
     "mkdirp": "^0.5.1",
     "node-mocks-http": "^1.6.6",
@@ -39,5 +46,8 @@
     "webpack": "^3.6.0",
     "webpack-dev-middleware": "^2.0.4",
     "webpack-hot-middleware": "^2.21.0"
+  },
+  "devDependencies": {
+    "jest": "^22.0.4"
   }
 }

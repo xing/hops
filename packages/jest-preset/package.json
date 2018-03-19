@@ -1,6 +1,6 @@
 {
   "name": "jest-preset-hops",
-  "version": "10.2.0-rc.3",
+  "version": "10.2.0-rc.5",
   "description": "Jest preset to work with Hops powered projects",
   "keywords": [
     "hops",
@@ -12,6 +12,12 @@
     "mocks",
     "transforms"
   ],
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
@@ -19,10 +25,13 @@
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.4",
-    "hops-build-config": "10.2.0-rc.3",
+    "hops-build-config": "10.2.0-rc.5",
     "identity-obj-proxy": "^3.0.0"
   },
   "peerDependencies": {
     "jest": ">= 21.0.0 < 23.0.0"
+  },
+  "devDependencies": {
+    "jest": "^22.0.4"
   }
 }

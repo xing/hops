@@ -12,6 +12,7 @@ var createMiddleware = require('./middleware');
 
 module.exports = function createRenderer(webpackConfig, watchOptions) {
   var router = new express.Router();
+  router.use(hopsExpressUtils.timings);
   hopsExpressUtils.bootstrap(router, hopsConfig);
   hopsExpressUtils.registerMiddleware(
     router,

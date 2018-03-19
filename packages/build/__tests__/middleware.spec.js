@@ -1,26 +1,24 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest */
 
-var assert = require('assert');
 var events = require('events');
-
 var mocks = require('node-mocks-http');
 
-var createMiddleware = require('hops-build').createMiddleware;
+var createMiddleware = require('..').createMiddleware;
 
-var goodConfig = require('./mock/webpack.good');
-var badExportConfig = require('./mock/webpack.bad-export');
-var badHandlerConfig = require('./mock/webpack.bad-handler');
+var goodConfig = require('./fixtures/webpack.good');
+var badExportConfig = require('./fixtures/webpack.bad-export');
+var badHandlerConfig = require('./fixtures/webpack.bad-handler');
 
 describe('middleware', function() {
-  this.timeout(10000);
+  jest.setTimeout(100000);
 
   it('should export a function', function() {
-    assert.equal(typeof createMiddleware, 'function');
+    expect(typeof createMiddleware).toBe('function');
   });
 
   it('should create a middleware function', function() {
     var middleware = createMiddleware(goodConfig);
-    assert.equal(typeof middleware, 'function');
+    expect(typeof middleware).toBe('function');
   });
 
   describe('function', function() {
@@ -33,8 +31,8 @@ describe('middleware', function() {
         request: req,
       });
       res.on('finish', function() {
-        assert.equal(res.statusCode, 200);
-        assert.equal(res._getData(), 'Hello World!');
+        expect(res.statusCode).toBe(200);
+        expect(res._getData()).toBe('Hello World!');
         done();
       });
       createMiddleware(goodConfig)(req, res);
@@ -49,7 +47,7 @@ describe('middleware', function() {
         request: req,
       });
       createMiddleware(badExportConfig)(req, res, function(error) {
-        assert(!!error);
+        expect(error).toBeDefined();
         done();
       });
     });
@@ -63,7 +61,7 @@ describe('middleware', function() {
         request: req,
       });
       createMiddleware(badHandlerConfig)(req, res, function(error) {
-        assert(!!error);
+        expect(error).toBeDefined();
         done();
       });
     });
