@@ -21,9 +21,9 @@ describe('development server', function() {
     mkdirp.sync(cacheDir);
     process.chdir(appDir);
     jest.resetModules();
-    require('hops-build').runServer({ clean: true }, function(_, _app) {
+    require('hops-build').runServer({ clean: true }, function(error, _app) {
       app = _app;
-      done();
+      done(error);
     });
   });
   afterAll(function() {
