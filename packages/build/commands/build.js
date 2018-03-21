@@ -36,7 +36,25 @@ module.exports = function defineBuildCommand(args) {
       if (argv.static) {
         process.env.HOPS_MODE = 'static';
       }
-      require('..').runBuild(argv);
+      require('..').runBuild(argv, function(error, stats) {
+        if (error) {
+          console.error(
+            error.stack ? error.stack.toString() : error.toString()
+          );
+        } else {
+          console.log(
+            stats.toString({
+              chunks: false,
+              modules: false,
+              entrypoints: false,
+            })
+          );
+        }
+
+        if (error || stats.hasErrors() || stats.hasWarnings()) {
+          process.exit(1);
+        }
+      });
     },
   });
 };
