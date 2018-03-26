@@ -7,8 +7,6 @@ var pify = require('pify');
 var graphql = require('graphql').graphql;
 var makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
 
-var hopsConfig = require('hops-config');
-
 var fragmentsFile = require('./util').getFragmentsFile();
 
 function writeFragmentTypesFile(result) {
@@ -18,10 +16,20 @@ function writeFragmentTypesFile(result) {
   return pify(fs.writeFile)(fragmentsFile, JSON.stringify(result.data));
 }
 
-function executeRemoteQuery(graphqlUri, query) {
+function executeRemoteQuery(graphqlUri, headers, query) {
+  var combinedHeaders = (headers || []).reduce(
+    function(headers, header) {
+      var parts = header.split(':');
+      headers[parts.shift()] = parts.join(':');
+      return headers;
+    },
+    {
+      'Content-Type': 'application/json',
+    }
+  );
   return fetch(graphqlUri, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: combinedHeaders,
     body: JSON.stringify({ query: query }),
   }).then(function(result) {
     return result.json();
@@ -52,14 +60,14 @@ var query = [
   '}',
 ].join('\n');
 
-module.exports = function generateFragmentTypes() {
-  return pify(fs.access)(hopsConfig.graphqlSchemaFile)
+module.exports = function generateFragmentTypes(options) {
+  return pify(fs.access)(options.schemaFile)
     .then(
       function() {
-        return executeLocalQuery(hopsConfig.graphqlSchemaFile, query);
+        return executeLocalQuery(options.schemaFile, query);
       },
       function() {
-        return executeRemoteQuery(hopsConfig.graphqlUri, query);
+        return executeRemoteQuery(options.graphqlUri, options.headers, query);
       }
     )
     .then(writeFragmentTypesFile);

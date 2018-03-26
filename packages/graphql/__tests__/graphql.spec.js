@@ -20,7 +20,13 @@ var mockResponse = {
 
 describe('graphql schema introspection', function() {
   function generateFragmentTypes() {
-    return require('../lib/fragments')();
+    var hopsConfig = require('hops-config');
+    var options = {
+      schemaFile: hopsConfig.graphqlSchemaFile,
+      graphqlUri: hopsConfig.graphqlUri,
+      headers: [],
+    };
+    return require('../lib/fragments')(options);
   }
 
   function getFragmentsFile() {
