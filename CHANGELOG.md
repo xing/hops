@@ -4,6 +4,125 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+<a name="10.2.0"></a>
+# [10.2.0](https://github.com/xing/hops/compare/v10.2.0-rc.5...v10.2.0) (2018-03-26)
+
+
+### Bug Fixes
+
+* **build:** exit with exitCode 1 when build fails ([83b9bf6](https://github.com/xing/hops/commit/83b9bf6))
+
+
+
+<a name="10.2.0-rc.5"></a>
+# [10.2.0-rc.5](https://github.com/xing/hops/compare/v10.2.0-rc.4...v10.2.0-rc.5) (2018-03-16)
+
+
+### Bug Fixes
+
+* **lambda:** warn about misconfiguration instead of exiting ([4fd8f21](https://github.com/xing/hops/commit/4fd8f21))
+* avoid sw.js being loaded from wrong path ([14ec44b](https://github.com/xing/hops/commit/14ec44b))
+* **react:** always respect headers, even on a miss ([0022a1c](https://github.com/xing/hops/commit/0022a1c))
+* **renderer:** fix static build not working due to missing res.locals.timing ([9bb1b35](https://github.com/xing/hops/commit/9bb1b35))
+
+
+### Features
+
+* **express:** enable gzip compression ([38779f0](https://github.com/xing/hops/commit/38779f0))
+* allow to track server timings ([31ee6ad](https://github.com/xing/hops/commit/31ee6ad))
+
+
+### Performance Improvements
+
+* track context lifecycle hooks ([a4d7dec](https://github.com/xing/hops/commit/a4d7dec))
+
+
+
+<a name="10.2.0-rc.4"></a>
+# [10.2.0-rc.4](https://github.com/xing/hops/compare/v10.2.0-rc.3...v10.2.0-rc.4) (2018-02-20)
+
+
+### Bug Fixes
+
+* check against correct protocol notion for sw registration ([9f006a3](https://github.com/xing/hops/commit/9f006a3))
+
+
+
+<a name="10.2.0-rc.3"></a>
+# [10.2.0-rc.3](https://github.com/xing/hops/compare/v10.2.0-rc.2...v10.2.0-rc.3) (2018-02-20)
+
+
+### Bug Fixes
+
+* **express:** don't cache sw.js ([a085bf3](https://github.com/xing/hops/commit/a085bf3))
+* **hops-express:** fix ssl file location references ([f7a94ea](https://github.com/xing/hops/commit/f7a94ea))
+
+
+
+<a name="10.2.0-rc.2"></a>
+# [10.2.0-rc.2](https://github.com/xing/hops/compare/v10.2.0-rc.1...v10.2.0-rc.2) (2018-02-19)
+
+
+
+<a name="10.2.0-rc.1"></a>
+# [10.2.0-rc.1](https://github.com/xing/hops/compare/v10.2.0-rc.0...v10.2.0-rc.1) (2018-02-19)
+
+
+### Bug Fixes
+
+* **build-config:** add plugins to package ([a84e20e](https://github.com/xing/hops/commit/a84e20e))
+
+
+
+<a name="10.2.0-rc.0"></a>
+# [10.2.0-rc.0](https://github.com/xing/hops/compare/v10.1.0...v10.2.0-rc.0) (2018-02-19)
+
+
+### Features
+
+* **build:** enable SSR mode in webpack dev middleware ([6be493a](https://github.com/xing/hops/commit/6be493a))
+* **build-config:** get rid of manifest plugin, simplify config loader ([1484d10](https://github.com/xing/hops/commit/1484d10))
+* **build-config:** introduce build, develop, node exports ([f4a6516](https://github.com/xing/hops/commit/f4a6516))
+* **config:** add service worker configuration options ([ec7f016](https://github.com/xing/hops/commit/ec7f016))
+* **express:** expose stats/asset paths using express ([74c8173](https://github.com/xing/hops/commit/74c8173))
+* **express:** implement SSL support ([ec0026c](https://github.com/xing/hops/commit/ec0026c))
+* **pwa:** initial ServiceWorker and Web App Manifest support ([6fe9ddb](https://github.com/xing/hops/commit/6fe9ddb))
+
+
+
+<a name="10.1.0"></a>
+# [10.1.0](https://github.com/xing/hops/compare/v10.0.2...v10.1.0) (2018-02-19)
+
+
+### Features
+
+* **lambda:** hide aws configuration from browser by prefixing with _ ([9dbf5e1](https://github.com/xing/hops/commit/9dbf5e1)), closes [#319](https://github.com/xing/hops/issues/319)
+
+
+
+<a name="10.0.2"></a>
+## [10.0.2](https://github.com/xing/hops/compare/v10.0.1...v10.0.2) (2018-02-15)
+
+
+### Bug Fixes
+
+* **build:** log errors without "stack" instead of swallowing them ([1950723](https://github.com/xing/hops/commit/1950723))
+* **cli:** fix variable scoping issues, improve error messages ([e29552c](https://github.com/xing/hops/commit/e29552c))
+* **lambda:** correct typo "UrlSuffix" => "URLSuffix" ([a8f6b4f](https://github.com/xing/hops/commit/a8f6b4f)), closes [#382](https://github.com/xing/hops/issues/382)
+
+
+
+<a name="10.0.1"></a>
+## [10.0.1](https://github.com/xing/hops/compare/v10.0.0...v10.0.1) (2018-02-09)
+
+
+### Bug Fixes
+
+* **config:** deep-merge objects instead of overwriting them ([35c7325](https://github.com/xing/hops/commit/35c7325))
+
+
+
+
 <a name="10.0.0"></a>
 # [10.0.0](https://github.com/xing/hops/compare/v10.0.0-rc.4...v10.0.0) (2018-02-07)
 
