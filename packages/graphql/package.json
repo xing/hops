@@ -1,17 +1,28 @@
 {
   "name": "hops-graphql",
-  "version": "10.2.0",
+  "version": "10.3.0-rc.0",
   "description": "React and GraphQL implementation for Hops",
-  "keywords": ["hops", "react", "graphql"],
+  "keywords": [
+    "hops",
+    "react",
+    "graphql"
+  ],
   "license": "MIT",
   "bin": {
     "hops-graphql": "commands/graphql.js"
   },
   "main": "node.js",
   "browser": "dom.js",
-  "files": ["node.js", "dom.js", "commands", "lib"],
+  "files": [
+    "node.js",
+    "dom.js",
+    "commands",
+    "lib"
+  ],
   "jest": {
-    "watchPathIgnorePatterns": ["__tests__/fixtures"]
+    "watchPathIgnorePatterns": [
+      "__tests__/fixtures"
+    ]
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.5",

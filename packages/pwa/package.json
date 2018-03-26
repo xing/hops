@@ -1,6 +1,6 @@
 {
   "name": "hops-pwa",
-  "version": "10.2.0",
+  "version": "10.3.0-rc.0",
   "description": "ServiceWorker and Web App Manifest support for Hops",
   "keywords": [
     "hops",
@@ -17,6 +17,6 @@
     "worker.js"
   ],
   "dependencies": {
-    "hops-config": "10.2.0"
+    "hops-config": "10.3.0-rc.0"
   }
 }
