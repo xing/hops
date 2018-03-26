@@ -20,7 +20,7 @@ module.exports = {
     publicPath: '/',
     pathinfo: true,
     filename: getAssetPath('[name]-[chunkhash:16].js'),
-    chunkFilename: getAssetPath('[name]-[id]-[chunkhash:16].js'),
+    chunkFilename: getAssetPath('[name]-[chunkhash:16].js'),
     devtoolModuleFilenameTemplate: function(info) {
       return path
         .relative(hopsConfig.appDir, info.absoluteResourcePath)
