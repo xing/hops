@@ -10,16 +10,15 @@ var WriteFilePlugin = require('../plugins/write-file');
 var ServiceWorkerPlugin = require('../plugins/service-worker');
 
 var hopsConfig = require('hops-config');
-
-var getAssetPath = path.join.bind(path, hopsConfig.assetPath);
+var publicPath = ('/' + hopsConfig.assetPath + '/').replace(/\/\//, '/');
 
 module.exports = {
   entry: require.resolve('../shims/build'),
   output: {
-    path: hopsConfig.buildDir,
-    publicPath: '/',
-    filename: getAssetPath('[name]-[chunkhash:16].js'),
-    chunkFilename: getAssetPath('chunk-[id]-[chunkhash:16].js'),
+    path: path.join(hopsConfig.buildDir, hopsConfig.assetPath),
+    publicPath: publicPath,
+    filename: '[name]-[chunkhash:16].js',
+    chunkFilename: 'chunk-[id]-[chunkhash:16].js',
   },
   context: hopsConfig.appDir,
   resolve: require('../sections/resolve')('build'),
@@ -52,7 +51,7 @@ module.exports = {
     }),
     new webpack.HashedModuleIdsPlugin(),
     new ExtractTextPlugin({
-      filename: getAssetPath('[name]-[contenthash:16].css'),
+      filename: '[name]-[contenthash:16].css',
       allChunks: true,
       ignoreOrder: true,
     }),

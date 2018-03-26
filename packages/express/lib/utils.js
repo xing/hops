@@ -11,7 +11,11 @@ var hopsConfig = require('hops-config');
 var stats;
 function getStatsFromFile() {
   if (!stats) {
-    var statsFilename = path.join(hopsConfig.buildDir, 'stats.json');
+    var statsFilename = path.join(
+      hopsConfig.buildDir,
+      hopsConfig.assetPath,
+      'stats.json'
+    );
     if (fs.existsSync(statsFilename)) {
       stats = require(statsFilename);
     }
@@ -100,6 +104,8 @@ exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
   };
   res.locals.hops.assets = { js: [], css: [] };
   var assets = res.locals.hops.stats.assetsByChunkName;
+  var assetPath = ('/' + hopsConfig.assetPath + '/').replace(/\/\//, '/');
+
   if (assets) {
     ['vendor', 'main'].forEach(function(key) {
       var asset = assets[key];
@@ -107,13 +113,13 @@ exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
         var js = asset.find(function(item) {
           return item.indexOf('.js') === item.length - 3;
         });
-        js && res.locals.hops.assets.js.push('/' + js);
+        js && res.locals.hops.assets.js.push(assetPath + js);
         var css = asset.find(function(item) {
           return item.indexOf('.css') === item.length - 4;
         });
-        css && res.locals.hops.assets.css.push('/' + css);
+        css && res.locals.hops.assets.css.push(assetPath + css);
       } else if (asset) {
-        res.locals.hops.assets.js.push('/' + asset);
+        res.locals.hops.assets.js.push(assetPath + asset);
       }
     });
   }
