@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "10.2.0-rc.0",
+  "version": "10.2.0",
   "description": "CLI tool to create, build and run Hops applications",
   "keywords": [
     "hops",

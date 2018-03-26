@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.2.0"></a>
+# [10.2.0](https://github.com/xing/hops/compare/v10.2.0-rc.5...v10.2.0) (2018-03-26)
+
+
+### Bug Fixes
+
+* **build:** exit with exitCode 1 when build fails ([83b9bf6](https://github.com/xing/hops/commit/83b9bf6))
+
+
+
+
 <a name="10.1.0"></a>
 # [10.1.0](https://github.com/xing/hops/compare/v10.0.2...v10.1.0) (2018-02-19)
 

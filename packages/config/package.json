@@ -1,6 +1,6 @@
 {
   "name": "hops-config",
-  "version": "10.2.0-rc.5",
+  "version": "10.2.0",
   "description": "Hops core configuration",
   "keywords": [
     "hops",
@@ -16,7 +16,10 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testPathIgnorePatterns": ["/node_modules/", "__tests__/fixtures"]
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "__tests__/fixtures"
+    ]
   },
   "repository": {
     "type": "git",
