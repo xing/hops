@@ -12,9 +12,24 @@ module.exports = function defineGraphQLCommand(args) {
       .command({
         command: 'introspect',
         describe: 'Fetches GraphQL schema information for introspection',
-        builder: {},
+        builder: {
+          header: {
+            alias: 'H',
+            type: 'array',
+            default: [],
+            describe:
+              'Additional HTTP headers to be used when executing the schema ' +
+              'introspection on the remote server. Specify this multiple ' +
+              'times to add more headers.\nFormat: "Header: Value"',
+          },
+        },
         handler: function graphqlHandler(argv) {
-          require('../lib/fragments')()
+          var hopsConfig = require('hops-config');
+          require('../lib/fragments')({
+            graphqlUri: hopsConfig.graphqlUri,
+            schemaFile: hopsConfig.graphqlSchemaFile,
+            headers: argv.header,
+          })
             .then(function() {
               console.log('Fetched and saved GraphQL fragments');
             })
