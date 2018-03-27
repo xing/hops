@@ -52,7 +52,7 @@ module.exports = function ServiceWorkerPlugin() {
     }
 
     if (typeof compiler.hooks !== 'undefined') {
-      compiler.hooks.emit.tap(PLUGIN_NAME, onEmit);
+      compiler.hooks.emit.tapAsync(PLUGIN_NAME, onEmit);
     } else {
       compiler.plugin('emit', onEmit);
     }
