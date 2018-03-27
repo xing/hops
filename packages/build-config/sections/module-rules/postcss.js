@@ -4,7 +4,7 @@ var hopsConfig = require('hops-config');
 
 var cssLoader = require.resolve('css-loader');
 var postcssLoader = require.resolve('postcss-loader');
-var MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var cssLoaderGlobalOptions = {
   importLoaders: 1,
@@ -33,30 +33,34 @@ exports.build = {
   oneOf: [
     {
       resourceQuery: /global/,
-      use: [
-        MiniCSSExtractPlugin.loader,
-        {
-          loader: cssLoader,
-          options: cssLoaderGlobalOptions,
-        },
-        {
-          loader: postcssLoader,
-          options: postcssLoaderOptions,
-        },
-      ],
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: cssLoader,
+            options: cssLoaderGlobalOptions,
+          },
+          {
+            loader: postcssLoader,
+            options: postcssLoaderOptions,
+          },
+        ],
+      }),
     },
     {
-      use: [
-        MiniCSSExtractPlugin.loader,
-        {
-          loader: cssLoader,
-          options: cssLoaderLocalOptions,
-        },
-        {
-          loader: postcssLoader,
-          options: postcssLoaderOptions,
-        },
-      ],
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: cssLoader,
+            options: cssLoaderLocalOptions,
+          },
+          {
+            loader: postcssLoader,
+            options: postcssLoaderOptions,
+          },
+        ],
+      }),
     },
   ],
 };
