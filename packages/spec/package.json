@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "10.3.0-rc.0",
+  "version": "10.3.0-rc.1",
   "private": true,
   "scripts": {
     "test": "jest"
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "hops": "10.2.0",
-    "hops-build": "10.3.0-rc.0",
+    "hops-build": "10.3.0-rc.1",
     "hops-build-config": "10.3.0-rc.0",
     "hops-config": "10.3.0-rc.0",
     "hops-express": "10.3.0-rc.0",
