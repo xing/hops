@@ -51,7 +51,7 @@ module.exports = function defineBuildCommand(args) {
           );
         }
 
-        if (error || stats.hasErrors() || stats.hasWarnings()) {
+        if (error || stats.hasErrors()) {
           process.exit(1);
         }
       });
