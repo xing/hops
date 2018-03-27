@@ -2,7 +2,9 @@
 // because https://github.com/markdalgleish/web-app-manifest-loader/pull/2
 
 var path = require('path');
+var joinUrl = require('url-join');
 var steed = require('steed');
+var loaderUtils = require('loader-utils');
 
 function resolveImageSrc(loaderContext, image, callback) {
   if (typeof image.src !== 'string') {
@@ -12,7 +14,11 @@ function resolveImageSrc(loaderContext, image, callback) {
   }
 
   var dirname = path.dirname(loaderContext.resourcePath);
-  var publicPath = loaderContext.options.output.publicPath || '';
+  var query = loaderUtils.getOptions(loaderContext) || {};
+  var outputOptions = loaderContext._compilation
+    ? loaderContext._compilation.outputOptions // webpack 4
+    : loaderContext.options.output; // webpack 3
+  var publicPath = query.publicPath || outputOptions.publicPath || '';
 
   // Resolve the image filename relative to the manifest file
   loaderContext.resolve(dirname, image.src, function(err, filename) {
@@ -21,7 +27,7 @@ function resolveImageSrc(loaderContext, image, callback) {
     }
 
     // Ensure Webpack knows that the image is a dependency of the manifest
-    loaderContext.dependency && loaderContext.dependency(filename);
+    loaderContext.addDependency(filename);
 
     // Asynchronously pass the image through the loader pipeline
     loaderContext.loadModule(filename, function(err, source, map, module) {
@@ -31,7 +37,9 @@ function resolveImageSrc(loaderContext, image, callback) {
 
       // Update the image src property to match the generated filename
       // Is it always the first key in the assets object?
-      image.src = publicPath + Object.keys(module.assets)[0];
+      // module.buildInfo = webpack 4; module.assets = webpack 3
+      var assets = module.buildInfo.assets || module.assets;
+      image.src = joinUrl(publicPath, Object.keys(assets)[0]);
 
       callback(null);
     });
