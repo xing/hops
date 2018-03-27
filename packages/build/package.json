@@ -1,6 +1,6 @@
 {
   "name": "hops-build",
-  "version": "10.2.0",
+  "version": "10.2.1",
   "description": "Hops wrapper around webpack to execute a build",
   "keywords": [
     "hops",

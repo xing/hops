@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.2.1"></a>
+## [10.2.1](https://github.com/xing/hops/compare/v10.2.0...v10.2.1) (2018-03-27)
+
+
+### Bug Fixes
+
+* **build:** do not break build on webpack warnings ([4914123](https://github.com/xing/hops/commit/4914123))
+* **build:** raise node-mocks-http version to ensure res.locals being set ([d5358a3](https://github.com/xing/hops/commit/d5358a3))
+
+
+
+
 <a name="10.2.0"></a>
 # [10.2.0](https://github.com/xing/hops/compare/v10.2.0-rc.5...v10.2.0) (2018-03-26)
 
