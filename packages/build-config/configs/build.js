@@ -5,7 +5,7 @@ var path = require('path');
 var webpack = require('webpack');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 var ServiceWorkerPlugin = require('../plugins/service-worker');
-var MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var hopsConfig = require('hops-config');
 
@@ -59,9 +59,10 @@ module.exports = {
   plugins: [
     new StatsWriterPlugin({ fields: null }),
     new ServiceWorkerPlugin(),
-    new MiniCSSExtractPlugin({
-      filename: getAssetPath('[name]-[hash:16].css'),
-      chunkFilename: getAssetPath('[name]-[hash:16].css'),
+    new ExtractTextPlugin({
+      filename: getAssetPath('[name]-[contenthash:16].css'),
+      allChunks: true,
+      ignoreOrder: true,
     }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.EnvironmentPlugin(
