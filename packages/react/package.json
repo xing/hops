@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "jest": "^22.0.4",
+    "node-mocks-http": "^1.5.8",
     "react-test-renderer": "^16.2.0"
   }
 }
