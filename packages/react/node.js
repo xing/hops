@@ -70,7 +70,7 @@ var renderWithContext = function(reactElement, _context) {
 
     var timings = res.locals.timings;
     timings.start('hops.react.bootstrap');
-    renderContext
+    return renderContext
       .bootstrap()
       .then(function() {
         timings.end('hops.react.bootstrap');
