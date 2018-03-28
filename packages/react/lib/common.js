@@ -5,6 +5,7 @@ exports.createCombinedContext = function(
   ReactContext,
   combineContexts
 ) {
+  config = config || {};
   var mergedConfig = Object.assign({}, config);
   delete mergedConfig.extensions;
   var mergedContexts = [ReactContext];
