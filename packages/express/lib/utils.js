@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var url = require('url');
+var net = require('net');
 var path = require('path');
 var http = require('http');
 var https = require('https');
@@ -19,17 +20,38 @@ function getStatsFromFile() {
   return stats || {};
 }
 
-function defaultCallback(error) {
+function getPort(host, port, max) {
+  return new Promise(function(resolve, reject) {
+    max = max || Math.min(65535, port + 50);
+    if (port > max) {
+      return reject(new Error('unable to find free port'));
+    }
+    var server = net.createServer();
+    server.on('error', function() {
+      resolve(getPort(host, port + 1, max));
+      server.close();
+    });
+    server.listen(port, host, function() {
+      server.once('close', function() {
+        resolve(port);
+      });
+      server.close();
+    });
+  });
+}
+
+function defaultCallback(error, server) {
   if (error) {
-    console.error(error.stack.toString());
+    console.error(error.stack ? error.stack.toString() : error.toString());
   } else {
+    var address = server.address();
     console.log(
       'hops: Server listening at ' +
         url.format({
           protocol: hopsConfig.https ? 'https' : 'http',
           hostname:
-            hopsConfig.host === '0.0.0.0' ? 'localhost' : hopsConfig.host,
-          port: hopsConfig.port,
+            address.address === '0.0.0.0' ? 'localhost' : address.address,
+          port: address.port,
           pathname: hopsConfig.basePath,
         })
     );
@@ -53,9 +75,18 @@ exports.run = function run(app, callback) {
   } else {
     server = http.createServer(app);
   }
-  server.listen(hopsConfig.port, hopsConfig.host, function(error) {
-    (callback || defaultCallback)(error, server);
-  });
+  function listen(port) {
+    server.listen(port || hopsConfig.port, hopsConfig.host, function(error) {
+      (callback || defaultCallback)(error, server);
+    });
+  }
+  if (hopsConfig.port) {
+    listen();
+  } else {
+    getPort(hopsConfig.host, 8080)
+      .then(listen)
+      .catch(defaultCallback);
+  }
 };
 
 exports.rewritePath = function rewritePath(req, res, next) {
