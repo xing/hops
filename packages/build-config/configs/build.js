@@ -60,8 +60,7 @@ module.exports = {
     new StatsWriterPlugin({ fields: null }),
     new ServiceWorkerPlugin(),
     new MiniCSSExtractPlugin({
-      filename: getAssetPath('[name]-[hash:16].css'),
-      chunkFilename: getAssetPath('[name]-[hash:16].css'),
+      filename: getAssetPath('[name]-[contenthash:16].css'),
     }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.EnvironmentPlugin(
