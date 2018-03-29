@@ -16,7 +16,7 @@ describe('config', function() {
     expect(hopsConfig).toEqual({
       https: false,
       host: '0.0.0.0',
-      port: 8080,
+      port: undefined,
       locations: [],
       basePath: '',
       assetPath: '',
@@ -31,6 +31,13 @@ describe('config', function() {
       enableServerTimings: true,
       workerPath: '/sw.js',
     });
+  });
+
+  it('should default port to process.env.PORT', function() {
+    process.env.PORT = 8091;
+    var hopsConfig = require('..');
+    expect(hopsConfig.port).toBe(8091);
+    delete process.env.PORT;
   });
 
   it('should override defaults with config from package.json', function() {
