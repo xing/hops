@@ -6,6 +6,8 @@ var webpack = require('webpack');
 var StatsWriterPlugin = require('webpack-stats-plugin').StatsWriterPlugin;
 var ServiceWorkerPlugin = require('../plugins/service-worker');
 var MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 
 var hopsConfig = require('hops-config');
 
@@ -55,6 +57,17 @@ module.exports = {
         },
       },
     },
+    minimizer: [
+      new UglifyJSPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+        uglifyOptions: {
+          output: { comments: false },
+        },
+      }),
+      new OptimizeCSSPlugin(),
+    ],
   },
   plugins: [
     new StatsWriterPlugin({ fields: null }),
