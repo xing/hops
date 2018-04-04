@@ -184,7 +184,7 @@ apollo-cache@^1.1.7:
   dependencies:
     apollo-utilities "^1.0.11"
 
-apollo-client@^2.2.0:
+apollo-client@^2.2.0, apollo-client@^2.2.8:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.2.8.tgz#b604d31ab2d2dd00db3105d8793b93ee02ce567e"
   dependencies:
@@ -3646,23 +3646,6 @@ home-or-tmp@^2.0.0:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.1"
 
-hops-config@10.2.0-rc.0:
-  version "10.2.0-rc.0"
-  resolved "https://registry.yarnpkg.com/hops-config/-/hops-config-10.2.0-rc.0.tgz#dd3721e9c7b492e0629beaa65e0e2c9301c2ddfb"
-  dependencies:
-    cosmiconfig "^4.0.0"
-    is-plain-object "^2.0.4"
-    lodash.mergewith "^4.6.1"
-    pkg-dir "^2.0.0"
-
-hops-react@10.2.0-rc.0:
-  version "10.2.0-rc.0"
-  resolved "https://registry.yarnpkg.com/hops-react/-/hops-react-10.2.0-rc.0.tgz#3c99d2b9ed85b775e76dc10fdcab0a74b426307f"
-  dependencies:
-    hops-config "10.2.0-rc.0"
-    mixinable "1.3.0"
-    serialize-javascript "^1.4.0"
-
 hosted-git-info@^2.1.4, hosted-git-info@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.6.0.tgz#23235b29ab230c576aab0d4f13fc046b0b038222"
@@ -5229,10 +5212,6 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-mixinable@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-1.3.0.tgz#08c99ef94c7a601f2334dd6e7f097d0695750ec1"
-
 mixinable@1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-1.5.2.tgz#efeae46e0452452a538c1d668bc15f98ca379981"
@@ -6588,7 +6567,7 @@ react-apollo@^2.0.0, react-apollo@^2.0.4:
     lodash "4.17.5"
     prop-types "^15.6.0"
 
-react-dom@^16.0.0:
+react-dom@^16.0.0, react-dom@^16.3.1:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.1.tgz#6a3c90a4fb62f915bdbcf6204422d93a7d4ca573"
   dependencies:
@@ -6610,7 +6589,7 @@ react-is@^16.3.1:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.1.tgz#ee66e6d8283224a83b3030e110056798488359ba"
 
-react-redux@^5.0.6:
+react-redux@^5.0.6, react-redux@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
   dependencies:
@@ -6660,7 +6639,7 @@ react-test-renderer@^16.0.0, react-test-renderer@^16.2.0:
     prop-types "^15.6.0"
     react-is "^16.3.1"
 
-"react@>=15.0.0 <17.0.0", react@^16.0.0:
+react@^16.0.0, react@^16.3.1:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.3.1.tgz#4a2da433d471251c69b6033ada30e2ed1202cfd8"
   dependencies:
@@ -8232,8 +8211,8 @@ webpack-stats-plugin@^0.2.0:
   resolved "https://registry.yarnpkg.com/webpack-stats-plugin/-/webpack-stats-plugin-0.2.1.tgz#1f5bac13fc25d62cbb5fd0ff646757dc802b8595"
 
 webpack@^4.3.0:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.4.1.tgz#b0105789890c28bfce9f392623ef5850254328a4"
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.5.0.tgz#1e6f71e148ead02be265ff2879c9cd6bb30b8848"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^3.0.0"
