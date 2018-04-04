@@ -41,7 +41,7 @@
     "hops-config": "10.3.0-rc.0",
     "loader-utils": "^1.1.0",
     "lodash.template": "^4.4.0",
-    "mini-css-extract-plugin": "^0.3.0",
+    "mini-css-extract-plugin": "^0.4.0",
     "mkdirp": "^0.5.1",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "pkg-dir": "^2.0.0",
