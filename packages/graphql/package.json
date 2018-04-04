@@ -35,17 +35,20 @@
   },
   "peerDependencies": {
     "graphql-tag": "^2.5.0",
-    "hops-react": "10.2.0-rc.0",
+    "hops-react": "10.3.0-rc.0",
     "react": ">=15.0.0 <17.0.0",
     "react-apollo": "^2.0.0"
   },
   "devDependencies": {
-    "apollo-cache-inmemory": "^1.1.11",
     "fetch-mock": "^6.3.0",
     "graphql-tag": "^2.5.0",
-    "hops-react": "10.2.0-rc.0",
+    "hops-react": "10.3.0-rc.0",
     "jest": "^22.0.4",
-    "react": ">=15.0.0 <17.0.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-helmet": "^5.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-apollo": "^2.0.0"
   }
 }
