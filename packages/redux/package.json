@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "10.3.0-rc.0",
+  "version": "10.3.0-rc.3",
   "description": "React and Redux implementation for Hops",
   "keywords": [
     "hops",
@@ -19,7 +19,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "hops-react": "10.3.0-rc.0"
+    "hops-react": "10.3.0-rc.3"
   },
   "peerDependencies": {
     "react": ">=15.0.0 <17.0.0",
