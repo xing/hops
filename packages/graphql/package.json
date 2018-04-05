@@ -35,7 +35,7 @@
   },
   "peerDependencies": {
     "graphql-tag": "^2.5.0",
-    "hops-react": "10.3.0-rc.0",
+    "hops-react": "^10.0.0",
     "react": ">=15.0.0 <17.0.0",
     "react-apollo": "^2.0.0"
   },
