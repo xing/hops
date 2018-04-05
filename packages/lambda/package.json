@@ -31,7 +31,7 @@
     "serverless-http": "^1.5.2"
   },
   "peerDependencies": {
-    "hops-express": "10.3.0-rc.0"
+    "hops-express": "^10.0.0"
   },
   "devDependencies": {
     "hops-express": "10.3.0-rc.0"
