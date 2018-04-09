@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "10.3.0-rc.3",
+  "version": "10.3.0",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -22,7 +22,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "hops-config": "10.3.0-rc.3",
+    "hops-config": "10.3.0",
     "mixinable": "1.5.2",
     "serialize-javascript": "^1.4.0"
   },
