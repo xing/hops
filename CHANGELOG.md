@@ -4,6 +4,77 @@ All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 
+<a name="10.3.0"></a>
+# [10.3.0](https://github.com/xing/hops/compare/v10.3.0-rc.3...v10.3.0) (2018-04-09)
+
+
+
+<a name="10.3.0-rc.3"></a>
+# [10.3.0-rc.3](https://github.com/xing/hops/compare/v10.3.0-rc.2...v10.3.0-rc.3) (2018-04-05)
+
+
+### Bug Fixes
+
+* **build-config:** make service worker plugin async via tapAsync ([f230ffc](https://github.com/xing/hops/commit/f230ffc))
+* **build-config:** make webmanifest loader webpack 4 compatible ([1c398ee](https://github.com/xing/hops/commit/1c398ee))
+* **react:** do not throw error when no options are passed ([e5bffdd](https://github.com/xing/hops/commit/e5bffdd))
+
+
+### Features
+
+* **build-config:** add CSS optimizer plugin to minify assets ([236e127](https://github.com/xing/hops/commit/236e127))
+* **config:** port defaults to `PORT` environment variable ([4a079b8](https://github.com/xing/hops/commit/4a079b8))
+* **express:** choose next free port when hops-config.port is falsy ([62b9b77](https://github.com/xing/hops/commit/62b9b77))
+
+
+
+<a name="10.3.0-rc.2"></a>
+# [10.3.0-rc.2](https://github.com/xing/hops/compare/v10.3.0-rc.1...v10.3.0-rc.2) (2018-03-27)
+
+
+### Bug Fixes
+
+* **build:** raise node-mocks-http version to ensure res.locals being set ([e5ae186](https://github.com/xing/hops/commit/e5ae186))
+
+
+### Features
+
+* **build-config:** switch to mini-css-extract-plugin ([37d5b8f](https://github.com/xing/hops/commit/37d5b8f)), closes [/github.com/webpack-contrib/extract-text-webpack-plugin/issues/731#issuecomment-374548865](https://github.com//github.com/webpack-contrib/extract-text-webpack-plugin/issues/731/issues/issuecomment-374548865)
+
+
+
+<a name="10.3.0-rc.1"></a>
+# [10.3.0-rc.1](https://github.com/xing/hops/compare/v10.3.0-rc.0...v10.3.0-rc.1) (2018-03-27)
+
+
+### Bug Fixes
+
+* **build:** do not break build on webpack warnings ([0c1518f](https://github.com/xing/hops/commit/0c1518f))
+
+
+
+<a name="10.3.0-rc.0"></a>
+# [10.3.0-rc.0](https://github.com/xing/hops/compare/v10.2.0...v10.3.0-rc.0) (2018-03-26)
+
+
+### Bug Fixes
+
+* **build-config:** use [name]-[chunkhash] as chunk names ([83021d4](https://github.com/xing/hops/commit/83021d4))
+* **spec:** re-enable CSS build test ([832cf04](https://github.com/xing/hops/commit/832cf04))
+
+
+### Features
+
+* **build-config:** get rid of manifest plugin, simplify config loader ([70aa374](https://github.com/xing/hops/commit/70aa374))
+* **build-config:** introduce global css mode ([4d9b36f](https://github.com/xing/hops/commit/4d9b36f))
+* **build-config:** tweak Webpack configs for v4 ([b28a787](https://github.com/xing/hops/commit/b28a787))
+* **build-config:** update to latest alpha of extract text plugin ([823b562](https://github.com/xing/hops/commit/823b562))
+* **build-config:** update webpack to v4 ([eafe4f2](https://github.com/xing/hops/commit/eafe4f2))
+* **graphql:** add "--header/-H" CLI option to introspect command ([671193d](https://github.com/xing/hops/commit/671193d))
+* **graphql:** Generate fragment types from schema file ([5d86841](https://github.com/xing/hops/commit/5d86841))
+
+
+
 <a name="10.2.0"></a>
 # [10.2.0](https://github.com/xing/hops/compare/v10.2.0-rc.5...v10.2.0) (2018-03-26)
 
