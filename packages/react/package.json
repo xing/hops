@@ -8,11 +8,16 @@
     "react-router"
   ],
   "license": "MIT",
-  "main": "node.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "main": "node",
+  "module": "node.mjs",
   "browser": "dom.js",
   "files": [
     "dom.js",
     "node.js",
+    "node.mjs",
     "lib"
   ],
   "scripts": {
@@ -22,6 +27,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
+    "@std/esm": "^0.19.2",
     "hops-config": "10.3.0",
     "mixinable": "1.5.2",
     "serialize-javascript": "^1.4.0"

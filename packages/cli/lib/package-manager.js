@@ -1,19 +1,19 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var execSync = require('child_process').execSync;
+const fs = require('fs');
+const path = require('path');
+const execSync = require('child_process').execSync;
 
 function execIgnoreStdError(command, options) {
-  var commandToRun =
+  const commandToRun =
     process.platform.indexOf('win') === 0
-      ? command + ' 2> NUL'
-      : command + ' 2> /dev/null';
+      ? `${command} 2> NUL`
+      : `${command} 2> /dev/null`;
 
   if (options.verbose) {
     console.log('Executing:', commandToRun);
   }
-  var result = (options.execSync || execSync)(commandToRun);
+  const result = (options.execSync || execSync)(commandToRun);
   return result.toString('utf-8').trim();
 }
 
@@ -33,7 +33,7 @@ function isGlobalCliUsingYarn(projectPath, options) {
 module.exports.isGlobalCliUsingYarn = isGlobalCliUsingYarn;
 
 function installPackages(packages, type, options) {
-  var command = null;
+  let command = null;
 
   if (isYarnAvailable() && !options.npm) {
     command =
@@ -75,7 +75,7 @@ function installPackages(packages, type, options) {
 module.exports.installPackages = installPackages;
 
 function getTarball(name, options) {
-  var command = 'npm pack ' + name;
+  const command = `npm pack ${name}`;
   try {
     return execIgnoreStdError(command, options);
   } catch (error) {

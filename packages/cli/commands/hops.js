@@ -1,24 +1,16 @@
 #!/usr/bin/env node
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var resolveCwd = require('resolve-cwd');
-var validatePackageName = require('validate-npm-package-name');
+const fs = require('fs');
+const path = require('path');
+const resolveCwd = require('resolve-cwd').silent;
+const validatePackageName = require('validate-npm-package-name');
 
-var pm = require('../lib/package-manager');
+const pm = require('../lib/package-manager');
+const packageManifest = require('../package.json');
 
-var packageManifest = require('../package.json');
-
-var getLocalCliPath = function() {
-  try {
-    return resolveCwd('hops-local-cli');
-  } catch (_) {}
-  try {
-    return resolveCwd('hops');
-  } catch (_) {}
-  return null;
-};
+const getLocalCliPath = () =>
+  resolveCwd('hops-local-cli') || resolveCwd('hops');
 
 function globalCLI(argv) {
   return require('yargs')
@@ -26,7 +18,7 @@ function globalCLI(argv) {
     .usage('Usage: $0 <command> [options]')
     .command(
       'init <project-name>',
-      'Generates a new project with the ' + 'specified name'
+      'Generates a new project with the specified name'
     )
     .option('template', {
       type: 'string',
@@ -68,7 +60,7 @@ function globalCLI(argv) {
 }
 
 function validateName(name) {
-  var validationResult = validatePackageName(name);
+  const validationResult = validatePackageName(name);
   if (!validationResult.validForNewPackages) {
     console.error(
       'Cannot create a project with the name:',
@@ -76,12 +68,12 @@ function validateName(name) {
       'because of the following npm restrictions:'
     );
     if (validationResult.errors) {
-      validationResult.errors.forEach(function(msg) {
+      validationResult.errors.forEach(msg => {
         console.error(msg);
       });
     }
     if (validationResult.warnings) {
-      validationResult.warnings.forEach(function(msg) {
+      validationResult.warnings.forEach(msg => {
         console.warn(msg);
       });
     }
@@ -118,39 +110,47 @@ function writePackageManifest(root, name) {
   );
 }
 
-var isInsideHopsProject = false;
+let isInsideHopsProject = false;
 try {
-  var hopsRoot = require('pkg-dir').sync();
-  var manifest = require(path.join(hopsRoot, 'package.json'));
-  var dependencies = Object.keys(manifest.dependencies || {}).concat(
-    Object.keys(manifest.devDependencies || {})
+  const hopsRoot = require('pkg-dir').sync();
+  const manifest = require(path.join(hopsRoot, 'package.json'));
+  const dependencies = [
+    ...Object.keys(manifest.dependencies || {}),
+    ...Object.keys(manifest.devDependencies || {}),
+  ];
+  isInsideHopsProject = ['hops', 'hops-local-cli'].some(
+    dependency => dependencies.indexOf(dependency) > -1
   );
-  isInsideHopsProject = ['hops', 'hops-local-cli'].some(function(dependency) {
-    return dependencies.indexOf(dependency) > -1;
-  });
 } catch (error) {
   isInsideHopsProject = false;
 }
 
 if (isInsideHopsProject) {
-  var localCliPath = getLocalCliPath();
+  const localCliPath = getLocalCliPath();
   if (localCliPath) {
     require(localCliPath).run();
   } else {
     console.error(
       'It appears that we are inside a hops project but the dependencies have',
       'not been installed.\n',
-      'Please execute "' +
-        (pm.isYarnAvailable() ? 'yarn' : 'npm') +
-        ' install"',
+      `Please execute ${pm.isYarnAvailable() ? 'yarn' : 'npm'} install"`,
       'and retry.'
     );
     process.exit(1);
   }
 } else {
-  var options = globalCLI(process.argv.slice(2));
-  var name = options.projectName;
-  var root = process.cwd();
+  const options = globalCLI(process.argv.slice(2));
+  const name = options.projectName;
+  const root = process.cwd();
+
+  if (options._[0] !== 'init') {
+    console.error(
+      'Looks like we are not inside a hops project or the project misses',
+      'either `hops` or `hops-local-cli` in its `devDependencies` or',
+      '`dependencies`.'
+    );
+    process.exit(1);
+  }
 
   if (options._[0] !== 'init') {
     console.error(
@@ -165,6 +165,6 @@ if (isInsideHopsProject) {
   createDirectory(path.join(root, name), name);
   writePackageManifest(path.join(root, name), name);
   process.chdir(path.join(root, name));
-  pm.installPackages(['hops@' + options.hopsVersion], 'dev', options);
+  pm.installPackages([`hops@${options.hopsVersion}`], 'dev', options);
   require(getLocalCliPath()).init(root, name, options);
 }

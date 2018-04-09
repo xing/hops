@@ -1,43 +1,44 @@
-'use strict';
-require('isomorphic-fetch');
+import 'isomorphic-fetch';
 
-var React = require('react');
-var ReactApollo = require('react-apollo');
+import React from 'react';
+import { ApolloProvider } from 'react-apollo/index';
 
-var ApolloClient = require('apollo-client').default;
-var ApolloCache = require('apollo-cache-inmemory');
-var ApolloLink = require('apollo-link-http');
+import ApolloClient from 'apollo-client/index';
+import ApolloCache from 'apollo-cache-inmemory/index';
+import ApolloLink from 'apollo-link-http/index';
 
-var hopsConfig = require('hops-config');
+import hopsConfig from 'hops-config';
 
-module.exports = {
-  constructor: function(options) {
-    if (!options) {
-      options = {};
-    }
+export default class Common {
+  constructor(options = {}) {
     this.client = this.createClient(options.graphql || {});
-  },
-  createClient: function(options) {
+  }
+
+  createClient(options) {
     return new ApolloClient(this.enhanceClientOptions(options));
-  },
-  enhanceClientOptions: function(options) {
+  }
+
+  enhanceClientOptions(options) {
     return Object.assign({}, options, {
       link: options.link || this.createLink(),
       cache: options.cache || this.createCache(),
     });
-  },
-  createLink: function() {
+  }
+
+  createLink() {
     return new ApolloLink.HttpLink({
       uri: hopsConfig.graphqlUri,
     });
-  },
-  createCache: function() {
+  }
+
+  createCache() {
     return new ApolloCache.InMemoryCache({
       fragmentMatcher: this.createFragmentMatcher(),
     });
-  },
-  createFragmentMatcher: function() {
-    var result = this.getIntrospectionResult();
+  }
+
+  createFragmentMatcher() {
+    const result = this.getIntrospectionResult();
     if (result) {
       return new ApolloCache.IntrospectionFragmentMatcher({
         introspectionQueryResultData: this.getIntrospectionResult(),
@@ -45,14 +46,15 @@ module.exports = {
     } else {
       return new ApolloCache.HeuristicFragmentMatcher();
     }
-  },
-  enhanceElement: function(reactElement) {
+  }
+
+  enhanceElement(reactElement) {
     return React.createElement(
-      ReactApollo.ApolloProvider,
+      ApolloProvider,
       {
         client: this.client,
       },
       reactElement
     );
-  },
-};
+  }
+}

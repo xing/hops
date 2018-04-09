@@ -10,6 +10,9 @@
     "serverless"
   ],
   "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "bin": {
     "hops-lambda": "commands/lambda.js"
   },

@@ -17,7 +17,7 @@
     "url": "https://github.com/xing/hops/issues"
   },
   "engines": {
-    "node": ">5.0.0"
+    "node": ">=6.0.0"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -43,7 +43,7 @@
     "start:minimal": "cd packages/template-minimal; yarn start",
     "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "jest",
-    "lint": "eslint \"packages/**/*.js\"",
+    "lint": "eslint 'packages/**/*.{js,mjs}'",
     "release": "lerna publish --conventional-commits",
     "release:major": "lerna publish --force-publish=* --cd-version=major",
     "release:candidate": "lerna publish --force-publish=* --cd-version=premajor --preid=rc --npm-tag=next",
@@ -83,16 +83,27 @@
       "prettier"
     ],
     "plugins": [
-      "prettier"
+      "prettier",
+      "node"
     ],
     "rules": {
+      "node/no-unsupported-features": [
+        "error",
+        {
+          "ignores": ["modules"]
+        }
+      ],
       "prettier/prettier": "error"
     },
     "parserOptions": {
-      "ecmaVersion": 5,
-      "env": {
-        "es6": false
+      "ecmaVersion": 2017,
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": false
       }
+    },
+    "env": {
+      "es6": true,
+      "node": true
     }
   },
   "eslintIgnore": [

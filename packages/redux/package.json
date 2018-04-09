@@ -8,9 +8,14 @@
     "redux"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "main": "index",
+  "module": "index.mjs",
   "files": [
-    "index.js"
+    "index.js",
+    "index.mjs"
   ],
   "scripts": {
     "test": "jest"
@@ -19,6 +24,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
+    "@std/esm": "^0.19.2",
     "hops-react": "10.3.0"
   },
   "peerDependencies": {

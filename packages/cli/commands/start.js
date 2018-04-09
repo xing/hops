@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-var pm = require('../lib/package-manager');
+const pm = require('../lib/package-manager');
 
 module.exports = function defineStartCommand(args) {
   args.command({
@@ -30,7 +30,7 @@ module.exports = function defineStartCommand(args) {
         type: 'boolean',
       },
     },
-    handler: function startHandler(argv) {
+    handler(argv) {
       if (argv.production) {
         process.env.NODE_ENV = 'production';
       }
@@ -42,7 +42,7 @@ module.exports = function defineStartCommand(args) {
         pm.isPackageInstalled('hops-express')
       ) {
         if (argv.clean && pm.isPackageInstalled('hops-build')) {
-          require('hops-build').runBuild(argv, function(error, stats) {
+          require('hops-build').runBuild(argv, (error, stats) => {
             if (error) {
               console.error(error.stack.toString());
               process.exit(1);
