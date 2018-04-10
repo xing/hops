@@ -6,9 +6,6 @@ before_install:
 install:
   - yarn install
 
-before_script:
-  - yarn run bootstrap
-
 script:
   - yarn test
   - yarn lint
