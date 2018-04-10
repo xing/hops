@@ -18,6 +18,10 @@
   "jest": {
     "testEnvironment": "node"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
   "dependencies": {
     "hops-react": "10.3.0"
   },
