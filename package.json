@@ -38,7 +38,6 @@
   ],
   "scripts": {
     "preinstall": "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'use yarn' && exit 1)\"",
-    "bootstrap": "lerna bootstrap",
     "start": "cd packages/template-react; yarn start",
     "start:minimal": "cd packages/template-minimal; yarn start",
     "start:graphql": "cd packages/template-graphql; yarn start",
@@ -49,9 +48,7 @@
     "release:candidate": "lerna publish --force-publish=* --cd-version=premajor --preid=rc --npm-tag=next",
     "release:candidate:feature": "lerna publish --cd-version=preminor --preid=rc --npm-tag=next",
     "release:next": "lerna publish --cd-version=prerelease --preid=rc --npm-tag=next",
-    "update": "yarn upgrade-interactive --latest && rm yarn.lock && yarn",
-    "postupdate": "lerna clean --yes && lerna bootstrap",
-    "reset": "git clean -dfx && yarn && yarn bootstrap",
+    "reset": "git clean -dfx && yarn",
     "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'",
     "precommit": "lint-staged",
     "pull-wiki": "git subtree pull --prefix docs wiki master --squash --message='docs(wiki): update wiki subtree'",
