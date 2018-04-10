@@ -21,6 +21,10 @@
   "jest": {
     "testEnvironment": "node"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
   "dependencies": {
     "hops-config": "10.3.0",
     "mixinable": "1.5.2",

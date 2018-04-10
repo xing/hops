@@ -19,10 +19,17 @@
     "commands",
     "lib"
   ],
+  "scripts": {
+    "test": "jest"
+  },
   "jest": {
     "watchPathIgnorePatterns": [
       "__tests__/fixtures"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.5",
