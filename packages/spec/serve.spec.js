@@ -47,8 +47,11 @@ describe('production server', function() {
     var manifest = require(filePath);
 
     expect(manifest).toMatchObject({
-      assetsByChunkName: {
-        main: expect.any(Array),
+      entrypoints: {
+        main: {
+          chunks: ['vendors~main', 'main'],
+          assets: expect.any(Array),
+        },
       },
     });
   });
@@ -60,7 +63,7 @@ describe('production server', function() {
       expect.stringMatching(/^main-[0-9a-f]+\.js$/)
     );
     expect(fileNames).toContainEqual(
-      expect.stringMatching(/^vendor-[0-9a-f]+\.js$/)
+      expect.stringMatching(/^vendors~main-[0-9a-f]+\.js$/)
     );
     expect(fileNames).toContainEqual(
       expect.stringMatching(/^main-[0-9a-f]+\.css$/)
@@ -82,35 +85,25 @@ describe('production server', function() {
 
   it('should deliver all asset files', function() {
     var manifest = require(path.resolve(buildDir, 'stats.json'));
-    var assetsByChunkName = manifest.assetsByChunkName;
-
-    expect(manifest).toMatchObject({
-      assetsByChunkName: {
-        main: expect.any(Array),
-        vendor: expect.any(Array),
-      },
-    });
 
     return Promise.all(
-      assetsByChunkName.main
-        .concat(assetsByChunkName.vendor)
-        .map(function(filename) {
-          return fetch('http://localhost:8080/' + filename)
-            .then(function(response) {
-              expect(response.ok).toBe(true);
-              return response.text();
-            })
-            .then(function(body) {
-              expect(body.length).toBeGreaterThan(0);
-              expect(body).not.toMatch('<!doctype html>');
-              expect(body).toBe(
-                fs.readFileSync(
-                  path.resolve(buildDir, filename.replace(/^\/?/, '')),
-                  'utf8'
-                )
-              );
-            });
-        })
+      manifest.assets.map(function(asset) {
+        return fetch('http://localhost:8080/' + asset.name)
+          .then(function(response) {
+            expect(response.ok).toBe(true);
+            return response.text();
+          })
+          .then(function(body) {
+            expect(body.length).toBeGreaterThan(0);
+            expect(body).not.toMatch('<!doctype html>');
+            expect(body).toBe(
+              fs.readFileSync(
+                path.resolve(buildDir, asset.name.replace(/^\/?/, '')),
+                'utf8'
+              )
+            );
+          });
+      })
     );
   });
 
