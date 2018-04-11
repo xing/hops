@@ -124,30 +124,24 @@ exports.registerMiddleware = function registerMiddleware(app, middleware) {
 exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
   res.locals = res.locals || {};
   res.locals.hops = {
-    stats:
-      res.locals && res.locals.webpackStats
-        ? res.locals.webpackStats.toJson()
-        : getStatsFromFile(),
+    stats: res.locals.webpackStats
+      ? res.locals.webpackStats.toJson()
+      : getStatsFromFile(),
   };
-  res.locals.hops.assets = { js: [], css: [] };
-  var assets = res.locals.hops.stats.assetsByChunkName;
-  if (assets) {
-    ['vendor', 'main'].forEach(function(key) {
-      var asset = assets[key];
-      if (Array.isArray(asset)) {
-        var js = asset.find(function(item) {
-          return item.indexOf('.js') === item.length - 3;
-        });
-        js && res.locals.hops.assets.js.push('/' + js);
-        var css = asset.find(function(item) {
-          return item.indexOf('.css') === item.length - 4;
-        });
-        css && res.locals.hops.assets.css.push('/' + css);
-      } else if (asset) {
-        res.locals.hops.assets.js.push('/' + asset);
-      }
-    });
-  }
+  var entrypoints = res.locals.hops.stats.entrypoints || {};
+  var assets = Object.keys(entrypoints).reduce(function(allAssets, name) {
+    return allAssets.concat(entrypoints[name].assets || []);
+  }, []);
+
+  res.locals.hops.assets = assets.reduce(
+    function(byType, asset) {
+      var type = path.extname(asset).slice(1);
+      byType[type] = (byType[type] || []).concat(asset);
+      return byType;
+    },
+    { js: [], css: [] }
+  );
+
   next();
 };
 
