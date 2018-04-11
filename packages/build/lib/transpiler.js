@@ -15,9 +15,8 @@ module.exports = function transpile(webpackConfig, watchOptions) {
 
   compiler.outputFileSystem = new MemoryFS();
 
-  compiler.plugin('watch-run', function(compilation, callback) {
+  compiler.hooks.watchRun.tap('hops-transpiler', function(compilation) {
     emitter.emit('start');
-    callback();
   });
 
   function emitResult() {
