@@ -75,4 +75,7 @@ module.exports = {
     hints: false,
   },
   devtool: process.env.NODE_ENV !== 'production' && '#inline-source-map',
+  optimization: {
+    minimizer: [],
+  },
 };
