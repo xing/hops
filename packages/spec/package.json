@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "apollo-client": "^2.2.8",
-    "graphql": "^0.12.3",
+    "graphql": "^0.13.0",
     "hops": "10.2.0",
     "hops-build": "10.3.0",
     "hops-build-config": "10.3.0",
