@@ -9,8 +9,7 @@ var appDir = getPkgDir();
 
 function checkESnextPath(filepath) {
   return (
-    filepath.indexOf('.mjs') === filepath.length - 4 ||
-    (filepath.indexOf(appDir) === 0 && filepath.indexOf('node_modules') === -1)
+    filepath.indexOf(appDir) === 0 && filepath.indexOf('node_modules') === -1
   );
 }
 
@@ -19,7 +18,7 @@ function checkEsnextConfig(filepath) {
   var packageJsonPath = path.join(pkgDir, 'package.json');
   if (fs.existsSync(packageJsonPath)) {
     var json = fs.readFileSync(packageJsonPath, 'utf8');
-    return /"(module|((e|j)snext(:(browser|server|main))?))":/m.test(json);
+    return /"((e|j)snext(:(browser|server|main))?)":/m.test(json);
   }
 }
 
