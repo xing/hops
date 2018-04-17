@@ -21,10 +21,9 @@ module.exports = function getResolveConfig(target) {
       'jsnext',
       'esnext:main',
       'jsnext:main',
-      'module',
       'main',
     ],
     modules: ['node_modules'].concat(hopsConfig.moduleDirs),
-    extensions: ['.mjs', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   };
 };
