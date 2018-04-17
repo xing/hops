@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.4.0"></a>
+# [10.4.0](https://github.com/xing/hops/compare/v10.2.0-rc.5...v10.4.0) (2018-04-17)
+
+
+### Features
+
+* **graphql:** add "--header/-H" CLI option to introspect command ([671193d](https://github.com/xing/hops/commit/671193d))
+* **graphql:** Generate fragment types from schema file ([5d86841](https://github.com/xing/hops/commit/5d86841))
+
+
+
+
 <a name="10.3.0"></a>
 # [10.3.0](https://github.com/xing/hops/compare/v10.3.0-rc.3...v10.3.0) (2018-04-09)
 

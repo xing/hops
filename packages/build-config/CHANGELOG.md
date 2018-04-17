@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.4.0"></a>
+# [10.4.0](https://github.com/xing/hops/compare/v10.2.0-rc.5...v10.4.0) (2018-04-17)
+
+
+### Bug Fixes
+
+* **build-config:** make service worker plugin async via tapAsync ([f230ffc](https://github.com/xing/hops/commit/f230ffc))
+* **build-config:** make webmanifest loader webpack 4 compatible ([1c398ee](https://github.com/xing/hops/commit/1c398ee))
+* **build-config:** remove mjs support when resolving files ([59947ea](https://github.com/xing/hops/commit/59947ea))
+* **build-config:** use [name]-[chunkhash] as chunk names ([83021d4](https://github.com/xing/hops/commit/83021d4))
+
+
+### Features
+
+* **build-config:** add CSS optimizer plugin to minify assets ([236e127](https://github.com/xing/hops/commit/236e127))
+* **build-config:** get rid of manifest plugin, simplify config loader ([70aa374](https://github.com/xing/hops/commit/70aa374))
+* **build-config:** introduce global css mode ([4d9b36f](https://github.com/xing/hops/commit/4d9b36f))
+* **build-config:** switch to mini-css-extract-plugin ([37d5b8f](https://github.com/xing/hops/commit/37d5b8f)), closes [/github.com/webpack-contrib/extract-text-webpack-plugin/issues/731#issuecomment-374548865](https://github.com//github.com/webpack-contrib/extract-text-webpack-plugin/issues/731/issues/issuecomment-374548865)
+* **build-config:** tweak Webpack configs for v4 ([b28a787](https://github.com/xing/hops/commit/b28a787))
+* **build-config:** update to latest alpha of extract text plugin ([823b562](https://github.com/xing/hops/commit/823b562))
+* **build-config:** update webpack to v4 ([eafe4f2](https://github.com/xing/hops/commit/eafe4f2))
+
+
+
+
 <a name="10.3.0"></a>
 # [10.3.0](https://github.com/xing/hops/compare/v10.3.0-rc.3...v10.3.0) (2018-04-09)
 
