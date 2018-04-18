@@ -1,6 +1,6 @@
 {
   "name": "hops-build",
-  "version": "10.4.0",
+  "version": "10.4.1",
   "description": "Hops wrapper around webpack to execute a build",
   "keywords": [
     "hops",
@@ -39,7 +39,7 @@
     "filesize": "^3.5.11",
     "hops-build-config": "10.4.0",
     "hops-config": "10.4.0",
-    "hops-express": "10.4.0",
+    "hops-express": "10.4.1",
     "memory-fs": "^0.4.1",
     "mkdirp": "^0.5.1",
     "node-mocks-http": "^1.6.7",
