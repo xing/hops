@@ -139,7 +139,7 @@ exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
         return byType;
       }
       var type = path.extname(asset).slice(1);
-      byType[type] = (byType[type] || []).concat(asset);
+      byType[type] = (byType[type] || []).concat('/' + asset);
       return byType;
     },
     { js: [], css: [] }
