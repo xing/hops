@@ -33,7 +33,7 @@ module.exports = {
   },
   plugins: [
     new ServiceWorkerPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin({ multiStep: true }),
     new webpack.NamedModulesPlugin(),
     new webpack.EnvironmentPlugin(
       Object.assign(
