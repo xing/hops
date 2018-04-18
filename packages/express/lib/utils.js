@@ -135,6 +135,9 @@ exports.assetsMiddleware = function assetsMiddleware(req, res, next) {
 
   res.locals.hops.assets = assets.reduce(
     function(byType, asset) {
+      if (asset.indexOf('.hot-update.js') > 0) {
+        return byType;
+      }
       var type = path.extname(asset).slice(1);
       byType[type] = (byType[type] || []).concat(asset);
       return byType;
