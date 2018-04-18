@@ -1,6 +1,6 @@
 {
   "name": "hops-lambda",
-  "version": "10.4.1",
+  "version": "10.4.2",
   "description": "Quick and easy deployment of Hops applications to AWS Lambda",
   "keywords": [
     "hops",
@@ -38,6 +38,6 @@
     "hops-express": "^10.3.0"
   },
   "devDependencies": {
-    "hops-express": "10.4.1"
+    "hops-express": "10.4.2"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "10.4.1",
+  "version": "10.4.2",
   "private": true,
   "scripts": {
     "test": "jest"
@@ -12,10 +12,10 @@
     "apollo-client": "^2.2.8",
     "graphql": "^0.13.0",
     "hops": "10.4.0",
-    "hops-build": "10.4.1",
+    "hops-build": "10.4.2",
     "hops-build-config": "10.4.0",
     "hops-config": "10.4.0",
-    "hops-express": "10.4.1",
+    "hops-express": "10.4.2",
     "hops-react": "10.4.0",
     "hops-redux": "10.4.0",
     "isomorphic-fetch": "^2.2.1",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.4.2"></a>
+## [10.4.2](https://github.com/xing/hops/compare/v10.4.1...v10.4.2) (2018-04-18)
+
+
+### Bug Fixes
+
+* **express:** always include leading '/' in asset middleware ([d54b290](https://github.com/xing/hops/commit/d54b290))
+
+
+
+
 <a name="10.4.1"></a>
 ## [10.4.1](https://github.com/xing/hops/compare/v10.4.0...v10.4.1) (2018-04-18)
 

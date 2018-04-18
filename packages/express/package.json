@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "10.4.1",
+  "version": "10.4.2",
   "description": "Express server to enable server-side rendering of hops applications",
   "keywords": [
     "hops",
