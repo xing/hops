@@ -37,7 +37,7 @@ module.exports = function(data) {
       .join(''),
     data.assets.js
       .map(function(js) {
-        return '<script src="' + js + '" async></script>';
+        return '<script src="' + js + '"></script>';
       })
       .join(''),
     '</body>',
