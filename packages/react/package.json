@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "hops-config": "10.4.0",
-    "mixinable": "1.5.2",
+    "mixinable": "2.0.0",
     "serialize-javascript": "^1.4.0"
   },
   "peerDependencies": {
