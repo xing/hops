@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.4.3"></a>
+## [10.4.3](https://github.com/xing/hops/compare/v10.4.2...v10.4.3) (2018-04-24)
+
+
+
+
+**Note:** Version bump only for package hops-graphql
+
 <a name="10.4.0"></a>
 # [10.4.0](https://github.com/xing/hops/compare/v10.2.0-rc.5...v10.4.0) (2018-04-17)
 

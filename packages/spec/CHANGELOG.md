@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.4.3"></a>
+## [10.4.3](https://github.com/xing/hops/compare/v10.4.2...v10.4.3) (2018-04-24)
+
+
+### Bug Fixes
+
+* update dependency redux to v4 ([0b6c6d4](https://github.com/xing/hops/commit/0b6c6d4))
+
+
+
+
 <a name="10.4.2"></a>
 ## [10.4.2](https://github.com/xing/hops/compare/v10.4.1...v10.4.2) (2018-04-18)
 
