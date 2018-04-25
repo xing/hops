@@ -130,7 +130,7 @@ Resources:
       Handler: node_modules/hops-lambda/lambda.handler
       MemorySize: !Ref LambdaMemorySize
       Role: !GetAtt LambdaExecutionRole.Arn
-      Runtime: nodejs6.10
+      Runtime: nodejs8.10
       Timeout: 30
       Events:
         KeepWarm:

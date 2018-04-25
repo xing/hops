@@ -17,7 +17,7 @@ This is the minimal configuration required to get started with hops-lambda:
 +    "assetPath": "prod",
 +    "basePath": "prod",
      "browsers": "last 1 Chrome versions",
-+    "node": "6.10.3"
++    "node": "8.10"
    },
    "dependencies": {
      "hops-express": "^9.0.0",
@@ -60,12 +60,12 @@ Also note, that hops-lambda has a peer dependency to [hops-express](https://gith
 
 # Configuration
 
-In order to use hops-lambda you need to define the Node.js target version for which babel should transpile your code. Because the most recent Node.js version on AWS Lambda is v6.10.3 you need to set your `node` target in [hops-config](https://github.com/xing/hops/blob/master/packages/config/README.md#available-options) to `6.10.3`.
+In order to use hops-lambda you need to define the Node.js target version for which babel should transpile your code. Because the most recent Node.js version on AWS Lambda is v8.10 you need to set your `node` target in [hops-config](https://github.com/xing/hops/blob/master/packages/config/README.md#available-options) to `8.10`.
 
 ```json
 {
   "hops": {
-    "node": "6.10.3"
+    "node": "8.10"
   }
 }
 ```
