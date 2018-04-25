@@ -9,6 +9,9 @@
     "postcss"
   ],
   "license": "MIT",
+  "engines": {
+    "node": ">=8.10.0"
+  },
   "main": "index.js",
   "files": [
     "index.js",
