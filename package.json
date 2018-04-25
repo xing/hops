@@ -17,7 +17,7 @@
     "url": "https://github.com/xing/hops/issues"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.10.0"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -84,7 +84,7 @@
       "node"
     ],
     "rules": {
-      "node/no-unsupported-features": ["error"],
+      "node/no-unsupported-features": "error",
       "prettier/prettier": "error"
     },
     "parserOptions": {
