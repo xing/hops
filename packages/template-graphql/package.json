@@ -8,7 +8,9 @@
     "locations": [
       "/"
     ],
-    "graphqlUri": "https://www.graphqlhub.com/graphql"
+    "graphqlUri": "https://www.graphqlhub.com/graphql",
+    "presets": ["hops"],
+    "mixins": ["hops-graphql"]
   },
   "scripts": {
     "start": "hops start",
