@@ -10,10 +10,6 @@
   "engines": {
     "node": ">=8.10.0"
   },
-  "bin": {
-    "hops-build": "commands/build.js",
-    "hops-develop": "commands/develop.js"
-  },
   "main": "index.js",
   "files": [
     "build.js",
@@ -37,6 +33,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "@untool/core": "^0.4.3",
     "directory-index": "^0.1.0",
     "express": "^4.16.0",
     "filesize": "^3.5.11",
