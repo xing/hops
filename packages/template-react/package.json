@@ -8,7 +8,8 @@
     "locations": [
       "/",
       "/counter"
-    ]
+    ],
+    "presets": ["hops"]
   },
   "scripts": {
     "start": "hops start",
