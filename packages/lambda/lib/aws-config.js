@@ -2,6 +2,7 @@
 
 var path = require('path');
 var hopsConfig = require('hops-config');
+var semver = require('semver');
 
 var DEFAULT_REGION = 'us-east-1';
 var DEFAULT_MEMORY_SIZE = 128;
@@ -9,7 +10,7 @@ var DEFAULT_STAGE_NAME = 'prod';
 var DEFAULT_CF_TEMPLATE = path.resolve(__dirname, '..', 'cloudformation.yaml');
 var DEFAULT_INCLUDE = [hopsConfig.cacheDir + '/**'];
 var DEFAULT_EXCLUDE = ['flow-typed/**', 'typings/**'];
-var AVAILABLE_NODE_RUNTIME = ['6.10.3'];
+var MAX_NODE_VERSION = '8.10';
 
 module.exports = function getAWSConfig() {
   var awsConfig = hopsConfig._aws || hopsConfig.aws || {};
@@ -43,11 +44,13 @@ module.exports = function getAWSConfig() {
     );
   }
 
-  if (AVAILABLE_NODE_RUNTIME.indexOf(hopsConfig.node) === -1) {
+  if (
+    semver.gt(semver.coerce(hopsConfig.node), semver.coerce(MAX_NODE_VERSION))
+  ) {
     console.warn(
-      'AWS Lambda only supports Node.js in version: ' +
-        AVAILABLE_NODE_RUNTIME.join(', ') +
-        '. Please specify one of these versions as node target in your ' +
+      'AWS Lambda only supports Node.js up to version: ' +
+        MAX_NODE_VERSION +
+        '. Please specify a version lower than this as node target in your ' +
         'hopsConfig.node, to enable Babel to transpile to the correct version.'
     );
   }

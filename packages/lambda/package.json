@@ -32,6 +32,7 @@
     "hops-config": "10.4.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.13",
+    "semver": "^5.5.0",
     "serverless-http": "^1.5.2"
   },
   "peerDependencies": {
