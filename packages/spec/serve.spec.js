@@ -16,6 +16,7 @@ describe('production server', function() {
   jest.setTimeout(100000);
 
   var app;
+  var port;
   beforeAll(function(done) {
     rimraf.sync(buildDir);
     rimraf.sync(cacheDir);
@@ -25,6 +26,7 @@ describe('production server', function() {
     require('hops-build').runBuild({ clean: true }, function() {
       require('hops-express').runServer({}, function(error, _app) {
         app = _app;
+        port = app.address().port;
         done(error);
       });
     });
@@ -71,7 +73,7 @@ describe('production server', function() {
   });
 
   it('should deliver expected html page', function() {
-    return fetch('http://localhost:8080/')
+    return fetch('http://localhost:' + port + '/')
       .then(function(response) {
         expect(response.ok).toBe(true);
         return response.text();
@@ -88,7 +90,7 @@ describe('production server', function() {
 
     return Promise.all(
       manifest.assets.map(function(asset) {
-        return fetch('http://localhost:8080/' + asset.name)
+        return fetch('http://localhost:' + port + '/' + asset.name)
           .then(function(response) {
             expect(response.ok).toBe(true);
             return response.text();
@@ -109,14 +111,14 @@ describe('production server', function() {
 
   it('should deliver 404 when route does not match', function() {
     return expect(
-      fetch('http://localhost:8080/thisdoesnotexist')
+      fetch('http://localhost:' + port + '/thisdoesnotexist')
     ).resolves.toMatchObject({
       status: 404,
     });
   });
 
   it('adds server-timing header', function() {
-    return fetch('http://localhost:8080/').then(function(response) {
+    return fetch('http://localhost:' + port + '/').then(function(response) {
       expect(response.headers.get('server-timing')).toMatch('desc="Request"');
     });
   });

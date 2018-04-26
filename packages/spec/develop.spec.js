@@ -15,6 +15,7 @@ describe('development server', function() {
   jest.setTimeout(100000);
 
   var app;
+  var port;
   beforeAll(function(done) {
     rimraf.sync(buildDir);
     rimraf.sync(cacheDir);
@@ -23,6 +24,7 @@ describe('development server', function() {
     jest.resetModules();
     require('hops-build').runServer({ clean: true }, function(error, _app) {
       app = _app;
+      port = app.address().port;
       done(error);
     });
   });
@@ -32,7 +34,7 @@ describe('development server', function() {
   });
 
   it('should deliver expected html page', function() {
-    return fetch('http://localhost:8080/')
+    return fetch('http://localhost:' + port + '/')
       .then(function(response) {
         expect(response.ok).toBe(true);
         return response.text();
@@ -44,7 +46,7 @@ describe('development server', function() {
   });
 
   it('should deliver main js file', function() {
-    return fetch('http://localhost:8080/main.js')
+    return fetch('http://localhost:' + port + '/main.js')
       .then(function(response) {
         expect(response.ok).toBe(true);
         return response.text();
