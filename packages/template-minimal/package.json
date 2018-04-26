@@ -1,6 +1,6 @@
 {
   "name": "hops-template-minimal",
-  "version": "10.4.3",
+  "version": "10.4.4",
   "browser": "src/browser.js",
   "server": "src/server.js",
   "license": "MIT",
@@ -17,6 +17,6 @@
     "hops-express": "10.4.2"
   },
   "devDependencies": {
-    "hops-build": "10.4.3"
+    "hops-build": "10.4.4"
   }
 }
