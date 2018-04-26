@@ -24,7 +24,10 @@ describe('production server', function() {
     process.chdir(appDir);
     jest.resetModules();
     require('hops-build').runBuild({ clean: true }, function() {
-      require('hops-express').runServer({}, function(error, _app) {
+      require('hops-express').runServer({ _: ['serve'] }, function(
+        error,
+        _app
+      ) {
         app = _app;
         port = app.address().port;
         done(error);

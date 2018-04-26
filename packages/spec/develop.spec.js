@@ -22,7 +22,10 @@ describe('development server', function() {
     mkdirp.sync(cacheDir);
     process.chdir(appDir);
     jest.resetModules();
-    require('hops-build').runServer({ clean: true }, function(error, _app) {
+    require('hops-build').runServer({ clean: true, _: ['develop'] }, function(
+      error,
+      _app
+    ) {
       app = _app;
       port = app.address().port;
       done(error);

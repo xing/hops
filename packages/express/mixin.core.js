@@ -3,14 +3,27 @@ const {
 } = require('mixinable');
 const { Mixin } = require('@untool/core');
 
-const { runServer } = require('./index');
+const { runServerWithContext } = require('./index');
 
 class ExpressMixin extends Mixin {
   runServer(options) {
-    const { config, bootstrap, teardown, logError, logInfo } = this;
-    const hooks = { bootstrap, teardown };
+    const {
+      config,
+      createServerMiddleware,
+      initializeServer,
+      bootstrap,
+      teardown,
+      logError,
+      logInfo,
+    } = this;
+    const hooks = {
+      createServerMiddleware,
+      initializeServer,
+      bootstrap,
+      teardown,
+    };
     const logger = { error: logError, info: logInfo };
-    runServer({ options, config, hooks, logger });
+    runServerWithContext({ options, config, hooks, logger });
   }
 
   registerCommands(yargs) {
@@ -46,6 +59,8 @@ class ExpressMixin extends Mixin {
 }
 
 ExpressMixin.strategies = {
+  createServerMiddleware: sequence,
+  initializeServer: sequence,
   bootstrap: sequence,
   teardown: sequence,
 };

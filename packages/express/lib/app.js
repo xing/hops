@@ -1,8 +1,5 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-
 const express = require('express');
 const mime = require('mime');
 const helmet = require('helmet');
@@ -14,8 +11,13 @@ const {
   createCompressionMiddleware,
 } = require('./middlewares');
 
-module.exports = function createApp(options, config, { bootstrap, teardown }) {
+module.exports = function createApp(
+  options,
+  config,
+  { initializeServer, bootstrap, teardown, createServerMiddleware }
+) {
   const app = express();
+  initializeServer(app, options._[0]);
   app.use(createTimingsMiddleware(config));
   app.use(createCompressionMiddleware(config));
   app.use(helmet());
@@ -33,11 +35,10 @@ module.exports = function createApp(options, config, { bootstrap, teardown }) {
   );
   bootstrap(app, config);
   if (options && !options.static) {
-    const filePath = path.join(config.cacheDir, 'server.js');
-    if (fs.existsSync(filePath)) {
-      const middleware = require(filePath);
-      app.use(helmet.noCache());
-      app.use(createAssetsMiddleware(config));
+    app.use(helmet.noCache());
+    app.use(createAssetsMiddleware(config));
+    const middleware = createServerMiddleware(options._[0]);
+    if (middleware) {
       if (
         process.env.HOPS_MODE === 'static' &&
         Array.isArray(config.locations)

@@ -1,9 +1,13 @@
 const {
   sync: { pipe },
 } = require('mixinable');
+const path = require('path');
+const fs = require('fs');
 
 const { Mixin } = require('@untool/core');
 const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 const {
   build: buildConfig,
   node: nodeConfig,
@@ -12,6 +16,8 @@ const {
 
 const defaultGenerate = require('./lib/generate');
 const cleanup = require('./lib/cleanup');
+const { runServerWithContext } = require('hops-express');
+const createMiddleware = require('./lib/middleware');
 
 class BuildMixin extends Mixin {
   getNodeConfig() {
@@ -24,6 +30,38 @@ class BuildMixin extends Mixin {
 
   getDevelopConfig() {
     return this.configureWebpack(developConfig, 'develop');
+  }
+
+  initializeServer(app, command) {
+    if (command === 'develop') {
+      const compiler = webpack(developConfig);
+      app.use(
+        webpackDevMiddleware(compiler, {
+          noInfo: true,
+          logLevel: 'warn',
+          publicPath: developConfig.output.publicPath,
+          watchOptions: developConfig.watchOptions,
+          serverSideRender: true,
+        })
+      );
+      app.use(webpackHotMiddleware(compiler));
+    }
+  }
+
+  createServerMiddleware(command) {
+    switch (command) {
+      case 'serve':
+        const filePath = path.join(this.config.cacheDir, 'server.js');
+        if (fs.existsSync(filePath)) {
+          return require(filePath);
+        }
+        break;
+      case 'develop':
+        return createMiddleware(
+          nodeConfig,
+          nodeConfig.watchOptions || developConfig.watchOptions
+        );
+    }
   }
 
   build(options, callback) {
@@ -59,7 +97,25 @@ class BuildMixin extends Mixin {
     }
   }
 
-  develop(options) {}
+  develop(options) {
+    const {
+      config,
+      createServerMiddleware,
+      initializeServer,
+      bootstrap,
+      teardown,
+      logError,
+      logInfo,
+    } = this;
+    const hooks = {
+      createServerMiddleware,
+      initializeServer,
+      bootstrap,
+      teardown,
+    };
+    const logger = { error: logError, info: logInfo };
+    runServerWithContext({ options, config, hooks, logger });
+  }
 
   registerCommands(yargs) {
     return yargs
@@ -130,7 +186,7 @@ class BuildMixin extends Mixin {
           if (argv.static) {
             process.env.HOPS_MODE = 'static';
           }
-          require('./index').runServer(argv);
+          this.develop(argv);
         },
       });
   }

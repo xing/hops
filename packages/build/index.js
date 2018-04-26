@@ -5,7 +5,7 @@ module.exports = {
     return require('./lib/build');
   },
   get runServer() {
-    return require('./lib/server');
+    return require('./lib/develop');
   },
   get createRenderer() {
     return require('./lib/renderer');
