@@ -1,6 +1,6 @@
 {
   "name": "hops-build-config",
-  "version": "10.4.3",
+  "version": "10.4.4",
   "description": "Hops build configuration leveraging Webpack and Babel",
   "keywords": [
     "hops",
