@@ -14,8 +14,8 @@
     "hops": "commands/hops.js"
   },
   "hops": {
-    "mixins": ["@untool/yargs", "hops-build", "."],
-    "presets": ["hops-express"]
+    "mixins": ["@untool/yargs", "."],
+    "presets": ["hops-build", "hops-express"]
   },
   "main": "index.js",
   "files": [

@@ -1,6 +1,66 @@
+const {
+  sync: { pipe },
+} = require('mixinable');
+
 const { Mixin } = require('@untool/core');
+const webpack = require('webpack');
+const {
+  build: buildConfig,
+  node: nodeConfig,
+  develop: developConfig,
+} = require('hops-build-config');
+
+const defaultGenerate = require('./lib/generate');
+const cleanup = require('./lib/cleanup');
 
 class BuildMixin extends Mixin {
+  getNodeConfig() {
+    return this.configureWebpack(nodeConfig, 'node');
+  }
+
+  getBuildConfig() {
+    return this.configureWebpack(buildConfig, 'build');
+  }
+
+  getDevelopConfig() {
+    return this.configureWebpack(developConfig, 'develop');
+  }
+
+  build(options, callback) {
+    const logCallback = (error, stats) => {
+      if (error) {
+        this.logError(error.stack ? error.stack.toString() : error.toString());
+      } else {
+        this.logStats(stats);
+      }
+      callback(error, stats);
+    };
+    const build = () => {
+      if (options.static) {
+        webpack(this.getBuildConfig()).run((error, stats) => {
+          if (error) {
+            this.logError(error);
+          } else {
+            const generate = this.config.generate || defaultGenerate;
+            generate(this.getNodeConfig())
+              .then(logCallback)
+              .catch(logCallback);
+          }
+        });
+      } else {
+        webpack([this.getBuildConfig(), this.getNodeConfig()]).run(logCallback);
+      }
+    };
+    if (options.clean) {
+      const dirs = [this.config.buildDir, this.config.cacheDir];
+      cleanup(dirs).then(build);
+    } else {
+      build();
+    }
+  }
+
+  develop(options) {}
+
   registerCommands(yargs) {
     return yargs
       .command({
@@ -37,21 +97,7 @@ class BuildMixin extends Mixin {
           if (argv.static) {
             process.env.HOPS_MODE = 'static';
           }
-          require('./index').runBuild(argv, (error, stats) => {
-            if (error) {
-              console.error(
-                error.stack ? error.stack.toString() : error.toString()
-              );
-            } else {
-              console.log(
-                stats.toString({
-                  chunks: false,
-                  modules: false,
-                  entrypoints: false,
-                })
-              );
-            }
-
+          this.build(argv, (error, stats) => {
             if (error || stats.hasErrors()) {
               process.exit(1);
             }
@@ -89,5 +135,9 @@ class BuildMixin extends Mixin {
       });
   }
 }
+
+BuildMixin.strategies = {
+  configureWebpack: pipe,
+};
 
 module.exports = BuildMixin;
