@@ -1,6 +1,18 @@
+const {
+  sync: { sequence },
+} = require('mixinable');
 const { Mixin } = require('@untool/core');
 
+const { runServer } = require('./index');
+
 class ExpressMixin extends Mixin {
+  runServer(options) {
+    const { config, bootstrap, teardown, logError, logInfo } = this;
+    const hooks = { bootstrap, teardown };
+    const logger = { error: logError, info: logInfo };
+    runServer({ options, config, hooks, logger });
+  }
+
   registerCommands(yargs) {
     const { namespace } = this.config;
     return yargs.command({
@@ -27,10 +39,15 @@ class ExpressMixin extends Mixin {
         if (argv.static) {
           process.env.HOPS_MODE = 'static';
         }
-        require('./index').runServer(argv);
+        this.runServer(argv);
       },
     });
   }
 }
+
+ExpressMixin.strategies = {
+  bootstrap: sequence,
+  teardown: sequence,
+};
 
 module.exports = ExpressMixin;

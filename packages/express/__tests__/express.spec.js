@@ -12,25 +12,25 @@ describe('express', function() {
 
   describe('timings', function() {
     it('uses server-timings middleware when enableServerTimings is true', function() {
-      jest.mock('hops-config', function() {
-        return { enableServerTimings: true };
-      });
+      const { createTimingsMiddleware } = require('../lib/middlewares');
 
-      var hopsExpressTimings = require('..').utils.timings;
-
-      hopsExpressTimings(req, res, function() {});
+      createTimingsMiddleware({ enableServerTimings: true })(
+        req,
+        res,
+        function() {}
+      );
 
       expect(res.locals.timings.start('foo')).toBeDefined();
     });
 
     it('uses noop timings middleware when enableServerTimings is false', function() {
-      jest.mock('hops-config', function() {
-        return { enableServerTimings: false };
-      });
+      const { createTimingsMiddleware } = require('../lib/middlewares');
 
-      var hopsExpressTimings = require('..').utils.timings;
-
-      hopsExpressTimings(req, res, function() {});
+      createTimingsMiddleware({ enableServerTimings: false })(
+        req,
+        res,
+        function() {}
+      );
 
       expect(res.locals.timings.start('foo')).toBeUndefined();
     });
