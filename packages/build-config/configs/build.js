@@ -48,7 +48,14 @@ module.exports = {
           output: { comments: false },
         },
       }),
-      new OptimizeCSSPlugin(),
+      new OptimizeCSSPlugin({
+        cssProcessorOptions: {
+          reduceIdents: { disable: true },
+          zindex: { disable: true },
+          mergeIdents: { disable: true },
+          discardUnused: { disable: true },
+        },
+      }),
     ],
   },
   plugins: [
