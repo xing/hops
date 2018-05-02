@@ -1,8 +1,6 @@
 'use strict';
 
-const runServer = require('./lib/run-server');
-
-const createNodeAPI = (options, hookWhitelist = []) => {
+const bootstrapUntool = options => {
   process.env.UNTOOL_NSP = 'hops';
   const { bootstrap } = require('@untool/core');
   const { getConfig } = require('@untool/core/lib/config');
@@ -11,21 +9,20 @@ const createNodeAPI = (options, hookWhitelist = []) => {
   mixin.handleArguments(options);
 
   const logger = { info: mixin.logInfo, error: mixin.logError };
-  const hooks = hookWhitelist.reduce((hooks, name) => {
-    hooks[name] = mixin[name];
-    return hooks;
-  }, {});
 
-  return { logger, hooks, config: getConfig() };
+  return { logger, mixin, config: getConfig() };
+};
+
+const runServerWithContext = ({ options, config, hooks, logger }, callback) => {
+  const app = require('./lib/app')(options, config, hooks);
+  require('./lib/listen')(app, config, logger, callback);
 };
 
 module.exports = {
-  runServer: function(options, callback) {
-    const { logger, hooks, config } = createNodeAPI(options, [
-      'bootstrap',
-      'teardown',
-    ]);
-    runServer({ logger, hooks, options, config }, callback);
+  runServerWithContext,
+  runServer(options, callback) {
+    const { logger, mixin, config } = bootstrapUntool(options);
+    runServerWithContext({ logger, hooks: mixin, options, config }, callback);
   },
   get createApp() {
     return require('./lib/app');
