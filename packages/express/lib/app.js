@@ -1,48 +1,59 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var express = require('express');
-var mime = require('mime');
-var helmet = require('helmet');
-var compression = require('compression');
+const express = require('express');
+const mime = require('mime');
+const helmet = require('helmet');
 
-var hopsConfig = require('hops-config');
-var utils = require('./utils');
+const {
+  createAssetsMiddleware,
+  createRewriteMiddleware,
+  createTimingsMiddleware,
+  createCompressionMiddleware,
+} = require('./middlewares');
 
-var swRe = new RegExp(hopsConfig.workerPath + '$');
-
-function createApp(options) {
-  var app = express();
-  app.use(utils.timings);
+module.exports = function createApp(options, config, { bootstrap, teardown }) {
+  const app = express();
+  app.use(createTimingsMiddleware(config));
+  app.use(createCompressionMiddleware(config));
   app.use(helmet());
-  app.use(compression());
-  app.use(utils.rewritePath);
+  app.use(createRewriteMiddleware(config));
   app.use(
-    express.static(hopsConfig.buildDir, {
+    express.static(config.buildDir, {
       maxAge: '1y',
-      setHeaders: function(res, filepath) {
-        if (mime.getType(filepath) === 'text/html' || filepath.match(swRe)) {
-          helmet.noCache()(null, res, function() {});
+      setHeaders: (res, filepath) => {
+        if (mime.getType(filepath) === 'text/html') {
+          helmet.noCache()(null, res, () => {});
         }
       },
       redirect: false,
     })
   );
-  utils.bootstrap(app, hopsConfig);
+  bootstrap(app, config);
   if (options && !options.static) {
-    var filePath = path.join(hopsConfig.cacheDir, 'server.js');
+    const filePath = path.join(config.cacheDir, 'server.js');
     if (fs.existsSync(filePath)) {
-      utils.registerMiddleware(app.use(helmet.noCache()), require(filePath));
+      const middleware = require(filePath);
+      app.use(helmet.noCache());
+      app.use(createAssetsMiddleware(config));
+      if (
+        process.env.HOPS_MODE === 'static' &&
+        Array.isArray(config.locations)
+      ) {
+        config.locations.forEach(location => {
+          app.get(location === '/' ? location : `${location}*`, middleware);
+        });
+      } else {
+        app.all('*', middleware);
+      }
     } else {
       console.log(
         'No middleware found. Delivering only statically built routes.'
       );
     }
   }
-  utils.teardown(app, hopsConfig);
+  teardown(app, config);
   return app;
-}
-
-module.exports = createApp;
+};
