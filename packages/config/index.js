@@ -48,9 +48,8 @@ function applyUserConfig(config) {
   var explorer = cosmiconfig('hops', {
     rcExtensions: true,
     stopDir: root,
-    sync: true,
   });
-  var result = explorer.load(process.cwd());
+  var result = explorer.searchSync(process.cwd());
   return assign({}, config, result ? result.config : {});
 }
 
@@ -66,11 +65,8 @@ function applyInheritedConfig(config) {
     }
     delete result.extends;
     if (fs.existsSync(configPath)) {
-      var loader = cosmiconfig('hops', {
-        configPath: configPath,
-        sync: true,
-      });
-      var _result = loader.load();
+      var loader = cosmiconfig('hops');
+      var _result = loader.loadSync(configPath);
       result = assign(_result ? _result.config : {}, result);
     } else {
       console.error('Failed to load inherited config', configName);

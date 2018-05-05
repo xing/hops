@@ -29,7 +29,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "cosmiconfig": "^4.0.0",
+    "cosmiconfig": "^5.0.1",
     "is-plain-object": "^2.0.4",
     "lodash.mergewith": "^4.6.1",
     "pkg-dir": "^2.0.0"
