@@ -9,9 +9,6 @@
     "web app manifest"
   ],
   "license": "MIT",
-  "engines": {
-    "node": ">=8.10.0"
-  },
   "main": "node.js",
   "browser": "dom.js",
   "files": [

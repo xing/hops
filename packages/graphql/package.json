@@ -8,9 +8,6 @@
     "graphql"
   ],
   "license": "MIT",
-  "engines": {
-    "node": ">=8.10.0"
-  },
   "bin": {
     "hops-graphql": "commands/graphql.js"
   },

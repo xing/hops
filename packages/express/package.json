@@ -7,9 +7,6 @@
     "express"
   ],
   "license": "MIT",
-  "engines": {
-    "node": ">=8.10.0"
-  },
   "bin": {
     "hops-serve": "commands/serve.js"
   },
