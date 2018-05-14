@@ -9,7 +9,7 @@
       "/",
       "/counter"
     ],
-    "presets": ["hops"]
+    "presets": ["hops-preset-defaults", "hops-react"]
   },
   "scripts": {
     "start": "hops start",

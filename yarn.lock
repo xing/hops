@@ -44,11 +44,32 @@
     lodash.mergewith "^4.6.1"
     mixinable "^2.0.0"
 
+"@untool/core@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.5.0.tgz#d2003af261e4609a1fbee18605900c91c656d9f1"
+  dependencies:
+    cosmiconfig "^5.0.1"
+    enhanced-resolve "^4.0.0"
+    find-up "^2.1.0"
+    flat "^4.0.0"
+    is-plain-object "^2.0.4"
+    lodash.mergewith "^4.6.1"
+    mixinable "^2.0.0"
+
 "@untool/yargs@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.4.3.tgz#ee562d0aeb6d83785c2e83dd63cdcca36d75356e"
   dependencies:
     "@untool/core" "^0.4.3"
+    chalk "^2.3.1"
+    mixinable "^2.0.0"
+    yargs "^11.0.0"
+
+"@untool/yargs@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.5.0.tgz#f03bab6e8bf4b19fab2313ef4ca2da53fbc77aff"
+  dependencies:
+    "@untool/core" "^0.5.0"
     chalk "^2.3.1"
     mixinable "^2.0.0"
     yargs "^11.0.0"
