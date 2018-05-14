@@ -7,9 +7,6 @@
     "webpack"
   ],
   "license": "MIT",
-  "engines": {
-    "node": ">=8.10.0"
-  },
   "bin": {
     "hops-build": "commands/build.js",
     "hops-develop": "commands/develop.js"
