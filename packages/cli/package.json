@@ -13,12 +13,10 @@
   "bin": {
     "hops": "commands/hops.js"
   },
-  "hops": {
-    "mixins": ["@untool/yargs", "hops-express", "hops-build", "."]
-  },
   "main": "index.js",
   "files": [
     "index.js",
+    "mixin.core.js",
     "commands",
     "lib"
   ],
