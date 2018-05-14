@@ -1,0 +1,43 @@
+{
+  "name": "hops-template-redux",
+  "version": "10.4.4",
+  "main": "src/app.js",
+  "license": "MIT",
+  "hops": {
+    "browsers": "last 1 Chrome versions",
+    "locations": [
+      "/",
+      "/counter"
+    ],
+    "presets": ["hops-preset-defaults", "hops-react", "hops-redux"]
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "hops-express": "10.4.2",
+    "hops-react": "10.4.3",
+    "hops-redux": "10.4.3",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "hops": "10.4.0",
+    "hops-build": "10.4.4",
+    "jest": "^22.0.4",
+    "jest-preset-hops": "10.4.4",
+    "react-test-renderer": "^16.0.0"
+  },
+  "jest": {
+    "preset": "jest-preset-hops"
+  }
+}
