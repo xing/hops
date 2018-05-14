@@ -18,16 +18,12 @@
   "dependencies": {
     "hops-express": "10.4.6",
     "hops-react": "10.4.6",
-    "hops-redux": "10.4.6",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
-    "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0"
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "hops": "10.4.0",
