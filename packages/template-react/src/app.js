@@ -1,13 +1,8 @@
+import { Miss, render } from 'hops-react';
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
-
-import { render, Miss } from 'hops-react';
-import { reduxExtension } from 'hops-redux';
-
-import { Home } from './home';
-import { Counter } from './counter';
-
-import reducers from './reducers';
+import { Link, Route, Switch } from 'react-router-dom';
+import Counter from './counter';
+import Home from './home';
 
 const App = () => (
   <div>
@@ -23,6 +18,4 @@ const App = () => (
   </div>
 );
 
-export default render(<App />, {
-  extensions: [reduxExtension({ reducers })],
-});
+export default render(<App />);
