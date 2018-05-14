@@ -17,7 +17,7 @@
     "url": "https://github.com/xing/hops/issues"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">5.0.0"
   },
   "contributors": [
     "dmbch <daniel@dmbch.net> (https://www.xing.com/profile/Daniel_Dembach)",
@@ -86,11 +86,10 @@
       "prettier/prettier": "error"
     },
     "parserOptions": {
-      "ecmaVersion": 2017
-    },
-    "env": {
-      "es6": true,
-      "node": true
+      "ecmaVersion": 5,
+      "env": {
+        "es6": false
+      }
     }
   },
   "eslintIgnore": [
