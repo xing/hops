@@ -1,8 +1,0 @@
-{
-  "name": "hops-config-placeholders",
-  "version": "1.0.0",
-  "hops": {
-    "assetPath": "assets",
-    "fonts": "<assetPath>/foo"
-  }
-}
