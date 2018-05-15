@@ -35,11 +35,5 @@
     "semver": "^5.5.0",
     "serverless-http": "^1.5.2",
     "strip-indent": "^2.0.0"
-  },
-  "peerDependencies": {
-    "hops-express": "^10.3.0"
-  },
-  "devDependencies": {
-    "hops-express": "10.4.2"
   }
 }
