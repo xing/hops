@@ -5,7 +5,9 @@
   "keywords": [
     "hops",
     "react",
-    "redux"
+    "redux",
+    "unmixin",
+    "unpreset"
   ],
   "license": "MIT",
   "engines": {
@@ -13,7 +15,9 @@
   },
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "mixin.browser.js",
+    "mixin.server.js"
   ],
   "scripts": {
     "test": "jest"
@@ -26,7 +30,8 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-react": "10.4.3"
+    "@untool/core": "^0.5.0",
+    "serialize-javascript": "^1.5.0"
   },
   "peerDependencies": {
     "react": ">=15.0.0 <17.0.0",
