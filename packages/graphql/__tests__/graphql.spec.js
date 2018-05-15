@@ -18,7 +18,7 @@ var mockResponse = {
   },
 };
 
-describe('graphql schema introspection', function() {
+describe.skip('graphql schema introspection', function() {
   function generateFragmentTypes() {
     var hopsConfig = require('hops-config');
     var options = {
@@ -83,7 +83,7 @@ describe('graphql schema introspection', function() {
   });
 });
 
-describe('graphql extension', function() {
+describe.skip('graphql extension', function() {
   var hopsGraphql;
 
   beforeAll(function() {
