@@ -1,8 +1,0 @@
-{
-  "name": "hops-config-simple-extends",
-  "version": "1.0.0",
-  "hops": {
-    "extends": "./config.js",
-    "port": 8082
-  }
-}

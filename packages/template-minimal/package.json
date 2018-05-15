@@ -12,7 +12,6 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "10.4.0",
-    "hops-config": "10.4.0"
+    "hops": "10.4.0"
   }
 }
