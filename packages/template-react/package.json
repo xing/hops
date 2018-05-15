@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "hops": "10.4.0",
-    "hops-build": "10.4.4",
     "jest": "^23.0.0",
     "jest-preset-hops": "10.4.4",
     "react-test-renderer": "^16.0.0"
