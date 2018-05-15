@@ -1,2 +1,0 @@
-exports.APOLLO_STATE = 'APOLLO_STATE';
-exports.APOLLO_IQRD = 'APOLLO_IQRD';
