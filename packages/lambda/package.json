@@ -29,7 +29,6 @@
     "archiver": "^2.1.0",
     "aws-sdk": "^2.177.0",
     "globby": "^7.1.1",
-    "hops-config": "10.4.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.13",
     "semver": "^5.5.0",

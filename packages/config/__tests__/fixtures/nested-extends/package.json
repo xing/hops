@@ -1,7 +1,0 @@
-{
-  "name": "hops-config-nested-extends",
-  "version": "1.0.0",
-  "hops": {
-    "extends": "./config-1.js"
-  }
-}
