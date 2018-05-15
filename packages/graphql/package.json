@@ -5,19 +5,20 @@
   "keywords": [
     "hops",
     "react",
-    "graphql"
+    "graphql",
+    "unpreset",
+    "unmixin"
   ],
   "license": "MIT",
   "engines": {
     "node": ">=8.10.0"
   },
-  "main": "node.js",
-  "browser": "dom.js",
   "files": [
-    "node.js",
-    "dom.js",
-    "commands",
-    "lib"
+    "lib",
+    "mixin.browser.js",
+    "mixin.core.js",
+    "mixin.server.js",
+    "preset.js"
   ],
   "scripts": {
     "test": "jest"
