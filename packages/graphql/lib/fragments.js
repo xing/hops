@@ -2,24 +2,22 @@
 'use strict';
 
 require('isomorphic-fetch');
-var fs = require('fs');
-var pify = require('pify');
-var graphql = require('graphql').graphql;
-var makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
+const { access, readFile, writeFile } = require('fs');
+const pify = require('pify');
+const { graphql } = require('graphql');
+const { makeExecutableSchema } = require('graphql-tools');
 
-var fragmentsFile = require('./util').getFragmentsFile();
-
-function writeFragmentTypesFile(result) {
-  result.data.__schema.types = result.data.__schema.types.filter(function(t) {
-    return t.possibleTypes !== null;
-  });
-  return pify(fs.writeFile)(fragmentsFile, JSON.stringify(result.data));
+function writeFragmentTypesFile(fragmentsFile, result) {
+  result.data.__schema.types = result.data.__schema.types.filter(
+    t => t.possibleTypes !== null
+  );
+  return pify(writeFile)(fragmentsFile, JSON.stringify(result.data));
 }
 
-function executeRemoteQuery(graphqlUri, headers, query) {
-  var combinedHeaders = (headers || []).reduce(
-    function(headers, header) {
-      var parts = header.split(':');
+function executeRemoteQuery(graphqlUri, optionalHeaders = [], query) {
+  const headers = optionalHeaders.reduce(
+    (headers, header) => {
+      const parts = header.split(':');
       headers[parts.shift()] = parts.join(':');
       return headers;
     },
@@ -29,46 +27,36 @@ function executeRemoteQuery(graphqlUri, headers, query) {
   );
   return fetch(graphqlUri, {
     method: 'POST',
-    headers: combinedHeaders,
-    body: JSON.stringify({ query: query }),
-  }).then(function(result) {
-    return result.json();
-  });
+    headers,
+    body: JSON.stringify({ query }),
+  }).then(result => result.json());
 }
 
 function executeLocalQuery(schemaFile, query) {
-  return pify(fs.readFile)(schemaFile, 'utf-8')
-    .then(function(schema) {
-      return makeExecutableSchema({ typeDefs: schema });
-    })
-    .then(function(executableSchema) {
-      return graphql(executableSchema, query);
-    });
+  return pify(readFile)(schemaFile, 'utf-8')
+    .then(typeDefs => makeExecutableSchema({ typeDefs }))
+    .then(executableSchema => graphql(executableSchema, query));
 }
 
-var query = [
-  '{',
-  '  __schema {',
-  '    types {',
-  '      kind',
-  '      name',
-  '      possibleTypes {',
-  '        name',
-  '      }',
-  '    }',
-  '  }',
-  '}',
-].join('\n');
+const query = `
+{
+  __schema {
+    types {
+      kind
+      name
+      possibleTypes {
+        name
+      }
+    }
+  }
+}
+`;
 
 module.exports = function generateFragmentTypes(options) {
-  return pify(fs.access)(options.schemaFile)
+  return pify(access)(options.schemaFile)
     .then(
-      function() {
-        return executeLocalQuery(options.schemaFile, query);
-      },
-      function() {
-        return executeRemoteQuery(options.graphqlUri, options.headers, query);
-      }
+      () => executeLocalQuery(options.schemaFile, query),
+      () => executeRemoteQuery(options.graphqlUri, options.headers, query)
     )
-    .then(writeFragmentTypesFile);
+    .then(result => writeFragmentTypesFile(options.fragmentsFile, result));
 };
