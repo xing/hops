@@ -13,7 +13,6 @@
     "graphql": "^0.13.0",
     "hops": "10.4.0",
     "hops-config": "10.4.6",
-    "hops-express": "10.4.6",
     "hops-react": "10.4.6",
     "hops-redux": "10.4.6",
     "isomorphic-fetch": "^2.2.1",
