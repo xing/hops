@@ -13,7 +13,6 @@
     "graphql": "^0.13.0",
     "hops": "10.4.0",
     "hops-build": "10.4.4",
-    "hops-build-config": "10.4.4",
     "hops-config": "10.4.0",
     "hops-express": "10.4.2",
     "hops-react": "10.4.3",

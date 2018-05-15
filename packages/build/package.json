@@ -37,7 +37,6 @@
     "directory-index": "^0.1.0",
     "express": "^4.16.0",
     "filesize": "^3.5.11",
-    "hops-build-config": "10.4.4",
     "hops-config": "10.4.0",
     "hops-express": "10.4.2",
     "memory-fs": "^0.4.1",
