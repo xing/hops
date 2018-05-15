@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Home } from '../home';
+import { Home } from '../';
 
 it('renders loading state correctly', () => {
   const tree = renderer.create(<Home data={{ loading: true }} />).toJSON();
