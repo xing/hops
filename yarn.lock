@@ -44,12 +44,12 @@
     lodash.mergewith "^4.6.1"
     mixinable "^2.0.0"
 
-"@untool/express@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.5.0.tgz#036276e7c5ea7e86b3183247843246bf77d79711"
+"@untool/express@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.6.0.tgz#ea62150a17f85e76f0053433fd118ec61dc7a84c"
   dependencies:
     "@untool/core" "^0.5.0"
-    "@untool/yargs" "^0.5.0"
+    "@untool/yargs" "^0.6.0"
     compression "^1.7.2"
     directory-index "^0.1.0"
     express "^4.16.2"
@@ -59,9 +59,9 @@
     mixinable "^2.0.0"
     node-mocks-http "^1.6.6"
 
-"@untool/react@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.5.1.tgz#7ff6d00df6e2b7bf02fff8a28acd79e993d1be5b"
+"@untool/react@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.6.0.tgz#cb510fe71ee63c664493b55d252ee6626f41ee39"
   dependencies:
     "@untool/core" "^0.5.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.13"
@@ -69,13 +69,13 @@
     mixinable "^2.0.0"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.5.1.tgz#71ad9f0c960b862bad710215c45a4c7c834a047a"
+"@untool/webpack@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.6.0.tgz#70d3c222cd655e2d3d4c705c4efbcecc4d56e271"
   dependencies:
     "@untool/core" "^0.5.0"
-    "@untool/express" "^0.5.0"
-    "@untool/yargs" "^0.5.0"
+    "@untool/express" "^0.6.0"
+    "@untool/yargs" "^0.6.0"
     babel-core "^6.26.0"
     babel-loader "^7.1.4"
     babel-plugin-dynamic-import-node "^1.2.0"
@@ -109,9 +109,9 @@
     webpack-hot-middleware "^2.21.0"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.5.0.tgz#f03bab6e8bf4b19fab2313ef4ca2da53fbc77aff"
+"@untool/yargs@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.6.0.tgz#5bc9555f2b19daae9165cef07d9a0c345637ef9a"
   dependencies:
     "@untool/core" "^0.5.0"
     chalk "^2.3.1"
