@@ -28,7 +28,7 @@ const startServer = ({ cwd, command }) =>
     started.on('close', code => {
       onKill();
       if (code) {
-        reject({ code, stderr });
+        reject(stderr);
       }
     });
 
