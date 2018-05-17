@@ -60,7 +60,8 @@ describe('hops-template-react', () => {
         fetch(url)
           .then(res => res.text())
           .then(body => {
-            const [_, scriptUrl] = body.match(/<script src="([^"]*)"/);
+            const match = body.match(/<script src="([^"]*)"/) || [];
+            const scriptUrl = match[1];
             return fetch(urlJoin(url, scriptUrl))
               .then(res => res.text())
               .then(script => {
