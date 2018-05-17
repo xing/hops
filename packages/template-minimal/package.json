@@ -5,13 +5,15 @@
   "server": "src/server.js",
   "license": "MIT",
   "hops": {
-    "browsers": "last 1 Chrome versions"
+    "browsers": "last 1 Chrome versions",
+    "presets": ["hops-preset-defaults"]
   },
   "scripts": {
     "start": "hops start",
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "10.4.0"
+    "hops": "10.4.0",
+    "hops-preset-defaults": "10.4.0"
   }
 }
