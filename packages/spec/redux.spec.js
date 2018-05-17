@@ -66,7 +66,8 @@ describe('hops-template-redux', () => {
             expect(body).toContain(
               '<script>REDUX_STATE={"counter":0};</script>'
             );
-            const [_, scriptUrl] = body.match(/<script src="([^"]*)"/);
+            const match = body.match(/<script src="([^"]*)"/) || [];
+            const scriptUrl = match[1];
             return fetch(urlJoin(url, scriptUrl))
               .then(res => res.text())
               .then(script => {
