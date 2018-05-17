@@ -79,6 +79,7 @@ class GraphQLMixin extends Mixin {
 
   prefetchData(element) {
     // TODO: check "mode" and only prefetch data when mode === 'static'
+    /* eslint-disable-next-line no-constant-condition, no-self-compare */
     return 'x' === 'x' ? getDataFromTree(element) : Promise.resolve();
   }
 
