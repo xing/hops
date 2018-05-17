@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@untool/core": "^0.5.0",
-    "@untool/express": "^0.5.0",
-    "@untool/webpack": "^0.5.1",
-    "@untool/yargs": "^0.5.0",
+    "@untool/express": "^0.6.0",
+    "@untool/webpack": "^0.6.0",
+    "@untool/yargs": "^0.6.0",
     "hops": "^10.4.0"
   }
 }
