@@ -17,6 +17,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "hops-preset-defaults": "10.4.0",
     "hops-react": "10.4.3",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
