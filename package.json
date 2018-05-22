@@ -1,5 +1,5 @@
 {
-  "name": "hops",
+  "name": "hops-lerna-root",
   "description": "universal build tools",
   "keywords": [
     "webpack",
