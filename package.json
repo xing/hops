@@ -77,7 +77,8 @@
   "eslintConfig": {
     "extends": [
       "semistandard",
-      "prettier"
+      "prettier",
+      "plugin:react/recommended"
     ],
     "plugins": [
       "prettier",
@@ -105,7 +106,9 @@
     "packages/*"
   ],
   "jest": {
-    "projects": ["packages/*"]
+    "projects": [
+      "packages/*"
+    ]
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.1.0",
@@ -122,5 +125,8 @@
     "lerna": "^2.5.1",
     "lint-staged": "^7.0.0",
     "prettier": "^1.12.0"
+  },
+  "dependencies": {
+    "eslint-plugin-react": "^7.8.2"
   }
 }

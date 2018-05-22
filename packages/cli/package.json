@@ -16,7 +16,6 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "mixin.core.js",
     "commands",
     "lib"
   ],
@@ -25,8 +24,6 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^0.4.3",
-    "@untool/yargs": "^0.4.3",
     "resolve-cwd": "^2.0.0",
     "tar": "^4.2.0",
     "validate-npm-package-name": "^3.0.0",

@@ -1,6 +1,6 @@
 import styles from './styles.css';
 
-export default () => {
+export default config => () => {
   const root = document.getElementById('app');
 
   const headline = document.createElement('h1');

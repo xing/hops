@@ -17,7 +17,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "hops-express": "10.4.2",
+    "hops-preset-defaults": "10.4.0",
     "hops-react": "10.4.3",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "hops": "10.4.0",
-    "hops-build": "10.4.4",
     "jest": "^22.0.4",
     "jest-preset-hops": "10.4.4",
     "react-test-renderer": "^16.0.0"

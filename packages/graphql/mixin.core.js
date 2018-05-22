@@ -22,10 +22,10 @@ class GraphQLMixin extends Mixin {
             },
           },
           handler: argv => {
-            const hopsConfig = require('hops-config');
             require('./lib/fragments')({
-              graphqlUri: hopsConfig.graphqlUri,
-              schemaFile: hopsConfig.graphqlSchemaFile,
+              graphqlUri: this.config.graphqlUri,
+              schemaFile: this.config.graphqlSchemaFile,
+              fragmentsFile: this.config.fragmentsFile,
               headers: argv.header,
             })
               .then(() => {
@@ -41,6 +41,16 @@ class GraphQLMixin extends Mixin {
         .alias('h', 'help')
         .demandCommand()
     );
+  }
+
+  configureWebpack(config, loaderConfigs) {
+    const { allLoaderConfigs } = loaderConfigs;
+    const tagLoader = {
+      test: /\.(graphql|gql)$/,
+      loader: 'graphql-tag/loader',
+    };
+    allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, tagLoader);
+    return config;
   }
 }
 
