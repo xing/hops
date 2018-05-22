@@ -1,6 +1,6 @@
 {
   "name": "hops-lambda",
-  "version": "10.4.6",
+  "version": "11.0.0-rc.0",
   "description": "Quick and easy deployment of Hops applications to AWS Lambda",
   "keywords": [
     "hops",

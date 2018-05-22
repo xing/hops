@@ -3,13 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<a name="10.4.6"></a>
-## [10.4.6](https://github.com/xing/hops/compare/v10.4.3...v10.4.6) (2018-07-11)
+<a name="11.0.0-rc.0"></a>
+# [11.0.0-rc.0](https://github.com/xing/hops/compare/v10.4.3...v11.0.0-rc.0) (2018-05-22)
+
+
+### Features
+
+* **preset-defaults:** move default presets into separate package ([9000cb0](https://github.com/xing/hops/commit/9000cb0))
 
 
 
-
-**Note:** Version bump only for package hops-template-graphql
 
 <a name="10.4.4"></a>
 ## [10.4.4](https://github.com/xing/hops/compare/v10.4.3...v10.4.4) (2018-04-26)
