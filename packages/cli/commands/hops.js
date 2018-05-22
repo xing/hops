@@ -12,9 +12,6 @@ var packageManifest = require('../package.json');
 
 var getLocalCliPath = function() {
   try {
-    return resolveCwd('hops-local-cli');
-  } catch (_) {}
-  try {
     return resolveCwd('hops');
   } catch (_) {}
   return null;
@@ -125,9 +122,7 @@ try {
   var dependencies = Object.keys(manifest.dependencies || {}).concat(
     Object.keys(manifest.devDependencies || {})
   );
-  isInsideHopsProject = ['hops', 'hops-local-cli'].some(function(dependency) {
-    return dependencies.indexOf(dependency) > -1;
-  });
+  isInsideHopsProject = dependencies.indexOf('hops') > -1;
 } catch (error) {
   isInsideHopsProject = false;
 }
@@ -155,8 +150,7 @@ if (isInsideHopsProject) {
   if (options._[0] !== 'init') {
     console.error(
       'Looks like we are not inside a hops project or the project misses',
-      'either `hops` or `hops-local-cli` in its `devDependencies` or',
-      '`dependencies`.'
+      'the `hops` dependency in its package.json.'
     );
     process.exit(1);
   }
@@ -165,6 +159,6 @@ if (isInsideHopsProject) {
   createDirectory(path.join(root, name), name);
   writePackageManifest(path.join(root, name), name);
   process.chdir(path.join(root, name));
-  pm.installPackages(['hops@' + options.hopsVersion], 'dev', options);
+  pm.installPackages(['hops@' + options.hopsVersion], 'prod', options);
   require(getLocalCliPath()).init(root, name, options);
 }
