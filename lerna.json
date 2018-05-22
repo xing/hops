@@ -7,7 +7,8 @@
   "commands": {
     "publish": {
       "message": "chore: release %s",
-      "exact": true
+      "exact": true,
+      "conventionalCommits": true
     }
   }
 }
