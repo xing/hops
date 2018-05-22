@@ -1,5 +1,5 @@
-const { render } = require('@untool/core/lib/runtime');
-const { Header, Miss, Status } = require('@untool/react/lib/components');
+const { render } = require('@untool/core');
+const { Header, Miss, Status } = require('@untool/react');
 
 module.exports = {
   Header,
