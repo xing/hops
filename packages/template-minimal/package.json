@@ -1,19 +1,21 @@
 {
   "name": "hops-template-minimal",
-  "version": "10.4.5",
+  "version": "11.0.0-rc.0",
   "browser": "src/browser.js",
   "server": "src/server.js",
   "license": "MIT",
   "hops": {
     "browsers": "last 1 Chrome versions",
-    "presets": ["hops-preset-defaults"]
+    "presets": [
+      "hops-preset-defaults"
+    ]
   },
   "scripts": {
     "start": "hops start",
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "10.4.0",
-    "hops-preset-defaults": "10.4.0"
+    "hops": "11.0.0-rc.0",
+    "hops-preset-defaults": "11.0.0-rc.0"
   }
 }

@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.0"></a>
+# [11.0.0-rc.0](https://github.com/xing/hops/compare/v10.4.3...v11.0.0-rc.0) (2018-05-22)
+
+
+### Bug Fixes
+
+* **build-config:** Do not use optimizations that assume concatenation ([57fd846](https://github.com/xing/hops/commit/57fd846))
+* **template-minimal:** adapt to new render method signature ([4d02eea](https://github.com/xing/hops/commit/4d02eea))
+* **template-minimal:** remove manifest, use assets from res.locals ([21a5a60](https://github.com/xing/hops/commit/21a5a60))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([bc24dca](https://github.com/xing/hops/commit/bc24dca))
+* specify engines as >=8.10 in all packages ([9228cb1](https://github.com/xing/hops/commit/9228cb1))
+
+
+### Features
+
+* support node 8 on AWS Lambda ([fb87ac1](https://github.com/xing/hops/commit/fb87ac1))
+* **config:** export config through "hops-config" ([71b319e](https://github.com/xing/hops/commit/71b319e))
+* **preset-defaults:** move default presets into separate package ([9000cb0](https://github.com/xing/hops/commit/9000cb0))
+* **template-redux:** introduce react/redux template ([4342ee4](https://github.com/xing/hops/commit/4342ee4))
+
+
+### BREAKING CHANGES
+
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
 
 <a name="10.3.0"></a>
 # [10.3.0](https://github.com/xing/hops/compare/v10.3.0-rc.3...v10.3.0) (2018-04-09)

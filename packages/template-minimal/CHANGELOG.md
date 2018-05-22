@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.0"></a>
+# [11.0.0-rc.0](https://github.com/xing/hops/compare/v10.4.3...v11.0.0-rc.0) (2018-05-22)
+
+
+### Bug Fixes
+
+* **template-minimal:** adapt to new render method signature ([4d02eea](https://github.com/xing/hops/commit/4d02eea))
+* **template-minimal:** remove manifest, use assets from res.locals ([21a5a60](https://github.com/xing/hops/commit/21a5a60))
+
+
+
+
 <a name="10.4.5"></a>
 ## [10.4.5](https://github.com/xing/hops/compare/v10.4.4...v10.4.5) (2018-05-09)
 

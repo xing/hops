@@ -1,6 +1,6 @@
 {
   "name": "hops-template-react",
-  "version": "10.4.4",
+  "version": "11.0.0-rc.0",
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
@@ -9,7 +9,10 @@
       "/",
       "/counter"
     ],
-    "presets": ["hops-preset-defaults", "hops-react"]
+    "presets": [
+      "hops-preset-defaults",
+      "hops-react"
+    ]
   },
   "scripts": {
     "start": "hops start",
@@ -17,8 +20,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "hops-preset-defaults": "10.4.0",
-    "hops-react": "10.4.3",
+    "hops-preset-defaults": "11.0.0-rc.0",
+    "hops-react": "11.0.0-rc.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -27,9 +30,9 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
-    "hops": "10.4.0",
+    "hops": "11.0.0-rc.0",
     "jest": "^23.0.0",
-    "jest-preset-hops": "10.4.4",
+    "jest-preset-hops": "11.0.0-rc.0",
     "react-test-renderer": "^16.0.0"
   },
   "jest": {
