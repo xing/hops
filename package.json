@@ -43,7 +43,7 @@
     "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "jest",
     "lint": "eslint \"packages/**/*.js\"",
-    "release": "lerna publish --conventional-commits",
+    "release": "lerna publish",
     "release:major": "lerna publish --force-publish=* --cd-version=major",
     "release:candidate": "lerna publish --force-publish=* --cd-version=premajor --preid=rc --npm-tag=next",
     "release:candidate:feature": "lerna publish --cd-version=preminor --preid=rc --npm-tag=next",
