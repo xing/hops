@@ -30,7 +30,7 @@ describe('hops-template-redux', () => {
           .then(body => {
             expect(body).toContain('Clicked:');
             expect(body).toContain(
-              '<script>REDUX_STATE={"counter":0};</script>'
+              '<script>REDUX_STATE={"counter":0}</script>'
             );
           })
       );
@@ -64,7 +64,7 @@ describe('hops-template-redux', () => {
           .then(res => res.text())
           .then(body => {
             expect(body).toContain(
-              '<script>REDUX_STATE={"counter":0};</script>'
+              '<script>REDUX_STATE={"counter":0}</script>'
             );
             const match = body.match(/<script src="([^"]*)"/) || [];
             const scriptUrl = match[1];

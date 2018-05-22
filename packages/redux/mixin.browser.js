@@ -8,21 +8,20 @@ const {
 const ReduxThunkMiddleware = require('redux-thunk').default;
 const { Provider } = require('react-redux');
 const { Mixin } = require('@untool/core');
-const serialize = require('serialize-javascript');
 
 const ReduxCompose = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 class ReduxMixin extends Mixin {
-  constructor(config, element, options) {
-    super(config, options);
-    this.options = options;
+  constructor(config, element, options = {}) {
+    super(config);
 
     this.middlewares = options.middlewares || [ReduxThunkMiddleware];
+    this.reducers = options.reducers || {};
 
     if (module.hot) {
       this.store = global.store || (global.store = this.createStore());
-      Object.entries(options.reducers).forEach(([key, reducer]) => {
-        this.store.replaceReducer(combineReducers(options.reducers));
+      Object.entries(this.reducers).forEach(([key, reducer]) => {
+        this.store.replaceReducer(combineReducers(this.reducers));
       });
     } else {
       this.store = this.createStore();
@@ -31,7 +30,7 @@ class ReduxMixin extends Mixin {
 
   createStore() {
     return createStore(
-      combineReducers(this.options.reducers),
+      combineReducers(this.reducers),
       global.REDUX_STATE,
       this.composeEnhancers(...this.applyMiddlewares())
     );
@@ -50,16 +49,7 @@ class ReduxMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return (
-      <React.Fragment>
-        <Provider store={this.store}>{reactElement}</Provider>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `REDUX_STATE=${serialize(this.store.getState())};`,
-          }}
-        />
-      </React.Fragment>
-    );
+    return <Provider store={this.store}>{reactElement}</Provider>;
   }
 }
 
