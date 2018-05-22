@@ -17,7 +17,8 @@
   "files": [
     "index.js",
     "mixin.browser.js",
-    "mixin.server.js"
+    "mixin.server.js",
+    "preset.js"
   ],
   "scripts": {
     "test": "jest"
@@ -30,11 +31,10 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^0.5.0",
-    "serialize-javascript": "^1.5.0"
+    "@untool/core": "^0.5.0"
   },
   "peerDependencies": {
-    "react": ">=15.0.0 <17.0.0",
+    "react": "^16.3.0",
     "react-redux": "^5.0.6",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"
