@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.2"></a>
+# [11.0.0-rc.2](https://github.com/xing/hops/compare/v11.0.0-rc.1...v11.0.0-rc.2) (2018-05-23)
+
+
+### Bug Fixes
+
+* **config:** use aliased config when building for browser env ([75342ee](https://github.com/xing/hops/commit/75342ee))
+
+
+
+
 <a name="11.0.0-rc.0"></a>
 # [11.0.0-rc.0](https://github.com/xing/hops/compare/v10.4.3...v11.0.0-rc.0) (2018-05-22)
 
