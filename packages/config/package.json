@@ -32,6 +32,6 @@
     "pkg-dir": "^2.0.0"
   },
   "devDependencies": {
-    "jest": "^22.0.4"
+    "jest": "^23.0.0"
   }
 }

@@ -50,7 +50,7 @@
     "fetch-mock": "^6.3.0",
     "graphql-tag": "^2.5.0",
     "hops-react": "10.4.3",
-    "jest": "^22.0.4",
+    "jest": "^23.0.0",
     "react": "^16.3.1",
     "react-apollo": "^2.0.0",
     "react-dom": "^16.3.1",
