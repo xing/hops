@@ -1,1 +1,1 @@
-module.exports = require('@untool/config');
+module.exports = require('@untool/config').getConfig();
