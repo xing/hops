@@ -10,7 +10,8 @@
   "main": "index.js",
   "esnext:main": "browser.js",
   "files": [
-    "index.js"
+    "index.js",
+    "browser.js"
   ],
   "repository": {
     "type": "git",
