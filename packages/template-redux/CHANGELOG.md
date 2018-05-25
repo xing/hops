@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.3"></a>
+# [11.0.0-rc.3](https://github.com/xing/hops/compare/v10.4.3...v11.0.0-rc.3) (2018-05-25)
+
+
+### Features
+
+* **template-redux:** introduce react/redux template ([bf979e0](https://github.com/xing/hops/commit/bf979e0))
+
+
+
+
 <a name="11.0.0-rc.1"></a>
 # [11.0.0-rc.1](https://github.com/xing/hops/compare/v11.0.0-rc.0...v11.0.0-rc.1) (2018-05-23)
 
