@@ -28,6 +28,12 @@ exports[`react node extension render should execute getTemplateData 1`] = `
       </StaticRouter>,
     ],
   ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
 }
 `;
 

@@ -23,6 +23,12 @@ exports[`react browser extension render should call ReactDOM.hydrate when the ap
       />,
     ],
   ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
 }
 `;
 
@@ -40,6 +46,12 @@ exports[`react browser extension render should call ReactDOM.render when renderi
         id="main"
       />,
     ],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
   ],
 }
 `;
