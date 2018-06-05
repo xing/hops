@@ -5,9 +5,14 @@ const {
   applyMiddleware,
   compose,
 } = require('redux');
+
 const ReduxThunkMiddleware = require('redux-thunk').default;
 const { Provider } = require('react-redux');
 const { Mixin } = require('@untool/core');
+
+const {
+  sync: { override },
+} = require('mixinable');
 
 class ReduxMixin extends Mixin {
   constructor(config, element, options = {}) {
@@ -15,8 +20,6 @@ class ReduxMixin extends Mixin {
 
     this.middlewares = options.middlewares || [ReduxThunkMiddleware];
     this.reducers = options.reducers || {};
-
-    this.store = this.createStore();
   }
 
   createStore() {
@@ -25,6 +28,15 @@ class ReduxMixin extends Mixin {
       undefined,
       this.composeEnhancers(...this.applyMiddlewares())
     );
+  }
+
+  getReduxStore() {
+    if (this.store) {
+      return this.store;
+    }
+
+    this.store = this.createStore();
+    return this.store;
   }
 
   getMiddlewares() {
@@ -46,15 +58,19 @@ class ReduxMixin extends Mixin {
         ...(data.globals || []),
         {
           name: 'REDUX_STATE',
-          value: this.store.getState(),
+          value: this.getReduxStore().getState(),
         },
       ],
     };
   }
 
   enhanceElement(reactElement) {
-    return <Provider store={this.store}>{reactElement}</Provider>;
+    return <Provider store={this.getReduxStore()}>{reactElement}</Provider>;
   }
 }
+
+ReduxMixin.strategies = {
+  getReduxStore: override,
+};
 
 module.exports = ReduxMixin;
