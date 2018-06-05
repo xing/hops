@@ -1,0 +1,24 @@
+{
+  "name": "create-hops-app",
+  "version": "11.0.0-rc.37",
+  "description": "CLI tool to create Hops applications",
+  "keywords": [
+    "hops",
+    "cli"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "bin": {
+    "create-hops-app": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "hops": "11.0.0-rc.37",
+    "yargs": "^11.0.0"
+  }
+}

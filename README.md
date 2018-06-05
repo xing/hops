@@ -39,12 +39,13 @@ $ yarn global add hops
 # OR npm install --global hops
 ```
 
-Or use [`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) to execute a one-off comand:
+Or use our [`create-hops-app`](https://github.com/xing/hops/packages/create-hops-app) package with [`yarn create`](https://yarnpkg.com/lang/en/docs/cli/create/) or [`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b):
 
 ```shell
-npx hops@next init --hops-version next --template hops-template-react@next my-awesome-project
-cd my-awesome-project
-npm start
+$ yarn create hops-app@next --hops-version next --template hops-template-react@next my-awesome-project
+# OR npx create-hops-app@next --hops-version next --template hops-template-react@next my-awesome-project
+$ cd my-awesome-project
+$ yarn start
 ```
 
 This will start hops in development mode. Visit [http://localhost:8080](http://localhost:8080) to see your app in the browser and make some changes to the code in your editor to see it live-reloading.

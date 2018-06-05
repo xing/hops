@@ -1,20 +1,14 @@
 #!/usr/bin/env node
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
 const resolveCwd = require('resolve-cwd');
-const validatePackageName = require('validate-npm-package-name');
 const yargs = require('yargs');
 const { sync: findUp } = require('find-up');
 
+const createApp = require('../lib/create-app');
 const pm = require('../lib/package-manager');
 
 const { version } = require('../package.json');
-
-function getLocalCliPath() {
-  return resolveCwd.silent('hops');
-}
 
 function globalCLI(argv) {
   return yargs
@@ -63,57 +57,6 @@ function globalCLI(argv) {
     .parse(argv);
 }
 
-function validateName(name) {
-  const validationResult = validatePackageName(name);
-  if (!validationResult.validForNewPackages) {
-    console.error(
-      'Cannot create a project with the name:',
-      name,
-      'because of the following npm restrictions:'
-    );
-    if (validationResult.errors) {
-      validationResult.errors.forEach(msg => {
-        console.error(msg);
-      });
-    }
-    if (validationResult.warnings) {
-      validationResult.warnings.forEach(msg => {
-        console.warn(msg);
-      });
-    }
-    process.exit(1);
-  }
-}
-
-function createDirectory(root, name) {
-  if (fs.existsSync(root)) {
-    console.error(
-      'A directory with the name:',
-      name,
-      'already exists in:',
-      process.cwd(),
-      '\nPlease remove this directory or choose a different project-name.'
-    );
-    process.exit(1);
-  }
-  fs.mkdirSync(root);
-}
-
-function writePackageManifest(root, name) {
-  fs.writeFileSync(
-    path.join(root, 'package.json'),
-    JSON.stringify(
-      {
-        name: name,
-        version: '1.0.0',
-        private: true,
-      },
-      null,
-      2
-    )
-  );
-}
-
 let isInsideHopsProject = false;
 try {
   const { dependencies, devDependencies } = require(findUp('package.json'));
@@ -123,7 +66,7 @@ try {
 }
 
 if (isInsideHopsProject) {
-  const localCliPath = getLocalCliPath();
+  const localCliPath = resolveCwd.silent('hops');
   if (localCliPath) {
     require(localCliPath).run();
   } else {
@@ -139,9 +82,6 @@ if (isInsideHopsProject) {
   }
 } else {
   const options = globalCLI(process.argv.slice(2));
-  const name = options.projectName;
-  const root = process.cwd();
-  const appDir = path.join(root, name);
 
   if (options._[0] !== 'init') {
     console.error(
@@ -151,10 +91,5 @@ if (isInsideHopsProject) {
     process.exit(1);
   }
 
-  validateName(name);
-  createDirectory(appDir, name);
-  writePackageManifest(appDir, name);
-  process.chdir(appDir);
-  pm.installPackages([`hops@${options.hopsVersion}`], 'prod', options);
-  require(getLocalCliPath()).init(root, name, options);
+  createApp(options, process.cwd());
 }
