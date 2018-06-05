@@ -55,7 +55,7 @@ describe('hops-template-react', () => {
 
     afterAll(() => serve.then(({ kill }) => kill()));
 
-    it.only('should deliver main js file', () => {
+    it('should deliver main js file', () => {
       return serve.then(({ url }) =>
         fetch(url)
           .then(res => res.text())
