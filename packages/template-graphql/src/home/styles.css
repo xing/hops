@@ -15,8 +15,8 @@ body {
 
   font-family: var(--font-family-sans);
   font-size: var(--font-size);
+}
 
-  @nest &::after {
-    content: ' 🚀';
-  }
+.headline::after {
+  content: ' 🚀';
 }
