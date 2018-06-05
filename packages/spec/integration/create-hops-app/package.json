@@ -1,0 +1,11 @@
+{
+  "name": "fixture-create-hops-app",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js"
+  }
+}
