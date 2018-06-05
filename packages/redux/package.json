@@ -34,12 +34,14 @@
     "@untool/core": "^0.7.0"
   },
   "peerDependencies": {
+    "hops-react": "^11.0.0-rc.4",
     "react": "^16.3.0",
     "react-redux": "^5.0.6",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "hops-react": "^11.0.0-rc.4",
     "jest": "^23.0.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
