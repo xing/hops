@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.4"></a>
+# [11.0.0-rc.4](https://github.com/xing/hops/compare/v11.0.0-rc.3...v11.0.0-rc.4) (2018-06-05)
+
+
+### Features
+
+* **redux:** expose getReduxStore hook ([d63e2d4](https://github.com/xing/hops/commit/d63e2d4))
+
+
+
+
 <a name="11.0.0-rc.3"></a>
 # [11.0.0-rc.3](https://github.com/xing/hops/compare/v10.4.3...v11.0.0-rc.3) (2018-05-25)
 
