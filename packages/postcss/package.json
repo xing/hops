@@ -1,0 +1,34 @@
+{
+  "name": "hops-postcss",
+  "version": "11.0.0-rc.4",
+  "description": "Configuration of PostCSS and Webpack for Hops",
+  "keywords": [
+    "hops",
+    "postcss",
+    "css-modules"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "main": "index.js",
+  "esnext": "index.js",
+  "files": [
+    "mixin.core.js",
+    "preset.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "@untool/core": "^0.8.1",
+    "css-loader": "^0.28.11",
+    "mini-css-extract-plugin": "^0.4.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.2",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.5",
+    "postcss-preset-env": "^5.1.0",
+    "style-loader": "^0.21.0"
+  }
+}

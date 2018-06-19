@@ -11,6 +11,8 @@
     "graphqlUri": "https://www.graphqlhub.com/graphql",
     "presets": [
       "hops-preset-defaults",
+      "hops-react",
+      "hops-postcss",
       "hops-graphql"
     ]
   },
