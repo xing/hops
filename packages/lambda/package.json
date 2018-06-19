@@ -15,11 +15,11 @@
   },
   "main": "index.js",
   "files": [
+    "lib",
     "cloudformation.yaml",
     "index.js",
     "lambda.js",
-    "commands",
-    "lib"
+    "mixin.core.js"
   ],
   "repository": {
     "type": "git",
