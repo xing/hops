@@ -58,27 +58,27 @@ This will create a very basic hops example project that is ready to go.
 
 The following arguments are optional:
 
-* `--verbose` - to increase the verbosity of the output for debugging purposes
-* `--npm` - to force usage of `npm` instead of `yarn` even if yarn is available
-* `--template` - to specify a different template for the intial structure. available templates:
-  * [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react)
-  * [hops-template-minimal](https://github.com/xing/hops/tree/master/packages/template-minimal)
-  * [hops-template-graphql](https://github.com/xing/hops/tree/master/packages/template-graphql)
+- `--verbose` - to increase the verbosity of the output for debugging purposes
+- `--npm` - to force usage of `npm` instead of `yarn` even if yarn is available
+- `--template` - to specify a different template for the intial structure. available templates:
+  - [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react)
+  - [hops-template-minimal](https://github.com/xing/hops/tree/master/packages/template-minimal)
+  - [hops-template-graphql](https://github.com/xing/hops/tree/master/packages/template-graphql)
 
 Then `cd` into `my-new-hops-project` and execute `hops --help` again to see a list of supported commands.
 
 ### Available Commands
 
-* `hops build` (provided by [`hops-build`](https://www.npmjs.com/package/hops-build)) - initiates a project build to generate browser and server JS bundles
-* `hops develop` (provided by [`hops-build`](https://www.npmjs.com/package/hops-build)) - starts the webpack development server with hot code reloading for fast local iterations
-* `hops serve` (provided by [`hops-express`](https://www.npmjs.com/package/hops-express)) - starts a production Node.js Express server using the generated JS bundle from `hops build`
-* `hops start` - if NODE_ENV is set to production, this runs `hops build` and `hops serve`. Otherwise `hops develop` is executed.
+- `hops build` (provided by [`hops-build`](https://www.npmjs.com/package/hops-build)) - initiates a project build to generate browser and server JS bundles
+- `hops develop` (provided by [`hops-build`](https://www.npmjs.com/package/hops-build)) - starts the webpack development server with hot code reloading for fast local iterations
+- `hops serve` (provided by [`hops-express`](https://www.npmjs.com/package/hops-express)) - starts a production Node.js Express server using the generated JS bundle from `hops build`
+- `hops start` - if NODE_ENV is set to production, this runs `hops build` and `hops serve`. Otherwise `hops develop` is executed.
 
 All commands accept additional arguments:
 
-* `--production` / `-p` - equivalent to setting `NODE_ENV` to `production`
-* `--static` / `-s` - to generate static HTML app shells for all configured hops locations.
-* `--clean` / `-c` - defaults to `true`, removes the build directory before initiating a build (n/a for `hops serve`)
+- `--production` / `-p` - equivalent to setting `NODE_ENV` to `production`
+- `--static` / `-s` - to generate static HTML app shells for all configured hops locations.
+- `--clean` / `-c` - defaults to `true`, removes the build directory before initiating a build (n/a for `hops serve`)
 
 `hops` only lists commands that are made available by other installed hops packages.
 
