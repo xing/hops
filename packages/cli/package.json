@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "resolve-cwd": "^2.0.0",
-    "tar": "^4.2.0",
+    "tar": "^4.4.4",
     "validate-npm-package-name": "^3.0.0",
     "yargs": "^11.0.0"
   }

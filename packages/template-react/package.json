@@ -23,17 +23,17 @@
     "hops-preset-defaults": "11.0.0-rc.4",
     "hops-react": "11.0.0-rc.4",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "hops": "11.0.0-rc.3",
-    "jest": "^23.0.0",
+    "jest": "^23.1.0",
     "jest-preset-hops": "11.0.0-rc.3",
-    "react-test-renderer": "^16.0.0"
+    "react-test-renderer": "^16.4.1"
   },
   "jest": {
     "preset": "jest-preset-hops"

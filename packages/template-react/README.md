@@ -50,8 +50,8 @@ You can customize it to your needs - or use it as a reference guide when creatin
 
 This command can be used to start a development server with hot-code reloading or to start a production server.
 
-* starting a development server: `npm start`
-* starting a production server: `npm start --production`
+- starting a development server: `npm start`
+- starting a production server: `npm start --production`
 
 Before you start a production server you need to build your JS bundle files.
 
