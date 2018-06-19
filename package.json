@@ -116,17 +116,17 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-semistandard": "^12.0.0",
     "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-prettier": "^2.4.0",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "lerna": "^2.5.1",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.12.0"
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.5"
   },
   "dependencies": {
-    "eslint-plugin-react": "^7.8.2"
+    "eslint-plugin-react": "^7.9.1"
   }
 }

@@ -8,8 +8,7 @@ var crypto = require('crypto');
 function hashFileContents(file) {
   return new Promise(function(resolve, reject) {
     var hash = crypto.createHash('sha1').setEncoding('hex');
-    fs
-      .createReadStream(file)
+    fs.createReadStream(file)
       .pipe(hash)
       .on('error', reject)
       .on('finish', function() {

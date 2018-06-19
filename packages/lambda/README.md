@@ -96,7 +96,7 @@ The following options are supported in a [hops-config](https://github.com/xing/h
 | `certificateArn`             | `String` | If you use a custom domain you need to specify the ARN of a SSL certificate in [ACM](https://aws.amazon.com/certificate-manager/). Defaults to `''` |
 | `cloudformationTemplateFile` | `String` | Path to a custom CloudFormation template. Defaults to `node_modules/hops-lambda/cloudformation.yaml`                                                |
 
-* If the region is not set via hops config, it will try `AWS_REGION` and `AWS_DEFAULT_REGION` in your environment first, before defaulting to `us-east-1`.
+- If the region is not set via hops config, it will try `AWS_REGION` and `AWS_DEFAULT_REGION` in your environment first, before defaulting to `us-east-1`.
 
 If you use hops-lambda without a custom domain, you need to set your [hops-config](https://github.com/xing/hops/blob/master/packages/config/README.md#available-options) `basePath` and `assetPath` to the same value as your `stageName` (see above).
 
@@ -108,9 +108,9 @@ To set-up your credentials in a `~/.aws/credentials` file, please [follow this a
 
 To set-up your credentials via environment variables, you can define the following variables:
 
-* `AWS_ACCESS_KEY_ID`
-* `AWS_SECRET_ACCESS_KEY`
-* `AWS_SESSION_TOKEN` (optional, only required for [MFA](https://aws.amazon.com/premiumsupport/knowledge-center/authenticate-mfa-cli/))
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_SESSION_TOKEN` (optional, only required for [MFA](https://aws.amazon.com/premiumsupport/knowledge-center/authenticate-mfa-cli/))
 
 # Usage
 
@@ -120,8 +120,8 @@ Hops Lambda allows you to quickly deploy (and remove) your hops applications on 
 
 The hops-lambda package, when installed, adds a new `hops lambda` command, which contains two sub-commands:
 
-* `hops lambda deploy`
-* `hops lambda destroy [--yes] [--keep-files] [--keep-bucket]`
+- `hops lambda deploy`
+- `hops lambda destroy [--yes] [--keep-files] [--keep-bucket]`
 
 You can use the integrated help in the CLI to get more information on the available options.
 
