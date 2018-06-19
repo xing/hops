@@ -11,7 +11,8 @@
     ],
     "presets": [
       "hops-preset-defaults",
-      "hops-react"
+      "hops-react",
+      "hops-postcss"
     ]
   },
   "scripts": {

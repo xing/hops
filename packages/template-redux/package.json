@@ -11,6 +11,8 @@
     ],
     "presets": [
       "hops-preset-defaults",
+      "hops-react",
+      "hops-postcss",
       "hops-redux"
     ]
   },
