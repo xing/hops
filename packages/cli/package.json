@@ -15,9 +15,9 @@
   },
   "main": "index.js",
   "files": [
-    "index.js",
     "commands",
-    "lib"
+    "lib",
+    "index.js"
   ],
   "repository": {
     "type": "git",

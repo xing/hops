@@ -1,4 +1,4 @@
 module.exports = {
   presets: ['@untool/react'],
-  mixins: [__dirname],
+  mixins: ['@untool/react', __dirname],
 };

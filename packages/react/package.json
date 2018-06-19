@@ -14,7 +14,9 @@
   "main": "index.js",
   "esnext": "index.js",
   "files": [
+    "lib",
     "index.js",
+    "mixin.core.js",
     "preset.js"
   ],
   "repository": {
@@ -23,6 +25,8 @@
   },
   "dependencies": {
     "@untool/core": "^0.8.1",
-    "@untool/react": "^0.8.1"
+    "@untool/react": "^0.8.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0"
   }
 }

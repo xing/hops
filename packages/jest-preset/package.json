@@ -8,9 +8,9 @@
   ],
   "license": "MIT",
   "files": [
-    "jest-preset.json",
     "mocks",
-    "transforms"
+    "transforms",
+    "jest-preset.json"
   ],
   "engines": {
     "node": ">=8.10.0"
