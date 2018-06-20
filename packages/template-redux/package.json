@@ -22,8 +22,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "hops-preset-defaults": "11.0.0-rc.4",
     "hops-react": "11.0.0-rc.4",
     "hops-redux": "11.0.0-rc.4",
+    "hops-postcss": "11.0.0-rc.4",
     "prop-types": "^15.6.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

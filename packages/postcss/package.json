@@ -30,5 +30,8 @@
     "postcss-loader": "^2.1.5",
     "postcss-preset-env": "^5.1.0",
     "style-loader": "^0.21.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.12.0"
   }
 }
