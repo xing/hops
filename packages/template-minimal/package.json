@@ -16,7 +16,10 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "11.0.0-rc.3",
-    "hops-preset-defaults": "11.0.0-rc.4"
+    "hops-preset-defaults": "11.0.0-rc.4",
+    "hops-postcss": "11.0.0-rc.4"
+  },
+  "devDependencies": {
+    "hops": "11.0.0-rc.3"
   }
 }
