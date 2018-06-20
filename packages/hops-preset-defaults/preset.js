@@ -1,3 +1,8 @@
 module.exports = {
-  presets: ['@untool/yargs', '@untool/webpack', '@untool/express'],
+  presets: [
+    '@untool/yargs',
+    '@untool/webpack',
+    '@untool/express',
+    'hops-express',
+  ],
 };
