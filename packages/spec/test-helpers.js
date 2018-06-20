@@ -13,7 +13,7 @@ const startServer = ({ cwd, command }) =>
 
     started.stdout.on('data', data => {
       const line = data.toString('utf-8');
-      const match = line.match(/server listening at (.*)/);
+      const match = line.match(/Server listening at (.*)/i);
       if (match) {
         const url = match[1];
         resolve({ url, kill });
