@@ -5,7 +5,7 @@ class ExpressCoreMixin extends Mixin {
   inspectServer(app) {
     const { port, address: host } = app.address();
     console.log(
-      'server listening at %s',
+      'Server listening at %s',
       format({
         protocol: this.config.https ? 'https' : 'http',
         hostname: ['0.0.0.0', '127.0.0.1'].includes(host) ? 'localhost' : host,
