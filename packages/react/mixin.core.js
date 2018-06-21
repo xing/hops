@@ -9,6 +9,10 @@ class ReactCoreMixin extends Mixin {
 
     return webpackConfig;
   }
+
+  handleArguments(argv) {
+    global._hopsCLIArguments = Object.assign({}, argv, { $0: 'hops' });
+  }
 }
 
 module.exports = ReactCoreMixin;
