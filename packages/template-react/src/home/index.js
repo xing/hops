@@ -8,7 +8,7 @@ export default function Home() {
       <Helmet>
         <title>Hops Demo</title>
       </Helmet>
-      <h1 className={styles.headline}>Hello World!</h1>
+      <h1 className={styles.headline}>Hello World! {process.env.FOO_ROBIN}</h1>
     </div>
   );
 }
