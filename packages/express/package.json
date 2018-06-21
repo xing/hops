@@ -21,7 +21,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^0.8.1",
+    "@untool/core": "^0.8.2",
     "hops-express": "^11.0.0-rc.4"
   }
 }

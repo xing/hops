@@ -42,24 +42,26 @@
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.4.tgz#b863a4191e525206819e008097ebf0fb2e3a1cdc"
 
-"@untool/core@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.8.1.tgz#73b9994433fbc99260c57a929b8043cd8d0cfeaf"
+"@untool/core@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.8.2.tgz#a63f5ff4be8ae68e9ab443ba23b48b901043837a"
   dependencies:
     cosmiconfig "^5.0.5"
+    debug "^3.1.0"
     enhanced-resolve "^4.0.0"
     find-up "^3.0.0"
     flat "^4.0.0"
     is-plain-object "^2.0.4"
     lodash.mergewith "^4.6.1"
     mixinable "^3.0.0"
+    supports-color "^5.4.0"
 
-"@untool/express@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.8.1.tgz#32b923221dd9c91cc882f6b90e08c1931e71b9c4"
+"@untool/express@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.8.2.tgz#49e053f5dc095e64038504172723e55a095e1936"
   dependencies:
-    "@untool/core" "^0.8.1"
-    "@untool/yargs" "^0.8.1"
+    "@untool/core" "^0.8.2"
+    "@untool/yargs" "^0.8.2"
     directory-index "^0.1.0"
     express "^4.16.2"
     helmet "^3.12.1"
@@ -68,23 +70,23 @@
     mixinable "^3.0.0"
     node-mocks-http "^1.7.0"
 
-"@untool/react@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.8.1.tgz#8d1c10e8bb7b7744d561ed445d037b3d550198d5"
+"@untool/react@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.8.2.tgz#4bf1518059a2bbf426e0873e9e65a417a423d7c6"
   dependencies:
-    "@untool/core" "^0.8.1"
+    "@untool/core" "^0.8.2"
     babel-plugin-transform-react-remove-prop-types "^0.4.13"
     babel-preset-react "^6.24.1"
     mixinable "^3.0.0"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.8.1.tgz#09ca72d7481cfba37d4434806a1da3059e86039d"
+"@untool/webpack@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.8.2.tgz#485648503bb5acf67ca7ef4a0e20bc9df40aae6c"
   dependencies:
-    "@untool/core" "^0.8.1"
-    "@untool/express" "^0.8.1"
-    "@untool/yargs" "^0.8.1"
+    "@untool/core" "^0.8.2"
+    "@untool/express" "^0.8.2"
+    "@untool/yargs" "^0.8.2"
     babel-core "^6.26.0"
     babel-loader "^7.1.4"
     babel-plugin-dynamic-import-node "^1.2.0"
@@ -109,11 +111,11 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^0.8.1":
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.8.1.tgz#7647959954c254d47d996c9c5d09cb2d6bc9c5ca"
+"@untool/yargs@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.8.2.tgz#15b70675ad15482703981c3d72fc852f5a6530b7"
   dependencies:
-    "@untool/core" "^0.8.1"
+    "@untool/core" "^0.8.2"
     mixinable "^3.0.0"
     yargs "^11.0.0"
 
@@ -661,9 +663,9 @@ autoprefixer@^8.5.0:
     postcss "^6.0.22"
     postcss-value-parser "^3.2.3"
 
-aws-sdk@^2.259.1:
-  version "2.259.1"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.259.1.tgz#df4814b65d5654f250d097951aa84e27a472b5aa"
+aws-sdk@^2.260.1:
+  version "2.260.1"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.260.1.tgz#58d85704b200a6d0f42f08e0aee8f4da23485dd0"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -2655,8 +2657,8 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.47:
-  version "1.3.48"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.48.tgz#d3b0d8593814044e092ece2108fc3ac9aea4b900"
+  version "1.3.49"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.49.tgz#651384b0d81f078a96639b2b36975141b7915004"
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -3902,8 +3904,8 @@ ignore-walk@^3.0.1:
     minimatch "^3.0.4"
 
 ignore@^3.3.3, ignore@^3.3.5, ignore@^3.3.6:
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.8.tgz#3f8e9c35d38708a3a7e0e9abb6c73e7ee7707b2b"
+  version "3.3.10"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
 
 import-local@^1.0.0:
   version "1.0.0"
@@ -8045,8 +8047,8 @@ uglify-to-browserify@~1.0.0:
   resolved "https://registry.yarnpkg.com/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz#6e0924d6bda6b5afe349e39a6d632850a0f882b7"
 
 uglifyjs-webpack-plugin@^1.2.4:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.2.5.tgz#2ef8387c8f1a903ec5e44fa36f9f3cbdcea67641"
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.2.6.tgz#f4bb44f02431e82b301d8d4624330a6a35729381"
   dependencies:
     cacache "^10.0.4"
     find-cache-dir "^1.0.0"
