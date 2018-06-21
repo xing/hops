@@ -51,16 +51,13 @@ class ReduxMixin extends Mixin {
     return compose(...enhancers);
   }
 
-  fetchData(data = {}) {
+  enhanceData(data) {
     return {
       ...data,
-      globals: [
-        ...(data.globals || []),
-        {
-          name: 'REDUX_STATE',
-          value: this.getReduxStore().getState(),
-        },
-      ],
+      globals: {
+        ...data.globals,
+        REDUX_STATE: this.getReduxStore().getState(),
+      },
     };
   }
 
