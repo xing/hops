@@ -30,6 +30,16 @@ exports.withCLIArguments = function withCLIArguments(WrappedComponent) {
     });
 };
 
+exports.withEnvironmentVariables = function withEnvironmentVariables(
+  WrappedComponent
+) {
+  return props =>
+    createElement(WrappedComponent, {
+      ...props,
+      environmentVariables: process.env,
+    });
+};
+
 exports.Miss = exports.withServer(({ setMiss }) => {
   setMiss();
   return null;
