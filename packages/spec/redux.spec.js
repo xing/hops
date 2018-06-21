@@ -29,9 +29,7 @@ describe('hops-template-redux', () => {
           .then(res => res.text())
           .then(body => {
             expect(body).toContain('Clicked:');
-            expect(body).toContain(
-              '<script>REDUX_STATE={"counter":0}</script>'
-            );
+            expect(body).toContain('REDUX_STATE={"counter":0}');
           })
       );
     });
@@ -63,9 +61,7 @@ describe('hops-template-redux', () => {
         fetch(url)
           .then(res => res.text())
           .then(body => {
-            expect(body).toContain(
-              '<script>REDUX_STATE={"counter":0}</script>'
-            );
+            expect(body).toContain('REDUX_STATE={"counter":0}');
             const match = body.match(/<script src="([^"]*)"/) || [];
             const scriptUrl = match[1];
             return fetch(urlJoin(url, scriptUrl))
