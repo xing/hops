@@ -91,6 +91,7 @@
     "parserOptions": {
       "ecmaVersion": 2018
     },
+    "parser": "babel-eslint",
     "env": {
       "es6": true,
       "node": true
@@ -111,6 +112,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^4.15.0",
     "eslint-config-prettier": "^2.9.0",
