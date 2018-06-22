@@ -55,8 +55,6 @@ class ReduxActionCreatorRuntimeMixin extends Mixin {
     const store = this.getReduxStore();
     const actionCreators = this.options.actionCreators || [];
 
-    console.log(this.options);
-
     return Promise.all(
       actionCreators.map(actionCreator => {
         const { action, path, exact = true, strict = false } = actionCreator;
