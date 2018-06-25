@@ -14,9 +14,7 @@ class ReactServerMixin extends Mixin {
       globals: {
         ...data.globals,
         _hopsCLIArguments: global._hopsCLIArguments,
-        process: {
-          env: this.filterEnvironmentVariables(),
-        },
+        _hopsEnvironmentVariables: this.filterEnvironmentVariables(),
       },
     };
   }

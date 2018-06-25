@@ -7,12 +7,6 @@ class ReactCoreMixin extends Mixin {
       require.resolve('babel-plugin-transform-object-rest-spread')
     );
 
-    // TODO: this does not actually work because the webpack browser process
-    // shim also includes other properties, such as `nextTick`, `cwd` and such
-    webpackConfig.node = {
-      process: false,
-    };
-
     return webpackConfig;
   }
 
