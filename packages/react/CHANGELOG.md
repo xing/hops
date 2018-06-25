@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.5"></a>
+# [11.0.0-rc.5](https://github.com/xing/hops/compare/v11.0.0-rc.4...v11.0.0-rc.5) (2018-06-25)
+
+
+### Bug Fixes
+
+* **react:** do not fail if _hopsEnvironmentVariables is not defined ([6bceb66](https://github.com/xing/hops/commit/6bceb66))
+* **react:** try to acess env var on `process.env` first ([9d32e7b](https://github.com/xing/hops/commit/9d32e7b))
+
+
+### Features
+
+* **react:** implement server components ([95d329f](https://github.com/xing/hops/commit/95d329f))
+* **react:** pass CLI arguments to runtime mixins / React HoC ([ef4219f](https://github.com/xing/hops/commit/ef4219f))
+* **react:** pass environment variables to React HoC ([ce78057](https://github.com/xing/hops/commit/ce78057))
+* **react:** set res.locals.shouldPrefetchOnServer based on config ([8dddb25](https://github.com/xing/hops/commit/8dddb25))
+
+
+
+
 <a name="11.0.0-rc.4"></a>
 # [11.0.0-rc.4](https://github.com/xing/hops/compare/v11.0.0-rc.3...v11.0.0-rc.4) (2018-06-05)
 

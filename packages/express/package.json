@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "11.0.0-rc.4",
+  "version": "11.0.0-rc.5",
   "description": "Customization for the our express server",
   "keywords": [
     "hops",
@@ -22,6 +22,6 @@
   },
   "dependencies": {
     "@untool/core": "^0.9.0",
-    "hops-express": "^11.0.0-rc.4"
+    "hops-express": "11.0.0-rc.5"
   }
 }
