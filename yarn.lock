@@ -118,9 +118,9 @@
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.4.tgz#b863a4191e525206819e008097ebf0fb2e3a1cdc"
 
-"@untool/core@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.8.2.tgz#a63f5ff4be8ae68e9ab443ba23b48b901043837a"
+"@untool/core@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.9.0.tgz#146eac002819cae6f3c854a7890fa63cac39ee8c"
   dependencies:
     cosmiconfig "^5.0.5"
     debug "^3.1.0"
@@ -132,12 +132,13 @@
     mixinable "^3.0.0"
     supports-color "^5.4.0"
 
-"@untool/express@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.8.2.tgz#49e053f5dc095e64038504172723e55a095e1936"
+"@untool/express@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.9.0.tgz#a938fe494d0742ed6305e8d41ed89a7648eaa5c3"
   dependencies:
-    "@untool/core" "^0.8.2"
-    "@untool/yargs" "^0.8.2"
+    "@untool/core" "^0.9.0"
+    "@untool/yargs" "^0.9.0"
+    debug "^3.1.0"
     directory-index "^0.1.0"
     express "^4.16.2"
     helmet "^3.12.1"
@@ -145,24 +146,25 @@
     mime "^2.2.2"
     mixinable "^3.0.0"
     node-mocks-http "^1.7.0"
+    supports-color "^5.4.0"
 
-"@untool/react@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.8.2.tgz#4bf1518059a2bbf426e0873e9e65a417a423d7c6"
+"@untool/react@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.9.0.tgz#2799debebc94d7ba90f163305f5e0f76769cc9a8"
   dependencies:
-    "@untool/core" "^0.8.2"
+    "@untool/core" "^0.9.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.13"
     babel-preset-react "^6.24.1"
     mixinable "^3.0.0"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.8.2.tgz#485648503bb5acf67ca7ef4a0e20bc9df40aae6c"
+"@untool/webpack@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.9.0.tgz#67fea82f5bea359a4628f06b4de58a5e21ac9369"
   dependencies:
-    "@untool/core" "^0.8.2"
-    "@untool/express" "^0.8.2"
-    "@untool/yargs" "^0.8.2"
+    "@untool/core" "^0.9.0"
+    "@untool/express" "^0.9.0"
+    "@untool/yargs" "^0.9.0"
     babel-core "^6.26.0"
     babel-loader "^7.1.4"
     babel-plugin-dynamic-import-node "^1.2.0"
@@ -170,6 +172,7 @@
     babel-polyfill "^6.26.0"
     babel-preset-env "^1.7.0"
     caniuse-lite "^1.0.30000846"
+    debug "^3.1.0"
     enhanced-resolve "^4.0.0"
     file-loader "^1.1.6"
     find-up "^3.0.0"
@@ -180,6 +183,7 @@
     require-from-string "^2.0.1"
     rimraf "^2.6.2"
     source-map-support "^0.5.6"
+    supports-color "^5.4.0"
     uglifyjs-webpack-plugin "^1.2.4"
     url-loader "^1.0.1"
     webpack "^4.10.2"
@@ -187,11 +191,11 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.8.2.tgz#15b70675ad15482703981c3d72fc852f5a6530b7"
+"@untool/yargs@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.9.0.tgz#63040f334858dd1440b30992df22f61376f6dfce"
   dependencies:
-    "@untool/core" "^0.8.2"
+    "@untool/core" "^0.9.0"
     mixinable "^3.0.0"
     yargs "^11.0.0"
 
