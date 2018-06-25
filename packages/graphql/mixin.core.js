@@ -43,7 +43,7 @@ class GraphQLMixin extends Mixin {
     );
   }
 
-  configureWebpack(config, loaderConfigs) {
+  configureBuild(config, loaderConfigs) {
     const { allLoaderConfigs } = loaderConfigs;
     const tagLoader = {
       test: /\.(graphql|gql)$/,

@@ -19,9 +19,9 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/express": "^0.8.2",
-    "@untool/webpack": "^0.8.2",
-    "@untool/yargs": "^0.8.2",
+    "@untool/express": "^0.9.0",
+    "@untool/webpack": "^0.9.0",
+    "@untool/yargs": "^0.9.0",
     "hops-express": "^11.0.0-rc.4",
     "hops-webpack": "^11.0.0-rc.4"
   }

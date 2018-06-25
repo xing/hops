@@ -5,11 +5,13 @@ class ReduxActionCreatorDispatcherCoreMixin extends Mixin {
     this.cliArgs = cliArgs;
   }
 
-  initializeServer(app) {
-    app.use((req, res, next) => {
+  configureServer(app, middleware) {
+    middleware.initial.push((req, res, next) => {
       res.locals._hopsStatic = this.cliArgs.static;
       next();
     });
+
+    return app;
   }
 }
 
