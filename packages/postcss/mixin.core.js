@@ -32,6 +32,11 @@ const getCSSLoaderConfig = browsers => ({
           postcssImportPlugin(),
           postcssPresetEnv({
             browsers,
+            stage: 2,
+            features: {
+              'nesting-rules': true,
+              'custom-media-queries': true,
+            },
           }),
         ],
       },
