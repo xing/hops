@@ -19,4 +19,16 @@ const App = () => (
   </div>
 );
 
-export default render(<App />, { reducers: reducers });
+export default render(<App />, {
+  reducers: reducers,
+  actionCreators: [
+    {
+      path: '/*',
+      action: () => {
+        console.log('@@@@@DISPATCH ME');
+
+        return () => {};
+      },
+    },
+  ],
+});
