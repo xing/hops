@@ -40,22 +40,22 @@ const getCSSLoaderConfig = browsers => ({
 });
 
 class PostCSSMixin extends Mixin {
-  configureWebpack(webpackConfig, loaderConfigs, target) {
+  configureBuild(webpackConfig, loaderConfigs, target) {
     switch (target) {
       case 'build':
-        this.configureBuild(webpackConfig, loaderConfigs);
+        this.configureTargetBuild(webpackConfig, loaderConfigs);
         break;
       case 'develop':
-        this.configureDevelop(loaderConfigs);
+        this.configureTargetDevelop(loaderConfigs);
         break;
       case 'node':
-        this.configureNode(loaderConfigs);
+        this.configureTargetNode(loaderConfigs);
         break;
     }
     return webpackConfig;
   }
 
-  configureBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }) {
+  configureTargetBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }) {
     const loaderConfig = {
       ...getCSSLoaderConfig(this.config.browsers),
       use: [
@@ -95,7 +95,7 @@ class PostCSSMixin extends Mixin {
     );
   }
 
-  configureDevelop({ allLoaderConfigs, jsLoaderConfig }) {
+  configureTargetDevelop({ allLoaderConfigs, jsLoaderConfig }) {
     const loaderConfig = {
       ...getCSSLoaderConfig(this.config.browsers),
       use: [
@@ -111,7 +111,7 @@ class PostCSSMixin extends Mixin {
     );
   }
 
-  configureNode({ allLoaderConfigs, jsLoaderConfig }) {
+  configureTargetNode({ allLoaderConfigs, jsLoaderConfig }) {
     const cssLoaderConfig = {
       test: [/\.css$/],
       loader: require.resolve('css-loader/locals'),
