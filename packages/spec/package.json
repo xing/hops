@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "11.0.0-rc.4",
+  "version": "11.0.0-rc.5",
   "private": true,
   "scripts": {
     "test": "jest"
@@ -14,7 +14,7 @@
   "devDependencies": {
     "isomorphic-fetch": "^2.2.1",
     "jest": "^23.1.0",
-    "jest-preset-hops": "11.0.0-rc.3",
+    "jest-preset-hops": "11.0.0-rc.5",
     "url-join": "^4.0.0"
   }
 }
