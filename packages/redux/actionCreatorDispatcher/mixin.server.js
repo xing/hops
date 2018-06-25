@@ -5,12 +5,9 @@ const ReduxActionCreatorCommonMixin = require('./mixin.runtime-common');
 
 class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
   bootstrap(request, response) {
-    this.isStatic = response.locals._hopsStatic;
-    // with server side rendering, all actions will be dispatched in order to include server side information
-    // for the template. This can be disabled with the options flag disableServerSideRendering when you only
-    // want rendering to happen on the client side. This is useful for situations where you have dynamic routes
-    // on the client and want to prevent rendering wrong information into the clients templates.
-    if (!this.isStatic && !this.options.disableServerSideRendering) {
+    this.prefetchedOnServer = response.locals.shouldPrefetchOnServer === true;
+
+    if (this.prefetchedOnServer) {
       return this.dispatchAll(createLocation(request.path));
     }
     return Promise.resolve();
@@ -21,7 +18,7 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
       ...data,
       globals: {
         ...data.globals,
-        _hopsStatic: this.isStatic,
+        _hopsPrefetchedOnServer: this.prefetchedOnServer,
       },
     };
   }
