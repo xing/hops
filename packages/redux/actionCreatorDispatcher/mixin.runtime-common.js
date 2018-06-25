@@ -12,7 +12,7 @@ const Dispatcher = withRouter(
       location: PropTypes.object.isRequired,
       children: PropTypes.node,
       alwaysDispatchActionsOnClient: PropTypes.bool,
-      isStatic: PropTypes.bool.isRequired,
+      prefetchedOnServer: PropTypes.bool.isRequired,
     };
 
     dispatchAll() {
@@ -26,8 +26,11 @@ const Dispatcher = withRouter(
       // because it was already done on the server and
       // this would often lead to flickering pages, unnecessary loading spinners and network requests
       // therefore we do not dispatch the first time and only dispatch on following attempts
-      // the behavior can be overridden by passing alwaysDispatchActionsOnClient:true to the Context options
-      if (this.props.alwaysDispatchActionsOnClient || this.props.isStatic) {
+      // the behavior can be overridden by passing alwaysDispatchActionsOnClient:true to the options
+      if (
+        this.props.alwaysDispatchActionsOnClient ||
+        !this.props.prefetchedOnServer
+      ) {
         this.dispatchAll();
       }
     }
@@ -78,7 +81,7 @@ class ReduxActionCreatorRuntimeMixin extends Mixin {
         alwaysDispatchActionsOnClient={
           this.options.alwaysDispatchActionsOnClient
         }
-        isStatic={this.isStatic}
+        prefetchedOnServer={this.prefetchedOnServer}
       >
         {reactElement}
       </Dispatcher>
