@@ -1,6 +1,6 @@
 {
   "name": "hops-template-graphql",
-  "version": "11.0.0-rc.5",
+  "version": "11.0.0-rc.7",
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
@@ -24,7 +24,7 @@
   "dependencies": {
     "graphql-tag": "^2.6.1",
     "hops-graphql": "11.0.0-rc.5",
-    "hops-postcss": "11.0.0-rc.5",
+    "hops-postcss": "11.0.0-rc.7",
     "hops-preset-defaults": "11.0.0-rc.5",
     "hops-react": "11.0.0-rc.5",
     "prop-types": "^15.6.2",
