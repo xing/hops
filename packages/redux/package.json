@@ -15,6 +15,7 @@
   },
   "main": "index.js",
   "files": [
+    "actionCreatorDispatcher/*",
     "index.js",
     "mixin.browser.js",
     "mixin.server.js",
