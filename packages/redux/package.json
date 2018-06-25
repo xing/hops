@@ -14,6 +14,7 @@
     "node": ">=8.10.0"
   },
   "main": "index.js",
+  "esnext": "index.js",
   "files": [
     "actionCreatorDispatcher/*",
     "index.js",
