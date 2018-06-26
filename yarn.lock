@@ -539,6 +539,10 @@ apollo-utilities@^1.0.0, apollo-utilities@^1.0.1, apollo-utilities@^1.0.16:
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
+app-manifest-loader@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/app-manifest-loader/-/app-manifest-loader-1.0.3.tgz#8984aec1ee74b95300306ed48f89644cc82164ec"
+
 app-root-path@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.0.1.tgz#cd62dcf8e4fd5a417efc664d2e5b10653c651b46"

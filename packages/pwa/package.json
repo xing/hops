@@ -1,6 +1,6 @@
 {
   "name": "hops-pwa",
-  "version": "11.0.0-rc.3",
+  "version": "11.0.0-rc.7",
   "description": "ServiceWorker and Web App Manifest support for Hops",
   "keywords": [
     "hops",
@@ -15,12 +15,18 @@
   "main": "node.js",
   "browser": "dom.js",
   "files": [
+    "lib",
     "dom.js",
+    "mixin.core.js",
     "node.js",
+    "preset.js",
     "worker.js"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "app-manifest-loader": "^1.0.3"
   }
 }
