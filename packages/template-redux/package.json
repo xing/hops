@@ -1,6 +1,6 @@
 {
   "name": "hops-template-redux",
-  "version": "11.0.0-rc.7",
+  "version": "11.0.0-rc.8",
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
@@ -24,7 +24,7 @@
   "dependencies": {
     "hops-postcss": "11.0.0-rc.7",
     "hops-preset-defaults": "11.0.0-rc.5",
-    "hops-react": "11.0.0-rc.5",
+    "hops-react": "11.0.0-rc.8",
     "hops-redux": "11.0.0-rc.7",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
