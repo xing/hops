@@ -10,10 +10,6 @@ class ReactCoreMixin extends Mixin {
     return webpackConfig;
   }
 
-  handleArguments(argv) {
-    global._hopsCLIArguments = Object.assign({}, argv, { $0: 'hops' });
-  }
-
   configureServer(app, middleware) {
     middleware.initial.push(
       function shouldPrefetchOnServer(req, res, next) {

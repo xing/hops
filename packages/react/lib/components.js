@@ -22,14 +22,6 @@ exports.withServer = function withServer(WrappedComponent) {
   );
 };
 
-exports.withCLIArguments = function withCLIArguments(WrappedComponent) {
-  return props =>
-    createElement(WrappedComponent, {
-      ...props,
-      cliArguments: global._hopsCLIArguments,
-    });
-};
-
 exports.Miss = exports.withServer(({ setMiss }) => {
   setMiss();
   return null;
