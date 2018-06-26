@@ -19,7 +19,8 @@
     "cloudformation.yaml",
     "index.js",
     "lambda.js",
-    "mixin.core.js"
+    "mixin.core.js",
+    "preset.js"
   ],
   "repository": {
     "type": "git",
