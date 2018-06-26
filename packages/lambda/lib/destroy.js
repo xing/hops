@@ -57,8 +57,8 @@ function deleteStack(cloudFormation, stackName) {
     });
 }
 
-module.exports = function destroy(options) {
-  var awsConfig = getAWSConfig();
+module.exports = function destroy(config, options) {
+  var awsConfig = getAWSConfig(config);
 
   AWS.config.update({ region: awsConfig.region });
 

@@ -9,7 +9,9 @@ class LambdaMixin extends Mixin {
         .command({
           command: 'deploy',
           describe: 'Deploys your hops application to AWS lambda',
-          handler: require('./index').deploy,
+          handler: argv => {
+            return require('./index').deploy(this.config, argv);
+          },
         })
         .command({
           command: 'destroy',
@@ -38,7 +40,9 @@ class LambdaMixin extends Mixin {
               describe: "Don't ask for confirmation.",
             },
           },
-          handler: require('./index').destroy,
+          handler: argv => {
+            return require('./index').destroy(this.config, argv);
+          },
         })
         .help('help')
         .demandCommand()

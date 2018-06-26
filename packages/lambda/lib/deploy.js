@@ -3,7 +3,6 @@
 var fs = require('fs');
 var path = require('path');
 var AWS = require('aws-sdk');
-var hopsConfig = require('hops-config');
 var getAWSConfig = require('./aws-config');
 var createLambdaBundle = require('./create-lambda-bundle');
 var progressWriter = require('./progress-writer');
@@ -141,15 +140,12 @@ function createOrUpdateStack(cloudformation, stackName, templateUrl, params) {
     });
 }
 
-module.exports = function deploy(options, parametersOverrides) {
-  var awsConfig = getAWSConfig();
+module.exports = function deploy(config, options, parametersOverrides) {
+  var awsConfig = getAWSConfig(config);
 
-  if (
-    !fs.existsSync(hopsConfig.buildDir) ||
-    !fs.existsSync(hopsConfig.cacheDir)
-  ) {
+  if (!fs.existsSync(config.buildDir)) {
     console.error(
-      'Could not find build or cache directory. Please make sure that you ' +
+      'Could not find build directory. Please make sure that you ' +
         'have executed "hops build" before trying to deploy your application.'
     );
     return process.exit(1);
@@ -168,7 +164,6 @@ module.exports = function deploy(options, parametersOverrides) {
   return fsUtils
     .createTmpDirectory()
     .then(function(tmpDirectory) {
-      var projectDirectory = hopsConfig.appDir;
       var zippedBundleLocation = path.join(tmpDirectory, 'lambda.zip');
 
       var progress = progressWriter('zipping');
@@ -178,7 +173,7 @@ module.exports = function deploy(options, parametersOverrides) {
 
       return Promise.all([
         createLambdaBundle(
-          projectDirectory,
+          config.rootDir,
           zippedBundleLocation,
           awsConfig.include,
           awsConfig.exclude,

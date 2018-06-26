@@ -1,48 +1,30 @@
 'use strict';
 
-var path = require('path');
-var hopsConfig = require('hops-config');
-var semver = require('semver');
+const semver = require('semver');
 
-var DEFAULT_REGION = 'us-east-1';
-var DEFAULT_MEMORY_SIZE = 128;
-var DEFAULT_STAGE_NAME = 'prod';
-var DEFAULT_CF_TEMPLATE = path.resolve(__dirname, '..', 'cloudformation.yaml');
-var DEFAULT_INCLUDE = [hopsConfig.cacheDir + '/**'];
-var DEFAULT_EXCLUDE = ['flow-typed/**', 'typings/**'];
-var MAX_NODE_VERSION = '8.10';
+const MAX_NODE_VERSION = '8.10';
 
-module.exports = function getAWSConfig() {
-  var awsConfig = hopsConfig._aws || hopsConfig.aws || {};
-  var manifest = require(path.join(hopsConfig.appDir, 'package.json'));
+module.exports = function getAWSConfig(hopsConfig) {
+  const awsConfig = hopsConfig._aws || hopsConfig.aws;
 
-  var region =
+  const region =
     awsConfig.region ||
     process.env.AWS_REGION ||
     process.env.AWS_DEFAULT_REGION;
 
-  var name = 'hops-lambda-' + manifest.name;
-
-  var config = {
-    region: region || DEFAULT_REGION,
-    stackName: awsConfig.uniqueName || name,
-    bucketName: awsConfig.uniqueName || name,
-    memorySize: awsConfig.memorySize || DEFAULT_MEMORY_SIZE,
-    stageName: awsConfig.stageName || DEFAULT_STAGE_NAME,
-    domainName: awsConfig.domainName || '',
-    certificateArn: awsConfig.certificateArn || '',
+  const config = {
+    region,
+    stackName: awsConfig.uniqueName,
+    bucketName: awsConfig.uniqueName,
+    memorySize: awsConfig.memorySize,
+    stageName: awsConfig.stageName,
+    domainName: awsConfig.domainName,
+    certificateArn: awsConfig.certificateArn,
     basePath: hopsConfig.basePath.slice(1) || '(none)',
-    cloudformationTemplateFile:
-      awsConfig.cloudformationTemplateFile || DEFAULT_CF_TEMPLATE,
-    include: awsConfig.include || DEFAULT_INCLUDE,
-    exclude: awsConfig.exclude || DEFAULT_EXCLUDE,
+    cloudformationTemplateFile: awsConfig.cloudformationTemplateFile,
+    include: awsConfig.include,
+    exclude: awsConfig.exclude,
   };
-
-  if (!region) {
-    console.warn(
-      'No AWS region is configured, defaulting to "' + DEFAULT_REGION + '".'
-    );
-  }
 
   if (
     semver.gt(semver.coerce(hopsConfig.node), semver.coerce(MAX_NODE_VERSION))
