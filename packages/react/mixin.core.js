@@ -15,13 +15,15 @@ class ReactCoreMixin extends Mixin {
   }
 
   configureServer(app, middleware) {
-    middleware.initial.push((req, res, next) => {
-      if (typeof res.locals.shouldPrefetchOnServer === 'undefined') {
-        res.locals.shouldPrefetchOnServer = this.config.shouldPrefetchOnServer;
-      }
+    middleware.initial.push(
+      function shouldPrefetchOnServer(req, res, next) {
+        if (typeof res.locals.shouldPrefetchOnServer === 'undefined') {
+          res.locals.shouldPrefetchOnServer = this.config.shouldPrefetchOnServer;
+        }
 
-      next();
-    });
+        next();
+      }.bind(this)
+    );
 
     return app;
   }
