@@ -1,6 +1,6 @@
 'use strict';
 
-// require('babel-polyfill');
+require('babel-polyfill');
 
 var { getConfig } = require('hops-worker-config');
 

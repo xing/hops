@@ -1,6 +1,6 @@
 'use strict';
 
-var hopsConfig = require('hops-config');
+var { getConfig } = require('@untool/config');
 
 module.exports = function installServiceWorker() {
   return new Promise(function(resolve, reject) {
@@ -15,7 +15,7 @@ module.exports = function installServiceWorker() {
       window.location.hostname === 'localhost'
     ) {
       window.addEventListener('load', function() {
-        resolve(navigator.serviceWorker.register(hopsConfig.workerPath));
+        resolve(navigator.serviceWorker.register(getConfig().workerPath));
       });
     }
   });
