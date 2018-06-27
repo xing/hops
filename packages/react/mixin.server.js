@@ -8,7 +8,7 @@ class ReactServerMixin extends Mixin {
     }, {});
   }
 
-  enhanceData(data) {
+  getTemplateData(data) {
     return {
       ...data,
       globals: {
