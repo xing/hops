@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.10"></a>
+# [11.0.0-rc.10](https://github.com/xing/hops/compare/v11.0.0-rc.9...v11.0.0-rc.10) (2018-06-27)
+
+
+### Features
+
+* **react:** add server data HOC ([70ef7ad](https://github.com/xing/hops/commit/70ef7ad))
+* **react:** remove withCLIArguments ([92770dd](https://github.com/xing/hops/commit/92770dd))
+
+
+
+
 <a name="11.0.0-rc.9"></a>
 # [11.0.0-rc.9](https://github.com/xing/hops/compare/v11.0.0-rc.8...v11.0.0-rc.9) (2018-06-27)
 
