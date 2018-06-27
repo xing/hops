@@ -62,17 +62,11 @@ class GraphQLMixin extends Mixin {
     return this.prefetchData(element).then(() => {
       return {
         ...data,
-        globals: [
-          ...(data.globals || []),
-          {
-            name: 'APOLLO_IQRD',
-            value: introspectionResult,
-          },
-          {
-            name: 'APOLLO_STATE',
-            value: this.client.cache.extract(),
-          },
-        ],
+        globals: {
+          ...(data.globals || {}),
+          APOLLO_IRQD: introspectionResult,
+          APOLLO_STATE: this.client.cache.extract(),
+        },
       };
     });
   }
@@ -81,6 +75,16 @@ class GraphQLMixin extends Mixin {
     // TODO: check "mode" and only prefetch data when mode === 'static'
     /* eslint-disable-next-line no-constant-condition, no-self-compare */
     return 'x' === 'x' ? getDataFromTree(element) : Promise.resolve();
+  }
+
+  getTemplateData(data) {
+    return {
+      ...data,
+      globals: {
+        ...data.globals,
+        ...(data.fetchedData || {}).globals,
+      },
+    };
   }
 
   enhanceElement(reactElement) {
