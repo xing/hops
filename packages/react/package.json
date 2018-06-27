@@ -15,8 +15,10 @@
   "esnext": "index.js",
   "files": [
     "lib",
+    "server-data",
     "index.js",
     "mixin.core.js",
+    "mixin.server.js",
     "preset.js"
   ],
   "repository": {
