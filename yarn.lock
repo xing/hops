@@ -118,9 +118,9 @@
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.4.tgz#b863a4191e525206819e008097ebf0fb2e3a1cdc"
 
-"@untool/core@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.9.0.tgz#146eac002819cae6f3c854a7890fa63cac39ee8c"
+"@untool/core@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.10.0.tgz#0172fb708ba5d74d35e5bc6ec61bcc9a5ccd51c4"
   dependencies:
     cosmiconfig "^5.0.5"
     debug "^3.1.0"
@@ -132,12 +132,12 @@
     mixinable "^3.0.0"
     supports-color "^5.4.0"
 
-"@untool/express@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.9.0.tgz#a938fe494d0742ed6305e8d41ed89a7648eaa5c3"
+"@untool/express@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.10.0.tgz#af774724def15e31d278b981458f56c73b5d2286"
   dependencies:
-    "@untool/core" "^0.9.0"
-    "@untool/yargs" "^0.9.0"
+    "@untool/core" "^0.10.0"
+    "@untool/yargs" "^0.10.0"
     debug "^3.1.0"
     directory-index "^0.1.0"
     express "^4.16.2"
@@ -148,26 +148,26 @@
     node-mocks-http "^1.7.0"
     supports-color "^5.4.0"
 
-"@untool/react@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.9.0.tgz#2799debebc94d7ba90f163305f5e0f76769cc9a8"
+"@untool/react@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.10.0.tgz#f15ae36e1978e492563adc29f87a2e9316a05655"
   dependencies:
-    "@untool/core" "^0.9.0"
+    "@untool/core" "^0.10.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.13"
     babel-preset-react "^6.24.1"
     mixinable "^3.0.0"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.9.0.tgz#67fea82f5bea359a4628f06b4de58a5e21ac9369"
+"@untool/webpack@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.10.0.tgz#32735d71d282b5c1aa24e74e07877e70ec707123"
   dependencies:
-    "@untool/core" "^0.9.0"
-    "@untool/express" "^0.9.0"
-    "@untool/yargs" "^0.9.0"
+    "@untool/core" "^0.10.0"
+    "@untool/express" "^0.10.0"
+    "@untool/yargs" "^0.10.0"
     babel-core "^6.26.0"
     babel-loader "^7.1.4"
-    babel-plugin-dynamic-import-node "^1.2.0"
+    babel-plugin-dynamic-import-node "^2.0.0"
     babel-plugin-syntax-dynamic-import "^6.18.0"
     babel-polyfill "^6.26.0"
     babel-preset-env "^1.7.0"
@@ -191,13 +191,13 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.9.0.tgz#63040f334858dd1440b30992df22f61376f6dfce"
+"@untool/yargs@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.10.0.tgz#0ef8ba47df4483bc6a93a56c44b6fdf6cf25c1a8"
   dependencies:
-    "@untool/core" "^0.9.0"
+    "@untool/core" "^0.10.0"
     mixinable "^3.0.0"
-    yargs "^11.0.0"
+    yargs "^12.0.0"
 
 "@webassemblyjs/ast@1.5.12":
   version "1.5.12"
@@ -961,11 +961,12 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-dynamic-import-node@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-1.2.0.tgz#f91631e703e0595e47d4beafbb088576c87fbeee"
+babel-plugin-dynamic-import-node@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-2.0.0.tgz#d6fc3f6c5e3bdc34e49c15faca7ce069755c0a57"
   dependencies:
     babel-plugin-syntax-dynamic-import "^6.18.0"
+    object.assign "^4.1.0"
 
 babel-plugin-istanbul@^4.1.6:
   version "4.1.6"
@@ -8630,7 +8631,7 @@ y18n@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
 
-y18n@^4.0.0:
+"y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
 
@@ -8641,6 +8642,12 @@ yallist@^2.1.2:
 yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
+
+yargs-parser@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-10.0.0.tgz#c737c93de2567657750cb1f2c00be639fd19c994"
+  dependencies:
+    camelcase "^4.1.0"
 
 yargs-parser@^7.0.0:
   version "7.0.0"
@@ -8670,6 +8677,23 @@ yargs@^11.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^9.0.2"
+
+yargs@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.0.tgz#8274480fd7332c77888bc33b6594340d31ed40d3"
+  dependencies:
+    cliui "^4.0.0"
+    decamelize "^1.1.1"
+    find-up "^2.1.0"
+    get-caller-file "^1.0.1"
+    os-locale "^2.0.0"
+    require-directory "^2.1.1"
+    require-main-filename "^1.0.1"
+    set-blocking "^2.0.0"
+    string-width "^2.0.0"
+    which-module "^2.0.0"
+    y18n "^3.2.1 || ^4.0.0"
+    yargs-parser "^10.0.0"
 
 yargs@^8.0.2:
   version "8.0.2"
