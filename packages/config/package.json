@@ -18,6 +18,6 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^0.9.0"
+    "@untool/core": "^0.10.0"
   }
 }
