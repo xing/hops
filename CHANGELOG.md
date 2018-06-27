@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.11"></a>
+# [11.0.0-rc.11](https://github.com/xing/hops/compare/v11.0.0-rc.10...v11.0.0-rc.11) (2018-06-27)
+
+
+### Bug Fixes
+
+* **react:** add missing files to package.json ([755f2e5](https://github.com/xing/hops/commit/755f2e5))
+
+
+
+
 <a name="11.0.0-rc.10"></a>
 # [11.0.0-rc.10](https://github.com/xing/hops/compare/v11.0.0-rc.9...v11.0.0-rc.10) (2018-06-27)
 
