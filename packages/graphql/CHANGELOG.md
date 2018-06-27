@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.10"></a>
+# [11.0.0-rc.10](https://github.com/xing/hops/compare/v11.0.0-rc.9...v11.0.0-rc.10) (2018-06-27)
+
+
+### Bug Fixes
+
+* **graphql:** pass apollo state to getTemplateData.globals ([c8843bd](https://github.com/xing/hops/commit/c8843bd))
+
+
+### Features
+
+* **graphql:** use shouldPrefetchOnServer to enable prefetching of data ([fceeeab](https://github.com/xing/hops/commit/fceeeab))
+
+
+
+
 <a name="11.0.0-rc.9"></a>
 # [11.0.0-rc.9](https://github.com/xing/hops/compare/v11.0.0-rc.8...v11.0.0-rc.9) (2018-06-27)
 
