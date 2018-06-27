@@ -13,7 +13,7 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
     return Promise.resolve();
   }
 
-  enhanceData(data) {
+  getTemplateData(data) {
     return {
       ...data,
       globals: {

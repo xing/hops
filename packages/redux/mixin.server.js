@@ -51,7 +51,7 @@ class ReduxMixin extends Mixin {
     return compose(...enhancers);
   }
 
-  enhanceData(data) {
+  getTemplateData(data) {
     return {
       ...data,
       globals: {
