@@ -26,6 +26,13 @@ class GraphQLMixin extends Mixin {
     super(config, element);
 
     this.client = this.createClient(options);
+    this.shouldPrefetchOnServer = undefined;
+  }
+
+  bootstrap(request, response) {
+    if (response && response.locals) {
+      this.shouldPrefetchOnServer = response.locals.shouldPrefetchOnServer;
+    }
   }
 
   createClient(options) {
@@ -72,9 +79,9 @@ class GraphQLMixin extends Mixin {
   }
 
   prefetchData(element) {
-    // TODO: check "mode" and only prefetch data when mode === 'static'
-    /* eslint-disable-next-line no-constant-condition, no-self-compare */
-    return 'x' === 'x' ? getDataFromTree(element) : Promise.resolve();
+    return this.shouldPrefetchOnServer
+      ? getDataFromTree(element)
+      : Promise.resolve();
   }
 
   getTemplateData(data) {
