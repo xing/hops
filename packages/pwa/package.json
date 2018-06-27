@@ -27,6 +27,13 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "app-manifest-loader": "^1.0.3"
+    "@untool/core": "^0.10.0",
+    "@untool/express": "^0.10.0",
+    "@untool/webpack": "^0.10.0",
+    "app-manifest-loader": "^1.0.3",
+    "babel-polyfill": "^6.26.0",
+    "file-loader": "^1.1.11",
+    "webpack": "^4.12.2",
+    "webpack-sources": "^1.1.0"
   }
 }

@@ -29,13 +29,20 @@
     "@untool/core": "^0.10.0",
     "@untool/react": "^0.10.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "mixinable": "^3.0.0",
+    "react-router": "^4.3.1"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
-    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   }
 }
