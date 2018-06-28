@@ -1,0 +1,37 @@
+{
+  "name": "hops-styled-components",
+  "version": "11.0.0-rc.11",
+  "description": "Styled components support for Hops applications",
+  "keywords": [
+    "hops",
+    "react",
+    "styled-components",
+    "unpreset"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "files": [
+    "mixin.browser.js",
+    "mixin.core.js",
+    "mixin.server.js",
+    "preset.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "@untool/core": "^0.10.0",
+    "babel-plugin-styled-components": "^1.5.1"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "styled-components": "^3.0.0"
+  },
+  "devDependencies": {
+    "react": "^16.4.1",
+    "styled-components": "^3.3.3"
+  }
+}
