@@ -15,7 +15,7 @@ const {
 } = require('mixinable');
 
 class ReduxMixin extends Mixin {
-  constructor(config, element, options = {}) {
+  constructor(config, element, { redux: options = {} } = {}) {
     super(config);
 
     this.middlewares = options.middlewares || [ReduxThunkMiddleware];
