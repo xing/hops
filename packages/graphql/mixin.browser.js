@@ -10,7 +10,7 @@ const {
 } = require('apollo-cache-inmemory');
 
 class GraphQLMixin extends Mixin {
-  constructor(config, element, options = {}) {
+  constructor(config, element, { graphql: options = {} } = {}) {
     super(config, element);
 
     this.client = this.createClient(options);
