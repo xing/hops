@@ -27,7 +27,7 @@ function isYarnAvailable() {
 }
 module.exports.isYarnAvailable = isYarnAvailable;
 
-function isGlobalCliUsingYarn(projectPath, options) {
+function isGlobalCliUsingYarn(projectPath) {
   return fs.existsSync(path.join(projectPath, 'yarn.lock'));
 }
 module.exports.isGlobalCliUsingYarn = isGlobalCliUsingYarn;
