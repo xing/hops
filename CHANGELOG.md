@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.12"></a>
+# [11.0.0-rc.12](https://github.com/xing/hops/compare/v11.0.0-rc.11...v11.0.0-rc.12) (2018-06-28)
+
+
+### Code Refactoring
+
+* **graphql:** namespace render options ([9da5664](https://github.com/xing/hops/commit/9da5664))
+* **redux:** namespace render options ([34653f0](https://github.com/xing/hops/commit/34653f0))
+
+
+### Features
+
+* **cli:** add dotenv support ([7b7a683](https://github.com/xing/hops/commit/7b7a683))
+* **styled-components:** introduce package ([ffe093a](https://github.com/xing/hops/commit/ffe093a))
+* **typescript:** introduce package ([9e13794](https://github.com/xing/hops/commit/9e13794))
+
+
+### BREAKING CHANGES
+
+* **redux:** redux specific options are now namespaced
+If you want to pass options to the hops-redux package you need to pass
+them to the render function inside a `redux` key:
+**Before:**
+```javascript
+render(<MyApp />, { reducers: {...} });
+```
+**After:**
+```javascript
+render(<MyApp />, { redux: { reducers: {...}  } });
+```
+* **graphql:** graphql specific options are now namespaced
+If you want to pass options to the hops-graphql package you need to pass
+them to the render function inside a `graphql` key:
+**Before:**
+```javascript
+render(<MyApp />, { link: new Link() });
+```
+**After:**
+```javascript
+render(<MyApp />, { graphql: { link: new Link() } });
+```
+
+
+
+
 <a name="11.0.0-rc.11"></a>
 # [11.0.0-rc.11](https://github.com/xing/hops/compare/v11.0.0-rc.10...v11.0.0-rc.11) (2018-06-27)
 
