@@ -2,6 +2,7 @@
   "name": "hops-spec",
   "version": "11.0.0-rc.5",
   "private": true,
+  "files": [],
   "scripts": {
     "test": "jest"
   },

@@ -1,4 +1,5 @@
 /* eslint-env node, jest */
+/* eslint-disable */
 
 var React = require('react');
 
