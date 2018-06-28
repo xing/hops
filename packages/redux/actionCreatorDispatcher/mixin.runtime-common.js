@@ -48,7 +48,7 @@ const Dispatcher = withRouter(
 );
 
 class ReduxActionCreatorRuntimeMixin extends Mixin {
-  constructor(config, element, options) {
+  constructor(config, element, { redux: options = {} } = {}) {
     super(config);
     this.options = options;
   }

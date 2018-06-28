@@ -16,7 +16,7 @@ const {
 const ReduxCompose = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 class ReduxMixin extends Mixin {
-  constructor(config, element, options = {}) {
+  constructor(config, element, { redux: options = {} } = {}) {
     super(config);
 
     this.middlewares = options.middlewares || [ReduxThunkMiddleware];

@@ -20,15 +20,17 @@ const App = () => (
 );
 
 export default render(<App />, {
-  reducers: reducers,
-  actionCreators: [
-    {
-      path: '/*',
-      action: () => {
-        console.log('@@@@@DISPATCH ME');
+  redux: {
+    reducers: reducers,
+    actionCreators: [
+      {
+        path: '/*',
+        action: () => {
+          console.log('@@@@@DISPATCH ME');
 
-        return () => {};
+          return () => {};
+        },
       },
-    },
-  ],
+    ],
+  },
 });
