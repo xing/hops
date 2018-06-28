@@ -12,14 +12,20 @@ const {
 } = require('apollo-cache-inmemory');
 
 const { getConfig } = require('@untool/config');
+const { fragmentsFile } = getConfig();
 
 let introspectionResult = null;
 try {
-  const { fragmentsFile } = getConfig();
   if (existsSync(fragmentsFile)) {
     introspectionResult = JSON.parse(readFileSync(fragmentsFile, 'utf-8'));
   }
-} catch (_) {}
+} catch (_) {
+  console.warn(
+    'Could not find a graphql introspection query result at %s.',
+    fragmentsFile,
+    'You might need to execute `hops graphql introspect`'
+  );
+}
 
 class GraphQLMixin extends Mixin {
   constructor(config, element, options = {}) {

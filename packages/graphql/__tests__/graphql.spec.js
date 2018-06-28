@@ -1,4 +1,5 @@
 /* eslint-env node, jest */
+/* eslint-disable */
 
 var fs = require('fs');
 var path = require('path');

@@ -1,3 +1,5 @@
+/* eslint-env browser, node */
+
 const React = require('react');
 const { sync } = require('mixinable');
 const { Mixin } = require('@untool/core');

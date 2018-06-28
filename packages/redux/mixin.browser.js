@@ -38,9 +38,7 @@ class ReduxMixin extends Mixin {
 
     if (module.hot) {
       this.store = global.store || (global.store = this.createStore());
-      Object.entries(this.reducers).forEach(([key, reducer]) => {
-        this.store.replaceReducer(combineReducers(this.reducers));
-      });
+      this.store.replaceReducer(combineReducers(this.reducers));
     } else {
       this.store = this.createStore();
     }

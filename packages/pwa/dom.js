@@ -1,4 +1,4 @@
-'use strict';
+/* eslint-env browser */
 
 var { getConfig } = require('@untool/config');
 

@@ -11,10 +11,7 @@ var pm = require('../lib/package-manager');
 var packageManifest = require('../package.json');
 
 var getLocalCliPath = function() {
-  try {
-    return resolveCwd('hops');
-  } catch (_) {}
-  return null;
+  return resolveCwd.silent('hops');
 };
 
 function globalCLI(argv) {

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "dotenv": "^6.0.0",
+    "pkg-dir": "^3.0.0",
     "resolve-cwd": "^2.0.0",
     "tar": "^4.4.4",
     "validate-npm-package-name": "^3.0.0",

@@ -1,4 +1,5 @@
 /* eslint-env node, jest */
+/* eslint-disable */
 
 var ApolloCache = require('apollo-cache-inmemory');
 
