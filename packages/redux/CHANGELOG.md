@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.12"></a>
+# [11.0.0-rc.12](https://github.com/xing/hops/compare/v11.0.0-rc.11...v11.0.0-rc.12) (2018-06-28)
+
+
+### Code Refactoring
+
+* **redux:** namespace render options ([34653f0](https://github.com/xing/hops/commit/34653f0))
+
+
+### BREAKING CHANGES
+
+* **redux:** redux specific options are now namespaced
+If you want to pass options to the hops-redux package you need to pass
+them to the render function inside a `redux` key:
+**Before:**
+```javascript
+render(<MyApp />, { reducers: {...} });
+```
+**After:**
+```javascript
+render(<MyApp />, { redux: { reducers: {...}  } });
+```
+
+
+
+
 <a name="11.0.0-rc.9"></a>
 # [11.0.0-rc.9](https://github.com/xing/hops/compare/v11.0.0-rc.8...v11.0.0-rc.9) (2018-06-27)
 
