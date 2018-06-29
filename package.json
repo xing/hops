@@ -67,7 +67,9 @@
       "node"
     ],
     "rules": {
-      "node/no-unsupported-features": "error",
+      "node/no-unsupported-features": ["error", {
+        "ignores": ["modules"]
+      }],
       "prettier/prettier": "error",
       "no-console": "off",
       "no-process-exit": "off",
@@ -91,11 +93,13 @@
     "**/spec/fixtures/**"
   ],
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "spec/"
   ],
   "jest": {
     "projects": [
-      "packages/*"
+      "packages/!(spec)",
+      "packages/spec/integration/*"
     ]
   },
   "devDependencies": {
