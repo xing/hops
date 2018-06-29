@@ -1,0 +1,22 @@
+{
+  "name": "fixture-styled-components",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "hops": {
+    "presets": [
+      "hops-preset-defaults",
+      "hops-react",
+      "hops-styled-components"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js"
+  },
+  "scripts": {
+    "start": "node -e 'require(\"hops\").run(\"start\")'"
+  },
+  "private": true
+
+}
