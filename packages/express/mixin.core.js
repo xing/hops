@@ -6,6 +6,7 @@ class ExpressCoreMixin extends Mixin {
     if (mode === 'serve' && process.env.NODE_ENV === 'production') {
       middleware.prefiles.push(require('compression')());
     }
+    return app;
   }
 
   inspectServer(app) {
