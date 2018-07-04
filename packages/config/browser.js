@@ -1,1 +1,1 @@
-module.exports = require('@untool/config').getConfig();
+module.exports = require('@untool/config').getConfigAndMixins().config;

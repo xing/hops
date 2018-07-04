@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-var { getConfig } = require('@untool/config');
+var { getConfigAndMixins } = require('@untool/config');
 
 module.exports = function installServiceWorker() {
   return new Promise(function(resolve, reject) {
@@ -15,7 +15,11 @@ module.exports = function installServiceWorker() {
       window.location.hostname === 'localhost'
     ) {
       window.addEventListener('load', function() {
-        resolve(navigator.serviceWorker.register(getConfig().workerPath));
+        resolve(
+          navigator.serviceWorker.register(
+            getConfigAndMixins().config.workerPath
+          )
+        );
       });
     }
   });
