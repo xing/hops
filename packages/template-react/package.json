@@ -13,7 +13,8 @@
   "scripts": {
     "start": "hops start",
     "build": "hops build",
-    "test": "jest"
+    "test": "jest",
+    "serve": "hops serve"
   },
   "dependencies": {
     "hops-postcss": "11.0.0-rc.23",
