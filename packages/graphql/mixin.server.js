@@ -11,8 +11,8 @@ const {
   HeuristicFragmentMatcher,
 } = require('apollo-cache-inmemory');
 
-const { getConfig } = require('@untool/config');
-const { fragmentsFile } = getConfig();
+const { getConfigAndMixins } = require('@untool/config');
+const { fragmentsFile } = getConfigAndMixins().config;
 
 let introspectionResult = null;
 try {
