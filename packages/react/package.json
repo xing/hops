@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "11.0.0-rc.13",
+  "version": "11.0.0-rc.14",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
