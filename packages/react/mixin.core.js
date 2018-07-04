@@ -9,20 +9,6 @@ class ReactCoreMixin extends Mixin {
 
     return webpackConfig;
   }
-
-  configureServer(app, middleware) {
-    middleware.initial.push(
-      function shouldPrefetchOnServer(req, res, next) {
-        if (typeof res.locals.shouldPrefetchOnServer === 'undefined') {
-          res.locals.shouldPrefetchOnServer = this.config.shouldPrefetchOnServer;
-        }
-
-        next();
-      }.bind(this)
-    );
-
-    return app;
-  }
 }
 
 module.exports = ReactCoreMixin;
