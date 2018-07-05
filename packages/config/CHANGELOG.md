@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.15"></a>
+# [11.0.0-rc.15](https://github.com/xing/hops/compare/v11.0.0-rc.14...v11.0.0-rc.15) (2018-07-05)
+
+
+### Bug Fixes
+
+* **config:** environmentalize config ([752e4f5](https://github.com/xing/hops/commit/752e4f5))
+
+
+
+
 <a name="11.0.0-rc.14"></a>
 # [11.0.0-rc.14](https://github.com/xing/hops/compare/v11.0.0-rc.13...v11.0.0-rc.14) (2018-07-04)
 
