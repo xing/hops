@@ -1,7 +1,6 @@
 'use strict';
 
 process.env.UNTOOL_NSP = 'hops';
-require('dotenv').config();
 
 // @untool/yargs is a dependency of hops-preset-defaults and should already be
 // installed in the project where the local CLI is executed.
