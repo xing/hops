@@ -1,1 +1,3 @@
-module.exports = require('@untool/config').getConfigAndMixins().config;
+module.exports = require('@untool/core/lib/env').environmentalize(
+  require('@untool/config').getConfigAndMixins().config
+);
