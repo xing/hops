@@ -13,3 +13,6 @@ script:
 node_js:
 - '8'
 - '10'
+
+env:
+  - HOST=0.0.0.0
