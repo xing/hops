@@ -1,3 +1,1 @@
-module.exports = require('@untool/core/lib/env').environmentalize(
-  require('@untool/config').getConfigAndMixins().config
-);
+module.exports = require('@untool/webpack/lib/shims/loader').getConfigAndMixins().config;
