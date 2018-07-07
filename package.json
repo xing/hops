@@ -114,11 +114,11 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
-    "eslint": "^4.15.0",
+    "eslint": "^5.0.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.9.1",
     "husky": "^0.14.3",
     "lerna": "^2.5.1",
