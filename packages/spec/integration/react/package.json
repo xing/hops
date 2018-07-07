@@ -1,14 +1,11 @@
 {
   "name": "fixture-react",
   "version": "1.0.0",
+  "private": true,
   "engines": {
     "node": ">= 8.10"
   },
   "hops": {
-    "presets": [
-      "hops-preset-defaults",
-      "hops-react"
-    ],
     "mixins": ["./"]
   },
   "jest": {
@@ -17,6 +14,8 @@
   "scripts": {
     "start": "node -e 'require(\"hops\").run(\"start\")'"
   },
-  "private": true
-
+  "dependencies": {
+    "hops-preset-defaults": "*",
+    "hops-react": "*"
+  }
 }

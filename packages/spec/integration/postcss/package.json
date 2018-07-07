@@ -1,15 +1,9 @@
 {
   "name": "fixture-react-postcss",
   "version": "1.0.0",
+  "private": true,
   "engines": {
     "node": ">= 8.10"
-  },
-  "hops": {
-    "presets": [
-      "hops-preset-defaults",
-      "hops-react",
-      "hops-postcss"
-    ]
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js"
@@ -17,6 +11,9 @@
   "scripts": {
     "start": "node -e 'require(\"hops\").run(\"start\")'"
   },
-  "private": true
-
+  "dependencies": {
+    "hops-preset-defaults": "*",
+    "hops-react": "*",
+    "hops-postcss": "*"
+  }
 }

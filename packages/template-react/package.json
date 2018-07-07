@@ -8,11 +8,6 @@
     "locations": [
       "/",
       "/counter"
-    ],
-    "presets": [
-      "hops-preset-defaults",
-      "hops-react",
-      "hops-postcss"
     ]
   },
   "scripts": {
