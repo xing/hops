@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-var { getConfigAndMixins } = require('@untool/config');
+var { getConfigAndMixins } = require('./lib/loader-shim');
 
 module.exports = function installServiceWorker() {
   return new Promise(function(resolve, reject) {

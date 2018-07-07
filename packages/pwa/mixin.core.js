@@ -5,13 +5,6 @@ const {
 const ServiceWorkerPlugin = require('./lib/service-worker-plugin');
 
 class PWAMixin extends Mixin {
-  getWorkerConfig() {
-    return {
-      ...this.config,
-      mixins: { browser: [], server: [], core: [] },
-    };
-  }
-
   configureBuild(webpackConfig, { allLoaderConfigs }, target) {
     const webmanifestLoader = {
       test: /\.webmanifest$/,
@@ -37,12 +30,11 @@ class PWAMixin extends Mixin {
       webpackConfig.resolve.alias = {
         ...webpackConfig.resolve.alias,
         'hops-worker-entry-point': this.config.workerFile,
-        'hops-worker-config': require.resolve('./lib/loader-shim'),
       };
       webpackConfig.module.rules.unshift({
         test: require.resolve('./lib/loader-shim'),
         loader: require.resolve('@untool/webpack/lib/utils/loader'),
-        options: { target: 'browser', config: this.getWorkerConfig() },
+        options: { target: 'worker', config: this.config },
       });
       webpackConfig.plugins.push(
         new ServiceWorkerPlugin({

@@ -77,15 +77,7 @@
       ],
       "prettier/prettier": "error",
       "no-console": "off",
-      "no-process-exit": "off",
-      "node/no-missing-require": [
-        "error",
-        {
-          "allowModules": [
-            "@untool/config"
-          ]
-        }
-      ]
+      "no-process-exit": "off"
     },
     "parserOptions": {
       "ecmaVersion": 2018

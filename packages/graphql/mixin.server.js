@@ -11,23 +11,9 @@ const {
   HeuristicFragmentMatcher,
 } = require('apollo-cache-inmemory');
 
-const { getConfigAndMixins } = require('@untool/config');
-const { fragmentsFile } = getConfigAndMixins().config;
-
-let introspectionResult = null;
-try {
-  if (existsSync(fragmentsFile)) {
-    introspectionResult = JSON.parse(readFileSync(fragmentsFile, 'utf-8'));
-  }
-} catch (_) {
-  console.warn(
-    'Could not find a graphql introspection query result at %s.',
-    fragmentsFile,
-    'You might need to execute `hops graphql introspect`'
-  );
-}
-
 class GraphQLMixin extends Mixin {
+  introspectionResult = undefined;
+
   constructor(config, element, { graphql: options = {} } = {}) {
     super(config, element);
 
@@ -63,9 +49,24 @@ class GraphQLMixin extends Mixin {
   }
 
   createFragmentMatcher() {
-    if (introspectionResult) {
+    if (this.introspectionResult === undefined) {
+      try {
+        if (existsSync(this.config.fragmentsFile)) {
+          this.introspectionResult = JSON.parse(
+            readFileSync(this.config.fragmentsFile, 'utf-8')
+          );
+        }
+      } catch (_) {
+        this.introspectionResult = null;
+        console.warn(
+          'Could not find a graphql introspection query result at %s.',
+          this.config.fragmentsFile,
+          'You might need to execute `hops graphql introspect`'
+        );
+      }
+    } else {
       return new IntrospectionFragmentMatcher({
-        introspectionQueryResultData: introspectionResult,
+        introspectionQueryResultData: this.introspectionResult,
       });
     }
     return new HeuristicFragmentMatcher();
@@ -77,7 +78,7 @@ class GraphQLMixin extends Mixin {
         ...data,
         globals: {
           ...(data.globals || {}),
-          APOLLO_IRQD: introspectionResult,
+          APOLLO_IRQD: this.introspectionResult,
           APOLLO_STATE: this.client.cache.extract(),
         },
       };
