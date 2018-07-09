@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.17"></a>
+# [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
+
+
+### Features
+
+* **cli:** remove dotenv again as it is now part of untool ([1044735](https://github.com/xing/hops/commit/1044735))
+
+
+
+
 <a name="11.0.0-rc.16"></a>
 # [11.0.0-rc.16](https://github.com/xing/hops/compare/v11.0.0-rc.15...v11.0.0-rc.16) (2018-07-09)
 
