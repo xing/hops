@@ -23,7 +23,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^0.12.0",
+    "@untool/core": "^0.12.1",
     "babel-plugin-styled-components": "^1.5.1"
   },
   "peerDependencies": {
