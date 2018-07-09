@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.18"></a>
+# [11.0.0-rc.18](https://github.com/xing/hops/compare/v11.0.0-rc.17...v11.0.0-rc.18) (2018-07-09)
+
+
+### Bug Fixes
+
+* **config:** replace env placeholders with environment variables ([1225753](https://github.com/xing/hops/commit/1225753))
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 
