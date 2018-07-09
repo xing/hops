@@ -1,6 +1,6 @@
 {
   "name": "hops-postcss",
-  "version": "11.0.0-rc.16",
+  "version": "11.0.0-rc.17",
   "description": "Configuration of PostCSS and Webpack for Hops",
   "keywords": [
     "hops",
