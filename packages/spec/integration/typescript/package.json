@@ -1,0 +1,19 @@
+{
+  "name": "fixture-react",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js"
+  },
+  "scripts": {
+    "start": "node -e 'require(\"hops\").run(\"start\")'"
+  },
+  "dependencies": {
+    "hops-preset-defaults": "*",
+    "hops-react": "*",
+    "hops-typescript": "*"
+  }
+}
