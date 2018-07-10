@@ -1,9 +1,19 @@
 /* eslint-env browser */
 
-var { getConfigAndMixins } = require('./lib/loader-shim');
+const { getConfigAndMixins } = require('./lib/loader-shim');
+
+const isLocalHost = host => {
+  return (
+    host === 'localhost' ||
+    host === '[::]' ||
+    host === '[::1]' ||
+    host === '0.0.0.0' ||
+    host.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+  );
+};
 
 module.exports = function installServiceWorker() {
-  return new Promise(function(resolve, reject) {
+  return new Promise((resolve, reject) => {
     if (!('serviceWorker' in navigator)) {
       return reject(
         new Error('ServiceWorkers are not supported in this browser')
@@ -12,9 +22,9 @@ module.exports = function installServiceWorker() {
 
     if (
       window.location.protocol === 'https:' ||
-      window.location.hostname === 'localhost'
+      isLocalHost(window.location.hostname)
     ) {
-      window.addEventListener('load', function() {
+      window.addEventListener('load', () => {
         resolve(
           navigator.serviceWorker.register(
             getConfigAndMixins().config.workerPath
