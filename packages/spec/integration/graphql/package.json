@@ -1,0 +1,22 @@
+{
+  "name": "fixture-graphql",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "hops": {
+    "graphqlUri": "https://www.graphqlhub.com/graphql"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js"
+  },
+  "scripts": {
+    "start": "node -e 'require(\"hops\").run(\"start\")'"
+  },
+  "dependencies": {
+    "hops-preset-defaults": "*",
+    "hops-react": "*",
+    "hops-graphql": "*"
+  }
+}
