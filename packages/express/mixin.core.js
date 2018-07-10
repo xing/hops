@@ -15,7 +15,9 @@ class ExpressCoreMixin extends Mixin {
       'Server listening at %s',
       format({
         protocol: this.config.https ? 'https' : 'http',
-        hostname: ['0.0.0.0', '127.0.0.1'].includes(host) ? 'localhost' : host,
+        hostname: ['0.0.0.0', '127.0.0.1', '::', '::1'].includes(host)
+          ? 'localhost'
+          : host,
         pathname: this.config.basePath,
         port,
       })
