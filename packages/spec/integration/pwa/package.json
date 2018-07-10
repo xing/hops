@@ -1,0 +1,23 @@
+{
+  "name": "fixture-styled-components",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "hops": {
+    "workerFile": "<rootDir>/service-worker.js",
+    "locations": ["/"]
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js"
+  },
+  "scripts": {
+    "start": "node -e 'require(\"hops\").run(\"start\")'"
+  },
+  "dependencies": {
+    "hops-preset-defaults": "*",
+    "hops-pwa": "*",
+    "hops-react": "*"
+  }
+}
