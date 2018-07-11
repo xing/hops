@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.4.6"></a>
+## [10.4.6](https://github.com/xing/hops/compare/v10.4.3...v10.4.6) (2018-07-11)
+
+
 <a name="10.4.0"></a>
 # [10.4.0](https://github.com/xing/hops/compare/v10.2.0-rc.5...v10.4.0) (2018-04-17)
 

@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="10.4.6"></a>
+## [10.4.6](https://github.com/xing/hops/compare/v10.4.3...v10.4.6) (2018-07-11)
+
+
+### Bug Fixes
+
+* **build:** fix prefixes in dev and prod being different ([5b71953](https://github.com/xing/hops/commit/5b71953))
+* **build-config:** Do not use optimizations that assume concatenation ([57fd846](https://github.com/xing/hops/commit/57fd846))
+* **template-minimal:** remove manifest, use assets from res.locals ([21a5a60](https://github.com/xing/hops/commit/21a5a60))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([9228cb1](https://github.com/xing/hops/commit/9228cb1))
+
+
+### Features
+
+* support node 8 on AWS Lambda ([fb87ac1](https://github.com/xing/hops/commit/fb87ac1))
+
+
+### BREAKING CHANGES
+
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
 
 <a name="10.3.0"></a>
 # [10.3.0](https://github.com/xing/hops/compare/v10.3.0-rc.3...v10.3.0) (2018-04-09)

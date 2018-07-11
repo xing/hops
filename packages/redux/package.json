@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "10.4.3",
+  "version": "10.4.6",
   "description": "React and Redux implementation for Hops",
   "keywords": [
     "hops",
@@ -23,7 +23,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-react": "10.4.3"
+    "hops-react": "10.4.6"
   },
   "peerDependencies": {
     "react": ">=15.0.0 <17.0.0",
