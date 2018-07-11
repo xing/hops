@@ -95,6 +95,7 @@ class PostCSSMixin extends Mixin {
           zindex: { disable: true },
           mergeIdents: { disable: true },
           discardUnused: { disable: true },
+          autoprefixer: { disable: true },
         },
       })
     );
