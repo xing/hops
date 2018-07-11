@@ -21,7 +21,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "pkg-dir": "^2.0.0",
+    "pkg-dir": "^3.0.0",
     "resolve-cwd": "^2.0.0",
     "tar": "^4.2.0",
     "validate-npm-package-name": "^3.0.0",
