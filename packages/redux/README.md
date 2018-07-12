@@ -57,7 +57,7 @@ This preset has only a single runtime option which can be passed to the `render(
 | `actionCreators`                | `Array`   | `[]`                     | _no_     | An array of route-bound action creators to be dispatched when the current route matches.                                                                            |
 | `alwaysDispatchActionsOnClient` | `boolean` | `undefined`              | _no_     | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
 
-### API
+### Mixin Hooks API
 
 #### `getReduxStore(): Store` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
 

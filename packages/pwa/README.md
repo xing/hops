@@ -47,7 +47,7 @@ installServiceWorker();
 
 Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/pwa) as an example for how to use this preset.
 
-#### API
+#### Consumer API
 
 ##### `installServiceWorker(): Promise<ServiceWorkerRegistration>`
 

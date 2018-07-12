@@ -1,141 +1,95 @@
-# Hops React
+# `hops-react`
 
 [![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)
 
-hops-react works in tandem with [hops-build](https://github.com/xing/hops/blob/master/packages/build) and [hops-config](https://github.com/xing/hops/blob/master/packages/config) to make an integrated solution for universal ("isomorphic") rendering using React. It provides a minimal API and hides the tricky bits of setting up React for such use-cases.
+[//]: # 'TODO: add general section about presets, how to install them, how to register them, how to configure them to main Hops readme'
 
-Out of the box, hops-react additionally supports [React Router](https://github.com/ReactTraining/react-router) and [React Helmet](https://github.com/nfl/react-helmet).
+This is a [preset for Hops](https://missing-link-explain-what-are-presets) that enables React, JSX, React-Helmet and React-Router support in Hops applications.
 
-# Installation
+### Installation
+
+Just add this preset and its peer dependencies `react`, `react-dom`, `react-helmet` and `react-router-dom` to your existing Hops React project:
 
 ```bash
-npm install --save react react-dom react-helmet react-router react-router-dom hops-react hops-config
+$ yarn add hops-react react react-dom react-helmet react-router-dom
+# OR npm install --save hops-react react react-dom react-helmet react-router-dom
 ```
 
-# Basic API
+[//]: # 'TODO: add general section about setting up a basic hops project to main Hops readme'
 
-## `render(reactElement, context)`
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://missing-link-explain-quick-start)
 
-`render()` is the main hops-react API. Its return value differs depending on the environment: in a browser context, it returns a plain function handling mounting of the app and hot module replacement. In a Node.js context, it returns an Express style middleware function. In both cases, its return value is meant to be the default export of your application's main entry file.
+### Usage
 
-`render()` accepts two arguments: `reactElement`, your React application's root element, and `context`, an optional hops-react rendering context instance.
+After installing this preset your main entry file (either referenced via `package.json` `"main"` entry or named as `index.js`) must `default export render(<MyApp />)` from `hops-react`.
 
-```js
-import React from 'react';
-import { render, createContext } from 'hops-react';
-
-const App = () => <h1>Hello World!</h1>;
-
-export default render(<App />, createContext());
-```
-
-## `render(reactElement, config)`
-
-Simple wrapper for [`render(reactElement, context)`](#renderreactelement-context) shielding the details of context from you. Each package that functions as an optional extension to the core react package offers a so called `extension` which you can pass as an array. Unlike [`React#createContext(options)`](#createcontextoptions) each extension only takes a configuration that is specific to it, not a general one.
-
-Here you have an example of a React application using the Redux extension. The Redux extension takes only the specific set of options (not the general React ones) mentioned in [`Redux#createContext(options)`](../redux/README.md#createcontextoptions). The general options are passed directly in the configuration.
-
-```js
-import React from 'react';
+```javascript
 import { render } from 'hops-react';
-import { reduxExtension } from 'hops-redux';
-
-const App = () => <h1>Hello World!</h1>;
-
-export default render(<App />, {
-  mountpoint: '#main',
-  extensions: [reduxExtension({ reducers })],
-});
-```
-
-## `createContext(options)`
-
-`createContext()` generates a rendering context containing most of the actual implementation used by `render`. It takes a couple of options:
-
-| Field      | Type     | Default                                                                                    | Description                                                                                                                                                                                                                                     |
-| ---------- | -------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| mountpoint | String   | '#main'                                                                                    | querySelector identifying the root DOM node                                                                                                                                                                                                     |
-| template   | Function | [defaultTemplate](https://github.com/xing/hops/blob/master/packages/react/lib/template.js) | template function supporting all relevant React Helmet and hops-react features                                                                                                                                                                  |
-| router     | Object   | {}                                                                                         | props to be passed to one of the relevant ReactRouter implementations: [`<StaticRouter />`](https://reacttraining.com/react-router/web/api/StaticRouter) or [`<BrowserRouter />`](https://reacttraining.com/react-router/web/api/BrowserRouter) |
-
-## `<Miss />`, `<Status code={200} />` and `<Header name="x-foo" value="bar" />`
-
-To declaratively control server behavior from your application, you can use the React components provided by hops-react. Neither of these components produces any html output, they are effectively no-ops if used in the browser.
-
-On the server, however, `<Miss />` makes sure Express' `next()` middleware function is being called, signalling Express that your application is not responsible for handling the current request. `<Status />`, however controls the HTTP status code returned by the server.
-
-`<Header />` allows to set abritraty http headers for each request. Elements rendered more deeply will override those included higher up in the rendered tree. Adding the same header (such as `Set-Cookie`) multiple times can be achieved by providing an array as value. `<Header name="x-foo" value={['bar', 'baz']}/>`
-
-# Basic Example
-
-```js
 import React from 'react';
-import Helmet from 'react-helmet';
-import { Route, Switch } from 'react-router-dom';
-import { render, createContext, Miss } from 'hops-react';
 
-import { headline } from './styles.css';
-import { template } from './template.tpl';
-
-const Home = () => (
-  <div>
-    <Helmet>
-      <title>Example</title>
-    </Helmet>
-    <h1 className={headline}>Hello World!</h1>
-  </div>
-);
-
-const App = () => (
-  <Switch>
-    <Route exact path="/" component={Home} />
-    <Miss />
-  </Switch>
-);
-
-export default render(<App />, createContext({ template }));
+export default render(<h1>Hello World!</h1>);
 ```
 
-# Render Contexts
+Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/react) as an example for how to use this preset.
 
-Most of `hops-react`'s functionality is implemented in a render context. You can either use one of the `createContext` factory functions provided by hops-react, hops-redux and hops-graphql or you can provide your own implementation. You can even mix-and-match default and custom context definitions.
+#### Consumer API
 
-`hops-react` does not use conventional JavaScript inheritance for its render contexts, but rather relies on [mixinable](https://github.com/dmbch/mixinable) to provide a form of [multiple inheritance](https://en.wikipedia.org/wiki/Multiple_inheritance).
+##### `render(element[, options]): UniversalRenderImplementation`
 
-## Composition API
+This is the main render method that you need to export from your entry file to render your application. It optionally accepts an options hash where you can configure certain runtime mixins.
 
-### `combineContexts(...contextDefinition)`
+##### `<Header name="String" value="String" />`
 
-Calling `combineContexts` with one or more `contextDefinition`s creates a context factory function similar to the `createContext` function described above.
+Use this side-effect component to specify HTTP header values that should be set during server-side rendering.
 
-`contextDefinition`s can be constructor functions or prototype objects. Both are being used behind the scenes to instantiate specialized sub-contexts. All their methods that do not implement lifecycle hooks (see below) are private, as sub-context instances are hidden.
+##### `<Miss />`
 
-The sub-context instances are completely isolated and they cannot interfere with one another. Objects created with a `createContext` factory are essentially facades
+Place this side-effect component after the last `<Route />` in your React Router's `<Switch />` component to signal the server that it should respond with a `404` status code.
 
-### `ReactContext`
+##### `<Status code={Number} />`
 
-hops-react exports its basic context definition as a constructor function to allow simple sub-classing and composition using `combineContexts`. For example, by `extend`ing it and overriding its `enhanceElement` method, you can very easily provide your own ReactRouter setup.
+This side-effect component can be used to set specific HTTP status codes for server-side rendering.
 
-## Lifecycle API
+##### `withServerData(Component): HigherOrderComponent`
 
-### `bootstrap()`
+Wrap your component with this HoC to get access to the prop `serverData` which contains all values of mixins that have implemented the `getServerData` hook.
 
-The `bootstrap` lifecyle hook allows you to set up your application and perform data fetching or other asynchronous operations. You are expected to return a `Promise` - and the `bootstrap` operations from all active `contextDefinition`s are performed in parallel. Rendering is blocked until all `Promise`s have been resolved (or rejected).
+##### `<ServerDataContextConsumer>{data => /* render something */}</ServerDataContextConsumer>`
 
-### `enhanceElement(reactElement)`
+This is a convenience export. If you don't want to use the above mentioned HoC you can also use this React Context consumer instead. It will accept a function as a child component and pass the `serverData` object to it.
 
-By implementing `enhanceElement`, you can wrap your application's root element in additional, usually purely functional components such as Redux's or React-Intl's `Provider`s. This way, you can keep the low-level (plumbing) parts of your application nicely separated from the high-level (porcellain) parts.
+### Configuration
 
-### `getTemplateData(templateData)` (Node.js only)
+#### Preset Options
 
-`getTemplateData` is supposed to return an object that is being passed to the server-side template function. Please check out hops-react's default template to get an idea on what keys are supported.
+This preset has no preset configuration options.
 
-`templateData` are being piped through the different implementations: make sure to extend or modify the object that is being passed into your implementation.
+#### Render Options
 
-### `renderTemplate(templateData)` (Node.js only)
+This preset has no runtime configuration options.
 
-`renderTemplate` is expected to be a rather simple, synchronous template function: data in, HTML string out. If you want to provide your own implementation, you might want to remember that hops-build-config allows you to simply `require`/`import` [template files](https://github.com/xing/hops/tree/master/packages/build-config#filesassets).
+### Mixin Hooks API
 
-### `getMountpoint()` (Browser only)
+#### `render([req, res, next]): void` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
 
-`getMountpoint` is meant to synchronously return the DOM-node your application is supposed to be mounted into.
+This is the default React universal render method which exposes the following hooks. You will usually not have to override this. See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#renderreq-res-next-override) for more details.
+
+#### `bootstrap([req, res]): void` ([parallel](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
+
+You can implement this method to run tasks before any rendering occurs to bootstrap your application. See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#bootstrapreq-res-parallel) for more details.
+
+#### `enhanceElement(element): element` ([compose](https://github.com/untool/mixinable/blob/master/README.md#definecompose))
+
+Implement this method to wrap your application component tree with additional components. Like a `<Provider />` for Redux or some custom `<ContextProvider />` when using [React Context](https://reactjs.org/docs/context.html). See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#enhanceelementelement-compose) for more details.
+
+#### `fetchData(data, element): data` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+
+Implement this method to fetch additional data before React's `renderToString()` method is called. See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#fetchdatadata-element-pipe) for more details.
+
+#### `getTemplateData(data): data` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+
+Implement this method to modify the `data` object after React's rendering has occured. This is useful when you need to collect the data during rendering, like [styled-components](https://www.styled-components.com/docs/advanced#server-side-rendering) or [react-loadable](https://github.com/jamiebuilds/react-loadable#finding-out-which-dynamic-modules-were-rendered). See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#gettemplatedatadata-pipe-server-only) for more details.
+
+#### `getServerData(req, res): serverData` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
+
+In some cases you need to share data from the server-side to the client-side (for example request specific data or derived data). For these circumstances you can implement the `getServerData()` hook (which will get passed the Express `request` and `response` objects) and return an object of key/value pairs that you want to make accessible on the client-side via the [above mentioned HoC](#withserverdatacomponent-higherordercomponent") or [Context consumer](#serverdatacontextconsumerdata---render-something-serverdatacontextconsumer).
