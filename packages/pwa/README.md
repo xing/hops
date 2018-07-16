@@ -62,6 +62,27 @@ This is the main export of `hops-pwa` which, when executed, will register the co
 | `workerPath` | `String` | `<basePath>/sw.js`   | _no_     | The path on which to serve the service worker |
 | `workerFile` | `String` | `hops-pwa/worker.js` | _yes_    | The path to the service worker entry file     |
 
+##### `workerPath`
+
+This configures the path on which to serve the service worker.
+
+##### `workerFile`
+
+This is the path to the service worker source file which will be compiled via webpack and served on the [`workerPath`](#workerpath).
+
+The service worker is expected to export a function with the following signature: `(config, assets): void`.
+
+The `assets` parameter is an array of asset urls that your build produced (referenced images, styles, scripts, etc) and might be used for precaching them.
+
+```javascript
+export default (config, assets) => {
+  // your worker code goes here. e.g.:
+  self.addEventListener('install', event => {
+    event.waitUntil(precache(assets));
+  });
+};
+```
+
 #### Render Options
 
 This preset has no runtime options.
