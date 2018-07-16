@@ -29,15 +29,6 @@ Check out this [integration test](https://github.com/xing/hops/tree/next/package
 
 ### Configuration
 
-[//]: # 'TODO: link to hops-react render method once readme is completed'
-
-This preset can be configured via the `options` hash passed to [hops-react's render() method](https://missing-link-explain-hops-react-render):
-
-```javascript
-const myTheme = { textColor: 'black' };
-export default render(<MyApp />, { styled: { theme: myTheme } });
-```
-
 #### Preset Options
 
 This preset has no preset configuration options.
@@ -46,6 +37,19 @@ This preset has no preset configuration options.
 
 This preset has only a single runtime option which can be passed to the `render()` options inside the `styled` key (see example above).
 
-| Name    | Type     | Default | Required | Description                                                                                                       |
-| ------- | -------- | ------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
-| `theme` | `Object` | `{}`    | _no_     | A [theme object](https://www.styled-components.com/docs/advanced#theming) for the styled-components ThemeProvider |
+| Name           | Type     | Default | Required | Description                                                  |
+| -------------- | -------- | ------- | -------- | ------------------------------------------------------------ |
+| `styled.theme` | `Object` | `{}`    | _no_     | A theme object for the styled-components `<ThemeProvider />` |
+
+##### `theme`
+
+In order to use [theming with `styled-components`](https://www.styled-components.com/docs/advanced#theming), this preset wraps your application in a `<ThemeProvider />`.
+
+Example:
+
+```javascript
+const myTheme = {
+  primaryColor: 'black',
+};
+export default render(<MyApp />, { styled: { theme: myTheme } });
+```

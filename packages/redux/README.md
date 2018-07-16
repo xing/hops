@@ -23,15 +23,30 @@ If you don't already have an existing Hops project read this section [on how to 
 
 ### Usage
 
-In order to use Redux in your application install the plugin and configure your reducers as [as render option](#render-options).
+In order to use Redux in your application install the plugin and configure your reducers [via render options](#render-options).
 
 Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/redux) as an example for how to use this preset.
 
 ### Configuration
 
-[//]: # 'TODO: link to hops-react render method once readme is completed'
+#### Preset Options
 
-This preset can be configured via the `options` hash passed to [hops-react's render() method](https://missing-link-explain-hops-react-render):
+This preset has no preset configuration options.
+
+#### Render Options
+
+This preset has only a single runtime option which can be passed to the `render()` options inside the `redux` key (see example above).
+
+| Name                                  | Type      | Default                  | Required | Description                                                                                                                                                         |
+| ------------------------------------- | --------- | ------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `redux.reducers`                      | `Object`  | `{}`                     | _yes_    | An object [whose values](https://redux.js.org/api-reference/combinereducers#arguments) consists of all your reducer functions.                                      |
+| `redux.middlewares`                   | `Array`   | `[ReduxThunkMiddleware]` | _no_     | An array of all [redux middleware](https://redux.js.org/api-reference/applymiddleware) you want to use.                                                             |
+| `redux.actionCreators`                | `Array`   | `[]`                     | _no_     | An array of route-bound action creators to be dispatched when the current route matches.                                                                            |
+| `redux.alwaysDispatchActionsOnClient` | `boolean` | `undefined`              | _no_     | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
+
+##### `reducers`
+
+An object with key/value pairs of namespaces and reducer functions which will shape your state tree. This will be used with the [`combineReducers` function](https://redux.js.org/api-reference/combinereducers#arguments).
 
 ```javascript
 const reducers = {
@@ -42,20 +57,57 @@ const reducers = {
 export default render(<MyApp />, { redux: { reducers } });
 ```
 
-#### Preset Options
+##### `middlewares`
 
-This preset has no preset configuration options.
+You can configure any redux middleware you may want to use - by default this preset will include the [`redux-thunk` middleware](https://github.com/reduxjs/redux-thunk).
 
-#### Render Options
+```javascript
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+export default render(<MyApp />, { redux: { middlewares: [logger, thunk] } });
+```
 
-This preset has only a single runtime option which can be passed to the `render()` options inside the `redux` key (see example above).
+##### `actionCreators`
 
-| Name                            | Type      | Default                  | Required | Description                                                                                                                                                         |
-| ------------------------------- | --------- | ------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `reducers`                      | `Object`  | `{}`                     | _yes_    | An object [whose values](https://redux.js.org/api-reference/combinereducers#arguments) consists of all your reducer functions.                                      |
-| `middlewares`                   | `Array`   | `[ReduxThunkMiddleware]` | _no_     | An array of all [redux middleware](https://redux.js.org/api-reference/applymiddleware) you want to use.                                                             |
-| `actionCreators`                | `Array`   | `[]`                     | _no_     | An array of route-bound action creators to be dispatched when the current route matches.                                                                            |
-| `alwaysDispatchActionsOnClient` | `boolean` | `undefined`              | _no_     | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
+In order to dispatch actions based on the currently matching route you can specify a list of actions for [matching urls](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/matchPath.md).
+
+These objects have the same properties as the [`<Route />` component](https://reacttraining.com/react-router/core/api/Route/path-string) and an additional `action` key with which the action that is to be dispatched can be specified.
+
+When server-side rendering/data fetching is enabled, this will dispatch matching actions on the server and prefill the store for client-side.
+
+On the client-side by default this will dispatch matching actions only on client-side navigation (can be overriden by setting `alwaysDispatchActionsOnClient` to `true`).
+
+```javascript
+export default render(<MyApp />, {
+  redux: {
+    actionCreators: [
+      {
+        path: '/users',
+        exact: true,
+        strict: true,
+        action: fetchUsers,
+      },
+      {
+        path: '/users/:id',
+        action: fetchUser,
+      },
+    ],
+  },
+});
+```
+
+##### `alwaysDispatchActionsOnClient`
+
+Use this option to control whether you want to dispatch [matching actions](#actioncreators) on the client-side again after they have already been dispatched on the server.
+
+```javascript
+export default render(<MyApp />, {
+  redux: {
+    actionCreators: [...],
+    alwaysDispatchActionsOnClient: true,
+  },
+});
+```
 
 ### Mixin Hooks API
 
