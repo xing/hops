@@ -1,6 +1,6 @@
 const CACHE_NAME = 'hops-pwa-cache';
 
-export default config => assets => {
+export default (config, assets) => {
   const cacheables = assets.map(a => '/' + a).concat(config.locations);
 
   self.addEventListener('install', evt => {

@@ -11,7 +11,7 @@ const { getConfigAndMixins } = require('./loader-shim');
   if (typeof entryPoint.default === 'function') {
     entryPoint = entryPoint.default;
   }
-  entryPoint(getConfigAndMixins().config)(HOPS_ASSETS); // eslint-disable-line no-undef
+  entryPoint(getConfigAndMixins().config, HOPS_ASSETS); // eslint-disable-line no-undef
   if (module.hot) {
     module.hot.accept(require.resolve('hops-worker-entry-point'), () =>
       setTimeout(execute)
