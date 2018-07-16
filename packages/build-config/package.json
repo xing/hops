@@ -45,7 +45,7 @@
     "mkdirp": "^0.5.1",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "pkg-dir": "^2.0.0",
-    "postcss": "^6.0.16",
+    "postcss": "^7.0.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.10",
