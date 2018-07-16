@@ -29,18 +29,17 @@ Check out this [integration test](https://github.com/xing/hops/tree/next/package
 
 The only required configuration is a `tsconfig.json` in your project root.
 
-Example config:
+This preset contains a [minimal `tsconfig.json`](https://github.com/xing/hops/blob/next/packages/typescript/tsconfig.json) file which you can extend or overwrite in your tsconfig.json:
+
+Example:
 
 ```json
 {
-  "compilerOptions": {
-    "target": "es6",
-    "jsx": "react",
-    "outDir": "./dist",
-    "moduleResolution": "node"
-  }
+  "extends": "./node_modules/hops-typescript/tsconfig.json"
 }
 ```
+
+Unfortunately `"extends"` only supports file relative paths at the moment. See https://github.com/Microsoft/TypeScript/issues/18865 for more information.
 
 #### Preset Options
 
