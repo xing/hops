@@ -1,102 +1,132 @@
-# Hops GraphQL
+# `hops-graphql`
 
 [![npm](https://img.shields.io/npm/v/hops-graphql.svg)](https://www.npmjs.com/package/hops-graphql)
 
-hops-graphql extends [hops-react](https://github.com/xing/hops/tree/master/packages/react) by providing a rendering context injecting a [GraphQL](http://graphql.org) [`Provider`](https://github.com/apollographql/react-apollo) and some helpers.
+[//]: # 'TODO: add general section about presets, how to install them, how to register them, how to configure them to main Hops readme'
 
-Additionally, hops-graphql features a CLI tool to help working with GraphQL schemas.
+This is a [preset for Hops](https://missing-link-explain-what-are-presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework.
 
-# Installation
+### Installation
 
-To use hops-graphql, you need to add it and its dependencies to an existing project that already has [hops-react](https://github.com/xing/hops/tree/master/packages/react) installed.
+_This preset must be used together with the `hops-react` preset._
+
+Just add this preset and its peer dependencies `graphql-tag` and `react-apollo` to your existing Hops React project:
 
 ```bash
-npm install --save hops-graphql react react-apollo graphql-tag
+$ yarn add hops-graphql graphql-tag react-apollo
+# OR npm install --save hops-graphql graphql-tag react-apollo
 ```
 
-# Usage
+[//]: # 'TODO: add general section about setting up a basic hops project to main Hops readme'
 
-Generally, you will use hops-react exactly as you would use a well configured [Apollo Client](http://dev.apollodata.com/react/). hops-graphql only adds a bit of convenience and works out-of-the-box with the other Hops components.
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://missing-link-explain-quick-start)
 
-## Configuration
+### CLI
 
-The following configuration options are available when using this package:
+#### `graphql introspect`
 
-| Field               | Type     | Required | Description                                                                                                                              |
-| ------------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `graphqlUri`        | `String` | yes      | The full URI to your GraphQL endpoint. This will be used when making requests or [generating the introspection result](#CLI)             |
-| `graphqlSchemaFile` | `String` | no       | Path to your GraphQL schema file - defaults to `./schema.graphql`. If set this will be used to [generate the introspection result](#CLI) |
+Extract information to support the `IntrospectionFragmentMatcher` from either a remote GraphQL server or from a local GraphQL schema file.
 
-Example:
+This preset takes care of setting up the Apollo cache and fragment matchers - if a `fragmentsFile` is present it will use the `IntrospectionFragmentMatcher`, otherwise it will fall back to a `HeuristicFragmentMatcher`.
+
+This is not strictly necessary but is recommended if you have a more complex schema and are querying fragments on unions or interfaces.
+
+Head over to https://github.com/apollographql/react-docs/blob/master/source/initialization.md#using-fragments-on-unions-and-interfaces to read more details about this.
+
+##### Arguments
+
+###### `-H` / `--header`
+
+Pass additional HTTP headers that should be sent when executing the introspection query against a remote GraphQL server. For example when your server requires an authentication token or similar.
+
+This argument can be specified multiple times to add multiple HTTP headers.
+
+### Usage
+
+This preset has no exports and therefore just needs to be installed in order to start using `apollo-graphql` in your app.
+
+Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/graphql) as an example for how to use this preset.
+
+### Configuration
+
+#### Preset Options
+
+| Name                | Type     | Default                        | Required | Description                                      |
+| ------------------- | -------- | ------------------------------ | -------- | ------------------------------------------------ |
+| `fragmentsFile`     | `String` | `<rootDir>/fragmentTypes.json` | _no_     | Where to store the generated fragment types file |
+| `graphqlSchemaFile` | `String` | `''`                           | _no_     | Path to your GraphQL schema file                 |
+| `graphqlUri`        | `String` | `''`                           | _yes_    | Url to your GraphQL endpoint                     |
+
+##### `fragmentsFile`
+
+This option controls where the fragment type information that are used for the `IntrospectionFragmentMatcher` should be saved.
+
+By default executing `$ hops graphql introspect` will create a file called `fragmentTypes.json` in the application root directory.
 
 ```json
-{
-  "hops": {
-    "graphqlUri": "https://www.graphqlhub.com/graphql",
-    "graphqlSchemaFile": "./my-schema.graphql"
-  }
+"hops": {
+  "fragmentsFile": "<rootDir>/fragmentTypes.json"
 }
 ```
 
-For more elaborate (e.g. environment specific configs), please refer to the [hops-config docs](https://github.com/xing/hops/tree/master/packages/config).
+##### `graphqlSchemaFile`
 
-## CLI
+In case your GraphQL server (configured via [`graphqlUri`](#graphqluri)) does not answer to introspection queries, you can provide the full schema as a file from which the introspection fragment matcher can generate information about unions and interfaces.
 
-To allow you to work with [fragments on interfaces or unions](https://github.com/apollographql/apollo-client/blob/master/docs/source/recipes/fragment-matching.md#using-fragments-on-unions-and-interfaces) with GraphQL, you need to provide additional information derived from your actual schema to the client. To fetch and supply that info, please run the command provided by this package in your project's root folder:
-
-```bash
-hops graphql introspect
-```
-
-The generated file, `fragmentTypes.json` will be picked up automatically by hops-graphql. Please make sure to commit it to version control.
-
-# API
-
-## `graphqlExtension(config)`
-
-`graphqlExtension()` is hops-graphql's main export. It is used as an extension to [`hops-react's render function`](https://github.com/xing/hops/tree/master/packages/react#renderreactelement-config). Its [config options](https://www.apollographql.com/docs/react/reference/index.html#ApolloClientOptions) are directly passed passed in to the [`ApolloClient` constructor](https://www.apollographql.com/docs/react/reference/index.html#ApolloClient)
-
-Defaults for the `graphql` config are very similar to those in the [default implementation](https://www.npmjs.com/package/apollo-client-preset) with the exception that `hopsConfig.graphqlUri` is being used as HTTP endpoint.
-
-## `createContext(options)`
-
-`createContext()` is hops-graphql's main export. Additional to the config options of [hops-react's createContext](https://github.com/xing/hops/tree/master/packages/react#createcontextoptions) it takes additional options as described [above under `graphqlExtension(config)`](#graphqlextensionconfig). Be careful, in this case you have to wrap the config options under the `graphql` namespace.
-
-## `GraphQLContext`
-
-This constructor function is an advanced API feature, meant to help you build your own context factory functions. For more info, please read up on hops-react [render contexts](https://github.com/xing/hops/tree/master/packages/react#render-contexts).
-
-# Example
-
-### `hero.gql`
-
-```graphql
-{
-  hero {
-    name
-    height
-  }
+```json
+"hops": {
+  "graphqlSchemaFile": "<rootDir>/schema.graphql"
 }
 ```
 
-### `hero.js`
+##### `graphqlUri`
 
-```js
-import React from 'react';
-import { graphql } from 'react-apollo';
+This is the full uri to your GraphQL endpoint which should be used by the client- and server-side when executing requests.
 
-import query from './hero.gql';
+This will also be used to generate fragment type information with `$ hops graphql introspect` in case no [`graphqlSchemaFile`](#graphqlschemafile) has been provided.
 
-export const withHero = graphql(query);
+```json
+"hops": {
+  "graphqlUri": "https://www.graphqlhub.com/graphql"
+}
+```
 
-export const Home = ({ data: { loading, hero } }) =>
-  loading ? (
-    <p>Loading...</p>
-  ) : (
-    <p>
-      {hero.name}: {hero.height}
-    </p>
-  );
+#### Render Options
 
-export default withHero(Home);
+This preset has only a single runtime option which can be passed to the `render()` options inside the `styled` key (see example above).
+
+| Name            | Type          | Default               | Required | Description                     |
+| --------------- | ------------- | --------------------- | -------- | ------------------------------- |
+| `graphql.link`  | `ApolloLink`  | `ApolloHttpLink`      | _no_     | An instance of a `apollo-link`  |
+| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_     | An instance of a `apollo-cache` |
+
+##### `link`
+
+By default this preset creates an `HttpLink` with the configured [`graphqlUri`](#graphqluri). If you need a different link, you can pass the instantiated link to the render options.
+
+Read more about Apollo links here:
+
+- https://www.apollographql.com/docs/link/
+- https://www.apollographql.com/docs/react/advanced/network-layer.html
+
+```javascript
+export default render(<MyApp />, {
+  graphql: { link: new HttpLink({ uri: 'http://api.githunt.com/graphql' }) },
+});
+```
+
+##### `cache`
+
+By default this preset creates an [`InMemoryCache`](https://www.apollographql.com/docs/react/advanced/caching.html) which uses either the [`IntrospectionFragmentMatcher` or `HeuristicFragmentMatcher`](https://www.apollographql.com/docs/react/advanced/fragments.html#fragment-matcher) depending on whether fragment introspection results are available or not (create them with [`$ hops graphql introspect`](#graphql-introspect)).
+
+In case you need to configure a different Apollo cache you can pass an instantiated cache to the render options.
+
+Read more about Apollo caches here: https://www.apollographql.com/docs/react/advanced/caching.html#configuration
+
+```javascript
+export default render(<MyApp />, {
+  graphql: {
+    cache: new InMemoryCache(),
+  },
+});
 ```
