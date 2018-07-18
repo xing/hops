@@ -1,0 +1,21 @@
+{
+  "name": "hops-development-proxy",
+  "version": "11.0.0-rc.17",
+  "description": "Proxy",
+  "keywords": [
+    "hops"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "@untool/core": "^0.12.1",
+    "debug": "^3.1.0",
+    "http-proxy-middleware": "^0.18.0"
+  }
+}
