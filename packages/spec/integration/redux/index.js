@@ -15,6 +15,14 @@ const reducers = {
 
 const increment = () => ({ type: 'INCREMENT', payload: 1 });
 
+const incrementFetch = () => (dispatch, getState, { fetch } = {}) => {
+  return fetch('/api')
+    .then(r => r.json())
+    .then(({ value }) => {
+      dispatch({ type: 'INCREMENT', payload: value });
+    });
+};
+
 const Counter = ({ count, increment }) => (
   <React.Fragment>
     <button onClick={increment}>+</button>
@@ -34,6 +42,10 @@ export default render(<ConnectedCounter />, {
       {
         path: '/increment',
         action: increment,
+      },
+      {
+        path: '/increment-fetch',
+        action: incrementFetch,
       },
     ],
   },
