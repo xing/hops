@@ -41,4 +41,15 @@ describe('redux developmet server', () => {
 
     await page.close();
   });
+
+  it('executes route-matching action creators with fetch', async () => {
+    const { page, getInnerText } = await createPage();
+    await page.goto(url + '/increment-fetch', { waitUntil: 'networkidle2' });
+
+    const count = await getInnerText('output');
+
+    expect(count).toBe('42');
+
+    await page.close();
+  });
 });

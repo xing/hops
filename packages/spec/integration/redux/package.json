@@ -11,6 +11,9 @@
   "scripts": {
     "start": "node -e 'require(\"hops\").run(\"start\")'"
   },
+  "hops": {
+    "mixins": ["./"]
+  },
   "dependencies": {
     "hops-preset-defaults": "*",
     "hops-react": "*",
