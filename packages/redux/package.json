@@ -35,6 +35,7 @@
   "dependencies": {
     "@untool/core": "^0.12.1",
     "history": "^4.7.2",
+    "isomorphic-fetch": "^2.2.1",
     "mixinable": "^3.0.0",
     "prop-types": "^15.6.2"
   },
