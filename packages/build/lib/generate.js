@@ -14,7 +14,9 @@ var createRenderer = require('./renderer');
 function getFileName(location) {
   return path.join.apply(
     path,
-    [hopsConfig.buildDir].concat(index(location).split(path.sep))
+    [hopsConfig.buildDir].concat(
+      index(location.replace(/:/g, '')).split(path.sep)
+    )
   );
 }
 
