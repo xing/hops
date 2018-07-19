@@ -18,7 +18,7 @@ class ReduxMixin extends Mixin {
   constructor(config, element, { redux: options = {} } = {}) {
     super(config);
 
-    this.middlewares = options.middlewares || [ReduxThunkMiddleware];
+    this.middlewares = options.middlewares;
     this.reducers = options.reducers || {};
   }
 
@@ -39,12 +39,14 @@ class ReduxMixin extends Mixin {
     return this.store;
   }
 
-  getMiddlewares() {
-    return this.middlewares;
+  getReduxMiddlewares() {
+    return [ReduxThunkMiddleware];
   }
 
   applyMiddlewares() {
-    return this.getMiddlewares().map(m => applyMiddleware(m));
+    const middlewares = this.middlewares || this.getReduxMiddlewares();
+
+    return middlewares.map(m => applyMiddleware(m));
   }
 
   composeEnhancers(...enhancers) {
@@ -68,6 +70,7 @@ class ReduxMixin extends Mixin {
 
 ReduxMixin.strategies = {
   getReduxStore: override,
+  getReduxMiddlewares: override,
 };
 
 module.exports = ReduxMixin;
