@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* **postcss:**  fix prefixes in dev and prod being different ([7bc95d7](https://github.com/xing/hops/commit/7bc95d7))
+* **postcss:** add missing postcss features that were supported before ([c65a1f4](https://github.com/xing/hops/commit/c65a1f4))
+
+
+### Features
+
+* **postcss:** implement postcss package ([46ec09e](https://github.com/xing/hops/commit/46ec09e))
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 

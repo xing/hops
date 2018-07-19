@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* do not use nested css as it is not supported anymore ([f85dc75](https://github.com/xing/hops/commit/f85dc75))
+
+
+### Code Refactoring
+
+* **redux:** namespace render options ([c83d9aa](https://github.com/xing/hops/commit/c83d9aa))
+
+
+### Features
+
+* **postcss:** implement postcss package ([46ec09e](https://github.com/xing/hops/commit/46ec09e))
+* **redux:** use shouldPrefetchOnServer instead of _hopsStatic ([e601483](https://github.com/xing/hops/commit/e601483))
+* **template-redux:** introduce react/redux template ([a6511a2](https://github.com/xing/hops/commit/a6511a2))
+
+
+### BREAKING CHANGES
+
+* **redux:** redux specific options are now namespaced
+If you want to pass options to the hops-redux package you need to pass
+them to the render function inside a `redux` key:
+**Before:**
+```javascript
+render(<MyApp />, { reducers: {...} });
+```
+**After:**
+```javascript
+render(<MyApp />, { redux: { reducers: {...}  } });
+```
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 
