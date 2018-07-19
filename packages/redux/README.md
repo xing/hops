@@ -114,3 +114,9 @@ export default render(<MyApp />, {
 #### `getReduxStore(): Store` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
 
 Use this method in your own mixins to get a reference to the currently used Redux [Store](https://redux.js.org/api-reference/store) instance.
+
+#### `getReduxMiddlewares(): [middleware]` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+
+Allows to specify your own set of redux middlewares. Useful when middlewares need access to the current request object, which only exists in the mixin context.
+
+Beware that middlewares passed as render option take precedence.
