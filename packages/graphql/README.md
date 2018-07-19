@@ -130,3 +130,13 @@ export default render(<MyApp />, {
   },
 });
 ```
+
+### Mixin Hooks API
+
+#### `getApolloLink(): ApolloLink` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+
+Hook to return a custom [ApolloLink](https://github.com/apollographql/apollo-link).
+
+Useful when the link needs access to the current request object, which only exists in the mixin context.
+
+Beware that `link` passed as render option takes precedence.
