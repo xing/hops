@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.20"></a>
+# [11.0.0-rc.20](https://github.com/xing/hops/compare/v11.0.0-rc.19...v11.0.0-rc.20) (2018-07-19)
+
+
+### Features
+
+* **redux:** add fetch to thunks ([3d6a5f2](https://github.com/xing/hops/commit/3d6a5f2))
+
+
+
+
 <a name="11.0.0-rc.19"></a>
 # [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
 
