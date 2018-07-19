@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Features
+
+* **webpack:** print compilation stats and watch runs ([fbe902b](https://github.com/xing/hops/commit/fbe902b))
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 

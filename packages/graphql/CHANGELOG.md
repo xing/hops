@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* **graphql:** pass apollo state to getTemplateData.globals ([ed64cef](https://github.com/xing/hops/commit/ed64cef))
+* Use renamed untool getConfigAndMixins function ([0d16963](https://github.com/xing/hops/commit/0d16963))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([bb20aa6](https://github.com/xing/hops/commit/bb20aa6))
+
+
+### Code Refactoring
+
+* **graphql:** namespace render options ([80847df](https://github.com/xing/hops/commit/80847df))
+
+
+### Features
+
+* **graphql:** add overridable getApolloLink hook ([0bc798e](https://github.com/xing/hops/commit/0bc798e))
+* **graphql:** use shouldPrefetchOnServer to enable prefetching of data ([86345e3](https://github.com/xing/hops/commit/86345e3))
+* **postcss:** implement postcss package ([46ec09e](https://github.com/xing/hops/commit/46ec09e))
+* **preset-defaults:** move default presets into separate package ([f8a095a](https://github.com/xing/hops/commit/f8a095a))
+
+
+### BREAKING CHANGES
+
+* **graphql:** graphql specific options are now namespaced
+If you want to pass options to the hops-graphql package you need to pass
+them to the render function inside a `graphql` key:
+**Before:**
+```javascript
+render(<MyApp />, { link: new Link() });
+```
+**After:**
+```javascript
+render(<MyApp />, { graphql: { link: new Link() } });
+```
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 

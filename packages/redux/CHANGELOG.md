@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* **redux:** add missing actionCreatorDispatcher files to package ([b1ebe2d](https://github.com/xing/hops/commit/b1ebe2d))
+* **redux:** specify esnext field to transpile code ([58a6b09](https://github.com/xing/hops/commit/58a6b09))
+* use renamed getTemplateData hook in favor of enhanceData ([31ecf4f](https://github.com/xing/hops/commit/31ecf4f))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([bb20aa6](https://github.com/xing/hops/commit/bb20aa6))
+
+
+### Code Refactoring
+
+* **redux:** namespace render options ([c83d9aa](https://github.com/xing/hops/commit/c83d9aa))
+
+
+### Features
+
+* **postcss:** implement postcss package ([46ec09e](https://github.com/xing/hops/commit/46ec09e))
+* **redux:** add action creator dispatcher mixin ([78a848c](https://github.com/xing/hops/commit/78a848c))
+* **redux:** add overridable getReduxMiddlewares hook ([ccaefa7](https://github.com/xing/hops/commit/ccaefa7))
+* **redux:** expose getReduxStore hook ([9ada268](https://github.com/xing/hops/commit/9ada268))
+* **redux:** use shouldPrefetchOnServer instead of _hopsStatic ([e601483](https://github.com/xing/hops/commit/e601483))
+
+
+### BREAKING CHANGES
+
+* **redux:** redux specific options are now namespaced
+If you want to pass options to the hops-redux package you need to pass
+them to the render function inside a `redux` key:
+**Before:**
+```javascript
+render(<MyApp />, { reducers: {...} });
+```
+**After:**
+```javascript
+render(<MyApp />, { redux: { reducers: {...}  } });
+```
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 

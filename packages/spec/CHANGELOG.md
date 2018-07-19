@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* **pwa:** worker function receives both config and assets as arguments ([b1f3276](https://github.com/xing/hops/commit/b1f3276))
+* **spec:** ignore case of stdout output ([7c63206](https://github.com/xing/hops/commit/7c63206))
+
+
+### Features
+
+* **react:** pass CLI arguments to runtime mixins / React HoC ([5e455c2](https://github.com/xing/hops/commit/5e455c2))
+* **typescript:** provide minimal default tsconfig.json ([1ac77d0](https://github.com/xing/hops/commit/1ac77d0))
+
+
+
+
 <a name="11.0.0-rc.16"></a>
 # [11.0.0-rc.16](https://github.com/xing/hops/compare/v11.0.0-rc.15...v11.0.0-rc.16) (2018-07-09)
 

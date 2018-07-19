@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* do not use nested css as it is not supported anymore ([f85dc75](https://github.com/xing/hops/commit/f85dc75))
+* **template-react:** remove env variable access to fix tests ([6892dc8](https://github.com/xing/hops/commit/6892dc8))
+
+
+### Features
+
+* **postcss:** implement postcss package ([46ec09e](https://github.com/xing/hops/commit/46ec09e))
+* **preset-defaults:** move default presets into separate package ([f8a095a](https://github.com/xing/hops/commit/f8a095a))
+* **react:** pass environment variables to React HoC ([5224979](https://github.com/xing/hops/commit/5224979))
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 

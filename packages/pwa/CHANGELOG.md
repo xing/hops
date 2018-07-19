@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* **pwa:** include babel polyfill and use config from [@untool](https://github.com/untool)/config ([c540dd8](https://github.com/xing/hops/commit/c540dd8))
+* Use renamed untool getConfigAndMixins function ([0d16963](https://github.com/xing/hops/commit/0d16963))
+* **pwa:** worker function receives both config and assets as arguments ([b1f3276](https://github.com/xing/hops/commit/b1f3276))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([bb20aa6](https://github.com/xing/hops/commit/bb20aa6))
+
+
+### Features
+
+* **pwa:** allow service worker registration on all local interfaces ([878011e](https://github.com/xing/hops/commit/878011e))
+* **pwa:** implement hops-pwa as mixin ([28eb3e0](https://github.com/xing/hops/commit/28eb3e0))
+
+
+### BREAKING CHANGES
+
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 

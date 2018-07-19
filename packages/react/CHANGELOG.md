@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* use renamed getTemplateData hook in favor of enhanceData ([31ecf4f](https://github.com/xing/hops/commit/31ecf4f))
+* **react:** add missing files to package.json ([34a4208](https://github.com/xing/hops/commit/34a4208))
+* **react:** do not fail if _hopsEnvironmentVariables is not defined ([6b0fae4](https://github.com/xing/hops/commit/6b0fae4))
+* **react:** do not set shouldPrefetchOnServer from config ([b519993](https://github.com/xing/hops/commit/b519993))
+* **react:** try to acess env var on `process.env` first ([7ae00ac](https://github.com/xing/hops/commit/7ae00ac))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([bb20aa6](https://github.com/xing/hops/commit/bb20aa6))
+
+
+### Features
+
+* **preset-defaults:** move default presets into separate package ([f8a095a](https://github.com/xing/hops/commit/f8a095a))
+* **react:** add server data HOC ([0d8dbb4](https://github.com/xing/hops/commit/0d8dbb4))
+* **react:** implement server components ([8249d90](https://github.com/xing/hops/commit/8249d90))
+* **react:** pass CLI arguments to runtime mixins / React HoC ([5e455c2](https://github.com/xing/hops/commit/5e455c2))
+* **react:** pass environment variables to React HoC ([5224979](https://github.com/xing/hops/commit/5224979))
+* **react:** remove withCLIArguments ([64700bb](https://github.com/xing/hops/commit/64700bb))
+* **react:** set res.locals.shouldPrefetchOnServer based on config ([e9a3821](https://github.com/xing/hops/commit/e9a3821))
+
+
+### BREAKING CHANGES
+
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.17"></a>
 # [11.0.0-rc.17](https://github.com/xing/hops/compare/v11.0.0-rc.16...v11.0.0-rc.17) (2018-07-09)
 

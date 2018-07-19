@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.19"></a>
+# [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
+
+
+### Bug Fixes
+
+* **config:** add missing browser.js to package ([7796873](https://github.com/xing/hops/commit/7796873))
+* Use renamed untool getConfigAndMixins function ([0d16963](https://github.com/xing/hops/commit/0d16963))
+* **config:** environmentalize config ([787f9cc](https://github.com/xing/hops/commit/787f9cc))
+* **config:** replace env placeholders with environment variables ([e79c40b](https://github.com/xing/hops/commit/e79c40b))
+* **config:** use aliased config when building for browser env ([9fab161](https://github.com/xing/hops/commit/9fab161))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([bb20aa6](https://github.com/xing/hops/commit/bb20aa6))
+
+
+### Features
+
+* **config:** export config through "hops-config" ([7929964](https://github.com/xing/hops/commit/7929964))
+* **react:** implement server components ([8249d90](https://github.com/xing/hops/commit/8249d90))
+
+
+### BREAKING CHANGES
+
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.18"></a>
 # [11.0.0-rc.18](https://github.com/xing/hops/compare/v11.0.0-rc.17...v11.0.0-rc.18) (2018-07-09)
 
