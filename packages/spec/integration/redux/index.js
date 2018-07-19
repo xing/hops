@@ -15,7 +15,7 @@ const reducers = {
 
 const increment = () => ({ type: 'INCREMENT', payload: 1 });
 
-const incrementFetch = () => (dispatch, getState, { fetch } = {}) => {
+const incrementFetch = () => (dispatch, getState, { fetch }) => {
   return fetch('/api')
     .then(r => r.json())
     .then(({ value }) => {
