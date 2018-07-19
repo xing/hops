@@ -120,3 +120,20 @@ Use this method in your own mixins to get a reference to the currently used Redu
 Allows to specify your own set of redux middlewares. Useful when middlewares need access to the current request object, which only exists in the mixin context.
 
 Beware that middlewares passed as render option take precedence.
+
+#### `configureReduxFetch(fetch): fetch` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+
+Method to alter `fetch` implementation that is being passed as [custom argument](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument) to redux-thunk-based action creators. Allows to closure request-specific data. Returns [`isomorphic-fetch`](https://github.com/matthew-andrews/isomorphic-fetch) by default.
+
+##### Example thunk-based action creator
+
+```javascript
+// Object with fetch is passed as third parameter to thunks
+const incrementFetch = () => (dispatch, getState, { fetch }) => {
+  return fetch('/api')
+    .then(r => r.json())
+    .then(({ value }) => {
+      dispatch({ type: 'INCREMENT', payload: value });
+    });
+};
+```
