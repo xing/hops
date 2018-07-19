@@ -1,7 +1,22 @@
 const { Mixin } = require('@untool/core');
 const strip = require('strip-indent');
+const {
+  async: { override: overrideAsync },
+} = require('mixinable');
 
 class LambdaMixin extends Mixin {
+  deployLambda(parameterOverrides) {
+    return require('./lib/deploy')(
+      this.config,
+      this.options,
+      parameterOverrides
+    );
+  }
+
+  destroyLambda() {
+    return require('./lib/destroy')(this.config, this.options);
+  }
+
   registerCommands(yargs) {
     return yargs.command('lambda', 'manage your lambda deployment', yargs =>
       yargs
@@ -9,8 +24,8 @@ class LambdaMixin extends Mixin {
         .command({
           command: 'deploy',
           describe: 'Deploys your hops application to AWS lambda',
-          handler: argv => {
-            return require('./index').deploy(this.config, argv);
+          handler: () => {
+            this.deployLambda({});
           },
         })
         .command({
@@ -40,14 +55,23 @@ class LambdaMixin extends Mixin {
               describe: "Don't ask for confirmation.",
             },
           },
-          handler: argv => {
-            return require('./index').destroy(this.config, argv);
+          handler: () => {
+            this.destroyLambda();
           },
         })
         .help('help')
         .demandCommand()
     );
   }
+
+  handleArguments(argv) {
+    this.options = { ...this.options, ...argv };
+  }
 }
+
+LambdaMixin.strategies = {
+  deployLambda: overrideAsync,
+  destroyLambda: overrideAsync,
+};
 
 module.exports = LambdaMixin;

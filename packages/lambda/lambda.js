@@ -3,7 +3,9 @@
 process.env.UNTOOL_NSP = 'hops';
 
 const serverlessHttp = require('serverless-http');
-const config = require('@untool/core/lib/config').getConfig();
+const config = require('@untool/core/lib/env').environmentalize(
+  require('@untool/core/lib/config').getConfig()
+);
 const {
   stripLeadingSlash,
   stripTrailingSlash,
