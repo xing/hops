@@ -140,3 +140,7 @@ Hook to return a custom [ApolloLink](https://github.com/apollographql/apollo-lin
 Useful when the link needs access to the current request object, which only exists in the mixin context.
 
 Beware that `link` passed as render option takes precedence.
+
+#### `configureFetch(fetch): fetch` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+
+Method to alter `fetch` implementation that is being passed into the default ApolloLink. Allows to closure request-specific data. Returns [`isomorphic-fetch`](https://github.com/matthew-andrews/isomorphic-fetch) by default.
