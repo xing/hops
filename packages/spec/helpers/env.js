@@ -45,6 +45,7 @@ class FixtureEnvironment extends NodeEnvironment {
     const { browser, teardown: closeBrowser } = await launchPuppeteer();
     this.closeBrowser = closeBrowser;
     this.global.browser = browser;
+    this.global.cwd = cwd;
 
     this.global.createPage = async () => {
       const page = await browser.newPage();
