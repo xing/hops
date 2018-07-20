@@ -45,14 +45,14 @@ class ReduxMixin extends Mixin {
     return this.store;
   }
 
-  configureReduxFetch() {
+  configureFetch() {
     return require('isomorphic-fetch');
   }
 
   getReduxMiddlewares() {
     return [
       ReduxThunkMiddleware.withExtraArgument({
-        fetch: this.configureReduxFetch(),
+        fetch: this.configureFetch(),
       }),
     ];
   }
@@ -75,7 +75,7 @@ class ReduxMixin extends Mixin {
 ReduxMixin.strategies = {
   getReduxStore: override,
   getReduxMiddlewares: override,
-  configureReduxFetch: pipe,
+  configureFetch: pipe,
 };
 
 module.exports = ReduxMixin;
