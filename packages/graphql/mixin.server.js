@@ -3,7 +3,7 @@ const React = require('react');
 const { existsSync, readFileSync } = require('fs');
 const { Mixin } = require('@untool/core');
 const {
-  sync: { override },
+  sync: { override, pipe },
 } = require('mixinable');
 const { ApolloProvider, getDataFromTree } = require('react-apollo');
 const { default: ApolloClient } = require('apollo-client');
@@ -43,8 +43,15 @@ class GraphQLMixin extends Mixin {
     };
   }
 
+  configureFetch() {
+    return require('isomorphic-fetch');
+  }
+
   getApolloLink() {
-    return new HttpLink({ uri: this.config.graphqlUri });
+    return new HttpLink({
+      uri: this.config.graphqlUri,
+      fetch: this.configureFetch(),
+    });
   }
 
   createCache() {
@@ -111,6 +118,7 @@ class GraphQLMixin extends Mixin {
 
 GraphQLMixin.strategies = {
   getApolloLink: override,
+  configureFetch: pipe,
 };
 
 module.exports = GraphQLMixin;
