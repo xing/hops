@@ -1,5 +1,10 @@
 const NodeEnvironment = require('jest-environment-node');
-const { launchPuppeteer, startServer, build } = require('./test-helpers');
+const {
+  launchPuppeteer,
+  startServer,
+  build,
+  createWorkingDir,
+} = require('./test-helpers');
 
 function getProperty(property, selector) {
   return this.$(selector)
@@ -32,9 +37,13 @@ class FixtureEnvironment extends NodeEnvironment {
   }
   async setup() {
     await super.setup();
+    const { cwd, removeWorkingDir } = await createWorkingDir(
+      this.config.rootDir
+    );
+    this.cwd = global.cwd = cwd;
+    this.removeWorkingDir = removeWorkingDir;
     const { browser, teardown: closeBrowser } = await launchPuppeteer();
     this.closeBrowser = closeBrowser;
-
     this.global.browser = browser;
 
     this.global.createPage = async () => {
@@ -62,7 +71,7 @@ class FixtureEnvironment extends NodeEnvironment {
           );
         }
         const { url, teardown } = await startServer({
-          cwd: that.config.rootDir,
+          cwd: that.cwd,
           command: 'develop',
         });
         that.killServer = teardown;
@@ -74,7 +83,7 @@ class FixtureEnvironment extends NodeEnvironment {
             'Warning you are trying to execute a production build - at the moment this causes jest to start many node processes which never end. This seems to be related to uglifyjs parallel builds'
           );
         }
-        return build({ cwd: that.config.rootDir, argv });
+        return build({ cwd: that.cwd, argv });
       },
       async serve() {
         if (that.killServer) {
@@ -83,7 +92,7 @@ class FixtureEnvironment extends NodeEnvironment {
           );
         }
         const { url, teardown } = await startServer({
-          cwd: that.config.rootDir,
+          cwd: that.cwd,
           command: 'serve',
         });
         that.killServer = teardown;
@@ -94,6 +103,7 @@ class FixtureEnvironment extends NodeEnvironment {
 
   async teardown() {
     await super.teardown();
+    await this.removeWorkingDir();
     await this.closeBrowser();
     if (this.killServer) {
       await this.killServer();
