@@ -40,7 +40,7 @@ class FixtureEnvironment extends NodeEnvironment {
     const { cwd, removeWorkingDir } = await createWorkingDir(
       this.config.rootDir
     );
-    this.cwd = global.cwd = cwd;
+    this.cwd = cwd;
     this.removeWorkingDir = removeWorkingDir;
     const { browser, teardown: closeBrowser } = await launchPuppeteer();
     this.closeBrowser = closeBrowser;
