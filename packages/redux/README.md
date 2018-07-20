@@ -121,7 +121,7 @@ Allows to specify your own set of redux middlewares. Useful when middlewares nee
 
 Beware that middlewares passed as render option take precedence.
 
-#### `configureReduxFetch(fetch): fetch` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+#### `configureFetch(fetch): fetch` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
 
 Method to alter `fetch` implementation that is being passed as [custom argument](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument) to redux-thunk-based action creators. Allows to closure request-specific data. Returns [`isomorphic-fetch`](https://github.com/matthew-andrews/isomorphic-fetch) by default.
 
