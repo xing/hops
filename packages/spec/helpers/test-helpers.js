@@ -1,12 +1,21 @@
 const { spawn } = require('child_process');
-const exec = require('util').promisify(require('child_process').exec);
+const path = require('path');
+const { promisify } = require('util');
+const exec = promisify(require('child_process').exec);
 const puppeteer = require('puppeteer');
+const rimraf = promisify(require('rimraf'));
+
+const ncp = promisify(require('ncp'));
+const mktemp = require('mktemp').createDir;
+const mkdirp = promisify(require('mkdirp'));
 
 const build = async ({ cwd, argv }) => {
-  return await exec(
+  await exec(
     `node -e "require('hops').run('${['build', ...argv].join("', '")}')"`,
     { cwd }
   );
+
+  return cwd;
 };
 const startServer = ({ cwd, command }) =>
   new Promise((resolve, reject) => {
@@ -48,10 +57,11 @@ const startServer = ({ cwd, command }) =>
 const launchPuppeteer = async () => {
   const isDebug = process.env.DEBUG === 'true';
   const browser = await puppeteer.launch({
+    executablePath: process.env.CHROMIUM_PATH,
     headless: !isDebug,
     slowMo: isDebug ? 250 : 0,
     devtools: isDebug,
-    args: ['--no-sandbox', '--disable-setuid-jest'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   return {
     browser,
@@ -59,6 +69,21 @@ const launchPuppeteer = async () => {
   };
 };
 
+const createWorkingDir = async srcDir => {
+  const cwdRootPath = path.resolve(__dirname, '..', '.tmp');
+  await mkdirp(cwdRootPath);
+  const cwdPath = await mktemp(path.resolve(cwdRootPath, 'XXXXX'));
+
+  await ncp(srcDir, cwdPath);
+  return {
+    cwd: cwdPath,
+    removeWorkingDir: async () => {
+      await rimraf(cwdPath);
+    },
+  };
+};
+
 module.exports.startServer = startServer;
 module.exports.build = build;
 module.exports.launchPuppeteer = launchPuppeteer;
+module.exports.createWorkingDir = createWorkingDir;
