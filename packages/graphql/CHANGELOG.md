@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.21"></a>
+# [11.0.0-rc.21](https://github.com/xing/hops/compare/v11.0.0-rc.20...v11.0.0-rc.21) (2018-07-20)
+
+
+### Features
+
+* **apollo:** introduce configureFetch hook ([ebe9f9b](https://github.com/xing/hops/commit/ebe9f9b))
+
+
+
+
 <a name="11.0.0-rc.19"></a>
 # [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.21"></a>
+# [11.0.0-rc.21](https://github.com/xing/hops/compare/v11.0.0-rc.20...v11.0.0-rc.21) (2018-07-20)
+
+
+
+
+**Note:** Version bump only for package hops-redux
+
 <a name="11.0.0-rc.20"></a>
 # [11.0.0-rc.20](https://github.com/xing/hops/compare/v11.0.0-rc.19...v11.0.0-rc.20) (2018-07-19)
 
