@@ -1,0 +1,23 @@
+{
+  "name": "fixture-development-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "browser": "browser.js",
+  "server": "server.js",
+  "hops": {
+    "mixins": ["./"]
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js"
+  },
+  "scripts": {
+    "start": "node -e 'require(\"hops\").run(\"start\")'"
+  },
+  "dependencies": {
+    "hops-preset-defaults": "*",
+    "hops-development-proxy": "*"
+  }
+}
