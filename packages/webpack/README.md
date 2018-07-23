@@ -13,9 +13,7 @@ $ yarn add hops-preset-defaults
 # OR npm install --save hops-preset-defaults
 ```
 
-[//]: # 'TODO: add general section about setting up a basic hops project to main Hops readme'
-
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://missing-link-explain-quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
 
 ### CLI
 
@@ -102,9 +100,7 @@ This is the target Node.js version that [`babel-preset-env`](https://babeljs.io/
 
 ##### `serverFile`
 
-[//]: # 'TODO: link to hops-express buildDir config once readme has been created'
-
-Path to the generated `server.js` file (relative to [`buildDir`](https://missing-link-express-builddir)) which contains the render middleware for server-side rendering. It is only being used internally and most probably never needs to be changed from its default value.
+Path to the generated `server.js` file (relative to [`buildDir`](https://github.com/xing/hops/tree/next/packages/express#builddir)) which contains the render middleware for server-side rendering. It is only being used internally and most probably never needs to be changed from its default value.
 
 ```json
 "hops": {
@@ -114,9 +110,7 @@ Path to the generated `server.js` file (relative to [`buildDir`](https://missing
 
 ##### `assetFile`
 
-[//]: # 'TODO: link to hops-express buildDir config once readme has been created'
-
-Path to the generated `assets.json` file (relative to [`buildDir`](https://missing-link-express-builddir)), which is being used internally for server-side rendering to determine which assets should be loaded through the generated HTML.
+Path to the generated `assets.json` file (relative to [`buildDir`](https://github.com/xing/hops/tree/next/packages/express#builddir)), which is being used internally for server-side rendering to determine which assets should be loaded through the generated HTML.
 
 ```json
 "hops": {

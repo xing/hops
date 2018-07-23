@@ -2,9 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-styled-components.svg)](https://www.npmjs.com/package/hops-styled-components)
 
-[//]: # 'TODO: add general section about presets, how to install them, how to register them, how to configure them to main Hops readme'
-
-This is a [preset for Hops](https://missing-link-explain-what-are-presets) that can be used to set up a `<ThemeProvider />` and enable server-side rendering support for [styled-components](https://www.styled-components.com/) in Hops.
+This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that can be used to set up a `<ThemeProvider />` and enable server-side rendering support for [styled-components](https://www.styled-components.com/) in Hops.
 
 ### Installation
 
@@ -17,9 +15,7 @@ $ yarn add hops-styled-components styled-components
 # OR npm install --save hops-styled-components styled-components
 ```
 
-[//]: # 'TODO: add general section about setting up a basic hops project to main Hops readme'
-
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://missing-link-explain-quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
 
 ### Usage
 
