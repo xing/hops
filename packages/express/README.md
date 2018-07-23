@@ -13,9 +13,7 @@ $ yarn add hops-preset-defaults
 # OR npm install --save hops-preset-defaults
 ```
 
-[//]: # 'TODO: add general section about setting up a basic hops project to main Hops readme'
-
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://missing-link-explain-quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
 
 ### CLI
 
