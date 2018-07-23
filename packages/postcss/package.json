@@ -24,13 +24,13 @@
   "dependencies": {
     "@untool/core": "^0.12.1",
     "@untool/express": "^0.12.1",
-    "css-loader": "^0.28.11",
+    "css-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.1",
-    "optimize-css-assets-webpack-plugin": "^4.0.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-import": "^11.1.0",
-    "postcss-loader": "^2.1.5",
-    "postcss-preset-env": "^5.1.0",
+    "postcss-loader": "^2.1.6",
+    "postcss-preset-env": "^5.2.3",
     "style-loader": "^0.21.0",
-    "webpack": "^4.15.1"
+    "webpack": "^4.16.2"
   }
 }

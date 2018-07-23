@@ -28,7 +28,7 @@
     "@untool/core": "^0.12.1",
     "@untool/express": "^0.12.1",
     "archiver": "^2.1.0",
-    "aws-sdk": "^2.270.1",
+    "aws-sdk": "^2.279.1",
     "globby": "^7.1.1",
     "mixinable": "^3.0.0",
     "prompt": "^1.0.0",
