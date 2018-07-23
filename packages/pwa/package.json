@@ -29,11 +29,11 @@
   "dependencies": {
     "@untool/core": "^0.12.1",
     "@untool/express": "^0.12.1",
-    "@untool/webpack": "^0.12.1",
+    "@untool/webpack": "^0.13.0",
     "app-manifest-loader": "^1.0.4",
     "babel-polyfill": "^6.26.0",
     "file-loader": "^1.1.11",
-    "webpack": "^4.15.1",
+    "webpack": "^4.16.2",
     "webpack-sources": "^1.1.0"
   }
 }

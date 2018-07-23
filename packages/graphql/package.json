@@ -50,9 +50,9 @@
     "react-apollo": "^2.0.0"
   },
   "devDependencies": {
-    "fetch-mock": "^6.5.0",
+    "fetch-mock": "^6.5.2",
     "graphql-tag": "^2.5.0",
-    "jest": "^23.3.0",
+    "jest": "^23.4.1",
     "react": "^16.4.1",
     "react-apollo": "^2.1.9"
   }

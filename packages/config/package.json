@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "@untool/core": "^0.12.1",
-    "@untool/webpack": "^0.12.1"
+    "@untool/webpack": "^0.13.0"
   }
 }
