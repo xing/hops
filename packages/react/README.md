@@ -2,9 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)
 
-[//]: # 'TODO: add general section about presets, how to install them, how to register them, how to configure them to main Hops readme'
-
-This is a [preset for Hops](https://missing-link-explain-what-are-presets) that enables React, JSX, React-Helmet and React-Router support in Hops applications.
+This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that enables React, JSX, React-Helmet and React-Router support in Hops applications.
 
 ### Installation
 
@@ -15,9 +13,7 @@ $ yarn add hops-react react react-dom react-helmet react-router-dom
 # OR npm install --save hops-react react react-dom react-helmet react-router-dom
 ```
 
-[//]: # 'TODO: add general section about setting up a basic hops project to main Hops readme'
-
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://missing-link-explain-quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
 
 ### Usage
 

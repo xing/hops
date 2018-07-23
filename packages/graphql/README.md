@@ -2,9 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-graphql.svg)](https://www.npmjs.com/package/hops-graphql)
 
-[//]: # 'TODO: add general section about presets, how to install them, how to register them, how to configure them to main Hops readme'
-
-This is a [preset for Hops](https://missing-link-explain-what-are-presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework.
+This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework.
 
 ### Installation
 
@@ -17,9 +15,7 @@ $ yarn add hops-graphql graphql-tag react-apollo
 # OR npm install --save hops-graphql graphql-tag react-apollo
 ```
 
-[//]: # 'TODO: add general section about setting up a basic hops project to main Hops readme'
-
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://missing-link-explain-quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
 
 ### CLI
 
