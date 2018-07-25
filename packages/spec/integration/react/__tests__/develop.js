@@ -76,7 +76,7 @@ describe('react developmet server', () => {
     await page.close();
   });
 
-  it('passes server through context', async () => {
+  it('passes server data through context', async () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url);
 
