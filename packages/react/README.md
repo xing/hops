@@ -90,6 +90,12 @@ Implement this method to fetch additional data before React's `renderToString()`
 
 Implement this method to modify the `data` object after React's rendering has occured. This is useful when you need to collect the data during rendering, like [styled-components](https://www.styled-components.com/docs/advanced#server-side-rendering) or [react-loadable](https://github.com/jamiebuilds/react-loadable#finding-out-which-dynamic-modules-were-rendered). See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#gettemplatedatadata-pipe-server-only) for more details.
 
-#### `getServerData(req, res): serverData` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
+#### `enhanceServerData(serverData, req, res): serverData` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
 
-In some cases you need to share data from the server-side to the client-side (for example request specific data or derived data). For these circumstances you can implement the `getServerData()` hook (which will get passed the Express `request` and `response` objects) and return an object of key/value pairs that you want to make accessible on the client-side via the [above mentioned HoC](#withserverdatacomponent-higherordercomponent") or [Context consumer](#serverdatacontextconsumerdata---render-something-serverdatacontextconsumer).
+In some cases you need to share data from the server-side to the client-side (for example request specific data or derived data). For these circumstances you can implement the `enhanceServerData()` hook (which will get passed the previous `serverData` object and Express `request` and `response` objects) and add your key/value pairs that you want to make accessible on the client-side via the [above mentioned HoC](#withserverdatacomponent-higherordercomponent") or [Context consumer](#serverdatacontextconsumerdata---render-something-serverdatacontextconsumer).
+
+Only exists on the server.
+
+#### `getServerData(): serverData` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+
+Returns the `serverData` produced by `enhanceServerData` on server and client.

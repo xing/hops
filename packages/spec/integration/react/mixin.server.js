@@ -1,8 +1,8 @@
 const { Mixin } = require('@untool/core');
 
 class ServerDataMixin extends Mixin {
-  getServerData(req) {
-    return { method: req.method };
+  enhanceServerData(data, req) {
+    return { ...data, method: req.method };
   }
 }
 
