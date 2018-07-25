@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.22"></a>
+# [11.0.0-rc.22](https://github.com/xing/hops/compare/v11.0.0-rc.21...v11.0.0-rc.22) (2018-07-25)
+
+
+### Bug Fixes
+
+* upgrade dependencies ([e92e305](https://github.com/xing/hops/commit/e92e305))
+
+
+### Features
+
+* **react:** make getServerData available to mixins ([1769199](https://github.com/xing/hops/commit/1769199))
+* **spec:** execute integration test in copied fixture folder ([5b7690e](https://github.com/xing/hops/commit/5b7690e))
+
+
+
+
 <a name="11.0.0-rc.20"></a>
 # [11.0.0-rc.20](https://github.com/xing/hops/compare/v11.0.0-rc.19...v11.0.0-rc.20) (2018-07-19)
 
