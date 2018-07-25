@@ -33,10 +33,10 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^0.12.1",
+    "@untool/core": "^0.14.0",
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
-    "mixinable": "^3.0.0",
+    "mixinable": "^3.1.2",
     "prop-types": "^15.6.2"
   },
   "peerDependencies": {
