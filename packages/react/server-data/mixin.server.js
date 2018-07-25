@@ -2,7 +2,7 @@
 
 const React = require('react');
 const {
-  sync: { pipe, override },
+  sync: { pipe, callable },
 } = require('mixinable');
 const { Mixin } = require('@untool/core');
 const { Provider } = require('./context');
@@ -36,7 +36,7 @@ class HopsReactServerDataServerMixin extends Mixin {
 
 HopsReactServerDataServerMixin.strategies = {
   enhanceServerData: pipe,
-  getServerData: override,
+  getServerData: callable,
 };
 
 module.exports = HopsReactServerDataServerMixin;
