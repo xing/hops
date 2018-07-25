@@ -1,7 +1,7 @@
 const { Mixin } = require('@untool/core');
 const strip = require('strip-indent');
 const {
-  async: { override: overrideAsync },
+  async: { callable: callableAsync },
 } = require('mixinable');
 
 class LambdaMixin extends Mixin {
@@ -70,8 +70,8 @@ class LambdaMixin extends Mixin {
 }
 
 LambdaMixin.strategies = {
-  deployLambda: overrideAsync,
-  destroyLambda: overrideAsync,
+  deployLambda: callableAsync,
+  destroyLambda: callableAsync,
 };
 
 module.exports = LambdaMixin;
