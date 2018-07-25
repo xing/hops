@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@untool/core": "^0.14.0",
-    "@untool/express": "^0.14.0",
+    "@untool/express": "^0.14.1",
     "css-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.1",
     "optimize-css-assets-webpack-plugin": "^5.0.0",

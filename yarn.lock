@@ -151,9 +151,9 @@
     mixinable "^3.1.2"
     supports-color "^5.4.0"
 
-"@untool/express@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.14.0.tgz#a04c6c972aebebdad7b3b405d28bc8047af037e9"
+"@untool/express@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.14.1.tgz#a35c5ae496ae5d37e5544f87468c93403b4e0081"
   dependencies:
     "@untool/core" "^0.14.0"
     "@untool/yargs" "^0.14.0"
@@ -177,12 +177,12 @@
     mixinable "^3.1.2"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.14.0.tgz#a566df706150bca4255a1a5d954ffc9997c2e68a"
+"@untool/webpack@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.14.1.tgz#b88cfbcd4eb3faa099f5218121f4a2075480ea5a"
   dependencies:
     "@untool/core" "^0.14.0"
-    "@untool/express" "^0.14.0"
+    "@untool/express" "^0.14.1"
     "@untool/yargs" "^0.14.0"
     babel-core "^6.26.0"
     babel-loader "^7.1.4"
@@ -778,8 +778,8 @@ autoprefixer@^8.6.5:
     postcss-value-parser "^3.2.3"
 
 aws-sdk@^2.279.1:
-  version "2.280.1"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.280.1.tgz#73a152ef68456c66d303b0938cb64479ee02de5b"
+  version "2.281.1"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.281.1.tgz#12ef82cf8a70a2c97c90e644038684a01cb8cc0c"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -2361,8 +2361,8 @@ crc32-stream@^2.0.0:
     readable-stream "^2.0.0"
 
 crc@^3.4.4:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/crc/-/crc-3.7.0.tgz#58b7083e32ba4b276e1f4cbce1a78b39a6ab63f9"
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/crc/-/crc-3.8.0.tgz#ad60269c2c856f8c299e2c4cc0de4556914056c6"
   dependencies:
     buffer "^5.1.0"
 
@@ -2438,7 +2438,7 @@ css-color-keywords@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/css-color-keywords/-/css-color-keywords-1.0.0.tgz#fea2616dc676b2962686b3af8dbdbe180b244e05"
 
-css-color-names@^0.0.4:
+css-color-names@0.0.4, css-color-names@^0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
@@ -2587,8 +2587,8 @@ cssnano-util-same-parent@^4.0.0:
   resolved "https://registry.yarnpkg.com/cssnano-util-same-parent/-/cssnano-util-same-parent-4.0.0.tgz#d2a3de1039aa98bc4ec25001fa050330c2a16dac"
 
 cssnano@^4.0.2:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.0.3.tgz#b694d626906bf1844f573465ecc166b2240b8699"
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.0.4.tgz#8a397b5e307e06fd7e361bf11344b1cff8749a86"
   dependencies:
     cosmiconfig "^5.0.0"
     cssnano-preset-default "^4.0.0"
@@ -6734,9 +6734,10 @@ postcss-media-minmax@^3.0.0:
     postcss "^6.0.1"
 
 postcss-merge-longhand@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-merge-longhand/-/postcss-merge-longhand-4.0.2.tgz#a2bcd7b0f9dca41ee84ba0cee23a5e6cb465ec3a"
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/postcss-merge-longhand/-/postcss-merge-longhand-4.0.3.tgz#17f93b71d8a1dba043b7fb437f8e264304e64ab0"
   dependencies:
+    css-color-names "0.0.4"
     postcss "^6.0.0"
     postcss-value-parser "^3.0.0"
     stylehacks "^4.0.0"
