@@ -2,7 +2,7 @@
 
 describe('jest-preset', function() {
   it('should export jest-preset.json', function() {
-    expect(require('../jest-preset.json')).toBeDefined();
+    expect(require('../jest-preset.js')).toBeDefined();
   });
   it('should export file-mock', function() {
     expect(require('../mocks/file')).toBeDefined();
