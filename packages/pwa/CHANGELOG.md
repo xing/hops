@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.22"></a>
+# [11.0.0-rc.22](https://github.com/xing/hops/compare/v11.0.0-rc.21...v11.0.0-rc.22) (2018-07-25)
+
+
+### Bug Fixes
+
+* upgrade dependencies ([e92e305](https://github.com/xing/hops/commit/e92e305))
+
+
+
+
 <a name="11.0.0-rc.19"></a>
 # [11.0.0-rc.19](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.19) (2018-07-19)
 
