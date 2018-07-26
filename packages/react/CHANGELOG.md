@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.23"></a>
+# [11.0.0-rc.23](https://github.com/xing/hops/compare/v11.0.0-rc.22...v11.0.0-rc.23) (2018-07-26)
+
+
+### Bug Fixes
+
+* upgrade untool packages ([1bd0829](https://github.com/xing/hops/commit/1bd0829))
+
+
+### Features
+
+* **react:** add configureFetch and fetch hooks ([ef07294](https://github.com/xing/hops/commit/ef07294))
+
+
+
+
 <a name="11.0.0-rc.22"></a>
 # [11.0.0-rc.22](https://github.com/xing/hops/compare/v11.0.0-rc.21...v11.0.0-rc.22) (2018-07-25)
 
