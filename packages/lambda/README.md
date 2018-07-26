@@ -6,7 +6,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 
 ### Installation
 
-Just add this preset to your existing Hops project:
+Add this preset to your existing Hops project:
 
 ```bash
 $ yarn add hops-lambda
@@ -39,7 +39,7 @@ You can choose to keep the files that have been uploaded to your S3 bucket.
 
 ###### `--keep-bucket`
 
-Choose this, if you don't want to delete the S3 bucket but instead just empty it.
+Choose this, if you don't want to delete the S3 bucket but instead empty it.
 
 ### Usage
 

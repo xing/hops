@@ -8,7 +8,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 
 _This preset must be used together with the `hops-react` preset._
 
-Just add this preset and its peer dependency `styled-components` to your existing Hops React project:
+Add this preset and its peer dependency `styled-components` to your existing Hops React project:
 
 ```bash
 $ yarn add hops-styled-components styled-components
@@ -19,7 +19,16 @@ If you don't already have an existing Hops project read this section [on how to 
 
 ### Usage
 
-This preset has no exports and therefore just needs to be installed in order to start using `styled-components` in your app.
+After installing this preset you can use `styled-components` in your application.
+
+```javascript
+import { render } from 'hops-react';
+import styled from 'styled-components';
+const Headline = styled.h1`
+  color: rebeccapurple;
+`;
+export default render(<Headline>Hello World!</Headline>);
+```
 
 Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/styled-components) as an example for how to use this preset.
 

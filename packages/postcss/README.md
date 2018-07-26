@@ -2,11 +2,11 @@
 
 [![npm](https://img.shields.io/npm/v/hops-postcss.svg)](https://www.npmjs.com/package/hops-postcss)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that, when installed, will enable css loaders for [PostCSS Preset Env](https://github.com/csstools/postcss-preset-env).
+This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that, when installed, will enable css loaders for [PostCSS Preset Env](https://github.com/csstools/postcss-preset-env) with support for [CSS Modules](https://github.com/css-modules/css-modules).
 
 ### Installation
 
-Just add this preset to your existing Hops React project:
+Add this preset to your existing Hops React project:
 
 ```bash
 $ yarn add hops-postcss
@@ -17,7 +17,7 @@ If you don't already have an existing Hops project read this section [on how to 
 
 ### Usage
 
-This preset has no exports and therefore just needs to be installed in order to start writing CSS in external files and have them processed via the PostCSS preset env when importing them.
+Since this preset has no configuration, you can start writing CSS in external files and `import` / `require` them in your application code after installing this preset.
 
 ```css
 .headline {

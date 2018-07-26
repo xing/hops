@@ -25,9 +25,9 @@ This command starts an Express.js server with all middleware and configuration a
 
 ###### `-p` / `--production`
 
-This is just a shortcut for `NODE_ENV=production hops serve` - it sets the environment variable `NODE_ENV` to `production` which enables several performance optimizations for Express.js and its middleware.
+This is a shortcut for `NODE_ENV=production hops serve` - it sets the environment variable `NODE_ENV` to `production` which enables several performance optimizations for Express.js and its middleware.
 
-You may use either `hops serve -p` or `NODE_ENV=production hops serve`.
+You may use either `hops serve -p` or its equivalent `NODE_ENV=production hops serve`.
 
 ### Usage
 
