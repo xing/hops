@@ -51,11 +51,12 @@ Check out this [integration test](https://github.com/xing/hops/tree/next/package
 
 #### Preset Options
 
-| Name                | Type     | Default                        | Required | Description                                      |
-| ------------------- | -------- | ------------------------------ | -------- | ------------------------------------------------ |
-| `fragmentsFile`     | `String` | `<rootDir>/fragmentTypes.json` | _no_     | Where to store the generated fragment types file |
-| `graphqlSchemaFile` | `String` | `''`                           | _no_     | Path to your GraphQL schema file                 |
-| `graphqlUri`        | `String` | `''`                           | _yes_    | Url to your GraphQL endpoint                     |
+| Name                     | Type      | Default                        | Required | Description                                                              |
+| ------------------------ | --------- | ------------------------------ | -------- | ------------------------------------------------------------------------ |
+| `fragmentsFile`          | `String`  | `<rootDir>/fragmentTypes.json` | _no_     | Where to store the generated fragment types file                         |
+| `graphqlSchemaFile`      | `String`  | `''`                           | _no_     | Path to your GraphQL schema file                                         |
+| `graphqlUri`             | `String`  | `''`                           | _yes_    | Url to your GraphQL endpoint                                             |
+| `shouldPrefetchOnServer` | `Boolean` | `true`                         | _no_     | Whether Hops should execute GraphQL queries during server-side rendering |
 
 ##### `fragmentsFile`
 
@@ -88,6 +89,18 @@ This will also be used to generate fragment type information with `$ hops graphq
 ```json
 "hops": {
   "graphqlUri": "https://www.graphqlhub.com/graphql"
+}
+```
+
+##### `shouldPrefetchOnServer`
+
+Whether you want "full server-side rendering" or just "app shell" rendering.
+
+This option controls whether you want Hops to execute GraphQL queries during server-side rendering, so that the actual components with actual data will get rendered (if set to false, Hops will not fetch data during server-side rendering).
+
+```json
+"hops": {
+  "shouldPrefetchOnServer": false
 }
 ```
 
@@ -140,3 +153,11 @@ Hook to return a custom [ApolloLink](https://github.com/apollographql/apollo-lin
 Useful when the link needs access to the current request object, which only exists in the mixin context.
 
 Beware that `link` passed as render option takes precedence.
+
+#### `shouldPrefetchOnServer(): boolean` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+
+This is an overrideable hook that can be used to customize the behavior of when Hops should prefetch data during server-side rendering. E.g. execute GraphQL queries during initial render.
+
+By default it returns whatever is configured in the [`shouldPrefetchOnServer` preset option](#shouldprefetchonserver) or `true` if the config is not set.
+
+In case you need more control over the server-side rendering you can implement this method and provide your own implementation that decides if data should be prefetched during server-side rendering.
