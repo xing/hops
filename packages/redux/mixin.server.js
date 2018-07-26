@@ -11,7 +11,7 @@ const { Provider } = require('react-redux');
 const { Mixin } = require('@untool/core');
 
 const {
-  sync: { override, pipe },
+  sync: { override },
 } = require('mixinable');
 
 class ReduxMixin extends Mixin {
@@ -38,14 +38,10 @@ class ReduxMixin extends Mixin {
     return this.store;
   }
 
-  configureFetch() {
-    return require('isomorphic-fetch');
-  }
-
   getReduxMiddlewares() {
     return [
       ReduxThunkMiddleware.withExtraArgument({
-        fetch: this.configureFetch(),
+        fetch: this.fetch,
       }),
     ];
   }
@@ -78,7 +74,6 @@ class ReduxMixin extends Mixin {
 ReduxMixin.strategies = {
   getReduxStore: override,
   getReduxMiddlewares: override,
-  configureFetch: pipe,
 };
 
 module.exports = ReduxMixin;
