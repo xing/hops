@@ -145,7 +145,7 @@ Now you can use GraphQL in your project. Check out [this integration test](https
 
 #### `hops-postcss`
 
-This preset will enable PostCSS support via a css-loader and add the PostCSS Preset Env to your project.
+This preset will enable PostCSS support with [CSS modules](https://github.com/css-modules/css-modules) via a [css-loader](https://github.com/webpack-contrib/css-loader) and add the [PostCSS Preset Env](https://github.com/csstools/postcss-preset-env) to your project.
 
 Install it to your project:
 
