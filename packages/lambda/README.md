@@ -9,8 +9,8 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 Add this preset to your existing Hops project:
 
 ```bash
-$ yarn add hops-lambda
-# OR npm install --save hops-lambda
+$ yarn add hops-lambda@next
+# OR npm install --save hops-lambda@next
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)

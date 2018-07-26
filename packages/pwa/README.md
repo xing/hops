@@ -9,8 +9,8 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 Add this preset to your existing Hops React project:
 
 ```bash
-$ yarn add hops-pwa
-# OR npm install --save hops-pwa
+$ yarn add hops-pwa@next
+# OR npm install --save hops-pwa@next
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
