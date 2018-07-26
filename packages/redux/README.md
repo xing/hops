@@ -31,7 +31,21 @@ Check out this [integration test](https://github.com/xing/hops/tree/next/package
 
 #### Preset Options
 
-This preset has no preset configuration options.
+| Name                     | Type      | Default | Required | Description                                                                          |
+| ------------------------ | --------- | ------- | -------- | ------------------------------------------------------------------------------------ |
+| `shouldPrefetchOnServer` | `Boolean` | `true`  | _no_     | Whether Hops should execute route-bound action creators during server-side rendering |
+
+##### `shouldPrefetchOnServer`
+
+Whether you want "full server-side rendering" or just "app shell" rendering.
+
+This option controls whether you want Hops to execute the configured [route-bound `actionCreators`](#actioncreators) during server-side rendering, so that your components will get rendered with actual data and the redux store will be dehydrated/rehydrated between server and client.
+
+```json
+"hops": {
+  "shouldPrefetchOnServer": false
+}
+```
 
 #### Render Options
 
@@ -133,3 +147,11 @@ const incrementFetch = () => (dispatch, getState, { fetch }) => {
     });
 };
 ```
+
+#### `shouldPrefetchOnServer(): boolean` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+
+This is an overrideable hook that can be used to customize the behavior of when Hops should prefetch data during server-side rendering. E.g. execute route-bound action creators during initial render.
+
+By default it returns whatever is configured in the [`shouldPrefetchOnServer` preset option](#shouldprefetchonserver) or `true` if the config is not set.
+
+In case you need more control over the server-side rendering you can implement this method and provide your own implementation that decides if data should be prefetched during server-side rendering.
