@@ -8,7 +8,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 
 _This preset must be used together with the `hops-react` preset._
 
-Just add this preset and its peer dependencies `react-redux`, `redux` and `redux-thunk` to your existing Hops React project:
+Add this preset and its peer dependencies `react-redux`, `redux` and `redux-thunk` to your existing Hops React project:
 
 ```bash
 $ yarn add hops-redux react-redux redux redux-thunk

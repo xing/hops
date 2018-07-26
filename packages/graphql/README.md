@@ -8,7 +8,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 
 _This preset must be used together with the `hops-react` preset._
 
-Just add this preset and its peer dependencies `graphql-tag` and `react-apollo` to your existing Hops React project:
+Add this preset and its peer dependencies `graphql-tag` and `react-apollo` to your existing Hops React project:
 
 ```bash
 $ yarn add hops-graphql graphql-tag react-apollo
@@ -39,7 +39,7 @@ This argument can be specified multiple times to add multiple HTTP headers.
 
 ### Usage
 
-This preset has no exports and therefore just needs to be installed in order to start using `apollo-graphql` in your app.
+In order to start using GraphQL in your application install this preset and configure the required options (see below).
 
 Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/graphql) as an example for how to use this preset.
 

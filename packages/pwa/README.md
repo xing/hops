@@ -6,7 +6,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 
 ### Installation
 
-Just add this preset to your existing Hops React project:
+Add this preset to your existing Hops React project:
 
 ```bash
 $ yarn add hops-pwa
@@ -19,7 +19,7 @@ If you don't already have an existing Hops project read this section [on how to 
 
 #### Web App Manifest
 
-To use a web app manifest just render the imported manifest via [Helmet](https://github.com/nfl/react-helmet).
+When you `import` / `require` a web app manifest in your application code you will get an URL to the web app manifet which you can, for example, render in a `<link />` element via [Helmet](https://github.com/nfl/react-helmet).
 
 ```javascript
 import manifest from './manifest.webmanifest';

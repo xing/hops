@@ -6,7 +6,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 
 ### Installation
 
-Just add this preset and its peer dependencies `react`, `react-dom`, `react-helmet` and `react-router-dom` to your existing Hops React project:
+Add this preset and its peer dependencies `react`, `react-dom`, `react-helmet` and `react-router-dom` to your existing Hops React project:
 
 ```bash
 $ yarn add hops-react react react-dom react-helmet react-router-dom

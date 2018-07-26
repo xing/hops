@@ -10,7 +10,7 @@ Inside [mixins](https://github.com/untool/untool/tree/master/packages/core#mixin
 
 ### Installation
 
-Just install this package as a dependency to your project:
+Add this package as a dependency to your project:
 
 ```bash
 $ yarn add hops-config
@@ -21,7 +21,7 @@ If you don't already have an existing Hops project read this section [on how to 
 
 ### Usage
 
-Just `import` / `require` this package to access the configuration that you are interested in.
+`import` / `require` this package to access the configuration that you are interested in.
 
 ```javascript
 import config from 'hops-config';
