@@ -16,6 +16,7 @@
   "files": [
     "lib",
     "server-data",
+    "fetch",
     "index.js",
     "mixin.core.js",
     "mixin.server.js",
