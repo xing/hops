@@ -21,13 +21,6 @@ class GraphQLMixin extends Mixin {
     super(config, element);
 
     this.client = this.createClient(options);
-    this.shouldPrefetchOnServer = undefined;
-  }
-
-  bootstrap(request, response) {
-    if (response && response.locals) {
-      this.shouldPrefetchOnServer = response.locals.shouldPrefetchOnServer;
-    }
   }
 
   createClient(options) {
@@ -92,9 +85,15 @@ class GraphQLMixin extends Mixin {
   }
 
   prefetchData(element) {
-    return this.shouldPrefetchOnServer
+    return this.shouldPrefetchOnServer()
       ? getDataFromTree(element)
       : Promise.resolve();
+  }
+
+  shouldPrefetchOnServer() {
+    return typeof this.config.shouldPrefetchOnServer === 'boolean'
+      ? this.config.shouldPrefetchOnServer
+      : true;
   }
 
   getTemplateData(data) {
@@ -114,6 +113,7 @@ class GraphQLMixin extends Mixin {
 
 GraphQLMixin.strategies = {
   getApolloLink: override,
+  shouldPrefetchOnServer: override,
 };
 
 module.exports = GraphQLMixin;
