@@ -117,13 +117,9 @@ Use this method in your own mixins to get a reference to the currently used Redu
 
 #### `getReduxMiddlewares(): [middleware]` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
 
-Allows to specify your own set of redux middlewares. Useful when middlewares need access to the current request object, which only exists in the mixin context.
+Allows to specify your own set of redux middlewares. Useful when middlewares need access to the current request object, which only exists in the mixin context. Passes fetch implementation as extra argument to thunks.
 
 Beware that middlewares passed as render option take precedence.
-
-#### `configureFetch(fetch): fetch` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
-
-Method to alter `fetch` implementation that is being passed as [custom argument](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument) to redux-thunk-based action creators. Allows to closure request-specific data. Returns [`isomorphic-fetch`](https://github.com/matthew-andrews/isomorphic-fetch) by default.
 
 ##### Example thunk-based action creator
 
