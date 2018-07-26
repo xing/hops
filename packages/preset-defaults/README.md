@@ -17,8 +17,8 @@ It contains:
 Add this preset to your existing Hops React project:
 
 ```bash
-$ yarn add hops-preset-defaults
-# OR npm install --save hops-preset-defaults
+$ yarn add hops-preset-defaults@next
+# OR npm install --save hops-preset-defaults@next
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
