@@ -27,7 +27,7 @@ The two guiding principles are:
 ## Quick start
 
 ```shell
-npx hops init my-awesome-project
+npx hops@next init --hops-version next --template hops-template-react@next my-awesome-project
 cd my-awesome-project
 npm start
 ```
@@ -43,7 +43,7 @@ Hops provides a few templates as starting points, which can be installed using t
 This is the default template, it consists of a simple React starting point and it is being used when you execute:
 
 ```bash
-$ hops init my-awesome-project
+$ hops init --hops-version --template hops-template-react@next next my-awesome-project
 ```
 
 #### [`hops-template-redux`](https://github.com/xing/hops/tree/next/packages/template-redux)
@@ -51,7 +51,7 @@ $ hops init my-awesome-project
 In case you want to build a Redux project, you can use this template as a starting point.
 
 ```bash
-$ hops init my-awesome-project --template hops-template-redux
+$ hops init --hops-version --template hops-template-redux@next next my-awesome-project
 ```
 
 #### [`hops-template-graphql`](https://github.com/xing/hops/tree/next/packages/template-graphql)
@@ -59,7 +59,7 @@ $ hops init my-awesome-project --template hops-template-redux
 In case you want to build a GraphQL project, you can use this template as a starting point.
 
 ```bash
-$ hops init my-awesome-project --template hops-template-graphql
+$ hops init --hops-version --template hops-template-graphql@next next my-awesome-project
 ```
 
 #### [`hops-template-minimal`](https://github.com/xing/hops/tree/next/packages/template-minimal)
@@ -78,7 +78,7 @@ There are a few core presets that we recommend be always installed. They take ca
 In order to install or configure a preset you need to add it as a dependency to your application:
 
 ```bash
-$ yarn add hops-redux
+$ yarn add hops-redux@next
 # OR npm install --save hops-redux
 ```
 
@@ -109,7 +109,7 @@ This preset will set-up a Redux store, take care of dehydration / rehydration an
 Install it to your project:
 
 ```bash
-$ yarn add hops-redux react-redux redux redux-thunk
+$ yarn add hops-redux@next@next react-redux redux redux-thunk
 ```
 
 And pass your reducers as [render options](https://github.com/xing/hops/tree/next/packages/redux#render-options):
@@ -128,7 +128,7 @@ This preset will create an [Apollo client](https://www.apollographql.com/docs/re
 Install it to your project:
 
 ```bash
-$ yarn add hops-graphql graphql-tag react-apollo
+$ yarn add hops-graphql@next graphql-tag react-apollo
 ```
 
 And configure your GraphQL endpoint URI:
@@ -150,7 +150,7 @@ This preset will enable PostCSS support with [CSS modules](https://github.com/cs
 Install it to your project:
 
 ```bash
-$ yarn add hops-postcss
+$ yarn add hops-postcss@next
 ```
 
 Now you can use `import`/`require` to load `.css` files and style your components.\
@@ -172,7 +172,7 @@ This preset will enable support for server-side rendering of [styled-components]
 Install it to your project:
 
 ```bash
-$ yarn add hops-styled-components styled-components
+$ yarn add hops-styled-components@next styled-components
 ```
 
 Now you can use styled-components in your app and it will work out of the box with server-side rendering.
@@ -197,7 +197,7 @@ This preset will enable you to write your Hops application using [TypeScript](ht
 Install it to your project:
 
 ```bash
-$ yarn add hops-typescript
+$ yarn add hops-typescript@next
 ```
 
 And create a `tsconfig.json` file in your application root folder (you are free to extend our [minimal `tsconfig.json`](https://github.com/xing/hops/blob/next/packages/typescript/tsconfig.json) that we ship with this module or write it yourself).
@@ -217,7 +217,7 @@ This preset enables PWA features, such as web app manifest and service workers f
 Install it to your project:
 
 ```bash
-$ yarn add hops-pwa
+$ yarn add hops-pwa@next
 ```
 
 Now you can `import`/`require` your web app manifest and render a `<link />` tag for it:
@@ -242,7 +242,7 @@ This preset enables simple deployment workflows to AWS Lambda.
 Install it to your project:
 
 ```bash
-$ yarn add hops-lambda
+$ yarn add hops-lambda@next
 ```
 
 Now all you need to do is [configure your AWS credentials](https://github.com/xing/hops/tree/next/packages/lambda#aws-configuration)\

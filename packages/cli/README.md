@@ -22,8 +22,8 @@ $ yarn global add hops
 Or install it locally in an already existing Hops application.
 
 ```bash
-$ yarn add hops
-# OR npm install --save hops
+$ yarn add hops@next
+# OR npm install --save hops@next
 ```
 
 ## Usage
