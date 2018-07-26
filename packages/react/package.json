@@ -30,6 +30,7 @@
     "@untool/react": "^0.13.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "isomorphic-fetch": "^2.2.1",
     "mixinable": "^3.0.0",
     "react-router": "^4.3.1"
   },
