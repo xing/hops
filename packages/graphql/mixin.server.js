@@ -43,14 +43,10 @@ class GraphQLMixin extends Mixin {
     };
   }
 
-  configureFetch() {
-    return require('isomorphic-fetch');
-  }
-
   getApolloLink() {
     return new HttpLink({
       uri: this.config.graphqlUri,
-      fetch: this.configureFetch(),
+      fetch: this.configureFetch(require('isomorphic-fetch')),
     });
   }
 
