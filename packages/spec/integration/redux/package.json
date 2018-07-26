@@ -12,6 +12,7 @@
     "start": "node -e 'require(\"hops\").run(\"start\")'"
   },
   "hops": {
+    "port": "8901",
     "mixins": ["./"]
   },
   "dependencies": {
