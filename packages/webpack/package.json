@@ -1,6 +1,6 @@
 {
   "name": "hops-webpack",
-  "version": "11.0.0-rc.19",
+  "version": "11.0.0-rc.23",
   "description": "Customization for our webpack build",
   "keywords": [
     "hops",

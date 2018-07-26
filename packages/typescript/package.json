@@ -1,6 +1,6 @@
 {
   "name": "hops-typescript",
-  "version": "11.0.0-rc.19",
+  "version": "11.0.0-rc.23",
   "description": "TypeScript support for Hops applications",
   "keywords": [
     "hops",
