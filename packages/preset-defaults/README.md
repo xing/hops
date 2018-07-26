@@ -14,7 +14,7 @@ It contains:
 
 ### Installation
 
-Just add this preset to your existing Hops React project:
+Add this preset to your existing Hops React project:
 
 ```bash
 $ yarn add hops-preset-defaults

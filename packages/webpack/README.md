@@ -25,7 +25,7 @@ This command executes a webpack build of the browser and server bundles of your 
 
 ###### `-p` / `--production`
 
-This is just a shortcut for `NODE_ENV=production hops build` - it sets the environment variable `NODE_ENV` to `production` which enables several performance optimizations for webpack and its plugins.
+This is a shortcut for `NODE_ENV=production hops build` - it sets the environment variable `NODE_ENV` to `production` which enables several performance optimizations for webpack and its plugins.
 
 You may use either `hops build -p` or `NODE_ENV=production hops build`.
 
@@ -47,7 +47,7 @@ This command starts your Hops application in development mode - which enables [H
 
 This command does different things depending on its arguments:
 
-When executed with `-p` / `--production` it will first perform a production build and then start a production server (which is basically just `hops build -p && hops serve -p`).
+When executed with `-p` / `--production` it will first perform a production build and then start a production server (which is the same as `hops build -p && hops serve -p`).
 
 When executed without `-p` / `--production` it will start a development server.
 

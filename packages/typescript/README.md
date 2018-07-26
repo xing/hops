@@ -6,7 +6,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#pres
 
 ### Installation
 
-Just add this preset to your existing Hops React project:
+Add this preset to your existing Hops React project:
 
 ```bash
 $ yarn add hops-typescript
