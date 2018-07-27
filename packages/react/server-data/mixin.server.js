@@ -1,10 +1,13 @@
 /* eslint-env browser, node */
 
 const React = require('react');
+
 const {
-  sync: { pipe, callable },
-} = require('mixinable');
-const { Mixin } = require('@untool/core');
+  Mixin,
+  strategies: {
+    sync: { pipe, callable },
+  },
+} = require('hops-mixin');
 const { Provider } = require('./context');
 
 class HopsReactServerDataServerMixin extends Mixin {

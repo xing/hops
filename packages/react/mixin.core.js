@@ -1,4 +1,4 @@
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 
 class ReactCoreMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig }) {
