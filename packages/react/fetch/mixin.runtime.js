@@ -1,8 +1,10 @@
-const { Mixin } = require('@untool/core');
 const {
-  sync: { pipe: pipeSync },
-  async: { override: overrideAsync },
-} = require('mixinable');
+  Mixin,
+  strategies: {
+    sync: { pipe: pipeSync },
+    async: { override: overrideAsync },
+  },
+} = require('hops-mixin');
 
 class ReactFetchMixin extends Mixin {
   fetch(...fetchArgs) {
