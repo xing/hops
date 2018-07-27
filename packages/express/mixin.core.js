@@ -1,5 +1,5 @@
 const { format } = require('url');
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 
 class ExpressCoreMixin extends Mixin {
   configureServer(app, middleware, mode) {
