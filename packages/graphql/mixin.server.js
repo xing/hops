@@ -91,8 +91,9 @@ class GraphQLMixin extends Mixin {
   }
 
   shouldPrefetchOnServer() {
-    return typeof this.config.shouldPrefetchOnServer === 'boolean'
-      ? this.config.shouldPrefetchOnServer
+    const { shouldPrefetchOnServer } = this.config;
+    return typeof shouldPrefetchOnServer === 'boolean'
+      ? shouldPrefetchOnServer
       : true;
   }
 
