@@ -1,4 +1,4 @@
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class extends Mixin {
   configureServer(app) {

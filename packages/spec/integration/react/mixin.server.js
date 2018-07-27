@@ -1,4 +1,4 @@
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 
 class ServerDataMixin extends Mixin {
   enhanceServerData(data, req) {
