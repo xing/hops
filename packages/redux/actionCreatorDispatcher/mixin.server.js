@@ -1,8 +1,10 @@
 // eslint-disable-next-line import/no-internal-modules
 const { createLocation } = require('history/LocationUtils');
 const {
-  sync: { override },
-} = require('mixinable');
+  strategies: {
+    sync: { override },
+  },
+} = require('hops-mixin');
 
 const ReduxActionCreatorCommonMixin = require('./mixin.runtime-common');
 
