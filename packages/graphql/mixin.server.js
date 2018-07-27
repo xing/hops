@@ -1,10 +1,13 @@
 require('isomorphic-fetch');
 const React = require('react');
 const { existsSync, readFileSync } = require('fs');
-const { Mixin } = require('@untool/core');
 const {
-  sync: { override },
-} = require('mixinable');
+  Mixin,
+  strategies: {
+    sync: { override },
+  },
+} = require('hops-mixin');
+
 const { ApolloProvider, getDataFromTree } = require('react-apollo');
 const { default: ApolloClient } = require('apollo-client');
 const { HttpLink } = require('apollo-link-http');
