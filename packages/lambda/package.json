@@ -30,7 +30,7 @@
     "archiver": "^2.1.0",
     "aws-sdk": "^2.279.1",
     "globby": "^7.1.1",
-    "mixinable": "^3.1.2",
+    "hops-mixin": "^11.0.0-rc.24",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.13",
     "semver": "^5.5.0",

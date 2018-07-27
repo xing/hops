@@ -1,8 +1,10 @@
-const { Mixin } = require('@untool/core');
-const strip = require('strip-indent');
 const {
-  async: { callable: callableAsync },
-} = require('mixinable');
+  Mixin,
+  strategies: {
+    async: { callable: callableAsync },
+  },
+} = require('hops-mixin');
+const strip = require('strip-indent');
 
 class LambdaMixin extends Mixin {
   deployLambda(parameterOverrides) {
