@@ -1,4 +1,4 @@
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
 
 class GraphQLMixin extends Mixin {
