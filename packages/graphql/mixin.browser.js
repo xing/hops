@@ -1,8 +1,10 @@
 const React = require('react');
-const { Mixin } = require('@untool/core');
 const {
-  sync: { override },
-} = require('mixinable');
+  Mixin,
+  strategies: {
+    sync: { override },
+  },
+} = require('hops-mixin');
 
 const { ApolloProvider } = require('react-apollo');
 const { default: ApolloClient } = require('apollo-client');
