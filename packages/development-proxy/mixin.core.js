@@ -1,5 +1,5 @@
 const debug = require('debug')('hops:development-proxy');
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 const proxy = require('http-proxy-middleware');
 
 class ProxyMixin extends Mixin {
