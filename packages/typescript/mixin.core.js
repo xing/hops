@@ -1,4 +1,4 @@
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 
 class TypescriptMixin extends Mixin {
   configureBuild(webpackConfig, { allLoaderConfigs }) {
