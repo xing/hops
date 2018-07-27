@@ -1,0 +1,24 @@
+{
+  "name": "hops-mixin",
+  "version": "11.0.0-rc.24",
+  "description": "Building blocks to build cusom hops mixins",
+  "keywords": [
+    "hops",
+    "mixin",
+    "untool"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "main": "index.js",
+  "esnext": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "@untool/core": "^0.14.0",
+    "mixinable": "^3.1.2"
+  }
+}
