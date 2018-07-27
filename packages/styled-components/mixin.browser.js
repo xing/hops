@@ -1,4 +1,4 @@
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 const React = require('react');
 const { ThemeProvider } = require('styled-components');
 
