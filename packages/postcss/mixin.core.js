@@ -2,7 +2,7 @@ const postcssImportPlugin = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const ExtractCSSPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 const {
   uri: { resolveRelative },
 } = require('@untool/express');
