@@ -16,8 +16,9 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
   }
 
   shouldPrefetchOnServer() {
-    return typeof this.config.shouldPrefetchOnServer === 'boolean'
-      ? this.config.this.shouldPrefetchOnServer
+    const { shouldPrefetchOnServer } = this.config;
+    return typeof shouldPrefetchOnServer === 'boolean'
+      ? shouldPrefetchOnServer
       : true;
   }
 
