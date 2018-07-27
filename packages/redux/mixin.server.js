@@ -8,11 +8,12 @@ const {
 
 const ReduxThunkMiddleware = require('redux-thunk').default;
 const { Provider } = require('react-redux');
-const { Mixin } = require('@untool/core');
-
 const {
-  sync: { override },
-} = require('mixinable');
+  Mixin,
+  strategies: {
+    sync: { override },
+  },
+} = require('hops-mixin');
 
 class ReduxMixin extends Mixin {
   constructor(config, element, { redux: options = {} } = {}) {
