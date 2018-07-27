@@ -155,7 +155,7 @@ Additionally each phase also has a `pre` / `post` phase. E.g.: `preinitial` or `
 Describes the mode that the server is operating in, it can be one of: `develop`, `serve` or `static`.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class MyMixin extends Mixin {
   configureServer(app, middleware, mode) {
