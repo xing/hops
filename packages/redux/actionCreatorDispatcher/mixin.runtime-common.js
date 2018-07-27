@@ -2,7 +2,7 @@ const React = require('react');
 const PropTypes = require('prop-types');
 const { matchPath, withRouter } = require('react-router-dom');
 
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-mixin');
 
 const Dispatcher = withRouter(
   // eslint-disable-next-line react/display-name
