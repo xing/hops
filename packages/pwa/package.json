@@ -14,14 +14,6 @@
   },
   "main": "node.js",
   "browser": "dom.js",
-  "files": [
-    "lib",
-    "dom.js",
-    "mixin.core.js",
-    "node.js",
-    "preset.js",
-    "worker.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
