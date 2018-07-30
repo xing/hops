@@ -13,13 +13,6 @@
   "engines": {
     "node": ">=8.10.0"
   },
-  "files": [
-    "lib",
-    "cloudformation.yaml",
-    "lambda.js",
-    "mixin.core.js",
-    "preset.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"

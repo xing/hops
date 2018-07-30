@@ -13,13 +13,6 @@
   "engines": {
     "node": ">=8.10.0"
   },
-  "files": [
-    "lib",
-    "mixin.browser.js",
-    "mixin.core.js",
-    "mixin.server.js",
-    "preset.js"
-  ],
   "scripts": {
     "test": "jest"
   },

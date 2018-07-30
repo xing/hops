@@ -15,13 +15,6 @@
   },
   "main": "index.js",
   "esnext": "index.js",
-  "files": [
-    "actionCreatorDispatcher/*",
-    "index.js",
-    "mixin.browser.js",
-    "mixin.server.js",
-    "preset.js"
-  ],
   "scripts": {
     "test": "jest"
   },
