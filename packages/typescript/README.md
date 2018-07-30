@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-typescript.svg)](https://www.npmjs.com/package/hops-typescript)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that can be used to enable [TypeScript](https://www.typescriptlang.org/) support for Hops projects.
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to enable [TypeScript](https://www.typescriptlang.org/) support for Hops projects.
 
 ### Installation
 
@@ -13,19 +13,19 @@ $ yarn add hops-typescript@next
 # OR npm install --save hops-typescript@next
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### Usage
 
 Once this preset is installed and you have a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) in your application root you can start writing your app using TypeScript.
 
-Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/typescript) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/typescript) as an example for how to use this preset.
 
 ### Configuration
 
 The only required configuration is a `tsconfig.json` in your project root.
 
-This preset contains a [minimal `tsconfig.json`](https://github.com/xing/hops/blob/next/packages/typescript/tsconfig.json) file which you can extend or overwrite in your tsconfig.json:
+This preset contains a [minimal `tsconfig.json`](https://github.com/xing/hops/blob/master/packages/typescript/tsconfig.json) file which you can extend or overwrite in your tsconfig.json:
 
 Example:
 

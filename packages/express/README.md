@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-express.svg)](https://www.npmjs.com/package/hops-express)
 
-This is one of the core presets for Hops (and is included by default in [`hops-preset-defaults`](https://github.com/xing/hops/tree/next/packages/preset-defaults)) and provides the development and production server configuration and mixin infrastructure in order to build a Hops application.
+This is one of the core presets for Hops (and is included by default in [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) and provides the development and production server configuration and mixin infrastructure in order to build a Hops application.
 
 ### Installation
 
@@ -13,7 +13,7 @@ $ yarn add hops-preset-defaults@next
 # OR npm install --save hops-preset-defaults@next
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### CLI
 

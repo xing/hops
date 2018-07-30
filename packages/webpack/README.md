@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-webpack.svg)](https://www.npmjs.com/package/hops-webpack)
 
-This is one of the core presets for Hops (and is included by default in [`hops-preset-defaults`](https://github.com/xing/hops/tree/next/packages/preset-defaults)) and provides the webpack configuration and mixin infrastructure in order to build a Hops application.
+This is one of the core presets for Hops (and is included by default in [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) and provides the webpack configuration and mixin infrastructure in order to build a Hops application.
 
 ### Installation
 
@@ -13,7 +13,7 @@ $ yarn add hops-preset-defaults@next
 # OR npm install --save hops-preset-defaults@next
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### CLI
 
@@ -100,7 +100,7 @@ This is the target Node.js version that [`babel-preset-env`](https://babeljs.io/
 
 ##### `serverFile`
 
-Path to the generated `server.js` file (relative to [`buildDir`](https://github.com/xing/hops/tree/next/packages/express#builddir)) which contains the render middleware for server-side rendering. It is only being used internally and most probably never needs to be changed from its default value.
+Path to the generated `server.js` file (relative to [`buildDir`](https://github.com/xing/hops/tree/master/packages/express#builddir)) which contains the render middleware for server-side rendering. It is only being used internally and most probably never needs to be changed from its default value.
 
 ```json
 "hops": {
@@ -110,7 +110,7 @@ Path to the generated `server.js` file (relative to [`buildDir`](https://github.
 
 ##### `assetFile`
 
-Path to the generated `assets.json` file (relative to [`buildDir`](https://github.com/xing/hops/tree/next/packages/express#builddir)), which is being used internally for server-side rendering to determine which assets should be loaded through the generated HTML.
+Path to the generated `assets.json` file (relative to [`buildDir`](https://github.com/xing/hops/tree/master/packages/express#builddir)), which is being used internally for server-side rendering to determine which assets should be loaded through the generated HTML.
 
 ```json
 "hops": {

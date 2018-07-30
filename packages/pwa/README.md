@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-pwa.svg)](https://www.npmjs.com/package/hops-pwa)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that can be used to enable [progressive web app](https://developers.google.com/web/progressive-web-apps/) features like a [web app manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) and [service worker](https://developers.google.com/web/fundamentals/primers/service-workers/) usage in Hops.
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to enable [progressive web app](https://developers.google.com/web/progressive-web-apps/) features like a [web app manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) and [service worker](https://developers.google.com/web/fundamentals/primers/service-workers/) usage in Hops.
 
 ### Installation
 
@@ -13,7 +13,7 @@ $ yarn add hops-pwa@next
 # OR npm install --save hops-pwa@next
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### Usage
 
@@ -41,7 +41,7 @@ import installServiceWorker from 'hops-pwa';
 installServiceWorker();
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/pwa) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/pwa) as an example for how to use this preset.
 
 #### Consumer API
 

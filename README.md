@@ -36,9 +36,9 @@ This will start hops in development mode. Visit [http://localhost:8080](http://l
 
 ### Templates
 
-Hops provides a few templates as starting points, which can be installed using the `--template` option of the [Hops CLI `init` command](https://github.com/xing/hops/tree/next/packages/cli).
+Hops provides a few templates as starting points, which can be installed using the `--template` option of the [Hops CLI `init` command](https://github.com/xing/hops/tree/master/packages/cli).
 
-#### [`hops-template-react`](https://github.com/xing/hops/tree/next/packages/template-react) (default)
+#### [`hops-template-react`](https://github.com/xing/hops/tree/master/packages/template-react) (default)
 
 This is the default template, it consists of a simple React starting point and it is being used when you execute:
 
@@ -46,7 +46,7 @@ This is the default template, it consists of a simple React starting point and i
 $ hops init --hops-version --template hops-template-react@next next my-awesome-project
 ```
 
-#### [`hops-template-redux`](https://github.com/xing/hops/tree/next/packages/template-redux)
+#### [`hops-template-redux`](https://github.com/xing/hops/tree/master/packages/template-redux)
 
 In case you want to build a Redux project, you can use this template as a starting point.
 
@@ -54,7 +54,7 @@ In case you want to build a Redux project, you can use this template as a starti
 $ hops init --hops-version --template hops-template-redux@next next my-awesome-project
 ```
 
-#### [`hops-template-graphql`](https://github.com/xing/hops/tree/next/packages/template-graphql)
+#### [`hops-template-graphql`](https://github.com/xing/hops/tree/master/packages/template-graphql)
 
 In case you want to build a GraphQL project, you can use this template as a starting point.
 
@@ -62,7 +62,7 @@ In case you want to build a GraphQL project, you can use this template as a star
 $ hops init --hops-version --template hops-template-graphql@next next my-awesome-project
 ```
 
-#### [`hops-template-minimal`](https://github.com/xing/hops/tree/next/packages/template-minimal)
+#### [`hops-template-minimal`](https://github.com/xing/hops/tree/master/packages/template-minimal)
 
 This template is not seriously meant as a starting point for your project, but rather a reference that demonstrates using Hops without React and might be useful to someone trying to create Vue.js bindings for Hops or something similar.
 
@@ -71,7 +71,7 @@ This template is not seriously meant as a starting point for your project, but r
 Almost everything in Hops is a preset that just needs to be installed / configured in order to start using it.
 
 There are a few core presets that we recommend be always installed. They take care of setting up [Express.js](https://expressjs.com/), [webpack](https://webpack.js.org/) and [yargs](http://yargs.js.org/) to supply the basic building blocks of Hops.\
-**Therefore we have bundled them together in the convenience preset [`hops-preset-defaults`](https://github.com/xing/hops/tree/next/packages/preset-defaults)**. We also recommend that you always install the [`hops-react`](https://github.com/xing/hops/tree/next/packages/react) preset in order to start using [React](https://reactjs.org/) in your application.
+**Therefore we have bundled them together in the convenience preset [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)**. We also recommend that you always install the [`hops-react`](https://github.com/xing/hops/tree/master/packages/react) preset in order to start using [React](https://reactjs.org/) in your application.
 
 ### Installing / configuring a preset
 
@@ -112,14 +112,14 @@ Install it to your project:
 $ yarn add hops-redux@next@next react-redux redux redux-thunk
 ```
 
-And pass your reducers as [render options](https://github.com/xing/hops/tree/next/packages/redux#render-options):
+And pass your reducers as [render options](https://github.com/xing/hops/tree/master/packages/redux#render-options):
 
 ```javascript
 import { render } from 'hops-react';
 export default render(<MyApp />, { redux: { reducers: myReducers } });
 ```
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-redux`](https://github.com/xing/hops/tree/next/packages/redux).
+For more details and more advanced use-cases, head over to the [full readme of `hops-redux`](https://github.com/xing/hops/tree/master/packages/redux).
 
 #### `hops-graphql`
 
@@ -141,7 +141,7 @@ And configure your GraphQL endpoint URI:
 }
 ```
 
-Now you can use GraphQL in your project. Check out [this integration test](https://github.com/xing/hops/blob/next/packages/spec/integration/graphql) or [the `hops-graphql` template](https://github.com/xing/hops/tree/next/packages/template-graphql) to see usage examples and head over to [the `hops-graphql` readme](https://github.com/xing/hops/tree/next/packages/graphql) for more details.
+Now you can use GraphQL in your project. Check out [this integration test](https://github.com/xing/hops/blob/master/packages/spec/integration/graphql) or [the `hops-graphql` template](https://github.com/xing/hops/tree/master/packages/template-graphql) to see usage examples and head over to [the `hops-graphql` readme](https://github.com/xing/hops/tree/master/packages/graphql) for more details.
 
 #### `hops-postcss`
 
@@ -163,7 +163,7 @@ import styles from './styles.css';
 export default render(<h1 className={styles.headline}>hello world</h1>).
 ```
 
-For more details take a look at the [`hops-postcss` readme](https://github.com/xing/hops/tree/next/packages/postcss).
+For more details take a look at the [`hops-postcss` readme](https://github.com/xing/hops/tree/master/packages/postcss).
 
 #### `hops-styled-components`
 
@@ -188,7 +188,7 @@ const H1 = styled.h1`
 export default render(<H1>hello</H1>);
 ```
 
-Read the [`hops-styled-components` readme](https://github.com/xing/hops/tree/next/packages/styled-components) for more detailed examples.
+Read the [`hops-styled-components` readme](https://github.com/xing/hops/tree/master/packages/styled-components) for more detailed examples.
 
 #### `hops-typescript`
 
@@ -200,7 +200,7 @@ Install it to your project:
 $ yarn add hops-typescript@next
 ```
 
-And create a `tsconfig.json` file in your application root folder (you are free to extend our [minimal `tsconfig.json`](https://github.com/xing/hops/blob/next/packages/typescript/tsconfig.json) that we ship with this module or write it yourself).
+And create a `tsconfig.json` file in your application root folder (you are free to extend our [minimal `tsconfig.json`](https://github.com/xing/hops/blob/master/packages/typescript/tsconfig.json) that we ship with this module or write it yourself).
 
 ```json
 {
@@ -208,7 +208,7 @@ And create a `tsconfig.json` file in your application root folder (you are free 
 }
 ```
 
-Take a look at this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/typescript) to see an example of this in action and head over to the [readme of `hops-typescript`](https://github.com/xing/hops/tree/next/packages/typescript) for more details.
+Take a look at this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/typescript) to see an example of this in action and head over to the [readme of `hops-typescript`](https://github.com/xing/hops/tree/master/packages/typescript) for more details.
 
 #### `hops-pwa`
 
@@ -233,7 +233,7 @@ export default render(
 );
 ```
 
-For more details and examples on how to use service workers read the [full readme for `hops-pwa`](https://github.com/xing/hops/tree/next/packages/pwa).
+For more details and examples on how to use service workers read the [full readme for `hops-pwa`](https://github.com/xing/hops/tree/master/packages/pwa).
 
 #### `hops-lambda`
 
@@ -245,14 +245,14 @@ Install it to your project:
 $ yarn add hops-lambda@next
 ```
 
-Now all you need to do is [configure your AWS credentials](https://github.com/xing/hops/tree/next/packages/lambda#aws-configuration)\
+Now all you need to do is [configure your AWS credentials](https://github.com/xing/hops/tree/master/packages/lambda#aws-configuration)\
 and set your `basePath` to `prod` and then you are all set to deploy your application:
 
 ```bash
 $ hops lambda deploy
 ```
 
-For more advanced deployments and other scenarios take a look at the [full readme of `hops-lambda`](https://github.com/xing/hops/tree/next/packages/lambda).
+For more advanced deployments and other scenarios take a look at the [full readme of `hops-lambda`](https://github.com/xing/hops/tree/master/packages/lambda).
 
 ## Configuration
 
