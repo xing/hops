@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-styled-components.svg)](https://www.npmjs.com/package/hops-styled-components)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that can be used to set up a `<ThemeProvider />` and enable server-side rendering support for [styled-components](https://www.styled-components.com/) in Hops.
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up a `<ThemeProvider />` and enable server-side rendering support for [styled-components](https://www.styled-components.com/) in Hops.
 
 ### Installation
 
@@ -15,7 +15,7 @@ $ yarn add hops-styled-components@next styled-components
 # OR npm install --save hops-styled-components@next styled-components
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### Usage
 
@@ -30,7 +30,7 @@ const Headline = styled.h1`
 export default render(<Headline>Hello World!</Headline>);
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/styled-components) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/styled-components) as an example for how to use this preset.
 
 ### Configuration
 

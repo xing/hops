@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-graphql.svg)](https://www.npmjs.com/package/hops-graphql)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework.
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework.
 
 ### Installation
 
@@ -15,7 +15,7 @@ $ yarn add hops-graphql@next graphql-tag react-apollo
 # OR npm install --save hops-graphql@next graphql-tag react-apollo
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### CLI
 
@@ -41,7 +41,7 @@ This argument can be specified multiple times to add multiple HTTP headers.
 
 In order to start using GraphQL in your application install this preset and configure the required options (see below).
 
-Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/graphql) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/graphql) as an example for how to use this preset.
 
 ### Configuration
 

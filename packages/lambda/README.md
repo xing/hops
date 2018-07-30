@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-lambda.svg)](https://www.npmjs.com/package/hops-lambda)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that takes care of deploying your application to [AWS Lambda](https://aws.amazon.com/lambda/).
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that takes care of deploying your application to [AWS Lambda](https://aws.amazon.com/lambda/).
 
 ### Installation
 
@@ -13,7 +13,7 @@ $ yarn add hops-lambda@next
 # OR npm install --save hops-lambda@next
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### CLI
 

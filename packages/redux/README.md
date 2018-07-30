@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-redux.svg)](https://www.npmjs.com/package/hops-redux)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that can be used to add redux support to your Hops project.
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to add redux support to your Hops project.
 
 ### Installation
 
@@ -15,13 +15,13 @@ $ yarn add hops-redux@next react-redux redux redux-thunk
 # OR npm install --save hops-redux@next react-redux redux redux-thunk
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### Usage
 
 In order to use Redux in your application install the plugin and configure your reducers [via render options](#render-options).
 
-Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/redux) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/redux) as an example for how to use this preset.
 
 ### Configuration
 

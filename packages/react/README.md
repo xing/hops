@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/wip-docs-next#presets) that enables React, JSX, React-Helmet and React-Router support in Hops applications.
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that enables React, JSX, React-Helmet and React-Router support in Hops applications.
 
 ### Installation
 
@@ -13,7 +13,7 @@ $ yarn add hops-react@next react react-dom react-helmet react-router-dom
 # OR npm install --save hops-react@next react react-dom react-helmet react-router-dom
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/wip-docs-next#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
 ### Usage
 
@@ -26,7 +26,7 @@ import React from 'react';
 export default render(<h1>Hello World!</h1>);
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/next/packages/spec/integration/react) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/react) as an example for how to use this preset.
 
 #### Consumer API
 

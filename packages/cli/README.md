@@ -41,18 +41,18 @@ The following arguments are optional:
 - `--verbose` - to increase the verbosity of the output for debugging purposes
 - `--npm` - to force usage of `npm` instead of `yarn` even if yarn is available
 - `--template` - to specify a different template for the intial structure. available templates:
-  - [hops-template-react](https://github.com/xing/hops/tree/next/packages/template-react)
-  - [hops-template-redux](https://github.com/xing/hops/tree/next/packages/template-redux)
-  - [hops-template-minimal](https://github.com/xing/hops/tree/next/packages/template-minimal)
-  - [hops-template-graphql](https://github.com/xing/hops/tree/next/packages/template-graphql)
+  - [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react)
+  - [hops-template-redux](https://github.com/xing/hops/tree/master/packages/template-redux)
+  - [hops-template-minimal](https://github.com/xing/hops/tree/master/packages/template-minimal)
+  - [hops-template-graphql](https://github.com/xing/hops/tree/master/packages/template-graphql)
 
 Then `cd` into `my-new-hops-project` and execute `hops --help` again to see a list of supported commands.
 
 ### Available Commands
 
-- `hops build` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/next/packages/preset-defaults)) - initiates a project build to generate browser and server JS bundles
-- `hops develop` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/next/packages/preset-defaults)) - starts the webpack development server with hot code reloading for fast local iterations
-- `hops serve` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/next/packages/preset-defaults)) - starts a production Node.js Express server using the generated JS bundle from `hops build`
+- `hops build` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) - initiates a project build to generate browser and server JS bundles
+- `hops develop` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) - starts the webpack development server with hot code reloading for fast local iterations
+- `hops serve` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) - starts a production Node.js Express server using the generated JS bundle from `hops build`
 - `hops start` - if NODE_ENV is set to production, this runs `hops build` and `hops serve`. Otherwise `hops develop` is executed.
 
 All commands accept additional arguments:
