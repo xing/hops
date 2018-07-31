@@ -18,6 +18,9 @@ class LoggerPlugin {
 class WebpackCoreMixin extends Mixin {
   configureBuild(webpackConfig) {
     webpackConfig.plugins.push(new LoggerPlugin());
+    webpackConfig.resolve.mainFields = webpackConfig.resolve.mainFields.filter(
+      f => f !== 'module'
+    );
     return webpackConfig;
   }
 
