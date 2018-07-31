@@ -25,7 +25,7 @@
     "babel-polyfill": "^6.26.0",
     "file-loader": "^1.1.11",
     "hops-mixin": "11.0.0-rc.26",
-    "webpack": "^4.16.2",
+    "webpack": "^4.16.3",
     "webpack-sources": "^1.1.0"
   }
 }

@@ -21,7 +21,7 @@
     "@untool/core": "^0.14.0",
     "@untool/express": "^0.14.1",
     "archiver": "^2.1.0",
-    "aws-sdk": "^2.279.1",
+    "aws-sdk": "^2.283.1",
     "globby": "^7.1.1",
     "hops-mixin": "11.0.0-rc.26",
     "prompt": "^1.0.0",
