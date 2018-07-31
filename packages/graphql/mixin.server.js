@@ -42,7 +42,6 @@ class GraphQLMixin extends Mixin {
   getApolloLink() {
     return new HttpLink({
       uri: this.config.graphqlUri,
-      fetch: this.fetch,
     });
   }
 
