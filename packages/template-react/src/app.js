@@ -7,7 +7,8 @@ import Home from './home';
 const App = () => (
   <div>
     <nav>
-      <Link to="/">Home</Link>&nbsp;
+      <Link to="/">Home</Link>
+      &nbsp;
       <Link to="/counter">Counter</Link>
     </nav>
     <Switch>
