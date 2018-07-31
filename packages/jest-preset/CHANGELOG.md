@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.25"></a>
+# [11.0.0-rc.25](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.25) (2018-07-31)
+
+
+### Bug Fixes
+
+* upgrade dependencies ([b61e8eb](https://github.com/xing/hops/commit/b61e8eb))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([1b7a1d2](https://github.com/xing/hops/commit/1b7a1d2))
+
+
+### Features
+
+* **jest-preset:** add typescript support ([b021437](https://github.com/xing/hops/commit/b021437))
+* **react:** implement server components ([53f3cfb](https://github.com/xing/hops/commit/53f3cfb))
+
+
+### BREAKING CHANGES
+
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.22"></a>
 # [11.0.0-rc.22](https://github.com/xing/hops/compare/v11.0.0-rc.21...v11.0.0-rc.22) (2018-07-25)
 

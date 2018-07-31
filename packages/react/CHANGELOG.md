@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.25"></a>
+# [11.0.0-rc.25](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.25) (2018-07-31)
+
+
+### Bug Fixes
+
+* upgrade dependencies ([b61e8eb](https://github.com/xing/hops/commit/b61e8eb))
+* upgrade untool packages ([39fd3e1](https://github.com/xing/hops/commit/39fd3e1))
+* use renamed getTemplateData hook in favor of enhanceData ([3577cf7](https://github.com/xing/hops/commit/3577cf7))
+* **react:** add missing fetch folder to files ([514cebe](https://github.com/xing/hops/commit/514cebe))
+* **react:** add missing files to package.json ([5436625](https://github.com/xing/hops/commit/5436625))
+* **react:** do not fail if _hopsEnvironmentVariables is not defined ([136f464](https://github.com/xing/hops/commit/136f464))
+* **react:** do not set shouldPrefetchOnServer from config ([25db2cd](https://github.com/xing/hops/commit/25db2cd))
+* **react:** try to acess env var on `process.env` first ([0f5ff29](https://github.com/xing/hops/commit/0f5ff29))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([1b7a1d2](https://github.com/xing/hops/commit/1b7a1d2))
+
+
+### Features
+
+* **preset-defaults:** move default presets into separate package ([722f67c](https://github.com/xing/hops/commit/722f67c))
+* **react:** add configureFetch and fetch hooks ([43528bb](https://github.com/xing/hops/commit/43528bb))
+* **react:** add server data HOC ([15609e8](https://github.com/xing/hops/commit/15609e8))
+* **react:** implement server components ([53f3cfb](https://github.com/xing/hops/commit/53f3cfb))
+* **react:** make getServerData available to mixins ([90d23e9](https://github.com/xing/hops/commit/90d23e9))
+* **react:** pass CLI arguments to runtime mixins / React HoC ([e9ed1df](https://github.com/xing/hops/commit/e9ed1df))
+* **react:** pass environment variables to React HoC ([8d7e14a](https://github.com/xing/hops/commit/8d7e14a))
+* **react:** remove withCLIArguments ([4b4aea2](https://github.com/xing/hops/commit/4b4aea2))
+* **react:** set res.locals.shouldPrefetchOnServer based on config ([d4f76e4](https://github.com/xing/hops/commit/d4f76e4))
+
+
+### BREAKING CHANGES
+
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.24"></a>
 # [11.0.0-rc.24](https://github.com/xing/hops/compare/v11.0.0-rc.23...v11.0.0-rc.24) (2018-07-26)
 

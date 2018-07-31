@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.25"></a>
+# [11.0.0-rc.25](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.25) (2018-07-31)
+
+
+### Bug Fixes
+
+* **pwa:** worker function receives both config and assets as arguments ([7c2fb24](https://github.com/xing/hops/commit/7c2fb24))
+* **spec:** ignore case of stdout output ([68a0c81](https://github.com/xing/hops/commit/68a0c81))
+* upgrade dependencies ([b61e8eb](https://github.com/xing/hops/commit/b61e8eb))
+
+
+### Features
+
+* **react:** make getServerData available to mixins ([90d23e9](https://github.com/xing/hops/commit/90d23e9))
+* **react:** pass CLI arguments to runtime mixins / React HoC ([e9ed1df](https://github.com/xing/hops/commit/e9ed1df))
+* **redux:** add fetch to thunks ([fa9d8f9](https://github.com/xing/hops/commit/fa9d8f9))
+* **spec:** execute integration test in copied fixture folder ([3b014a1](https://github.com/xing/hops/commit/3b014a1))
+* **spec:** execute integration test in copied fixture folder ([fe7a132](https://github.com/xing/hops/commit/fe7a132))
+* **typescript:** provide minimal default tsconfig.json ([515daa1](https://github.com/xing/hops/commit/515daa1))
+
+
+
+
 <a name="11.0.0-rc.23"></a>
 # [11.0.0-rc.23](https://github.com/xing/hops/compare/v11.0.0-rc.22...v11.0.0-rc.23) (2018-07-26)
 

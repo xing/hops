@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.25"></a>
+# [11.0.0-rc.25](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.25) (2018-07-31)
+
+
+### Bug Fixes
+
+* **express:** also detect ipv6 bind-all and loopback as localhost ([fce2f75](https://github.com/xing/hops/commit/fce2f75))
+* **express:** resolve circular dependency ([88b30aa](https://github.com/xing/hops/commit/88b30aa))
+* **express:** return app in configureServer hook ([8ab939a](https://github.com/xing/hops/commit/8ab939a))
+* upgrade dependencies ([b61e8eb](https://github.com/xing/hops/commit/b61e8eb))
+* upgrade untool packages ([39fd3e1](https://github.com/xing/hops/commit/39fd3e1))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([1b7a1d2](https://github.com/xing/hops/commit/1b7a1d2))
+
+
+### Features
+
+* **express:** enable gzip compression when serving in production mode ([d2ab160](https://github.com/xing/hops/commit/d2ab160))
+* **express:** implement hops-express package to customize server ([bf757e3](https://github.com/xing/hops/commit/bf757e3))
+* **webpack:** print compilation stats and watch runs ([318afcf](https://github.com/xing/hops/commit/318afcf))
+
+
+### BREAKING CHANGES
+
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.23"></a>
 # [11.0.0-rc.23](https://github.com/xing/hops/compare/v11.0.0-rc.22...v11.0.0-rc.23) (2018-07-26)
 
