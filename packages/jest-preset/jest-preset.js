@@ -15,4 +15,6 @@ module.exports = {
   },
   transformIgnorePatterns: [],
   setupFiles: ['regenerator-runtime/runtime'],
+  // fixes: https://github.com/facebook/jest/issues/6766
+  testURL: 'http://localhost',
 };
