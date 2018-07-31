@@ -95,11 +95,3 @@ Only exists on the server.
 #### `getServerData(): serverData` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
 
 Returns the `serverData` produced by `enhanceServerData` on server and client.
-
-#### `configureFetch(fetch): fetch` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
-
-Method to alter `fetch` implementation that is being used by `fetch` hook. Allows to closure request-specific data. Returns [`isomorphic-fetch`](https://github.com/matthew-andrews/isomorphic-fetch) by default.
-
-#### `fetch(...fetchArguments): Promise ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))`
-
-Fetch method that can be used inside mixins, but can also be passed to the react app to be used there.
