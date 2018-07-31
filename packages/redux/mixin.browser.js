@@ -49,7 +49,6 @@ class ReduxMixin extends Mixin {
   getReduxMiddlewares() {
     return [
       ReduxThunkMiddleware.withExtraArgument({
-        fetch: this.fetch,
         config: this.config,
       }),
     ];

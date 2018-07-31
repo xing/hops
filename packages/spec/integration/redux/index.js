@@ -1,6 +1,7 @@
 import { render } from 'hops-react';
 import React from 'react';
 import { connect } from 'react-redux';
+import fetch from 'isomorphic-fetch';
 
 const reducers = {
   counter(state = 0, action) {
@@ -15,7 +16,7 @@ const reducers = {
 
 const increment = () => ({ type: 'INCREMENT', payload: 1 });
 
-const incrementFetch = () => (dispatch, getState, { fetch }) => {
+const incrementFetch = () => dispatch => {
   return fetch('http://localhost:8901/api')
     .then(r => r.json())
     .then(({ value }) => {
