@@ -1,6 +1,6 @@
 {
   "name": "hops-development-proxy",
-  "version": "11.0.0-rc.25",
+  "version": "11.0.0-rc.26",
   "description": "Proxy",
   "keywords": [
     "hops"
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "debug": "^3.1.0",
-    "hops-mixin": "11.0.0-rc.25",
+    "hops-mixin": "11.0.0-rc.26",
     "http-proxy-middleware": "^0.18.0"
   }
 }

@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.26"></a>
+# [11.0.0-rc.26](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.26) (2018-08-01)
+
+
+### Bug Fixes
+
+* **graphql:** pass apollo state to getTemplateData.globals ([9cf55a3](https://github.com/xing/hops/commit/9cf55a3))
+* upgrade dependencies ([b61e8eb](https://github.com/xing/hops/commit/b61e8eb))
+* upgrade untool packages ([39fd3e1](https://github.com/xing/hops/commit/39fd3e1))
+* Use renamed untool getConfigAndMixins function ([0304f8e](https://github.com/xing/hops/commit/0304f8e))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([1b7a1d2](https://github.com/xing/hops/commit/1b7a1d2))
+
+
+### Code Refactoring
+
+* **graphql:** namespace render options ([cb92adb](https://github.com/xing/hops/commit/cb92adb))
+
+
+### Features
+
+* **apollo:** introduce configureFetch hook ([26a5f9f](https://github.com/xing/hops/commit/26a5f9f))
+* **graphql:** add overridable getApolloLink hook ([e0b204a](https://github.com/xing/hops/commit/e0b204a))
+* **graphql:** implement "shouldPrefetchOnServer" hook/preset option ([5a3cad5](https://github.com/xing/hops/commit/5a3cad5))
+* **graphql:** remove configureFetch hook ([7bf732d](https://github.com/xing/hops/commit/7bf732d))
+* **graphql:** remove usage of instrumanted fetch ([f20fd19](https://github.com/xing/hops/commit/f20fd19))
+* **graphql:** use shouldPrefetchOnServer to enable prefetching of data ([be550ac](https://github.com/xing/hops/commit/be550ac))
+* **postcss:** implement postcss package ([6091ed7](https://github.com/xing/hops/commit/6091ed7))
+* **preset-defaults:** move default presets into separate package ([722f67c](https://github.com/xing/hops/commit/722f67c))
+
+
+### BREAKING CHANGES
+
+* **graphql:** graphql specific options are now namespaced
+If you want to pass options to the hops-graphql package you need to pass
+them to the render function inside a `graphql` key:
+**Before:**
+```javascript
+render(<MyApp />, { link: new Link() });
+```
+**After:**
+```javascript
+render(<MyApp />, { graphql: { link: new Link() } });
+```
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.25"></a>
 # [11.0.0-rc.25](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.25) (2018-07-31)
 

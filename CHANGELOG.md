@@ -3,6 +3,133 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.26"></a>
+# [11.0.0-rc.26](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.26) (2018-08-01)
+
+
+### Bug Fixes
+
+* **config:** add missing browser.js to package ([29f7297](https://github.com/xing/hops/commit/29f7297))
+* **config:** environmentalize config ([86f9418](https://github.com/xing/hops/commit/86f9418))
+* **config:** replace env placeholders with environment variables ([fbe0cda](https://github.com/xing/hops/commit/fbe0cda))
+* **config:** use aliased config when building for browser env ([2e9251c](https://github.com/xing/hops/commit/2e9251c))
+* **express:** also detect ipv6 bind-all and loopback as localhost ([fce2f75](https://github.com/xing/hops/commit/fce2f75))
+* **express:** resolve circular dependency ([88b30aa](https://github.com/xing/hops/commit/88b30aa))
+* **express:** return app in configureServer hook ([8ab939a](https://github.com/xing/hops/commit/8ab939a))
+* **graphql:** pass apollo state to getTemplateData.globals ([9cf55a3](https://github.com/xing/hops/commit/9cf55a3))
+* **lambda:** include missing preset.js in released package ([5c302ae](https://github.com/xing/hops/commit/5c302ae))
+* **postcss:**  fix prefixes in dev and prod being different ([8f06882](https://github.com/xing/hops/commit/8f06882))
+* **postcss:** add missing postcss features that were supported before ([0bc47a0](https://github.com/xing/hops/commit/0bc47a0))
+* **pwa:** include babel polyfill and use config from [@untool](https://github.com/untool)/config ([1da3d08](https://github.com/xing/hops/commit/1da3d08))
+* **pwa:** worker function receives both config and assets as arguments ([7c2fb24](https://github.com/xing/hops/commit/7c2fb24))
+* **react:** add missing fetch folder to files ([514cebe](https://github.com/xing/hops/commit/514cebe))
+* **react:** add missing files to package.json ([5436625](https://github.com/xing/hops/commit/5436625))
+* **react:** do not fail if _hopsEnvironmentVariables is not defined ([136f464](https://github.com/xing/hops/commit/136f464))
+* **react:** do not set shouldPrefetchOnServer from config ([25db2cd](https://github.com/xing/hops/commit/25db2cd))
+* **react:** try to acess env var on `process.env` first ([0f5ff29](https://github.com/xing/hops/commit/0f5ff29))
+* **redux:** add missing actionCreatorDispatcher files to package ([160e8df](https://github.com/xing/hops/commit/160e8df))
+* **redux:** fix typo when accessing config ([b564831](https://github.com/xing/hops/commit/b564831))
+* **redux:** specify esnext field to transpile code ([3ddd057](https://github.com/xing/hops/commit/3ddd057))
+* **spec:** ignore case of stdout output ([68a0c81](https://github.com/xing/hops/commit/68a0c81))
+* **template-minimal:** adapt to new render method signature ([4c1c8a8](https://github.com/xing/hops/commit/4c1c8a8))
+* add serve command to scripts ([b6a822a](https://github.com/xing/hops/commit/b6a822a))
+* do not use nested css as it is not supported anymore ([dda2115](https://github.com/xing/hops/commit/dda2115))
+* upgrade dependencies ([b61e8eb](https://github.com/xing/hops/commit/b61e8eb))
+* upgrade untool packages ([39fd3e1](https://github.com/xing/hops/commit/39fd3e1))
+* **template-react:** remove env variable access to fix tests ([bad05df](https://github.com/xing/hops/commit/bad05df))
+* use renamed getTemplateData hook in favor of enhanceData ([3577cf7](https://github.com/xing/hops/commit/3577cf7))
+* Use renamed untool getConfigAndMixins function ([0304f8e](https://github.com/xing/hops/commit/0304f8e))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([1b7a1d2](https://github.com/xing/hops/commit/1b7a1d2))
+
+
+### Code Refactoring
+
+* **graphql:** namespace render options ([cb92adb](https://github.com/xing/hops/commit/cb92adb))
+* **redux:** namespace render options ([17f3e3c](https://github.com/xing/hops/commit/17f3e3c))
+
+
+### Features
+
+* **apollo:** introduce configureFetch hook ([26a5f9f](https://github.com/xing/hops/commit/26a5f9f))
+* **cli:** add dotenv support ([32d717e](https://github.com/xing/hops/commit/32d717e))
+* **cli:** remove dotenv again as it is now part of untool ([92f6417](https://github.com/xing/hops/commit/92f6417))
+* **config:** export config through "hops-config" ([6d23fc7](https://github.com/xing/hops/commit/6d23fc7))
+* **development-proxy:** add development proxy ([7ee5ec3](https://github.com/xing/hops/commit/7ee5ec3))
+* **express:** enable gzip compression when serving in production mode ([d2ab160](https://github.com/xing/hops/commit/d2ab160))
+* **express:** implement hops-express package to customize server ([bf757e3](https://github.com/xing/hops/commit/bf757e3))
+* **graphql:** add overridable getApolloLink hook ([e0b204a](https://github.com/xing/hops/commit/e0b204a))
+* **graphql:** implement "shouldPrefetchOnServer" hook/preset option ([5a3cad5](https://github.com/xing/hops/commit/5a3cad5))
+* **graphql:** remove configureFetch hook ([7bf732d](https://github.com/xing/hops/commit/7bf732d))
+* **graphql:** remove usage of instrumanted fetch ([f20fd19](https://github.com/xing/hops/commit/f20fd19))
+* **graphql:** use shouldPrefetchOnServer to enable prefetching of data ([be550ac](https://github.com/xing/hops/commit/be550ac))
+* **hops-mixin:** add package ([26c2a90](https://github.com/xing/hops/commit/26c2a90))
+* **jest-preset:** add typescript support ([b021437](https://github.com/xing/hops/commit/b021437))
+* **postcss:** implement postcss package ([6091ed7](https://github.com/xing/hops/commit/6091ed7))
+* **preset-defaults:** move default presets into separate package ([722f67c](https://github.com/xing/hops/commit/722f67c))
+* **pwa:** allow service worker registration on all local interfaces ([b7c17fa](https://github.com/xing/hops/commit/b7c17fa))
+* **pwa:** implement hops-pwa as mixin ([2300c03](https://github.com/xing/hops/commit/2300c03))
+* **react:** add configureFetch and fetch hooks ([43528bb](https://github.com/xing/hops/commit/43528bb))
+* **react:** add server data HOC ([15609e8](https://github.com/xing/hops/commit/15609e8))
+* **react:** implement server components ([53f3cfb](https://github.com/xing/hops/commit/53f3cfb))
+* **react:** make getServerData available to mixins ([90d23e9](https://github.com/xing/hops/commit/90d23e9))
+* **react:** pass CLI arguments to runtime mixins / React HoC ([e9ed1df](https://github.com/xing/hops/commit/e9ed1df))
+* **react:** pass environment variables to React HoC ([8d7e14a](https://github.com/xing/hops/commit/8d7e14a))
+* **react:** remove fetch hooks ([cd09dc7](https://github.com/xing/hops/commit/cd09dc7))
+* **react:** remove withCLIArguments ([4b4aea2](https://github.com/xing/hops/commit/4b4aea2))
+* **react:** set res.locals.shouldPrefetchOnServer based on config ([d4f76e4](https://github.com/xing/hops/commit/d4f76e4))
+* **redux:** add action creator dispatcher mixin ([e3beb52](https://github.com/xing/hops/commit/e3beb52))
+* **redux:** add config as argument to thunk ([c84cfb0](https://github.com/xing/hops/commit/c84cfb0))
+* **redux:** add fetch to thunks ([fa9d8f9](https://github.com/xing/hops/commit/fa9d8f9))
+* **redux:** add overridable getReduxMiddlewares hook ([7370d3d](https://github.com/xing/hops/commit/7370d3d))
+* **redux:** expose getReduxStore hook ([e847c9e](https://github.com/xing/hops/commit/e847c9e))
+* **redux:** implement "shouldPrefetchOnServer" hook/preset option ([b8b2e45](https://github.com/xing/hops/commit/b8b2e45))
+* **redux:** remove configureFetch hook ([a222c49](https://github.com/xing/hops/commit/a222c49))
+* **redux:** remove fetch from thunks ([4dd5c37](https://github.com/xing/hops/commit/4dd5c37))
+* **redux:** use shouldPrefetchOnServer instead of _hopsStatic ([4f7361e](https://github.com/xing/hops/commit/4f7361e))
+* **spec:** execute integration test in copied fixture folder ([fe7a132](https://github.com/xing/hops/commit/fe7a132))
+* **spec:** execute integration test in copied fixture folder ([3b014a1](https://github.com/xing/hops/commit/3b014a1))
+* **styled-components:** introduce package ([d79c69a](https://github.com/xing/hops/commit/d79c69a))
+* **template-redux:** introduce react/redux template ([79de06f](https://github.com/xing/hops/commit/79de06f))
+* **typescript:** introduce package ([0261e70](https://github.com/xing/hops/commit/0261e70))
+* **typescript:** provide minimal default tsconfig.json ([515daa1](https://github.com/xing/hops/commit/515daa1))
+* **webpack:** print compilation stats and watch runs ([318afcf](https://github.com/xing/hops/commit/318afcf))
+
+
+### BREAKING CHANGES
+
+* **redux:** redux specific options are now namespaced
+If you want to pass options to the hops-redux package you need to pass
+them to the render function inside a `redux` key:
+**Before:**
+```javascript
+render(<MyApp />, { reducers: {...} });
+```
+**After:**
+```javascript
+render(<MyApp />, { redux: { reducers: {...}  } });
+```
+* **graphql:** graphql specific options are now namespaced
+If you want to pass options to the hops-graphql package you need to pass
+them to the render function inside a `graphql` key:
+**Before:**
+```javascript
+render(<MyApp />, { link: new Link() });
+```
+**After:**
+```javascript
+render(<MyApp />, { graphql: { link: new Link() } });
+```
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.25"></a>
 # [11.0.0-rc.25](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.25) (2018-07-31)
 

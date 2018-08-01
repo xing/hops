@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.26"></a>
+# [11.0.0-rc.26](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.26) (2018-08-01)
+
+
+### Bug Fixes
+
+* **redux:** add missing actionCreatorDispatcher files to package ([160e8df](https://github.com/xing/hops/commit/160e8df))
+* upgrade dependencies ([b61e8eb](https://github.com/xing/hops/commit/b61e8eb))
+* upgrade untool packages ([39fd3e1](https://github.com/xing/hops/commit/39fd3e1))
+* use renamed getTemplateData hook in favor of enhanceData ([3577cf7](https://github.com/xing/hops/commit/3577cf7))
+* **redux:** fix typo when accessing config ([b564831](https://github.com/xing/hops/commit/b564831))
+* **redux:** specify esnext field to transpile code ([3ddd057](https://github.com/xing/hops/commit/3ddd057))
+
+
+### Chores
+
+* specify engines as >=8.10 in all packages ([1b7a1d2](https://github.com/xing/hops/commit/1b7a1d2))
+
+
+### Code Refactoring
+
+* **redux:** namespace render options ([17f3e3c](https://github.com/xing/hops/commit/17f3e3c))
+
+
+### Features
+
+* **postcss:** implement postcss package ([6091ed7](https://github.com/xing/hops/commit/6091ed7))
+* **redux:** add action creator dispatcher mixin ([e3beb52](https://github.com/xing/hops/commit/e3beb52))
+* **redux:** add config as argument to thunk ([c84cfb0](https://github.com/xing/hops/commit/c84cfb0))
+* **redux:** add fetch to thunks ([fa9d8f9](https://github.com/xing/hops/commit/fa9d8f9))
+* **redux:** add overridable getReduxMiddlewares hook ([7370d3d](https://github.com/xing/hops/commit/7370d3d))
+* **redux:** expose getReduxStore hook ([e847c9e](https://github.com/xing/hops/commit/e847c9e))
+* **redux:** implement "shouldPrefetchOnServer" hook/preset option ([b8b2e45](https://github.com/xing/hops/commit/b8b2e45))
+* **redux:** remove configureFetch hook ([a222c49](https://github.com/xing/hops/commit/a222c49))
+* **redux:** remove fetch from thunks ([4dd5c37](https://github.com/xing/hops/commit/4dd5c37))
+* **redux:** use shouldPrefetchOnServer instead of _hopsStatic ([4f7361e](https://github.com/xing/hops/commit/4f7361e))
+
+
+### BREAKING CHANGES
+
+* **redux:** redux specific options are now namespaced
+If you want to pass options to the hops-redux package you need to pass
+them to the render function inside a `redux` key:
+**Before:**
+```javascript
+render(<MyApp />, { reducers: {...} });
+```
+**After:**
+```javascript
+render(<MyApp />, { redux: { reducers: {...}  } });
+```
+* Increase minimum required Node.js version from 6 to 8
+This commit specifies Node.js 8.10 as minimum required version in all
+packages.
+
+
+
+
 <a name="11.0.0-rc.25"></a>
 # [11.0.0-rc.25](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.25) (2018-07-31)
 
