@@ -14,10 +14,10 @@ class StyledComponentsMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return (
-      <StyleSheetManager sheet={this.sheet.instance}>
-        <ThemeProvider theme={this.theme}>{reactElement}</ThemeProvider>
-      </StyleSheetManager>
+    return React.createElement(
+      StyleSheetManager,
+      { sheet: this.sheet.instance },
+      React.createElement(ThemeProvider, { theme: this.theme }, reactElement)
     );
   }
 

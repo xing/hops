@@ -68,7 +68,11 @@ class ReduxMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return <Provider store={this.getReduxStore()}>{reactElement}</Provider>;
+    return React.createElement(
+      Provider,
+      { store: this.getReduxStore() },
+      reactElement
+    );
   }
 }
 

@@ -75,16 +75,15 @@ class ReduxActionCreatorRuntimeMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return (
-      <Dispatcher
-        dispatchAll={this.dispatchAll.bind(this)}
-        alwaysDispatchActionsOnClient={
-          this.options.alwaysDispatchActionsOnClient
-        }
-        prefetchedOnServer={this.prefetchedOnServer}
-      >
-        {reactElement}
-      </Dispatcher>
+    const { alwaysDispatchActionsOnClient } = this.options;
+    return React.createElement(
+      Dispatcher,
+      {
+        dispatchAll: this.dispatchAll.bind(this),
+        alwaysDispatchActionsOnClient: alwaysDispatchActionsOnClient,
+        prefetchedOnServer: this.prefetchedOnServer,
+      },
+      reactElement
     );
   }
 }

@@ -9,7 +9,11 @@ class StyledComponentsMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return <ThemeProvider theme={this.theme}>{reactElement}</ThemeProvider>;
+    return React.createElement(
+      ThemeProvider,
+      { theme: this.theme },
+      reactElement
+    );
   }
 }
 
