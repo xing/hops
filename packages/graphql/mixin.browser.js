@@ -56,7 +56,11 @@ class GraphQLMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return <ApolloProvider client={this.client}>{reactElement}</ApolloProvider>;
+    return React.createElement(
+      ApolloProvider,
+      { client: this.client },
+      reactElement
+    );
   }
 }
 

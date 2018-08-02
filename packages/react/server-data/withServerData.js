@@ -4,10 +4,8 @@ const { Consumer } = require('./context');
 function withServerData(Component) {
   return class WithServerData extends React.Component {
     render() {
-      return (
-        <Consumer>
-          {data => <Component {...this.props} serverData={data} />}
-        </Consumer>
+      return React.createElement(Consumer, {}, data =>
+        React.createElement(Component, { ...this.props, serverData: data })
       );
     }
   };

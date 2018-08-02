@@ -33,7 +33,11 @@ class HopsReactServerDataServerMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return <Provider value={this.getServerData()}>{reactElement}</Provider>;
+    return React.createElement(
+      Provider,
+      { value: this.getServerData() },
+      reactElement
+    );
   }
 }
 
