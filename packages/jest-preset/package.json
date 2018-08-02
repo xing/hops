@@ -28,7 +28,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "identity-obj-proxy": "^3.0.0",
-    "ts-jest": "^23.0.1"
+    "ts-jest": "^23.1.2"
   },
   "peerDependencies": {
     "jest": "^23.0.0",

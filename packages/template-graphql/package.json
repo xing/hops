@@ -22,9 +22,9 @@
     "hops-preset-defaults": "11.0.0-rc.26",
     "hops-react": "11.0.0-rc.26",
     "prop-types": "^15.6.2",
-    "react": "^16.4.1",
+    "react": "^16.4.2",
     "react-apollo": "^2.1.9",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.3.1",
@@ -36,7 +36,7 @@
     "hops": "11.0.0-rc.26",
     "jest": "^23.4.2",
     "jest-preset-hops": "11.0.0-rc.26",
-    "react-test-renderer": "^16.4.1"
+    "react-test-renderer": "^16.4.2"
   },
   "jest": {
     "preset": "jest-preset-hops"
