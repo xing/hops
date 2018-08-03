@@ -135,9 +135,9 @@
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
 
-"@untool/core@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.14.0.tgz#751e1ea1eceb160f30ec7e15379822aab1ca5842"
+"@untool/core@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.15.1.tgz#b8b449d74275945220d04bee77d183466d87d0e9"
   dependencies:
     cosmiconfig "^5.0.5"
     debug "^3.1.0"
@@ -151,12 +151,12 @@
     mixinable "^3.1.2"
     supports-color "^5.4.0"
 
-"@untool/express@^0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.14.1.tgz#a35c5ae496ae5d37e5544f87468c93403b4e0081"
+"@untool/express@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.15.1.tgz#322a1aeca4a9ccf51c074df228bf1f35d161aa50"
   dependencies:
-    "@untool/core" "^0.14.0"
-    "@untool/yargs" "^0.14.0"
+    "@untool/core" "^0.15.1"
+    "@untool/yargs" "^0.15.1"
     debug "^3.1.0"
     directory-index "^0.1.0"
     express "^4.16.2"
@@ -167,23 +167,23 @@
     node-mocks-http "^1.7.0"
     supports-color "^5.4.0"
 
-"@untool/react@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.14.0.tgz#997d98c37a6f579630afacb72d2689527be3b88e"
+"@untool/react@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.15.1.tgz#499a2964bf4f57f4c66086459a2828fad2665bd8"
   dependencies:
-    "@untool/core" "^0.14.0"
+    "@untool/core" "^0.15.1"
     babel-plugin-transform-react-remove-prop-types "^0.4.13"
     babel-preset-react "^6.24.1"
     mixinable "^3.1.2"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.14.1.tgz#b88cfbcd4eb3faa099f5218121f4a2075480ea5a"
+"@untool/webpack@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.15.1.tgz#1c08b001976198baea04e5992b7f404096f3f134"
   dependencies:
-    "@untool/core" "^0.14.0"
-    "@untool/express" "^0.14.1"
-    "@untool/yargs" "^0.14.0"
+    "@untool/core" "^0.15.1"
+    "@untool/express" "^0.15.1"
+    "@untool/yargs" "^0.15.1"
     babel-core "^6.26.0"
     babel-loader "^7.1.4"
     babel-plugin-dynamic-import-node "^2.0.0"
@@ -210,11 +210,11 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.14.0.tgz#b56aee83416e4235123a3dcaa3c3b201403efc82"
+"@untool/yargs@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.15.1.tgz#c05777413a8666120e97090623c0de580dc95f5b"
   dependencies:
-    "@untool/core" "^0.14.0"
+    "@untool/core" "^0.15.1"
     mixinable "^3.1.2"
     yargs "^12.0.0"
 

@@ -11,7 +11,7 @@ const mkdirp = promisify(require('mkdirp'));
 
 const build = async ({ cwd, argv }) => {
   await exec(
-    `node -e "require('hops').run('${['build', ...argv].join("', '")}')"`,
+    `node -e "require('hops').run({}, '${['build', ...argv].join("', '")}')"`,
     { cwd }
   );
 
@@ -22,9 +22,13 @@ const startServer = ({ cwd, command }) =>
     let onTeardown;
     const teardownPromise = new Promise(resolve => (onTeardown = resolve));
 
-    const started = spawn('node', ['-e', `require('hops').run('${command}')`], {
-      cwd,
-    });
+    const started = spawn(
+      'node',
+      ['-e', `require('hops').run({}, '${command}')`],
+      {
+        cwd,
+      }
+    );
     const teardown = () => {
       started.kill();
       return teardownPromise;
