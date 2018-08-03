@@ -12,7 +12,7 @@
     "testEnvironment": "../../helpers/env.js"
   },
   "scripts": {
-    "start": "node -e 'require(\"hops\").run(\"start\")'"
+    "start": "node -e 'require(\"hops\").run({}, \"start\")'"
   },
   "dependencies": {
     "hops-preset-defaults": "*",

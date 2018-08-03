@@ -9,7 +9,7 @@
     "testEnvironment": "../../helpers/env.js"
   },
   "scripts": {
-    "start": "node -e 'require(\"hops\").run(\"start\")'"
+    "start": "node -e 'require(\"hops\").run({}, \"start\")'"
   },
   "hops": {
     "port": "8901",
