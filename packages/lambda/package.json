@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@untool/core": "^0.14.0",
-    "@untool/express": "^0.14.1",
+    "@untool/express": "^0.16.0",
     "archiver": "^2.1.0",
     "aws-sdk": "^2.283.1",
     "globby": "^7.1.1",
