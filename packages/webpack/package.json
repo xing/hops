@@ -1,6 +1,6 @@
 {
   "name": "hops-webpack",
-  "version": "11.0.0-rc.26",
+  "version": "11.0.0-rc.27",
   "description": "Customization for our webpack build",
   "keywords": [
     "hops",
@@ -17,7 +17,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-mixin": "11.0.0-rc.26",
+    "hops-mixin": "11.0.0-rc.27",
     "pretty-ms": "^3.2.0"
   }
 }

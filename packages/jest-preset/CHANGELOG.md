@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.27"></a>
+# [11.0.0-rc.27](https://github.com/xing/hops/compare/v11.0.0-rc.26...v11.0.0-rc.27) (2018-08-06)
+
+
+### Bug Fixes
+
+* **jest-preset:** explicitly set testURL to fix jsdom localstorage issue ([94e86a4](https://github.com/xing/hops/commit/94e86a4))
+
+
+
+
 <a name="11.0.0-rc.26"></a>
 # [11.0.0-rc.26](https://github.com/xing/hops/compare/v10.4.6...v11.0.0-rc.26) (2018-08-01)
 

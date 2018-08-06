@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "11.0.0-rc.26",
+  "version": "11.0.0-rc.27",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -22,7 +22,7 @@
     "@untool/react": "^0.16.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "hops-mixin": "11.0.0-rc.26",
+    "hops-mixin": "11.0.0-rc.27",
     "react-router": "^4.3.1"
   },
   "peerDependencies": {

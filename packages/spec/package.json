@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "11.0.0-rc.26",
+  "version": "11.0.0-rc.27",
   "private": true,
   "files": [],
   "eslintConfig": {
