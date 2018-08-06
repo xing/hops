@@ -151,6 +151,22 @@
     mixinable "^3.1.2"
     supports-color "^5.4.0"
 
+"@untool/core@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.16.0.tgz#4577b7db2ad2ba8479485b3aadde298148e92277"
+  dependencies:
+    cosmiconfig "^5.0.5"
+    debug "^3.1.0"
+    dotenv "^6.0.0"
+    enhanced-resolve "^4.0.0"
+    escape-string-regexp "^1.0.5"
+    find-up "^3.0.0"
+    flat "^4.0.0"
+    is-plain-object "^2.0.4"
+    lodash.mergewith "^4.6.1"
+    mixinable "^3.1.2"
+    supports-color "^5.4.0"
+
 "@untool/express@^0.14.1":
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.14.1.tgz#a35c5ae496ae5d37e5544f87468c93403b4e0081"
@@ -215,6 +231,14 @@
   resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.14.0.tgz#b56aee83416e4235123a3dcaa3c3b201403efc82"
   dependencies:
     "@untool/core" "^0.14.0"
+    mixinable "^3.1.2"
+    yargs "^12.0.0"
+
+"@untool/yargs@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.16.0.tgz#7644028da1a72ae64e0affa8edc997687d179a7f"
+  dependencies:
+    "@untool/core" "^0.16.0"
     mixinable "^3.1.2"
     yargs "^12.0.0"
 
