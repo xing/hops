@@ -3,7 +3,7 @@
 
 require('isomorphic-fetch');
 const { access, readFile, writeFile } = require('fs');
-const pify = require('pify');
+const { promisify } = require('util');
 const { graphql } = require('graphql');
 const { makeExecutableSchema } = require('graphql-tools');
 
@@ -11,7 +11,7 @@ function writeFragmentTypesFile(fragmentsFile, result) {
   result.data.__schema.types = result.data.__schema.types.filter(
     t => t.possibleTypes !== null
   );
-  return pify(writeFile)(fragmentsFile, JSON.stringify(result.data));
+  return promisify(writeFile)(fragmentsFile, JSON.stringify(result.data));
 }
 
 function executeRemoteQuery(graphqlUri, optionalHeaders = [], query) {
@@ -33,7 +33,7 @@ function executeRemoteQuery(graphqlUri, optionalHeaders = [], query) {
 }
 
 function executeLocalQuery(schemaFile, query) {
-  return pify(readFile)(schemaFile, 'utf-8')
+  return promisify(readFile)(schemaFile, 'utf-8')
     .then(typeDefs => makeExecutableSchema({ typeDefs }))
     .then(executableSchema => graphql(executableSchema, query));
 }
@@ -53,7 +53,7 @@ const query = `
 `;
 
 module.exports = function generateFragmentTypes(options) {
-  return pify(access)(options.schemaFile)
+  return promisify(access)(options.schemaFile)
     .then(
       () => executeLocalQuery(options.schemaFile, query),
       () => executeRemoteQuery(options.graphqlUri, options.headers, query)
