@@ -1,6 +1,7 @@
 'use strict';
 
 process.env.UNTOOL_NSP = 'hops';
+process.env.NODE_ENV = 'production';
 
 const serverlessHttp = require('serverless-http');
 const config = require('@untool/core/lib/env').environmentalize(
@@ -10,9 +11,7 @@ const {
   stripLeadingSlash,
   stripTrailingSlash,
 } = require('@untool/express').uri;
-const app = require('@untool/express').createServer('serve', {
-  production: true,
-});
+const app = require('@untool/express').createServer('serve');
 
 const awsConfig = require('./lib/aws-config')(config);
 
