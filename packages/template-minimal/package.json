@@ -1,6 +1,6 @@
 {
   "name": "hops-template-minimal",
-  "version": "11.0.0-rc.27",
+  "version": "11.0.0-rc.28",
   "browser": "src/browser.js",
   "server": "src/server.js",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops-postcss": "11.0.0-rc.27",
+    "hops-postcss": "11.0.0-rc.28",
     "hops-preset-defaults": "11.0.0-rc.27"
   },
   "devDependencies": {
