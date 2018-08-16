@@ -43,7 +43,7 @@ Hops provides a few templates as starting points, which can be installed using t
 This is the default template, it consists of a simple React starting point and it is being used when you execute:
 
 ```bash
-$ hops init --hops-version --template hops-template-react@next next my-awesome-project
+$ hops init --hops-version next --template hops-template-react@next my-awesome-project
 ```
 
 #### [`hops-template-redux`](https://github.com/xing/hops/tree/master/packages/template-redux)
@@ -51,7 +51,7 @@ $ hops init --hops-version --template hops-template-react@next next my-awesome-p
 In case you want to build a Redux project, you can use this template as a starting point.
 
 ```bash
-$ hops init --hops-version --template hops-template-redux@next next my-awesome-project
+$ hops init --hops-version next --template hops-template-redux@next my-awesome-project
 ```
 
 #### [`hops-template-graphql`](https://github.com/xing/hops/tree/master/packages/template-graphql)
@@ -59,7 +59,7 @@ $ hops init --hops-version --template hops-template-redux@next next my-awesome-p
 In case you want to build a GraphQL project, you can use this template as a starting point.
 
 ```bash
-$ hops init --hops-version --template hops-template-graphql@next next my-awesome-project
+$ hops init --hops-version next --template hops-template-graphql@next my-awesome-project
 ```
 
 #### [`hops-template-minimal`](https://github.com/xing/hops/tree/master/packages/template-minimal)
