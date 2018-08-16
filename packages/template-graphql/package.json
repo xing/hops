@@ -13,8 +13,7 @@
   "scripts": {
     "start": "hops start",
     "build": "hops build",
-    "test": "jest",
-    "serve": "hops serve"
+    "test": "jest"
   },
   "dependencies": {
     "graphql-tag": "^2.6.1",
