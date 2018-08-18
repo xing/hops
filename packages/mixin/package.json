@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "@untool/core": "^0.16.0",
-    "mixinable": "^3.1.2"
+    "mixinable": "^4.0.0"
   }
 }

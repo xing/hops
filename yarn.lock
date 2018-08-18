@@ -6219,6 +6219,10 @@ mixinable@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-3.1.2.tgz#097b8c10b4577702f0ac516a7fa078ff7078a0f5"
 
+mixinable@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-4.0.0.tgz#b8318bf1915dd7bb9ea53c26de7861cbcfc4201b"
+
 mkdirp@0.5.1, mkdirp@0.x.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
