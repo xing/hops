@@ -39,7 +39,7 @@ function executeLocalQuery(schemaFile, query) {
 }
 
 const query = `
-{
+query IntrospectionQuery {
   __schema {
     types {
       kind
