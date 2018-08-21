@@ -1071,13 +1071,14 @@ apollo-utilities@^1.0.0, apollo-utilities@^1.0.1, apollo-utilities@^1.0.18:
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
-app-manifest-loader@^1.0.4:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/app-manifest-loader/-/app-manifest-loader-1.0.8.tgz#25a406b856374a1d2fb992dd1227d007b8be43aa"
+app-manifest-loader@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/app-manifest-loader/-/app-manifest-loader-2.0.0.tgz#1bc7a3d57132a94dae61937bf00d2506473e48b8"
   dependencies:
     "@babel/runtime" "^7.0.0-rc.1"
     core-js "^2.5.7"
     loader-utils "^1.1.0"
+    xml-js "^1.6.7"
 
 append-transform@^1.0.0:
   version "1.0.0"
@@ -9601,6 +9602,12 @@ ws@^5.1.1, ws@^5.2.0:
 x-xss-protection@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/x-xss-protection/-/x-xss-protection-1.1.0.tgz#4f1898c332deb1e7f2be1280efb3e2c53d69c1a7"
+
+xml-js@^1.6.7:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/xml-js/-/xml-js-1.6.7.tgz#a99b40c18a16d3e06537b3ae026a27bd60ffe8ab"
+  dependencies:
+    sax "^1.2.4"
 
 xml-name-validator@^3.0.0:
   version "3.0.0"
