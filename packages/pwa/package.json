@@ -23,7 +23,7 @@
     "@untool/webpack": "^0.17.1",
     "app-manifest-loader": "^2.0.0",
     "babel-polyfill": "^6.26.0",
-    "file-loader": "^1.1.11",
+    "file-loader": "^2.0.0",
     "hops-mixin": "11.0.0-rc.29",
     "webpack": "^4.16.5",
     "webpack-sources": "^1.1.0"
