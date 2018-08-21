@@ -7,7 +7,7 @@ const ServiceWorkerPlugin = require('./lib/service-worker-plugin');
 class PWAMixin extends Mixin {
   configureBuild(webpackConfig, { allLoaderConfigs }, target) {
     const webmanifestLoader = {
-      test: /\.webmanifest$/,
+      test: /(\.webmanifest|browserconfig\.xml)$/,
       use: [
         {
           loader: require.resolve('file-loader'),
