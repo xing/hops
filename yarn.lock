@@ -643,9 +643,9 @@
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
 
-"@untool/core@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.16.0.tgz#4577b7db2ad2ba8479485b3aadde298148e92277"
+"@untool/core@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.17.1.tgz#c27e77389ed40706a9e9ddd9d3b520d842f43b10"
   dependencies:
     cosmiconfig "^5.0.5"
     debug "^3.1.0"
@@ -656,42 +656,42 @@
     flat "^4.0.0"
     is-plain-object "^2.0.4"
     lodash.mergewith "^4.6.1"
-    mixinable "^3.1.2"
+    mixinable "^4.0.0"
     supports-color "^5.4.0"
 
-"@untool/express@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.16.0.tgz#c2b4f11a19048602fd7dbddb1cd7870926511b06"
+"@untool/express@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.17.1.tgz#5089428f97eee8ea2824e30fdc687edd7adada3e"
   dependencies:
-    "@untool/core" "^0.16.0"
-    "@untool/yargs" "^0.16.0"
+    "@untool/core" "^0.17.1"
+    "@untool/yargs" "^0.17.1"
     debug "^3.1.0"
     directory-index "^0.1.0"
     express "^4.16.2"
     helmet "^3.12.1"
     micromatch "^3.1.10"
     mime "^2.2.2"
-    mixinable "^3.1.2"
+    mixinable "^4.0.0"
     node-mocks-http "^1.7.0"
     supports-color "^5.4.0"
 
-"@untool/react@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.16.0.tgz#66e31733cb78f540432eb0828409a176cc402ed5"
+"@untool/react@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.17.1.tgz#f9da32f5ff2833c1b7c99338911a99d6ac19c812"
   dependencies:
-    "@untool/core" "^0.16.0"
+    "@untool/core" "^0.17.1"
     babel-plugin-transform-react-remove-prop-types "^0.4.13"
     babel-preset-react "^6.24.1"
-    mixinable "^3.1.2"
+    mixinable "^4.0.0"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.16.0.tgz#196891df9dca922541803ab923fdfd45fad1d4fe"
+"@untool/webpack@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.17.1.tgz#fcd1efe031ef5adfc11e3ba0a483c75a5370804c"
   dependencies:
-    "@untool/core" "^0.16.0"
-    "@untool/express" "^0.16.0"
-    "@untool/yargs" "^0.16.0"
+    "@untool/core" "^0.17.1"
+    "@untool/express" "^0.17.1"
+    "@untool/yargs" "^0.17.1"
     babel-core "^6.26.0"
     babel-loader "^7.1.4"
     babel-plugin-dynamic-import-node "^2.0.0"
@@ -706,7 +706,7 @@
     is-builtin-module "^2.0.0"
     loader-utils "^1.1.0"
     memory-fs "^0.4.1"
-    mixinable "^3.1.2"
+    mixinable "^4.0.0"
     require-from-string "^2.0.1"
     rimraf "^2.6.2"
     source-map-support "^0.5.6"
@@ -718,12 +718,12 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.16.0.tgz#7644028da1a72ae64e0affa8edc997687d179a7f"
+"@untool/yargs@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.17.1.tgz#8cbb653effd526b0a5e86486c622d95ccc25b878"
   dependencies:
-    "@untool/core" "^0.16.0"
-    mixinable "^3.1.2"
+    "@untool/core" "^0.17.1"
+    mixinable "^4.0.0"
     yargs "^12.0.0"
 
 "@webassemblyjs/ast@1.5.13":
@@ -6215,9 +6215,9 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-mixinable@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-3.1.2.tgz#097b8c10b4577702f0ac516a7fa078ff7078a0f5"
+mixinable@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-4.0.0.tgz#b8318bf1915dd7bb9ea53c26de7861cbcfc4201b"
 
 mkdirp@0.5.1, mkdirp@0.x.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
