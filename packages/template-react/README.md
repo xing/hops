@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)
 
-This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React, Redux and Jest.
+This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React.
 
 It has the following folder structure:
 
@@ -13,29 +13,18 @@ It has the following folder structure:
 └── src
     ├── app.js
     ├── counter
-    │   ├── actions.js
-    │   ├── constants.js
-    │   ├── counterContainer.js
-    │   ├── counter.js
     │   ├── index.js
-    │   ├── reducer.js
     │   └── spec
-    │       ├── actions.spec.js
-    │       ├── counterContainer.spec.js
-    │       ├── counter.spec.js
-    │       ├── reducer.spec.js
+    │       ├── index.spec.js
     │       └── __snapshots__
-    │           ├── counterContainer.spec.js.snap
-    │           └── counter.spec.js.snap
-    ├── home
-    │   ├── home.js
-    │   ├── index.js
-    │   ├── spec
-    │   │   ├── home.spec.js
-    │   │   └── __snapshots__
-    │   │       └── home.spec.js.snap
-    │   └── styles.css
-    └── reducers.js
+    │           └── index.spec.js.snap
+    └── home
+        ├── index.js
+        ├── spec
+        │   ├── index.spec.js
+        │   └── __snapshots__
+        │       └── index.spec.js.snap
+        └── styles.css
 ```
 
 This example uses `hops-react` to render in the browser or on the server via the same entry file `src/app.js`.
@@ -59,9 +48,9 @@ Before you start a production server you need to build your JS bundle files.
 
 This command will generate the browser and server bundles that are required for deploying your code or running the production server through `npm start --production`.
 
-It can also be used to statically build HTML pages for all `locations` that are configured in the `"config"` section of the `package.json`.
+It can also be used to statically build HTML pages for all `locations` that are configured in the config section of the `package.json`.
 
-In this scenario it will iterate through the `locations` and render each location to a HTML document that will be placed in the `build/` folder.
+In this scenario it will iterate through the `locations` and render each location to a HTML document that will be placed in the `dist/` folder.
 
 To make use of this execute `npm run build -- --static` or `yarn build --static`.
 
@@ -69,8 +58,16 @@ To make use of this execute `npm run build -- --static` or `yarn build --static`
 
 This command will test your code with [jest](https://facebook.github.io/jest/) a testrunner by facebook that integrates nicely with react.
 
+### `npm serve` / `yarn serve`
+
+To serve your application using a production-ready Express.js server, execute this command after [building your application](#npm-run-build--yarn-build)
+
 ## Configuration
 
-Please refer to [hops-config](https://github.com/xing/hops/tree/master/packages/config) to see a list of all supported options.
+Please refer to the [main readme](https://github.com/xing/hops#installing--configuring-a-preset) for an example of how to configure your presets and check out the individual preset readme files for the presets used in this project for more in-depth explanations:
+
+- [hops-preset-defaults](https://github.com/xing/hops/tree/master/packages/preset-defaults)
+- [hops-react](https://github.com/xing/hops/tree/master/packages/react)
+- [hops-postcss](https://github.com/xing/hops/tree/master/packages/postcss)
 
 In this project we configure `babel` and `postcss` through the `"browsers"` field and we specify two loctions `/` and `/counter` through the `"locations"` hash.
