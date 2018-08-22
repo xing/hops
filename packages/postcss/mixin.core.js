@@ -36,6 +36,9 @@ const getCSSLoaderConfig = browsers => ({
             features: {
               'nesting-rules': true,
               'custom-media-queries': true,
+              'custom-properties': {
+                preserve: false,
+              },
             },
           }),
         ],
