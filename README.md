@@ -301,8 +301,6 @@ Hops allows you to write a package of your own and plug it into Hops' build proc
 
 ## Contributing
 
-### Code
-
 Hops uses [lerna](https://github.com/lerna/lerna) and [yarn](https://yarnpkg.com/en/) for development and publishing of the packages. Therefore it is required to have `yarn` globally available.
 
 If you want to contribute to this project, create a fork of its [repository](https://github.com/xing/hops/fork) using the GitHub UI. Check out your new fork to your computer:
@@ -312,13 +310,15 @@ mkdir hops && cd $_
 git clone git@github.com:user/hops.git .
 ```
 
-Afterwards, you can `yarn install` the required dependencies and then run `yarn bootstrap` to install the dependencies of all packages and link the packages together.
+Afterwards, run `yarn install` to install the required dependencies.
 
 Using `yarn start` will execute the `start` script in the [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react) so that you can verify your changes in the browser.
 
-When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
+Hops is written using modern ECMAScript features (ES 2017) and uses [CommonJS](https://nodejs.org/docs/latest/api/modules.html) as its module system. The code is formatted using [prettier](https://prettier.io) and checked via [ESlint](https://eslint.org/) and [Jest](https://jestjs.io/). You can check your code by executing: `yarn lint`, `yarn test` and format it using `yarn fmt`.
 
-Hops is entirely written in ECMAScript 5 and its code is formatted using [prettier](https://prettier.io). Please make sure your contribution does, too.
+We are using the [Conventional Commits spec](https://conventionalcommits.org/) for our commit messages.
+
+When you are finished, please do go ahead and create a [pull request](https://help.github.com/articles/creating-a-pull-request/).
 
 ## Thanks!
 
