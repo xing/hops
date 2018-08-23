@@ -1,6 +1,6 @@
 {
   "name": "hops-pwa",
-  "version": "11.0.0-rc.29",
+  "version": "11.0.0-rc.30",
   "description": "ServiceWorker and Web App Manifest support for Hops",
   "keywords": [
     "hops",

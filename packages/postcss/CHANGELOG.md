@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.30"></a>
+# [11.0.0-rc.30](https://github.com/xing/hops/compare/v11.0.0-rc.29...v11.0.0-rc.30) (2018-08-23)
+
+
+### Bug Fixes
+
+* **postcss:** do not output custom properties in resulting css ([981e413](https://github.com/xing/hops/commit/981e413))
+
+
+
+
+
 <a name="11.0.0-rc.29"></a>
 # [11.0.0-rc.29](https://github.com/xing/hops/compare/v11.0.0-rc.28...v11.0.0-rc.29) (2018-08-21)
 
