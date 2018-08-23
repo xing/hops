@@ -707,9 +707,9 @@
     mixinable "^4.0.0"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.17.1":
-  version "0.17.1"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.17.1.tgz#fcd1efe031ef5adfc11e3ba0a483c75a5370804c"
+"@untool/webpack@^0.17.2":
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.17.2.tgz#b8fa33589a8003a9d741955459046fbb171f1189"
   dependencies:
     "@untool/core" "^0.17.1"
     "@untool/express" "^0.17.1"
@@ -723,7 +723,7 @@
     caniuse-lite "^1.0.30000846"
     debug "^3.1.0"
     enhanced-resolve "^4.0.0"
-    file-loader "^1.1.6"
+    file-loader "^2.0.0"
     find-up "^3.0.0"
     is-builtin-module "^2.0.0"
     loader-utils "^1.1.0"
@@ -3985,13 +3985,6 @@ file-entry-cache@^2.0.0:
   dependencies:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
-
-file-loader@^1.1.6:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.1.11.tgz#6fe886449b0f2a936e43cabaac0cdbfb369506f8"
-  dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^0.4.5"
 
 file-loader@^2.0.0:
   version "2.0.0"

@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@untool/express": "^0.17.1",
-    "@untool/webpack": "^0.17.1",
+    "@untool/webpack": "^0.17.2",
     "@untool/yargs": "^0.17.1",
     "hops-express": "11.0.0-rc.29",
     "hops-webpack": "11.0.0-rc.29"

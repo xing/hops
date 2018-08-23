@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@untool/express": "^0.17.1",
-    "@untool/webpack": "^0.17.1",
+    "@untool/webpack": "^0.17.2",
     "app-manifest-loader": "^2.0.0",
     "babel-polyfill": "^6.26.0",
     "file-loader": "^2.0.0",
