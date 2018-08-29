@@ -16,6 +16,6 @@
   "dependencies": {
     "debug": "^3.1.0",
     "hops-mixin": "11.0.0-rc.29",
-    "http-proxy-middleware": "^0.18.0"
+    "http-proxy-middleware": "^0.19.0"
   }
 }
