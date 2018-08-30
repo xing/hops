@@ -1,4 +1,5 @@
 const NodeEnvironment = require('jest-environment-node');
+const debug = require('debug')('hops-spec:env');
 const {
   launchPuppeteer,
   startServer,
@@ -37,9 +38,11 @@ class FixtureEnvironment extends NodeEnvironment {
   }
   async setup() {
     await super.setup();
+    debug('Creating working directory for:', this.config.rootDir);
     const { cwd, removeWorkingDir } = await createWorkingDir(
       this.config.rootDir
     );
+    debug('Working directory created:', cwd);
     this.cwd = cwd;
     this.removeWorkingDir = removeWorkingDir;
     const { browser, teardown: closeBrowser } = await launchPuppeteer();

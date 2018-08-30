@@ -8,12 +8,14 @@ const rimraf = promisify(require('rimraf'));
 const ncp = promisify(require('ncp'));
 const mktemp = require('mktemp').createDir;
 const mkdirp = promisify(require('mkdirp'));
+const debug = require('debug')('hops-spec:test-helpers');
 
 const build = async ({ cwd, argv }) => {
-  await exec(
-    `node -e "require('hops').run('${['build', ...argv].join("', '")}')"`,
-    { cwd }
-  );
+  const command = `node -e "require('hops').run('${['build', ...argv].join(
+    "', '"
+  )}')"`;
+  debug('Starting', command);
+  await exec(command, { cwd });
 
   return cwd;
 };
@@ -22,7 +24,9 @@ const startServer = ({ cwd, command }) =>
     let onTeardown;
     const teardownPromise = new Promise(resolve => (onTeardown = resolve));
 
-    const started = spawn('node', ['-e', `require('hops').run('${command}')`], {
+    const args = ['-e', `require('hops').run('${command}')`];
+    debug('Spawning node', args.join(' '));
+    const started = spawn('node', args, {
       cwd,
     });
     const teardown = () => {
@@ -33,6 +37,7 @@ const startServer = ({ cwd, command }) =>
     started.stdout.on('data', data => {
       const line = data.toString('utf-8');
       const match = line.match(/Server listening at (.*)/i);
+      debug('stdout >', line);
       if (match) {
         const url = match[1];
         resolve({ url, teardown });
@@ -41,10 +46,13 @@ const startServer = ({ cwd, command }) =>
 
     let stderr = '';
     started.stderr.on('data', data => {
-      stderr += data.toString('utf-8');
+      const line = data.toString('utf-8');
+      stderr += line;
+      debug('stderr >', line);
     });
 
     started.on('close', code => {
+      debug('Server stopped. exitcode:', code);
       onTeardown();
       if (code) {
         reject(stderr);
@@ -55,14 +63,16 @@ const startServer = ({ cwd, command }) =>
   });
 
 const launchPuppeteer = async () => {
-  const isDebug = process.env.DEBUG === 'true';
-  const browser = await puppeteer.launch({
+  const isDebug = process.env.DEBUG_PUPPETEER === 'true';
+  const config = {
     executablePath: process.env.CHROMIUM_PATH,
     headless: !isDebug,
     slowMo: isDebug ? 250 : 0,
     devtools: isDebug,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  };
+  debug('Starting puppeteer', config);
+  const browser = await puppeteer.launch(config);
   return {
     browser,
     teardown: async () => await browser.close(),
