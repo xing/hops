@@ -10,11 +10,8 @@ const ReduxActionCreatorCommonMixin = require('./mixin.runtime-common');
 
 class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
   bootstrap(request) {
+    this.request = request;
     this.prefetchedOnServer = this.shouldPrefetchOnServer();
-    if (this.prefetchedOnServer) {
-      return this.dispatchAll(createLocation(request.path));
-    }
-    return Promise.resolve();
   }
 
   shouldPrefetchOnServer() {
@@ -22,6 +19,14 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
     return typeof shouldPrefetchOnServer === 'boolean'
       ? shouldPrefetchOnServer
       : true;
+  }
+
+  async fetchData(data) {
+    if (this.prefetchedOnServer) {
+      await this.dispatchAll(createLocation(this.request.path));
+    }
+
+    return data;
   }
 
   getTemplateData(data) {
