@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.31"></a>
+# [11.0.0-rc.31](https://github.com/xing/hops/compare/v11.0.0-rc.30...v11.0.0-rc.31) (2018-08-31)
+
+
+### Features
+
+* **spec:** add debug output for integration tests ([1cf04e4](https://github.com/xing/hops/commit/1cf04e4))
+
+
+
+
+
 <a name="11.0.0-rc.27"></a>
 # [11.0.0-rc.27](https://github.com/xing/hops/compare/v11.0.0-rc.26...v11.0.0-rc.27) (2018-08-06)
 

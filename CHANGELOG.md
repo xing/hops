@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.31"></a>
+# [11.0.0-rc.31](https://github.com/xing/hops/compare/v11.0.0-rc.30...v11.0.0-rc.31) (2018-08-31)
+
+
+### Bug Fixes
+
+* **redux:** Do not dispatch actions in bootstrap hook to avoid clashes ([e97a52c](https://github.com/xing/hops/commit/e97a52c))
+
+
+### Features
+
+* **spec:** add debug output for integration tests ([1cf04e4](https://github.com/xing/hops/commit/1cf04e4))
+
+
+
+
+
 <a name="11.0.0-rc.30"></a>
 # [11.0.0-rc.30](https://github.com/xing/hops/compare/v11.0.0-rc.29...v11.0.0-rc.30) (2018-08-23)
 

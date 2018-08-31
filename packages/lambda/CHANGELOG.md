@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.31"></a>
+# [11.0.0-rc.31](https://github.com/xing/hops/compare/v11.0.0-rc.30...v11.0.0-rc.31) (2018-08-31)
+
+**Note:** Version bump only for package hops-lambda
+
+
+
+
+
 <a name="11.0.0-rc.29"></a>
 # [11.0.0-rc.29](https://github.com/xing/hops/compare/v11.0.0-rc.28...v11.0.0-rc.29) (2018-08-21)
 
