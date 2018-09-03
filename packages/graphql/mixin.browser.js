@@ -47,9 +47,9 @@ class GraphQLMixin extends Mixin {
   }
 
   createFragmentMatcher() {
-    if (global['APOLLO_IQRD']) {
+    if (global['APOLLO_FRAGMENT_TYPES']) {
       return new IntrospectionFragmentMatcher({
-        introspectionQueryResultData: global['APOLLO_IQRD'],
+        introspectionQueryResultData: global['APOLLO_FRAGMENT_TYPES'],
       });
     }
     return new HeuristicFragmentMatcher();

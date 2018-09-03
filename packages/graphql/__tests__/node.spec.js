@@ -51,7 +51,7 @@ describe.skip('graphql node extension', function() {
 
     return context.getTemplateData({}, root).then(function(templateData) {
       expect(templateData.globals).toEqual([
-        { name: constants.APOLLO_IQRD, value: mockResponse },
+        { name: constants.APOLLO_FRAGMENT_TYPES, value: mockResponse },
         { name: constants.APOLLO_STATE, value: {} },
       ]);
       expect(require('react-apollo').getDataFromTree).not.toHaveBeenCalled();

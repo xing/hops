@@ -79,7 +79,7 @@ class GraphQLMixin extends Mixin {
         ...data,
         globals: {
           ...(data.globals || {}),
-          APOLLO_IRQD: this.introspectionResult,
+          APOLLO_FRAGMENT_TYPES: this.introspectionResult,
           APOLLO_STATE: this.client.cache.extract(),
         },
       };
