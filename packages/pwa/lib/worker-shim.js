@@ -1,5 +1,3 @@
-require('babel-polyfill');
-
 // This is a webpack alias, defined in mixin.core.js
 /* eslint-disable-next-line node/no-missing-require */
 const { getConfigAndMixins } = require('./loader-shim');
