@@ -18,10 +18,10 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@untool/core": "^0.18.0",
     "@untool/react": "^0.18.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "hops-mixin": "11.0.0-rc.29",
     "react-router": "^4.3.1"
   },
