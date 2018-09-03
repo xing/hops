@@ -22,7 +22,6 @@
     "@untool/express": "^0.18.0",
     "@untool/webpack": "^0.18.0",
     "app-manifest-loader": "^2.0.0",
-    "babel-polyfill": "^6.26.0",
     "file-loader": "^2.0.0",
     "hops-mixin": "11.0.0-rc.29",
     "webpack": "^4.16.5",
