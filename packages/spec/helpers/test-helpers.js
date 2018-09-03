@@ -5,7 +5,7 @@ const exec = promisify(require('child_process').exec);
 const puppeteer = require('puppeteer');
 const rimraf = promisify(require('rimraf'));
 
-const ncp = promisify(require('ncp'));
+const { copy } = require('fs-extra');
 const mktemp = require('mktemp').createDir;
 const mkdirp = promisify(require('mkdirp'));
 const debug = require('debug')('hops-spec:test-helpers');
@@ -84,7 +84,7 @@ const createWorkingDir = async srcDir => {
   await mkdirp(cwdRootPath);
   const cwdPath = await mktemp(path.resolve(cwdRootPath, 'XXXXX'));
 
-  await ncp(srcDir, cwdPath);
+  await copy(srcDir, cwdPath);
   return {
     cwd: cwdPath,
     removeWorkingDir: async () => {
