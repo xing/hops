@@ -21,12 +21,12 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "babel-core": "^6.26.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "babel-jest": "^23.4.2",
     "babel-plugin-dynamic-import-node": "^2.0.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "identity-obj-proxy": "^3.0.0",
     "ts-jest": "^23.1.2"
   },
