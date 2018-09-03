@@ -3,14 +3,14 @@ var babelJest = require('babel-jest');
 module.exports = babelJest.createTransformer({
   presets: [
     [
-      'env',
+      '@babel/preset-env',
       {
         modules: 'commonjs',
-        useBuiltIns: true,
+        useBuiltIns: 'usage',
         targets: { node: 'current' },
       },
     ],
-    'react',
+    '@babel/preset-react',
   ],
   plugins: [
     require.resolve('babel-plugin-dynamic-import-node'),
