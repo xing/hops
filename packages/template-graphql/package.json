@@ -34,6 +34,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "babel-core": "^7.0.0-0",
     "hops": "11.0.0-rc.27",
     "jest": "^23.4.2",
     "jest-preset-hops": "11.0.0-rc.27",
