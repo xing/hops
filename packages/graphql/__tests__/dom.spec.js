@@ -18,7 +18,7 @@ var mockResponse = {
 describe.skip('graphql browser extension', function() {
   afterEach(function() {
     var constants = require('../lib/constants');
-    global[constants.APOLLO_IQRD] = undefined;
+    global[constants.APOLLO_FRAGMENT_TYPES] = undefined;
   });
 
   var hopsGraphql = require('../dom');
@@ -32,7 +32,7 @@ describe.skip('graphql browser extension', function() {
 
   it('should use IntrospectionFragmentMatcher when introspection result is available', function() {
     var constants = require('../lib/constants');
-    global[constants.APOLLO_IQRD] = mockResponse;
+    global[constants.APOLLO_FRAGMENT_TYPES] = mockResponse;
     var context = new hopsGraphql.GraphQLContext();
     expect(context.client.cache.config.fragmentMatcher).toBeInstanceOf(
       ApolloCache.IntrospectionFragmentMatcher
