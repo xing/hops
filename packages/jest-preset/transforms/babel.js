@@ -14,8 +14,8 @@ module.exports = babelJest.createTransformer({
   ],
   plugins: [
     require.resolve('babel-plugin-dynamic-import-node'),
-    require.resolve('babel-plugin-transform-class-properties'),
-    require.resolve('babel-plugin-transform-object-rest-spread'),
+    require.resolve('@babel/plugin-proposal-class-properties'),
+    require.resolve('@babel/plugin-proposal-object-rest-spread'),
   ],
   babelrc: false,
 });
