@@ -80,7 +80,7 @@ Skip cleanup for production builds (only applicable when used together with `--p
 
 ##### `browsers`
 
-This is a [`browserslist` query](https://github.com/browserslist/browserslist) that is being used by [`postcss-preset-env`](https://github.com/csstools/postcss-preset-env#browsers) and [`babel-preset-env`](https://babeljs.io/docs/plugins/preset-env/) to determine what language features need transpiling and/or polyfilling.
+This is a [`browserslist` query](https://github.com/browserslist/browserslist) that is being used by [`postcss-preset-env`](https://github.com/csstools/postcss-preset-env#browsers) and [`@babel/preset-env`](https://babeljs.io/docs/plugins/preset-env/) to determine what language features need transpiling and/or polyfilling.
 
 ```json
 "hops": {
@@ -90,7 +90,7 @@ This is a [`browserslist` query](https://github.com/browserslist/browserslist) t
 
 ##### `node`
 
-This is the target Node.js version that [`babel-preset-env`](https://babeljs.io/docs/plugins/preset-env/) should transpile for.
+This is the target Node.js version that [`@babel/preset-env`](https://babeljs.io/docs/plugins/preset-env/) should transpile for.
 
 ```json
 "hops": {
@@ -158,7 +158,7 @@ class MyMixin extends Mixin {
     );
     // add or modify the config of the jsLoader (babel-loader)
     loaderConfigs.jsLoaderConfig.options.plugins.push(
-      'babel-plugin-transform-class-properties'
+      '@babel/plugin-proposal-class-properties'
     );
 
     return webpackConfig;
