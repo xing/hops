@@ -6,6 +6,20 @@ A [Jest preset](https://facebook.github.io/jest/docs/configuration.html#preset-s
 
 It ensures that Babel works correctly out of the box and that requiring files such as images does not produce errors. [identity-obj-proxy](https://github.com/keyanzhang/identity-obj-proxy) is used to make working with CSS modules easier in tests.
 
+## Installation
+
+```bash
+$ yarn add jest-preset-hops@next
+# OR npm install --save jest-preset-hops@next
+```
+
+You also [need to install 'babel-core@^7.0.0-0' as devDependency](https://jestjs.io/docs/en/getting-started#using-babel).
+
+```bash
+$ yarn add --dev 'babel-core@^7.0.0-0'
+# OR npm install --save --dev 'babel-core@^7.0.0-0'
+```
+
 ## Usage
 
 Add `jest-preset-hops` as [preset](https://facebook.github.io/jest/docs/en/configuration.html#preset-string) to your Jest config. This can for example be done by adding it to your package.json.
