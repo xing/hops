@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var execSync = require('child_process').execSync;
 var tar = require('tar');
 var validatePackageName = require('validate-npm-package-name');
 var pm = require('./package-manager');
@@ -55,13 +56,22 @@ function getValidatedTemplateName(name, root) {
   return null;
 }
 
+function isCLIInstalledGlobally() {
+  try {
+    execSync('hops --version', { stdio: 'ignore' });
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
 function init(root, appName, options) {
   var appRoot = path.resolve(root, appName);
   var template = getValidatedTemplateName(options.template, root);
   var pathToPackageManifest = path.resolve(appRoot, 'package.json');
   var oldPackageManifest = readPackageManifest(pathToPackageManifest);
   var tarball = null;
-  options.npm = options.npm || !pm.isGlobalCliUsingYarn(appRoot, options);
+  options.npm = options.npm || !pm.isGlobalCliUsingYarn(appRoot);
 
   if (template) {
     tarball = pm.getTarball(template, options);
@@ -101,8 +111,24 @@ function init(root, appName, options) {
         console.log('Hooray \\o/');
         console.log('Your project has been successfully created.');
         console.log(
-          'You should change into its directory and execute "hops" to see a list',
-          'of available commands.'
+          'You should change into its directory and execute',
+          '`' +
+            (isCLIInstalledGlobally()
+              ? 'hops'
+              : pm.isGlobalCliUsingYarn(appRoot)
+                ? 'yarn'
+                : 'npm'),
+          'start`',
+          'to fire up a development server with hot module reloading.'
+        );
+        console.log(
+          'To see a list of available commands through Hops presets execute:',
+          isCLIInstalledGlobally()
+            ? '`hops`'
+            : (pm.isGlobalCliUsingYarn(appRoot)
+                ? '`yarn hops`'
+                : '`npx hops@' + options.hopsVersion + '`') +
+              ' or install the "hops" package globally.'
         );
       })
       .catch(function(error) {
