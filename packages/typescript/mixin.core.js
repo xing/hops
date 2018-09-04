@@ -1,13 +1,12 @@
 const { Mixin } = require('hops-mixin');
 
 class TypescriptMixin extends Mixin {
-  configureBuild(webpackConfig, { allLoaderConfigs }) {
+  configureBuild(webpackConfig, { jsLoaderConfig }) {
     webpackConfig.resolve.extensions.unshift('.ts', '.tsx');
-
-    allLoaderConfigs.unshift({
-      test: /\.tsx?$/,
-      use: [{ loader: require.resolve('ts-loader') }],
-    });
+    jsLoaderConfig.test.push(/\.tsx?$/);
+    jsLoaderConfig.options.presets.push(
+      require.resolve('@babel/preset-typescript')
+    );
 
     return webpackConfig;
   }
