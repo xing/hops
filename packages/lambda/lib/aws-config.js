@@ -1,6 +1,12 @@
 'use strict';
 
 const semver = require('semver');
+const {
+  stripLeadingSlash,
+  stripTrailingSlash,
+} = require('@untool/express').uri;
+
+const trimSlashes = input => stripLeadingSlash(stripTrailingSlash(input));
 
 const MAX_NODE_VERSION = '8.10';
 
@@ -20,7 +26,7 @@ module.exports = function getAWSConfig(hopsConfig) {
     stageName: awsConfig.stageName,
     domainName: awsConfig.domainName,
     certificateArn: awsConfig.certificateArn,
-    basePath: hopsConfig.basePath.slice(1) || '(none)',
+    basePath: trimSlashes(hopsConfig.basePath) || '(none)',
     cloudformationTemplateFile: awsConfig.cloudformationTemplateFile,
     include: awsConfig.include,
     exclude: awsConfig.exclude,
@@ -40,7 +46,7 @@ module.exports = function getAWSConfig(hopsConfig) {
   if (
     !config.domainName &&
     config.basePath.indexOf(config.stageName) !== 0 &&
-    hopsConfig.assetPath.indexOf(config.stageName) !== 0
+    trimSlashes(hopsConfig.assetPath).indexOf(config.stageName) !== 0
   ) {
     console.warn(
       'When no custom domain is configured, the stageName (' +
