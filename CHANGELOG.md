@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.32"></a>
+# [11.0.0-rc.32](https://github.com/xing/hops/compare/v11.0.0-rc.31...v11.0.0-rc.32) (2018-09-04)
+
+
+### Bug Fixes
+
+* **cli:** print getting started message based on availability of CLI ([f4c88b8](https://github.com/xing/hops/commit/f4c88b8))
+* **graphql:** IRQD <> IQRD - rename to APOLLO_FRAGMENT_TYPES ([4b40d57](https://github.com/xing/hops/commit/4b40d57))
+* **jest-preset:** adjust to babel v7 ([538937d](https://github.com/xing/hops/commit/538937d))
+* **jest-preset:** use babel typescript preset ([3cab0ea](https://github.com/xing/hops/commit/3cab0ea))
+* **jest-preset-hops:** upgrade packages to babel v7 ([eac9f0a](https://github.com/xing/hops/commit/eac9f0a))
+* **lambda:** ensure to only strip slashes from basePath ([2384d49](https://github.com/xing/hops/commit/2384d49)), closes [#608](https://github.com/xing/hops/issues/608)
+* **pwa:** remove babel-polyfill as it is not needed anymore with babel7 ([7925682](https://github.com/xing/hops/commit/7925682))
+* **react:** upgrade babel plugins to v7 ([701b5f0](https://github.com/xing/hops/commit/701b5f0))
+* **styled-components:** downgrade babel plugin to circumvent regression ([4e2d325](https://github.com/xing/hops/commit/4e2d325))
+* **test:** Replace ncp package by fs-extra ([f6afebb](https://github.com/xing/hops/commit/f6afebb))
+* **typescript:** use babel 7 typescript preset ([92c228e](https://github.com/xing/hops/commit/92c228e))
+* add babel-core@7 bridge to fix jest tests ([cdc9870](https://github.com/xing/hops/commit/cdc9870))
+* upgrade to untool@0.18 ([5364ac5](https://github.com/xing/hops/commit/5364ac5))
+
+
+
+
+
 <a name="11.0.0-rc.31"></a>
 # [11.0.0-rc.31](https://github.com/xing/hops/compare/v11.0.0-rc.30...v11.0.0-rc.31) (2018-08-31)
 

@@ -1,6 +1,6 @@
 {
   "name": "hops-pwa",
-  "version": "11.0.0-rc.30",
+  "version": "11.0.0-rc.32",
   "description": "ServiceWorker and Web App Manifest support for Hops",
   "keywords": [
     "hops",
@@ -23,7 +23,7 @@
     "@untool/webpack": "^0.18.0",
     "app-manifest-loader": "^2.0.0",
     "file-loader": "^2.0.0",
-    "hops-mixin": "11.0.0-rc.29",
+    "hops-mixin": "11.0.0-rc.32",
     "webpack": "^4.16.5",
     "webpack-sources": "^1.1.0"
   }

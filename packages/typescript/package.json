@@ -1,6 +1,6 @@
 {
   "name": "hops-typescript",
-  "version": "11.0.0-rc.29",
+  "version": "11.0.0-rc.32",
   "description": "TypeScript support for Hops applications",
   "keywords": [
     "hops",
@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.0.0",
-    "hops-mixin": "11.0.0-rc.29"
+    "hops-mixin": "11.0.0-rc.32"
   }
 }

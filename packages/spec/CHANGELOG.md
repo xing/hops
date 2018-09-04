@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.32"></a>
+# [11.0.0-rc.32](https://github.com/xing/hops/compare/v11.0.0-rc.31...v11.0.0-rc.32) (2018-09-04)
+
+
+### Bug Fixes
+
+* **jest-preset:** use babel typescript preset ([3cab0ea](https://github.com/xing/hops/commit/3cab0ea))
+* **test:** Replace ncp package by fs-extra ([f6afebb](https://github.com/xing/hops/commit/f6afebb))
+* **typescript:** use babel 7 typescript preset ([92c228e](https://github.com/xing/hops/commit/92c228e))
+
+
+
+
+
 <a name="11.0.0-rc.31"></a>
 # [11.0.0-rc.31](https://github.com/xing/hops/compare/v11.0.0-rc.30...v11.0.0-rc.31) (2018-08-31)
 

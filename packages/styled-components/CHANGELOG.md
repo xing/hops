@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.32"></a>
+# [11.0.0-rc.32](https://github.com/xing/hops/compare/v11.0.0-rc.31...v11.0.0-rc.32) (2018-09-04)
+
+
+### Bug Fixes
+
+* **styled-components:** downgrade babel plugin to circumvent regression ([4e2d325](https://github.com/xing/hops/commit/4e2d325))
+
+
+
+
+
 <a name="11.0.0-rc.29"></a>
 # [11.0.0-rc.29](https://github.com/xing/hops/compare/v11.0.0-rc.28...v11.0.0-rc.29) (2018-08-21)
 

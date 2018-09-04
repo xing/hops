@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.32"></a>
+# [11.0.0-rc.32](https://github.com/xing/hops/compare/v11.0.0-rc.31...v11.0.0-rc.32) (2018-09-04)
+
+
+### Bug Fixes
+
+* add babel-core@7 bridge to fix jest tests ([cdc9870](https://github.com/xing/hops/commit/cdc9870))
+
+
+
+
+
 <a name="11.0.0-rc.31"></a>
 # [11.0.0-rc.31](https://github.com/xing/hops/compare/v11.0.0-rc.30...v11.0.0-rc.31) (2018-08-31)
 

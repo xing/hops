@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.32"></a>
+# [11.0.0-rc.32](https://github.com/xing/hops/compare/v11.0.0-rc.31...v11.0.0-rc.32) (2018-09-04)
+
+
+### Bug Fixes
+
+* upgrade to untool@0.18 ([5364ac5](https://github.com/xing/hops/commit/5364ac5))
+* **pwa:** remove babel-polyfill as it is not needed anymore with babel7 ([7925682](https://github.com/xing/hops/commit/7925682))
+
+
+
+
+
 <a name="11.0.0-rc.30"></a>
 # [11.0.0-rc.30](https://github.com/xing/hops/compare/v11.0.0-rc.29...v11.0.0-rc.30) (2018-08-23)
 

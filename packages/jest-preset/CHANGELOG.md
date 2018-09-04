@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.32"></a>
+# [11.0.0-rc.32](https://github.com/xing/hops/compare/v11.0.0-rc.31...v11.0.0-rc.32) (2018-09-04)
+
+
+### Bug Fixes
+
+* **jest-preset:** adjust to babel v7 ([538937d](https://github.com/xing/hops/commit/538937d))
+* **jest-preset:** use babel typescript preset ([3cab0ea](https://github.com/xing/hops/commit/3cab0ea))
+* **jest-preset-hops:** upgrade packages to babel v7 ([eac9f0a](https://github.com/xing/hops/commit/eac9f0a))
+
+
+
+
+
 <a name="11.0.0-rc.27"></a>
 # [11.0.0-rc.27](https://github.com/xing/hops/compare/v11.0.0-rc.26...v11.0.0-rc.27) (2018-08-06)
 
