@@ -10,5 +10,11 @@
   "prCreation": "not-pending",
   "lockFileMaintenance": {
     "enabled": true
-  }
+  },
+  "packageRules": [
+    {
+      "packagePatterns": ["^@untool/"],
+      "groupName": "Update untool monorepo packages"
+    }
+  ]
 }
