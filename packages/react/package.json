@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@untool/core": "^0.17.1",
-    "@untool/react": "^0.17.1",
+    "@untool/react": "^0.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "hops-mixin": "11.0.0-rc.29",
