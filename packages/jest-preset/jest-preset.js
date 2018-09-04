@@ -9,8 +9,7 @@ module.exports = {
   },
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   transform: {
-    '^.+\\.(js|jsx|mjs)$': 'jest-preset-hops/transforms/babel.js',
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(js|jsx|mjs|ts|tsx)$': 'jest-preset-hops/transforms/babel.js',
     '^.+\\.(gql|graphql)$': 'jest-preset-hops/transforms/graphql.js',
   },
   transformIgnorePatterns: [],

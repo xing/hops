@@ -11,6 +11,7 @@ module.exports = babelJest.createTransformer({
       },
     ],
     '@babel/preset-react',
+    '@babel/preset-typescript',
   ],
   plugins: [
     require.resolve('babel-plugin-dynamic-import-node'),
