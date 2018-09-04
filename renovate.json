@@ -1,12 +1,11 @@
 {
-  "extends": ["config:base"],
+  "extends": ["config:base", "schedule:nonOfficeHours"],
   "pinVersions": false,
   "ignorePaths": ["packages/build-config/shims/", "packages/spec/mock/"],
   "semanticPrefix": "chore:",
   "dependencies": {
     "semanticPrefix": "chore:"
   },
-  "schedule": ["after 10pm and before 5am on every weekday", "every weekend"],
   "prCreation": "not-pending",
   "lockFileMaintenance": {
     "enabled": true
