@@ -741,12 +741,44 @@
     mixinable "^4.0.0"
     supports-color "^5.4.0"
 
+"@untool/core@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.18.0.tgz#e1a839a0e52219aec06bbf737ef2fee760894085"
+  dependencies:
+    cosmiconfig "^5.0.5"
+    debug "^3.1.0"
+    dotenv "^6.0.0"
+    enhanced-resolve "^4.0.0"
+    escape-string-regexp "^1.0.5"
+    find-up "^3.0.0"
+    flat "^4.0.0"
+    is-plain-object "^2.0.4"
+    lodash.mergewith "^4.6.1"
+    mixinable "^4.0.0"
+    supports-color "^5.4.0"
+
 "@untool/express@^0.17.1":
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.17.1.tgz#5089428f97eee8ea2824e30fdc687edd7adada3e"
   dependencies:
     "@untool/core" "^0.17.1"
     "@untool/yargs" "^0.17.1"
+    debug "^3.1.0"
+    directory-index "^0.1.0"
+    express "^4.16.2"
+    helmet "^3.12.1"
+    micromatch "^3.1.10"
+    mime "^2.2.2"
+    mixinable "^4.0.0"
+    node-mocks-http "^1.7.0"
+    supports-color "^5.4.0"
+
+"@untool/express@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.18.0.tgz#b36cd5b04302ddc68c6ef7ac84514418746b6000"
+  dependencies:
+    "@untool/core" "^0.18.0"
+    "@untool/yargs" "^0.18.0"
     debug "^3.1.0"
     directory-index "^0.1.0"
     express "^4.16.2"
@@ -805,6 +837,14 @@
   resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.17.1.tgz#8cbb653effd526b0a5e86486c622d95ccc25b878"
   dependencies:
     "@untool/core" "^0.17.1"
+    mixinable "^4.0.0"
+    yargs "^12.0.0"
+
+"@untool/yargs@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.18.0.tgz#72e22d839135cf9c17da2bc418d4f3f97efc963e"
+  dependencies:
+    "@untool/core" "^0.18.0"
     mixinable "^4.0.0"
     yargs "^12.0.0"
 
