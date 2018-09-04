@@ -75,6 +75,9 @@
           ]
         }
       ],
+      "node/no-missing-require": ["error", {
+        "tryExtensions": [".js", ".jsx", ".node", ".ts", ".tsx", ".json"]
+      }],
       "prettier/prettier": "error",
       "no-console": "off",
       "no-process-exit": "off"
