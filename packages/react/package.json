@@ -18,7 +18,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^0.17.1",
+    "@untool/core": "^0.18.0",
     "@untool/react": "^0.17.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
