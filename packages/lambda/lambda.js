@@ -11,17 +11,14 @@ const {
   stripLeadingSlash,
   stripTrailingSlash,
 } = require('@untool/express').uri;
+const trimSlashes = input => stripLeadingSlash(stripTrailingSlash(input));
 const app = require('@untool/express').createServer('serve');
 
 const awsConfig = require('./lib/aws-config')(config);
 
 const shouldIncludeStageInRequest =
-  stripLeadingSlash(stripTrailingSlash(config.basePath)).indexOf(
-    awsConfig.stageName
-  ) === 0 &&
-  stripLeadingSlash(stripTrailingSlash(config.assetPath)).indexOf(
-    awsConfig.stageName
-  ) === 0;
+  trimSlashes(config.basePath).indexOf(awsConfig.stageName) === 0 &&
+  trimSlashes(config.assetPath).indexOf(awsConfig.stageName) === 0;
 
 // NOTE: If you get ERR_CONTENT_DECODING_FAILED in your browser, this is likely
 // due to a compressed response (e.g. gzip) which has not been handled correctly
