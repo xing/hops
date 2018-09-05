@@ -11,8 +11,8 @@ script:
   - yarn test --runInBand
 
 node_js:
-- '8'
-- '10'
+  - '8.10'
+  - '10'
 
 env:
   - HOST=0.0.0.0
