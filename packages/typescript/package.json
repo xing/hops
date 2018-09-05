@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "hops-mixin": "11.0.0-rc.32",
-    "ts-loader": "^4.4.2",
+    "ts-loader": "^5.0.0",
     "typescript": "^3.0.0"
   }
 }
