@@ -9,13 +9,11 @@
     "testEnvironment": "../../helpers/env.js"
   },
   "scripts": {
-    "start": "node -e 'require(\"hops\").run(\"start\")'",
-    "type-check": "tsc"
+    "start": "node -e 'require(\"hops\").run(\"start\")'"
   },
   "dependencies": {
     "hops-preset-defaults": "*",
     "hops-react": "*",
-    "hops-typescript": "*",
-    "typescript": "^3.0.3"
+    "hops-typescript": "*"
   }
 }
