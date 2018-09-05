@@ -2,8 +2,6 @@
   "compilerOptions": {
     "target": "esnext",
     "jsx": "react",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "allowJs": true
+    "moduleResolution": "node"
   }
 }
