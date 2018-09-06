@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.33"></a>
+# [11.0.0-rc.33](https://github.com/xing/hops/compare/v11.0.0-rc.32...v11.0.0-rc.33) (2018-09-06)
+
+
+### Bug Fixes
+
+* **jest-preset:** revert to ts-jest instead of babel preset typescript ([726e1d1](https://github.com/xing/hops/commit/726e1d1))
+* **typescript:** revert to ts-loader and typescript instead of babel ([7d74883](https://github.com/xing/hops/commit/7d74883)), closes [/github.com/xing/hops/pull/613#issuecomment-418701043](https://github.com//github.com/xing/hops/pull/613/issues/issuecomment-418701043) [babel/babel#7749](https://github.com/babel/babel/issues/7749) [babel/babel#8361](https://github.com/babel/babel/issues/8361)
+* upgrade untool ([3248493](https://github.com/xing/hops/commit/3248493))
+
+
+
+
+
 <a name="11.0.0-rc.32"></a>
 # [11.0.0-rc.32](https://github.com/xing/hops/compare/v11.0.0-rc.31...v11.0.0-rc.32) (2018-09-04)
 
