@@ -1,25 +1,31 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var execSync = require('child_process').execSync;
-var tar = require('tar');
-var validatePackageName = require('validate-npm-package-name');
-var pm = require('./package-manager');
+const {
+  readFileSync,
+  writeFileSync,
+  existsSync,
+  unlinkSync,
+  renameSync,
+} = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+const tar = require('tar');
+const validatePackageName = require('validate-npm-package-name');
+const pm = require('./package-manager');
 
 function readPackageManifest(file) {
-  return JSON.parse(fs.readFileSync(file).toString('utf-8'));
+  return JSON.parse(readFileSync(file).toString('utf-8'));
 }
 
 function writePackageManifest(file, manifest) {
-  fs.writeFileSync(file, JSON.stringify(manifest, null, 2));
+  writeFileSync(file, JSON.stringify(manifest, null, 2));
 }
 
 function sortObjectKeys(input) {
-  var result = {};
+  const result = {};
   Object.keys(input)
     .sort()
-    .forEach(function(k) {
+    .forEach(k => {
       result[k] = input[k];
     });
   return result;
@@ -38,11 +44,11 @@ function mergePackageManifest(oldManifest, newManifest) {
 
 function getValidatedTemplateName(name, root) {
   if (name.indexOf('@') > -1) {
-    if (!fs.existsSync(path.resolve(root, name))) {
+    if (!existsSync(path.resolve(root, name))) {
       return name;
     }
   }
-  var validationResult = validatePackageName(name);
+  const validationResult = validatePackageName(name);
   if (
     !(
       validationResult.validForNewPackages ||
@@ -66,11 +72,11 @@ function isCLIInstalledGlobally() {
 }
 
 function init(root, appName, options) {
-  var appRoot = path.resolve(root, appName);
-  var template = getValidatedTemplateName(options.template, root);
-  var pathToPackageManifest = path.resolve(appRoot, 'package.json');
-  var oldPackageManifest = readPackageManifest(pathToPackageManifest);
-  var tarball = null;
+  const appRoot = path.resolve(root, appName);
+  const template = getValidatedTemplateName(options.template, root);
+  const pathToPackageManifest = path.resolve(appRoot, 'package.json');
+  const oldPackageManifest = readPackageManifest(pathToPackageManifest);
+  let tarball = null;
   options.npm = options.npm || !pm.isGlobalCliUsingYarn(appRoot);
 
   if (template) {
@@ -89,19 +95,19 @@ function init(root, appName, options) {
         file: tarball,
         strip: 1,
       })
-      .then(function() {
-        fs.unlinkSync(tarball);
+      .then(() => {
+        unlinkSync(tarball);
 
-        ['_gitignore', '_npmrc'].forEach(function(ignoredFile) {
-          if (fs.existsSync(path.join(appRoot, ignoredFile))) {
-            fs.renameSync(
+        ['_gitignore', '_npmrc'].forEach(ignoredFile => {
+          if (existsSync(path.join(appRoot, ignoredFile))) {
+            renameSync(
               path.join(appRoot, ignoredFile),
               path.join(appRoot, '.' + ignoredFile.slice(1))
             );
           }
         });
 
-        var newPackageManifest = readPackageManifest(pathToPackageManifest);
+        const newPackageManifest = readPackageManifest(pathToPackageManifest);
         writePackageManifest(
           pathToPackageManifest,
           mergePackageManifest(oldPackageManifest, newPackageManifest)
@@ -131,7 +137,7 @@ function init(root, appName, options) {
               ' or install the "hops" package globally.'
         );
       })
-      .catch(function(error) {
+      .catch(error => {
         console.error('Error while unpacking tar archive:', tarball);
         console.error(error);
       });

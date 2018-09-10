@@ -1,32 +1,34 @@
 #!/usr/bin/env node
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var resolveCwd = require('resolve-cwd');
-var validatePackageName = require('validate-npm-package-name');
+const fs = require('fs');
+const path = require('path');
+const resolveCwd = require('resolve-cwd');
+const validatePackageName = require('validate-npm-package-name');
+const yargs = require('yargs');
+const { sync: findUp } = require('find-up');
 
-var pm = require('../lib/package-manager');
+const pm = require('../lib/package-manager');
 
-var packageManifest = require('../package.json');
+const { version } = require('../package.json');
 
-var getLocalCliPath = function() {
+function getLocalCliPath() {
   return resolveCwd.silent('hops');
-};
+}
 
 function globalCLI(argv) {
-  return require('yargs')
-    .version(packageManifest.version)
+  return yargs
+    .version(version)
     .usage('Usage: $0 <command> [options]')
     .command(
       'init <project-name>',
-      'Generates a new project with the ' + 'specified name'
+      'Generates a new project with the specified name'
     )
     .option('template', {
       type: 'string',
       describe:
-        'Use this with the npm package name of a template to ' +
-        'initialize with a different template',
+        'Use this with the npm package name of a template to initialize with ' +
+        'a different template',
       default: 'hops-template-react',
     })
     .option('hops-version', {
@@ -62,7 +64,7 @@ function globalCLI(argv) {
 }
 
 function validateName(name) {
-  var validationResult = validatePackageName(name);
+  const validationResult = validatePackageName(name);
   if (!validationResult.validForNewPackages) {
     console.error(
       'Cannot create a project with the name:',
@@ -70,12 +72,12 @@ function validateName(name) {
       'because of the following npm restrictions:'
     );
     if (validationResult.errors) {
-      validationResult.errors.forEach(function(msg) {
+      validationResult.errors.forEach(msg => {
         console.error(msg);
       });
     }
     if (validationResult.warnings) {
-      validationResult.warnings.forEach(function(msg) {
+      validationResult.warnings.forEach(msg => {
         console.warn(msg);
       });
     }
@@ -112,19 +114,16 @@ function writePackageManifest(root, name) {
   );
 }
 
-var isInsideHopsProject = false;
+let isInsideHopsProject = false;
 try {
-  var manifest = require(require('find-up').sync('package.json'));
-  var dependencies = Object.keys(manifest.dependencies || {}).concat(
-    Object.keys(manifest.devDependencies || {})
-  );
-  isInsideHopsProject = dependencies.indexOf('hops') > -1;
+  const { dependencies, devDependencies } = require(findUp('package.json'));
+  isInsideHopsProject = 'hops' in { ...dependencies, ...devDependencies };
 } catch (error) {
   isInsideHopsProject = false;
 }
 
 if (isInsideHopsProject) {
-  var localCliPath = getLocalCliPath();
+  const localCliPath = getLocalCliPath();
   if (localCliPath) {
     require(localCliPath).run();
   } else {
@@ -139,9 +138,10 @@ if (isInsideHopsProject) {
     process.exit(1);
   }
 } else {
-  var options = globalCLI(process.argv.slice(2));
-  var name = options.projectName;
-  var root = process.cwd();
+  const options = globalCLI(process.argv.slice(2));
+  const name = options.projectName;
+  const root = process.cwd();
+  const appDir = path.join(root, name);
 
   if (options._[0] !== 'init') {
     console.error(
@@ -152,9 +152,9 @@ if (isInsideHopsProject) {
   }
 
   validateName(name);
-  createDirectory(path.join(root, name), name);
-  writePackageManifest(path.join(root, name), name);
-  process.chdir(path.join(root, name));
-  pm.installPackages(['hops@' + options.hopsVersion], 'prod', options);
+  createDirectory(appDir, name);
+  writePackageManifest(appDir, name);
+  process.chdir(appDir);
+  pm.installPackages([`hops@${options.hopsVersion}`], 'prod', options);
   require(getLocalCliPath()).init(root, name, options);
 }
