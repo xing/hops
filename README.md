@@ -299,6 +299,10 @@ Hops being primarily an (extensible) bunch of mainstream best practices, it ough
 
 Hops allows you to write a package of your own and plug it into Hops' build process. Take a look at all the packages in this repository and read [the `@untool/core` documentation](https://github.com/untool/untool/blob/master/packages/core/README.md#presets) for more information about presets and mixins.
 
+### How can I extend the babel and other build-related config
+
+Hops provides a [`configureBuild`](https://github.com/xing/hops/tree/master/packages/webpack#configurebuildwebpackconfig-loaderconfigs-target-webpackconfig-pipe) [core mixin](https://github.com/untool/untool/blob/master/packages/core/README.md#mixins) hook that allows you to alter the [webpack config](https://webpack.js.org/configuration/) to fit your needs, including adding babel plugins.
+
 ## Contributing
 
 Hops uses [lerna](https://github.com/lerna/lerna) and [yarn](https://yarnpkg.com/en/) for development and publishing of the packages. Therefore it is required to have `yarn` globally available.
