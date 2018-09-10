@@ -36,9 +36,7 @@
     "release:next": "lerna publish prerelease --preid=rc --npm-tag=next",
     "reset": "git clean -dfx && yarn",
     "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'",
-    "precommit": "lint-staged",
-    "pull-wiki": "git subtree pull --prefix docs wiki master --squash --message='docs(wiki): update wiki subtree'",
-    "push-wiki": "git subtree push --prefix docs wiki master"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,json,css}": [
