@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.34"></a>
+# [11.0.0-rc.34](https://github.com/xing/hops/compare/v11.0.0-rc.33...v11.0.0-rc.34) (2018-09-10)
+
+
+### Bug Fixes
+
+* **jest-preset-hops:** Add missing flow preset ([7e86580](https://github.com/xing/hops/commit/7e86580))
+
+
+
+
+
 <a name="11.0.0-rc.33"></a>
 # [11.0.0-rc.33](https://github.com/xing/hops/compare/v11.0.0-rc.32...v11.0.0-rc.33) (2018-09-06)
 
