@@ -21,8 +21,8 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
-    "@untool/core": "^0.19.0",
-    "@untool/react": "^0.19.0",
+    "@untool/core": "^0.20.0",
+    "@untool/react": "^0.20.0",
     "hops-mixin": "11.0.0-rc.33",
     "react-router": "^4.3.1"
   },
