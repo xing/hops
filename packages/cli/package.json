@@ -19,7 +19,9 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "pkg-dir": "^3.0.0",
+    "enhanced-resolve": "^4.1.0",
+    "find-up": "^3.0.0",
+    "pretty-ms": "^3.2.0",
     "resolve-cwd": "^2.0.0",
     "tar": "^4.4.6",
     "validate-npm-package-name": "^3.0.0",

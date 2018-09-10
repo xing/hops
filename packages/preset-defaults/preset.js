@@ -4,6 +4,5 @@ module.exports = {
     '@untool/webpack',
     '@untool/express',
     'hops-express',
-    'hops-webpack',
   ],
 };

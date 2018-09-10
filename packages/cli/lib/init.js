@@ -140,4 +140,4 @@ function init(root, appName, options) {
     process.exit(1);
   }
 }
-module.exports = init;
+module.exports = { init };
