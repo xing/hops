@@ -150,6 +150,14 @@ Useful when the link needs access to the current request object, which only exis
 
 Beware that `link` passed as render option takes precedence.
 
+#### `getApolloCache(): ApolloCache` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+
+Hook to return a custom [ApolloCache](https://www.apollographql.com/docs/react/advanced/caching.html).
+
+### `createFragmentMatcher` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+
+Allows to get the [fragment matcher](https://www.apollographql.com/docs/react/advanced/fragments.html) that needs to be passed to the `ApolloCache`. Useful if you plan to override `getApolloCache`.
+
 #### `shouldPrefetchOnServer(): boolean` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
 
 This is an overrideable hook that can be used to customize the behavior of when Hops should prefetch data during server-side rendering. E.g. execute GraphQL queries during initial render.
