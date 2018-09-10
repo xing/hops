@@ -19,7 +19,11 @@ class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
     super(config, element);
 
-    this.client = this.createClient(options);
+    this.options = options;
+  }
+
+  bootstrap() {
+    this.client = this.createClient(this.options);
   }
 
   createClient(options) {
