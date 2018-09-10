@@ -17,13 +17,32 @@ const {
   HeuristicFragmentMatcher,
 } = require('apollo-cache-inmemory');
 
-class GraphQLMixin extends Mixin {
-  introspectionResult = undefined;
+let introspectionResult = undefined;
+let warned = false;
 
+class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
     super(config, element);
 
     this.options = options;
+
+    if (introspectionResult === undefined) {
+      try {
+        if (existsSync(config.fragmentsFile)) {
+          const fileContent = readFileSync(config.fragmentsFile, 'utf-8');
+          introspectionResult = JSON.parse(fileContent);
+        } else if (!warned) {
+          warned = true;
+          console.warn(
+            'Could not find a graphql introspection query result at %s.',
+            config.fragmentsFile,
+            'You might need to execute `hops graphql introspect`'
+          );
+        }
+      } catch (_) {
+        introspectionResult = null;
+      }
+    }
   }
 
   bootstrap() {
@@ -54,27 +73,11 @@ class GraphQLMixin extends Mixin {
   }
 
   createFragmentMatcher() {
-    if (this.introspectionResult === undefined) {
-      try {
-        if (existsSync(this.config.fragmentsFile)) {
-          this.introspectionResult = JSON.parse(
-            readFileSync(this.config.fragmentsFile, 'utf-8')
-          );
-        }
-      } catch (_) {
-        this.introspectionResult = null;
-        console.warn(
-          'Could not find a graphql introspection query result at %s.',
-          this.config.fragmentsFile,
-          'You might need to execute `hops graphql introspect`'
-        );
-      }
-    } else {
-      return new IntrospectionFragmentMatcher({
-        introspectionQueryResultData: this.introspectionResult,
-      });
-    }
-    return new HeuristicFragmentMatcher();
+    return !introspectionResult
+      ? new HeuristicFragmentMatcher()
+      : new IntrospectionFragmentMatcher({
+          introspectionQueryResultData: introspectionResult,
+        });
   }
 
   fetchData(data = {}, element) {
@@ -83,7 +86,7 @@ class GraphQLMixin extends Mixin {
         ...data,
         globals: {
           ...(data.globals || {}),
-          APOLLO_FRAGMENT_TYPES: this.introspectionResult,
+          APOLLO_FRAGMENT_TYPES: introspectionResult,
           APOLLO_STATE: this.client.cache.extract(),
         },
       };
