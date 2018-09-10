@@ -4,7 +4,7 @@ const { existsSync, readFileSync } = require('fs');
 const {
   Mixin,
   strategies: {
-    sync: { override },
+    sync: { override, callable },
   },
 } = require('hops-mixin');
 
@@ -56,20 +56,26 @@ class GraphQLMixin extends Mixin {
   enhanceClientOptions(options) {
     return {
       ...options,
-      link: options.link || this.getApolloLink(),
-      cache: options.cache || this.createCache(),
+      link: this.getApolloLink(),
+      cache: this.getApolloCache(),
       ssrMode: true,
     };
   }
 
   getApolloLink() {
-    return new HttpLink({
-      uri: this.config.graphqlUri,
-    });
+    return (
+      this.options.link ||
+      new HttpLink({
+        uri: this.config.graphqlUri,
+      })
+    );
   }
 
-  createCache() {
-    return new InMemoryCache({ fragmentMatcher: this.createFragmentMatcher() });
+  getApolloCache() {
+    return (
+      this.options.cache ||
+      new InMemoryCache({ fragmentMatcher: this.createFragmentMatcher() })
+    );
   }
 
   createFragmentMatcher() {
@@ -127,6 +133,8 @@ class GraphQLMixin extends Mixin {
 
 GraphQLMixin.strategies = {
   getApolloLink: override,
+  getApolloCache: override,
+  createFragmentMatcher: callable,
   shouldPrefetchOnServer: override,
 };
 

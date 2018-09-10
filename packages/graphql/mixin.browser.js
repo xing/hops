@@ -2,7 +2,7 @@ const React = require('react');
 const {
   Mixin,
   strategies: {
-    sync: { override },
+    sync: { override, callable },
   },
 } = require('hops-mixin');
 
@@ -33,21 +33,27 @@ class GraphQLMixin extends Mixin {
   enhanceClientOptions(options) {
     return {
       ...options,
-      link: options.link || this.getApolloLink(),
-      cache: options.cache || this.createCache(),
+      link: this.getApolloLink(),
+      cache: this.getApolloCache(),
     };
   }
 
   getApolloLink() {
-    return new HttpLink({
-      uri: this.config.graphqlUri,
-    });
+    return (
+      this.options.link ||
+      new HttpLink({
+        uri: this.config.graphqlUri,
+      })
+    );
   }
 
-  createCache() {
-    return new InMemoryCache({
-      fragmentMatcher: this.createFragmentMatcher(),
-    }).restore(global['APOLLO_STATE']);
+  getApolloCache() {
+    return (
+      this.options.cache ||
+      new InMemoryCache({
+        fragmentMatcher: this.createFragmentMatcher(),
+      }).restore(global['APOLLO_STATE'])
+    );
   }
 
   createFragmentMatcher() {
@@ -70,6 +76,8 @@ class GraphQLMixin extends Mixin {
 
 GraphQLMixin.strategies = {
   getApolloLink: override,
+  getApolloCache: override,
+  createFragmentMatcher: callable,
 };
 
 module.exports = GraphQLMixin;
