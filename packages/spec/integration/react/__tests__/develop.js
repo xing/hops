@@ -85,4 +85,13 @@ describe('react developmet server', () => {
 
     await page.close();
   });
+
+  it('allows to use flow', async () => {
+    const { page } = await createPage();
+    await page.goto(url + '/flow');
+
+    expect(await page.content()).toMatch('text:flow');
+
+    await page.close();
+  });
 });
