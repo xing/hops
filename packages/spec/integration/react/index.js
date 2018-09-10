@@ -7,6 +7,7 @@ import {
 } from 'hops-react';
 import React from 'react';
 import { Route, Switch, Link, Redirect } from 'react-router-dom';
+import FlowText from './FlowText';
 
 export default render(
   <div>
@@ -24,6 +25,7 @@ export default render(
         exact
         render={() => <Header name="X-Foo" value="Bar" />}
       />
+      <Route path="/flow" exact render={() => <FlowText text="flow" />} />
       <Miss />
     </Switch>
   </div>
