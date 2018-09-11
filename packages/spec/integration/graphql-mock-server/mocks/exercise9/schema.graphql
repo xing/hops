@@ -1,0 +1,21 @@
+type SomethingConnection {
+  edges: [SomethingEdge]
+  pageInfo: PageInfo!
+  total: Int!
+}
+
+type SomethingEdge {
+  cursor: String!
+  node: Something
+}
+
+extend type Query {
+    somethingConnection(
+    after: String
+    before: String
+    first: Int
+    last: Int): SomethingConnection
+}
+extend type Mutation {
+    doSomething(input: DoSomethingInput!): DoSomethingResult
+}

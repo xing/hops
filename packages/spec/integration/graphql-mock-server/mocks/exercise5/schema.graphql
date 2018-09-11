@@ -1,0 +1,20 @@
+interface Person {
+    id: ID
+    name: String
+}
+
+type Account implements Person & Node {
+    id: ID!
+    name: String
+    login: String
+}
+
+type Contact implements Person & Node {
+    id: ID!
+    name: String
+    phone: String
+}
+
+extend type Query {
+    persons: [Person]
+}

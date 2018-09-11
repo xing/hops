@@ -1,0 +1,12 @@
+enum TypeFilter {
+    CONTACT
+    ACCOUNT
+}
+
+input Filter {
+    type: TypeFilter
+}
+
+extend type Query {
+    searchPersons(filter: Filter): [SearchablePerson]
+}

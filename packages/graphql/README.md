@@ -17,6 +17,10 @@ $ yarn add hops-graphql@next graphql-tag react-apollo
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
+### GraphQL Mock Server
+
+Read the [Read Me](./mock-server/README.md) for setup instructions.
+
 ### CLI
 
 #### `graphql introspect`

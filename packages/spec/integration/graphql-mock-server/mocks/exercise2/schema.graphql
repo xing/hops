@@ -1,0 +1,4 @@
+extend type Query {
+    version: String
+    me: User
+}

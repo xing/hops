@@ -1,0 +1,26 @@
+input DoSomethingInput {
+    name: String!
+}
+
+type DoSomethingResult {
+    error: DoSomethingError
+    success: Something
+}
+
+type DoSomethingError {
+    message: String!
+    code: String!
+    something: Something
+}
+
+type Something implements Node {
+    id: ID!
+    name: String
+}
+
+extend type Query {
+    something: Something
+}
+extend type Mutation {
+    doSomething(input: DoSomethingInput!): DoSomethingResult
+}

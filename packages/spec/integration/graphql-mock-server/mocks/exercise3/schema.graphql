@@ -1,0 +1,14 @@
+extend type Query {
+    addresses: [Address]
+}
+
+type Address implements Node {
+    id: ID!
+    street: String
+    city: String
+    zip: String
+}
+
+extend type User {
+    address: Address
+}

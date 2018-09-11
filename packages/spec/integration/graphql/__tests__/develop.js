@@ -1,4 +1,4 @@
-describe('graphql developmet server', () => {
+describe('graphql development client', () => {
   let url;
 
   beforeAll(async () => {
