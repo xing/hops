@@ -1,0 +1,26 @@
+{
+  "name": "fixture-graphql",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "hops": {
+    "shouldPrefetchOnServer": false,
+    "port": "8029",
+    "graphqlUri": "http://localhost:8029/graphql",
+    "fragmentsFile": "<rootDir>/fragmentTypes.json",
+    "graphqlMockConfigFile": "<rootDir>/graphql-mock-config.js"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js"
+  },
+  "scripts": {
+    "start": "node -e 'require(\"hops\").run(\"start\")'"
+  },
+  "dependencies": {
+    "hops-preset-defaults": "*",
+    "hops-react": "*",
+    "hops-graphql": "*"
+  }
+}

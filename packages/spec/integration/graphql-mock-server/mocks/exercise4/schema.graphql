@@ -1,0 +1,5 @@
+scalar MyDate
+
+extend type Query {
+    myDates: [MyDate]
+}

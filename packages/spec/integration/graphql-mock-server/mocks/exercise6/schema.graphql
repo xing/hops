@@ -1,0 +1,5 @@
+union SearchablePerson = Account | Contact
+
+extend type Query {
+    searchPersons: [SearchablePerson]
+}
