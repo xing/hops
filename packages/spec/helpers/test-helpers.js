@@ -9,24 +9,26 @@ const { copy } = require('fs-extra');
 const mktemp = require('mktemp').createDir;
 const mkdirp = promisify(require('mkdirp'));
 const debug = require('debug')('hops-spec:test-helpers');
+const resolveFrom = require('resolve-from');
 
-const build = async ({ cwd, argv }) => {
-  const command = `node -e "require('hops').run('${['build', ...argv].join(
-    "', '"
-  )}')"`;
+const build = async ({ cwd, argv = [] }) => {
+  const hopsBin = resolveFrom(cwd, 'hops/commands/hops');
+  const command = `${hopsBin} build ${argv.join(' ')}`;
   debug('Starting', command);
   await exec(command, { cwd });
 
   return cwd;
 };
-const startServer = ({ cwd, command }) =>
+const startServer = ({ cwd, command, argv = [] }) =>
   new Promise((resolve, reject) => {
     let onTeardown;
     const teardownPromise = new Promise(resolve => (onTeardown = resolve));
 
-    const args = ['-e', `require('hops').run('${command}')`];
-    debug('Spawning node', args.join(' '));
-    const started = spawn('node', args, {
+    const hopsBin = resolveFrom(cwd, 'hops/commands/hops');
+
+    const args = [command].concat(argv);
+    debug('Spawning server', [hopsBin, ...args].join(' '));
+    const started = spawn(hopsBin, args, {
       cwd,
     });
     const teardown = () => {
@@ -36,9 +38,10 @@ const startServer = ({ cwd, command }) =>
 
     started.stdout.on('data', data => {
       const line = data.toString('utf-8');
-      const match = line.match(/Server listening at (.*)/i);
       debug('stdout >', line);
+      const match = line.match(/listening at (.*)/i);
       if (match) {
+        debug('found match:', match[1]);
         const url = match[1];
         resolve({ url, teardown });
       }
@@ -47,8 +50,8 @@ const startServer = ({ cwd, command }) =>
     let stderr = '';
     started.stderr.on('data', data => {
       const line = data.toString('utf-8');
-      stderr += line;
       debug('stderr >', line);
+      stderr += line;
     });
 
     started.on('close', code => {

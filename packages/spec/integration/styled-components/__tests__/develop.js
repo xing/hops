@@ -3,7 +3,7 @@ describe('styled-components development server', () => {
 
   beforeAll(async () => {
     jest.setTimeout(30000);
-    url = await HopsCLI.develop();
+    url = await HopsCLI.start();
   });
 
   it('allows to use styled components', async () => {

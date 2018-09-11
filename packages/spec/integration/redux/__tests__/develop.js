@@ -3,7 +3,7 @@ describe('redux developmet server', () => {
 
   beforeAll(async () => {
     jest.setTimeout(30000);
-    url = await HopsCLI.develop();
+    url = await HopsCLI.start();
   });
 
   it('has default state', async () => {

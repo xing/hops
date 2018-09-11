@@ -3,8 +3,7 @@ describe('pwa production build', () => {
 
   beforeAll(async () => {
     jest.setTimeout(30000);
-    await HopsCLI.build();
-    url = await HopsCLI.serve();
+    url = await HopsCLI.start('-p');
   });
 
   it('registers a service worker', async () => {

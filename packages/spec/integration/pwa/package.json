@@ -13,9 +13,11 @@
     "testEnvironment": "../../helpers/env.js"
   },
   "scripts": {
-    "start": "node -e 'require(\"hops\").run(\"start\")'"
+    "start": "hops start",
+    "build": "hops build"
   },
   "dependencies": {
+    "hops": "*",
     "hops-preset-defaults": "*",
     "hops-pwa": "*",
     "hops-react": "*"

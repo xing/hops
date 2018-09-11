@@ -3,7 +3,7 @@ describe('graphql development server', () => {
 
   beforeAll(async () => {
     jest.setTimeout(30000);
-    url = await HopsCLI.develop();
+    url = await HopsCLI.start();
   });
 
   it('renders the viewer username', async () => {

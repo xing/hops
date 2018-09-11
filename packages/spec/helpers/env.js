@@ -68,36 +68,19 @@ class FixtureEnvironment extends NodeEnvironment {
 
     const that = this;
     this.global.HopsCLI = {
-      async develop() {
-        if (that.killServer) {
-          throw new Error(
-            'Another long running task is already running (hops build or serve). You can only start one task per file.'
-          );
-        }
-        const { url, teardown } = await startServer({
-          cwd: that.cwd,
-          command: 'develop',
-        });
-        that.killServer = teardown;
-        return url;
-      },
       build(...argv) {
-        if (argv.length && argv.includes('-p')) {
-          throw new Error(
-            'Warning you are trying to execute a production build - at the moment this causes jest to start many node processes which never end. This seems to be related to uglifyjs parallel builds'
-          );
-        }
         return build({ cwd: that.cwd, argv });
       },
-      async serve() {
+      async start(...argv) {
         if (that.killServer) {
           throw new Error(
-            'Another long running task is already running (hops build or serve). You can only start one task per file.'
+            'Another long running task ("hops start") is already running. You can only start one task per file.'
           );
         }
         const { url, teardown } = await startServer({
           cwd: that.cwd,
-          command: 'serve',
+          command: 'start',
+          argv,
         });
         that.killServer = teardown;
         return url;
