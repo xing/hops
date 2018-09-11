@@ -86,7 +86,7 @@ Sometimes presets have `peerDependencies` which need to be installed as well - t
 
 By default Hops will find installed presets automatically (only when it is listed as a top-level dependency in your `package.json` - we won't attempt to find presets in dependencies of dependencies).
 
-If you prefer, you can also explicitly list the presets that you want to use under the `presets` key in your [application configuration](#configuration).
+If you prefer, you can also explicitly list the presets that you want to use under the `presets` key in your [application configuration](#configuration). This will disable automatic discovery of hops presets.
 
 ```json
 {
