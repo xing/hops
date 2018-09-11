@@ -9,13 +9,15 @@
     "testEnvironment": "../../helpers/env.js"
   },
   "scripts": {
-    "start": "node -e 'require(\"hops\").run(\"start\")'"
+    "start": "hops start",
+    "build": "hops build"
   },
   "hops": {
     "port": "8901",
     "mixins": ["./"]
   },
   "dependencies": {
+    "hops": "*",
     "hops-preset-defaults": "*",
     "hops-react": "*",
     "hops-redux": "*"

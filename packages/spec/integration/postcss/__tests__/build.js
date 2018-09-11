@@ -3,8 +3,7 @@ describe('postcss production build', () => {
 
   beforeAll(async () => {
     jest.setTimeout(30000);
-    await HopsCLI.build();
-    url = await HopsCLI.serve();
+    url = await HopsCLI.start('-p');
   });
 
   it('styles when served in production mode', async () => {
