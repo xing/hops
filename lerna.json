@@ -4,6 +4,9 @@
   "version": "11.0.0-rc.34",
   "registry": "https://registry.npmjs.org/",
   "command": {
+    "version": {
+      "forcePublish": true
+    },
     "publish": {
       "message": "chore: release %s",
       "exact": true,
