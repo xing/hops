@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.35"></a>
+# [11.0.0-rc.35](https://github.com/xing/hops/compare/v11.0.0-rc.34...v11.0.0-rc.35) (2018-09-13)
+
+**Note:** Version bump only for package hops-template-minimal
+
+
+
+
+
 <a name="11.0.0-rc.34"></a>
 # [11.0.0-rc.34](https://github.com/xing/hops/compare/v11.0.0-rc.33...v11.0.0-rc.34) (2018-09-10)
 
