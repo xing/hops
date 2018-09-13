@@ -1297,12 +1297,12 @@
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
 
-"@untool/core@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.20.0.tgz#4676458e90e25e9cef66bc65bbcd65eb5098d785"
+"@untool/core@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-0.22.0.tgz#b96cfb1e9ada31052b6b7c690757e3bc45f979c0"
   dependencies:
     cosmiconfig "^5.0.5"
-    debug "^3.1.0"
+    debug "^4.0.0"
     dotenv "^6.0.0"
     enhanced-resolve "^4.0.0"
     escape-string-regexp "^1.0.5"
@@ -1313,13 +1313,13 @@
     mixinable "^4.0.0"
     supports-color "^5.4.0"
 
-"@untool/express@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.20.0.tgz#589034727371865f9c34148692eb5bcc9b160d33"
+"@untool/express@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-0.22.0.tgz#88a659513c076e5dfc89383bd82c0f15d9fe83f9"
   dependencies:
-    "@untool/core" "^0.20.0"
-    "@untool/yargs" "^0.20.0"
-    debug "^3.1.0"
+    "@untool/core" "^0.22.0"
+    "@untool/yargs" "^0.22.0"
+    debug "^4.0.0"
     directory-index "^0.1.0"
     express "^4.16.2"
     helmet "^3.12.1"
@@ -1329,31 +1329,32 @@
     node-mocks-http "^1.7.0"
     supports-color "^5.4.0"
 
-"@untool/react@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.20.0.tgz#946c0e9a794b48e1b6ddfd39ecef23b452dcbd1a"
+"@untool/react@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-0.22.0.tgz#e1da850aae524aaf2cc8f22280389b04d97fb4ea"
   dependencies:
     "@babel/preset-react" "^7.0.0"
-    "@untool/core" "^0.20.0"
+    "@untool/core" "^0.22.0"
     babel-plugin-transform-react-remove-prop-types "^0.4.13"
+    clone "^2.1.2"
     mixinable "^4.0.0"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.20.0.tgz#528700de66f0e6e5f4ccdb9692223a4cecc0c5f3"
+"@untool/webpack@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-0.22.0.tgz#341e654cbf713fdbc7f619b71d728814cd129e99"
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/polyfill" "^7.0.0"
     "@babel/preset-env" "^7.0.0"
-    "@untool/core" "^0.20.0"
-    "@untool/express" "^0.20.0"
-    "@untool/yargs" "^0.20.0"
+    "@untool/core" "^0.22.0"
+    "@untool/express" "^0.22.0"
+    "@untool/yargs" "^0.22.0"
     babel-loader "8"
     babel-plugin-dynamic-import-node "^2.0.0"
     caniuse-lite "^1.0.30000846"
-    debug "^3.1.0"
+    debug "^4.0.0"
     enhanced-resolve "^4.0.0"
     file-loader "^2.0.0"
     find-up "^3.0.0"
@@ -1372,11 +1373,11 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.20.0.tgz#b962c733b963beaf0857fb73d1abdd8c9acc5a4b"
+"@untool/yargs@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-0.22.0.tgz#63a77ab64a91b6a047120ed431cd805e281c3eee"
   dependencies:
-    "@untool/core" "^0.20.0"
+    "@untool/core" "^0.22.0"
     mixinable "^4.0.0"
     yargs "^12.0.0"
 
@@ -2764,6 +2765,10 @@ cliui@^4.0.0:
 clone@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
+
+clone@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
 
 closest-file-data@^0.1.4:
   version "0.1.4"
