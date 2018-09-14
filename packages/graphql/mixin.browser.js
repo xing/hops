@@ -58,8 +58,7 @@ class GraphQLMixin extends Mixin {
 
   createFragmentMatcher() {
     try {
-      /* eslint-disable-next-line no-missing-require */
-      const introspectionQueryResultData = require('./fragmentTypes.json');
+      const introspectionQueryResultData = require('./fragmentTypes.json'); // eslint-disable-line no-missing-require
 
       return new IntrospectionFragmentMatcher({
         introspectionQueryResultData,
