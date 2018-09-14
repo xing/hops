@@ -6,10 +6,9 @@
     "node": ">= 8.10"
   },
   "hops": {
-    "shouldPrefetchOnServer": false,
+    "shouldPrefetchOnServer": true,
     "port": "8029",
     "graphqlUri": "http://localhost:8029/graphql",
-    "fragmentsFile": "<rootDir>/fragmentTypes.json",
     "graphqlMockConfigFile": "<rootDir>/graphql-mock-config.js"
   },
   "jest": {
