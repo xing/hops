@@ -12,8 +12,8 @@
   <a href="https://gitter.im/xing-hops/Lobby">
     <img src="https://img.shields.io/gitter/room/xing-hops/Lobby.svg">
   </a>
-  <a href="https://travis-ci.org/xing/hops">
-    <img src="https://img.shields.io/npm/v/hops/next/next.svg">
+  <a href="https://www.npmjs.com/package/hops">
+    <img src="https://img.shields.io/npm/v/hops/next.svg">
   </a>
   <a href="https://travis-ci.org/xing/hops/branches">
     <img src="https://img.shields.io/travis/xing/hops/master.svg">
