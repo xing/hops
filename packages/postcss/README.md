@@ -1,6 +1,6 @@
 # `hops-postcss`
 
-[![npm](https://img.shields.io/npm/v/hops-postcss.svg)](https://www.npmjs.com/package/hops-postcss)
+[![npm](https://img.shields.io/npm/v/hops-postcss/next.svg)](https://www.npmjs.com/package/hops-postcss)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that, when installed, will enable css loaders for [PostCSS Preset Env](https://github.com/csstools/postcss-preset-env) with support for [CSS Modules](https://github.com/css-modules/css-modules).
 

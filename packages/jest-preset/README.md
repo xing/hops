@@ -1,6 +1,6 @@
 # Hops Jest Preset
 
-[![npm](https://img.shields.io/npm/v/jest-preset-hops.svg)](https://www.npmjs.com/package/jest-preset-hops)
+[![npm](https://img.shields.io/npm/v/jest-preset-hops/next.svg)](https://www.npmjs.com/package/jest-preset-hops)
 
 A [Jest preset](https://facebook.github.io/jest/docs/configuration.html#preset-string) that makes it easier for Hops powered apps to use Jest.
 

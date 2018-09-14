@@ -9,8 +9,14 @@
 <h1 align="center">Hops Development Environment</h1>
 
 <p align="center">
+  <a href="https://gitter.im/xing-hops/Lobby">
+    <img src="https://img.shields.io/gitter/room/xing-hops/Lobby.svg">
+  </a>
   <a href="https://travis-ci.org/xing/hops">
-    <img src="https://img.shields.io/travis/xing/hops.svg">
+    <img src="https://img.shields.io/npm/v/hops/next/next.svg">
+  </a>
+  <a href="https://travis-ci.org/xing/hops/branches">
+    <img src="https://img.shields.io/travis/xing/hops/master.svg">
   </a>
 </p>
 <p>&nbsp;</p>
@@ -79,7 +85,7 @@ In order to install or configure a preset you need to add it as a dependency to 
 
 ```bash
 $ yarn add hops-redux@next
-# OR npm install --save hops-redux
+# OR npm install --save hops-redux@next
 ```
 
 Sometimes presets have `peerDependencies` which need to be installed as well - take a look at the [indiviual preset sections](#available-presets) or watch out for peer dependency warnings in your terminal.
