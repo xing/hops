@@ -1,6 +1,6 @@
 # Hops Config
 
-[![npm](https://img.shields.io/npm/v/hops-config.svg)](https://www.npmjs.com/package/hops-config)
+[![npm](https://img.shields.io/npm/v/hops-config/next.svg)](https://www.npmjs.com/package/hops-config)
 
 This is a package that exposes your applications configuration and is mostly here for legacy reasons.
 

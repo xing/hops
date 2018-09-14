@@ -1,6 +1,6 @@
 # `hops-pwa`
 
-[![npm](https://img.shields.io/npm/v/hops-pwa.svg)](https://www.npmjs.com/package/hops-pwa)
+[![npm](https://img.shields.io/npm/v/hops-pwa/next.svg)](https://www.npmjs.com/package/hops-pwa)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to enable [progressive web app](https://developers.google.com/web/progressive-web-apps/) features like a [web app manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) and [service worker](https://developers.google.com/web/fundamentals/primers/service-workers/) usage in Hops.
 

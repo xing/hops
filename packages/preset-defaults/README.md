@@ -1,6 +1,6 @@
 # `hops-preset-defaults`
 
-[![npm](https://img.shields.io/npm/v/hops-preset-defaults.svg)](https://www.npmjs.com/package/hops-preset-defaults)
+[![npm](https://img.shields.io/npm/v/hops-preset-defaults/next.svg)](https://www.npmjs.com/package/hops-preset-defaults)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that contains a collection of base presets that are always needed.
 

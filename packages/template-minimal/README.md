@@ -1,6 +1,6 @@
 # Hops Template Minimal
 
-[![npm](https://img.shields.io/npm/v/hops-template-minimal.svg)](https://www.npmjs.com/package/hops-template-minimal)
+[![npm](https://img.shields.io/npm/v/hops-template-minimal/next.svg)](https://www.npmjs.com/package/hops-template-minimal)
 
 This is a minimal example of how [hops](https://github.com/xing/hops) can be used without react.
 

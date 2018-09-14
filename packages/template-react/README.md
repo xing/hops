@@ -1,6 +1,6 @@
 # Hops Template React
 
-[![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)
+[![npm](https://img.shields.io/npm/v/hops-template-react/next.svg)](https://www.npmjs.com/package/hops-template-react)
 
 This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React.
 

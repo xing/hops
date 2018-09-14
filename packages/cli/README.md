@@ -1,6 +1,6 @@
 # Hops (CLI)
 
-[![npm](https://img.shields.io/npm/v/hops.svg)](https://www.npmjs.com/package/hops)
+[![npm](https://img.shields.io/npm/v/hops/next.svg)](https://www.npmjs.com/package/hops)
 
 This package provides a binary (`hops`) that can be used to create and control Hops applications.
 
@@ -15,8 +15,8 @@ When this binary is executed inside a Hops application it exposes all commands t
 Install it globally to create a new Hops application.
 
 ```bash
-$ yarn global add hops
-# OR npm install --global hops
+$ yarn global add hops@next
+# OR npm install --global hops@next
 ```
 
 Or install it locally in an already existing Hops application.

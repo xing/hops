@@ -1,6 +1,6 @@
 # `hops-lambda`
 
-[![npm](https://img.shields.io/npm/v/hops-lambda.svg)](https://www.npmjs.com/package/hops-lambda)
+[![npm](https://img.shields.io/npm/v/hops-lambda/next.svg)](https://www.npmjs.com/package/hops-lambda)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that takes care of deploying your application to [AWS Lambda](https://aws.amazon.com/lambda/).
 

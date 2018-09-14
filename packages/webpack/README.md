@@ -1,6 +1,6 @@
 # `hops-webpack`
 
-[![npm](https://img.shields.io/npm/v/hops-webpack.svg)](https://www.npmjs.com/package/hops-webpack)
+[![npm](https://img.shields.io/npm/v/hops-webpack/next.svg)](https://www.npmjs.com/package/hops-webpack)
 
 This is one of the core presets for Hops (and is included by default in [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) and provides the webpack configuration and mixin infrastructure in order to build a Hops application.
 

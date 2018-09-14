@@ -1,6 +1,6 @@
 # `hops-react`
 
-[![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)
+[![npm](https://img.shields.io/npm/v/hops-react/next.svg)](https://www.npmjs.com/package/hops-react)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that enables React, JSX, React-Helmet and React-Router support in Hops applications.
 
