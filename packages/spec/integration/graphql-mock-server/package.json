@@ -10,7 +10,7 @@
     "port": "8029",
     "graphqlUri": "http://localhost:8029/graphql",
     "fragmentsFile": "<rootDir>/fragmentTypes.json",
-    "graphqlMockConfigFile": "<rootDir>/graphql-mock-config.js"
+    "graphqlMocks": "<rootDir>/mocks/index.js"
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",

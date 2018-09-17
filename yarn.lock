@@ -7990,11 +7990,6 @@ node-releases@^1.0.0-alpha.14:
   dependencies:
     semver "^5.3.0"
 
-node-watch@^0.5.8:
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/node-watch/-/node-watch-0.5.8.tgz#208d10f93afe2f24b3701c254f54c7552f90c905"
-  integrity sha512-HXiCg9YS3IAzEJ4O3CNlUjsoYCxg4hVbo9oAEBQoiJV7p/R7PT6/ekXM9S3D2K3jUjSQOOjtuW/LgcSiwh/btQ==
-
 "nopt@2 || 3":
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"
