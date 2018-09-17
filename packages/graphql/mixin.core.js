@@ -1,5 +1,8 @@
 const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
+const {
+  internal: { createWebpackMiddleware, StatsFilePlugin },
+} = require('@untool/webpack');
 
 class GraphQLMixin extends Mixin {
   registerCommands(yargs) {
@@ -43,13 +46,57 @@ class GraphQLMixin extends Mixin {
     );
   }
 
-  configureBuild(webpackConfig, loaderConfigs) {
+  configureServer(rootApp, middleware) {
+    if (!this.config.graphqlMocks || !this.config.enableGraphqlMockServer) {
+      return;
+    }
+
+    if (process.env.NODE_ENV === 'production') {
+      console.warn(
+        'It is not recommended to run the GraphQL Mock Server in production.'
+      );
+    }
+
+    middleware.preroutes.unshift(
+      createWebpackMiddleware(
+        this.getBuildConfig('graphql-mock-server', 'node'),
+        true
+      )
+    );
+  }
+
+  configureBuild(webpackConfig, loaderConfigs, target) {
     const { allLoaderConfigs } = loaderConfigs;
+
     const tagLoader = {
       test: /\.(graphql|gql)$/,
       loader: 'graphql-tag/loader',
     };
     allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, tagLoader);
+
+    if (!Array.isArray(webpackConfig.externals)) {
+      webpackConfig.externals = [];
+    }
+    webpackConfig.externals.push('encoding');
+
+    if (target === 'graphql-mock-server') {
+      webpackConfig.externals.push(
+        'express',
+        'apollo-server-express',
+        'graphql'
+      );
+
+      webpackConfig.output.filename = 'hops-graphql-mock-server.js';
+
+      Object.assign(webpackConfig.resolve.alias, {
+        'hops-graphql-mocks': require.resolve(this.config.graphqlMocks),
+        '@untool/entrypoint': require.resolve('./lib/mock-server-middleware'),
+      });
+
+      webpackConfig.plugins = webpackConfig.plugins.filter(
+        p => !(p instanceof StatsFilePlugin)
+      );
+    }
   }
 }
 
