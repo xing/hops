@@ -29,7 +29,7 @@ describe('graphql development server', () => {
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     expect(await getInnerText('#dates')).toBe(
-      '2018-08-31T12:23:18.530Z\n2018-07-31T12:23:18.530Z\n'
+      '2018-08-31T12:23:18.530Z\n2018-07-31T12:23:18.530Z'
     );
 
     await page.close();
@@ -39,7 +39,7 @@ describe('graphql development server', () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    expect(await getInnerText('#persons')).toBe('John Doe\nMax Mustermann\n');
+    expect(await getInnerText('#persons')).toBe('John Doe\nMax Mustermann');
 
     await page.close();
   });
@@ -48,7 +48,7 @@ describe('graphql development server', () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    expect(await getInnerText('#searchPersons')).toBe('Account\nContact\n');
+    expect(await getInnerText('#searchPersons')).toBe('Account\nContact');
 
     await page.close();
   });
@@ -57,7 +57,7 @@ describe('graphql development server', () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    expect(await getInnerText('#searchPersonsByFilter')).toBe('Account\n');
+    expect(await getInnerText('#searchPersonsByFilter')).toBe('Account');
 
     await page.close();
   });
