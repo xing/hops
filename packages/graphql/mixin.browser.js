@@ -22,8 +22,8 @@ class GraphQLMixin extends Mixin {
     this.options = options;
   }
 
-  bootstrap() {
-    this.client = this.createClient(this.options);
+  async bootstrap() {
+    this.client = await this.createClient(this.options);
   }
 
   createClient(options) {
@@ -57,12 +57,15 @@ class GraphQLMixin extends Mixin {
   }
 
   createFragmentMatcher() {
-    if (global['APOLLO_FRAGMENT_TYPES']) {
+    try {
+      const introspectionQueryResultData = require('./fragmentTypes.json'); // eslint-disable-line no-missing-require
+
       return new IntrospectionFragmentMatcher({
-        introspectionQueryResultData: global['APOLLO_FRAGMENT_TYPES'],
+        introspectionQueryResultData,
       });
+    } catch (e) {
+      return new HeuristicFragmentMatcher();
     }
-    return new HeuristicFragmentMatcher();
   }
 
   enhanceElement(reactElement) {

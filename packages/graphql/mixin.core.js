@@ -25,7 +25,6 @@ class GraphQLMixin extends Mixin {
             require('./lib/fragments')({
               graphqlUri: this.config.graphqlUri,
               schemaFile: this.config.graphqlSchemaFile,
-              fragmentsFile: this.config.fragmentsFile,
               headers: argv.header,
             })
               .then(() => {
@@ -49,7 +48,12 @@ class GraphQLMixin extends Mixin {
       test: /\.(graphql|gql)$/,
       loader: 'graphql-tag/loader',
     };
+    const jsonLoader = {
+      test: /\.(graphql|gql)$/,
+      loader: 'json-loader',
+    };
     allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, tagLoader);
+    allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, jsonLoader);
     return config;
   }
 }

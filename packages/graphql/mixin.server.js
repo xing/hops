@@ -1,10 +1,10 @@
 require('isomorphic-fetch');
+const { parse, join, resolve } = require('path');
 const React = require('react');
-const { existsSync, readFileSync } = require('fs');
 const {
   Mixin,
   strategies: {
-    sync: { override, callable },
+    async: { override, callable },
   },
 } = require('hops-mixin');
 
@@ -16,53 +16,33 @@ const {
   IntrospectionFragmentMatcher,
   HeuristicFragmentMatcher,
 } = require('apollo-cache-inmemory');
-
-let introspectionResult = undefined;
-let warned = false;
+const fragments = require('./lib/fragments');
 
 class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
     super(config, element);
 
     this.options = options;
-
-    if (introspectionResult === undefined) {
-      try {
-        if (existsSync(config.fragmentsFile)) {
-          const fileContent = readFileSync(config.fragmentsFile, 'utf-8');
-          introspectionResult = JSON.parse(fileContent);
-        } else if (!warned) {
-          warned = true;
-          console.warn(
-            'Could not find a graphql introspection query result at %s.',
-            config.fragmentsFile,
-            'You might need to execute `hops graphql introspect`'
-          );
-        }
-      } catch (_) {
-        introspectionResult = null;
-      }
-    }
   }
 
-  bootstrap() {
-    this.client = this.createClient(this.options);
+  async bootstrap() {
+    this.client = await this.createClient(this.options);
   }
 
-  createClient(options) {
-    return new ApolloClient(this.enhanceClientOptions(options));
+  async createClient(options) {
+    return await new ApolloClient(await this.enhanceClientOptions(options));
   }
 
-  enhanceClientOptions(options) {
+  async enhanceClientOptions(options) {
     return {
       ...options,
-      link: this.getApolloLink(),
-      cache: this.getApolloCache(),
+      link: await this.getApolloLink(),
+      cache: await this.getApolloCache(),
       ssrMode: true,
     };
   }
 
-  getApolloLink() {
+  async getApolloLink() {
     return (
       this.options.link ||
       new HttpLink({
@@ -71,19 +51,25 @@ class GraphQLMixin extends Mixin {
     );
   }
 
-  getApolloCache() {
+  async getApolloCache() {
     return (
       this.options.cache ||
-      new InMemoryCache({ fragmentMatcher: this.createFragmentMatcher() })
+      new InMemoryCache({ fragmentMatcher: await this.createFragmentMatcher() })
     );
   }
 
-  createFragmentMatcher() {
-    return !introspectionResult
-      ? new HeuristicFragmentMatcher()
-      : new IntrospectionFragmentMatcher({
-          introspectionQueryResultData: introspectionResult,
-        });
+  async createFragmentMatcher() {
+    this.config.fragmentsFile = resolve(
+      join(parse(require.resolve('./mixin.server')).dir, 'fragmentTypes.json')
+    );
+
+    const introspectionQueryResultData = (await fragments(this.config)).data;
+
+    return introspectionQueryResultData
+      ? new IntrospectionFragmentMatcher({
+          introspectionQueryResultData,
+        })
+      : new HeuristicFragmentMatcher();
   }
 
   fetchData(data = {}, element) {
@@ -92,7 +78,6 @@ class GraphQLMixin extends Mixin {
         ...data,
         globals: {
           ...(data.globals || {}),
-          APOLLO_FRAGMENT_TYPES: introspectionResult,
           APOLLO_STATE: this.client.cache.extract(),
         },
       };

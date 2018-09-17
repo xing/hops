@@ -58,5 +58,7 @@ module.exports = function generateFragmentTypes(options) {
       () => executeLocalQuery(options.schemaFile, query),
       () => executeRemoteQuery(options.graphqlUri, options.headers, query)
     )
-    .then(result => writeFragmentTypesFile(options.fragmentsFile, result));
+    .then(result =>
+      writeFragmentTypesFile(options.fragmentsFile, result).then(() => result)
+    );
 };
