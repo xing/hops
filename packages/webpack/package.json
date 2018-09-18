@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "hops-mixin": "11.0.0-rc.35",
-    "pretty-ms": "^3.2.0"
+    "pretty-ms": "^4.0.0"
   }
 }
