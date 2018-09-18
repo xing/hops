@@ -1,55 +1,69 @@
 const { Mixin } = require('hops-mixin');
-const strip = require('strip-indent');
+const renderMiddleware = require('@untool/webpack/lib/middleware/render');
+const { StatsFilePlugin } = require('@untool/webpack/lib/plugins/stats');
 
 class GraphQLMixin extends Mixin {
-  registerCommands(yargs) {
-    return yargs.command('graphql', 'Execute GraphQL specific tasks', yargs =>
-      yargs
-        .usage('Usage: hops graphql <command>')
-        .command({
-          command: 'introspect',
-          describe: 'Fetches GraphQL schema information for introspection',
-          builder: {
-            header: {
-              alias: 'H',
-              type: 'array',
-              default: [],
-              describe: strip(`
-                Additional HTTP headers to be used when executing the schema
-                introspection on the remote server. Specify this multiple
-                times to add more headers.\nFormat: "Header: Value"
-              `),
-            },
-          },
-          handler: argv => {
-            require('./lib/fragments')({
-              graphqlUri: this.config.graphqlUri,
-              schemaFile: this.config.graphqlSchemaFile,
-              fragmentsFile: this.config.fragmentsFile,
-              headers: argv.header,
-            })
-              .then(() => {
-                console.log('Fetched and saved GraphQL fragments');
-              })
-              .catch(err => {
-                console.error('Could not fetch GraphQL fragments:');
-                console.trace(err);
-              });
-          },
-        })
-        .help('help')
-        .alias('h', 'help')
-        .demandCommand()
+  configureServer(rootApp, middleware) {
+    if (!this.config.graphqlMocks || !this.config.enableGraphqlMockServer) {
+      return rootApp;
+    }
+
+    if (process.env.NODE_ENV === 'production') {
+      console.warn(
+        'It is not recommended to run the GraphQL Mock Server in production.'
+      );
+    }
+
+    const webpackConfig = this.getBuildConfig('node');
+
+    webpackConfig.output.filename = 'hops-graphql-mock-server.js';
+
+    Object.assign(webpackConfig.resolve.alias, {
+      'hops-graphql-mocks': this.config.graphqlMocks,
+      '@untool/entrypoint': require.resolve('./lib/mock-server-middleware'),
+    });
+
+    const configLoaderIndex = webpackConfig.module.rules.findIndex(
+      r =>
+        require.resolve(r.loader) ===
+        require.resolve('@untool/webpack/lib/utils/loader')
     );
+
+    webpackConfig.module.rules[configLoaderIndex].options.target = 'none';
+
+    webpackConfig.plugins = webpackConfig.plugins.filter(
+      p => !(p instanceof StatsFilePlugin)
+    );
+
+    middleware.preroutes.unshift(renderMiddleware(webpackConfig));
+
+    return rootApp;
   }
 
   configureBuild(config, loaderConfigs) {
     const { allLoaderConfigs } = loaderConfigs;
+
     const tagLoader = {
       test: /\.(graphql|gql)$/,
       loader: 'graphql-tag/loader',
     };
-    allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, tagLoader);
+
+    const fragmentTypesLoader = {
+      test: require.resolve('./fragment-types.json'),
+      loader: require.resolve('./lib/fragment-types-loader'),
+      options: {
+        graphqlUri: this.config.graphqlUri,
+        graphqlSchemaFile: this.config.graphqlSchemaFile,
+      },
+    };
+
+    allLoaderConfigs.splice(
+      allLoaderConfigs.length - 1,
+      0,
+      tagLoader,
+      fragmentTypesLoader
+    );
+
     return config;
   }
 }
