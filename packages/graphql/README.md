@@ -17,30 +17,6 @@ $ yarn add hops-graphql@next graphql-tag react-apollo
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
-### GraphQL Mock Server
-
-Read the [Read Me](./mock-server/README.md) for setup instructions.
-
-### CLI
-
-#### `graphql introspect`
-
-Extract information to support the `IntrospectionFragmentMatcher` from either a remote GraphQL server or from a local GraphQL schema file.
-
-This preset takes care of setting up the Apollo cache and fragment matchers - if a `fragmentsFile` is present it will use the `IntrospectionFragmentMatcher`, otherwise it will fall back to a `HeuristicFragmentMatcher`.
-
-This is not strictly necessary but is recommended if you have a more complex schema and are querying fragments on unions or interfaces.
-
-Head over to https://github.com/apollographql/react-docs/blob/master/source/initialization.md#using-fragments-on-unions-and-interfaces to read more details about this.
-
-##### Arguments
-
-###### `-H` / `--header`
-
-Pass additional HTTP headers that should be sent when executing the introspection query against a remote GraphQL server. For example when your server requires an authentication token or similar.
-
-This argument can be specified multiple times to add multiple HTTP headers.
-
 ### Usage
 
 In order to start using GraphQL in your application install this preset and configure the required options (see below).
@@ -51,24 +27,13 @@ Check out this [integration test](https://github.com/xing/hops/tree/master/packa
 
 #### Preset Options
 
-| Name                     | Type      | Default                        | Required | Description                                                              |
-| ------------------------ | --------- | ------------------------------ | -------- | ------------------------------------------------------------------------ |
-| `fragmentsFile`          | `String`  | `<rootDir>/fragmentTypes.json` | _no_     | Where to store the generated fragment types file                         |
-| `graphqlSchemaFile`      | `String`  | `''`                           | _no_     | Path to your GraphQL schema file                                         |
-| `graphqlUri`             | `String`  | `''`                           | _yes_    | Url to your GraphQL endpoint                                             |
-| `shouldPrefetchOnServer` | `Boolean` | `true`                         | _no_     | Whether Hops should execute GraphQL queries during server-side rendering |
-
-##### `fragmentsFile`
-
-This option controls where the fragment type information that are used for the `IntrospectionFragmentMatcher` should be saved.
-
-By default executing `$ hops graphql introspect` will create a file called `fragmentTypes.json` in the application root directory.
-
-```json
-"hops": {
-  "fragmentsFile": "<rootDir>/fragmentTypes.json"
-}
-```
+| Name                      | Type      | Default                                 | Required | Description                                                              |
+| ------------------------- | --------- | --------------------------------------- | -------- | ------------------------------------------------------------------------ |
+| `graphqlSchemaFile`       | `String`  | `''`                                    | _no_     | Path to your GraphQL schema file                                         |
+| `graphqlUri`              | `String`  | `''`                                    | _yes_    | Url to your GraphQL endpoint                                             |
+| `shouldPrefetchOnServer`  | `Boolean` | `true`                                  | _no_     | Whether Hops should execute GraphQL queries during server-side rendering |
+| `enableGraphqlMockServer` | `Boolean` | `process.env.NODE_ENV !== 'production'` | _no_     | Whether Hops should start an Apollo GraphQL Mock Server                  |
+| `graphqlMocks`            | `String`  | `''`                                    | _no_     | Path to your GraphQL Schema mocks                                        |
 
 ##### `graphqlSchemaFile`
 
@@ -84,7 +49,7 @@ In case your GraphQL server (configured via [`graphqlUri`](#graphqluri)) does no
 
 This is the full uri to your GraphQL endpoint which should be used by the client- and server-side when executing requests.
 
-This will also be used to generate fragment type information with `$ hops graphql introspect` in case no [`graphqlSchemaFile`](#graphqlschemafile) has been provided.
+This will also be used to generate fragment type information in case no [`graphqlSchemaFile`](#graphqlschemafile) has been provided.
 
 ```json
 "hops": {
@@ -102,6 +67,57 @@ This option controls whether you want Hops to execute GraphQL queries during ser
 "hops": {
   "shouldPrefetchOnServer": false
 }
+```
+
+##### `enableGraphqlMockServer`
+
+This option controls whether the Apollo GraphQL Mock Server should be started.
+
+By default it will check the `NODE_ENV` environment variable and start if `NODE_ENV !== production`.
+
+```json
+"hops": {
+  "enableGraphqlMockServer": false
+}
+```
+
+##### `graphqlMocks`
+
+Specify the path to your GraphQL mocks, containing local and remote schemas, resolvers and mocks which will be used in the Apollo GraphQL Mock Server.
+
+Read more about GraphQL mocking [here](#graphql-mock-server)
+
+```json
+{
+  "hops": {
+    "graphqlMocks": "<rootDir>/graphql/index.js"
+  }
+}
+```
+
+** Example mock config file: `graphql/index.js`**
+
+```javascript
+import mockSchema1 from './mocks/feature1.graphql';
+import mockResolvers1 from './mocks/feature1';
+
+// schemas can contain remote or local schemas
+// the order of the schemas is important because one schema may depend on types defined in another schema
+export const schemas = [
+  {
+    url: 'https://api.github.com/graphql',
+    headers: {
+      Authorization: `bearer ${process.env.GITHUB_API_TOKEN}`,
+    },
+  },
+  mockSchema1,
+];
+
+export const resolvers = [mockResolvers1];
+
+export const mocks = {
+  Date: () => new Date().toISOString(),
+};
 ```
 
 #### Render Options
@@ -130,7 +146,7 @@ export default render(<MyApp />, {
 
 ##### `cache`
 
-By default this preset creates an [`InMemoryCache`](https://www.apollographql.com/docs/react/advanced/caching.html) which uses either the [`IntrospectionFragmentMatcher` or `HeuristicFragmentMatcher`](https://www.apollographql.com/docs/react/advanced/fragments.html#fragment-matcher) depending on whether fragment introspection results are available or not (create them with [`$ hops graphql introspect`](#graphql-introspect)).
+By default this preset creates an [`InMemoryCache`](https://www.apollographql.com/docs/react/advanced/caching.html) which uses either the [`IntrospectionFragmentMatcher` or `HeuristicFragmentMatcher`](https://www.apollographql.com/docs/react/advanced/fragments.html#fragment-matcher) depending on whether fragment introspection results are available or not.
 
 In case you need to configure a different Apollo cache you can pass an instantiated cache to the render options.
 
@@ -169,3 +185,34 @@ This is an overrideable hook that can be used to customize the behavior of when 
 By default it returns whatever is configured in the [`shouldPrefetchOnServer` preset option](#shouldprefetchonserver) or `true` if the config is not set.
 
 In case you need more control over the server-side rendering you can implement this method and provide your own implementation that decides if data should be prefetched during server-side rendering.
+
+# GraphQL Mock Server
+
+> Faster React component development using GraphQL Mock-Server (Apollo)
+
+When you are using GraphQL on client side to fetch and bind data into your UI components, it's quite often necessary to work with mock/stub data. There exists tons of feasible reasons why mocking makes sense in daily practices. In summary, the following seem to be the most important.
+
+- GraphQL schema design in a Frontend-Driven approach
+- Switching between local and remote query execution to work autonomously without an online GraphQL-Server access
+- Faster execution of component integration test using local mock data sets
+- Mock data set support to prove experimental/feature functionality thesis
+
+You can configure one or more GraphQL server URLs to merge them together to a larger schema (also known as [schema stitching](https://www.apollographql.com/docs/graphql-tools/schema-stitching.html)).
+
+**Supports Local GraphQL Playground against your GraphQL schema**
+
+`open http://localhost:<port>/graphql`
+
+![GraphiQL Playground](./playground.png)
+
+## GraphQL Mock-Server usage examples
+
+- [Custom field resolver](../../spec/integration/graphql-mock-server/mocks/exercise1)
+- [Extend Query Type](../../spec/integration/graphql-mock-server/mocks/exercise2)
+- [Usage of interface](../../spec/integration/graphql-mock-server/mocks/exercise3)
+- [Mock scalar values](../../spec/integration/graphql-mock-server/mocks/exercise4)
+- [Mock interface types](../../spec/integration/graphql-mock-server/mocks/exercise5)
+- [Mock union types](../../spec/integration/graphql-mock-server/mocks/exercise6)
+- [Mock enums](../../spec/integration/graphql-mock-server/mocks/exercise7)
+- [Mock mutations with success and error fields](../../spec/integration/graphql-mock-server/mocks/exercise8)
+- [Cursor-based pagination with connection and edges](../../spec/integration/graphql-mock-server/mocks/exercise9)
