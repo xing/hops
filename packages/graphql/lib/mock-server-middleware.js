@@ -92,7 +92,15 @@ module.exports = (async hopsConfig => {
     schema,
     context: ({ req }) => ({ req, config: hopsConfig }),
   });
-  server.applyMiddleware({ app });
+  server.applyMiddleware({
+    app,
+    cors: {
+      credentials: true,
+      origin: true,
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      allowedHeaders: 'content-type',
+    },
+  });
 
   return (req, res, next) => {
     app.handle(req, res, next);
