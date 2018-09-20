@@ -5,7 +5,7 @@
   "keywords": [
     "hops",
     "react",
-    "react-router"
+    "router"
   ],
   "license": "MIT",
   "engines": {
@@ -23,8 +23,7 @@
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "@untool/core": "^0.24.0",
     "@untool/react": "^0.24.0",
-    "hops-mixin": "11.0.0-rc.39",
-    "react-router": "^4.3.1"
+    "hops-mixin": "11.0.0-rc.39"
   },
   "peerDependencies": {
     "react": "^16.3.0",
