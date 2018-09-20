@@ -1,3 +1,7 @@
+# This example implements cursor-based pagination using Connection, Edge, Node.
+# See also: ../index.js and ../../package.json for an example of how to
+# configure these custom schema additions and resolvers.
+
 type SomethingConnection {
   edges: [SomethingEdge]
   pageInfo: PageInfo!
@@ -15,7 +19,4 @@ extend type Query {
     before: String
     first: Int
     last: Int): SomethingConnection
-}
-extend type Mutation {
-    doSomething(input: DoSomethingInput!): DoSomethingResult
 }

@@ -1,20 +1,27 @@
+# This example demonstrates how to define a resolver for interfaces that are
+# implemented by multiple types.
+# In this case the Interfaces "Person" and "Node" are both implemented by the
+# types "Account" and "Contact".
+# See also: ../index.js and ../../package.json for an example of how to
+# configure these custom schema additions and resolvers.
+
 interface Person {
-    id: ID
-    name: String
+  id: ID
+  name: String
 }
 
 type Account implements Person & Node {
-    id: ID!
-    name: String
-    login: String
+  id: ID!
+  name: String
+  login: String
 }
 
 type Contact implements Person & Node {
-    id: ID!
-    name: String
-    phone: String
+  id: ID!
+  name: String
+  phone: String
 }
 
 extend type Query {
-    persons: [Person]
+  persons: [Person]
 }

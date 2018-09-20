@@ -5,7 +5,13 @@ import { Query, Mutation } from 'react-apollo';
 
 const query = gql`
   query Viewer {
-    somethingConnection(first: 10) {
+    somethingConnection(first: 2, after: "2") {
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
       total
       edges {
         cursor
@@ -13,12 +19,6 @@ const query = gql`
           id
           name
         }
-      }
-      pageInfo {
-        endCursor
-        startCursor
-        hasNextPage
-        hasPreviousPage
       }
     }
     something {

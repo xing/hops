@@ -1,3 +1,12 @@
+/**
+ * This example demonstrates how to define a resolver for unions that consist
+ * of multiple types.
+ * In this case the union "SearchablePerson" can be either "Account" or
+ * "Contact".
+ * See also: ../index.js and ../../package.json for an example of how to
+ * configure these custom schema additions and resolvers.
+ */
+
 module.exports = {
   SearchablePerson: {
     __resolveType(obj) {
