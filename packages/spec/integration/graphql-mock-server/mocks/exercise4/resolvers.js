@@ -1,3 +1,10 @@
+/**
+ * This example demonstrates how to implement custom scalar types and define
+ * corresponding resolvers for them.
+ * See also: ../index.js and ../../package.json for an example of how to
+ * configure these custom schema additions and resolvers.
+ */
+
 module.exports = {
   MyDate: {
     __serialize(date) {

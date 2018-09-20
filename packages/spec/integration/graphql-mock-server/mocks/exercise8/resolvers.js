@@ -1,3 +1,12 @@
+/**
+ * This example implements a mutation with input, output, success and error
+ * states.
+ * The mutation changes the module scoped variable "something", so that the
+ * changed state will be persistent until the server is restarted.
+ * See also: ../index.js and ../../package.json for an example of how to
+ * configure these custom schema additions and resolvers.
+ */
+
 const something = { id: 'xyz', name: 'Empty' };
 
 module.exports = {

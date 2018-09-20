@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-graphql/next.svg)](https://www.npmjs.com/package/hops-graphql)
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework.
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework. Additionally it also brings an Apollo Server that can be used for schema stitching and mocking for faster local development.
 
 ### Installation
 
@@ -152,7 +152,7 @@ Specify the path to your GraphQL mocks, containing local and remote schemas, res
 This file needs to export one or more of the following values:
 
 - schemas (an array of local or remote schemas)
-- resolvers (an array of your resolver functions)
+- resolvers (an array of your resolver objects)
 - mocks (an object whose keys represent data types and the values are functions that return mock values)
 
 ```json

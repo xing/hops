@@ -1,14 +1,22 @@
+# This example demonstrates how to use interface types from other schemas.
+# Any interface defined in other schemas (that are loaded before this schema),
+# will be available inside this schema.
+# In this case we are using the "Node" interface that is provided by the GitHub
+# schema.
+# See also: ../index.js and ../../package.json for an example of how to
+# configure these custom schema additions and resolvers.
+
 extend type Query {
-    addresses: [Address]
+  addresses: [Address]
 }
 
 type Address implements Node {
-    id: ID!
-    street: String
-    city: String
-    zip: String
+  id: ID!
+  street: String
+  city: String
+  zip: String
 }
 
 extend type User {
-    address: Address
+  address: Address
 }

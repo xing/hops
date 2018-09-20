@@ -1,3 +1,10 @@
+/**
+ * This example demonstrates how to implement and use enums.
+ * In this case they are used to filter the "searchPersons" query via typName.
+ * See also: ../index.js and ../../package.json for an example of how to
+ * configure these custom schema additions and resolvers.
+ */
+
 module.exports = {
   TypeFilter: {
     ACCOUNT: 'Account',
