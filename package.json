@@ -35,8 +35,12 @@
     "release:candidate:feature": "lerna publish preminor --preid=rc --npm-tag=next",
     "release:next": "lerna publish prerelease --preid=rc --npm-tag=next",
     "reset": "git clean -dfx && yarn",
-    "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'",
-    "precommit": "lint-staged"
+    "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js,json,css}": [
@@ -73,9 +77,19 @@
           ]
         }
       ],
-      "node/no-missing-require": ["error", {
-        "tryExtensions": [".js", ".jsx", ".node", ".ts", ".tsx", ".json"]
-      }],
+      "node/no-missing-require": [
+        "error",
+        {
+          "tryExtensions": [
+            ".js",
+            ".jsx",
+            ".node",
+            ".ts",
+            ".tsx",
+            ".json"
+          ]
+        }
+      ],
       "prettier/prettier": "error",
       "no-console": "off",
       "no-process-exit": "off"
@@ -113,7 +127,7 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.9.1",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0",
     "lerna": "^3.0.3",
     "lint-staged": "^7.2.0",
     "prettier": "^1.14.0"
