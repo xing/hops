@@ -94,4 +94,23 @@ describe('react developmet server', () => {
 
     await page.close();
   });
+
+  it('loads async Import component server-side', async () => {
+    const { page } = await createPage();
+    await page.setJavaScriptEnabled(false);
+    await page.goto(url + '/import');
+
+    expect(await page.content()).toMatch('imported');
+
+    await page.close();
+  });
+
+  it('renders async Import component client-side', async () => {
+    const { page } = await createPage();
+    await page.goto(url + '/import', { waitUntil: 'networkidle2' });
+
+    expect(await page.content()).toMatch('imported');
+
+    await page.close();
+  });
 });
