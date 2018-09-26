@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.36"></a>
+# [11.0.0-rc.36](https://github.com/xing/hops/compare/v11.0.0-rc.35...v11.0.0-rc.36) (2018-09-26)
+
+
+### Features
+
+* **typescript:** don't transpile modules, allow commonjs interop ([7d18bbf](https://github.com/xing/hops/commit/7d18bbf))
+
+
+
+
+
 <a name="11.0.0-rc.35"></a>
 # [11.0.0-rc.35](https://github.com/xing/hops/compare/v11.0.0-rc.34...v11.0.0-rc.35) (2018-09-13)
 
