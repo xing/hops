@@ -1,13 +1,15 @@
 import {
-  render,
-  Miss,
-  Status,
   Header,
+  Import,
+  Miss,
+  render,
   ServerDataContextConsumer,
+  Status,
 } from 'hops-react';
 import React from 'react';
-import { Route, Switch, Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import FlowText from './FlowText';
+const Text = Import('./Text');
 
 export default render(
   <div>
@@ -26,6 +28,7 @@ export default render(
         render={() => <Header name="X-Foo" value="Bar" />}
       />
       <Route path="/flow" exact render={() => <FlowText text="flow" />} />
+      <Route path="/import" exact render={() => <Text text="imported" />} />
       <Miss />
     </Switch>
   </div>
