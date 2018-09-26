@@ -8,6 +8,16 @@ class ReactCoreMixin extends Mixin {
       require.resolve('@babel/plugin-proposal-object-rest-spread')
     );
 
+    const untoolImportPluginIndex = jsLoaderConfig.options.plugins.findIndex(
+      plugin =>
+        require.resolve(plugin) === require.resolve('@untool/react/lib/babel')
+    );
+
+    jsLoaderConfig.options.plugins[untoolImportPluginIndex] = [
+      jsLoaderConfig.options.plugins[untoolImportPluginIndex],
+      { module: 'hops-react' },
+    ];
+
     return webpackConfig;
   }
 }
