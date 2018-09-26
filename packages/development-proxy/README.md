@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-development-proxy/next.svg)](https://www.npmjs.com/package/hops-development-proxy)
 
-[Hops preset](https://missing-link-explain-what-are-presets) that adds an API-proxy for development.
+[Hops preset](https://github.com/xing/hops/tree/master#presets) that adds an API-proxy for development.
 
 Hops apps are often run on the same host as their backend/api endpoints. However, when working locally, backend apps often run on a different host as the frontend application. This can cause issues with cross origin requests during development that are of no concern in the production environment.
 

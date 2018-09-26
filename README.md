@@ -32,6 +32,15 @@ The two guiding principles are:
 
 ## Quick start
 
+Install the `hops` CLI globally:
+
+```shell
+$ yarn global add hops
+# OR npm install --global hops
+```
+
+Or use [`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) to execute a one-off comand:
+
 ```shell
 npx hops@next init --hops-version next --template hops-template-react@next my-awesome-project
 cd my-awesome-project
@@ -76,8 +85,22 @@ This template is not seriously meant as a starting point for your project, but r
 
 Almost everything in Hops is a preset that just needs to be installed / configured in order to start using it.
 
-There are a few core presets that we recommend be always installed. They take care of setting up [Express.js](https://expressjs.com/), [webpack](https://webpack.js.org/) and [yargs](http://yargs.js.org/) to supply the basic building blocks of Hops.\
-**Therefore we have bundled them together in the convenience preset [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)**. We also recommend that you always install the [`hops-react`](https://github.com/xing/hops/tree/master/packages/react) preset in order to start using [React](https://reactjs.org/) in your application.
+There are a few core presets ([`@untool/yargs`](https://github.com/untool/untool/tree/master/packages/yargs), [`@untool/express`](https://github.com/untool/untool/tree/master/packages/express), [`@untool/webpack`](https://github.com/untool/untool/tree/master/packages/webpack), [`hops-express`](https://github.com/xing/hops/tree/master/packages/express) and [`hops-webpack`](https://github.com/xing/hops/tree/master/packages/webpack)) that we recommend be always installed. They take care of setting up [Express.js](https://expressjs.com/), [webpack](https://webpack.js.org/) and [yargs](http://yargs.js.org/) to supply the basic building blocks of Hops.
+
+**Therefore we have bundled them together in the convenience preset [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)**.
+
+Together these core presets expose the following CLI commands:
+
+- `hops build [-p, --production] [-s, --static]` - execute a build and write assets to filesystem.
+  - `--production` is an alias for `NODE_ENV=production` and will create a production build (minifies the bundle, externalizes the source maps, etc).
+  - `--static` will render the configured `locations` to static HTML files.
+- `hops develop` - start a development server with hot module reloading enabled.
+- `hops serve` - start an Express.js server for your application (don't forget to execute `hops build` before).
+- `hops start [-p, --production] [-s, --static]` - either starts a development server or executes a production build and serves that.
+  - `--production` is an alias for `NODE_ENV=production` and will create a production build and afterwards start a production ready Express.js server.
+  - `--static` is only relevant when executed together with the `--production` argument and will do a static build instead (renders static HTML pages) and serve them afterwards.
+
+We also recommend that you always install the [`hops-react`](https://github.com/xing/hops/tree/master/packages/react) preset in order to start using [React](https://reactjs.org/) in your application.
 
 ### Installing / configuring a preset
 
@@ -107,6 +130,37 @@ Some presets require (or allow) additional configuration. Read the sections belo
 ### Available presets
 
 In addition to the core presets that [we mentioned earlier](#presets) these following presets are available to help you with the struggles of universal rendering, deployments, service workers and such.
+
+#### `hops-react`
+
+This preset enables usage of React.js with JSX, React-Helmet and React-Router support in Hops applications.
+
+Install it to your project:
+
+```bash
+$ yarn add hops-react@next react-dom react-helmet
+```
+
+And write your main entry file (which should either be named `index.js` or should be referenced in your `package.json`s `main` field):
+
+**`package.json`**
+
+```json
+{
+  "main": "main.js"
+}
+```
+
+**`main.js`**
+
+```javascript
+import { render } from 'hops-react';
+import React from 'react';
+
+export default render(<h1>Hello World!</h1>);
+```
+
+For more details and advanced use-cases read the [full readme of `hops-react`](https://github.com/xing/hops/tree/master/packages/react).
 
 #### `hops-redux`
 
@@ -241,6 +295,38 @@ export default render(
 
 For more details and examples on how to use service workers read the [full readme for `hops-pwa`](https://github.com/xing/hops/tree/master/packages/pwa).
 
+#### `hops-preset-defaults`
+
+This is the base preset which provides the building blocks of Hops by combining several other presets ([`@untool/express`](https://github.com/untool/untool/tree/master/packages/express), [`@untool/webpack`](https://github.com/untool/untool/tree/master/packages/webpack) and [`@untool/yargs`](https://github.com/untool/untool/tree/master/packages/yargs)).
+
+These presets provide configration for the development and production server, the webpack build configurations and much more.
+
+Check out [this readme](https://github.com/xing/hops/tree/master/packages/preset-defaults) to learn more about how to configure HTTPS support, host, port, static site generation and how you can modify the Express.js middleware and server instances and webpack build configurations.
+
+#### `hops-development-proxy`
+
+Hops apps are often served on the same host as their backend/API, so during development we provide this preset, that sets up an HTTP proxy to forward any unknown requests to the configured remote URL.
+
+Install it to your project:
+
+```bash
+$ yarn add hops-development-proxy@next
+```
+
+And configure your remote endpoint:
+
+```json
+{
+  "hops": {
+    "proxy": "https://example.org/api/"
+  }
+}
+```
+
+This will proxy all requests that are not assets and don't have `text/html` in its `Accept` header to the configured proxy endpoint.
+
+For more details and advanced use-cases head over to the [full readme of `hops-development-proxy`](https://github.com/xing/hops/tree/master/packages/development-proxy).
+
 #### `hops-lambda`
 
 This preset enables simple deployment workflows to AWS Lambda.
@@ -307,7 +393,7 @@ Hops allows you to write a package of your own and plug it into Hops' build proc
 
 ### How can I extend the babel and other build-related config
 
-Hops provides a [`configureBuild`](https://github.com/xing/hops/tree/master/packages/webpack#configurebuildwebpackconfig-loaderconfigs-target-webpackconfig-pipe) [core mixin](https://github.com/untool/untool/blob/master/packages/core/README.md#mixins) hook that allows you to alter the [webpack config](https://webpack.js.org/configuration/) to fit your needs, including adding babel plugins.
+Hops provides a [`configureBuild`](https://github.com/xing/hops/tree/master/packages/preset-defaults#configurebuildwebpackconfig-loaderconfigs-target-webpackconfig-pipe) [core mixin](https://github.com/untool/untool/blob/master/packages/core/README.md#mixins) hook that allows you to alter the [webpack config](https://webpack.js.org/configuration/) to fit your needs, including adding babel plugins.
 
 ## Contributing
 
