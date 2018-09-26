@@ -8,8 +8,8 @@ import {
 } from 'hops-react';
 import React from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
-import FlowText from './FlowText';
-const Text = Import('./Text');
+import FlowText from './flow-text';
+const Text = Import('./text');
 
 export default render(
   <div>
