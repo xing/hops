@@ -121,11 +121,11 @@ export default render(<MyApp />, {
 
 ### Mixin Hooks API
 
-#### `getReduxStore(): Store` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `getReduxStore(): Store` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
 Use this method in your own mixins to get a reference to the currently used Redux [Store](https://redux.js.org/api-reference/store) instance.
 
-#### `getReduxMiddlewares(): [middleware]` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `getReduxMiddlewares(): [middleware]` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
 Allows to specify your own set of redux middlewares. Useful when middlewares need access to the current request object, which only exists in the mixin context. Passes fetch implementation as extra argument to thunks.
 
@@ -144,7 +144,7 @@ const incrementFetch = () => (dispatch, getState, { fetch }) => {
 };
 ```
 
-#### `shouldPrefetchOnServer(): boolean` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `shouldPrefetchOnServer(): boolean` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **server**
 
 This is an overrideable hook that can be used to customize the behavior of when Hops should prefetch data during server-side rendering. E.g. execute route-bound action creators during initial render.
 

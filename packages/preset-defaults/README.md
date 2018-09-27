@@ -47,7 +47,7 @@ Head over to [`@untool/express`](https://github.com/untool/untool/tree/master/pa
 
 ### Mixin Hooks API
 
-#### `configureServer(app, middleware, mode): app` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+#### `configureServer(app, middleware, mode): app` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **core**
 
 Use this mixin hook to register middleware or configure the Express.js Application.
 
@@ -94,7 +94,7 @@ module.exports = class MyMixin extends Mixin {
 };
 ```
 
-#### `configureBuild(webpackConfig, loaderConfigs, target): webpackConfig` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+#### `configureBuild(webpackConfig, loaderConfigs, target): webpackConfig` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **core**
 
 You can implement this method in your own mixins to modify the different [webpack configs](https://webpack.js.org/configuration/) that are used under the hood.
 

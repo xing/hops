@@ -124,7 +124,7 @@ This preset has no runtime configuration options.
 
 ### Mixin Hooks API
 
-#### `configureBuild(webpackConfig, loaderConfigs, target): webpackConfig` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+#### `configureBuild(webpackConfig, loaderConfigs, target): webpackConfig` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **core**
 
 You can implement this method in your own mixins to modify the different [webpack configs](https://webpack.js.org/configuration/) that are used under the hood.
 
@@ -166,7 +166,7 @@ class MyMixin extends Mixin {
 }
 ```
 
-##### `inspectBuild(stats, webpackConfig): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
+##### `inspectBuild(stats, webpackConfig): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **core**
 
 In order to get information about the current build you can implement this mixin method which will be called with a [webpack `stats` object](https://webpack.js.org/api/node/#stats-object) and the actual webpack config for this build.
 
@@ -178,10 +178,10 @@ class MyMixin extends Mixin {
 }
 ```
 
-##### `build(): Promise<stats>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+##### `build(): Promise<stats>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 
 If you want to programmatically trigger a build you can execute this mixin method. It returns a promise that resolves to a [webpack `stats` object](https://webpack.js.org/api/node/#stats-object).
 
-##### `clean(): Promise<void>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+##### `clean(): Promise<void>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 
 Executing this mixin method will delete the `buildDir` and all its contents.

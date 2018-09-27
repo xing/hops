@@ -66,32 +66,30 @@ This preset has no runtime configuration options.
 
 ### Mixin Hooks API
 
-#### `render([req, res, next]): void` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `render([req, res, next]): void` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
 This is the default React universal render method which exposes the following hooks. You will usually not have to override this. See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#renderreq-res-next-override) for more details.
 
-#### `bootstrap([req, res]): void` ([parallel](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
+#### `bootstrap([req, res]): void` ([parallel](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **runtime/browser/server**
 
 You can implement this method to run tasks before any rendering occurs to bootstrap your application. See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#bootstrapreq-res-parallel) for more details.
 
-#### `enhanceElement(element): element` ([compose](https://github.com/untool/mixinable/blob/master/README.md#definecompose))
+#### `enhanceElement(element): element` ([compose](https://github.com/untool/mixinable/blob/master/README.md#definecompose)) **runtime/browser/server**
 
 Implement this method to wrap your application component tree with additional components. Like a `<Provider />` for Redux or some custom `<ContextProvider />` when using [React Context](https://reactjs.org/docs/context.html). See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#enhanceelementelement-compose) for more details.
 
-#### `fetchData(data, element): data` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+#### `fetchData(data, element): data` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **runtime/browser/server**
 
 Implement this method to fetch additional data before React's `renderToString()` method is called. See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#fetchdatadata-element-pipe) for more details.
 
-#### `getTemplateData(data): data` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+#### `getTemplateData(data): data` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **server**
 
 Implement this method to modify the `data` object after React's rendering has occured. This is useful when you need to collect the data during rendering, like [styled-components](https://www.styled-components.com/docs/advanced#server-side-rendering) or [react-loadable](https://github.com/jamiebuilds/react-loadable#finding-out-which-dynamic-modules-were-rendered). See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#gettemplatedatadata-pipe-server-only) for more details.
 
-#### `enhanceServerData(serverData, req, res): serverData` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+#### `enhanceServerData(serverData, req, res): serverData` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **server**
 
 In some cases you need to share data from the server-side to the client-side (for example request specific data or derived data). For these circumstances you can implement the `enhanceServerData()` hook (which will get passed the previous `serverData` object and Express `request` and `response` objects) and add your key/value pairs that you want to make accessible on the client-side via the [above mentioned HoC](#withserverdatacomponent-higherordercomponent") or [Context consumer](#serverdatacontextconsumerdata---render-something-serverdatacontextconsumer).
 
-Only exists on the server.
-
-#### `getServerData(): serverData` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `getServerData(): serverData` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
 Returns the `serverData` produced by `enhanceServerData` on server and client.
