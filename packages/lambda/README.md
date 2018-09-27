@@ -192,12 +192,12 @@ This preset has no runtime configuration options.
 
 ### Mixin Hooks API
 
-#### `deployLambda(parameterOverrides): Promise<Outputs>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `deployLambda(parameterOverrides): Promise<Outputs>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 
 Call this method from a mixin to programmatically execute a Lambda deployment.
 
 You can overwrite or pass additional parameters to the CloudFormation stack by using `parameterOverrides`, which should be an object whose entries correspond to the names/values of the parameters.
 
-#### `destroyLambda(): Promise<void>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `destroyLambda(): Promise<void>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 
 Use this mixin method to programmatically destroy the CloudFormation stack and all its associated resources.

@@ -126,7 +126,7 @@ This preset has no runtime configuration options.
 
 ### Mixin Hooks API
 
-#### `configureServer(app, middleware, mode): app` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe))
+#### `configureServer(app, middleware, mode): app` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **core**
 
 Use this mixin hook to register middleware or configure the Express.js Application.
 
@@ -169,29 +169,29 @@ module.exports = class MyMixin extends Mixin {
 };
 ```
 
-#### `inspectServer(app, target): app` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
+#### `inspectServer(app, target): app` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **core**
 
 Implement this hook to get access to the listening instance of [`http.Server`](https://nodejs.org/api/http.html#http_class_http_server) (or [`https.Server`](https://nodejs.org/api/https.html#https_class_https_server)). The second argument `target` will be one of `develop`, `serve`.
 
 Use this hook to read the listening address or to register your application with a loadbalancer.
 
-#### `createServer(mode): app` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `createServer(mode): app` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 
 With this mixin hook it is possible to get a fully configured Express.js application instance that you can register with your own server.
 
 It accepts `develop`, `serve` or `static` as `mode`.
 
-#### `runServer(mode): void` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `runServer(mode): void` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 
 In case you want to programmatically start a server, you can use this mixin hook.
 
 It accepts `develop` or `serve` as `mode`.
 
-#### `createRenderer(): (options) => Promise<Response>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `createRenderer(): (options) => Promise<Response>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 
 This mixin method creates the static renderer. When called it returns a function that accepts an options hash or an url and returns a Promise that resolves to the statically rendered page.
 
-#### `renderLocations(): Promise<Responses>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride))
+#### `renderLocations(): Promise<Responses>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 
 This mixin method creates a fully configured Express.js application and renders all your configured `locations` to strings.
 
