@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.37"></a>
+# [11.0.0-rc.37](https://github.com/xing/hops/compare/v11.0.0-rc.36...v11.0.0-rc.37) (2018-09-27)
+
+**Note:** Version bump only for package hops-template-graphql
+
+
+
+
+
 <a name="11.0.0-rc.36"></a>
 # [11.0.0-rc.36](https://github.com/xing/hops/compare/v11.0.0-rc.35...v11.0.0-rc.36) (2018-09-26)
 
