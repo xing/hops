@@ -1,7 +1,0 @@
-{
-  "name": "hops-graphql-local-introspection",
-  "version": "1.0.0",
-  "hops": {
-    "graphqlSchemaFile": "./my-schema.graphql"
-  }
-}
