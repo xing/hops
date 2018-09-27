@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`graphql extension should wrap the application in an <ApolloProvider /> 1`] = `
-<ApolloProvider
-  client={mockConstructor {}}
->
-  <main />
-</ApolloProvider>
-`;
