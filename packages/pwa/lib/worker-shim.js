@@ -1,18 +1,12 @@
-// This is a webpack alias, defined in mixin.core.js
-/* eslint-disable-next-line node/no-missing-require */
-const { getConfigAndMixins } = require('./loader-shim');
+import { getConfig } from './loader-shim';
+/* eslint-disable-next-line import/no-unresolved */
+import entrypoint from 'hops-worker-entry-point';
 
-(function execute() {
-  // This is a webpack alias, defined in mixin.core.js
-  /* eslint-disable-next-line node/no-missing-require */
-  let entryPoint = require('hops-worker-entry-point');
-  if (typeof entryPoint.default === 'function') {
-    entryPoint = entryPoint.default;
-  }
-  entryPoint(getConfigAndMixins().config, HOPS_ASSETS); // eslint-disable-line no-undef
-  if (module.hot) {
-    module.hot.accept(require.resolve('hops-worker-entry-point'), () =>
-      setTimeout(execute)
-    );
-  }
-})();
+/* eslint-disable-next-line no-undef */
+const render = () => entrypoint(getConfig(), HOPS_ASSETS);
+
+render();
+
+if (module.hot) {
+  module.hot.accept('hops-worker-entry-point', render);
+}

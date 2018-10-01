@@ -1,14 +1,15 @@
 'use strict';
 
-process.env.UNTOOL_NSP = 'hops';
 process.env.NODE_ENV = 'production';
 
 const serverlessHttp = require('serverless-http');
 const config = require('hops-config');
 const {
-  stripLeadingSlash,
-  stripTrailingSlash,
-} = require('@untool/express').uri;
+  internal: {
+    uri: { stripLeadingSlash, stripTrailingSlash },
+  },
+} = require('@untool/express');
+
 const trimSlashes = input => stripLeadingSlash(stripTrailingSlash(input));
 const app = require('@untool/express').createServer('serve');
 

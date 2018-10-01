@@ -1,3 +1,3 @@
-export default () => (req, res) => {
+export default (req, res) => {
   res.send('hello world');
 };

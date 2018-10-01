@@ -1,6 +1,8 @@
 /* eslint-env browser */
 
-const { getConfigAndMixins } = require('./lib/loader-shim');
+const {
+  internal: { getConfig },
+} = require('@untool/core');
 
 const isLocalHost = host => {
   return (
@@ -25,11 +27,7 @@ module.exports = function installServiceWorker() {
       isLocalHost(window.location.hostname)
     ) {
       window.addEventListener('load', () => {
-        resolve(
-          navigator.serviceWorker.register(
-            getConfigAndMixins().config.workerPath
-          )
-        );
+        resolve(navigator.serviceWorker.register(getConfig().workerPath));
       });
     }
   });

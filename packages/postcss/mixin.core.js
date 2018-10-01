@@ -4,7 +4,9 @@ const ExtractCSSPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const { Mixin } = require('hops-mixin');
 const {
-  uri: { resolveRelative },
+  internal: {
+    uri: { resolveRelative },
+  },
 } = require('@untool/express');
 
 const cssLoaderOptions = {

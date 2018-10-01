@@ -1,7 +1,5 @@
 'use strict';
 
-process.env.UNTOOL_NSP = 'hops';
-
 const { dirname, join } = require('path');
 
 const { sync: findUp } = require('find-up');
@@ -13,7 +11,10 @@ const getRootDir = () => {
   return dirname(pkgFile);
 };
 
-const configure = (config = { mixins: [join(__dirname, '..')] }, options) => ({
+const configure = (
+  config = { untoolNamespace: 'hops', mixins: [join(__dirname, '..')] },
+  options
+) => ({
   run() {
     try {
       const rootDir = getRootDir();

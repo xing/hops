@@ -2,9 +2,10 @@
 
 const semver = require('semver');
 const {
-  stripLeadingSlash,
-  stripTrailingSlash,
-} = require('@untool/express').uri;
+  internal: {
+    uri: { stripLeadingSlash, stripTrailingSlash },
+  },
+} = require('@untool/express');
 
 const trimSlashes = input => stripLeadingSlash(stripTrailingSlash(input));
 
