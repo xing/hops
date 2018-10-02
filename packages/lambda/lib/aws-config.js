@@ -28,18 +28,23 @@ module.exports = function getAWSConfig(hopsConfig) {
     certificateArn: awsConfig.certificateArn,
     basePath: trimSlashes(hopsConfig.basePath) || '(none)',
     cloudformationTemplateFile: awsConfig.cloudformationTemplateFile,
-    include: awsConfig.include,
+    include: [config.serverDir + '/**', ...(awsConfig.include || [])],
     exclude: awsConfig.exclude,
   };
 
+  const targetNodeVersion = hopsConfig.node || process.version;
+
   if (
-    semver.gt(semver.coerce(hopsConfig.node), semver.coerce(MAX_NODE_VERSION))
+    semver.gt(semver.coerce(targetNodeVersion), semver.coerce(MAX_NODE_VERSION))
   ) {
     console.warn(
-      'AWS Lambda only supports Node.js up to version: ' +
-        MAX_NODE_VERSION +
-        '. Please specify a version lower than this as node target in your ' +
-        'hopsConfig.node, to enable Babel to transpile to the correct version.'
+      'AWS Lambda only supports Node.js up to version:',
+      MAX_NODE_VERSION
+    );
+    console.warn(
+      'Please specify or use a Node.js version lower than or equal to this',
+      'version in your Hops config (hops.node) to tell Babel for which version',
+      'it should transpile for.'
     );
   }
 
