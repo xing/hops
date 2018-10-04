@@ -60,6 +60,27 @@ module.exports = {
 };
 ```
 
+If you want to apply additional settings to the apollo middleware, you can do so with settings like these:
+
+```js
+module.exports = {
+  remoteSchemas: [...],
+
+  schemaMocks: [...],
+
+  middlewareConfig: {
+    cors: {
+      credentials: true,
+      origin: true,
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      allowedHeaders: ['Content-Type', 'X-My-Special-Header'],
+    },
+  },
+};
+```
+
+For all possible options, please see the [original apollo server documentation section](https://www.apollographql.com/docs/apollo-server/api/apollo-server.html#ApolloServer-applyMiddleware).
+
 ## GraphQL Mock-Server usage examples
 
 - [Define your own schema extentions](#define-your-own-schema-extentions)
