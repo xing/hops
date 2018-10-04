@@ -174,7 +174,10 @@ module.exports = class GraphQLMockServerMixin extends Mixin {
     const app = express();
     app.use(cookieParser());
 
-    const { remoteSchemas = [] } = this.graphqlMockServerConfig;
+    const {
+      remoteSchemas = [],
+      middlewareConfig = {},
+    } = this.graphqlMockServerConfig;
 
     const remoteSchemaOptions = remoteSchemas.map(value =>
       mapRemoteSchemaOptions(value)
@@ -210,9 +213,17 @@ module.exports = class GraphQLMockServerMixin extends Mixin {
       const server = new ApolloServer({
         schema: this.schema,
         context: ({ req }) => ({ req, config: this.config }),
+        playground: {
+          settings: {
+            'request.credentials': 'include',
+          },
+        },
       });
 
-      server.applyMiddleware({ app });
+      server.applyMiddleware({
+        ...middlewareConfig,
+        app,
+      });
     });
 
     middlewares.preroutes.push(app);
