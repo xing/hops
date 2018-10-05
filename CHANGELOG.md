@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.38"></a>
+# [11.0.0-rc.38](https://github.com/xing/hops/compare/v11.0.0-rc.37...v11.0.0-rc.38) (2018-10-05)
+
+
+### Bug Fixes
+
+* **cli:** add missing [@untool](https://github.com/untool)/yargs ([b23a7b1](https://github.com/xing/hops/commit/b23a7b1))
+* **lambda:** always include serverDir in bundle ([a837e3f](https://github.com/xing/hops/commit/a837e3f))
+
+
+
+
+
 <a name="11.0.0-rc.37"></a>
 # [11.0.0-rc.37](https://github.com/xing/hops/compare/v11.0.0-rc.36...v11.0.0-rc.37) (2018-09-27)
 
