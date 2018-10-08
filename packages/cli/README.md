@@ -43,7 +43,6 @@ The following arguments are optional:
 - `--template` - to specify a different template for the intial structure. available templates:
   - [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react)
   - [hops-template-redux](https://github.com/xing/hops/tree/master/packages/template-redux)
-  - [hops-template-minimal](https://github.com/xing/hops/tree/master/packages/template-minimal)
   - [hops-template-graphql](https://github.com/xing/hops/tree/master/packages/template-graphql)
 
 Then `cd` into `my-new-hops-project` and execute `hops --help` again to see a list of supported commands.
