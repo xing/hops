@@ -42,7 +42,7 @@ const options = yargs
       'initializes a sample hops react project inside it.'
   )
   .example(
-    '$0 --template hops-template-minimal my-project',
+    '$0 --template hops-template-react my-project',
     'Creates the folder my-project inside the current directory and ' +
       'initializes a minimal hops example inside it.'
   )
