@@ -1,6 +1,6 @@
 {
   "name": "create-hops-app",
-  "version": "11.0.0-rc.37",
+  "version": "11.0.0-rc.38",
   "description": "CLI tool to create Hops applications",
   "keywords": [
     "hops",
@@ -18,7 +18,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops": "11.0.0-rc.37",
+    "hops": "11.0.0-rc.38",
     "yargs": "^11.0.0"
   }
 }
