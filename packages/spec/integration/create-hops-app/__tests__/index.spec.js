@@ -8,7 +8,7 @@ const createHopsAppBin = require.resolve('create-hops-app');
 
 describe('postcss production build', () => {
   const version = 'next';
-  const template = 'hops-template-minimal';
+  const template = 'hops-template-react';
 
   beforeAll(() => {
     jest.setTimeout(5 * ONE_MINUTE);
