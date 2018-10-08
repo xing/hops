@@ -32,7 +32,10 @@ module.exports = function getAWSConfig(hopsConfig) {
     exclude: awsConfig.exclude,
   };
 
-  const targetNodeVersion = hopsConfig.node || process.version;
+  const targetNodeVersion =
+    !hopsConfig.node || hopsConfig.node === 'current'
+      ? process.version
+      : hopsConfig.node;
 
   if (
     semver.gt(semver.coerce(targetNodeVersion), semver.coerce(MAX_NODE_VERSION))
