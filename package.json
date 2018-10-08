@@ -25,7 +25,6 @@
   "scripts": {
     "preinstall": "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'use yarn' && exit 1)\"",
     "start": "cd packages/template-react; yarn start",
-    "start:minimal": "cd packages/template-minimal; yarn start",
     "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "jest",
     "lint": "eslint 'packages/**/*.js'",

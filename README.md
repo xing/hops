@@ -77,10 +77,6 @@ In case you want to build a GraphQL project, you can use this template as a star
 $ hops init --hops-version next --template hops-template-graphql@next my-awesome-project
 ```
 
-#### [`hops-template-minimal`](https://github.com/xing/hops/tree/master/packages/template-minimal)
-
-This template is not seriously meant as a starting point for your project, but rather a reference that demonstrates using Hops without React and might be useful to someone trying to create Vue.js bindings for Hops or something similar.
-
 ## Presets
 
 Almost everything in Hops is a preset that just needs to be installed / configured in order to start using it.
