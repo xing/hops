@@ -4,9 +4,7 @@ process.env.UNTOOL_NSP = 'hops';
 process.env.NODE_ENV = 'production';
 
 const serverlessHttp = require('serverless-http');
-const config = require('@untool/core/lib/env').environmentalize(
-  require('@untool/core/lib/config').getConfig({ configNamespace: 'hops' })
-);
+const config = require('hops-config');
 const {
   stripLeadingSlash,
   stripTrailingSlash,
