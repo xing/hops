@@ -1,0 +1,30 @@
+{
+  "name": "fixture-lambda",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js"
+  },
+  "hops": {
+    "basePath": "/prod",
+    "assetPath": "/prod",
+    "node": "8.10"
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-lambda": "*",
+    "hops-preset-defaults": "*",
+    "hops-react": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-helmet": "*",
+    "react-router-dom": "*"
+  }
+}
