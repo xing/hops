@@ -11,7 +11,7 @@ const trimSlashes = input => stripLeadingSlash(stripTrailingSlash(input));
 const MAX_NODE_VERSION = '8.10';
 
 module.exports = function getAWSConfig(hopsConfig) {
-  const awsConfig = hopsConfig._aws || hopsConfig.aws;
+  const awsConfig = hopsConfig._aws || hopsConfig.aws || {};
 
   const region =
     awsConfig.region ||
@@ -29,7 +29,7 @@ module.exports = function getAWSConfig(hopsConfig) {
     basePath: trimSlashes(hopsConfig.basePath) || '(none)',
     cloudformationTemplateFile: awsConfig.cloudformationTemplateFile,
     include: [hopsConfig.serverDir + '/**', ...(awsConfig.include || [])],
-    exclude: awsConfig.exclude,
+    exclude: [...(awsConfig.exclude || [])],
   };
 
   const targetNodeVersion =
