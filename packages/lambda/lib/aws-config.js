@@ -28,7 +28,7 @@ module.exports = function getAWSConfig(hopsConfig) {
     certificateArn: awsConfig.certificateArn,
     basePath: trimSlashes(hopsConfig.basePath) || '(none)',
     cloudformationTemplateFile: awsConfig.cloudformationTemplateFile,
-    include: [config.serverDir + '/**', ...(awsConfig.include || [])],
+    include: [hopsConfig.serverDir + '/**', ...(awsConfig.include || [])],
     exclude: awsConfig.exclude,
   };
 
