@@ -1,7 +1,7 @@
 import { render } from 'hops-react';
 import React from 'react';
 import { connect } from 'react-redux';
-import fetch from 'isomorphic-fetch';
+import fetch from 'cross-fetch';
 
 const reducers = {
   counter(state = 0, action) {

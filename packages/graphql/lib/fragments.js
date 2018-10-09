@@ -1,7 +1,6 @@
-/* global fetch */
 'use strict';
 
-require('isomorphic-fetch');
+const fetch = require('cross-fetch');
 const { access, readFile, writeFile } = require('fs');
 const { promisify } = require('util');
 const { graphql } = require('graphql');
