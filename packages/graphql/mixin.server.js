@@ -1,4 +1,3 @@
-require('isomorphic-fetch');
 const React = require('react');
 const { existsSync, readFileSync } = require('fs');
 const {
@@ -16,6 +15,7 @@ const {
   IntrospectionFragmentMatcher,
   HeuristicFragmentMatcher,
 } = require('apollo-cache-inmemory');
+const fetch = require('cross-fetch');
 
 let introspectionResult = undefined;
 let warned = false;
@@ -67,6 +67,7 @@ class GraphQLMixin extends Mixin {
       this.options.link ||
       new HttpLink({
         uri: this.config.graphqlUri,
+        fetch,
       })
     );
   }
