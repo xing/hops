@@ -23,7 +23,7 @@ describe('postcss production build', () => {
       `--template ${template}@${version}`,
     ].join(' ');
 
-    execSync(`${createHopsAppBin} ${args}`);
+    execSync(`${createHopsAppBin} ${args}`, { stdio: 'ignore' });
 
     const lockFile = path.join(cwd, name, 'yarn.lock');
 
@@ -40,7 +40,7 @@ describe('postcss production build', () => {
       `--npm`,
     ].join(' ');
 
-    execSync(`${createHopsAppBin} ${args}`);
+    execSync(`${createHopsAppBin} ${args}`, { stdio: 'ignore' });
 
     const lockFile = path.join(cwd, name, 'package-lock.json');
 
