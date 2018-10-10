@@ -7,7 +7,7 @@ class ProxyMixin extends Mixin {
     const proxyConfig = this.config.proxy;
 
     if (mode !== 'develop' || !proxyConfig) {
-      return app;
+      return;
     }
 
     if (typeof proxyConfig === 'string') {
@@ -48,8 +48,6 @@ class ProxyMixin extends Mixin {
         );
       });
     }
-
-    return app;
   }
 }
 

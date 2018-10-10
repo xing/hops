@@ -168,7 +168,7 @@ module.exports = class GraphQLMockServerMixin extends Mixin {
       console.warn(
         'Skip: GraphQL Mock-Server is not supported in production mode.'
       );
-      return rootApp;
+      return;
     }
 
     const app = express();
@@ -237,7 +237,5 @@ module.exports = class GraphQLMockServerMixin extends Mixin {
       console.log(`GraphQL mock file (${name}) was updated.`);
       this.updateMocks(mockFeatureMaps, allRemoteSchemas);
     });
-
-    return rootApp;
   }
 };

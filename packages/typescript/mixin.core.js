@@ -8,8 +8,6 @@ class TypescriptMixin extends Mixin {
       test: /\.tsx?$/,
       use: [{ loader: require.resolve('ts-loader') }],
     });
-
-    return webpackConfig;
   }
 }
 

@@ -10,8 +10,6 @@ class StyledComponentsMixin extends Mixin {
         fileName: target !== 'build',
       },
     ]);
-
-    return webpackConfig;
   }
 }
 
