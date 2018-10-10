@@ -1,7 +1,7 @@
 'use strict';
 
 var SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
-var RawSource = require('webpack-sources').RawSource;
+var { ConcatSource, RawSource } = require('webpack-sources');
 
 var PLUGIN_NAME = 'hops-service-worker-plugin';
 
@@ -26,19 +26,21 @@ module.exports = function ServiceWorkerPlugin({ workerFile, workerPath }) {
     }
 
     function onEmit(compilation, callback) {
-      compilation.assets[assetPath] = new RawSource(
-        'HOPS_ASSETS = ' +
-          JSON.stringify(
-            Object.keys(compilation.assets).filter(function(item) {
-              return (
-                !item.match(
-                  /hot-update\.js(:?on)?|\.webmanifest|\.map|assets\.json$/
-                ) && item !== assetPath
-              );
-            })
-          ) +
-          ';\n' +
-          compilation.assets[assetPath].source()
+      compilation.assets[publicWorkerFilename] = new ConcatSource(
+        new RawSource(
+          'HOPS_ASSETS = ' +
+            JSON.stringify(
+              Object.keys(compilation.assets).filter(function(item) {
+                return (
+                  !item.match(
+                    /hot-update\.js(:?on)?|\.webmanifest|\.map|assets\.json$/
+                  ) && item !== publicWorkerFilename
+                );
+              })
+            ) +
+            ';'
+        ),
+        compilation.assets[publicWorkerFilename]
       );
       callback();
     }
