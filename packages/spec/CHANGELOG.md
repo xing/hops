@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.39"></a>
+# [11.0.0-rc.39](https://github.com/xing/hops/compare/v11.0.0-rc.38...v11.0.0-rc.39) (2018-10-10)
+
+
+### Bug Fixes
+
+* **create-hops-app:** update package version ([67f9a07](https://github.com/xing/hops/commit/67f9a07))
+
+
+### Features
+
+* **create-hops-app:** init package ([cf02570](https://github.com/xing/hops/commit/cf02570))
+* remove usage of hops-template-minimal ([dc241a2](https://github.com/xing/hops/commit/dc241a2))
+
+
+
+
+
 <a name="11.0.0-rc.38"></a>
 # [11.0.0-rc.38](https://github.com/xing/hops/compare/v11.0.0-rc.37...v11.0.0-rc.38) (2018-10-05)
 

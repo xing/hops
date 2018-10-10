@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="11.0.0-rc.39"></a>
+# [11.0.0-rc.39](https://github.com/xing/hops/compare/v11.0.0-rc.38...v11.0.0-rc.39) (2018-10-10)
+
+**Note:** Version bump only for package hops-preset-defaults
+
+
+
+
+
 <a name="11.0.0-rc.38"></a>
 # [11.0.0-rc.38](https://github.com/xing/hops/compare/v11.0.0-rc.37...v11.0.0-rc.38) (2018-10-05)
 
