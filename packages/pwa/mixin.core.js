@@ -45,8 +45,6 @@ class PWAMixin extends Mixin {
         })
       );
     }
-
-    return webpackConfig;
   }
 }
 

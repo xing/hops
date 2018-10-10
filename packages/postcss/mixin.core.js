@@ -62,7 +62,6 @@ class PostCSSMixin extends Mixin {
         this.configureTargetNode(loaderConfigs);
         break;
     }
-    return webpackConfig;
   }
 
   configureTargetBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }) {

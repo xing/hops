@@ -23,7 +23,7 @@ module.exports = class CLIMixin {
     this.options = options;
   }
   registerCommands(yargs) {
-    return yargs.option('quiet', {
+    yargs.option('quiet', {
       alias: 'q',
       description: 'Silence log output',
       type: 'boolean',
@@ -46,7 +46,6 @@ module.exports = class CLIMixin {
         webpackConfig.plugins.push(new LoggerPlugin());
       }
     }
-    return webpackConfig;
   }
   inspectBuild(stats) {
     const { quiet } = this.options;

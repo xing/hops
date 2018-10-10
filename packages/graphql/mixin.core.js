@@ -3,7 +3,7 @@ const strip = require('strip-indent');
 
 class GraphQLMixin extends Mixin {
   registerCommands(yargs) {
-    return yargs.command('graphql', 'Execute GraphQL specific tasks', yargs =>
+    yargs.command('graphql', 'Execute GraphQL specific tasks', yargs =>
       yargs
         .usage('Usage: hops graphql <command>')
         .command({
@@ -43,14 +43,13 @@ class GraphQLMixin extends Mixin {
     );
   }
 
-  configureBuild(config, loaderConfigs) {
+  configureBuild(webpackConfig, loaderConfigs) {
     const { allLoaderConfigs } = loaderConfigs;
     const tagLoader = {
       test: /\.(graphql|gql)$/,
       loader: 'graphql-tag/loader',
     };
     allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, tagLoader);
-    return config;
   }
 }
 
