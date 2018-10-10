@@ -6,11 +6,10 @@ const serverlessHttp = require('serverless-http');
 const config = require('hops-config');
 const {
   internal: {
-    uri: { stripLeadingSlash, stripTrailingSlash },
+    uri: { trimSlashes },
   },
 } = require('@untool/express');
 
-const trimSlashes = input => stripLeadingSlash(stripTrailingSlash(input));
 const app = require('@untool/express').createServer('serve');
 
 const awsConfig = require('./lib/aws-config')(config);
