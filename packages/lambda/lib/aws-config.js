@@ -3,11 +3,9 @@
 const semver = require('semver');
 const {
   internal: {
-    uri: { stripLeadingSlash, stripTrailingSlash },
+    uri: { trimSlashes },
   },
 } = require('@untool/express');
-
-const trimSlashes = input => stripLeadingSlash(stripTrailingSlash(input));
 
 const MAX_NODE_VERSION = '8.10';
 
