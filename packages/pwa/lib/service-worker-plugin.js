@@ -1,21 +1,27 @@
 'use strict';
 
-var SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
-var { ConcatSource, RawSource } = require('webpack-sources');
+const SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
+const { ConcatSource, RawSource } = require('webpack-sources');
 
-var PLUGIN_NAME = 'hops-service-worker-plugin';
+const PLUGIN_NAME = 'hops-service-worker-plugin';
 
-module.exports = function ServiceWorkerPlugin({ workerFile, workerPath }) {
-  var assetPath = workerPath.replace(/^\/+/, '');
+module.exports = class ServiceWorkerPlugin {
+  constructor(options) {
+    this.options = options;
+  }
 
-  this.apply = function(compiler) {
+  apply(compiler) {
+    const { workerFile, workerPath } = this.options;
+
     if (!workerFile) {
       return;
     }
 
+    const publicWorkerFilename = workerPath.replace(/^\/+/, '');
+
     function onMake(compilation, callback) {
       compilation
-        .createChildCompiler(PLUGIN_NAME, { filename: assetPath }, [
+        .createChildCompiler(PLUGIN_NAME, { filename: publicWorkerFilename }, [
           new SingleEntryPlugin(
             compiler.context,
             require.resolve('./worker-shim'),
@@ -45,16 +51,7 @@ module.exports = function ServiceWorkerPlugin({ workerFile, workerPath }) {
       callback();
     }
 
-    if (typeof compiler.hooks !== 'undefined') {
-      compiler.hooks.make.tapAsync(PLUGIN_NAME, onMake);
-    } else {
-      compiler.plugin('make', onMake);
-    }
-
-    if (typeof compiler.hooks !== 'undefined') {
-      compiler.hooks.emit.tapAsync(PLUGIN_NAME, onEmit);
-    } else {
-      compiler.plugin('emit', onEmit);
-    }
-  };
+    compiler.hooks.make.tapAsync(PLUGIN_NAME, onMake);
+    compiler.hooks.emit.tapAsync(PLUGIN_NAME, onEmit);
+  }
 };
