@@ -2,7 +2,6 @@ describe('typescript developmet server', () => {
   let url;
 
   beforeAll(async () => {
-    jest.setTimeout(30000);
     url = await HopsCLI.start();
   });
 

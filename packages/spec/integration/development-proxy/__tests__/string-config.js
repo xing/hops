@@ -8,8 +8,6 @@ describe('development proxy string config', () => {
   let url;
 
   beforeAll(async () => {
-    jest.setTimeout(30000);
-
     const packageJsonPath = path.join(global.cwd, 'package.json');
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
     packageJson.hops.port = PORT;

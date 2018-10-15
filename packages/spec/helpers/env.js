@@ -52,6 +52,7 @@ class FixtureEnvironment extends NodeEnvironment {
 
     this.global.createPage = async () => {
       const page = await browser.newPage();
+      page.setDefaultNavigationTimeout(2 * 60 * 1000);
       page.on('error', error => {
         throw error;
       });

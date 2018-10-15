@@ -38,7 +38,6 @@ function invokeFunction(root, path) {
 
 describe('lambda production build', () => {
   beforeAll(async () => {
-    jest.setTimeout(60000);
     await HopsCLI.build('-p');
   });
 

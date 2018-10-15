@@ -2,7 +2,6 @@ describe('react-postcss', () => {
   let url;
 
   beforeAll(async () => {
-    jest.setTimeout(30000);
     url = await HopsCLI.start();
   });
 
