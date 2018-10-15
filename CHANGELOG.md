@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.40](https://github.com/xing/hops/compare/v11.0.0-rc.39...v11.0.0-rc.40) (2018-10-15)
+
+
+### Bug Fixes
+
+* adapt to new untool exports and config loader ([ea86491](https://github.com/xing/hops/commit/ea86491))
+* remove superfluous react-router dependency ([f9970ba](https://github.com/xing/hops/commit/f9970ba))
+* **lambda:** use trimSlashes from untool/express package ([f3f002e](https://github.com/xing/hops/commit/f3f002e))
+* **pwa:** don't break source-maps when adding HOPS_ASSETS to sw.js ([3ef63ef](https://github.com/xing/hops/commit/3ef63ef))
+
+
+
+
+
 <a name="11.0.0-rc.39"></a>
 # [11.0.0-rc.39](https://github.com/xing/hops/compare/v11.0.0-rc.38...v11.0.0-rc.39) (2018-10-10)
 

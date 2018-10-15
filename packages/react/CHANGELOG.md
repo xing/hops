@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.40](https://github.com/xing/hops/compare/v11.0.0-rc.39...v11.0.0-rc.40) (2018-10-15)
+
+
+### Bug Fixes
+
+* remove superfluous react-router dependency ([f9970ba](https://github.com/xing/hops/commit/f9970ba))
+
+
+
+
+
 <a name="11.0.0-rc.39"></a>
 # [11.0.0-rc.39](https://github.com/xing/hops/compare/v11.0.0-rc.38...v11.0.0-rc.39) (2018-10-10)
 
