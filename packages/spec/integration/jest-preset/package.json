@@ -9,7 +9,8 @@
     "preset": "jest-preset-hops",
     "testPathIgnorePatterns": [
       "__tests__/setup"
-    ]
+    ],
+    "setupTestFrameworkScriptFile": "../../jest.setup.js"
   },
   "dependencies": {
     "hops-preset-jest": "*"

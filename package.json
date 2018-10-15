@@ -114,8 +114,8 @@
   ],
   "jest": {
     "projects": [
-      "packages/!(spec)",
-      "packages/spec/integration/*"
+      "<rootDir>/packages/!(spec)",
+      "<rootDir>/packages/spec/integration/*"
     ]
   },
   "devDependencies": {

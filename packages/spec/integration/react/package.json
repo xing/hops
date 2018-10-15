@@ -9,7 +9,8 @@
     "mixins": ["./"]
   },
   "jest": {
-    "testEnvironment": "../../helpers/env.js"
+    "testEnvironment": "../../helpers/env.js",
+    "setupTestFrameworkScriptFile": "../../jest.setup.js"
   },
   "scripts": {
     "start": "hops start",

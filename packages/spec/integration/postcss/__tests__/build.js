@@ -2,7 +2,6 @@ describe('postcss production build', () => {
   let url;
 
   beforeAll(async () => {
-    jest.setTimeout(30000);
     url = await HopsCLI.start('-p');
   });
 

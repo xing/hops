@@ -2,16 +2,13 @@ const path = require('path');
 const { existsSync, readFileSync } = require('fs');
 const { execSync } = require('child_process');
 
-const ONE_MINUTE = 60 * 1000;
-
 const createHopsAppBin = require.resolve('create-hops-app');
 
-describe('postcss production build', () => {
+describe('create-hops-app', () => {
   const version = 'next';
   const template = 'hops-template-react';
 
   beforeAll(() => {
-    jest.setTimeout(5 * ONE_MINUTE);
     process.chdir(cwd);
   });
 
