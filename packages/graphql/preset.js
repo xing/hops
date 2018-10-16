@@ -1,8 +1,7 @@
 module.exports = {
   fragmentsFile: '<rootDir>/fragmentTypes.json',
-  graphqlSchemaFile: '',
   graphqlUri: '',
-  graphqlMocks: '',
-  enableGraphqlMockServer: process.env.NODE_ENV !== 'production',
+  graphqlSchemaFile: '',
+  graphqlMockSchemaFile: '',
   mixins: [__dirname],
 };
