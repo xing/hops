@@ -22,7 +22,7 @@
     "@untool/express": "^1.0.0-rc.4",
     "archiver": "^3.0.0",
     "aws-sdk": "^2.286.2",
-    "globby": "^7.1.1",
+    "globby": "^8.0.0",
     "hops-config": "11.0.0-rc.40",
     "hops-mixin": "11.0.0-rc.40",
     "prompt": "^1.0.0",
