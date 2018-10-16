@@ -1,0 +1,21 @@
+{
+  "name": "fixture-hot-module-reload",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js",
+    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-preset-defaults": "*",
+    "hops-react": "*"
+  }
+}
