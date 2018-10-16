@@ -1,4 +1,13 @@
-import githubSchema from './github/schema.graphql';
+import fetch from 'cross-fetch';
+import { print } from 'graphql';
+import {
+  mergeSchemas,
+  makeExecutableSchema,
+  makeRemoteExecutableSchema,
+  introspectSchema,
+} from 'graphql-tools';
+
+import github from './github/schema.graphql';
 import exercise1Resolvers from './exercise1/resolvers';
 import exercise2Resolvers from './exercise2/resolvers';
 import exercise2Schema from './exercise2/schema.graphql';
@@ -17,14 +26,8 @@ import exercise8Schema from './exercise8/schema.graphql';
 import exercise9Resolvers from './exercise9/resolvers';
 import exercise9Schema from './exercise9/schema.graphql';
 
-export const schemas = [
-  {
-    url: 'https://api.github.com/graphql',
-    headers: {
-      Authorization: `bearer ${process.env.GITHUB_API_TOKEN}`,
-    },
-  },
-  githubSchema,
+const typeDefs = [
+  github,
   exercise2Schema,
   exercise3Schema,
   exercise4Schema,
@@ -33,9 +36,9 @@ export const schemas = [
   exercise7Schema,
   exercise8Schema,
   exercise9Schema,
-];
+].map(schema => print(schema));
 
-export const resolvers = [
+const resolvers = [
   exercise1Resolvers,
   exercise2Resolvers,
   exercise3Resolvers,
@@ -46,3 +49,56 @@ export const resolvers = [
   exercise8Resolvers,
   exercise9Resolvers,
 ];
+
+const localSchema = makeExecutableSchema({
+  typeDefs,
+  resolverValidationOptions: {
+    requireResolversForResolveType: false,
+  },
+});
+
+const remoteSchemaOptions = {
+  url: 'https://api.github.com/graphql',
+  headers: {
+    Authorization: `bearer ${process.env.GITHUB_API_TOKEN}`,
+  },
+};
+
+const fetcher = async ({ query, variables, operationName, url, headers }) => {
+  const fetchResult = await fetch(url, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query: print(query), variables, operationName }),
+  });
+  return fetchResult.json();
+};
+
+export default async function createSchema() {
+  let remoteSchemaContent;
+  try {
+    remoteSchemaContent = await introspectSchema(options =>
+      fetcher({ ...options, ...remoteSchemaOptions })
+    );
+  } catch (error) {
+    console.log(
+      'GraphQL Mock Server: Cannot introspect schema from',
+      remoteSchemaOptions.url
+    );
+  }
+
+  let remoteSchema;
+  if (remoteSchemaContent) {
+    remoteSchema = makeRemoteExecutableSchema({
+      schema: remoteSchemaContent,
+      fetcher: options => fetcher({ ...options, ...remoteSchemaOptions }),
+    });
+  }
+
+  return mergeSchemas({
+    schemas: [remoteSchema, localSchema].filter(Boolean),
+    resolvers,
+  });
+}

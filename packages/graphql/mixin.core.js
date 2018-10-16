@@ -47,7 +47,7 @@ class GraphQLMixin extends Mixin {
   }
 
   configureServer(rootApp, middleware) {
-    if (!this.config.graphqlMocks || !this.config.enableGraphqlMockServer) {
+    if (!this.config.graphqlMockSchemaFile) {
       return;
     }
 
@@ -89,7 +89,9 @@ class GraphQLMixin extends Mixin {
       webpackConfig.output.filename = 'hops-graphql-mock-server.js';
 
       Object.assign(webpackConfig.resolve.alias, {
-        'hops-graphql-mocks': require.resolve(this.config.graphqlMocks),
+        'hops-graphql/schema': require.resolve(
+          this.config.graphqlMockSchemaFile
+        ),
         '@untool/entrypoint': require.resolve('./lib/mock-server-middleware'),
       });
 
