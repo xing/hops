@@ -34,4 +34,22 @@ describe('hot module reload', () => {
 
     await page.close();
   });
+
+  // test against regression where reloading would not work after changing a file
+  // https://github.com/untool/untool/pull/189
+  it('allows to reload after a file change', async () => {
+    const { page } = await createPage();
+    await page.goto(url, { waitUntil: 'networkidle2' });
+
+    changeFile('two');
+    await page.waitForSelector('#two', { timeout: 10000 });
+
+    await page.reload();
+    await page.waitForSelector('#two', { timeout: 10000 });
+
+    changeFile('three');
+    await page.waitForSelector('#three', { timeout: 10000 });
+
+    await page.close();
+  });
 });
