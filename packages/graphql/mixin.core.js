@@ -1,3 +1,4 @@
+const { existsSync: exists } = require('fs');
 const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
 const {
@@ -46,15 +47,13 @@ class GraphQLMixin extends Mixin {
     );
   }
 
-  configureServer(rootApp, middleware) {
-    if (!this.config.graphqlMockSchemaFile) {
+  configureServer(rootApp, middleware, mode) {
+    if (
+      !this.config.graphqlMockSchemaFile ||
+      !exists(this.config.graphqlMockSchemaFile) ||
+      mode !== 'develop'
+    ) {
       return;
-    }
-
-    if (process.env.NODE_ENV === 'production') {
-      console.warn(
-        'It is not recommended to run the GraphQL Mock Server in production.'
-      );
     }
 
     middleware.preroutes.unshift(
@@ -74,15 +73,12 @@ class GraphQLMixin extends Mixin {
     };
     allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, tagLoader);
 
-    if (!Array.isArray(webpackConfig.externals)) {
-      webpackConfig.externals = [];
-    }
     webpackConfig.externals.push('encoding');
 
     if (target === 'graphql-mock-server') {
       webpackConfig.externals.push(
-        'express',
         'apollo-server-express',
+        'express',
         'graphql'
       );
 

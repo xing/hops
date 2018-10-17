@@ -1,14 +1,15 @@
 const { ApolloServer } = require('apollo-server-express');
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const hopsConfig = require('hops-config');
 const { isSchema } = require('graphql');
+const hopsConfig = require('hops-config');
 
 /* eslint-disable node/no-missing-require */
 // this is an alias (defined in mixin.core.js) to the user-supplied mock schema
 // file.
 let schema = require('hops-graphql/schema');
 /* eslint-enable node/no-missing-require */
+
 if (!isSchema(schema)) {
   if (typeof schema === 'function') {
     schema = schema();
