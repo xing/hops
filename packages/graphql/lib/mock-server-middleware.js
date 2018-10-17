@@ -1,34 +1,21 @@
-const { ApolloServer } = require('apollo-server-express');
-const cookieParser = require('cookie-parser');
-const express = require('express');
-const { isSchema } = require('graphql');
-const hopsConfig = require('hops-config');
-
-/* eslint-disable node/no-missing-require */
+import { ApolloServer } from 'apollo-server-express';
+import cookieParser from 'cookie-parser';
+import express from 'express';
+import hopsConfig from 'hops-config';
+/* eslint-disable import/no-unresolved */
 // this is an alias (defined in mixin.core.js) to the user-supplied mock schema
-// file.
-let schema = require('hops-graphql/schema');
-/* eslint-enable node/no-missing-require */
-
-if (!isSchema(schema)) {
-  if (typeof schema === 'function') {
-    schema = schema();
-  } else if (isSchema(schema.default)) {
-    schema = schema.default;
-  } else if (typeof schema.default === 'function') {
-    schema = schema.default();
-  } else {
-    throw new Error(
-      `Invalid schema exported in ${hopsConfig.graphqlMockSchemaFile}`
-    );
-  }
-}
+import schema from 'hops-graphql/schema';
+/* eslint-enable import/no-unresolved */
 
 const app = express();
 app.use(cookieParser());
 
-module.exports = (req, res, next) => {
-  Promise.resolve(schema).then(schema => {
+const schemaPromise = Promise.resolve(
+  typeof schema === 'function' ? schema() : schema
+);
+
+export default (req, res, next) => {
+  schemaPromise.then(schema => {
     const server = new ApolloServer({
       schema,
       context: ({ req }) => ({ req, config: hopsConfig }),
