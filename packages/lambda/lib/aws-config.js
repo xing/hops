@@ -1,11 +1,7 @@
 'use strict';
 
 const semver = require('semver');
-const {
-  internal: {
-    uri: { trimSlashes },
-  },
-} = require('@untool/express');
+const { trimSlashes } = require('pathifist');
 
 const MAX_NODE_VERSION = '8.10';
 

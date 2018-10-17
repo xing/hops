@@ -3,11 +3,9 @@ const postcssPresetEnv = require('postcss-preset-env');
 const ExtractCSSPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const { Mixin } = require('hops-mixin');
-const {
-  internal: {
-    uri: { resolveRelative },
-  },
-} = require('@untool/express');
+const { join, trimSlashes } = require('pathifist');
+
+const getAssetPath = (...args) => trimSlashes(join(...args));
 
 const cssLoaderOptions = {
   camelCase: true,
@@ -81,11 +79,11 @@ class PostCSSMixin extends Mixin {
 
     webpackConfig.plugins.push(
       new ExtractCSSPlugin({
-        filename: resolveRelative(
+        filename: getAssetPath(
           this.config.assetPath,
           '[name]-[contenthash:12].css'
         ),
-        chunkFilename: resolveRelative(
+        chunkFilename: getAssetPath(
           this.config.assetPath,
           '[name]-[contenthash:12].css'
         ),

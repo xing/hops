@@ -4,11 +4,7 @@ process.env.NODE_ENV = 'production';
 
 const serverlessHttp = require('serverless-http');
 const config = require('hops-config');
-const {
-  internal: {
-    uri: { trimSlashes },
-  },
-} = require('@untool/express');
+const { trimSlashes } = require('pathifist');
 
 const app = require('@untool/express').createServer('serve');
 
