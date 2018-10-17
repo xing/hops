@@ -1,10 +1,8 @@
 const { Mixin } = require('hops-mixin');
-const {
-  internal: {
-    uri: { resolveRelative },
-  },
-} = require('@untool/express');
+const { join, trimSlashes } = require('pathifist');
 const ServiceWorkerPlugin = require('./lib/service-worker-plugin');
+
+const getAssetPath = (...args) => trimSlashes(join(...args));
 
 class PWAMixin extends Mixin {
   configureBuild(webpackConfig, { allLoaderConfigs }, target) {
@@ -14,10 +12,7 @@ class PWAMixin extends Mixin {
         {
           loader: require.resolve('file-loader'),
           options: {
-            name: resolveRelative(
-              this.config.assetPath,
-              '[name]-[hash:16].[ext]'
-            ),
+            name: getAssetPath(this.config.assetPath, '[name]-[hash:16].[ext]'),
             emitFile: target === 'build' || target === 'develop',
           },
         },
