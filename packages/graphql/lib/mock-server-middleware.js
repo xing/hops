@@ -2,10 +2,7 @@ import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import hopsConfig from 'hops-config';
-/* eslint-disable import/no-unresolved */
-// this is an alias (defined in mixin.core.js) to the user-supplied mock schema
 import schema from 'hops-graphql/schema';
-/* eslint-enable import/no-unresolved */
 
 const app = express();
 app.use(cookieParser());
