@@ -48,11 +48,11 @@ class GraphQLMixin extends Mixin {
   }
 
   configureServer(rootApp, middleware, mode) {
-    if (
-      !this.config.graphqlMockSchemaFile ||
-      !exists(this.config.graphqlMockSchemaFile) ||
-      mode !== 'develop'
-    ) {
+    const mockFileExists =
+      this.config.graphqlMockSchemaFile &&
+      exists(this.config.graphqlMockSchemaFile);
+
+    if (!mockFileExists || mode !== 'develop') {
       return;
     }
 
@@ -67,13 +67,26 @@ class GraphQLMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs, target) {
     const { allLoaderConfigs } = loaderConfigs;
 
-    const tagLoader = {
+    allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, {
       test: /\.(graphql|gql)$/,
       loader: 'graphql-tag/loader',
-    };
-    allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, tagLoader);
+    });
 
     webpackConfig.externals.push('encoding');
+
+    if (process.env.NODE_ENV === 'production') {
+      return;
+    }
+
+    const mockFileExists =
+      this.config.graphqlMockSchemaFile &&
+      exists(this.config.graphqlMockSchemaFile);
+
+    if (mockFileExists) {
+      webpackConfig.resolve.alias['hops-graphql/schema'] = require.resolve(
+        this.config.graphqlMockSchemaFile
+      );
+    }
 
     if (target === 'graphql-mock-server') {
       webpackConfig.externals.push(
@@ -83,13 +96,9 @@ class GraphQLMixin extends Mixin {
       );
 
       webpackConfig.output.filename = 'hops-graphql-mock-server.js';
-
-      Object.assign(webpackConfig.resolve.alias, {
-        'hops-graphql/schema': require.resolve(
-          this.config.graphqlMockSchemaFile
-        ),
-        '@untool/entrypoint': require.resolve('./lib/mock-server-middleware'),
-      });
+      webpackConfig.resolve.alias['@untool/entrypoint'] = require.resolve(
+        './lib/mock-server-middleware'
+      );
 
       webpackConfig.plugins = webpackConfig.plugins.filter(
         p => !(p instanceof StatsFilePlugin)
