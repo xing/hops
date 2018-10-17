@@ -1,6 +1,6 @@
 {
   "name": "hops-graphql",
-  "version": "11.0.0-rc.40",
+  "version": "11.0.0-rc.41",
   "description": "React and GraphQL implementation for Hops",
   "keywords": [
     "hops",
@@ -28,7 +28,7 @@
     "express": "^4.16.3",
     "graphql": "^14.0.0",
     "graphql-tools": "^3.1.1",
-    "hops-mixin": "11.0.0-rc.40",
+    "hops-mixin": "11.0.0-rc.41",
     "node-watch": "^0.5.8",
     "strip-indent": "^2.0.0"
   },

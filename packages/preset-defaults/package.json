@@ -1,6 +1,6 @@
 {
   "name": "hops-preset-defaults",
-  "version": "11.0.0-rc.40",
+  "version": "11.0.0-rc.41",
   "description": "Hops default preset",
   "keywords": [
     "hops",
@@ -19,6 +19,6 @@
     "@untool/express": "^1.0.0-rc.5",
     "@untool/webpack": "^1.0.0-rc.5",
     "@untool/yargs": "^1.0.0-rc.5",
-    "hops-express": "11.0.0-rc.40"
+    "hops-express": "11.0.0-rc.41"
   }
 }

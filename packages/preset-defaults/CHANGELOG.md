@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.41](https://github.com/xing/hops/compare/v11.0.0-rc.40...v11.0.0-rc.41) (2018-10-17)
+
+
+### Bug Fixes
+
+* upgrade untool to 1.0.0-rc.4 ([3bdc48d](https://github.com/xing/hops/commit/3bdc48d))
+
+
+
+
+
 # [11.0.0-rc.40](https://github.com/xing/hops/compare/v11.0.0-rc.39...v11.0.0-rc.40) (2018-10-15)
 
 **Note:** Version bump only for package hops-preset-defaults
