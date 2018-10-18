@@ -1,5 +1,5 @@
 {
-  "name": "fixture-graphql",
+  "name": "fixture-graphql-mock-server",
   "version": "1.0.0",
   "private": true,
   "engines": {
@@ -9,8 +9,7 @@
     "shouldPrefetchOnServer": false,
     "port": "8029",
     "graphqlUri": "http://localhost:8029/graphql",
-    "fragmentsFile": "<rootDir>/fragmentTypes.json",
-    "graphqlMockSchemaFile": "<rootDir>/mocks/index.js"
+    "graphqlMockSchemaFile": "<rootDir>/mock-schema.js"
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
