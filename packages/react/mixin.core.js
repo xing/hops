@@ -4,8 +4,7 @@ class ReactCoreMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig }) {
     jsLoaderConfig.options.plugins.push(
       require.resolve('@babel/plugin-transform-flow-strip-types'),
-      require.resolve('@babel/plugin-proposal-class-properties'),
-      require.resolve('@babel/plugin-proposal-object-rest-spread')
+      require.resolve('@babel/plugin-proposal-class-properties')
     );
 
     const untoolImportPluginIndex = jsLoaderConfig.options.plugins.findIndex(
