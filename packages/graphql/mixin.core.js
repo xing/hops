@@ -48,11 +48,7 @@ class GraphQLMixin extends Mixin {
   }
 
   configureServer(rootApp, middleware, mode) {
-    const mockFileExists =
-      this.config.graphqlMockSchemaFile &&
-      exists(this.config.graphqlMockSchemaFile);
-
-    if (!mockFileExists || mode !== 'develop') {
+    if (!exists(this.config.graphqlMockSchemaFile) || mode !== 'develop') {
       return;
     }
 
@@ -78,11 +74,7 @@ class GraphQLMixin extends Mixin {
       return;
     }
 
-    const mockFileExists =
-      this.config.graphqlMockSchemaFile &&
-      exists(this.config.graphqlMockSchemaFile);
-
-    if (mockFileExists) {
+    if (exists(this.config.graphqlMockSchemaFile)) {
       webpackConfig.resolve.alias['hops-graphql/schema'] = require.resolve(
         this.config.graphqlMockSchemaFile
       );
