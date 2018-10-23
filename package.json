@@ -111,7 +111,7 @@
   ],
   "workspaces": [
     "packages/*",
-    "spec/"
+    "spec"
   ],
   "jest": {
     "projects": [
