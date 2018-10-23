@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.43](https://github.com/xing/hops/compare/v11.0.0-rc.42...v11.0.0-rc.43) (2018-10-23)
+
+**Note:** Version bump only for package hops-styled-components
+
+
+
+
+
 # [11.0.0-rc.42](https://github.com/xing/hops/compare/v11.0.0-rc.41...v11.0.0-rc.42) (2018-10-23)
 
 **Note:** Version bump only for package hops-styled-components
