@@ -1,6 +1,6 @@
 {
   "name": "hops-template-react",
-  "version": "11.0.0-rc.41",
+  "version": "11.0.0-rc.42",
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
@@ -17,9 +17,9 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "hops-postcss": "11.0.0-rc.41",
-    "hops-preset-defaults": "11.0.0-rc.41",
-    "hops-react": "11.0.0-rc.41",
+    "hops-postcss": "11.0.0-rc.42",
+    "hops-preset-defaults": "11.0.0-rc.42",
+    "hops-react": "11.0.0-rc.42",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -28,9 +28,9 @@
   },
   "devDependencies": {
     "babel-core": "^7.0.0-0",
-    "hops": "11.0.0-rc.41",
+    "hops": "11.0.0-rc.42",
     "jest": "^23.4.2",
-    "jest-preset-hops": "11.0.0-rc.41",
+    "jest-preset-hops": "11.0.0-rc.42",
     "react-test-renderer": "^16.4.2"
   },
   "jest": {

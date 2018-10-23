@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.42](https://github.com/xing/hops/compare/v11.0.0-rc.41...v11.0.0-rc.42) (2018-10-23)
+
+
+### Bug Fixes
+
+* **graphql:** allow CORS for credentials include ([b209f8d](https://github.com/xing/hops/commit/b209f8d))
+
+
+### Features
+
+* **graphql:** ensure mock schema is usable in mock-server and app too ([894999e](https://github.com/xing/hops/commit/894999e))
+* **graphql:** ensure mock-server is only being used in development ([33ee7d4](https://github.com/xing/hops/commit/33ee7d4))
+
+
+
+
+
 # [11.0.0-rc.41](https://github.com/xing/hops/compare/v11.0.0-rc.40...v11.0.0-rc.41) (2018-10-17)
 
 **Note:** Version bump only for package hops-graphql
