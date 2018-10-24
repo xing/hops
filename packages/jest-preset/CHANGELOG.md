@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.44](https://github.com/xing/hops/compare/v11.0.0-rc.43...v11.0.0-rc.44) (2018-10-24)
+
+**Note:** Version bump only for package jest-preset-hops
+
+
+
+
+
 # [11.0.0-rc.43](https://github.com/xing/hops/compare/v11.0.0-rc.42...v11.0.0-rc.43) (2018-10-23)
 
 **Note:** Version bump only for package jest-preset-hops

@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "11.0.0-rc.43",
+  "version": "11.0.0-rc.44",
   "private": true,
   "files": [],
   "eslintConfig": {
@@ -25,7 +25,7 @@
     "node": ">=8.10.0"
   },
   "devDependencies": {
-    "create-hops-app": "11.0.0-rc.43",
+    "create-hops-app": "11.0.0-rc.44",
     "cross-fetch": "^2.2.2",
     "fs-extra": "^7.0.0",
     "jest": "^23.4.2",
