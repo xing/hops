@@ -7,45 +7,64 @@ const { join, trimSlashes } = require('pathifist');
 
 const getAssetPath = (...args) => trimSlashes(join(...args));
 
-const cssLoaderOptions = {
+const cssLoaderLocalOptions = {
   camelCase: true,
   modules: true,
   localIdentName: '[folder]-[name]-[local]-[hash:8]',
   sourceMap: process.env.NODE_ENV !== 'production',
 };
 
-const getCSSLoaderConfig = browsers => ({
-  test: [/\.css$/],
-  use: [
-    {
-      loader: require.resolve('css-loader'),
-      options: {
-        ...cssLoaderOptions,
-        importLoaders: 1,
+const cssLoaderGlobalOptions = {
+  modules: false,
+  sourceMap: process.env.NODE_ENV !== 'production',
+};
+
+const getCSSLoaderConfig = (browsers, additionalLoader) => {
+  const getLoaders = options =>
+    [
+      additionalLoader,
+      {
+        loader: require.resolve('css-loader'),
+        options: {
+          ...options,
+          importLoaders: 1,
+        },
       },
-    },
-    {
-      loader: require.resolve('postcss-loader'),
-      options: {
-        ident: 'postcss',
-        plugins: [
-          postcssImportPlugin(),
-          postcssPresetEnv({
-            browsers,
-            stage: 2,
-            features: {
-              'nesting-rules': true,
-              'custom-media-queries': true,
-              'custom-properties': {
-                preserve: false,
+      {
+        loader: require.resolve('postcss-loader'),
+        options: {
+          ident: 'postcss',
+          plugins: [
+            postcssImportPlugin(),
+            postcssPresetEnv({
+              browsers,
+              stage: 2,
+              features: {
+                'nesting-rules': true,
+                'custom-media-queries': true,
+                'custom-properties': {
+                  preserve: false,
+                },
               },
-            },
-          }),
-        ],
+            }),
+          ],
+        },
       },
-    },
-  ],
-});
+    ].filter(Boolean);
+
+  return {
+    test: [/\.css$/],
+    oneOf: [
+      {
+        resourceQuery: /global/,
+        use: getLoaders(cssLoaderGlobalOptions),
+      },
+      {
+        use: getLoaders(cssLoaderLocalOptions),
+      },
+    ],
+  };
+};
 
 class PostCSSMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs, target) {
@@ -63,18 +82,10 @@ class PostCSSMixin extends Mixin {
   }
 
   configureTargetBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }) {
-    const loaderConfig = {
-      ...getCSSLoaderConfig(this.config.browsers),
-      use: [
-        ExtractCSSPlugin.loader,
-        ...getCSSLoaderConfig(this.config.browsers).use,
-      ],
-    };
-
     allLoaderConfigs.splice(
       allLoaderConfigs.indexOf(jsLoaderConfig),
       0,
-      loaderConfig
+      getCSSLoaderConfig(this.config.browsers, ExtractCSSPlugin.loader)
     );
 
     webpackConfig.plugins.push(
@@ -104,26 +115,37 @@ class PostCSSMixin extends Mixin {
   }
 
   configureTargetDevelop({ allLoaderConfigs, jsLoaderConfig }) {
-    const loaderConfig = {
-      ...getCSSLoaderConfig(this.config.browsers),
-      use: [
-        require.resolve('style-loader'),
-        ...getCSSLoaderConfig(this.config.browsers).use,
-      ],
-    };
-
     allLoaderConfigs.splice(
       allLoaderConfigs.indexOf(jsLoaderConfig),
       0,
-      loaderConfig
+      getCSSLoaderConfig(this.config.browsers, require.resolve('style-loader'))
     );
   }
 
   configureTargetNode({ allLoaderConfigs, jsLoaderConfig }) {
     const cssLoaderConfig = {
       test: [/\.css$/],
-      loader: require.resolve('css-loader/locals'),
-      options: cssLoaderOptions,
+      oneOf: [
+        {
+          resourceQuery: /global/,
+          use: {
+            loader: require.resolve('css-loader/locals'),
+            options: {
+              ...cssLoaderGlobalOptions,
+              importLoaders: 0,
+            },
+          },
+        },
+        {
+          use: {
+            loader: require.resolve('css-loader/locals'),
+            options: {
+              ...cssLoaderLocalOptions,
+              importLoaders: 0,
+            },
+          },
+        },
+      ],
     };
 
     allLoaderConfigs.splice(

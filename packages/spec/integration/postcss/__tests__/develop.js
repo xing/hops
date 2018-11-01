@@ -36,4 +36,19 @@ describe('react-postcss', () => {
 
     await page.close();
   });
+
+  it('supports gobal un-hashed CSS classnames', async () => {
+    const { page } = await createPage();
+    await page.goto(url, { waitUntil: 'networkidle2' });
+
+    const { backgroundColor, animationDuration } = await page.evaluate(() => {
+      const { backgroundColor, animationDuration } = window.getComputedStyle(
+        document.querySelector('h1')
+      );
+      return { backgroundColor, animationDuration };
+    });
+
+    expect(backgroundColor).toBe('rgb(255, 0, 255)');
+    expect(animationDuration).toBe('1s');
+  });
 });
