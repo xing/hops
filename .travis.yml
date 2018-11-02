@@ -26,4 +26,4 @@ before_script:
   - yarn lint
 
 script:
-  - yarn test --maxWorkers=2 --ci
+  - ./node_modules/.bin/jest --maxWorkers=2 --ci
