@@ -14,7 +14,7 @@ const {
   IntrospectionFragmentMatcher,
   HeuristicFragmentMatcher,
 } = require('apollo-cache-inmemory');
-const fetch = require('cross-fetch');
+require('cross-fetch/polyfill');
 
 class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
@@ -44,7 +44,7 @@ class GraphQLMixin extends Mixin {
       this.options.link ||
       new HttpLink({
         uri: this.config.graphqlUri,
-        fetch,
+        fetch: global.fetch,
       })
     );
   }
