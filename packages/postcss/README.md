@@ -33,6 +33,23 @@ export default render(<h1 className={styles.headline}>hello</h1>);
 
 Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/postcss) as an example for how to use this preset.
 
+#### CSS Modules opt-out
+
+Sometimes it can be necessary to import an external CSS-file without applying CSS Modules to them, to keep their class names intact.
+
+You can opt-out of CSS Modules by importing the respective file with the `global` query parameter.
+
+```js
+import 'animate.css/animate.min.css?global';
+```
+
+Depending on your ESLint rules, you might need to ignore the import line as there can be issues with the non-standard query parameter.
+
+```js
+/* eslint-disable-next-line import/no-unresolved */
+import 'animate.css/animate.min.css?global';
+```
+
 ### Configuration
 
 #### Preset Options
