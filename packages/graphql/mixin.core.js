@@ -1,9 +1,17 @@
-const { existsSync: exists } = require('fs');
 const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
 const {
   internal: { createWebpackMiddleware, StatsFilePlugin },
 } = require('@untool/webpack');
+
+function exists(path) {
+  try {
+    require.resolve(path);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
 
 class GraphQLMixin extends Mixin {
   registerCommands(yargs) {
