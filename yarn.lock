@@ -8677,6 +8677,11 @@ pathifist@^0.0.2:
   resolved "https://registry.yarnpkg.com/pathifist/-/pathifist-0.0.2.tgz#e6254383377bd7c2cd9affe585a6579c128768b9"
   integrity sha512-U3A85WGFi1zJi1OiL9jU5XZiX25qTrCTnVwu1evIXbSqDXxOPh2Sh/WEmGQwf7A4fidNIu1FaXHdGlcMiIUHyg==
 
+pathifist@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/pathifist/-/pathifist-1.0.0.tgz#f60d702c367a9316631f9d27b273f3776974d12f"
+  integrity sha512-kj1CVlOQfrgF3gYiqnoojni+lsLAC3iQC9TkONUXyetcR4A6JwdpBiHs/u8zctZxvxeaa4zwELQwVDRt7qAkvQ==
+
 pbkdf2@^3.0.3:
   version "3.0.17"
   resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.17.tgz#976c206530617b14ebb32114239f7b09336e93a6"

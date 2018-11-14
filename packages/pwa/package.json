@@ -24,7 +24,7 @@
     "app-manifest-loader": "^2.0.0",
     "file-loader": "^2.0.0",
     "hops-mixin": "11.0.0-rc.44",
-    "pathifist": "^0.0.2",
+    "pathifist": "^1.0.0",
     "webpack": "^4.16.5",
     "webpack-sources": "^1.1.0"
   }
