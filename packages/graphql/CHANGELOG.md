@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.45](https://github.com/xing/hops/compare/v11.0.0-rc.44...v11.0.0-rc.45) (2018-11-15)
+
+
+### Bug Fixes
+
+* **graphql:** align exists check and resolve algo for graphqlMockSchemaFile ([36dbd4c](https://github.com/xing/hops/commit/36dbd4c))
+* **graphql:** prefer polyfill over ponyfill ([93b23bb](https://github.com/xing/hops/commit/93b23bb))
+
+
+
+
+
 # [11.0.0-rc.44](https://github.com/xing/hops/compare/v11.0.0-rc.43...v11.0.0-rc.44) (2018-10-24)
 
 
