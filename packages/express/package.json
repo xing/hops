@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "11.0.0-rc.45",
+  "version": "11.0.0-rc.46",
   "description": "Customization for the our express server",
   "keywords": [
     "hops",
@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "compression": "^1.7.3",
-    "hops-mixin": "11.0.0-rc.45"
+    "hops-mixin": "11.0.0-rc.46"
   }
 }
