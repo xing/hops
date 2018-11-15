@@ -37,7 +37,7 @@ describe('react-postcss', () => {
     await page.close();
   });
 
-  it('supports gobal un-hashed CSS classnames', async () => {
+  it('supports global un-hashed CSS classnames', async () => {
     const { page } = await createPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 
