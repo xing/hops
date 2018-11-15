@@ -19,7 +19,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/yargs": "^1.0.0-rc.8",
+    "@untool/yargs": "^1.0.0-rc.9",
     "enhanced-resolve": "^4.1.0",
     "find-up": "^3.0.0",
     "pretty-ms": "^3.2.0",
