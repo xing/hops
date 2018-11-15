@@ -122,8 +122,8 @@ function init(root, appName, options) {
             (isCLIInstalledGlobally()
               ? 'hops'
               : pm.isGlobalCliUsingYarn(appRoot)
-                ? 'yarn'
-                : 'npm'),
+              ? 'yarn'
+              : 'npm'),
           'start`',
           'to fire up a development server with hot module reloading.'
         );
@@ -134,7 +134,7 @@ function init(root, appName, options) {
             : (pm.isGlobalCliUsingYarn(appRoot)
                 ? '`yarn hops`'
                 : '`npx hops@' + options.hopsVersion + '`') +
-              ' or install the "hops" package globally.'
+                ' or install the "hops" package globally.'
         );
       })
       .catch(error => {
