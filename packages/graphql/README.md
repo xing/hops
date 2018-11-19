@@ -222,10 +222,10 @@ Hook to return a custom [ApolloCache](https://www.apollographql.com/docs/react/a
 
 Allows to get the [fragment matcher](https://www.apollographql.com/docs/react/advanced/fragments.html) that needs to be passed to the `ApolloCache`. Useful if you plan to override `getApolloCache`.
 
-#### `shouldPrefetchOnServer(): boolean` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **server**
+#### `canPrefetchOnServer(): boolean` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **server**
 
-This is an overrideable hook that can be used to customize the behavior of when Hops should prefetch data during server-side rendering. E.g. execute GraphQL queries during initial render.
+This is a hook that can be used to customize the behavior of when Hops can prefetch data during server-side rendering. E.g. execute GraphQL queries during initial render. If any function of this sequence returns false it prevents server fetching for this request.
 
-By default it returns whatever is configured in the [`shouldPrefetchOnServer` preset option](#shouldprefetchonserver) or `true` if the config is not set.
+By default it returns whatever is configured in the [`shouldPrefetchOnServer` preset option](#shouldPrefetchOnServer).
 
 In case you need more control over the server-side rendering you can implement this method and provide your own implementation that decides if data should be prefetched during server-side rendering.
