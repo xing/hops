@@ -3,7 +3,7 @@ const { existsSync, readFileSync } = require('fs');
 const {
   Mixin,
   strategies: {
-    sync: { override, callable },
+    sync: { override, callable, sequence },
   },
 } = require('hops-mixin');
 
@@ -101,16 +101,15 @@ class GraphQLMixin extends Mixin {
   }
 
   prefetchData(element) {
-    return this.shouldPrefetchOnServer()
-      ? getDataFromTree(element)
-      : Promise.resolve();
+    const prefetchOnServer = this.canPrefetchOnServer().every(value => value);
+
+    return prefetchOnServer ? getDataFromTree(element) : Promise.resolve();
   }
 
-  shouldPrefetchOnServer() {
+  canPrefetchOnServer() {
     const { shouldPrefetchOnServer } = this.config;
-    return typeof shouldPrefetchOnServer === 'boolean'
-      ? shouldPrefetchOnServer
-      : true;
+
+    return shouldPrefetchOnServer !== false;
   }
 
   getTemplateData(data) {
@@ -136,7 +135,7 @@ GraphQLMixin.strategies = {
   getApolloLink: override,
   getApolloCache: override,
   createFragmentMatcher: callable,
-  shouldPrefetchOnServer: override,
+  canPrefetchOnServer: sequence,
 };
 
 module.exports = GraphQLMixin;
