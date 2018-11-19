@@ -3,5 +3,6 @@ module.exports = {
   graphqlUri: '',
   graphqlSchemaFile: '',
   graphqlMockSchemaFile: '',
+  graphqlMockServerPath: '/graphql',
   mixins: [__dirname],
 };
