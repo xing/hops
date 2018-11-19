@@ -20,6 +20,7 @@ export default (req, res, next) => {
 
     server.applyMiddleware({
       app,
+      path: hopsConfig.graphqlMockServerPath,
       cors: {
         credentials: true,
         origin: true,
