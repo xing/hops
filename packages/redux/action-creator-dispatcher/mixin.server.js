@@ -2,7 +2,7 @@
 const { createLocation } = require('history/LocationUtils');
 const {
   strategies: {
-    sync: { override },
+    sync: { sequence },
   },
 } = require('hops-mixin');
 
@@ -11,22 +11,30 @@ const ReduxActionCreatorCommonMixin = require('./mixin.runtime-common');
 class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
   bootstrap(request) {
     this.request = request;
-    this.prefetchedOnServer = this.shouldPrefetchOnServer();
   }
 
-  shouldPrefetchOnServer() {
+  canPrefetchOnServer() {
     const { shouldPrefetchOnServer } = this.config;
-    return typeof shouldPrefetchOnServer === 'boolean'
-      ? shouldPrefetchOnServer
-      : true;
+
+    return shouldPrefetchOnServer !== false;
   }
 
   async fetchData(data) {
-    if (this.prefetchedOnServer) {
+    const _hopsPrefetchedOnServer = this.canPrefetchOnServer().every(
+      value => value
+    );
+
+    if (_hopsPrefetchedOnServer) {
       await this.dispatchAll(createLocation(this.request.path));
     }
 
-    return data;
+    return {
+      ...data,
+      globals: {
+        ...data.globals,
+        _hopsPrefetchedOnServer,
+      },
+    };
   }
 
   getTemplateData(data) {
@@ -34,14 +42,14 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
       ...data,
       globals: {
         ...data.globals,
-        _hopsPrefetchedOnServer: this.prefetchedOnServer,
+        ...(data.fetchedData || {}).globals,
       },
     };
   }
 }
 
 ReduxActionCreatorServerMixin.strategies = {
-  shouldPrefetchOnServer: override,
+  canPrefetchOnServer: sequence,
 };
 
 module.exports = ReduxActionCreatorServerMixin;
