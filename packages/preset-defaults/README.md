@@ -40,7 +40,7 @@ This preset does not have own configuration, but here is a list of the most impo
 | `basePath`  | `String`             | `''`             | `/my-app`                                                         | _no_     | The URL base path from which your application will be served                                 |
 | `assetPath` | `String`             | `<basePath>`     | `<basePath>/assets`                                               | _no_     | The URL base path from which the assets will be served from                                  |
 | `buildDir`  | `String`             | `<rootDir>/dist` | `<rootDir>/out`                                                   | _no_     | The directory in which the build outputs will be written to                                  |
-| `browsers`  | `String`             | `defaults`       | `last 1 Chrome versions`                                          | _no_     | A browserslist query to specify targets for which to transpile/polyfill.                     |
+| `browsers`  | `Array<String>`      | `['defaults']`   | [`last 1 Chrome versions`]                                        | _no_     | An array of browserslist queries to specify targets for which to transpile/polyfill.         |
 | `node`      | `String`             | `current`        | `8.10`                                                            | _no_     | A Node.js version identifier or `current` to specify for which target to transpile/polyfill. |
 
 Head over to [`@untool/express`](https://github.com/untool/untool/tree/master/packages/express#settings) and [`@untool/webpack`](https://github.com/untool/untool/tree/master/packages/webpack#settings) to read more about these configuration options.
