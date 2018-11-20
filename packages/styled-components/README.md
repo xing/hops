@@ -40,7 +40,7 @@ This preset has no preset configuration options.
 
 #### Render Options
 
-This preset has only a single runtime option which can be passed to the `render()` options inside the `styled` key (see example above).
+This preset has only a single runtime option which can be passed to the `render()` options inside the `styled` key (see example below).
 
 | Name           | Type     | Default | Required | Description                                                  |
 | -------------- | -------- | ------- | -------- | ------------------------------------------------------------ |
