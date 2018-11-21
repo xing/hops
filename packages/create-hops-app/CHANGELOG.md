@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.47](https://github.com/xing/hops/compare/v11.0.0-rc.46...v11.0.0-rc.47) (2018-11-21)
+
+
+### Bug Fixes
+
+* **create-hops-app:** make yarn create work with [@next](https://github.com/next) tagged version ([3727ffb](https://github.com/xing/hops/commit/3727ffb))
+
+
+
+
+
 # [11.0.0-rc.46](https://github.com/xing/hops/compare/v11.0.0-rc.45...v11.0.0-rc.46) (2018-11-15)
 
 **Note:** Version bump only for package create-hops-app

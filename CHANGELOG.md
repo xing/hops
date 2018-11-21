@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.47](https://github.com/xing/hops/compare/v11.0.0-rc.46...v11.0.0-rc.47) (2018-11-21)
+
+
+### Bug Fixes
+
+* upgrade untool ([d20228b](https://github.com/xing/hops/commit/d20228b))
+* **create-hops-app:** make yarn create work with [@next](https://github.com/next) tagged version ([3727ffb](https://github.com/xing/hops/commit/3727ffb))
+* **graphql:** lazily instantiate client to free up bootstrap hook ([4cf2713](https://github.com/xing/hops/commit/4cf2713))
+* **template-graphql:** change browserlist to be an array ([bd81daf](https://github.com/xing/hops/commit/bd81daf))
+* **template-react:** change browserlist to be an array ([4b42b6e](https://github.com/xing/hops/commit/4b42b6e))
+* **template-redux:** change browserlist to be an array ([1e9e81e](https://github.com/xing/hops/commit/1e9e81e))
+
+
+### Features
+
+* **graphql:** make graphql mock server path configurable ([66e10c4](https://github.com/xing/hops/commit/66e10c4))
+
+
+
+
+
 # [11.0.0-rc.46](https://github.com/xing/hops/compare/v11.0.0-rc.45...v11.0.0-rc.46) (2018-11-15)
 
 
