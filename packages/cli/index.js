@@ -1,5 +1,17 @@
 'use strict';
 
+const {
+  render,
+  Header,
+  Import,
+  Miss,
+  Status,
+  ServerDataContext,
+  withServerData,
+  ConfigContext,
+  withConfig,
+} = require('hops-react');
+
 module.exports = {
   get init() {
     return require('./lib/init').init;
@@ -7,4 +19,13 @@ module.exports = {
   get run() {
     return require('./lib/run').run;
   },
+  Header,
+  Import,
+  Miss,
+  Status,
+  render,
+  ServerDataContext,
+  withServerData,
+  ConfigContext,
+  withConfig,
 };
