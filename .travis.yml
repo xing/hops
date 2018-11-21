@@ -5,15 +5,15 @@ node_js:
   - '10'
 
 env:
-  - HOST=0.0.0.0
+  matrix:
+    - HOST=0.0.0.0
+  global:
+    secure: Y9+828Yz6paFT+P+od0+TmQijvrOP8CjkI9B2ia78ew1P46P0XeDq0713FlkyObzBCdTrtNHC7OrxzP7O+uDhX6d1x3aPFrfQCFg/v7soWiNtwIZ2XmQX7LCK2/tNRWJVVhVznIaUbUrm88Qikg/6nlZUrV4TgJOxl8GirJ1beC3NYTdFFsQImXT5l7uyy/8PA+7eKc/NqG+zK9paER9GykZjU8NxKPOKv0Zw9fXtZeoU5bVju3HJ6XAAiieSiCJhuvbyqmPl6lF49VPREWUnw8OSN9URZYHTNObYsUYQxPCse/ITmFilHNvJrlu9joR8t8875IlDtogkUh25ePgeo/KLsPuIXKCg6A5D4avsg8qQ7i2BvO2LObm0KQLbcITyPni667/NZv7A5rJ6+jce5mpj+XEpq4KiuDz4/Y5IaLTjbabW4XUbJFmI0mYVmwUGpce/4DpvzWb2Gak42w96+Kp3IqggJpKdGpLs6KxUw28ZeaxRlDHdRpeCCNHHjYm1D67YcblR73WGnsPqQPqCSwBA5JwwqXob/fArJ3PfQi4dkJd+iZaPAEIdkUXnOxLqnxK8+Y1mx4/RvIWR0MxreeyT/+elWSF52zInxu0UF/WV1yG8wmxh+sBAlJuXzpT4e4nDOvnRnWmRyhqDybwcC8nE/VuELWMT7/3CKxNiX8=
 
 cache:
   yarn: true
   directories:
-    - 'node_modules'
-
-git:
-  depth: 3
+    - node_modules
 
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -26,4 +26,11 @@ before_script:
   - yarn lint
 
 script:
-  - ./node_modules/.bin/jest --maxWorkers=2 --ci
+  - './node_modules/.bin/jest --maxWorkers=2 --ci'
+
+deploy:
+  provider: script
+  script: './node_modules/.bin/conventional-github-releaser -p angular'
+  on:
+    branch: master
+    tags: true
