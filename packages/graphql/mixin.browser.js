@@ -23,8 +23,11 @@ class GraphQLMixin extends Mixin {
     this.options = options;
   }
 
-  bootstrap() {
-    this.client = this.createClient(this.options);
+  getApolloClient() {
+    if (this.client) {
+      return this.client;
+    }
+    return (this.client = this.createClient(this.options));
   }
 
   createClient(options) {
@@ -70,7 +73,7 @@ class GraphQLMixin extends Mixin {
   enhanceElement(reactElement) {
     return React.createElement(
       ApolloProvider,
-      { client: this.client },
+      { client: this.getApolloClient() },
       reactElement
     );
   }
