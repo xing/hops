@@ -45,8 +45,11 @@ class GraphQLMixin extends Mixin {
     }
   }
 
-  bootstrap() {
-    this.client = this.createClient(this.options);
+  getApolloClient() {
+    if (this.client) {
+      return this.client;
+    }
+    return (this.client = this.createClient(this.options));
   }
 
   createClient(options) {
@@ -94,7 +97,7 @@ class GraphQLMixin extends Mixin {
         globals: {
           ...(data.globals || {}),
           APOLLO_FRAGMENT_TYPES: introspectionResult,
-          APOLLO_STATE: this.client.cache.extract(),
+          APOLLO_STATE: this.getApolloClient().cache.extract(),
         },
       };
     });
@@ -125,7 +128,7 @@ class GraphQLMixin extends Mixin {
   enhanceElement(reactElement) {
     return React.createElement(
       ApolloProvider,
-      { client: this.client },
+      { client: this.getApolloClient() },
       reactElement
     );
   }
