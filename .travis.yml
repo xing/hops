@@ -32,5 +32,4 @@ deploy:
   provider: script
   script: './node_modules/.bin/conventional-github-releaser -p angular'
   on:
-    branch: master
     tags: true
