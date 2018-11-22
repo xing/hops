@@ -1,4 +1,4 @@
-import { Miss, render } from 'hops-react';
+import { Miss, render } from 'hops';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from './home';

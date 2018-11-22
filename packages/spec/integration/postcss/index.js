@@ -1,4 +1,4 @@
-import { render } from 'hops-react';
+import { render } from 'hops';
 import React from 'react';
 import styles from './styles.css';
 /* eslint-disable import/no-unresolved */

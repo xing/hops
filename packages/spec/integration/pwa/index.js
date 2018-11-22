@@ -1,5 +1,5 @@
 import installServiceWorker from 'hops-pwa';
-import { render } from 'hops-react';
+import { render } from 'hops';
 import React from 'react';
 
 installServiceWorker();

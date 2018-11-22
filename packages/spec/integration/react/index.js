@@ -7,7 +7,8 @@ import {
   Status,
   ConfigContext,
   withConfig,
-} from 'hops-react';
+} from 'hops';
+
 import React from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import FlowText from './flow-text';

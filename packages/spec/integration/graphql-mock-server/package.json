@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-react": "*",
     "hops-graphql": "*"
   }
 }

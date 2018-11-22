@@ -1,4 +1,4 @@
-import { render } from 'hops-react';
+import { render } from 'hops';
 import React from 'react';
 import styled from 'styled-components';
 
