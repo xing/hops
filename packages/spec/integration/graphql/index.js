@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { render } from 'hops-react';
+import { render } from 'hops';
 import React from 'react';
 import { Query } from 'react-apollo';
 

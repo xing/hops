@@ -21,7 +21,6 @@
   "dependencies": {
     "hops": "*",
     "hops-lambda": "*",
-    "hops-react": "*",
     "react": "*",
     "react-dom": "*",
     "react-helmet": "*",

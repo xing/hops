@@ -14,7 +14,6 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "*",
-    "hops-react": "*"
+    "hops": "*"
   }
 }

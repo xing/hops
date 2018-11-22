@@ -14,7 +14,7 @@ class ReactCoreMixin extends Mixin {
 
     jsLoaderConfig.options.plugins[untoolImportPluginIndex] = [
       jsLoaderConfig.options.plugins[untoolImportPluginIndex],
-      { module: 'hops-react' },
+      { module: 'hops' },
     ];
   }
 }

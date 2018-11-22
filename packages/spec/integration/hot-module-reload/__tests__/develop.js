@@ -3,7 +3,7 @@ const path = require('path');
 
 function changeFile(id) {
   const content = `
-  import { render } from 'hops-react';
+  import { render } from 'hops';
   import React from 'react';
   export default render(<h1 id="${id}">hello</h1>);
   `;

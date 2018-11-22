@@ -1,4 +1,4 @@
-import { render } from 'hops-react';
+import { render } from 'hops';
 import React from 'react';
 import { connect } from 'react-redux';
 import fetch from 'cross-fetch';

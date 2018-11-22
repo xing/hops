@@ -1,4 +1,4 @@
-import { Miss, render } from 'hops-react';
+import { Miss, render } from 'hops';
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import Counter from './counter';
