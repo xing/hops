@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-preset-defaults": "*",
     "hops-pwa": "*",
     "hops-react": "*"
   }

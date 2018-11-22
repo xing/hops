@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-preset-defaults": "*",
     "hops-react": "*",
     "hops-graphql": "*"
   }

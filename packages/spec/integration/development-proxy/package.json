@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-preset-defaults": "*",
     "hops-development-proxy": "*"
   }
 }
