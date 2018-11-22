@@ -27,10 +27,10 @@ function isYarnAvailable() {
 }
 module.exports.isYarnAvailable = isYarnAvailable;
 
-function isGlobalCliUsingYarn(projectPath) {
+function hasBeenInstalledViaYarn(projectPath) {
   return fs.existsSync(path.join(projectPath, 'yarn.lock'));
 }
-module.exports.isGlobalCliUsingYarn = isGlobalCliUsingYarn;
+module.exports.hasBeenInstalledViaYarn = hasBeenInstalledViaYarn;
 
 function installPackages(packages, type, options) {
   var command = null;
@@ -97,3 +97,10 @@ function isPackageInstalled(name) {
   }
 }
 module.exports.isPackageInstalled = isPackageInstalled;
+
+function isUsingNpxOrNpm(env) {
+  const { npm_execpath: execPath = '', _: lastArg = '' } = env;
+  const isNpx = execPath.endsWith('npx') || lastArg.endsWith('npx');
+  return isNpx || execPath.endsWith('npm') || lastArg.endsWith('npm');
+}
+module.exports.isUsingNpxOrNpm = isUsingNpxOrNpm;

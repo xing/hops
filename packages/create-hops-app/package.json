@@ -20,6 +20,10 @@
   },
   "dependencies": {
     "hops": "^11.0.0-rc.50",
+    "load-json-file": "^5.1.0",
+    "tar": "^4.4.6",
+    "validate-npm-package-name": "^3.0.0",
+    "write-pkg": "^3.2.0",
     "yargs": "^12.0.0"
   }
 }

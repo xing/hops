@@ -13,12 +13,6 @@ const {
 } = require('hops-react');
 
 module.exports = {
-  get init() {
-    return require('./lib/init').init;
-  },
-  get run() {
-    return require('./lib/run').run;
-  },
   Header,
   Import,
   Miss,

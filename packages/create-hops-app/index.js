@@ -3,13 +3,10 @@
 
 const path = require('path');
 const yargs = require('yargs');
-const createApp = require('hops/lib/create-app');
 
+const createApp = require('./lib/create-app');
+const { isUsingNpxOrNpm } = require('./lib/package-manager');
 const { version } = require('./package.json');
-
-const { npm_execpath: execPath = '', _: lastArg = '' } = process.env;
-const isNpx = execPath.endsWith('npx') || lastArg.endsWith('npx');
-const isNpm = isNpx || execPath.endsWith('npm') || lastArg.endsWith('npm');
 
 const options = yargs
   .version(version)
@@ -34,7 +31,7 @@ const options = yargs
   .option('npm', {
     type: 'boolean',
     describe: 'Force usage of `npm` instead of yarn',
-    default: isNpm,
+    default: isUsingNpxOrNpm(process.env),
   })
   .example(
     '$0 my-project',
