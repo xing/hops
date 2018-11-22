@@ -26,11 +26,7 @@
     "find-up": "^3.0.0",
     "hops-express": "^11.0.0-rc.50",
     "hops-react": "^11.0.0-rc.50",
-    "pretty-ms": "^3.2.0",
-    "resolve-cwd": "^2.0.0",
-    "tar": "^4.4.6",
-    "validate-npm-package-name": "^3.0.0",
-    "yargs": "^12.0.1"
+    "pretty-ms": "^3.2.0"
   },
   "peerDependencies": {
     "react": "^16.3.0",

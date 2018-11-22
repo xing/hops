@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const resolveCwd = require('resolve-cwd');
 const validatePackageName = require('validate-npm-package-name');
+const { sync: writePkg } = require('write-pkg');
 
 const pm = require('./package-manager');
 
@@ -41,29 +41,18 @@ function createDirectory(root, name) {
   fs.mkdirSync(root);
 }
 
-function writePackageManifest(root, name) {
-  fs.writeFileSync(
-    path.join(root, 'package.json'),
-    JSON.stringify(
-      {
-        name: name,
-        version: '1.0.0',
-        private: true,
-      },
-      null,
-      2
-    )
-  );
-}
-
 module.exports = function init(options, root) {
   const name = options.projectName;
   const appDir = path.join(root, name);
 
   validateName(name);
   createDirectory(appDir, name);
-  writePackageManifest(appDir, name);
+  writePkg(path.join(appDir, 'package.json'), {
+    name: name,
+    version: '1.0.0',
+    private: true,
+  });
   process.chdir(appDir);
   pm.installPackages(['hops@' + options.hopsVersion], 'prod', options);
-  require(resolveCwd.silent('hops')).init(root, name, options);
+  require('./init').init(root, name, options);
 };
