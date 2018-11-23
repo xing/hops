@@ -6,7 +6,9 @@
     "node": ">= 8.10"
   },
   "hops": {
-    "mixins": ["./"]
+    "mixins": ["./"],
+    "hoc": "hoc-test-value",
+    "context": "context-test-value"
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
