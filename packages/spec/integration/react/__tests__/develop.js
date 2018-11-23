@@ -112,4 +112,22 @@ describe('react developmet server', () => {
 
     await page.close();
   });
+
+  it('renders config with hoc', async () => {
+    const { page } = await createPage();
+    await page.goto(url + '/config-hoc', { waitUntil: 'networkidle2' });
+
+    expect(await page.content()).toMatch('hoc-test-value');
+
+    await page.close();
+  });
+
+  it('passes config through context', async () => {
+    const { page } = await createPage();
+    await page.goto(url + '/config-context', { waitUntil: 'networkidle2' });
+
+    expect(await page.content()).toMatch('context-test-value');
+
+    await page.close();
+  });
 });

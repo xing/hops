@@ -5,11 +5,15 @@ import {
   render,
   ServerDataContextConsumer,
   Status,
+  ConfigContext,
+  withConfig,
 } from 'hops-react';
 import React from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import FlowText from './flow-text';
 const Text = Import('./text');
+
+const Config = withConfig(({ config: { hoc } }) => <h1>{hoc}</h1>);
 
 export default render(
   <div>
@@ -29,6 +33,16 @@ export default render(
       />
       <Route path="/flow" exact render={() => <FlowText text="flow" />} />
       <Route path="/import" exact render={() => <Text text="imported" />} />
+      <Route path="/config-hoc" exact render={() => <Config />} />
+      <Route
+        path="/config-context"
+        exact
+        render={() => (
+          <ConfigContext.Consumer>
+            {({ context }) => <h1>{context}</h1>}
+          </ConfigContext.Consumer>
+        )}
+      />
       <Miss />
     </Switch>
   </div>

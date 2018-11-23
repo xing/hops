@@ -8,6 +8,9 @@ const {
 const { Consumer } = require('./server-data/context');
 const withServerData = require('./server-data/with-server-data');
 
+const ConfigContext = require('./config/context');
+const withConfig = require('./config/with-config');
+
 module.exports = {
   Header,
   Import,
@@ -16,4 +19,6 @@ module.exports = {
   render,
   ServerDataContextConsumer: Consumer,
   withServerData,
+  ConfigContext,
+  withConfig,
 };
