@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-const { dirname, join } = require('path');
+const { join } = require('path');
 const { configure } = require('@untool/yargs');
 
 configure({
