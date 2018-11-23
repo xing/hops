@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.48](https://github.com/xing/hops/compare/v11.0.0-rc.47...v11.0.0-rc.48) (2018-11-23)
+
+
+### Bug Fixes
+
+* **react:** deep import react runtime components from [@untool](https://github.com/untool)/react ([f61a51f](https://github.com/xing/hops/commit/f61a51f))
+
+
+
+
+
 # [11.0.0-rc.47](https://github.com/xing/hops/compare/v11.0.0-rc.46...v11.0.0-rc.47) (2018-11-21)
 
 
