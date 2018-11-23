@@ -12,6 +12,8 @@ const {
   withConfig,
 } = require('hops-react');
 
+const { Mixin, strategies } = require('hops-mixin');
+
 module.exports = {
   Header,
   Import,
@@ -22,4 +24,6 @@ module.exports = {
   withServerData,
   ConfigContext,
   withConfig,
+  Mixin,
+  strategies,
 };

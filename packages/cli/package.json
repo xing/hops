@@ -25,6 +25,7 @@
     "enhanced-resolve": "^4.1.0",
     "find-up": "^3.0.0",
     "hops-express": "^11.0.0-rc.50",
+    "hops-mixin": "^11.0.0-rc.50",
     "hops-react": "^11.0.0-rc.50",
     "pretty-ms": "^3.2.0"
   },
