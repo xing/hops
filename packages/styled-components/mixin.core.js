@@ -6,6 +6,7 @@ class StyledComponentsMixin extends Mixin {
       require.resolve('babel-plugin-styled-components'),
       {
         ssr: true,
+        pure: true,
         displayName: target !== 'build',
         fileName: target !== 'build',
       },
