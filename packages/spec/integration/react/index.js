@@ -3,7 +3,7 @@ import {
   Import,
   Miss,
   render,
-  ServerDataContextConsumer,
+  ServerDataContext,
   Status,
   ConfigContext,
   withConfig,
@@ -18,9 +18,9 @@ const Config = withConfig(({ config: { hoc } }) => <h1>{hoc}</h1>);
 export default render(
   <div>
     <Link to="/two">Link to two</Link>
-    <ServerDataContextConsumer>
+    <ServerDataContext.Consumer>
       {({ method }) => <output>{method}</output>}
-    </ServerDataContextConsumer>
+    </ServerDataContext.Consumer>
     <Switch>
       <Route path="/" exact render={() => <h1>home</h1>} />
       <Route path="/two" exact render={() => <h1>two</h1>} />

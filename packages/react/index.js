@@ -5,7 +5,7 @@ const {
   Miss,
   Status,
 } = require('@untool/react/lib/runtime');
-const { Consumer } = require('./server-data/context');
+const ServerDataContext = require('./server-data/context');
 const withServerData = require('./server-data/with-server-data');
 
 const ConfigContext = require('./config/context');
@@ -17,7 +17,7 @@ module.exports = {
   Miss,
   Status,
   render,
-  ServerDataContextConsumer: Consumer,
+  ServerDataContext,
   withServerData,
   ConfigContext,
   withConfig,
