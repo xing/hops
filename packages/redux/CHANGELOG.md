@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.49](https://github.com/xing/hops/compare/v11.0.0-rc.48...v11.0.0-rc.49) (2018-11-29)
+
+
+### Bug Fixes
+
+* **redux:** always set prefetchedOnServer member variable ([6e7d156](https://github.com/xing/hops/commit/6e7d156))
+
+
+
+
+
 # [11.0.0-rc.48](https://github.com/xing/hops/compare/v11.0.0-rc.47...v11.0.0-rc.48) (2018-11-23)
 
 **Note:** Version bump only for package hops-redux

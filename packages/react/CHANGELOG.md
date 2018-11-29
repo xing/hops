@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.49](https://github.com/xing/hops/compare/v11.0.0-rc.48...v11.0.0-rc.49) (2018-11-29)
+
+
+### Features
+
+* **react:** add withConfig hoc and context ([d5c35b7](https://github.com/xing/hops/commit/d5c35b7))
+* **react:** export entire ServerDataContext instead Consumer only ([1b4b8ea](https://github.com/xing/hops/commit/1b4b8ea))
+
+
+
+
+
 # [11.0.0-rc.48](https://github.com/xing/hops/compare/v11.0.0-rc.47...v11.0.0-rc.48) (2018-11-23)
 
 
