@@ -6,6 +6,7 @@ module.exports = {
       'jest-preset-hops/mocks/file.js',
     '^.+\\.tpl$': 'jest-preset-hops/mocks/tpl.js',
     '^.+\\.css$': 'identity-obj-proxy',
+    hops: 'hops/runtime.js',
   },
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   transform: {
