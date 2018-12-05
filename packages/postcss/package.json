@@ -27,6 +27,6 @@
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.0.0",
     "style-loader": "^0.23.0",
-    "webpack": "^4.16.5"
+    "webpack": "^4.23.0"
   }
 }
