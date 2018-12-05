@@ -19,14 +19,14 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "graphql-tag": "^2.6.1",
+    "graphql-tag": "^2.10.0",
     "hops-graphql": "11.0.0-rc.50",
     "hops-postcss": "11.0.0-rc.50",
     "hops-preset-defaults": "11.0.0-rc.50",
     "hops-react": "11.0.0-rc.50",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
-    "react-apollo": "^2.1.9",
+    "react-apollo": "^2.2.3",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
