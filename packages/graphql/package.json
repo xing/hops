@@ -34,7 +34,7 @@
   },
   "peerDependencies": {
     "graphql-tag": "^2.5.0",
-    "react": "^16.3.0",
+    "react": "^16.4.0",
     "react-apollo": "^2.0.0"
   },
   "devDependencies": {
