@@ -12,7 +12,7 @@ const debug = require('debug')('hops-spec:test-helpers');
 const resolveFrom = require('resolve-from');
 
 const build = async ({ cwd, argv = [] }) => {
-  const hopsBin = resolveFrom(cwd, 'hops/commands/hops');
+  const hopsBin = resolveFrom(cwd, 'hops/bin');
   const command = `${hopsBin} build ${argv.join(' ')}`;
   debug('Starting', command);
   await exec(command, { cwd });
@@ -24,7 +24,7 @@ const startServer = ({ cwd, command, argv = [] }) =>
     let onTeardown;
     const teardownPromise = new Promise(resolve => (onTeardown = resolve));
 
-    const hopsBin = resolveFrom(cwd, 'hops/commands/hops');
+    const hopsBin = resolveFrom(cwd, 'hops/bin');
 
     const args = [command].concat(argv);
     debug('Spawning server', [hopsBin, ...args].join(' '));
