@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.50](https://github.com/xing/hops/compare/v11.0.0-rc.49...v11.0.0-rc.50) (2018-12-05)
+
+
+### Bug Fixes
+
+* upgrade untool packages ([9be2e1e](https://github.com/xing/hops/commit/9be2e1e))
+
+
+
+
+
 # [11.0.0-rc.49](https://github.com/xing/hops/compare/v11.0.0-rc.48...v11.0.0-rc.49) (2018-11-29)
 
 **Note:** Version bump only for package hops-pwa

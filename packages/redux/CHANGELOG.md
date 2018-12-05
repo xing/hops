@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.50](https://github.com/xing/hops/compare/v11.0.0-rc.49...v11.0.0-rc.50) (2018-12-05)
+
+
+### Bug Fixes
+
+* update minimum peer dependency versions for react(-dom) ([0fb3884](https://github.com/xing/hops/commit/0fb3884))
+
+
+
+
+
 # [11.0.0-rc.49](https://github.com/xing/hops/compare/v11.0.0-rc.48...v11.0.0-rc.49) (2018-11-29)
 
 
