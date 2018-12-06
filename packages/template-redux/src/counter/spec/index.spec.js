@@ -1,12 +1,13 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import CounterContainer, { mapStateToProps } from '../';
 
 describe('Counter container', () => {
-  let store;
+  let mockStore;
 
   beforeEach(() => {
-    store = {
+    mockStore = {
       subscribe: jest.fn(),
       dispatch: jest.fn(),
       getState: jest.fn(() => ({ counter: 0 })),
@@ -14,7 +15,14 @@ describe('Counter container', () => {
   });
 
   it('should render correctly', () => {
-    const tree = renderer.create(<CounterContainer store={store} />).toJSON();
+    const tree = renderer
+      .create(
+        <Provider store={mockStore}>
+          <CounterContainer />
+        </Provider>
+      )
+      .toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
