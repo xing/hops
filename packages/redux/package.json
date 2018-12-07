@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "history": "^4.7.2",
-    "hops-mixin": "11.0.0-rc.50",
+    "hops-mixin": "^11.0.0-rc.50",
     "prop-types": "^15.6.2"
   },
   "peerDependencies": {

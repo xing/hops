@@ -19,6 +19,6 @@
     "@untool/express": "^1.0.0-rc.13",
     "@untool/webpack": "^1.0.0-rc.13",
     "@untool/yargs": "^1.0.0-rc.13",
-    "hops-express": "11.0.0-rc.50"
+    "hops-express": "^11.0.0-rc.50"
   }
 }

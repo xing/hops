@@ -19,9 +19,9 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "hops-postcss": "11.0.0-rc.50",
-    "hops-preset-defaults": "11.0.0-rc.50",
-    "hops-react": "11.0.0-rc.50",
+    "hops-postcss": "^11.0.0-rc.50",
+    "hops-preset-defaults": "^11.0.0-rc.50",
+    "hops-react": "^11.0.0-rc.50",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
@@ -29,9 +29,9 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "hops": "11.0.0-rc.50",
+    "hops": "^11.0.0-rc.50",
     "jest": "^23.4.2",
-    "jest-preset-hops": "11.0.0-rc.50",
+    "jest-preset-hops": "^11.0.0-rc.50",
     "react-test-renderer": "^16.4.2"
   },
   "jest": {
