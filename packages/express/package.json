@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "compression": "^1.7.3",
-    "hops-mixin": "11.0.0-rc.50"
+    "hops-mixin": "^11.0.0-rc.50"
   }
 }

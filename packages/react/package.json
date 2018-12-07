@@ -23,7 +23,7 @@
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "@untool/core": "^1.0.0-rc.13",
     "@untool/react": "^1.0.0-rc.13",
-    "hops-mixin": "11.0.0-rc.50"
+    "hops-mixin": "^11.0.0-rc.50"
   },
   "peerDependencies": {
     "react": "^16.4.0",

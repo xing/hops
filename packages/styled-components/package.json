@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.9.2",
-    "hops-mixin": "11.0.0-rc.50"
+    "hops-mixin": "^11.0.0-rc.50"
   },
   "peerDependencies": {
     "react": "^16.4.0",
