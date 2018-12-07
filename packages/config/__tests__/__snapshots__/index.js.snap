@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hops-config node export should match snapshot 1`] = `
+Object {
+  "_config": Object {
+    "name": "hops-lerna-root",
+    "rootDir": "/home/zaubernerd/workspace/xing/hops",
+    "version": "0.0.0",
+  },
+  "_env": Object {},
+  "_mixins": Object {},
+  "_presets": Array [],
+  "name": "hops-lerna-root",
+  "rootDir": "/home/zaubernerd/workspace/xing/hops",
+  "version": "0.0.0",
+}
+`;
