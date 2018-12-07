@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`graphql preset should match snapshot 1`] = `
+Object {
+  "fragmentsFile": "<rootDir>/fragmentTypes.json",
+  "graphqlMockSchemaFile": "",
+  "graphqlMockServerPath": "/graphql",
+  "graphqlSchemaFile": "",
+  "graphqlUri": "",
+  "mixins": Array [
+    "/home/zaubernerd/workspace/xing/hops/packages/graphql",
+  ],
+  "shouldPrefetchOnServer": true,
+}
+`;
