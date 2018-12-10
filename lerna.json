@@ -1,7 +1,7 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "11.0.0-rc.51",
+  "version": "11.0.0-rc.52",
   "registry": "https://registry.npmjs.org/",
   "command": {
     "version": {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.52](https://github.com/xing/hops/compare/v11.0.0-rc.51...v11.0.0-rc.52) (2018-12-10)
+
+
+### Bug Fixes
+
+* **jest-preset:** use correct regex for "hops" module name mapper ([7dbfac4](https://github.com/xing/hops/commit/7dbfac4))
+
+
+
+
+
 # [11.0.0-rc.51](https://github.com/xing/hops/compare/v11.0.0-rc.50...v11.0.0-rc.51) (2018-12-10)
 
 
