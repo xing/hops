@@ -118,6 +118,7 @@ function init(root, appName, options) {
       .catch(error => {
         console.error('Error while unpacking tar archive:', tarball);
         console.error(error);
+        process.exit(1);
       });
   } else {
     console.error('Could not download tarball for:', template);
