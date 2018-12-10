@@ -9,7 +9,6 @@
     },
     "publish": {
       "message": "chore: release %s",
-      "exact": true,
       "conventionalCommits": true
     }
   }
