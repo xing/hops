@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.51](https://github.com/xing/hops/compare/v11.0.0-rc.50...v11.0.0-rc.51) (2018-12-10)
+
+
+### Bug Fixes
+
+* increase minimum required versions of (peer)-dependencies ([61e4197](https://github.com/xing/hops/commit/61e4197))
+* **styled-components:** add "react-dom" to peer dependencies ([66495c2](https://github.com/xing/hops/commit/66495c2))
+* use semver version ranges between all hops packages ([6816ebe](https://github.com/xing/hops/commit/6816ebe))
+
+
+
+
+
 # [11.0.0-rc.50](https://github.com/xing/hops/compare/v11.0.0-rc.49...v11.0.0-rc.50) (2018-12-05)
 
 

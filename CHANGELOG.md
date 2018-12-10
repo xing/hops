@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.51](https://github.com/xing/hops/compare/v11.0.0-rc.50...v11.0.0-rc.51) (2018-12-10)
+
+
+### Bug Fixes
+
+* **cli:** remove global CLI ([73c2bc4](https://github.com/xing/hops/commit/73c2bc4))
+* **cli:** split entries into "main", "browser" and "server" ([0a23f6e](https://github.com/xing/hops/commit/0a23f6e))
+* **graphql:** increase minimum version requirements for apollo ([76fe2f6](https://github.com/xing/hops/commit/76fe2f6))
+* **jest-preset:** add missing "babel-core" dependency ([6208b47](https://github.com/xing/hops/commit/6208b47))
+* **jest-preset:** provide runtime mock for "hops" package ([5538829](https://github.com/xing/hops/commit/5538829))
+* **react:** add missing "[@babel](https://github.com/babel)/core" dependency ([cebb37b](https://github.com/xing/hops/commit/cebb37b))
+* **redux:** increase peer dependency version range for "react-redux" ([fd4e78a](https://github.com/xing/hops/commit/fd4e78a))
+* **styled-components:** add "react-dom" to peer dependencies ([66495c2](https://github.com/xing/hops/commit/66495c2))
+* **template-graphql:** remove unused redux, react-redux dependencies ([d2d4168](https://github.com/xing/hops/commit/d2d4168))
+* change Import to importComponent ([94a1174](https://github.com/xing/hops/commit/94a1174))
+* increase minimum required versions of (peer)-dependencies ([61e4197](https://github.com/xing/hops/commit/61e4197))
+* make hops a dependendency instead devDependency ([0ba95e7](https://github.com/xing/hops/commit/0ba95e7))
+* remove "babel-core" from template dependencies ([558e720](https://github.com/xing/hops/commit/558e720))
+* use semver version ranges between all hops packages ([6816ebe](https://github.com/xing/hops/commit/6816ebe))
+* **template-redux:** align integration test with new react-redux@6 ([9059240](https://github.com/xing/hops/commit/9059240))
+
+
+### Features
+
+* **cli:** move preset-defaults to CLI package and re-export hops-react ([71832ed](https://github.com/xing/hops/commit/71832ed))
+* **cli:** re-export hops-mixin ([8511339](https://github.com/xing/hops/commit/8511339))
+
+
+
+
+
 # [11.0.0-rc.50](https://github.com/xing/hops/compare/v11.0.0-rc.49...v11.0.0-rc.50) (2018-12-05)
 
 

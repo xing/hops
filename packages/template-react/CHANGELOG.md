@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.51](https://github.com/xing/hops/compare/v11.0.0-rc.50...v11.0.0-rc.51) (2018-12-10)
+
+
+### Bug Fixes
+
+* make hops a dependendency instead devDependency ([0ba95e7](https://github.com/xing/hops/commit/0ba95e7))
+* remove "babel-core" from template dependencies ([558e720](https://github.com/xing/hops/commit/558e720))
+* use semver version ranges between all hops packages ([6816ebe](https://github.com/xing/hops/commit/6816ebe))
+
+
+
+
+
 # [11.0.0-rc.50](https://github.com/xing/hops/compare/v11.0.0-rc.49...v11.0.0-rc.50) (2018-12-05)
 
 **Note:** Version bump only for package hops-template-react

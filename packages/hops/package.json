@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "11.0.0-rc.50",
+  "version": "11.0.0-rc.51",
   "description": "Hops main Package to build and run Hops applications",
   "keywords": [
     "hops",
@@ -29,9 +29,9 @@
     "@untool/express": "^1.0.0-rc.13",
     "@untool/webpack": "^1.0.0-rc.13",
     "@untool/yargs": "^1.0.0-rc.13",
-    "hops-express": "^11.0.0-rc.50",
-    "hops-mixin": "^11.0.0-rc.50",
-    "hops-react": "^11.0.0-rc.50",
+    "hops-express": "11.0.0-rc.51",
+    "hops-mixin": "11.0.0-rc.51",
+    "hops-react": "11.0.0-rc.51",
     "pretty-ms": "^3.2.0"
   },
   "peerDependencies": {

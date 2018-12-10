@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.51](https://github.com/xing/hops/compare/v11.0.0-rc.50...v11.0.0-rc.51) (2018-12-10)
+
+
+### Bug Fixes
+
+* **jest-preset:** add missing "babel-core" dependency ([6208b47](https://github.com/xing/hops/commit/6208b47))
+* **jest-preset:** provide runtime mock for "hops" package ([5538829](https://github.com/xing/hops/commit/5538829))
+
+
+
+
+
 # [11.0.0-rc.50](https://github.com/xing/hops/compare/v11.0.0-rc.49...v11.0.0-rc.50) (2018-12-05)
 
 **Note:** Version bump only for package jest-preset-hops
