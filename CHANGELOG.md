@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.53](https://github.com/xing/hops/compare/v11.0.0-rc.52...v11.0.0-rc.53) (2018-12-10)
+
+
+### Bug Fixes
+
+* **create-hops-app:** exit when unpacking tar archive errors ([4f18b0d](https://github.com/xing/hops/commit/4f18b0d))
+* **create-hops-app:** provide root path to deleteFiles function ([e0f1d8f](https://github.com/xing/hops/commit/e0f1d8f))
+
+
+
+
+
 # [11.0.0-rc.52](https://github.com/xing/hops/compare/v11.0.0-rc.51...v11.0.0-rc.52) (2018-12-10)
 
 
