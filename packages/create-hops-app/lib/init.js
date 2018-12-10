@@ -88,7 +88,7 @@ function init(root, appName, options) {
         strip: 1,
       })
       .then(() => {
-        deleteFiles([tarball, 'CHANGELOG.md', 'LICENSE.txt']);
+        deleteFiles(appRoot, [tarball, 'CHANGELOG.md', 'LICENSE.txt']);
         renameDotFiles(appRoot, ['_gitignore', '_npmrc']);
 
         writePkg(
