@@ -1493,7 +1493,7 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@untool/core@^1.0.0-rc.13", "@untool/core@^1.0.0-rc.14":
+"@untool/core@^1.0.0-rc.14":
   version "1.0.0-rc.14"
   resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.0.0-rc.14.tgz#3da03b49e3ab0c2d64d1fb4357bd3292c8050537"
   integrity sha512-V2HVBDdCD8b5bdWYQqOcWpUkt77wOt+UF08E86kg9cJM+fbor36eRnWR8AbtlWJx8KI+fIeDhA2nQ46OD3Om7w==
@@ -1510,7 +1510,7 @@
     mixinable "^4.0.0"
     supports-color "^5.4.0"
 
-"@untool/express@^1.0.0-rc.13", "@untool/express@^1.0.0-rc.14":
+"@untool/express@^1.0.0-rc.14":
   version "1.0.0-rc.14"
   resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.0.0-rc.14.tgz#00c1993fa572b194c95af519f5c26821fb87bcc9"
   integrity sha512-i465eqWPMZi4pD4k/nmfafedgyHn0BXq66DmM4dSKwKqwYUDUSQRcXnzrZkRW+Z0O6rDr9zGRRqPFBfl1OixAA==
@@ -1528,7 +1528,7 @@
     portfinder "^1.0.19"
     supports-color "^5.4.0"
 
-"@untool/react@^1.0.0-rc.13":
+"@untool/react@^1.0.0-rc.14":
   version "1.0.0-rc.14"
   resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.0.0-rc.14.tgz#fc6f87e64d7c8e3f1ecbf5e5b13aae0b2666bc2a"
   integrity sha512-xq1Saay0zV6W6sJSeRaQohqpuaLhaqwiCduC91XuREZgi+Fkgej06/Mc6BzBpJ3KTfBJYCgfRWXeqa/7GazomQ==
@@ -1542,7 +1542,7 @@
     prop-types "^15.6.2"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^1.0.0-rc.13":
+"@untool/webpack@^1.0.0-rc.14":
   version "1.0.0-rc.14"
   resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.0.0-rc.14.tgz#a468b12f097c818f4d4f050b042db5d5d9c6541f"
   integrity sha512-dCy+ujIykq/sztLlO6PGUoAsvbki48oj00DbO4Ygw7wqcVSYjQY2elSixFENanR06/MTdRswTGZPth+NUzalTA==
@@ -1578,7 +1578,7 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^1.0.0-rc.13", "@untool/yargs@^1.0.0-rc.14":
+"@untool/yargs@^1.0.0-rc.14":
   version "1.0.0-rc.14"
   resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.0.0-rc.14.tgz#4245b6f540821248b684c60b85710699f555516d"
   integrity sha512-wLa1i/ipVNxaPhVFAzNKo5Mq4R2ARMFyHxg8iTjAbyQWTJI61UPRbmN+l2ZnxKeJjloUgj1p3lV0lyFFDLzT2Q==
