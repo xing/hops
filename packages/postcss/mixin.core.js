@@ -129,18 +129,20 @@ class PostCSSMixin extends Mixin {
         {
           resourceQuery: /global/,
           use: {
-            loader: require.resolve('css-loader/locals'),
+            loader: require.resolve('css-loader'),
             options: {
               ...cssLoaderGlobalOptions,
+              exportOnlyLocals: true,
               importLoaders: 0,
             },
           },
         },
         {
           use: {
-            loader: require.resolve('css-loader/locals'),
+            loader: require.resolve('css-loader'),
             options: {
               ...cssLoaderLocalOptions,
+              exportOnlyLocals: true,
               importLoaders: 0,
             },
           },
