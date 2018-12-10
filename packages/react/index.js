@@ -1,7 +1,7 @@
 const {
   render,
   Header,
-  Import,
+  importComponent,
   Miss,
   Status,
 } = require('@untool/react/lib/runtime');
@@ -13,7 +13,7 @@ const withConfig = require('./config/with-config');
 
 module.exports = {
   Header,
-  Import,
+  importComponent,
   Miss,
   Status,
   render,

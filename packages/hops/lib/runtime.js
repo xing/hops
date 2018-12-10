@@ -3,7 +3,7 @@
 const {
   render,
   Header,
-  Import,
+  importComponent,
   Miss,
   Status,
   ServerDataContext,
@@ -16,7 +16,7 @@ const { Mixin, strategies } = require('hops-mixin');
 
 module.exports = {
   Header,
-  Import,
+  importComponent,
   Miss,
   Status,
   render,
