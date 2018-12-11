@@ -12,6 +12,18 @@ class ProxyTargetMixin extends Mixin {
 
     return app;
   }
+
+  onProxyReq(proxyReq, req, res) {
+    if (req.url === '/proxy-req') {
+      res.send('onProxyReq');
+    }
+  }
+
+  onProxyRes(proxyRes, req, res) {
+    if (req.url === '/proxy-res') {
+      res.send('onProxyRes');
+    }
+  }
 }
 
 module.exports = ProxyTargetMixin;

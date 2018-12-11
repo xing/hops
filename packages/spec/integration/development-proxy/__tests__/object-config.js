@@ -15,6 +15,8 @@ describe('development proxy object config', () => {
     packageJson.hops.proxy = {
       '/dmbch': { target: `http://localhost:${PORT}/proxy` },
       '/zaubernerd': { target: `http://localhost:${PORT}/proxy2` },
+      '/proxy-req': { target: `http://localhost:${PORT}/req` },
+      '/proxy-res': { target: `http://localhost:${PORT}/res` },
     };
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
@@ -26,5 +28,15 @@ describe('development proxy object config', () => {
     expect(await fetch(url + '/zaubernerd').then(r => r.text())).toBe(
       'proxy2:zaubernerd'
     );
+  });
+
+  it('allows to hook into onProxyReq', async () => {
+    const content = await fetch(url + '/proxy-req').then(r => r.text());
+    expect(content).toBe('onProxyReq');
+  });
+
+  it('allows to hook into onProxyRes', async () => {
+    const content = await fetch(url + '/proxy-res').then(r => r.text());
+    expect(content).toBe('onProxyRes');
   });
 });
