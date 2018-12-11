@@ -29,4 +29,14 @@ describe('development proxy string config', () => {
 
     expect(content).toBe('hello world');
   });
+
+  it('allows to hook into onProxyReq', async () => {
+    const content = await fetch(url + '/proxy-req').then(r => r.text());
+    expect(content).toBe('onProxyReq');
+  });
+
+  it('allows to hook into onProxyRes', async () => {
+    const content = await fetch(url + '/proxy-res').then(r => r.text());
+    expect(content).toBe('onProxyRes');
+  });
 });

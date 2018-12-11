@@ -51,7 +51,7 @@ module.exports = {
 
 `fetch GET /api/data` -> Is proxied to https://example.org/, results in `https://example.org/api/data` being requested.
 
-If more flexibility is needed, `proxy` can also be configured as an object, where the keys represent express route matchers to be proxied and the values configure the respective proxy. In the config, any [http-proxy-middleware option](https://github.com/chimurai/http-proxy-middleware#options) can be used.
+If more flexibility is needed, `proxy` can also be configured as an object, where the keys represent express route matchers to be proxied and `target` to configure the respective proxy target.
 
 `.hopsrc.js`
 
@@ -66,23 +66,34 @@ module.exports = {
 
 When the object notation is used, every request that is not handled by the webpack dev server, will be proxied as long as the route matches. This is also true for html documents.
 
-### Examples
+### Mixin Hooks API
 
-#### Adding request headers
+#### `onProxyReq(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#definesequence)) **core**
 
-Sometimes additional request headers are needed, for example to add a fake user id for the backend api. Since any [http-proxy-middleware option](https://github.com/chimurai/http-proxy-middleware#options) can be used, you can make use of the `onProxyReq` callback to add additional headers.
+Hook to implement [http-proxy-middleware `onProxyReq` event callback](https://github.com/chimurai/http-proxy-middleware#http-proxy-events).
 
-`.hopsrc.js`
+##### Example: Add request headers
+
+Sometimes additional request headers are needed, for example to add a fake user id for the backend api.
+
+`mixin.core.js`
 
 ```javascript
-module.exports = {
-  proxy: {
-    '/api': {
-      target: 'https://httpbin.org/anything/',
-      onProxyReq(proxyReq) {
-        proxyReq.setHeader('x-USER-ID', '27');
-      },
-    },
-  },
-};
+const { Mixin } = require('hops');
+
+class MyMixin extends Mixin {
+  onProxyReq(proxyReq) {
+    proxyReq.setHeader('X-USER-ID', '23');
+  }
+}
+
+module.exports = MyMixin;
 ```
+
+#### `onProxyRes(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#definesequence)) **core**
+
+Hook to implement [http-proxy-middleware `onProxyRes` event callback](https://github.com/chimurai/http-proxy-middleware#http-proxy-events).
+
+#### `onProxyError(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#definesequence)) **core**
+
+Hook to implement [http-proxy-middleware `onError` event callback](https://github.com/chimurai/http-proxy-middleware#http-proxy-events).
