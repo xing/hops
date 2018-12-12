@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0-rc.54](https://github.com/xing/hops/compare/v11.0.0-rc.53...v11.0.0-rc.54) (2018-12-12)
+
+
+### Bug Fixes
+
+* **postcss:** use exportOnlyLocal flag instead of locals loader ([2721b3f](https://github.com/xing/hops/commit/2721b3f))
+
+
+
+
+
 # [11.0.0-rc.53](https://github.com/xing/hops/compare/v11.0.0-rc.52...v11.0.0-rc.53) (2018-12-10)
 
 **Note:** Version bump only for package hops-postcss

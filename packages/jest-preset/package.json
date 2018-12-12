@@ -1,6 +1,6 @@
 {
   "name": "jest-preset-hops",
-  "version": "11.0.0-rc.53",
+  "version": "11.0.0-rc.54",
   "description": "Jest preset to work with Hops powered projects",
   "keywords": [
     "hops",
