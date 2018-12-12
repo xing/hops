@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "11.0.0-rc.54",
+  "version": "11.0.0-rc.55",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -23,7 +23,7 @@
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "@untool/core": "^1.0.0-rc.14",
     "@untool/react": "^1.0.0-rc.14",
-    "hops-mixin": "^11.0.0-rc.54"
+    "hops-mixin": "^11.0.0-rc.55"
   },
   "peerDependencies": {
     "react": "^16.4.0",
