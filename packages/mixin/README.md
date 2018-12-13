@@ -9,8 +9,7 @@ Tap into them using your own mixins and [reconfigure Webpack](https://github.com
 ### Installation
 
 ```bash
-$ yarn add hops-mixin
-# OR npm install --save hops-mixin
+npm install --save hops-mixin
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://missing-link-explain-quick-start)

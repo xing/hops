@@ -9,8 +9,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) th
 Add this preset and its peer dependencies `react`, `react-dom`, `react-helmet` and `react-router-dom` to your existing Hops React project:
 
 ```bash
-$ yarn add hops-react react react-dom react-helmet react-router-dom
-# OR npm install --save hops-react react react-dom react-helmet react-router-dom
+npm install --save hops-react react react-dom react-helmet react-router-dom
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
