@@ -1,6 +1,6 @@
 # Hops (CLI)
 
-[![npm](https://img.shields.io/npm/v/hops/next.svg)](https://www.npmjs.com/package/hops)
+[![npm](https://img.shields.io/npm/v/hops/latest.svg)](https://www.npmjs.com/package/hops)
 
 This package provides a binary (`hops`) that can be used to create and control Hops applications.
 

@@ -1,6 +1,6 @@
 # `hops-typescript`
 
-[![npm](https://img.shields.io/npm/v/hops-typescript/next.svg)](https://www.npmjs.com/package/hops-typescript)
+[![npm](https://img.shields.io/npm/v/hops-typescript/latest.svg)](https://www.npmjs.com/package/hops-typescript)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to enable [TypeScript](https://www.typescriptlang.org/) support for Hops projects.
 

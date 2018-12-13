@@ -1,6 +1,6 @@
 # `hops-express`
 
-[![npm](https://img.shields.io/npm/v/hops-express/next.svg)](https://www.npmjs.com/package/hops-express)
+[![npm](https://img.shields.io/npm/v/hops-express/latest.svg)](https://www.npmjs.com/package/hops-express)
 
 This is one of the core presets for Hops (and is included by default in [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) and provides the development and production server configuration and mixin infrastructure in order to build a Hops application.
 

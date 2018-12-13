@@ -1,6 +1,6 @@
 # Hops Template Redux
 
-[![npm](https://img.shields.io/npm/v/hops-template-redux/next.svg)](https://www.npmjs.com/package/hops-template-redux)
+[![npm](https://img.shields.io/npm/v/hops-template-redux/latest.svg)](https://www.npmjs.com/package/hops-template-redux)
 
 This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React, Redux and Jest.
 

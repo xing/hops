@@ -1,6 +1,6 @@
 # `hops-graphql`
 
-[![npm](https://img.shields.io/npm/v/hops-graphql/next.svg)](https://www.npmjs.com/package/hops-graphql)
+[![npm](https://img.shields.io/npm/v/hops-graphql/latest.svg)](https://www.npmjs.com/package/hops-graphql)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework. Additionally it also brings an Apollo Server that can be used for mocking to enable faster local development.
 

@@ -1,6 +1,6 @@
 # Create Hops App
 
-[![npm](https://img.shields.io/npm/v/create-hops-app/next.svg)](https://www.npmjs.com/package/create-hops-app)
+[![npm](https://img.shields.io/npm/v/create-hops-app/latest.svg)](https://www.npmjs.com/package/create-hops-app)
 
 This package provides a binary (`create-hops-app`) that can be used to create Hops applications.
 

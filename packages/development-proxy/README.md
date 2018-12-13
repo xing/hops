@@ -1,6 +1,6 @@
 # `hops-development-proxy`
 
-[![npm](https://img.shields.io/npm/v/hops-development-proxy/next.svg)](https://www.npmjs.com/package/hops-development-proxy)
+[![npm](https://img.shields.io/npm/v/hops-development-proxy/latest.svg)](https://www.npmjs.com/package/hops-development-proxy)
 
 [Hops preset](https://github.com/xing/hops/tree/master#presets) that adds an API-proxy for development.
 

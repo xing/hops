@@ -1,6 +1,6 @@
 # `hops-mixin`
 
-[![npm](https://img.shields.io/npm/v/hops-mixin/next.svg)](https://www.npmjs.com/package/hops-mixin)
+[![npm](https://img.shields.io/npm/v/hops-mixin/latest.svg)](https://www.npmjs.com/package/hops-mixin)
 
 Contains the building blocks needed to build your own hops mixins. Mixins allow you to alter and extend Hops' functionality.
 
