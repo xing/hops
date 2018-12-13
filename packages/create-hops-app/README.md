@@ -2,6 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/create-hops-app/latest.svg)](https://www.npmjs.com/package/create-hops-app)
 
+**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
+
 This package provides a binary (`create-hops-app`) that can be used to create Hops applications.
 
 ## Bootstrap a Hops app
