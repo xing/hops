@@ -1,6 +1,6 @@
 # `hops-redux`
 
-[![npm](https://img.shields.io/npm/v/hops-redux/latest.svg)](https://www.npmjs.com/package/hops-redux)
+[![npm](https://img.shields.io/npm/v/hops-redux.svg)](https://www.npmjs.com/package/hops-redux)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

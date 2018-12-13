@@ -1,6 +1,6 @@
 # `hops-development-proxy`
 
-[![npm](https://img.shields.io/npm/v/hops-development-proxy/latest.svg)](https://www.npmjs.com/package/hops-development-proxy)
+[![npm](https://img.shields.io/npm/v/hops-development-proxy.svg)](https://www.npmjs.com/package/hops-development-proxy)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

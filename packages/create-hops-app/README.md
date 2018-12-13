@@ -1,6 +1,6 @@
 # Create Hops App
 
-[![npm](https://img.shields.io/npm/v/create-hops-app/latest.svg)](https://www.npmjs.com/package/create-hops-app)
+[![npm](https://img.shields.io/npm/v/create-hops-app.svg)](https://www.npmjs.com/package/create-hops-app)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

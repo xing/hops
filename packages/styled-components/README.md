@@ -1,6 +1,6 @@
 # `hops-styled-components`
 
-[![npm](https://img.shields.io/npm/v/hops-styled-components/latest.svg)](https://www.npmjs.com/package/hops-styled-components)
+[![npm](https://img.shields.io/npm/v/hops-styled-components.svg)](https://www.npmjs.com/package/hops-styled-components)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

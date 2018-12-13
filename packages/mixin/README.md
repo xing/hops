@@ -1,6 +1,6 @@
 # `hops-mixin`
 
-[![npm](https://img.shields.io/npm/v/hops-mixin/latest.svg)](https://www.npmjs.com/package/hops-mixin)
+[![npm](https://img.shields.io/npm/v/hops-mixin.svg)](https://www.npmjs.com/package/hops-mixin)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

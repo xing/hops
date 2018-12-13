@@ -1,6 +1,6 @@
 # Hops Template React
 
-[![npm](https://img.shields.io/npm/v/hops-template-react/latest.svg)](https://www.npmjs.com/package/hops-template-react)
+[![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 
