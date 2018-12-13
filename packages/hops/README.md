@@ -1,60 +1,33 @@
-# Hops (CLI)
+# Hops
 
 [![npm](https://img.shields.io/npm/v/hops/latest.svg)](https://www.npmjs.com/package/hops)
 
-This package provides a binary (`hops`) that can be used to create and control Hops applications.
+**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 
-In order to create a new Hops application, it is recommended to install this package either globally or to use [`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) (`npx hops init my-hops-project`).
+Hops is everything you need to develop and deploy a production grade universal web application with [React](https://facebook.github.io/react/). It provides both a **universal runtime** as well as the necessary **build tooling**.
 
-When the binary is executed outside of a Hops project, it will only expose one command `init` - which can be used to create a new Hops application based on a pre-defined template.
+## Quick start
 
-When this binary is executed inside a Hops application it exposes all commands that are provided by the installed Hops dependencies.
+To create a new Hops application run the following in a terminal:
 
-## Installation
-
-Install it globally to create a new Hops application.
-
-```bash
-$ yarn global add hops
-npm install --global hops
+```shell
+npx create-hops-app my-hops-app
 ```
 
-Or install it locally in an already existing Hops application.
+_Note: If you prefer to use `yarn`, you can substitute the above command with `yarn create hops-app my-hops-app`._
 
-```bash
-npm install --save hops
+Then move into the newly created directory:
+
+```shell
+cd my-hops-app
 ```
 
-## Usage
+And start the development server:
 
-### Bootstrapping a Project
-
-```bash
-hops init my-new-hops-project [--verbose] [--npm] [--template hops-template-*]
+```shell
+npm start
 ```
 
-This will create a very basic hops example project that is ready to go.
+This will start Hops in development mode. Visit [http://localhost:8080](http://localhost:8080) to see your app in the browser and make some changes to the code in your editor to see it live-reloading.
 
-The following arguments are optional:
-
-- `--verbose` - to increase the verbosity of the output for debugging purposes
-- `--npm` - to force usage of `npm` instead of `yarn` even if yarn is available
-- `--template` - to specify a different template for the intial structure. available templates:
-  - [hops-template-react](https://github.com/xing/hops/tree/master/packages/template-react)
-  - [hops-template-redux](https://github.com/xing/hops/tree/master/packages/template-redux)
-  - [hops-template-graphql](https://github.com/xing/hops/tree/master/packages/template-graphql)
-
-Then `cd` into `my-new-hops-project` and execute `hops --help` again to see a list of supported commands.
-
-### Available Commands
-
-- `hops build` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) - initiates a project build to generate browser and server JS bundles
-- `hops develop` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) - starts the webpack development server with hot code reloading for fast local iterations
-- `hops serve` (provided by [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) - starts a production Node.js Express server using the generated JS bundle from `hops build`
-- `hops start` - if NODE_ENV is set to production, this runs `hops build` and `hops serve`. Otherwise `hops develop` is executed.
-
-All commands accept additional arguments:
-
-- `--production` / `-p` - equivalent to setting `NODE_ENV` to `production`
-- `--static` / `-s` - to generate static HTML app shells for all configured hops locations.
-- `--clean` / `-c` - defaults to `true`, removes the build directory before initiating a build (n/a for `hops serve`)
+Check out the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for more detailed explanations and documentation.
