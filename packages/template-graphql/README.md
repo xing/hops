@@ -1,6 +1,6 @@
 # Hops Template GraphQL
 
-[![npm](https://img.shields.io/npm/v/hops-template-graphql/latest.svg)](https://www.npmjs.com/package/hops-template-graphql)
+[![npm](https://img.shields.io/npm/v/hops-template-graphql.svg)](https://www.npmjs.com/package/hops-template-graphql)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

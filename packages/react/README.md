@@ -1,6 +1,6 @@
 # `hops-react`
 
-[![npm](https://img.shields.io/npm/v/hops-react/latest.svg)](https://www.npmjs.com/package/hops-react)
+[![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

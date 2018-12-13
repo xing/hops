@@ -1,6 +1,6 @@
 # `hops-graphql`
 
-[![npm](https://img.shields.io/npm/v/hops-graphql/latest.svg)](https://www.npmjs.com/package/hops-graphql)
+[![npm](https://img.shields.io/npm/v/hops-graphql.svg)](https://www.npmjs.com/package/hops-graphql)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

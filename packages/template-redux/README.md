@@ -1,6 +1,6 @@
 # Hops Template Redux
 
-[![npm](https://img.shields.io/npm/v/hops-template-redux/latest.svg)](https://www.npmjs.com/package/hops-template-redux)
+[![npm](https://img.shields.io/npm/v/hops-template-redux.svg)](https://www.npmjs.com/package/hops-template-redux)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

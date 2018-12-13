@@ -1,6 +1,6 @@
 # `hops-typescript`
 
-[![npm](https://img.shields.io/npm/v/hops-typescript/latest.svg)](https://www.npmjs.com/package/hops-typescript)
+[![npm](https://img.shields.io/npm/v/hops-typescript.svg)](https://www.npmjs.com/package/hops-typescript)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 

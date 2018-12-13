@@ -1,6 +1,6 @@
 # `hops-pwa`
 
-[![npm](https://img.shields.io/npm/v/hops-pwa/latest.svg)](https://www.npmjs.com/package/hops-pwa)
+[![npm](https://img.shields.io/npm/v/hops-pwa.svg)](https://www.npmjs.com/package/hops-pwa)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 
