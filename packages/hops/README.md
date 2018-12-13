@@ -15,15 +15,15 @@ When this binary is executed inside a Hops application it exposes all commands t
 Install it globally to create a new Hops application.
 
 ```bash
-$ yarn global add hops@next
-# OR npm install --global hops@next
+$ yarn global add hops
+# OR npm install --global hops
 ```
 
 Or install it locally in an already existing Hops application.
 
 ```bash
-$ yarn add hops@next
-# OR npm install --save hops@next
+$ yarn add hops
+# OR npm install --save hops
 ```
 
 ## Usage

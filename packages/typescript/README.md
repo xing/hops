@@ -9,8 +9,8 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) th
 Add this preset to your existing Hops React project:
 
 ```bash
-$ yarn add hops-typescript@next
-# OR npm install --save hops-typescript@next
+$ yarn add hops-typescript
+# OR npm install --save hops-typescript
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
