@@ -11,8 +11,8 @@ _This preset must be used together with the `hops-react` preset._
 Add this preset and its peer dependency `styled-components` to your existing Hops React project:
 
 ```bash
-$ yarn add hops-styled-components@next styled-components
-# OR npm install --save hops-styled-components@next styled-components
+$ yarn add hops-styled-components styled-components
+# OR npm install --save hops-styled-components styled-components
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)

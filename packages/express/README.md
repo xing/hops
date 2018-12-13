@@ -9,8 +9,8 @@ This is one of the core presets for Hops (and is included by default in [`hops-p
 As this is a base preset that is always required and is included in `hops-preset-defaults` you should add the defaults preset to your project:
 
 ```bash
-$ yarn add hops-preset-defaults@next
-# OR npm install --save hops-preset-defaults@next
+$ yarn add hops-preset-defaults
+# OR npm install --save hops-preset-defaults
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
