@@ -11,8 +11,7 @@ _This preset must be used together with the `hops-react` preset._
 Add this preset and its peer dependencies `graphql-tag` and `react-apollo` to your existing Hops React project:
 
 ```bash
-$ yarn add hops-graphql graphql-tag react-apollo
-# OR npm install --save hops-graphql graphql-tag react-apollo
+npm install --save hops-graphql graphql-tag react-apollo
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)

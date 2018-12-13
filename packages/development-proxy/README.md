@@ -13,8 +13,7 @@ This package allows to proxy requests to your api server which runs on a differe
 Add `hops-development-proxy` to your project.
 
 ```bash
-$ yarn add hops-development-proxy
-# OR npm install --save hops-development-proxy
+npm install --save hops-development-proxy
 ```
 
 ### Usage

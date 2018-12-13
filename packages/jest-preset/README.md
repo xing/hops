@@ -9,15 +9,13 @@ It ensures that Babel works correctly out of the box and that requiring files su
 ## Installation
 
 ```bash
-$ yarn add jest-preset-hops
-# OR npm install --save jest-preset-hops
+npm install --save jest-preset-hops
 ```
 
 You also [need to install 'babel-core@^7.0.0-0' as devDependency](https://jestjs.io/docs/en/getting-started#using-babel).
 
 ```bash
-$ yarn add --dev 'babel-core@^7.0.0-0'
-# OR npm install --save --dev 'babel-core@^7.0.0-0'
+npm install --save --dev 'babel-core@^7.0.0-0'
 ```
 
 ## Usage

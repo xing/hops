@@ -11,8 +11,7 @@ _This preset must be used together with the `hops-react` preset._
 Add this preset and its peer dependencies `react-redux`, `redux` and `redux-thunk` to your existing Hops React project:
 
 ```bash
-$ yarn add hops-redux react-redux redux redux-thunk
-# OR npm install --save hops-redux react-redux redux redux-thunk
+npm install --save hops-redux react-redux redux redux-thunk
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
