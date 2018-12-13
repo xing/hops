@@ -1,6 +1,6 @@
 # `hops-styled-components`
 
-[![npm](https://img.shields.io/npm/v/hops-styled-components/next.svg)](https://www.npmjs.com/package/hops-styled-components)
+[![npm](https://img.shields.io/npm/v/hops-styled-components/latest.svg)](https://www.npmjs.com/package/hops-styled-components)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up a `<ThemeProvider />` and enable server-side rendering support for [styled-components](https://www.styled-components.com/) in Hops.
 

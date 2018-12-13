@@ -1,6 +1,6 @@
 # Hops Template GraphQL
 
-[![npm](https://img.shields.io/npm/v/hops-template-graphql/next.svg)](https://www.npmjs.com/package/hops-template-graphql)
+[![npm](https://img.shields.io/npm/v/hops-template-graphql/latest.svg)](https://www.npmjs.com/package/hops-template-graphql)
 
 This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React, GraphQL and Jest.
 

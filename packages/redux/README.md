@@ -1,6 +1,6 @@
 # `hops-redux`
 
-[![npm](https://img.shields.io/npm/v/hops-redux/next.svg)](https://www.npmjs.com/package/hops-redux)
+[![npm](https://img.shields.io/npm/v/hops-redux/latest.svg)](https://www.npmjs.com/package/hops-redux)
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to add redux support to your Hops project.
 
