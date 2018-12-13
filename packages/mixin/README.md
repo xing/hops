@@ -2,6 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/hops-mixin/latest.svg)](https://www.npmjs.com/package/hops-mixin)
 
+**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
+
 Contains the building blocks needed to build your own hops mixins. Mixins allow you to alter and extend Hops' functionality.
 
 Tap into them using your own mixins and [reconfigure Webpack](https://github.com/xing/hops/blob/master/packages/styled-components/mixin.core.js#L4), [register additional Express](https://github.com/xing/hops/blob/master/packages/development-proxy/mixin.core.js#L6) middlewares and [Yargs commands](https://github.com/xing/hops/blob/master/packages/graphql/mixin.core.js#L5) or [fetch data to bootstrap your React application](https://github.com/xing/hops/blob/master/packages/react/server-data/mixin.server.js#L11).

@@ -2,6 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/hops-config/latest.svg)](https://www.npmjs.com/package/hops-config)
 
+**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
+
 This is a package that exposes your applications configuration and is mostly here for legacy reasons.
 
 In the future we will deprecate this package and provide a [React context provider](https://reactjs.org/docs/context.html) to access the configuration inside your applications React components.

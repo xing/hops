@@ -2,6 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/hops-typescript/latest.svg)](https://www.npmjs.com/package/hops-typescript)
 
+**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
+
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to enable [TypeScript](https://www.typescriptlang.org/) support for Hops projects.
 
 ### Installation
