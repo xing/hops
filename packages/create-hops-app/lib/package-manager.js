@@ -36,8 +36,7 @@ function installPackages(packages, type, options) {
   var command = null;
 
   if (isYarnAvailable() && !options.npm) {
-    command =
-      packages.length === 0 ? ['yarn', 'install'] : ['yarn', 'add', '--exact'];
+    command = packages.length === 0 ? ['yarn', 'install'] : ['yarn', 'add'];
     if (type === 'dev') {
       command.push('--dev');
     }
@@ -45,12 +44,7 @@ function installPackages(packages, type, options) {
     command =
       packages.length === 0
         ? ['npm', 'install']
-        : [
-            'npm',
-            'install',
-            type === 'dev' ? '--save-dev' : '--save',
-            '--save-exact',
-          ];
+        : ['npm', 'install', type === 'dev' ? '--save-dev' : '--save'];
   }
   if (options.verbose) {
     command.push('--verbose');
