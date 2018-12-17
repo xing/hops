@@ -110,9 +110,7 @@ function init(root, appName, options) {
         );
         console.log(
           'To see a list of available commands through Hops presets execute:',
-          pm.hasBeenInstalledViaYarn(appRoot)
-            ? '`yarn hops`'
-            : '`npx hops@' + options.hopsVersion + '`'
+          pm.hasBeenInstalledViaYarn(appRoot) ? '`yarn hops`' : '`npx hops`'
         );
       })
       .catch(error => {
