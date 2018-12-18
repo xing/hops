@@ -5,7 +5,7 @@ module.exports = {
     '^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$':
       'jest-preset-hops/mocks/file.js',
     '^.+\\.tpl$': 'jest-preset-hops/mocks/tpl.js',
-    '^.+\\.css$': 'identity-obj-proxy',
+    '^.+\\.css(\\?global)?$': 'identity-obj-proxy',
     '^hops$': 'hops/lib/runtime.js',
   },
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
