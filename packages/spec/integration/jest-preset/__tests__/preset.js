@@ -13,4 +13,14 @@ describe('jest-preset', () => {
     const hops = require('hops');
     expect(hops.render).toBeDefined();
   });
+
+  it('allows to import global css inside a js module', () => {
+    // if it does not throw it appears to work
+    require('./setup/global-css');
+  });
+
+  it('allows to import local css inside a js module', () => {
+    const css = require('./setup/local-css');
+    expect(css.default.foo).toBe('foo');
+  });
 });
