@@ -8,10 +8,10 @@ const {
 const proxy = require('http-proxy-middleware');
 
 class ProxyMixin extends Mixin {
-  configureServer(app, middlewares, mode) {
+  configureServer(app, middlewares) {
     const proxyConfig = this.config.proxy;
 
-    if (mode !== 'develop' || !proxyConfig) {
+    if (process.env.NODE_ENV === 'production' || !proxyConfig) {
       return;
     }
 
