@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/xing/hops/compare/v11.0.0...v11.0.1) (2018-12-19)
+
+
+### Bug Fixes
+
+* **create-hops-app:** use user-defined version range ([e7ab8df](https://github.com/xing/hops/commit/e7ab8df))
+* **development-proxy:** Use NODE_ENV instead of mode to determine if proxy should run ([465e386](https://github.com/xing/hops/commit/465e386))
+* **jest-preset:** allow to use ?global for css imports ([4f59156](https://github.com/xing/hops/commit/4f59156))
+
+
+
+
+
 # [11.0.0](https://github.com/xing/hops/compare/v11.0.0-rc.55...v11.0.0) (2018-12-13)
 
 

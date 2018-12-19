@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/xing/hops/compare/v11.0.0...v11.0.1) (2018-12-19)
+
+
+### Bug Fixes
+
+* **development-proxy:** Use NODE_ENV instead of mode to determine if proxy should run ([465e386](https://github.com/xing/hops/commit/465e386))
+
+
+
+
+
 # [11.0.0](https://github.com/xing/hops/compare/v11.0.0-rc.55...v11.0.0) (2018-12-13)
 
 **Note:** Version bump only for package hops-development-proxy

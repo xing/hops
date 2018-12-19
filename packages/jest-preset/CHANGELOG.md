@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/xing/hops/compare/v11.0.0...v11.0.1) (2018-12-19)
+
+
+### Bug Fixes
+
+* **jest-preset:** allow to use ?global for css imports ([4f59156](https://github.com/xing/hops/commit/4f59156))
+
+
+
+
+
 # [11.0.0](https://github.com/xing/hops/compare/v11.0.0-rc.55...v11.0.0) (2018-12-13)
 
 
