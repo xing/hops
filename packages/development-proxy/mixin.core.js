@@ -15,7 +15,9 @@ class ProxyMixin extends Mixin {
       return;
     }
 
-    const hooks = {
+    const options = {
+      changeOrigin: true,
+      logLevel: 'warn',
       onProxyReq: this.onProxyReq,
       onProxyRes: this.onProxyRes,
       onError: this.onProxyError,
@@ -31,14 +33,10 @@ class ProxyMixin extends Mixin {
               req.headers.accept && !req.headers.accept.includes('text/html')
             );
           },
-          Object.assign(
-            {
-              target: proxyConfig,
-              changeOrigin: true,
-              logLevel: 'warn',
-            },
-            hooks
-          )
+          {
+            ...options,
+            target: proxyConfig,
+          }
         )
       );
     }
@@ -48,17 +46,10 @@ class ProxyMixin extends Mixin {
 
       Object.entries(proxyConfig).forEach(([path, { target }]) => {
         middlewares.initial.push(
-          proxy(
-            path,
-            Object.assign(
-              {
-                changeOrigin: true,
-                logLevel: 'warn',
-                target,
-              },
-              hooks
-            )
-          )
+          proxy(path, {
+            ...options,
+            target,
+          })
         );
       });
     }
