@@ -24,6 +24,12 @@ class ProxyMixin extends Mixin {
     };
 
     if (typeof proxyConfig === 'string') {
+      if (proxyConfig === '') {
+        console.warn('The proxy target is empty, disabling feature');
+
+        return;
+      }
+
       debug('Using proxy string version: ', proxyConfig);
 
       middlewares.initial.push(
@@ -47,6 +53,12 @@ class ProxyMixin extends Mixin {
       Object.entries(proxyConfig).forEach(([path, config]) => {
         const { target, routes } =
           typeof config === 'string' ? { target: config } : config;
+
+        if (target === '') {
+          console.warn('The proxy target is empty, ignoring path', path);
+
+          return;
+        }
 
         middlewares.initial.push(
           proxy(path, {
