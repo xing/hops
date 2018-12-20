@@ -73,6 +73,7 @@ These are the main features:
     - [hops-pwa](#hops-pwa)
     - [hops-development-proxy](#hops-development-proxy)
     - [hops-lambda](#hops-lambda)
+    - [jest-preset-hops](#jest-preset-hops)
 - [Advanced configuration and extension](#advanced-configuration-and-extension)
   - [Debugging](#debugging)
   - [Mixins](#mixins)
@@ -865,6 +866,28 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 _\* If no region is configured via the preset config, `hops-lambda` will try to read `AWS_REGION` and `AWS_DEFAULT_REGION` from your environment first before defaulting to `us-east-1`._
 
 For more details and more advanced use-cases, head over to the [full readme of `hops-lambda`](https://github.com/xing/hops/tree/master/packages/lambda).
+
+#### [`jest-preset-hops`](https://github.com/xing/hops/tree/master/packages/jest-preset)
+
+Hops uses wepback to configure and instrument your application. However, test runners aren't compatible with this setup out of the box.
+
+`jest-preset-hops` is a [Jest preset](https://jestjs.io/docs/en/configuration.html#preset-string) that allows to write tests for Hops applications. It aims to support all features that the official `hops-*` packages provide (e.g. transpiling your files with babel) inside of your Jest tests.
+
+Install it to your project:
+
+```shell
+npm install --save --dev jest-preset-hops babel-core@^7.0.0-0
+```
+
+Add `jest-preset-hops` as [preset](https://facebook.github.io/jest/docs/en/configuration.html#preset-string) to your Jest config. This can for example be done by adding it to your package.json.
+
+```json
+{
+  "jest": {
+    "preset": "jest-preset-hops"
+  }
+}
+```
 
 ## Advanced configuration and extension
 
