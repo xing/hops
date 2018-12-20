@@ -44,11 +44,15 @@ class ProxyMixin extends Mixin {
     if (typeof proxyConfig === 'object') {
       debug('Using proxy object version', proxyConfig);
 
-      Object.entries(proxyConfig).forEach(([path, { target }]) => {
+      Object.entries(proxyConfig).forEach(([path, config]) => {
+        const { target, routes } =
+          typeof config === 'string' ? { target: config } : config;
+
         middlewares.initial.push(
           proxy(path, {
             ...options,
             target,
+            routes,
           })
         );
       });
