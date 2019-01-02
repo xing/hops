@@ -44,12 +44,10 @@
   },
   "lint-staged": {
     "*.{js,json,css}": [
-      "prettier --write",
-      "git add"
+      "prettier --list-different"
     ],
     "**/README.md": [
-      "prettier --write",
-      "git add"
+      "prettier --list-different"
     ]
   },
   "prettier": {
