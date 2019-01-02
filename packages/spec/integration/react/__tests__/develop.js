@@ -1,3 +1,5 @@
+const fetch = require('cross-fetch');
+
 describe('react developmet server', () => {
   let url;
 
@@ -22,11 +24,8 @@ describe('react developmet server', () => {
   });
 
   it('allows to set status code with component', async () => {
-    const { page } = await createPage();
-    const response = await page.goto(url + '/status');
-    expect(response.status()).toBe(418);
-
-    await page.close();
+    const response = await fetch(url + '/status');
+    expect(response.status).toBe(418);
   });
 
   it('redirects server-side', async () => {
@@ -51,11 +50,8 @@ describe('react developmet server', () => {
   });
 
   it('returns 404 when no route matches', async () => {
-    const { page } = await createPage();
-    const response = await page.goto(url + '/404');
-    expect(response.status()).toBe(404);
-
-    await page.close();
+    const response = await fetch(url + '/404');
+    expect(response.status).toBe(404);
   });
 
   it('allows to navigate client-side', async () => {
@@ -86,12 +82,8 @@ describe('react developmet server', () => {
   });
 
   it('allows to use flow', async () => {
-    const { page } = await createPage();
-    await page.goto(url + '/flow');
-
-    expect(await page.content()).toMatch('text:flow');
-
-    await page.close();
+    const text = await fetch(url + '/flow').then(r => r.text());
+    expect(text).toMatch('text:flow');
   });
 
   it('loads async Import component server-side', async () => {
