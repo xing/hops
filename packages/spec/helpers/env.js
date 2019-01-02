@@ -59,6 +59,13 @@ class FixtureEnvironment extends NodeEnvironment {
       page.on('pageerror', error => {
         throw error;
       });
+
+      page.on('console', msg => {
+        if (['error', 'warning'].includes(msg.type())) {
+          throw new Error(`${msg.type()} in browser console: ${msg.text()}`);
+        }
+      });
+
       return {
         page,
         getProperty: getProperty.bind(page),
