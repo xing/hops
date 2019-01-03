@@ -22,7 +22,7 @@
     "@untool/core": "^1.0.0-rc.14",
     "@untool/webpack": "^1.0.0-rc.14",
     "app-manifest-loader": "^2.0.0",
-    "file-loader": "^2.0.0",
+    "file-loader": "^3.0.0",
     "hops-mixin": "^11.0.1",
     "pathifist": "^1.0.0",
     "webpack": "^4.23.0",
