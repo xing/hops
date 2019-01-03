@@ -1493,10 +1493,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@untool/core@^1.0.0-rc.14":
-  version "1.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.0.0-rc.14.tgz#3da03b49e3ab0c2d64d1fb4357bd3292c8050537"
-  integrity sha512-V2HVBDdCD8b5bdWYQqOcWpUkt77wOt+UF08E86kg9cJM+fbor36eRnWR8AbtlWJx8KI+fIeDhA2nQ46OD3Om7w==
+"@untool/core@^1.0.0-rc.15":
+  version "1.0.0-rc.15"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.0.0-rc.15.tgz#668d5bbd44495bfbdfe32c18e4d97ccc6756b574"
+  integrity sha512-xIZoQXxDMADZSUKQ3WTwLMdXjNaP9Gn45bfAM5toCSyjYxPvZxsSKFkgHlhwGSWVyExCzAWjV95sYyWuLwJQIQ==
   dependencies:
     cosmiconfig "^5.0.5"
     debug "^4.0.0"
@@ -1508,15 +1508,15 @@
     is-plain-object "^2.0.4"
     lodash.mergewith "^4.6.1"
     mixinable "^4.0.0"
-    supports-color "^5.4.0"
+    supports-color "^6.0.0"
 
-"@untool/express@^1.0.0-rc.14":
-  version "1.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.0.0-rc.14.tgz#00c1993fa572b194c95af519f5c26821fb87bcc9"
-  integrity sha512-i465eqWPMZi4pD4k/nmfafedgyHn0BXq66DmM4dSKwKqwYUDUSQRcXnzrZkRW+Z0O6rDr9zGRRqPFBfl1OixAA==
+"@untool/express@^1.0.0-rc.15":
+  version "1.0.0-rc.15"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.0.0-rc.15.tgz#2779f2dba5c5474d79558bf6af20835439854f89"
+  integrity sha512-g5p6IJWhtHjzfGcaDLt60XZ0D2QBcOAEo9ZDF3/8YKhRALVJlk0ncRGrB2A+//ZMVepofplQfuxhEx8DB50ETA==
   dependencies:
-    "@untool/core" "^1.0.0-rc.14"
-    "@untool/yargs" "^1.0.0-rc.14"
+    "@untool/core" "^1.0.0-rc.15"
+    "@untool/yargs" "^1.0.0-rc.15"
     debug "^4.0.0"
     directory-index "^0.1.0"
     express "^4.16.2"
@@ -1526,42 +1526,41 @@
     mixinable "^4.0.0"
     node-mocks-http "^1.7.0"
     portfinder "^1.0.19"
-    supports-color "^5.4.0"
+    supports-color "^6.0.0"
 
-"@untool/react@^1.0.0-rc.14":
-  version "1.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.0.0-rc.14.tgz#fc6f87e64d7c8e3f1ecbf5e5b13aae0b2666bc2a"
-  integrity sha512-xq1Saay0zV6W6sJSeRaQohqpuaLhaqwiCduC91XuREZgi+Fkgej06/Mc6BzBpJ3KTfBJYCgfRWXeqa/7GazomQ==
+"@untool/react@^1.0.0-rc.15":
+  version "1.0.0-rc.15"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.0.0-rc.15.tgz#a4bed0f60d78036b1ad3b6fe1793b87cc90c684c"
+  integrity sha512-nqsW0EXkw0ANduKJXmP5B07lIqJf7zyKSIIG3GaR6OrJJ5wSk4WSLZvzlqS79/0ihe0gft3Lun0HbZGgQMUzNQ==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/preset-react" "^7.0.0"
-    "@untool/core" "^1.0.0-rc.14"
+    "@untool/core" "^1.0.0-rc.15"
     babel-plugin-transform-react-remove-prop-types "^0.4.19"
     clone "^2.1.2"
     mixinable "^4.0.0"
     prop-types "^15.6.2"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^1.0.0-rc.14":
-  version "1.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.0.0-rc.14.tgz#a468b12f097c818f4d4f050b042db5d5d9c6541f"
-  integrity sha512-dCy+ujIykq/sztLlO6PGUoAsvbki48oj00DbO4Ygw7wqcVSYjQY2elSixFENanR06/MTdRswTGZPth+NUzalTA==
+"@untool/webpack@^1.0.0-rc.15":
+  version "1.0.0-rc.15"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.0.0-rc.15.tgz#f9d700c119dee64c5c5aa9da79b37934b1ef8ad9"
+  integrity sha512-b8B4iVmTYlO6VNN7MrkGOc75lV8HBTHNOGW1+iFwuf2yBXHisqjzwCCyAYJ6BMBXm1KyGUVDLyJN7ChfE/r/1A==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/polyfill" "^7.0.0"
     "@babel/preset-env" "^7.0.0"
-    "@untool/core" "^1.0.0-rc.14"
-    "@untool/express" "^1.0.0-rc.14"
-    "@untool/yargs" "^1.0.0-rc.14"
+    "@untool/core" "^1.0.0-rc.15"
+    "@untool/express" "^1.0.0-rc.15"
+    "@untool/yargs" "^1.0.0-rc.15"
     babel-loader "8"
     babel-plugin-dynamic-import-node "^2.0.0"
-    browserslist-useragent "^2.0.1"
     caniuse-lite "^1.0.30000898"
     debug "^4.0.0"
     enhanced-resolve "^4.0.0"
     eprom "^1.0.0"
-    file-loader "^2.0.0"
+    file-loader "^3.0.0"
     find-up "^3.0.0"
     loader-utils "^1.1.0"
     memory-fs "^0.4.1"
@@ -1570,7 +1569,7 @@
     require-from-string "^2.0.1"
     rimraf "^2.6.2"
     source-map-support "^0.5.6"
-    supports-color "^5.4.0"
+    supports-color "^6.0.0"
     terser-webpack-plugin "^1.1.0"
     url-loader "^1.0.1"
     webpack "^4.23.0"
@@ -1578,12 +1577,12 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^1.0.0-rc.14":
-  version "1.0.0-rc.14"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.0.0-rc.14.tgz#4245b6f540821248b684c60b85710699f555516d"
-  integrity sha512-wLa1i/ipVNxaPhVFAzNKo5Mq4R2ARMFyHxg8iTjAbyQWTJI61UPRbmN+l2ZnxKeJjloUgj1p3lV0lyFFDLzT2Q==
+"@untool/yargs@^1.0.0-rc.15":
+  version "1.0.0-rc.15"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.0.0-rc.15.tgz#5aff5fac2aba95cd0c189412f9e6bb735f121af8"
+  integrity sha512-o3DpinnMizc6CJhIMFtcfFNWHdIUgjsaRPgLVQ/7CfRClON8u5gnYF1UzhUr61StwI2ArINCaD8KHKskZRHu1Q==
   dependencies:
-    "@untool/core" "^1.0.0-rc.14"
+    "@untool/core" "^1.0.0-rc.15"
     mixinable "^4.0.0"
     pretty-ms "^4.0.0"
     yargs "^12.0.0"
@@ -2798,16 +2797,7 @@ browserify-zlib@^0.2.0:
   dependencies:
     pako "~1.0.5"
 
-browserslist-useragent@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/browserslist-useragent/-/browserslist-useragent-2.0.1.tgz#ea5f706bc426c5fb2b5adf97cde7c1aed0864d0f"
-  integrity sha1-6l9wa8QmxfsrWt+XzefBrtCGTQ8=
-  dependencies:
-    browserslist "^4.0.1"
-    semver "^5.4.1"
-    useragent "^2.2.1"
-
-browserslist@^4.0.0, browserslist@^4.0.1, browserslist@^4.3.4, browserslist@^4.3.5:
+browserslist@^4.0.0, browserslist@^4.3.4, browserslist@^4.3.5:
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.3.5.tgz#1a917678acc07b55606748ea1adf9846ea8920f7"
   integrity sha512-z9ZhGc3d9e/sJ9dIx5NFXkKoaiQTnrvrMsN3R1fGb1tkWWNSz12UewJn9TNxGo1l7J23h0MRaPmk7jfeTZYs1w==
@@ -4951,14 +4941,6 @@ file-entry-cache@^2.0.0:
   dependencies:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
-
-file-loader@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-2.0.0.tgz#39749c82f020b9e85901dcff98e8004e6401cfde"
-  integrity sha512-YCsBfd1ZGCyonOKLxPiKPdu+8ld9HAaMEvJewzz+b2eTF7uL5Zm/HdBF6FjCrpCMRq25Mi0U1gl4pwn2TlH7hQ==
-  dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^1.0.0"
 
 file-loader@^3.0.0:
   version "3.0.1"
@@ -7472,7 +7454,7 @@ loud-rejection@^1.0.0:
     currently-unhandled "^0.4.1"
     signal-exit "^3.0.0"
 
-lru-cache@4.1.x, lru-cache@^4.0.1, lru-cache@^4.1.2, lru-cache@^4.1.3:
+lru-cache@^4.0.1, lru-cache@^4.1.2, lru-cache@^4.1.3:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
   integrity sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==
@@ -11087,6 +11069,13 @@ supports-color@^5.3.0, supports-color@^5.4.0, supports-color@^5.5.0:
   dependencies:
     has-flag "^3.0.0"
 
+supports-color@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-6.0.0.tgz#76cfe742cf1f41bb9b1c29ad03068c05b4c0e40a"
+  integrity sha512-on9Kwidc1IUQo+bQdhi8+Tijpo0e1SS6RoGo2guUwn5vdaxw8RXOF9Vb2ws+ihWOmh4JnCJOvaziZWP1VABaLg==
+  dependencies:
+    has-flag "^3.0.0"
+
 svgo@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-1.1.1.tgz#12384b03335bcecd85cfa5f4e3375fed671cb985"
@@ -11258,7 +11247,7 @@ timsort@^0.3.0:
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tmp@0.0.x, tmp@^0.0.33:
+tmp@^0.0.33:
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.0.33.tgz#6d34335889768d21b2bcda0aa277ced3b1bfadf9"
   integrity sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==
@@ -11585,14 +11574,6 @@ use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
-
-useragent@^2.2.1:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/useragent/-/useragent-2.3.0.tgz#217f943ad540cb2128658ab23fc960f6a88c9972"
-  integrity sha512-4AoH4pxuSvHCjqLO04sU6U/uE65BYza8l/KKBS0b0hnUPWi+cQ2BpeTEwejCSx9SPV5/U03nniDTrWx5NrmKdw==
-  dependencies:
-    lru-cache "4.1.x"
-    tmp "0.0.x"
 
 util-deprecate@~1.0.1:
   version "1.0.2"
