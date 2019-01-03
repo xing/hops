@@ -16,5 +16,8 @@
   "dependencies": {
     "hops": "*",
     "hops-postcss": "*"
+  },
+  "hops": {
+    "locations": ["/"]
   }
 }
