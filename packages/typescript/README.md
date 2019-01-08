@@ -6,7 +6,7 @@
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to enable [TypeScript](https://www.typescriptlang.org/) support for Hops projects.
 
-### Installation
+## Installation
 
 Add this preset to your existing Hops React project:
 
@@ -16,13 +16,13 @@ npm install --save hops-typescript
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
 
-### Usage
+## Usage
 
 Once this preset is installed and you have a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) in your application root you can start writing your app using TypeScript.
 
 Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/typescript) as an example for how to use this preset.
 
-### Configuration
+## Configuration
 
 The only required configuration is a `tsconfig.json` in your project root.
 
@@ -38,10 +38,10 @@ Example:
 
 Unfortunately `"extends"` only supports file relative paths at the moment. See https://github.com/Microsoft/TypeScript/issues/18865 for more information.
 
-#### Preset Options
+### Preset Options
 
 This preset has no preset configuration options.
 
-#### Render Options
+### Render Options
 
 This preset has no runtime configuration options.
