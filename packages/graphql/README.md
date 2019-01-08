@@ -72,7 +72,8 @@ You can enable mocking by configuring a file that exports an executable schema. 
 | `fragmentsFile`          | `String`  | `<rootDir>/fragmentTypes.json` | _no_     | Where to store the generated fragment types file                         |
 | `graphqlUri`             | `String`  | `''`                           | _yes_    | Url to your GraphQL endpoint or mock server                              |
 | `graphqlSchemaFile`      | `String`  | `''`                           | _no_     | Path to your GraphQL schema file                                         |
-| `graphqlMockSchemaFile`  | `String`  | `''`                           | _no_     | Path to your GraphQL Schema mocks                                        |
+| `graphqlMockSchemaFile`  | `String`  | `''`                           | _no_     | Path to your GraphQL schema mocks                                        |
+| `graphqlMockServerPath`  | `String`  | `'/graphql'`                   | _no_     | Path of the mock server endpoint                                         |
 | `shouldPrefetchOnServer` | `Boolean` | `true`                         | _no_     | Whether Hops should execute GraphQL queries during server-side rendering |
 
 ##### `fragmentsFile`
