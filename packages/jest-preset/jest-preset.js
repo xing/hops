@@ -9,6 +9,11 @@ module.exports = {
     '^hops$': 'hops/lib/runtime.js',
   },
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
+  testMatch: [
+    ...defaults.testMatch,
+    '**/__tests__/**/*.ts?(x)',
+    '**/?(*.)+(spec|test).ts?(x)',
+  ],
   transform: {
     '^.+\\.(js|jsx|mjs)$': 'jest-preset-hops/transforms/babel.js',
     '^.+\\.(ts|tsx)$': 'ts-jest',
