@@ -1,4 +1,4 @@
-describe('typescript developmet server', () => {
+describe('typescript development server', () => {
   let url;
 
   beforeAll(async () => {
@@ -9,6 +9,14 @@ describe('typescript developmet server', () => {
     const { page } = await createPage();
     await page.goto(url);
     expect(await page.content()).toMatch('<h1>test</h1>');
+
+    await page.close();
+  });
+
+  it('supports code-splitting', async () => {
+    const { page } = await createPage();
+    await page.goto(url);
+    expect(await page.content()).toMatch('<p>lorem ipsum.</p>');
 
     await page.close();
   });
