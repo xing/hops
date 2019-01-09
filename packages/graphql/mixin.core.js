@@ -55,8 +55,11 @@ class GraphQLMixin extends Mixin {
     );
   }
 
-  configureServer(rootApp, middleware, mode) {
-    if (!exists(this.config.graphqlMockSchemaFile) || mode !== 'develop') {
+  configureServer(rootApp, middleware) {
+    if (
+      !exists(this.config.graphqlMockSchemaFile) ||
+      process.env.NODE_ENV === 'production'
+    ) {
       return;
     }
 

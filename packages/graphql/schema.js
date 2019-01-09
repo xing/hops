@@ -1,3 +1,3 @@
 throw new Error(
-  'This file should never be used directly. Did you forget to configure "config.graphqlMockSchemaFile"?'
+  'Please use an absolute path for setting "config.graphqlMockSchemaFile", like e.g. "<rootDir>/schema.js".'
 );
