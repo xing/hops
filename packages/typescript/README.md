@@ -62,7 +62,7 @@ Register those typings by defining the [`"typeRoots"`-property](https://www.type
 }
 ```
 
-Now the Typescript compiler will look at `./node_modules/@types` **and** `./typings` for type declarations. It will — among others — find your declaration file for static asset "modules" and won't complain any longer when you import one of them.
+Now the Typescript compiler will look at `./node_modules/@types` **and** `./typings` for type declarations. It will — among others — find your declaration file for static asset "modules" and won't complain any longer when you import one of them. Note that by doing it this way every asset import is of type `any`.
 
 Btw: by default the compiler only looks at `./node_modules/@types` for type declarations. Since there's now another location, you can use this to put declarations into the `./typings`-folder for modules that neither bring their own type declarations, nor have typings over at [DefinitelyTyped](http://definitelytyped.org/) (the source off all the `@types/*` modules).
 
