@@ -4,9 +4,6 @@
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
-    "browsers": [
-      "last 1 Chrome versions"
-    ],
     "locations": [
       "/"
     ],
