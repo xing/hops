@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.1.0](https://github.com/xing/hops/compare/v11.0.1...v11.1.0) (2019-01-11)
+
+
+### Bug Fixes
+
+* **create-hops-app:** remove version tag from npx install success notice ([3b7883f](https://github.com/xing/hops/commit/3b7883f))
+* **hops-graphql:** use NODE_ENV instead of mode ([aa39272](https://github.com/xing/hops/commit/aa39272))
+* upgrade untool ([5f2561a](https://github.com/xing/hops/commit/5f2561a)), closes [#758](https://github.com/xing/hops/issues/758)
+* **template-graphql:** use default browsers list ([3207d26](https://github.com/xing/hops/commit/3207d26))
+* **template-react:** use default browsers list ([79e5dee](https://github.com/xing/hops/commit/79e5dee))
+* **template-redux:** use default browsers list ([c7ab595](https://github.com/xing/hops/commit/c7ab595))
+
+
+### Features
+
+* **jest-preset-hops:** enable *.tsx test files ([975e536](https://github.com/xing/hops/commit/975e536))
+
+
+
+
+
 ## [11.0.1](https://github.com/xing/hops/compare/v11.0.0...v11.0.1) (2018-12-19)
 
 
