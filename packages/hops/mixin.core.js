@@ -22,7 +22,7 @@ module.exports = class CLIMixin {
     const { name } = this.config;
     if (!quiet) {
       console.log(
-        `[${name}] started in ${process.env.NODE_ENV || 'development'} mode`
+        `[${name}] Started in ${process.env.NODE_ENV || 'development'} mode`
       );
     }
   }
@@ -30,7 +30,8 @@ module.exports = class CLIMixin {
     if (target !== 'build') {
       const { quiet } = this.options;
       if (!quiet) {
-        webpackConfig.plugins.push(new HopsWebpackLoggerPlugin());
+        const { name } = this.config;
+        webpackConfig.plugins.push(new HopsWebpackLoggerPlugin({ name }));
       }
     }
   }
@@ -39,7 +40,7 @@ module.exports = class CLIMixin {
     const { name } = this.config;
     if (!quiet) {
       console.log(
-        `[${name}] built successfully\n${stats.toString({
+        `[${name}] Built successfully\n${stats.toString({
           colors: false,
           version: false,
           hash: false,
@@ -52,7 +53,7 @@ module.exports = class CLIMixin {
   }
   inspectServer(server) {
     const { quiet } = this.options;
-    const { https, basePath: pathname } = this.config;
+    const { name, https, basePath: pathname } = this.config;
     if (!quiet) {
       const { address, port } = server.address();
       const info = {
@@ -63,7 +64,7 @@ module.exports = class CLIMixin {
         pathname,
         port,
       };
-      console.log(`Server listening at ${format(info)}`);
+      console.log(`[${name}] Server listening at ${format(info)}`);
     }
   }
 };

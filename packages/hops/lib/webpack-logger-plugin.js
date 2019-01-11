@@ -3,17 +3,18 @@
 const prettyMS = require('pretty-ms');
 
 class HopsWebpackLoggerPlugin {
-  constructor() {
+  constructor(options) {
     this.lastHashes = {};
+    this.name = options.name;
   }
 
   apply(compiler) {
     compiler.hooks.done.tap(this.constructor.name, stats => {
-      const { name } = stats.compilation;
-      if (this.lastHashes[name] === stats.hash) {
+      const { name: mode } = stats.compilation;
+      if (this.lastHashes[mode] === stats.hash) {
         return;
       }
-      this.lastHashes[name] = stats.hash;
+      this.lastHashes[mode] = stats.hash;
       const hasWarnings = stats.hasWarnings();
       const hasErrors = stats.hasErrors();
       const { errors, warnings, children } = stats.toJson({
@@ -27,9 +28,10 @@ class HopsWebpackLoggerPlugin {
       const allErrors = errors.concat(...children.map(c => c.errors));
 
       console.log(
+        `[${this.name}]`,
         hasErrors
-          ? `Compilation ${name} failed after`
-          : `Compiled ${name} ${
+          ? `Compilation ${mode} failed after`
+          : `Compiled ${mode} ${
               hasWarnings ? 'with warnings' : 'successfully'
             } in`,
         prettyMS(stats.endTime - stats.startTime)
