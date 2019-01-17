@@ -2,7 +2,7 @@ const { Mixin } = require('hops-mixin');
 
 class TypescriptMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig }) {
-    jsLoaderConfig.test.push(/\.tsx?$/);
+    jsLoaderConfig.test = [/\.tsx?$/];
     jsLoaderConfig.use = [
       {
         loader: jsLoaderConfig.loader,
