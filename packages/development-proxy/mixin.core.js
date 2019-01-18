@@ -7,6 +7,8 @@ const {
 } = require('hops-mixin');
 const proxy = require('http-proxy-middleware');
 
+const checkUrl = url => /^https?:\/\//.test(url);
+
 class ProxyMixin extends Mixin {
   configureServer(app, middlewares) {
     const proxyConfig = this.config.proxy;
@@ -24,13 +26,15 @@ class ProxyMixin extends Mixin {
     };
 
     if (typeof proxyConfig === 'string') {
-      if (proxyConfig === '') {
-        console.warn('The proxy target is empty, disabling feature');
+      if (!checkUrl(proxyConfig)) {
+        console.warn(
+          `The proxy target '${proxyConfig}' is invalid, disabling feature`
+        );
 
         return;
       }
 
-      debug('Using proxy string version: ', proxyConfig);
+      debug('Using proxy string version', proxyConfig);
 
       middlewares.initial.push(
         proxy(
@@ -55,7 +59,10 @@ class ProxyMixin extends Mixin {
           typeof config === 'string' ? { target: config } : config;
 
         if (target === '') {
-          console.warn('The proxy target is empty, ignoring path', path);
+          console.warn(
+            `The proxy target '${target}' is invalid, ignoring path`,
+            path
+          );
 
           return;
         }
