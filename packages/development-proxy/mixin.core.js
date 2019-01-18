@@ -39,9 +39,11 @@ class ProxyMixin extends Mixin {
       middlewares.initial.push(
         proxy(
           (pathName, req) => {
-            return (
-              req.headers.accept && !req.headers.accept.includes('text/html')
-            );
+            const nonhtml =
+              req.headers.accept && !req.headers.accept.includes('text/html');
+            const xhr = req.headers['x-requested-with'] === 'XMLHttpRequest';
+
+            return nonhtml || xhr;
           },
           {
             ...options,
