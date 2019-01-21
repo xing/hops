@@ -11,7 +11,10 @@ function changeFile(id) {
   fs.writeFileSync(path.join(global.cwd, 'index.js'), content);
 }
 
-describe('hot module reload', () => {
+// This test has been skipped, because it's proven to be flaky
+// An attempt to fix this did not lead to any satisfying result
+// More info can be found here: https://github.com/xing/hops/pull/760
+describe.skip('hot module reload', () => {
   let url;
 
   beforeAll(async () => {
