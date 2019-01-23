@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-rc.0](https://github.com/xing/hops/compare/v11.1.0...v11.2.0-rc.0) (2019-01-23)
+
+
+### Bug Fixes
+
+* upgrade untool ([faafda2](https://github.com/xing/hops/commit/faafda2))
+* upgrade untool ([afb5ccb](https://github.com/xing/hops/commit/afb5ccb))
+* upgrade untool ([ec0a2f3](https://github.com/xing/hops/commit/ec0a2f3))
+
+
+
+
+
 # [11.1.0](https://github.com/xing/hops/compare/v11.0.1...v11.1.0) (2019-01-11)
 
 

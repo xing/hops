@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-rc.0](https://github.com/xing/hops/compare/v11.1.0...v11.2.0-rc.0) (2019-01-23)
+
+
+### Features
+
+* **development-proxy:** allow strings for proxy object configuration ([c8e0108](https://github.com/xing/hops/commit/c8e0108))
+* **development-proxy:** check for full URLs ([27001f6](https://github.com/xing/hops/commit/27001f6))
+* **development-proxy:** check for XHR as well ([3d3f6f6](https://github.com/xing/hops/commit/3d3f6f6))
+* **development-proxy:** warn and ignore empty targets ([35d646a](https://github.com/xing/hops/commit/35d646a))
+
+
+
+
+
 # [11.1.0](https://github.com/xing/hops/compare/v11.0.1...v11.1.0) (2019-01-11)
 
 **Note:** Version bump only for package hops-development-proxy

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0-rc.0](https://github.com/xing/hops/compare/v11.1.0...v11.2.0-rc.0) (2019-01-23)
+
+
+### Bug Fixes
+
+* **typescript:** do not compile JS files ([e09a665](https://github.com/xing/hops/commit/e09a665))
+* **typescript:** pipe output of ts-loader through babel-loader ([66b5210](https://github.com/xing/hops/commit/66b5210))
+* upgrade untool ([faafda2](https://github.com/xing/hops/commit/faafda2))
+* upgrade untool ([afb5ccb](https://github.com/xing/hops/commit/afb5ccb))
+* upgrade untool ([ec0a2f3](https://github.com/xing/hops/commit/ec0a2f3))
+
+
+### Features
+
+* **development-proxy:** allow strings for proxy object configuration ([c8e0108](https://github.com/xing/hops/commit/c8e0108))
+* **development-proxy:** check for full URLs ([27001f6](https://github.com/xing/hops/commit/27001f6))
+* **development-proxy:** check for XHR as well ([3d3f6f6](https://github.com/xing/hops/commit/3d3f6f6))
+* **development-proxy:** warn and ignore empty targets ([35d646a](https://github.com/xing/hops/commit/35d646a))
+
+
+
+
+
 # [11.1.0](https://github.com/xing/hops/compare/v11.0.1...v11.1.0) (2019-01-11)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "hops-config",
-  "version": "11.1.0",
+  "version": "11.2.0-rc.0",
   "description": "Hops core configuration",
   "keywords": [
     "hops",

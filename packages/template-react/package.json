@@ -1,6 +1,6 @@
 {
   "name": "hops-template-react",
-  "version": "11.1.0",
+  "version": "11.2.0-rc.0",
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
@@ -16,8 +16,8 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "hops": "^11.1.0",
-    "hops-postcss": "^11.1.0",
+    "hops": "^11.2.0-rc.0",
+    "hops-postcss": "^11.2.0-rc.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
