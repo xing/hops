@@ -50,6 +50,7 @@ module.exports = function init(options, root) {
     version: '1.0.0',
     private: true,
   });
+
   process.chdir(appDir);
   require('./init').init(root, name, options);
 };

@@ -69,7 +69,6 @@ function init(root, appName, options) {
   const pathToPackageManifest = path.resolve(appRoot, 'package.json');
   const oldPackageManifest = readPkg(pathToPackageManifest);
   let tarball = null;
-  options.npm = options.npm || !pm.hasBeenInstalledViaYarn(appRoot);
 
   if (template) {
     tarball = pm.getTarball(template, options);
@@ -104,13 +103,13 @@ function init(root, appName, options) {
         console.log('Your project has been successfully created.');
         console.log(
           `You should \`cd ${appName}\` to change into its directory and execute`,
-          '`' + (pm.hasBeenInstalledViaYarn(appRoot) ? 'yarn' : 'npm'),
+          '`' + (pm.hasBeenInstalledViaYarn(options) ? 'yarn' : 'npm'),
           'start`',
           'to fire up a development server with hot module reloading.'
         );
         console.log(
           'To see a list of available commands through Hops presets execute:',
-          pm.hasBeenInstalledViaYarn(appRoot) ? '`yarn hops`' : '`npx hops`'
+          pm.hasBeenInstalledViaYarn(options) ? '`yarn hops`' : '`npx hops`'
         );
       })
       .catch(error => {
