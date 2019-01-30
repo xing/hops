@@ -1,7 +1,4 @@
 'use strict';
-
-var fs = require('fs');
-var path = require('path');
 var execSync = require('child_process').execSync;
 
 function execIgnoreStdError(command, options) {
@@ -27,15 +24,15 @@ function isYarnAvailable() {
 }
 module.exports.isYarnAvailable = isYarnAvailable;
 
-function hasBeenInstalledViaYarn(projectPath) {
-  return fs.existsSync(path.join(projectPath, 'yarn.lock'));
+function hasBeenInstalledViaYarn(options) {
+  return isYarnAvailable() && !options.npm;
 }
 module.exports.hasBeenInstalledViaYarn = hasBeenInstalledViaYarn;
 
 function installPackages(packages, type, options) {
   var command = null;
 
-  if (isYarnAvailable() && !options.npm) {
+  if (hasBeenInstalledViaYarn(options)) {
     command = packages.length === 0 ? ['yarn', 'install'] : ['yarn', 'add'];
     if (type === 'dev') {
       command.push('--dev');
