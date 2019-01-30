@@ -3,8 +3,6 @@ const path = require('path');
 const validatePackageName = require('validate-npm-package-name');
 const { sync: writePkg } = require('write-pkg');
 
-const pm = require('./package-manager');
-
 function validateName(name) {
   const validationResult = validatePackageName(name);
   if (!validationResult.validForNewPackages) {
@@ -53,6 +51,5 @@ module.exports = function init(options, root) {
     private: true,
   });
   process.chdir(appDir);
-  pm.installPackages(['hops@' + options.hopsVersion], 'prod', options);
   require('./init').init(root, name, options);
 };

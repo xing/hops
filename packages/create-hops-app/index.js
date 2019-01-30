@@ -18,11 +18,6 @@ const options = yargs
       'a different template',
     default: 'hops-template-react',
   })
-  .option('hops-version', {
-    type: 'string',
-    describe: 'Which version (or npm dist-tag) of hops to use',
-    default: 'latest',
-  })
   .option('verbose', {
     type: 'boolean',
     describe: 'Increase verbosity of command',

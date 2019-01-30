@@ -14,11 +14,7 @@ describe('create-hops-app', () => {
 
   it('initializes a Hops app with yarn', () => {
     const name = 'my-app-yarn';
-    const args = [
-      name,
-      `--hops-version ${version}`,
-      `--template ${template}@${version}`,
-    ].join(' ');
+    const args = [name, `--template ${template}@${version}`].join(' ');
 
     execSync(`${createHopsAppBin} ${args}`, { stdio: 'ignore' });
 
@@ -30,12 +26,7 @@ describe('create-hops-app', () => {
 
   it('initializes a Hops app with npm', () => {
     const name = 'my-app-npm';
-    const args = [
-      name,
-      `--hops-version ${version}`,
-      `--template ${template}@${version}`,
-      `--npm`,
-    ].join(' ');
+    const args = [name, `--template ${template}@${version}`, `--npm`].join(' ');
 
     execSync(`${createHopsAppBin} ${args}`, { stdio: 'ignore' });
 
