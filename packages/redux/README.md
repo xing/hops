@@ -122,6 +122,8 @@ export default render(<MyApp />, {
 
 ### Mixin Hooks API
 
+**Caution**: Please be aware that the mixin hooks are not part of the SemVer API contract. This means that hook methods and signatures can change even in minor releases. Therefore it's up to you to make sure that all hooks that you are using in your own mixins still adhere to the new implementation after an upgrade of a Hops packages.
+
 #### `getReduxStore(): Store` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
 Use this method in your own mixins to get a reference to the currently used Redux [Store](https://redux.js.org/api-reference/store) instance.
