@@ -208,6 +208,8 @@ export default render(<MyApp />, {
 
 ### Mixin Hooks API
 
+**Caution**: Please be aware that the mixin hooks are not part of the SemVer API contract. This means that hook methods and signatures can change even in minor releases. Therefore it's up to you to make sure that all hooks that you are using in your own mixins still adhere to the new implementation after an upgrade of a Hops packages.
+
 #### `getApolloLink(): ApolloLink` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
 Hook to return a custom [ApolloLink](https://github.com/apollographql/apollo-link).
