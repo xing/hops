@@ -91,16 +91,7 @@ class GraphQLMixin extends Mixin {
   }
 
   fetchData(data = {}, element) {
-    return this.prefetchData(element).then(() => {
-      return {
-        ...data,
-        globals: {
-          ...(data.globals || {}),
-          APOLLO_FRAGMENT_TYPES: introspectionResult,
-          APOLLO_STATE: this.getApolloClient().cache.extract(),
-        },
-      };
-    });
+    return this.prefetchData(element).then(() => data);
   }
 
   prefetchData(element) {
@@ -120,7 +111,8 @@ class GraphQLMixin extends Mixin {
       ...data,
       globals: {
         ...data.globals,
-        ...(data.fetchedData || {}).globals,
+        APOLLO_FRAGMENT_TYPES: introspectionResult,
+        APOLLO_STATE: this.getApolloClient().cache.extract(),
       },
     };
   }
