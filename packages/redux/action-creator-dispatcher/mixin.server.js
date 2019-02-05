@@ -25,22 +25,11 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
   }
 
   async fetchData(data) {
-    const _hopsPrefetchedOnServer = this.canPrefetchOnServer().every(
-      value => value
-    );
-
-    if (_hopsPrefetchedOnServer) {
+    if (this.canPrefetchOnServer().every(value => value)) {
       await this.dispatchAll(createLocation(this.request.path));
       this.prefetchedOnServer = true;
     }
-
-    return {
-      ...data,
-      globals: {
-        ...data.globals,
-        _hopsPrefetchedOnServer,
-      },
-    };
+    return data;
   }
 
   getTemplateData(data) {
@@ -48,7 +37,7 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
       ...data,
       globals: {
         ...data.globals,
-        ...(data.fetchedData || {}).globals,
+        _hopsPrefetchedOnServer: this.prefetchedOnServer,
       },
     };
   }
