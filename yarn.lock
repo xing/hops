@@ -1522,7 +1522,7 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@untool/core@1.0.0", "@untool/core@^1.0.0":
+"@untool/core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.0.0.tgz#55e23935f7a8ef0fe0fd1f2486a2a1ae9d641264"
   integrity sha512-eMa2CebbFdfWwqGRJY2KOvqk7mkBJg21HE2bLeQPJxMYFb47KvDyoTjSrACkms/kGZdFvQ0R9UUco9fABWvhug==
@@ -1540,7 +1540,7 @@
     mixinable "^4.0.0"
     supports-color "^6.0.0"
 
-"@untool/express@1.0.0", "@untool/express@^1.0.0":
+"@untool/express@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.0.0.tgz#c5ccdb60a105de50bed8fdb6c0bbd06c2eb8cfcf"
   integrity sha512-Ue20NIPRsbAvjPWDM6HbYziDmnjCUSrd8vVQYJ8gANmbN1S6lYC3XC5Vl4uhjjJE33zG/a1P3eO2IVAr6k6gnw==
@@ -1559,7 +1559,7 @@
     portfinder "^1.0.19"
     supports-color "^6.0.0"
 
-"@untool/react@1.0.0":
+"@untool/react@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.0.0.tgz#d0695214865b7cb5b547124110c8b7a2b4f6b040"
   integrity sha512-s/q3T2dIKxOQYg41Cn7dp6uYEsyglkCEvHPPnH8us3Yuy5aEY2nrcu6GPQUQjLMxOcpUE1kqZuqfsIXWXZlXVw==
@@ -1573,7 +1573,7 @@
     prop-types "^15.6.2"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@1.0.0":
+"@untool/webpack@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.0.0.tgz#8442ab5e602cf42dc1b73941f418e599c386734e"
   integrity sha512-2ygk7xxj9MwdP4xoprJ1wI1ZF5DTtVG6s1HpNOIITZ4cPVh0UtpukRxMzeGGH743IRErYZX7tgIV8X6cKkVgmw==
@@ -1608,7 +1608,7 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@1.0.0", "@untool/yargs@^1.0.0":
+"@untool/yargs@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.0.0.tgz#1d7a6bfbce591669a0075959a68afad5eefdaa97"
   integrity sha512-yH4JaldA3O9qAqWJX55c5lIcbj/hSYWkX/syjztLELgg39LhHwiNu3oox4jjduuKp2/1fP308WdWrXCHstU1YA==
