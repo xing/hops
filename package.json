@@ -37,6 +37,27 @@
     "reset": "git clean -dfx && yarn",
     "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'"
   },
+  "canarist": {
+    "repositories": [
+      {
+        "repository": "https://github.com/xing/hops.git",
+        "branch": "${BRANCH:-master}",
+        "commands": [""]
+      },
+      {
+        "repository": "https://github.com/foosbyte/kicker-trainer.git",
+        "commands": [
+          "yarn build -p",
+          "yarn test"
+        ]
+      }
+    ],
+    "rootManifest": {
+      "resolutions": {
+        "typescript": "3.2.4"
+      }
+    }
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -118,6 +139,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.0",
+    "canarist": "^1.0.4",
     "eslint": "^5.3.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.12.0",

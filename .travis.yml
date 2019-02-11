@@ -24,3 +24,4 @@ before_script:
 
 script:
   - './node_modules/.bin/jest --maxWorkers=2 --ci'
+  - BRANCH="${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}" && yarn canarist
