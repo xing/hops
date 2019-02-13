@@ -3039,10 +3039,10 @@ camelize@1.0.0:
   resolved "https://registry.yarnpkg.com/camelize/-/camelize-1.0.0.tgz#164a5483e630fa4321e5af07020e531831b2609b"
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
-canarist@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/canarist/-/canarist-1.1.1.tgz#1fd535cfb372eeea2d0be91b4346b8a2bc242e18"
-  integrity sha512-EeK7chd1UE930AWkx54897WihTZdJZAhUWC8xCpE+zgglRr7/rgJYdHCZOF2YjyRfXeX54wJjjDc/ECNFYOk6g==
+canarist@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/canarist/-/canarist-1.2.1.tgz#c2eeaab1ae7d1b70b4f835e4d82a8e0d44f1c6bd"
+  integrity sha512-GONEe8jk/lhkHSRyON+0oaRFvO1E+DEko8JLMpLc53P22WchV49OmfiXt69PfRW9Wox1FP7XXCtCnGLCXu9pfA==
   dependencies:
     cosmiconfig "^5.0.7"
     debug "^4.1.1"
