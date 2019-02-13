@@ -40,8 +40,7 @@
   "canarist": {
     "repositories": [
       {
-        "repository": "https://github.com/xing/hops.git",
-        "branch": "${BRANCH:-master}",
+        "repository": ".",
         "commands": [""]
       },
       {
@@ -139,7 +138,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.0",
-    "canarist": "^1.0.4",
+    "canarist": "^1.1.1",
     "eslint": "^5.3.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.12.0",
