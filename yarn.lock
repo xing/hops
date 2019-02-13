@@ -3039,12 +3039,13 @@ camelize@1.0.0:
   resolved "https://registry.yarnpkg.com/camelize/-/camelize-1.0.0.tgz#164a5483e630fa4321e5af07020e531831b2609b"
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
-canarist@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/canarist/-/canarist-1.0.4.tgz#52e7e65b4a43588f6215731cf197178b9f4cde9f"
-  integrity sha512-dx4mr2s+MBjUIF37Oeq0KkdiRgDp3fJY4gRKFN5XczaAiBBRwC7AAj9iSKjYy/ebIqjcyo+p7UeSbwpchjoNLg==
+canarist@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/canarist/-/canarist-1.1.1.tgz#1fd535cfb372eeea2d0be91b4346b8a2bc242e18"
+  integrity sha512-EeK7chd1UE930AWkx54897WihTZdJZAhUWC8xCpE+zgglRr7/rgJYdHCZOF2YjyRfXeX54wJjjDc/ECNFYOk6g==
   dependencies:
     cosmiconfig "^5.0.7"
+    debug "^4.1.1"
     fast-glob "^2.2.6"
     git-url-parse "^11.1.2"
     make-dir "^2.0.0"
@@ -4018,7 +4019,7 @@ debug@^3.1.0:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.0, debug@^4.0.1, debug@^4.1.0:
+debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
