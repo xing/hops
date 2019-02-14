@@ -1,5 +1,5 @@
 /* eslint node/no-extraneous-require: 0 */
-const hops = require('hops');
+const hops = require('hops/lib/runtime');
 const React = require('react');
 
 const importComponent = () =>
