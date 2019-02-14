@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImportComponent should include the default mock result 1`] = `
+<ImportComponentStub
+  loader={[Function]}
+  render={[Function]}
+/>
+`;
