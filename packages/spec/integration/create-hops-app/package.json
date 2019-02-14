@@ -6,7 +6,7 @@
     "node": ">= 8.10"
   },
   "jest": {
-    "testEnvironment": "../../helpers/env.js",
-    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+    "testEnvironment": "hops-spec/helpers/env.js",
+    "setupTestFrameworkScriptFile": "hops-spec/jest.setup.js"
   }
 }

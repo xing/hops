@@ -10,7 +10,7 @@
     "testPathIgnorePatterns": [
       "__tests__/setup"
     ],
-    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+    "setupTestFrameworkScriptFile": "hops-spec/jest.setup.js"
   },
   "dependencies": {
     "hops-preset-jest": "*"
