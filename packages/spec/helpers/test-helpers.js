@@ -83,7 +83,7 @@ const launchPuppeteer = async () => {
 };
 
 const createWorkingDir = async srcDir => {
-  const cwdRootPath = path.resolve(__dirname, '..', '.tmp');
+  const cwdRootPath = path.resolve(__dirname, '..', '..', '..', '.tmp');
   await mkdirp(cwdRootPath);
   const cwdPath = await mktemp(path.resolve(cwdRootPath, 'XXXXX'));
 

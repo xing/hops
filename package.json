@@ -125,17 +125,16 @@
   },
   "eslintIgnore": [
     "**/node_modules/**",
-    "**/template-*/**",
-    "**/__tests__/fixtures/**",
-    "**/spec/fixtures/**"
+    "**/template-*/**"
   ],
   "workspaces": [
+    "examples/*",
     "packages/*"
   ],
   "jest": {
     "projects": [
-      "<rootDir>/packages/!(spec)",
-      "<rootDir>/packages/spec/integration/*"
+      "<rootDir>/examples/!(package.json)",
+      "<rootDir>/packages/*"
     ]
   },
   "devDependencies": {
