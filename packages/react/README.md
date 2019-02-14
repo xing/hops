@@ -27,7 +27,7 @@ import React from 'react';
 export default render(<h1>Hello World!</h1>);
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/react) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/examples/react) as an example for how to use this preset.
 
 #### Consumer API
 

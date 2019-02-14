@@ -32,7 +32,7 @@ import styles from './styles.css';
 export default render(<h1 className={styles.headline}>hello</h1>);
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/postcss) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/examples/postcss) as an example for how to use this preset.
 
 #### CSS Modules opt-out
 

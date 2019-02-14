@@ -20,7 +20,7 @@ If you don't already have an existing Hops project read this section [on how to 
 
 Once this preset is installed and you have a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) in your application root you can start writing your app using TypeScript.
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/typescript) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/examples/typescript) as an example for how to use this preset.
 
 ## Configuration
 

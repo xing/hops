@@ -44,7 +44,7 @@ This argument can be specified multiple times to add multiple HTTP headers.
 
 In order to start using GraphQL in your application install this preset and configure the required options (see below).
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/graphql) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/examples/graphql) as an example for how to use this preset.
 
 #### Creating custom mocks and stitching schemas using Apollo Server
 

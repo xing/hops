@@ -42,7 +42,7 @@ import installServiceWorker from 'hops-pwa';
 installServiceWorker();
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/pwa) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/examples/pwa) as an example for how to use this preset.
 
 #### Consumer API
 

@@ -22,7 +22,7 @@ If you don't already have an existing Hops project read this section [on how to 
 
 In order to use Redux in your application install the plugin and configure your reducers [via render options](#render-options).
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/redux) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/examples/redux) as an example for how to use this preset.
 
 ### Configuration
 

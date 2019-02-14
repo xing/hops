@@ -31,7 +31,7 @@ const Headline = styled.h1`
 export default render(<Headline>Hello World!</Headline>);
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/styled-components) as an example for how to use this preset.
+Check out this [integration test](https://github.com/xing/hops/tree/master/examples/styled-components) as an example for how to use this preset.
 
 ### Configuration
 
