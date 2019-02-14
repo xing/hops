@@ -1,6 +1,6 @@
 {
   "name": "hops-graphql",
-  "version": "11.2.0-rc.1",
+  "version": "11.2.0",
   "description": "React and GraphQL implementation for Hops",
   "keywords": [
     "hops",
@@ -28,20 +28,20 @@
     "express": "^4.16.3",
     "graphql": "^14.0.2",
     "graphql-tools": "^4.0.0",
-    "hops-config": "^11.2.0-rc.1",
-    "hops-mixin": "^11.2.0-rc.1",
+    "hops-config": "^11.2.0",
+    "hops-mixin": "^11.2.0",
     "strip-indent": "^2.0.0"
   },
   "peerDependencies": {
     "graphql-tag": "^2.10.0",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-apollo": "^2.2.3"
+    "react-apollo": "^2.2.3",
+    "react-dom": "^16.4.0"
   },
   "devDependencies": {
     "graphql-tag": "^2.10.0",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-apollo": "^2.2.3"
+    "react-apollo": "^2.2.3",
+    "react-dom": "^16.4.2"
   }
 }

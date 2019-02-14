@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0](https://github.com/xing/hops/compare/v11.2.0-rc.1...v11.2.0) (2019-02-14)
+
+
+### Bug Fixes
+
+* **create-hops-app:** fix yarn detection ([772d0af](https://github.com/xing/hops/commit/772d0af))
+* **create-hops-app:** remove superfluous hops-version option ([8fe25dd](https://github.com/xing/hops/commit/8fe25dd))
+* **graphql:** add react-dom as peer dependency for react-apollo ([f5d0228](https://github.com/xing/hops/commit/f5d0228))
+
+
+### Features
+
+* update dependency yargs to v13 ([0934a41](https://github.com/xing/hops/commit/0934a41))
+
+
+
+
+
 # [11.2.0-rc.1](https://github.com/xing/hops/compare/v11.2.0-rc.0...v11.2.0-rc.1) (2019-01-24)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0](https://github.com/xing/hops/compare/v11.2.0-rc.1...v11.2.0) (2019-02-14)
+
+
+### Bug Fixes
+
+* **graphql:** add react-dom as peer dependency for react-apollo ([f5d0228](https://github.com/xing/hops/commit/f5d0228))
+
+
+
+
+
 # [11.2.0-rc.1](https://github.com/xing/hops/compare/v11.2.0-rc.0...v11.2.0-rc.1) (2019-01-24)
 
 
