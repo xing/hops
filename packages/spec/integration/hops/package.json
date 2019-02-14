@@ -1,0 +1,16 @@
+{
+  "name": "fixture-hops",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">= 8.10"
+  },
+  "jest": {
+    "preset": "jest-preset-hops"
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-preset-jest": "*",
+    "react-test-renderer": "^16.8.1"
+  }
+}
