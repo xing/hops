@@ -5,19 +5,24 @@
   "engines": {
     "node": ">= 8.10"
   },
-  "jest": {
-    "testEnvironment": "hops-spec/helpers/env.js",
-    "setupTestFrameworkScriptFile": "hops-spec/jest.setup.js"
-  },
   "scripts": {
     "start": "hops start",
     "build": "hops build"
   },
-  "dependencies": {
-    "hops": "*",
-    "hops-postcss": "*"
-  },
   "hops": {
     "locations": ["/"]
+  },
+  "jest": {
+    "testEnvironment": "hops-spec/helpers/env.js",
+    "setupTestFrameworkScriptFile": "hops-spec/jest.setup.js"
+  },
+  "dependencies": {
+    "animate.css": "^3.7.0",
+    "hops": "^11.4.0",
+    "hops-postcss": "^11.3.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^5.0.0"
   }
 }

@@ -9,8 +9,13 @@
     "preset": "jest-preset-hops"
   },
   "dependencies": {
-    "hops": "*",
-    "hops-preset-jest": "*",
-    "react-test-renderer": "^16.8.1"
+    "hops": "^11.4.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^5.0.0"
+  },
+  "devDependencies": {
+    "react-test-renderer": "^16.4.2"
   }
 }

@@ -14,7 +14,12 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "*",
-    "hops-styled-components": "*"
+    "hops": "^11.4.0",
+    "hops-styled-components": "^11.4.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^5.0.0",
+    "styled-components": "^4.1.1"
   }
 }

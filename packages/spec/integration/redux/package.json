@@ -18,7 +18,14 @@
     "mixins": ["./"]
   },
   "dependencies": {
-    "hops": "*",
-    "hops-redux": "*"
+    "hops": "^11.4.0",
+    "hops-redux": "^11.4.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   }
 }

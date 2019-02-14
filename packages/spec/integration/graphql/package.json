@@ -17,7 +17,13 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "*",
-    "hops-graphql": "*"
+    "graphql-tag": "^2.10.0",
+    "hops": "^11.4.0",
+    "hops-graphql": "^11.4.1",
+    "react": "^16.4.0",
+    "react-apollo": "^2.2.3",
+    "react-dom": "^16.4.0",
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^5.0.0"
   }
 }
