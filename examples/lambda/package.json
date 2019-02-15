@@ -2,6 +2,7 @@
   "name": "fixture-lambda",
   "version": "1.0.0",
   "private": true,
+  "files": [],
   "engines": {
     "node": ">= 8.10"
   },
@@ -25,5 +26,8 @@
     "react-dom": "^16.4.0",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^5.0.0"
+  },
+  "devDependencies": {
+    "hops-config": "^11.3.0"
   }
 }

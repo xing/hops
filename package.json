@@ -28,7 +28,7 @@
     "start": "cd packages/template-react; yarn start",
     "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "jest",
-    "lint": "eslint 'packages/**/*.js'",
+    "lint": "eslint 'packages/**/*.js' 'examples/**/*.js'",
     "release": "lerna publish",
     "release:major": "lerna publish major",
     "release:candidate": "lerna publish premajor --preid=rc --npm-tag=next",
@@ -120,7 +120,15 @@
     "parser": "babel-eslint",
     "env": {
       "es6": true,
-      "node": true
+      "node": true,
+      "browser": true,
+      "jest": true
+    },
+    "globals": {
+      "createPage": true,
+      "browser": true,
+      "HopsCLI": true,
+      "cwd": true
     }
   },
   "eslintIgnore": [
@@ -133,7 +141,7 @@
   ],
   "jest": {
     "projects": [
-      "<rootDir>/examples/!(package.json)",
+      "<rootDir>/examples/*",
       "<rootDir>/packages/*"
     ]
   },

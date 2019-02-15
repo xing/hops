@@ -48,6 +48,7 @@ const setMatchParam = (params, { match: { params: matchParams } }) => {
   };
 };
 
+/* eslint-disable-next-line react/prop-types */
 const Counter = ({ count, increment, val }) => (
   <React.Fragment>
     <button onClick={increment}>+</button>

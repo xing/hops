@@ -2,6 +2,7 @@
   "name": "fixture-redux",
   "version": "1.0.0",
   "private": true,
+  "files": [],
   "engines": {
     "node": ">= 8.10"
   },
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "hops": "^11.4.0",
+    "hops-mixin": "^11.3.0",
     "hops-redux": "^11.4.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
