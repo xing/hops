@@ -1,5 +1,5 @@
 node_modules
-packages/*/**/build
+examples/*/**/dist
 packages/*/**/dist
 package-lock.json
 fragmentTypes.json
