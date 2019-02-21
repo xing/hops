@@ -43,5 +43,7 @@
     "react": "^16.4.2",
     "react-apollo": "^2.2.3",
     "react-dom": "^16.4.2"
-  }
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/graphql#readme"
+
 }

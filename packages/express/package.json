@@ -19,5 +19,7 @@
   "dependencies": {
     "compression": "^1.7.3",
     "hops-mixin": "^11.2.0"
-  }
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/express#readme"
+
 }

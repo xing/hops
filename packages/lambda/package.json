@@ -31,5 +31,6 @@
     "semver": "^5.5.0",
     "serverless-http": "^1.6.0",
     "strip-indent": "^2.0.0"
-  }
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/lambda#readme"
 }

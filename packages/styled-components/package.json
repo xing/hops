@@ -29,5 +29,6 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.0",
     "styled-components": "^4.0.0"
-  }
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/styled-components#readme"
 }

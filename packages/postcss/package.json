@@ -28,5 +28,6 @@
     "postcss-preset-env": "^6.0.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.23.0"
-  }
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/postcss#readme"
 }

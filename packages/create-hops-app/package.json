@@ -25,5 +25,7 @@
     "validate-npm-package-name": "^3.0.0",
     "write-pkg": "^3.2.0",
     "yargs": "^13.0.0"
-  }
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/create-hops-app#readme"
+
 }
