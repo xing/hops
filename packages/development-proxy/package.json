@@ -17,5 +17,7 @@
     "debug": "^4.0.0",
     "hops-mixin": "^11.2.0",
     "http-proxy-middleware": "^0.19.0"
-  }
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/development-proxy#readme"
+
 }

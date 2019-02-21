@@ -20,5 +20,6 @@
   "dependencies": {
     "@untool/core": "^1.0.0",
     "mixinable": "^4.0.0"
-  }
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme"
 }
