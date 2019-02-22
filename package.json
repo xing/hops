@@ -52,12 +52,7 @@
           "yarn test"
         ]
       }
-    ],
-    "rootManifest": {
-      "resolutions": {
-        "typescript": "3.2.4"
-      }
-    }
+    ]
   },
   "husky": {
     "hooks": {
