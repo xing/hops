@@ -21,6 +21,7 @@
   "main": "lib/core.js",
   "browser": "lib/runtime.js",
   "server": "lib/runtime.js",
+  "types": "lib/runtime.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
@@ -41,6 +42,8 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
+    "@types/react": "*",
+    "@types/react-router-dom": "*",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
