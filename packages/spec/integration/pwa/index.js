@@ -1,7 +1,17 @@
 import installServiceWorker from 'hops-pwa';
 import { render } from 'hops';
 import React from 'react';
+import Helmet from 'react-helmet';
+
+import manifest from './manifest.webmanifest';
 
 installServiceWorker();
 
-export default render(<h1>hello</h1>);
+export default render(
+  <>
+    <Helmet>
+      <link rel="manifest" href={manifest} />
+    </Helmet>
+    <h1>hello</h1>
+  </>
+);

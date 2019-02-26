@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 describe('pwa production build', () => {
   let url;
 
@@ -31,5 +34,17 @@ describe('pwa production build', () => {
     ).toEqual([true, true, true]);
 
     await page.close();
+  });
+
+  it('generates webmanifest and references images', async () => {
+    const distDir = path.join(cwd, 'dist');
+    const distFiles = fs.readdirSync(distDir);
+    const manifestFile = distFiles.find(file => file.endsWith('.webmanifest'));
+    const {
+      icons: [{ src: icon }],
+    } = JSON.parse(fs.readFileSync(path.join(distDir, manifestFile), 'utf-8'));
+    const hasIconFile =
+      typeof distFiles.find(file => icon.includes(file)) !== 'undefined';
+    expect(hasIconFile).toBe(true);
   });
 });
