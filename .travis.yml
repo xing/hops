@@ -1,9 +1,5 @@
 language: node_js
 
-node_js:
-  - '8.10'
-  - '10'
-
 env:
   - HOST=0.0.0.0
 
@@ -19,8 +15,16 @@ before_install:
 install:
   - yarn install --frozen-lockfile
 
-before_script:
-  - yarn lint
-
-script:
-  - './node_modules/.bin/jest --maxWorkers=2 --ci'
+matrix:
+  include:
+    - node_js: '8.10'
+      name: 'Test on Node.js 8.10'
+      before_script: 'yarn lint'
+      script: 'yarn test --maxWorkers=2 --ci'
+    - node_js: '10'
+      name: 'Test on Node.js 10'
+      before_script: 'yarn lint'
+      script: 'yarn test --maxWorkers=2 --ci'
+    # - node_js: 'lts/*'
+    #   name: 'Canarist test on Node.js lts/*'
+    #   script: 'yarn canarist'
