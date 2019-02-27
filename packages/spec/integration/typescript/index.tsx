@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import Headline from './headline';
 
-const Content = importComponent('./content');
+const Content = importComponent(() => import('./content'));
 
 export default render(
   <>

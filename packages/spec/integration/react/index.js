@@ -12,7 +12,7 @@ import {
 import React from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import FlowText from './flow-text';
-const Text = importComponent('./text');
+const Text = importComponent(() => import('./text'));
 
 const Config = withConfig(({ config: { hoc } }) => <h1>{hoc}</h1>);
 
