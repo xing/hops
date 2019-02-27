@@ -210,7 +210,7 @@ export default () => <p>This has been loaded lazily</p>;
 import { render, importComponent } from 'hops';
 import React from 'react';
 
-const MyLazyComponent = importComponent('./my-component');
+const MyLazyComponent = importComponent(() => import('./my-component'));
 
 export default render(
   <div>
@@ -471,7 +471,7 @@ import React from 'react';
 export default render(<Header name="X-Foo" value="my-value" />);
 ```
 
-###### `importComponent(module, [exportName])`
+###### `importComponent(moduleLoader, [exportResolver = (ns) => ns.default])`
 
 Using the `importComponent()` function you can asynchronously load modules as React components into your application to help you reduce bundle sizes.
 
@@ -480,7 +480,20 @@ It works similarly to [`react-loadable`](https://github.com/jamiebuilds/react-lo
 ```javascript
 import { render, importComponent } from 'hops';
 
-const Home = importComponent('./home');
+const Home = importComponent(() => import('./home'));
+
+export default render(<Home />);
+```
+
+In case you have a file that exports named components, you can use the second argument to `importComponent` to control which export should be used:
+
+```javascript
+import { render, importComponent } from 'hops';
+
+const Home = importComponent(
+  () => import('./home'),
+  namespace => namespace.Home
+);
 
 export default render(<Home />);
 ```
@@ -490,7 +503,7 @@ Components created using `importComponent` support some additional props to cont
 ```javascript
 import { render, importComponent } from 'hops';
 
-const About = importComponent('./about');
+const About = importComponent(() => import('./about'));
 
 const loader = load =>
   Promise.race([
@@ -514,6 +527,16 @@ export default render(<About loader={loader} render={renderAbout} />);
 ```
 
 Components (and their dependencies) imported using `importComponent` will be placed into separate chunks (i.e. asset files). Hops makes sure that all asset files containing modules used for server-side rendering are referenced in the initial HTML output.
+
+**Note about `importComponent(moduleName, [exportName])`:** We still support the "string" syntax, where you could just pass a string for the file name and another string for the export name to the `importComponent` function, but we are discouraging the use of it, because it is not compatible with type-checked code and does not provide editor integration (point & click to open the file).
+
+```javascript
+import { render, importComponent } from 'hops';
+
+const Home = importComponent('./home', 'Home');
+
+export default render(<Home />);
+```
 
 ###### `withConfig(Component)`
 
