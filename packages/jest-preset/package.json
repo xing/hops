@@ -31,15 +31,20 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
     "babel-plugin-dynamic-import-node": "^2.0.0",
+    "hops": "^11.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-config": "^23.0.0",
     "ts-jest": "^23.1.2"
   },
   "peerDependencies": {
-    "jest": "^23.0.0"
+    "jest": "^23.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.3.0"
   },
   "devDependencies": {
-    "jest": "^23.4.2"
+    "jest": "^23.4.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.3.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/jest-preset#readme"
-} 
+}

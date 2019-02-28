@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import testRenderer from 'react-test-renderer';
-import App from '../';
+import { App } from '../';
 
 jest.mock('hops', () => {
   const hops = jest.requireActual('hops');
