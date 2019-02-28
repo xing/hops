@@ -12,6 +12,7 @@
   "engines": {
     "node": ">=8.10.0"
   },
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
