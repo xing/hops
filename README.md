@@ -538,9 +538,9 @@ const Home = importComponent('./home', 'Home');
 export default render(<Home />);
 ```
 
-During tests `importComponent` simply outputs the mock component `<ImportComponentStub />` without loading the referenced component. If you'd rather like to test the `loading`- or the `error`-state of the lazy-loading placeholder component or the actual inserted content, you currently have to provide your own mock.
+During tests `importComponent` simply outputs the referenced component. If you'd rather like to test the `loading`- or the `error`-state of the lazy-loading placeholder component, you currently have to provide your own mock.
 
-**Example 1: check the loading state**
+**Example: check the loading state**
 
 ```javascript
 import React from 'react';
@@ -571,40 +571,6 @@ it('should display the loading state', () => {
 ```
 
 Similarily, to test the `error`-state of the lazy-loading placeholder component, pass `{ error: true }` into the `render`-function of the `importComponent`-mock.
-
-**Example 2: check the actual inserted content**
-
-```javascript
-import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import testRenderer from 'react-test-renderer';
-import App from '../';
-
-jest.mock('hops', () => {
-  const { join } = require('path');
-  const hops = jest.requireActual('hops');
-
-  hops.importComponent = (path, name = 'default') =>
-    function ImportComponent() {
-      const Component = require(join('..', path))[name];
-      return <Component />;
-    };
-
-  return hops;
-});
-
-it('should display the loaded component', () => {
-  const app = testRenderer.create(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  );
-
-  expect(app).toMatchSnapshot();
-});
-```
-
-Beware that the path of the component, that's passed into `importComponent` is most likely relative to the component, that's hosting the imported component. So when you're mocking the `importComponent`-function you have to take care of augmenting the path correctly. The example above assumes, that the test is located in a `__tests__`-folder, that sits beside the tested component.
 
 ###### `withConfig(Component)`
 
