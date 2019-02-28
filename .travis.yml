@@ -24,4 +24,3 @@ before_script:
 
 script:
   - './node_modules/.bin/jest --maxWorkers=2 --ci'
-  - yarn canarist
