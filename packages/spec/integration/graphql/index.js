@@ -5,6 +5,7 @@ import { Query } from 'react-apollo';
 
 const commits = gql`
   query commits {
+    showCommits @client
     github {
       repo(ownerUsername: "xing", name: "hops") {
         commits(limit: 10) {
@@ -28,6 +29,10 @@ export default render(
     {({ loading, error, data }) => {
       if (loading) return <b id="loading">loading commits...</b>;
       if (error) return <b id="error">Error: {error.message}</b>;
+
+      if (!data.showCommits) {
+        return null;
+      }
       return (
         <ul id="commits">
           {data.github.repo.commits.map(commit => (
@@ -38,5 +43,17 @@ export default render(
         </ul>
       );
     }}
-  </Query>
+  </Query>,
+
+  {
+    graphql: {
+      resolvers: {
+        Query: {
+          showCommits() {
+            return true;
+          },
+        },
+      },
+    },
+  }
 );
