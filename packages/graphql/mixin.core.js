@@ -63,12 +63,13 @@ class GraphQLMixin extends Mixin {
       return;
     }
 
-    middleware.preroutes.unshift(
-      createWebpackMiddleware(
+    middleware.initial.push({
+      path: this.config.graphqlMockServerPath,
+      handler: createWebpackMiddleware(
         this.getBuildConfig('graphql-mock-server', 'node'),
         true
-      )
-    );
+      ),
+    });
   }
 
   configureBuild(webpackConfig, loaderConfigs, target) {
