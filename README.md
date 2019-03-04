@@ -258,6 +258,7 @@ This command will execute a single build of all your assets.
 - `npm run build -- --production` builds all assets in production mode (which includes minification, etc).
 - `npm run build -- --static` export static HTML pages for all configured [locations](#default-settings) in development mode.
 - `npm run build -- --production --static` export static HTML pages in production mode (enables minification, etc).
+- `npm run build -- --analyze-client-bundle` visualize bundles' contents with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
 
 #### `npm run serve`
 
