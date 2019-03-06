@@ -8,7 +8,7 @@ jest.mock('hops', () => {
 
   hops.importComponent = () =>
     function ImportComponent({ render }) {
-      return <>{render({ loading: true })}</>;
+      return render({ loading: true });
     };
 
   return hops;
