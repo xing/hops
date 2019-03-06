@@ -53,7 +53,7 @@ Wrap your component with this HoC to get access to the prop `serverData` which c
 
 ##### `<ServerDataContext.Consumer>{data => /* render something */}</ServerDataContext.Consumer>`
 
-If you don't want to use the above mentioned HoC you can also use this React Context consumer instead. It will accept a function as a child component and pass the `serverData` object to it. You can also use `ServerDataContext` as [`contextType`](https://reactjs.org/docs/context.html#classcontexttype) or in `[useContext]`(https://reactjs.org/docs/hooks-reference.html#usecontext) hook.
+If you don't want to use the above mentioned HoC you can also use this React Context consumer instead. It will accept a function as a child component and pass the `serverData` object to it. You can also use `ServerDataContext` as [`contextType`](https://reactjs.org/docs/context.html#classcontexttype) or in [`useContext`](https://reactjs.org/docs/hooks-reference.html#usecontext) hook.
 
 ### Configuration
 
