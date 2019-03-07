@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.3.0](https://github.com/xing/hops/compare/v11.2.0...v11.3.0) (2019-03-07)
+
+
+### Bug Fixes
+
+* **jest-preset:** expose Hops runtime in mock ([d46ace4](https://github.com/xing/hops/commit/d46ace4))
+
+
+### Features
+
+* **jest-preset:** add babel plugin for transpiling `importComponent` ([0a816ac](https://github.com/xing/hops/commit/0a816ac))
+* **jest-preset:** add mock function for `importComponent` ([7d93882](https://github.com/xing/hops/commit/7d93882))
+
+
+
+
+
 # [11.1.0](https://github.com/xing/hops/compare/v11.0.1...v11.1.0) (2019-01-11)
 
 
