@@ -1,0 +1,3 @@
+import { importComponent } from 'hops';
+
+export const Foo = importComponent(() => import('./foo'));
