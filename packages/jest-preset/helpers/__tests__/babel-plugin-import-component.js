@@ -1,23 +1,18 @@
 /* eslint-env node, jest */
 
 const { resolve, join } = require('path');
-const { readdirSync: readdir, readFileSync: readFile } = require('fs');
+const { readFileSync: readFile } = require('fs');
 const babel = require('@babel/core');
 
 const fixtureFolder = resolve(__dirname, 'fixture');
-const file = (type, count) =>
-  readFile(join(fixtureFolder, `${type}-${count}.txt`), 'utf8').trim();
-const fixtures = readdir(fixtureFolder).filter(file => file.endsWith('.txt'));
-const tests = fixtures
-  .filter(file => file.startsWith('code'))
-  .map(file =>
-    file
-      .split('.')
-      .shift()
-      .split('-')
-      .pop()
-  )
-  .map(count => [count, file('code', count), file('expected', count)]);
+const fixture = filename =>
+  readFile(join(fixtureFolder, filename), 'utf8').trim();
+const tests = [
+  ['code-01.txt', 'expected-01.txt'],
+  ['code-02.txt', 'expected-02.txt'],
+  ['code-03.txt', 'expected-03.txt'],
+  ['code-04.txt', 'expected-04.txt'],
+].map(([code, expected], i) => [String(++i), fixture(code), fixture(expected)]);
 
 const babelOptions = {
   plugins: [
