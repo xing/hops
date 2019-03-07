@@ -1,3 +1,24 @@
+/**
+ * Babel-plugin for enabling the synchronous import
+ * of components in the Jest environment.
+ *
+ * Compiles `importComponent` calls like...
+ *
+ * ```javascript
+ * importComponent('./test');
+ * importComponent(() => import('./another-test'));
+ * ```
+ *
+ * ...to ones where the `require`-call is inserted.
+ *
+ * ```javascript
+ * importComponent({ component: require('./test') });
+ * importComponent({ component: require('./another-test') });
+ * ```
+ *
+ * The optional second argument of `importComponent` is left
+ * untouched as in @untool/react/lib/babel.
+ */
 module.exports = ({ types: t }) => ({
   visitor: {
     ImportDeclaration(path) {
