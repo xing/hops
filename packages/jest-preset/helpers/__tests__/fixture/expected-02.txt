@@ -1,0 +1,4 @@
+import { importComponent } from 'hops';
+export const Foo = importComponent({
+  component: require("./foo")
+}, 'Foobar');
