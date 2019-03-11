@@ -6,7 +6,8 @@ module.exports = class AnalyzerCoreMixin extends Mixin {
       definition.builder.analyzeClientBundle = {
         type: 'boolean',
         default: false,
-        describe: 'Opens webpack bundle analyzer page after client side build',
+        describe:
+          'Start an HTTP server displaying a bundle report visualization of client side build',
       };
     }
   }
@@ -23,6 +24,10 @@ module.exports = class AnalyzerCoreMixin extends Mixin {
     const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
       .BundleAnalyzerPlugin;
 
-    webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+    webpackConfig.plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      })
+    );
   }
 };
