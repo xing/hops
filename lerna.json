@@ -6,7 +6,8 @@
   "command": {
     "publish": {
       "message": "chore: release %s",
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "githubRelease": true
     }
   }
 }
