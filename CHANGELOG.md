@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0](https://github.com/xing/hops/compare/v11.3.0...v11.4.0) (2019-03-12)
+
+
+### Bug Fixes
+
+* **graphql:** only initialize Apollo server once ([0f7c501](https://github.com/xing/hops/commit/0f7c501))
+
+
+### Features
+
+* add typescript typings for runtime API in hops and hops-pwa ([5a4ad00](https://github.com/xing/hops/commit/5a4ad00)), closes [#360](https://github.com/xing/hops/issues/360)
+* **graphql:** add runtime options typings ([6107325](https://github.com/xing/hops/commit/6107325))
+* **graphql:** restrict mock-server to specific path ([3a68068](https://github.com/xing/hops/commit/3a68068))
+* **graphql:** upgrade apollo-client to allow local resolvers ([9c9f72b](https://github.com/xing/hops/commit/9c9f72b))
+* **hops:** add cli flag to analyze client bundle ([3094350](https://github.com/xing/hops/commit/3094350))
+* **hops:** disable automatic browser opening on --analyze-client-bundle flag ([fec7d91](https://github.com/xing/hops/commit/fec7d91))
+* **redux:** add runtime options typings ([28631e9](https://github.com/xing/hops/commit/28631e9))
+* **styled-components:** add runtime options typings ([b239191](https://github.com/xing/hops/commit/b239191))
+
+
+
+
+
 # [11.3.0](https://github.com/xing/hops/compare/v11.2.0...v11.3.0) (2019-03-07)
 
 

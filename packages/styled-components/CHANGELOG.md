@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0](https://github.com/xing/hops/compare/v11.3.0...v11.4.0) (2019-03-12)
+
+
+### Features
+
+* **styled-components:** add runtime options typings ([b239191](https://github.com/xing/hops/commit/b239191))
+
+
+
+
+
 # [11.3.0](https://github.com/xing/hops/compare/v11.2.0...v11.3.0) (2019-03-07)
 
 **Note:** Version bump only for package hops-styled-components

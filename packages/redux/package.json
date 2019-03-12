@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "11.3.0",
+  "version": "11.4.0",
   "description": "React and Redux implementation for Hops",
   "keywords": [
     "hops",

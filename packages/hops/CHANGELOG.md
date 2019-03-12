@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0](https://github.com/xing/hops/compare/v11.3.0...v11.4.0) (2019-03-12)
+
+
+### Features
+
+* add typescript typings for runtime API in hops and hops-pwa ([5a4ad00](https://github.com/xing/hops/commit/5a4ad00)), closes [#360](https://github.com/xing/hops/issues/360)
+* **hops:** add cli flag to analyze client bundle ([3094350](https://github.com/xing/hops/commit/3094350))
+* **hops:** disable automatic browser opening on --analyze-client-bundle flag ([fec7d91](https://github.com/xing/hops/commit/fec7d91))
+
+
+
+
+
 # [11.3.0](https://github.com/xing/hops/compare/v11.2.0...v11.3.0) (2019-03-07)
 
 
