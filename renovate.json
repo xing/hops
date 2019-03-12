@@ -1,11 +1,6 @@
 {
   "extends": ["config:base", "schedule:nonOfficeHours"],
   "pinVersions": false,
-  "ignorePaths": ["packages/build-config/shims/", "packages/spec/mock/"],
-  "semanticPrefix": "chore:",
-  "dependencies": {
-    "semanticPrefix": "chore:"
-  },
   "prCreation": "not-pending",
   "lockFileMaintenance": {
     "enabled": true
@@ -14,6 +9,13 @@
     {
       "packagePatterns": ["^@untool/"],
       "groupName": "Update untool monorepo packages"
+    },
+    {
+      "semanticCommitType": "fix",
+      "semanticCommitScope": "dependencies",
+      "depTypeList": ["dependencies", "peerDependencies"]
     }
-  ]
+  ],
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "dependencies"
 }
