@@ -12,6 +12,11 @@ const apolloAppPromise = Promise.resolve(
 
   const server = new ApolloServer({
     schema: resolvedSchema,
+    playground: {
+      settings: {
+        'request.credentials': 'same-origin',
+      },
+    },
     context: context => ({ ...context, config: hopsConfig }),
   });
 
