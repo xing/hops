@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.1](https://github.com/xing/hops/compare/v11.4.0...v11.4.1) (2019-03-14)
+
+
+### Bug Fixes
+
+* **graphql:** enable playground requests to include credentials ([4e65a03](https://github.com/xing/hops/commit/4e65a03))
+
+
+
+
+
 # [11.4.0](https://github.com/xing/hops/compare/v11.3.0...v11.4.0) (2019-03-12)
 
 
