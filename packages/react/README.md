@@ -49,7 +49,7 @@ This side-effect component can be used to set specific HTTP status codes for ser
 
 ##### `withServerData(Component): HigherOrderComponent`
 
-Wrap your component with this HoC to get access to the prop `serverData` which contains all values of mixins that have implemented the `getServerData` hook.
+Wrap your component with this HoC to get access to the prop `serverData` which contains all values of mixins that have implemented the `enhanceServerData` hook.
 
 ##### `<ServerDataContext.Consumer>{data => /* render something */}</ServerDataContext.Consumer>`
 
