@@ -102,7 +102,7 @@ export default render(<MyApp />, {
       },
       {
         path: '/users/:id',
-        action: id => fetchUser(id),
+        action: ({ id }) => fetchUser(id),
       },
     ],
   },
