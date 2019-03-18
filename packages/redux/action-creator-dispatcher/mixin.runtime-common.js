@@ -69,7 +69,7 @@ class ReduxActionCreatorRuntimeMixin extends Mixin {
         if (!match) {
           return Promise.resolve();
         }
-        return store.dispatch(action(match.params));
+        return store.dispatch(action(match.params, location));
       })
     );
   }
