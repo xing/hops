@@ -41,6 +41,19 @@ describe('redux developmet server', () => {
     await page.close();
   });
 
+  it('executes route-matching action creators also if a search query or hash is present', async () => {
+    const { page, getInnerText } = await createPage();
+    await page.goto(url + '/increment?foo=bar#hash', {
+      waitUntil: 'networkidle2',
+    });
+
+    const count = await getInnerText('counter');
+
+    expect(count).toBe('1');
+
+    await page.close();
+  });
+
   it('executes route-matching action creators with fetch', async () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url + '/increment-fetch', { waitUntil: 'networkidle2' });
@@ -65,13 +78,13 @@ describe('redux developmet server', () => {
 
   it('executes route-matching action creators with react-router-location as part of their second argument', async () => {
     const { page, getInnerText } = await createPage();
-    await page.goto(url + '/location-test', {
+    await page.goto(url + '/location-test?foo=bar', {
       waitUntil: 'networkidle2',
     });
 
     const param = await getInnerText('value');
 
-    expect(param).toBe('/location-test');
+    expect(param).toBe('?foo=bar');
 
     await page.close();
   });
