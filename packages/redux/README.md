@@ -88,7 +88,7 @@ When server-side rendering/data fetching is enabled, this will dispatch matching
 
 On the client-side by default this will dispatch matching actions only on client-side navigation (can be overriden by setting `alwaysDispatchActionsOnClient` to `true`).
 
-Actions receive two parameters: `params` (see [URL Parameters](https://reacttraining.com/react-router/web/example/url-params) in the react-router docs) and `location` (the react router [`location`](https://reacttraining.com/react-router/web/api/location) object).
+Actions receive two parameters: `params` (see [URL Parameters](https://reacttraining.com/react-router/web/example/url-params) in the react-router docs) and an object containing `location` (the react router [`location`](https://reacttraining.com/react-router/web/api/location) object) and [`match`]((https://reacttraining.com/react-router/web/api/match).
 
 ```javascript
 export default render(<MyApp />, {
