@@ -12,6 +12,14 @@ const reducers = {
         return state;
     }
   },
+  value(state = null, action) {
+    switch (action.type) {
+      case 'SET_VALUE':
+        return action.payload;
+      default:
+        return state;
+    }
+  },
 };
 
 const increment = () => ({ type: 'INCREMENT', payload: 1 });
@@ -24,15 +32,32 @@ const incrementFetch = () => dispatch => {
     });
 };
 
-const Counter = ({ count, increment }) => (
+const setParam = ({ param }) => ({ type: 'SET_VALUE', payload: param });
+
+const setLocationPathname = (params, { location: { pathname } }) => {
+  return {
+    type: 'SET_VALUE',
+    payload: pathname,
+  };
+};
+
+const setMatchParam = (params, { match: { params: matchParams } }) => {
+  return {
+    type: 'SET_VALUE',
+    payload: matchParams.test,
+  };
+};
+
+const Counter = ({ count, increment, val }) => (
   <React.Fragment>
     <button onClick={increment}>+</button>
-    <output>{count}</output>
+    <counter>{count}</counter>
+    <value>{val}</value>
   </React.Fragment>
 );
 
 const ConnectedCounter = connect(
-  ({ counter }) => ({ count: counter }),
+  ({ counter, value }) => ({ count: counter, val: value }),
   { increment }
 )(Counter);
 
@@ -47,6 +72,18 @@ export default render(<ConnectedCounter />, {
       {
         path: '/increment-fetch',
         action: incrementFetch,
+      },
+      {
+        path: '/param/:param',
+        action: setParam,
+      },
+      {
+        path: '/location-test',
+        action: setLocationPathname,
+      },
+      {
+        path: '/match-test/:test',
+        action: setMatchParam,
       },
     ],
   },

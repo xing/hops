@@ -9,7 +9,7 @@ describe('redux developmet server', () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    const count = await getInnerText('output');
+    const count = await getInnerText('counter');
 
     expect(count).toBe('0');
 
@@ -23,7 +23,7 @@ describe('redux developmet server', () => {
     await page.click('button');
     await page.click('button');
 
-    const count = await getInnerText('output');
+    const count = await getInnerText('counter');
 
     expect(count).toBe('2');
 
@@ -34,7 +34,7 @@ describe('redux developmet server', () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url + '/increment', { waitUntil: 'networkidle2' });
 
-    const count = await getInnerText('output');
+    const count = await getInnerText('counter');
 
     expect(count).toBe('1');
 
@@ -45,9 +45,46 @@ describe('redux developmet server', () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url + '/increment-fetch', { waitUntil: 'networkidle2' });
 
-    const count = await getInnerText('output');
+    const count = await getInnerText('counter');
 
     expect(count).toBe('42');
+
+    await page.close();
+  });
+
+  it('executes route-matching action creators with url-params as their first argument', async () => {
+    const { page, getInnerText } = await createPage();
+    await page.goto(url + '/param/foo', { waitUntil: 'networkidle2' });
+
+    const param = await getInnerText('value');
+
+    expect(param).toBe('foo');
+
+    await page.close();
+  });
+
+  it('executes route-matching action creators with react-router-location as part of their second argument', async () => {
+    const { page, getInnerText } = await createPage();
+    await page.goto(url + '/location-test', {
+      waitUntil: 'networkidle2',
+    });
+
+    const param = await getInnerText('value');
+
+    expect(param).toBe('/location-test');
+
+    await page.close();
+  });
+
+  it('executes route-matching action creators with react-router-match as part of their second argument', async () => {
+    const { page, getInnerText } = await createPage();
+    await page.goto(url + '/match-test/foobar', {
+      waitUntil: 'networkidle2',
+    });
+
+    const param = await getInnerText('value');
+
+    expect(param).toBe('foobar');
 
     await page.close();
   });
