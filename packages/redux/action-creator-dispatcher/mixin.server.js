@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-internal-modules
-const { createLocation } = require('history/LocationUtils');
+const { createLocation } = require('history');
 const {
   strategies: {
     sync: { sequence },
