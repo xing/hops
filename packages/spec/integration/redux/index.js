@@ -34,10 +34,10 @@ const incrementFetch = () => dispatch => {
 
 const setParam = ({ param }) => ({ type: 'SET_VALUE', payload: param });
 
-const setLocationPathname = (params, { location: { pathname } }) => {
+const setLocationPathname = (params, { location: { search } }) => {
   return {
     type: 'SET_VALUE',
-    payload: pathname,
+    payload: search,
   };
 };
 
