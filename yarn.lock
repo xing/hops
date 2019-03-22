@@ -10139,7 +10139,7 @@ react-redux@^6.0.0:
     prop-types "^15.7.2"
     react-is "^16.8.2"
 
-"react-router-dom@^4.3.1 || ^5.0.0":
+react-router-dom@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.0.0.tgz#542a9b86af269a37f0b87218c4c25ea8dcf0c073"
   integrity sha512-wSpja5g9kh5dIteZT3tUoggjnsa+TPFHSMrpHXMpFsaHhQkm/JNVGh2jiF9Dkh4+duj4MKCkwO6H08u6inZYgQ==
