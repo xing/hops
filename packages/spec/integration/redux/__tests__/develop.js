@@ -83,9 +83,9 @@ describe('redux developmet server', () => {
         waitUntil: 'networkidle2',
       });
 
-      const param = await getInnerText('value');
+      const locationSearch = await getInnerText('value');
 
-      expect(param).toBe('?foo=bar');
+      expect(locationSearch).toBe('?foo=bar');
 
       await page.close();
     });
@@ -96,9 +96,9 @@ describe('redux developmet server', () => {
         waitUntil: 'networkidle2',
       });
 
-      const param = await getInnerText('value');
+      const matchParam = await getInnerText('value');
 
-      expect(param).toBe('foobar');
+      expect(matchParam).toBe('foobar');
 
       await page.close();
     });
