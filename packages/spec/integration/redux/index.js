@@ -74,7 +74,7 @@ export default render(<ConnectedCounter />, {
         action: incrementFetch,
       },
       {
-        path: '/param/:param',
+        path: '/param-test/:param',
         action: setParam,
       },
       {
