@@ -1668,7 +1668,7 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@untool/core@^1.5.0", "@untool/core@^1.5.1":
+"@untool/core@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.5.1.tgz#200bec25dd5c3f27bcc275d55b35c2d410c07981"
   integrity sha512-UpzLMizxqtzK/YS0sDvc85PhpEO4BvH4/5kz0ppbuUEIsUvM/UoUjZVFcoNprf8cQ2J6Jh/venOdzU83rNPBjw==
@@ -1687,7 +1687,7 @@
     mixinable "^4.0.0"
     supports-color "^6.0.0"
 
-"@untool/express@^1.5.0", "@untool/express@^1.5.1":
+"@untool/express@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.5.1.tgz#5091ede9d84c463d126833cd5ead7d47a5706b0b"
   integrity sha512-7ou0RX8k4AXcme3XORteZ2JO+9ExHdTDu3QWjVDg8yGIWv8ePm2IMqz7J14LLNaVkphUQf+ps7MMPZ6SNU1FUA==
@@ -1713,7 +1713,7 @@
     split "^1.0.1"
     supports-color "^6.0.0"
 
-"@untool/react@^1.5.0":
+"@untool/react@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.5.1.tgz#4007ad1765fd03c8a2c417187b80eea9e3ae182a"
   integrity sha512-Amt8LlKSa2gFpLmopfaivnXOqUnX3t9e7KvGr9JiQhyxZp8XRbNioYhAIqknVRw0PEDv35x+GeRmCXT2bh1hiA==
@@ -1729,7 +1729,7 @@
     prop-types "^15.7.2"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^1.5.0":
+"@untool/webpack@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.5.1.tgz#6a4394020fa95045e6e35e29887cedd53b6f8930"
   integrity sha512-3oWkRCtwcn9pL4Xvh0y46QfmK6B7pjG/cgSVZ7vv3dfND+2XUfIoq9RIc6ldt70GNanlsWxouFIBJic/WJmeiA==
@@ -1771,7 +1771,7 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^1.5.0", "@untool/yargs@^1.5.1":
+"@untool/yargs@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.5.1.tgz#f482b37c15ba1b733e997bf2d5766471733a0b5c"
   integrity sha512-16q5BJK4slCNVSkeGoUGuP6o+/v4BLyNTZ5MuojV/m1va2jLLect7WKclIcpt8zIsFl1kiKA/fxbdvsc55Lmvw==
@@ -3230,9 +3230,9 @@ camelcase@^4.1.0:
   integrity sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=
 
 camelcase@^5.0.0:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
-  integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.0.tgz#0a110882cbeba41f72f99fcf918f4a0a92a13ebf"
+  integrity sha512-Y05ICatFYPAfykDIB7VdwSJ0LUl1yq/BwO2OpyGGLjiRe1fgzTwVypPiWnzkGFOVFHXrCXUNBl86bpjBhZWSJg==
 
 camelize@1.0.0, camelize@^1.0.0:
   version "1.0.0"
