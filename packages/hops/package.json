@@ -28,12 +28,12 @@
   },
   "dependencies": {
     "@untool/express": "^1.5.1",
+    "@untool/info": "^1.5.1",
     "@untool/webpack": "^1.5.1",
     "@untool/yargs": "^1.5.1",
     "hops-express": "^11.5.0",
     "hops-mixin": "^11.5.0",
     "hops-react": "^11.5.0",
-    "pretty-ms": "^4.0.0",
     "webpack-bundle-analyzer": "^3.0.4"
   },
   "peerDependencies": {
