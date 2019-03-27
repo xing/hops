@@ -1,9 +1,12 @@
 const { Mixin } = require('hops-mixin');
+const {
+  internal: { babelPlugin },
+} = require('untool');
 
 const getPluginName = plugin => (Array.isArray(plugin) ? plugin[0] : plugin);
 const getPluginConfig = plugin => (Array.isArray(plugin) ? plugin[1] : {});
-const isBabelPlugin = name => plugin =>
-  require.resolve(getPluginName(plugin)) === require.resolve(name);
+const isBabelPlugin = path => plugin =>
+  require.resolve(getPluginName(plugin)) === path;
 
 class ReactCoreMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig }) {
@@ -13,13 +16,13 @@ class ReactCoreMixin extends Mixin {
     );
 
     const untoolPluginIndex = jsLoaderConfig.options.plugins.findIndex(
-      isBabelPlugin('@untool/react/lib/babel')
+      isBabelPlugin(babelPlugin.path)
     );
 
     const untoolPlugin = jsLoaderConfig.options.plugins[untoolPluginIndex];
 
     jsLoaderConfig.options.plugins[untoolPluginIndex] = [
-      require.resolve('@untool/react/lib/babel'),
+      babelPlugin.path,
       {
         ...getPluginConfig(untoolPlugin),
         module: 'hops',

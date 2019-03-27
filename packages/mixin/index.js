@@ -1,7 +1,6 @@
-const { Mixin } = require('@untool/core');
-const { sync, async } = require('mixinable');
+const { Mixin, strategies } = require('untool');
 
 module.exports = {
   Mixin,
-  strategies: { sync, async },
+  strategies,
 };

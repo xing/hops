@@ -1,4 +1,7 @@
 const { Mixin } = require('hops-mixin');
+const {
+  internal: { configLoader },
+} = require('untool');
 const { join, trimSlashes } = require('pathifist');
 const ServiceWorkerPlugin = require('./lib/service-worker-plugin');
 
@@ -30,7 +33,7 @@ class PWAMixin extends Mixin {
       };
       webpackConfig.module.rules.push({
         test: require.resolve('./lib/loader-shim'),
-        loader: require.resolve('@untool/webpack/lib/utils/loader'),
+        loader: configLoader.path,
         options: { target: 'worker', config: this.config },
       });
       webpackConfig.plugins.push(

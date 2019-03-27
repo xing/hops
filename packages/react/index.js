@@ -1,10 +1,4 @@
-const {
-  render,
-  Header,
-  importComponent,
-  Miss,
-  Status,
-} = require('@untool/react/lib/runtime');
+const { render, Header, importComponent, Miss, Status } = require('untool');
 const ServerDataContext = require('./server-data/context');
 const withServerData = require('./server-data/with-server-data');
 

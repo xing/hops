@@ -12127,6 +12127,19 @@ unset-value@^1.0.0:
     has-value "^0.3.1"
     isobject "^3.0.0"
 
+untool@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/untool/-/untool-1.6.2.tgz#9b2efcd2bdb79af3fdb263fa1d8b9ba635f67b44"
+  integrity sha512-0FVMHgtDJzFjnaMYCQ4mi9ptzl3VnK+2uenVs8cHc2S32he/h6xwBVZ/kFF2kc6C3L0Qu2CxISCdjgvx4fEMpg==
+  dependencies:
+    "@untool/core" "^1.6.2"
+    "@untool/express" "^1.6.2"
+    "@untool/info" "^1.6.2"
+    "@untool/react" "^1.6.2"
+    "@untool/webpack" "^1.6.2"
+    "@untool/yargs" "^1.6.2"
+    mixinable "^4.0.0"
+
 upath@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/upath/-/upath-1.1.2.tgz#3db658600edaeeccbe6db5e684d67ee8c2acd068"

@@ -1,8 +1,6 @@
 /* eslint-env browser */
 
-const {
-  internal: { getConfig },
-} = require('@untool/core');
+const hopsConfig = require('hops-config');
 
 const isLocalHost = host => {
   return (
@@ -27,7 +25,7 @@ module.exports = function installServiceWorker() {
       isLocalHost(window.location.hostname)
     ) {
       window.addEventListener('load', () => {
-        resolve(navigator.serviceWorker.register(getConfig().workerPath));
+        resolve(navigator.serviceWorker.register(hopsConfig.workerPath));
       });
     }
   });

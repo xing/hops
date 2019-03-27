@@ -1,1 +1,1 @@
-module.exports = require('@untool/core').internal.getConfig();
+module.exports = require('untool').internal.getConfig();

@@ -7,10 +7,6 @@
   },
   "packageRules": [
     {
-      "packagePatterns": ["^@untool/"],
-      "groupName": "Update untool monorepo packages"
-    },
-    {
       "semanticCommitType": "fix",
       "semanticCommitScope": "dependencies",
       "depTypeList": ["dependencies", "peerDependencies"]

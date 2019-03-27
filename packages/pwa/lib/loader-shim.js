@@ -1,1 +1,3 @@
-export { getConfig } from '@untool/core/lib/config';
+import hopsConfig from 'hops-config';
+
+export const getConfig = () => hopsConfig;

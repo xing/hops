@@ -33,7 +33,8 @@
     "hops": "^11.6.1",
     "identity-obj-proxy": "^3.0.0",
     "jest-config": "^23.0.0",
-    "ts-jest": "^23.1.2"
+    "ts-jest": "^23.1.2",
+    "untool": "^1.6.2"
   },
   "peerDependencies": {
     "jest": "^23.0.0",

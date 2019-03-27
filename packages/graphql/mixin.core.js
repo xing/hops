@@ -3,7 +3,7 @@ const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
 const {
   internal: { createWebpackMiddleware, StatsFilePlugin },
-} = require('@untool/webpack');
+} = require('untool');
 
 function exists(path) {
   try {
