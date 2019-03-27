@@ -20,8 +20,8 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^1.4.0",
-    "@untool/webpack": "^1.4.0",
+    "@untool/core": "^1.5.0",
+    "@untool/webpack": "^1.5.0",
     "app-manifest-loader": "^2.0.0",
     "file-loader": "^3.0.0",
     "hops-mixin": "^11.3.0",
