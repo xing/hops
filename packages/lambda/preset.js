@@ -10,7 +10,7 @@ module.exports = {
     stageName: 'prod',
     uniqueName: 'hops-lambda-<name>',
     cloudformationTemplateFile: path.resolve(__dirname, 'cloudformation.yaml'),
-    include: ['<cacheDir>/**'],
+    include: ['<serverDir>/**'],
     exclude: ['flow-typed/**', 'typings/**'],
   },
   configSchema: {
