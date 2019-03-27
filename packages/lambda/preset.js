@@ -13,4 +13,27 @@ module.exports = {
     include: ['<cacheDir>/**'],
     exclude: ['flow-typed/**', 'typings/**'],
   },
+  configSchema: {
+    aws: {
+      memorySize: { type: 'number' },
+      region: { type: 'string', minLength: 1 },
+      domainName: { type: 'string', format: 'hostname' },
+      certificateArn: { type: 'string' },
+      stageName: { type: 'string', minLength: 1 },
+      uniqueName: { type: 'string', minLength: 1 },
+      cloudformationTemplateFile: { type: 'string', absolutePath: true },
+      include: {
+        type: 'array',
+        items: {
+          type: 'string',
+        },
+      },
+      exclude: {
+        type: 'array',
+        items: {
+          type: 'string',
+        },
+      },
+    },
+  },
 };
