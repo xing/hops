@@ -5,5 +5,5 @@ const { configure } = require('@untool/yargs');
 
 configure({
   untoolNamespace: 'hops',
-  mixins: [__dirname, path.join(__dirname, 'mixins', 'analyzer')],
+  mixins: [path.join(__dirname, 'mixins', 'analyzer')],
 }).run();

@@ -1713,6 +1713,17 @@
     split "^1.0.1"
     supports-color "^6.0.0"
 
+"@untool/info@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@untool/info/-/info-1.5.1.tgz#2d929281502ab075385b422535ac2899205de00f"
+  integrity sha512-GTX39FyBlsNxoHsS+cXYaFXKzcnxRLZxUDqbrMSdAaYnu+tJyeagWjzrbEKL9f/zv/rAaqz9W5nYk/B4fA9NwQ==
+  dependencies:
+    "@untool/core" "^1.5.1"
+    chalk "^2.4.2"
+    duplitect "^2.0.1"
+    enhanced-resolve "^4.1.0"
+    mixinable "^4.0.0"
+
 "@untool/react@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.5.1.tgz#4007ad1765fd03c8a2c417187b80eea9e3ae182a"

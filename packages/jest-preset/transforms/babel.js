@@ -8,6 +8,7 @@ module.exports = babelJest.createTransformer({
         modules: 'commonjs',
         useBuiltIns: 'usage',
         targets: { node: 'current' },
+        corejs: 2,
       },
     ],
     '@babel/preset-react',

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const fetch = require('cross-fetch');
+const urlJoin = require('url-join');
 
 const PORT = 8999;
 
@@ -18,12 +19,12 @@ describe('development proxy string config', () => {
   });
 
   it('proxies with proxy config set as string', async () => {
-    const content = await fetch(url + '/dmbch').then(r => r.text());
+    const content = await fetch(urlJoin(url, '/dmbch')).then(r => r.text());
     expect(content).toBe('proxy:dmbch');
   });
 
   it('does not proxy when browser explicitly requests html document', async () => {
-    const content = await fetch(url + '/dmbch', {
+    const content = await fetch(urlJoin(url, '/dmbch'), {
       headers: { accept: 'text/html' },
     }).then(r => r.text());
 
@@ -31,12 +32,12 @@ describe('development proxy string config', () => {
   });
 
   it('allows to hook into onProxyReq', async () => {
-    const content = await fetch(url + '/proxy-req').then(r => r.text());
+    const content = await fetch(urlJoin(url, '/proxy-req')).then(r => r.text());
     expect(content).toBe('onProxyReq');
   });
 
   it('allows to hook into onProxyRes', async () => {
-    const content = await fetch(url + '/proxy-res').then(r => r.text());
+    const content = await fetch(urlJoin(url, '/proxy-res')).then(r => r.text());
     expect(content).toBe('onProxyRes');
   });
 });

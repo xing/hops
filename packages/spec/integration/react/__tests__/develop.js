@@ -1,4 +1,5 @@
 const fetch = require('cross-fetch');
+const urlJoin = require('url-join');
 
 describe('react developmet server', () => {
   let url;
@@ -17,20 +18,20 @@ describe('react developmet server', () => {
 
   it('renders another route', async () => {
     const { page } = await createPage();
-    await page.goto(url + '/two');
+    await page.goto(urlJoin(url, '/two'));
     expect(await page.content()).toMatch('<h1>two</h1>');
 
     await page.close();
   });
 
   it('allows to set status code with component', async () => {
-    const response = await fetch(url + '/status');
+    const response = await fetch(urlJoin(url, '/status'));
     expect(response.status).toBe(418);
   });
 
   it('redirects server-side', async () => {
     const { page } = await createPage();
-    const response = await page.goto(url + '/redirect');
+    const response = await page.goto(urlJoin(url, '/redirect'));
     const firstPageResponse = response
       .request()
       .redirectChain()[0]
@@ -43,14 +44,14 @@ describe('react developmet server', () => {
 
   it('allows to set status code with component', async () => {
     const { page } = await createPage();
-    const response = await page.goto(url + '/header');
+    const response = await page.goto(urlJoin(url, '/header'));
     expect(response.headers()['x-foo']).toBe('Bar');
 
     await page.close();
   });
 
   it('returns 404 when no route matches', async () => {
-    const response = await fetch(url + '/404');
+    const response = await fetch(urlJoin(url, '/404'));
     expect(response.status).toBe(404);
   });
 
@@ -82,14 +83,14 @@ describe('react developmet server', () => {
   });
 
   it('allows to use flow', async () => {
-    const text = await fetch(url + '/flow').then(r => r.text());
+    const text = await fetch(urlJoin(url, '/flow')).then(r => r.text());
     expect(text).toMatch('text:flow');
   });
 
   it('loads async Import component server-side', async () => {
     const { page } = await createPage();
     await page.setJavaScriptEnabled(false);
-    await page.goto(url + '/import');
+    await page.goto(urlJoin(url, '/import'));
 
     expect(await page.content()).toMatch('imported');
 
@@ -98,7 +99,7 @@ describe('react developmet server', () => {
 
   it('renders async Import component client-side', async () => {
     const { page } = await createPage();
-    await page.goto(url + '/import', { waitUntil: 'networkidle2' });
+    await page.goto(urlJoin(url, '/import'), { waitUntil: 'networkidle2' });
 
     expect(await page.content()).toMatch('imported');
 
@@ -107,7 +108,7 @@ describe('react developmet server', () => {
 
   it('renders config with hoc', async () => {
     const { page } = await createPage();
-    await page.goto(url + '/config-hoc', { waitUntil: 'networkidle2' });
+    await page.goto(urlJoin(url, '/config-hoc'), { waitUntil: 'networkidle2' });
 
     expect(await page.content()).toMatch('hoc-test-value');
 
@@ -116,7 +117,9 @@ describe('react developmet server', () => {
 
   it('passes config through context', async () => {
     const { page } = await createPage();
-    await page.goto(url + '/config-context', { waitUntil: 'networkidle2' });
+    await page.goto(urlJoin(url, '/config-context'), {
+      waitUntil: 'networkidle2',
+    });
 
     expect(await page.content()).toMatch('context-test-value');
 

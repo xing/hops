@@ -1,3 +1,5 @@
+const urlJoin = require('url-join');
+
 describe('redux developmet server', () => {
   let url;
 
@@ -33,7 +35,9 @@ describe('redux developmet server', () => {
   describe('route matching action creators', () => {
     it('will be executed if the route matches', async () => {
       const { page, getInnerText } = await createPage();
-      await page.goto(url + '/increment', { waitUntil: 'networkidle2' });
+      await page.goto(urlJoin(url, '/increment'), {
+        waitUntil: 'networkidle2',
+      });
 
       const count = await getInnerText('counter');
 
@@ -44,7 +48,7 @@ describe('redux developmet server', () => {
 
     it('will be executed if a search query or hash is present', async () => {
       const { page, getInnerText } = await createPage();
-      await page.goto(url + '/increment?foo=bar#hash', {
+      await page.goto(urlJoin(url, '/increment?foo=bar#hash'), {
         waitUntil: 'networkidle2',
       });
 
@@ -57,7 +61,9 @@ describe('redux developmet server', () => {
 
     it('will be awaited if they are promises', async () => {
       const { page, getInnerText } = await createPage();
-      await page.goto(url + '/increment-fetch', { waitUntil: 'networkidle2' });
+      await page.goto(urlJoin(url, '/increment-fetch'), {
+        waitUntil: 'networkidle2',
+      });
 
       const count = await getInnerText('counter');
 
@@ -68,7 +74,9 @@ describe('redux developmet server', () => {
 
     it('will be provided with expected "param" string', async () => {
       const { page, getInnerText } = await createPage();
-      await page.goto(url + '/param-test/foo', { waitUntil: 'networkidle2' });
+      await page.goto(urlJoin(url, '/param-test/foo'), {
+        waitUntil: 'networkidle2',
+      });
 
       const param = await getInnerText('value');
 
@@ -79,7 +87,7 @@ describe('redux developmet server', () => {
 
     it('will be provided with the expected "location" object', async () => {
       const { page, getInnerText } = await createPage();
-      await page.goto(url + '/location-test?foo=bar', {
+      await page.goto(urlJoin(url, '/location-test?foo=bar'), {
         waitUntil: 'networkidle2',
       });
 
@@ -92,7 +100,7 @@ describe('redux developmet server', () => {
 
     it('will be provided with the expected "match" object', async () => {
       const { page, getInnerText } = await createPage();
-      await page.goto(url + '/match-test/foobar', {
+      await page.goto(urlJoin(url, '/match-test/foobar'), {
         waitUntil: 'networkidle2',
       });
 
