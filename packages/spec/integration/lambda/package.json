@@ -10,8 +10,8 @@
     "setupTestFrameworkScriptFile": "../../jest.setup.js"
   },
   "hops": {
-    "basePath": "/prod",
-    "assetPath": "/prod",
+    "basePath": "prod",
+    "assetPath": "prod",
     "node": "8.10"
   },
   "scripts": {
