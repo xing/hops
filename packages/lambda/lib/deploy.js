@@ -30,8 +30,8 @@ function createBucketIfNotExists(s3, bucketName) {
     });
 }
 
-function uploadFile(s3, bucketName, file) {
-  var progress = progressWriter('uploading ' + path.basename(file));
+function uploadFile(s3, bucketName, file, logger) {
+  var progress = progressWriter('uploading ' + path.basename(file), logger);
   return fsUtils.hashFileContents(file).then(function(hash) {
     var parsedPath = path.parse(file);
     return s3
@@ -51,7 +51,7 @@ function uploadFile(s3, bucketName, file) {
   });
 }
 
-function getStackOutput(cloudformation, stackName) {
+function getStackOutput(cloudformation, stackName, logger) {
   return new Promise(function(resolve, reject) {
     function poll() {
       cloudformation
@@ -61,7 +61,9 @@ function getStackOutput(cloudformation, stackName) {
         .promise()
         .then(function(result) {
           var stack = result.Stacks[0];
-          console.log('stack status:', result.Stacks[0].StackStatus);
+          if (logger) {
+            logger.info(`stack status: ${result.Stacks[0].StackStatus}`);
+          }
           if (
             stack.StackStatus === 'CREATE_FAILED' ||
             stack.StackStatus === 'ROLLBACK_FAILED' ||
@@ -83,7 +85,13 @@ function getStackOutput(cloudformation, stackName) {
   });
 }
 
-function createOrUpdateStack(cloudformation, stackName, templateUrl, params) {
+function createOrUpdateStack(
+  cloudformation,
+  stackName,
+  templateUrl,
+  params,
+  logger
+) {
   return cloudformation
     .describeStacks({ StackName: stackName })
     .promise()
@@ -107,7 +115,9 @@ function createOrUpdateStack(cloudformation, stackName, templateUrl, params) {
         })
         .promise()
         .then(function() {
-          console.log('Creating stack change set');
+          if (logger) {
+            logger.info('Creating stack change set');
+          }
           return cloudformation
             .waitFor('changeSetCreateComplete', {
               StackName: stackName,
@@ -119,7 +129,9 @@ function createOrUpdateStack(cloudformation, stackName, templateUrl, params) {
             .promise();
         })
         .then(function() {
-          console.log('Executing stack change set');
+          if (logger) {
+            logger.info('Executing stack change set');
+          }
           return cloudformation
             .executeChangeSet({
               ChangeSetName: changeSetName,
@@ -128,7 +140,7 @@ function createOrUpdateStack(cloudformation, stackName, templateUrl, params) {
             .promise();
         })
         .then(function() {
-          return getStackOutput(cloudformation, stackName);
+          return getStackOutput(cloudformation, stackName, logger);
         })
         .then(function(stack) {
           return stack.Outputs.reduce(function(result, output) {
@@ -187,11 +199,12 @@ module.exports = function deploy(
       ])
         .then(function() {
           return Promise.all([
-            uploadFile(s3, awsConfig.bucketName, zippedBundleLocation),
+            uploadFile(s3, awsConfig.bucketName, zippedBundleLocation, logger),
             uploadFile(
               s3,
               awsConfig.bucketName,
-              awsConfig.cloudformationTemplateFile
+              awsConfig.cloudformationTemplateFile,
+              logger
             ),
           ]);
         })
@@ -215,29 +228,39 @@ module.exports = function deploy(
             cloudformation,
             awsConfig.stackName,
             values[1].Location,
-            parameters
+            parameters,
+            logger
           );
         });
     })
     .then(function(outputs) {
-      console.log('Your application has been deployed!');
+      if (!logger) {
+        return outputs;
+      }
+
+      logger.info('Your application has been deployed!');
 
       if (outputs.DistributionDomainName) {
-        console.log(
-          "Now you need to set your domain's A-Record or CNAME-Record to:",
-          outputs.DistributionDomainName
+        logger.info(
+          `Now you need to set your domain's A-Record or CNAME-Record to: ${
+            outputs.DistributionDomainName
+          }`
         );
       } else {
-        console.log('Visit', outputs.Url, 'in your browser.');
+        logger.info(`Visit ${outputs.Url} in your browser.`);
       }
 
       return outputs;
     })
     .catch(function(error) {
       if (error.code) {
-        console.error('AWS:', '(' + error.code + ')', error.message);
+        if (logger) {
+          logger.error(`AWS: (${error.code}) ${error.message}`);
+        }
       } else {
-        console.error(error);
+        if (logger) {
+          logger.error(error);
+        }
       }
       process.exitCode = 1;
     });

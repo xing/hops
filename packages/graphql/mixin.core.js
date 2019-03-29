@@ -42,11 +42,15 @@ class GraphQLMixin extends Mixin {
               headers: argv.header,
             })
               .then(() => {
-                console.log('Fetched and saved GraphQL fragments');
+                if (typeof this.getLogger === 'function') {
+                  this.getLogger().info('Fetched and saved GraphQL fragments');
+                }
               })
               .catch(err => {
-                console.error('Could not fetch GraphQL fragments:');
-                console.trace(err);
+                if (typeof this.getLogger === 'function') {
+                  this.getLogger().error('Could not fetch GraphQL fragments:');
+                  this.getLogger().error(err);
+                }
               });
           },
         })

@@ -44,7 +44,8 @@ module.exports = function createLambdaBundle(
   outFile,
   include,
   exclude,
-  onProgress
+  onProgress,
+  logger
 ) {
   return new Promise(function(resolve, reject) {
     var output = fs
@@ -54,7 +55,9 @@ module.exports = function createLambdaBundle(
 
     var archive = archiver('zip', { zlib: { level: 9 } });
     archive.on('error', reject);
-    archive.on('warning', console.warn);
+    if (logger) {
+      archive.on('warning', logger.warning.bind(logger));
+    }
 
     if (typeof onProgress === 'function') {
       archive.on('progress', onProgress);
