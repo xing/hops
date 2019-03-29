@@ -2,7 +2,6 @@
 
 var AWS = require('aws-sdk');
 var prompt = require('./prompt');
-var getAWSConfig = require('./aws-config');
 
 function emptyBucket(s3, bucketName) {
   console.log('Deleting objects in S3 bucket');
@@ -57,9 +56,7 @@ function deleteStack(cloudFormation, stackName) {
     });
 }
 
-module.exports = function destroy(config, options) {
-  var awsConfig = getAWSConfig(config);
-
+module.exports = function destroy({ awsConfig }, options, logger) {
   AWS.config.update({ region: awsConfig.region });
 
   AWS.config.apiVersions = {

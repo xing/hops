@@ -18,7 +18,6 @@ const {
 const fetch = require('cross-fetch');
 
 let introspectionResult = undefined;
-let warned = false;
 
 class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
@@ -31,13 +30,6 @@ class GraphQLMixin extends Mixin {
         if (existsSync(config.fragmentsFile)) {
           const fileContent = readFileSync(config.fragmentsFile, 'utf-8');
           introspectionResult = JSON.parse(fileContent);
-        } else if (!warned) {
-          warned = true;
-          console.warn(
-            'Could not find a graphql introspection query result at %s.',
-            config.fragmentsFile,
-            'You might need to execute `hops graphql introspect`'
-          );
         }
       } catch (_) {
         introspectionResult = null;
