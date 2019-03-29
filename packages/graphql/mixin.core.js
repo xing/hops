@@ -1,3 +1,4 @@
+const { existsSync } = require('fs');
 const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
 const {
@@ -107,6 +108,17 @@ class GraphQLMixin extends Mixin {
       webpackConfig.plugins = webpackConfig.plugins.filter(
         p => !(p instanceof StatsFilePlugin)
       );
+    }
+  }
+
+  diagnose() {
+    if (!existsSync(this.config.fragmentsFile)) {
+      return [
+        `Could not find a graphql introspection query result at "${
+          this.config.fragmentsFile
+        }".`,
+        'You might need to execute "hops graphql introspect"',
+      ];
     }
   }
 }

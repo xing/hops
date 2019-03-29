@@ -3,7 +3,6 @@
 var fs = require('fs');
 var path = require('path');
 var AWS = require('aws-sdk');
-var getAWSConfig = require('./aws-config');
 var createLambdaBundle = require('./create-lambda-bundle');
 var progressWriter = require('./progress-writer');
 var fsUtils = require('./fs-utils');
@@ -140,14 +139,19 @@ function createOrUpdateStack(cloudformation, stackName, templateUrl, params) {
     });
 }
 
-module.exports = function deploy(config, options, parametersOverrides) {
-  var awsConfig = getAWSConfig(config);
-
-  if (!fs.existsSync(config.buildDir)) {
-    console.error(
-      'Could not find build directory. Please make sure that you ' +
-        'have executed "hops build" before trying to deploy your application.'
-    );
+module.exports = function deploy(
+  { hopsConfig, awsConfig },
+  options,
+  parametersOverrides,
+  logger
+) {
+  if (!fs.existsSync(hopsConfig.buildDir)) {
+    if (logger) {
+      logger.error(
+        'Could not find build directory. Please make sure that you ' +
+          'have executed "hops build" before trying to deploy your application.'
+      );
+    }
     return process.exit(1);
   }
 
@@ -173,7 +177,7 @@ module.exports = function deploy(config, options, parametersOverrides) {
 
       return Promise.all([
         createLambdaBundle(
-          config.rootDir,
+          hopsConfig.rootDir,
           zippedBundleLocation,
           awsConfig.include,
           awsConfig.exclude,
