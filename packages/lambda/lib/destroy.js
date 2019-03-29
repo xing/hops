@@ -3,8 +3,10 @@
 var AWS = require('aws-sdk');
 var prompt = require('./prompt');
 
-function emptyBucket(s3, bucketName) {
-  console.log('Deleting objects in S3 bucket');
+function emptyBucket(s3, bucketName, logger) {
+  if (logger) {
+    logger.info('Deleting objects in S3 bucket');
+  }
   return s3
     .headBucket({ Bucket: bucketName })
     .promise()
@@ -28,8 +30,10 @@ function emptyBucket(s3, bucketName) {
     });
 }
 
-function deleteBucket(s3, bucketName) {
-  console.log('Deleting S3 bucket');
+function deleteBucket(s3, bucketName, logger) {
+  if (logger) {
+    logger.info('Deleting S3 bucket');
+  }
   var params = { Bucket: bucketName };
   return s3
     .headBucket(params)
@@ -39,8 +43,10 @@ function deleteBucket(s3, bucketName) {
     });
 }
 
-function deleteStack(cloudFormation, stackName) {
-  console.log('Deleting CloudFormation stack');
+function deleteStack(cloudFormation, stackName, logger) {
+  if (logger) {
+    logger.info('Deleting CloudFormation stack');
+  }
   return cloudFormation
     .deleteStack({
       StackName: stackName,
@@ -68,21 +74,23 @@ module.exports = function destroy({ awsConfig }, options, logger) {
   var cloudFormation = new AWS.CloudFormation();
 
   function main() {
-    return deleteStack(cloudFormation, awsConfig.stackName)
+    return deleteStack(cloudFormation, awsConfig.stackName, logger)
       .then(function() {
         if (!options.keepFiles) {
-          return emptyBucket(s3, awsConfig.bucketName);
+          return emptyBucket(s3, awsConfig.bucketName, logger);
         }
       })
       .then(function() {
         if (!(options.keepFiles || options.keepBucket)) {
-          return deleteBucket(s3, awsConfig.bucketName);
+          return deleteBucket(s3, awsConfig.bucketName, logger);
         }
       });
   }
 
   function onError(error) {
-    console.error('AWS:', '(' + error.code + ')', error.message);
+    if (logger) {
+      logger.error(`AWS: (${error.code}) ${error.message}`);
+    }
     process.exitCode = 1;
   }
 
@@ -93,7 +101,7 @@ module.exports = function destroy({ awsConfig }, options, logger) {
           'Are you sure you want to continue?'
       )
         .then(function(confirmed) {
-          return confirmed ? main() : console.log('Aborted.');
+          return confirmed ? main() : logger && logger.info('Aborted.');
         })
         .catch(onError);
 };
