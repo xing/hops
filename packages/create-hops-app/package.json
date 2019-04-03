@@ -11,8 +11,7 @@
     "node": ">=8.10.0"
   },
   "bin": {
-    "create-hops-app": "./index.js",
-    "create-hops-app@next": "./index.js"
+    "create-hops-app": "./index.js"
   },
   "repository": {
     "type": "git",
