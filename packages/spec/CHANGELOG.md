@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
+
+
+### Bug Fixes
+
+* **redux:** fixed location object, now including search and hash, too ([4bf81d8](https://github.com/xing/hops/commit/4bf81d8))
+
+
+
+
+
 # [11.4.0](https://github.com/xing/hops/compare/v11.3.0...v11.4.0) (2019-03-12)
 
 

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
+
+
+### Bug Fixes
+
+* **dependencies:** remove react-router-dom version range where not needed ([809b196](https://github.com/xing/hops/commit/809b196))
+* **dependencies:** update dependency pretty-ms to v4 ([d2a76a0](https://github.com/xing/hops/commit/d2a76a0))
+* **dependencies:** update dependency react-router-dom to v^4.3.1 || v^5 ([d5f8713](https://github.com/xing/hops/commit/d5f8713))
+* **dependencies:** update dependency semver to v6 ([ad2b26d](https://github.com/xing/hops/commit/ad2b26d))
+* upgrade untool to v1.5.0 ([b8d5396](https://github.com/xing/hops/commit/b8d5396))
+* **redux:** fixed location object, now including search and hash, too ([4bf81d8](https://github.com/xing/hops/commit/4bf81d8))
+* **redux:** import "createLocation" from "history" ([14d3d6c](https://github.com/xing/hops/commit/14d3d6c)), closes [#831](https://github.com/xing/hops/issues/831)
+
+
+### Features
+
+* **redux:** Second param "location" for action creators ([f681f79](https://github.com/xing/hops/commit/f681f79))
+
+
+
+
+
 ## [11.4.1](https://github.com/xing/hops/compare/v11.4.0...v11.4.1) (2019-03-14)
 
 

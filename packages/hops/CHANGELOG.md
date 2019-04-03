@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
+
+
+### Bug Fixes
+
+* **dependencies:** remove react-router-dom version range where not needed ([809b196](https://github.com/xing/hops/commit/809b196))
+* **dependencies:** update dependency pretty-ms to v4 ([d2a76a0](https://github.com/xing/hops/commit/d2a76a0))
+* **dependencies:** update dependency react-router-dom to v^4.3.1 || v^5 ([d5f8713](https://github.com/xing/hops/commit/d5f8713))
+* upgrade untool to v1.5.0 ([b8d5396](https://github.com/xing/hops/commit/b8d5396))
+
+
+
+
+
 # [11.4.0](https://github.com/xing/hops/compare/v11.3.0...v11.4.0) (2019-03-12)
 
 

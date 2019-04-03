@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
+
+**Note:** Version bump only for package hops-typescript
+
+
+
+
+
 # [11.3.0](https://github.com/xing/hops/compare/v11.2.0...v11.3.0) (2019-03-07)
 
 **Note:** Version bump only for package hops-typescript
