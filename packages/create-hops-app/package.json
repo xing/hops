@@ -18,7 +18,6 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops": "^11.5.0",
     "load-json-file": "^5.1.0",
     "tar": "^4.4.6",
     "validate-npm-package-name": "^3.0.0",
