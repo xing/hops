@@ -10,11 +10,12 @@ const {
 class ReduxRuntimeCommonMixin extends Mixin {
   constructor(config, element, { redux: options = {} } = {}) {
     super(config);
-    this.middlewares = options.middlewares;
+    this.middlewares = options.middlewares || [];
   }
 
   getReduxMiddlewares() {
     return [
+      ...this.middlewares,
       ReduxThunkMiddleware.withExtraArgument({
         config: this.config,
       }),
@@ -22,7 +23,7 @@ class ReduxRuntimeCommonMixin extends Mixin {
   }
 
   applyMiddlewares() {
-    const middlewares = this.middlewares || this.getReduxMiddlewares();
+    const middlewares = this.getReduxMiddlewares();
 
     return middlewares.map(m => applyMiddleware(m));
   }
