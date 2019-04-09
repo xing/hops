@@ -1,6 +1,6 @@
 const urlJoin = require('url-join');
 
-describe('redux developmet server', () => {
+describe('redux development server', () => {
   let url;
 
   beforeAll(async () => {

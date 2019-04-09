@@ -1,7 +1,7 @@
 const fetch = require('cross-fetch');
 const urlJoin = require('url-join');
 
-describe('react developmet server', () => {
+describe('react development server', () => {
   let url;
 
   beforeAll(async () => {
