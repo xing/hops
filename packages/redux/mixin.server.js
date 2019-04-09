@@ -1,24 +1,16 @@
 const React = require('react');
-const {
-  createStore,
-  combineReducers,
-  applyMiddleware,
-  compose,
-} = require('redux');
-
-const ReduxThunkMiddleware = require('redux-thunk').default;
+const { createStore, combineReducers, compose } = require('redux');
 const { Provider } = require('react-redux');
 const {
-  Mixin,
   strategies: {
     sync: { override },
   },
 } = require('hops-mixin');
+const ReduxRuntimeCommonMixin = require('./mixin.runtime-common');
 
-class ReduxMixin extends Mixin {
+class ReduxMixin extends ReduxRuntimeCommonMixin {
   constructor(config, element, { redux: options = {} } = {}) {
     super(config);
-    this.middlewares = options.middlewares;
     this.reducers = options.reducers || {};
   }
 
@@ -37,20 +29,6 @@ class ReduxMixin extends Mixin {
 
     this.store = this.createStore();
     return this.store;
-  }
-
-  getReduxMiddlewares() {
-    return [
-      ReduxThunkMiddleware.withExtraArgument({
-        config: this.config,
-      }),
-    ];
-  }
-
-  applyMiddlewares() {
-    const middlewares = this.middlewares || this.getReduxMiddlewares();
-
-    return middlewares.map(m => applyMiddleware(m));
   }
 
   composeEnhancers(...enhancers) {
@@ -78,7 +56,6 @@ class ReduxMixin extends Mixin {
 
 ReduxMixin.strategies = {
   getReduxStore: override,
-  getReduxMiddlewares: override,
 };
 
 module.exports = ReduxMixin;
