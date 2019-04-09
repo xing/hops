@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/xing/hops/compare/v11.5.0...v11.6.0) (2019-04-09)
+
+
+### Bug Fixes
+
+* **create-hops-app:** remove [@next](https://github.com/next) bin hack ([3949fb1](https://github.com/xing/hops/commit/3949fb1))
+
+
+
+
+
 # [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
 
 **Note:** Version bump only for package create-hops-app

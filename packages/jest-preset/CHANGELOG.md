@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/xing/hops/compare/v11.5.0...v11.6.0) (2019-04-09)
+
+
+### Bug Fixes
+
+* **jest-preset:** correctly specify peer dependencies ([58212da](https://github.com/xing/hops/commit/58212da))
+
+
+### Features
+
+* use @untool/info for CLI output/logging ([e1f3f92](https://github.com/xing/hops/commit/e1f3f92))
+
+
+
+
+
 # [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
 
 **Note:** Version bump only for package jest-preset-hops

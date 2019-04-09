@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/xing/hops/compare/v11.5.0...v11.6.0) (2019-04-09)
+
+
+### Bug Fixes
+
+* **create-hops-app:** remove [@next](https://github.com/next) bin hack ([3949fb1](https://github.com/xing/hops/commit/3949fb1))
+* **dependencies:** update dependency react-redux to v7 ([4d60114](https://github.com/xing/hops/commit/4d60114))
+* **jest-preset:** correctly specify peer dependencies ([58212da](https://github.com/xing/hops/commit/58212da))
+* upgrade untool to v1.5.1 ([6c09463](https://github.com/xing/hops/commit/6c09463))
+* **lambda:** cacheDir should be serverDir ([021ca5a](https://github.com/xing/hops/commit/021ca5a))
+* **spec:** basePath and assetPath should not contain leading slash ([8b2206a](https://github.com/xing/hops/commit/8b2206a))
+
+
+### Features
+
+* add config schema validation ([96ca9dc](https://github.com/xing/hops/commit/96ca9dc))
+* implement diagnose hooks for preflight validation ([4e8f1f8](https://github.com/xing/hops/commit/4e8f1f8))
+* use @untool/info for CLI output/logging ([e1f3f92](https://github.com/xing/hops/commit/e1f3f92))
+
+
+
+
+
 # [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
 
 

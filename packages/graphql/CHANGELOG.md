@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/xing/hops/compare/v11.5.0...v11.6.0) (2019-04-09)
+
+
+### Bug Fixes
+
+* upgrade untool to v1.5.1 ([6c09463](https://github.com/xing/hops/commit/6c09463))
+
+
+### Features
+
+* add config schema validation ([96ca9dc](https://github.com/xing/hops/commit/96ca9dc))
+* implement diagnose hooks for preflight validation ([4e8f1f8](https://github.com/xing/hops/commit/4e8f1f8))
+
+
+
+
+
 # [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
 
 

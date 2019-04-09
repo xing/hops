@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/xing/hops/compare/v11.5.0...v11.6.0) (2019-04-09)
+
+
+### Features
+
+* implement diagnose hooks for preflight validation ([4e8f1f8](https://github.com/xing/hops/commit/4e8f1f8))
+
+
+
+
+
 # [11.5.0](https://github.com/xing/hops/compare/v11.4.1...v11.5.0) (2019-04-03)
 
 **Note:** Version bump only for package hops-typescript
