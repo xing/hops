@@ -1145,7 +1145,7 @@ enhanceServerData(data, req, res) {
 **`my-component.js`**
 
 ```javascript
-const MyComponent = ({serverData}) => <div>{serverData.isMobile}</div>
+const MyComponent = ({serverData}) => <div>{serverData.someKey}</div>
 
 export default withServerData(MyComponent);
 ```
