@@ -5,8 +5,6 @@ module.exports = {
   aws: {
     memorySize: 128,
     region: 'us-east-1',
-    domainName: '',
-    certificateArn: '',
     stageName: 'prod',
     uniqueName: 'hops-lambda-<name>',
     cloudformationTemplateFile: path.resolve(__dirname, 'cloudformation.yaml'),
@@ -15,23 +13,26 @@ module.exports = {
   },
   configSchema: {
     aws: {
-      memorySize: { type: 'number' },
-      region: { type: 'string', minLength: 1 },
-      domainName: { type: 'string', format: 'hostname' },
-      certificateArn: { type: 'string' },
-      stageName: { type: 'string', minLength: 1 },
-      uniqueName: { type: 'string', minLength: 1 },
-      cloudformationTemplateFile: { type: 'string', absolutePath: true },
-      include: {
-        type: 'array',
-        items: {
-          type: 'string',
+      type: 'object',
+      properties: {
+        memorySize: { type: 'number' },
+        region: { type: 'string', minLength: 1 },
+        domainName: { type: 'string', format: 'hostname' },
+        certificateArn: { type: 'string' },
+        stageName: { type: 'string', minLength: 1 },
+        uniqueName: { type: 'string', minLength: 1 },
+        cloudformationTemplateFile: { type: 'string', absolutePath: true },
+        include: {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
         },
-      },
-      exclude: {
-        type: 'array',
-        items: {
-          type: 'string',
+        exclude: {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
         },
       },
     },
