@@ -1117,6 +1117,39 @@ class MyExpressMixin extends Mixin {
 module.exports = MyExpressMixin;
 ```
 
+#### Example: Passing data from server to a React component
+
+To pass data we will use the [`enhanceServerData` mixin hook](https://github.com/xing/hops/tree/master/packages/react#enhanceserverdataserverdata-req-res-serverdata-pipe-server) to pass data. The HoC[`withServerData`](https://github.com/xing/hops/tree/master/packages/react#withserverdatacomponent-higherordercomponent) will expose the data via the `serverData` prop.
+
+**`mixin.core.js`**
+
+```javascript
+configureServer(app, middlewares, mode) {
+  middlewares.initial.push((req, res, next) => {
+    // Note: res.locals should be used for locally scoped data
+    // https://expressjs.com/en/4x/api.html#res.locals
+    res.locals.someKey = "someValue"
+    next();
+  });
+}
+```
+
+**`mixin.server.js`**
+
+```javascript
+enhanceServerData(data, req, res) {
+  return { ...data, someKey: res.locals.someKey };
+}
+```
+
+**`my-component.js`**
+
+```javascript
+const MyComponent = ({serverData}) => <div>{serverData.isMobile}</div>
+
+export default withServerData(MyComponent);
+```
+
 ### Configuring rendering through runtime mixins
 
 Hops provides multiple hooks to customize rendering. We'll only show an example for the `enhanceElement` hook here, but encourage you to browse through the source code of Hops to find other runtime (or browser/server) mixins to see examples of these hooks in action.
