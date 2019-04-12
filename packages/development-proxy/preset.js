@@ -12,10 +12,18 @@ module.exports = {
           patternProperties: {
             '^/': {
               oneOf: [
+                { type: 'string', maxLength: 0 },
                 { type: 'string', format: 'uri' },
                 {
                   type: 'object',
-                  properties: { target: { type: 'string', format: 'uri' } },
+                  properties: {
+                    target: {
+                      oneOf: [
+                        { type: 'string', maxLength: 0 },
+                        { type: 'string', format: 'uri' },
+                      ],
+                    },
+                  },
                 },
               ],
             },
