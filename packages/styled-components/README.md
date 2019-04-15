@@ -43,9 +43,9 @@ This preset has no preset configuration options.
 
 This preset has only a single runtime option which can be passed to the `render()` options inside the `styled` key (see example below).
 
-| Name           | Type     | Default | Required | Description                                                  |
-| -------------- | -------- | ------- | -------- | ------------------------------------------------------------ |
-| `styled.theme` | `Object` | `{}`    | _no_     | A theme object for the styled-components `<ThemeProvider />` |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `styled.theme` | `Object` | `{}` | _no_ | A theme object for the styled-components `<ThemeProvider />` |
 
 ##### `theme`
 

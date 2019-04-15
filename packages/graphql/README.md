@@ -67,14 +67,14 @@ You can enable mocking by configuring a file that exports an executable schema. 
 
 #### Preset Options
 
-| Name                     | Type      | Default                        | Required | Description                                                              |
-| ------------------------ | --------- | ------------------------------ | -------- | ------------------------------------------------------------------------ |
-| `fragmentsFile`          | `String`  | `<rootDir>/fragmentTypes.json` | _no_     | Where to store the generated fragment types file                         |
-| `graphqlUri`             | `String`  | `''`                           | _yes_    | Url to your GraphQL endpoint or mock server                              |
-| `graphqlSchemaFile`      | `String`  | `''`                           | _no_     | Path to your GraphQL schema file                                         |
-| `graphqlMockSchemaFile`  | `String`  | `''`                           | _no_     | Path to your GraphQL schema mocks                                        |
-| `graphqlMockServerPath`  | `String`  | `'/graphql'`                   | _no_     | Path of the mock server endpoint                                         |
-| `shouldPrefetchOnServer` | `Boolean` | `true`                         | _no_     | Whether Hops should execute GraphQL queries during server-side rendering |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `fragmentsFile` | `String` | `<rootDir>/fragmentTypes.json` | _no_ | Where to store the generated fragment types file |
+| `graphqlUri` | `String` | `''` | _yes_ | Url to your GraphQL endpoint or mock server |
+| `graphqlSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema file |
+| `graphqlMockSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema mocks |
+| `graphqlMockServerPath` | `String` | `'/graphql'` | _no_ | Path of the mock server endpoint |
+| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute GraphQL queries during server-side rendering |
 
 ##### `fragmentsFile`
 
@@ -170,10 +170,10 @@ This option controls whether you want Hops to execute GraphQL queries during ser
 
 This preset has only a single runtime option which can be passed to the `render()` options inside the `styled` key (see example above).
 
-| Name            | Type          | Default               | Required | Description                     |
-| --------------- | ------------- | --------------------- | -------- | ------------------------------- |
-| `graphql.link`  | `ApolloLink`  | `ApolloHttpLink`      | _no_     | An instance of a `apollo-link`  |
-| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_     | An instance of a `apollo-cache` |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of a `apollo-link` |
+| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of a `apollo-cache` |
 
 ##### `link`
 

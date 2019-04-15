@@ -278,18 +278,18 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 
 #### Default settings
 
-| Name        | Type                 | Default                      | Example                                                            | Description                                                                                                                                                                       |
-| ----------- | -------------------- | ---------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `https`     | `Boolean` / `Object` | `false`                      | `true` or<br/>`{ "keyFile": "./my.key", "certFile": "./my.cert" }` | Configure HTTPS support for Hops                                                                                                                                                  |
-| `host`      | `String`             | `[HOST]`                     | `10.10.10.10`                                                      | Specify the IP address that Hops should bind to                                                                                                                                   |
-| `port`      | `String`             | `[PORT]`                     | `1337`                                                             | Specify the Port that Hops should listen on                                                                                                                                       |
-| `locations` | `Array<String>`      | `[]`                         | `["/", "/about"]`                                                  | An array of locations for static rendering of HTML pages                                                                                                                          |
-| `basePath`  | `String`             | `''`                         | `/my-app`                                                          | The URL base path from which your application will be served                                                                                                                      |
-| `assetPath` | `String`             | `<basePath>`                 | `<basePath>/assets`                                                | The URL base path from which the assets will be served                                                                                                                            |
-| `distDir`   | `String`             | `<rootDir>/dist`             | `<rootDir>/out`                                                    | The directory from which static assets will be served                                                                                                                             |
-| `serverDir` | `String`             | `node_modules/.cache/untool` | `<rootDir>/dist`                                                   | The directory where the generated server middleware will be stored                                                                                                                |
-| `browsers`  | `Array<String>`      | `['defaults']`               | `['last 1 Chrome versions']`                                       | An array of browserslist queries to specify targets for which to transpile/polyfill (see [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for more information) |
-| `node`      | `String`             | `current`                    | `8.10`                                                             | A Node.js version identifier or `current` to specify for which target to transpile/polyfill                                                                                       |
+| Name | Type | Default | Example | Description |
+| --- | --- | --- | --- | --- |
+| `https` | `Boolean` / `Object` | `false` | `true` or<br/>`{ "keyFile": "./my.key", "certFile": "./my.cert" }` | Configure HTTPS support for Hops |
+| `host` | `String` | `[HOST]` | `10.10.10.10` | Specify the IP address that Hops should bind to |
+| `port` | `String` | `[PORT]` | `1337` | Specify the Port that Hops should listen on |
+| `locations` | `Array<String>` | `[]` | `["/", "/about"]` | An array of locations for static rendering of HTML pages |
+| `basePath` | `String` | `''` | `/my-app` | The URL base path from which your application will be served |
+| `assetPath` | `String` | `<basePath>` | `<basePath>/assets` | The URL base path from which the assets will be served |
+| `distDir` | `String` | `<rootDir>/dist` | `<rootDir>/out` | The directory from which static assets will be served |
+| `serverDir` | `String` | `node_modules/.cache/untool` | `<rootDir>/dist` | The directory where the generated server middleware will be stored |
+| `browsers` | `Array<String>` | `['defaults']` | `['last 1 Chrome versions']` | An array of browserslist queries to specify targets for which to transpile/polyfill (see [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for more information) |
+| `node` | `String` | `current` | `8.10` | A Node.js version identifier or `current` to specify for which target to transpile/polyfill |
 
 Under the hood Hops uses [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig) to gather settings. So you're not limited to the `"hops"` key in your `package.json`, but can alternatively use an external settings file in the root directory of your project.\
 The filename then has to be `hops.config.js` or `.hopsrc{.json,.yaml,.js}`.
@@ -587,12 +587,12 @@ This HoC is usually only useful for implementers of additional Hops presets.
 
 _Reminder: These options must be passed in an options hash as the second argument to the [`render()`](#renderelement-options) function._
 
-| Name                         | Type       | Default             | Description                                                                                                                                             |
-| ---------------------------- | ---------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `router.basename`            | `String`   | `settings.basePath` | The [`<BrowserRouter />`s basename prop](https://reacttraining.com/react-router/web/api/BrowserRouter/basename-string) (needs never to be set manually) |
-| `router.getUserConfirmation` | `Function` | `window.confirm`    | The [`<BrowserRouter />`s getUserConfirmation prop](https://reacttraining.com/react-router/web/api/BrowserRouter/getuserconfirmation-func)              |
-| `router.forceRefresh`        | `Boolean`  | `false`             | The [`<BrowserRouter />`s forceRefresh prop](https://reacttraining.com/react-router/web/api/BrowserRouter/forcerefresh-bool)                            |
-| `router.keyLength`           | `Number`   | `6`                 | The [`<BrowserRouter />`s keyLength prop](https://reacttraining.com/react-router/web/api/BrowserRouter/keylength-number)                                |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `router.basename` | `String` | `settings.basePath` | The [`<BrowserRouter />`s basename prop](https://reacttraining.com/react-router/web/api/BrowserRouter/basename-string) (needs never to be set manually) |
+| `router.getUserConfirmation` | `Function` | `window.confirm` | The [`<BrowserRouter />`s getUserConfirmation prop](https://reacttraining.com/react-router/web/api/BrowserRouter/getuserconfirmation-func) |
+| `router.forceRefresh` | `Boolean` | `false` | The [`<BrowserRouter />`s forceRefresh prop](https://reacttraining.com/react-router/web/api/BrowserRouter/forcerefresh-bool) |
+| `router.keyLength` | `Number` | `6` | The [`<BrowserRouter />`s keyLength prop](https://reacttraining.com/react-router/web/api/BrowserRouter/keylength-number) |
 
 For more details and more advanced use-cases, head over to the [full readme of the `hops` preset](https://github.com/xing/hops/tree/master/packages/hops).
 
@@ -624,20 +624,20 @@ export default render(<MyApp />, { redux: { reducers: myReducers } });
 
 _Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
 
-| Name                     | Type      | Default | Required | Description                                                                          |
-| ------------------------ | --------- | ------- | -------- | ------------------------------------------------------------------------------------ |
-| `shouldPrefetchOnServer` | `Boolean` | `true`  | _no_     | Whether Hops should execute route-bound action creators during server-side rendering |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering |
 
 ##### Options
 
 _Reminder: These options must be passed in an options hash as the second argument to the [`render()`](#renderelement-options) function._
 
-| Name                                  | Type      | Default                  | Required | Description                                                                                                                                                         |
-| ------------------------------------- | --------- | ------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `redux.reducers`                      | `Object`  | `{}`                     | _yes_    | An object [whose values](https://redux.js.org/api-reference/combinereducers#arguments) consists of all your reducer functions.                                      |
-| `redux.middlewares`                   | `Array`   | `[ReduxThunkMiddleware]` | _no_     | An array of all [redux middlewares](https://redux.js.org/api-reference/applymiddleware) you want to use.                                                            |
-| `redux.actionCreators`                | `Array`   | `[]`                     | _no_     | An array of route-bound action creators to be dispatched when the current route matches.                                                                            |
-| `redux.alwaysDispatchActionsOnClient` | `boolean` | `undefined`              | _no_     | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `redux.reducers` | `Object` | `{}` | _yes_ | An object [whose values](https://redux.js.org/api-reference/combinereducers#arguments) consists of all your reducer functions. |
+| `redux.middlewares` | `Array` | `[ReduxThunkMiddleware]` | _no_ | An array of all [redux middlewares](https://redux.js.org/api-reference/applymiddleware) you want to use. |
+| `redux.actionCreators` | `Array` | `[]` | _no_ | An array of route-bound action creators to be dispatched when the current route matches. |
+| `redux.alwaysDispatchActionsOnClient` | `boolean` | `undefined` | _no_ | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
 
 For more details and more advanced use-cases, head over to the [full readme of `hops-redux`](https://github.com/xing/hops/tree/master/packages/redux).
 
@@ -667,22 +667,22 @@ And specify your GraphQL endpoint URI in the settings:
 
 _Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
 
-| Name                     | Type      | Default                        | Required | Description                                                              |
-| ------------------------ | --------- | ------------------------------ | -------- | ------------------------------------------------------------------------ |
-| `fragmentsFile`          | `String`  | `<rootDir>/fragmentTypes.json` | _no_     | Where to store the generated fragment types file                         |
-| `graphqlUri`             | `String`  | `''`                           | _yes_    | URI to your GraphQL endpoint or mock server                              |
-| `graphqlSchemaFile`      | `String`  | `''`                           | _no_     | Path to your GraphQL schema file                                         |
-| `graphqlMockSchemaFile`  | `String`  | `''`                           | _no_     | Path to your GraphQL Schema mocks                                        |
-| `shouldPrefetchOnServer` | `Boolean` | `true`                         | _no_     | Whether Hops should execute GraphQL queries during server-side rendering |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `fragmentsFile` | `String` | `<rootDir>/fragmentTypes.json` | _no_ | Where to store the generated fragment types file |
+| `graphqlUri` | `String` | `''` | _yes_ | URI to your GraphQL endpoint or mock server |
+| `graphqlSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema file |
+| `graphqlMockSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL Schema mocks |
+| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute GraphQL queries during server-side rendering |
 
 ##### Options
 
 _Reminder: These options must be passed in an options hash as the second argument to the [`render()`](#renderelement-options) function._
 
-| Name            | Type          | Default               | Required | Description                     |
-| --------------- | ------------- | --------------------- | -------- | ------------------------------- |
-| `graphql.link`  | `ApolloLink`  | `ApolloHttpLink`      | _no_     | An instance of a `apollo-link`  |
-| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_     | An instance of a `apollo-cache` |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of a `apollo-link` |
+| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of a `apollo-cache` |
 
 For more details and more advanced use-cases, head over to the [full readme of `hops-graphql`](https://github.com/xing/hops/tree/master/packages/graphql) for more details.
 
@@ -751,9 +751,9 @@ export default render(<H1>hello</H1>);
 
 _Reminder: These options must be passed in an options hash as the second argument to the [`render()`](#renderelement-options) function._
 
-| Name           | Type     | Default | Required | Description                                                  |
-| -------------- | -------- | ------- | -------- | ------------------------------------------------------------ |
-| `styled.theme` | `Object` | `{}`    | _no_     | A theme object for the styled-components `<ThemeProvider />` |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `styled.theme` | `Object` | `{}` | _no_ | A theme object for the styled-components `<ThemeProvider />` |
 
 For more details and more advanced use-cases, head over to the [full readme of `hops-styled-components`](https://github.com/xing/hops/tree/master/packages/styled-components).
 
@@ -837,10 +837,10 @@ export default render(<h1>hello world</h1>);
 
 _Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
 
-| Name         | Type     | Default              | Required | Description                                   |
-| ------------ | -------- | -------------------- | -------- | --------------------------------------------- |
-| `workerPath` | `String` | `<basePath>/sw.js`   | _no_     | The path on which to serve the service worker |
-| `workerFile` | `String` | `hops-pwa/worker.js` | _yes_    | The path to the service worker entry file     |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `workerPath` | `String` | `<basePath>/sw.js` | _no_ | The path on which to serve the service worker |
+| `workerFile` | `String` | `hops-pwa/worker.js` | _yes_ | The path to the service worker entry file |
 
 For more details and more advanced use-cases, head over to the [full readme of `hops-pwa`](https://github.com/xing/hops/tree/master/packages/pwa).
 
@@ -870,9 +870,9 @@ And configure your remote endpoint:
 
 _Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
 
-| Name    | Type               | Default     | Required | Description                |
-| ------- | ------------------ | ----------- | -------- | -------------------------- |
-| `proxy` | `String \| Object` | `undefined` | _no_     | Proxy target configuration |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `proxy` | `String \| Object` | `undefined` | _no_ | Proxy target configuration |
 
 This will proxy all requests that are not assets and don't have `text/html` in its `Accept` header to the configured proxy endpoint.
 
@@ -911,15 +911,15 @@ npx hops lambda deploy
 
 _Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
 
-| Name                             | Type     | Default                                        | Description                                                                                        |
-| -------------------------------- | -------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `aws.region`\*                   | `String` | `us-east-1`                                    | The AWS Region in which the resources should be created                                            |
-| `aws.uniqueName`                 | `String` | `hops-lambda-$name`                            | A unique name that is used to identify the AWS CloudFormation Stack and S3 bucket.                 |
-| `aws.memorySize`                 | `Number` | `128`                                          | The memory allocated to your Lambda function                                                       |
-| `aws.stageName`                  | `String` | `prod`                                         | The name of your API Gateway stage                                                                 |
-| `aws.domainName`                 | `String` | `''`                                           | A custom domain name                                                                               |
-| `aws.certificateArn`             | `String` | `''`                                           | If a custom domain is used, this option needs to specify the ARN of a valid SSL certificate in ACM |
-| `aws.cloudformationTemplateFile` | `String` | `node_modules/hops-lambda/cloudformation.yaml` | Path to a custom CloudFormation template                                                           |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `aws.region`\* | `String` | `us-east-1` | The AWS Region in which the resources should be created |
+| `aws.uniqueName` | `String` | `hops-lambda-$name` | A unique name that is used to identify the AWS CloudFormation Stack and S3 bucket. |
+| `aws.memorySize` | `Number` | `128` | The memory allocated to your Lambda function |
+| `aws.stageName` | `String` | `prod` | The name of your API Gateway stage |
+| `aws.domainName` | `String` | `''` | A custom domain name |
+| `aws.certificateArn` | `String` | `''` | If a custom domain is used, this option needs to specify the ARN of a valid SSL certificate in ACM |
+| `aws.cloudformationTemplateFile` | `String` | `node_modules/hops-lambda/cloudformation.yaml` | Path to a custom CloudFormation template |
 
 _\* If no region is configured via the preset config, `hops-lambda` will try to read `AWS_REGION` and `AWS_DEFAULT_REGION` from your environment first before defaulting to `us-east-1`._
 
