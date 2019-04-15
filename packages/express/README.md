@@ -36,15 +36,15 @@ You may use either `hops serve -p` or its equivalent `NODE_ENV=production hops s
 
 #### Preset Options
 
-| Name        | Type                 | Default          | Required | Description                                                  |
-| ----------- | -------------------- | ---------------- | -------- | ------------------------------------------------------------ |
-| `https`     | `Boolean` / `Object` | `false`          | _no_     | Configure HTTPS support for Hops                             |
-| `host`      | `String`             | `[HOST]`         | _no_     | Specify the IP address that Hops should bind to              |
-| `port`      | `String`             | `[PORT]`         | _no_     | Specify the Port that Hops should listen on                  |
-| `locations` | `Array<String>`      | `[]`             | _no_     | An array of locations for static rendering of HTML pages     |
-| `basePath`  | `String`             | `''`             | _no_     | The URL base path from which your application will be served |
-| `assetPath` | `String`             | `<basePath>`     | _no_     | The URL base path from which the assets will be served from  |
-| `buildDir`  | `String`             | `<rootDir>/dist` | _no_     | The directory in which the build outputs will be written to  |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `https` | `Boolean` / `Object` | `false` | _no_ | Configure HTTPS support for Hops |
+| `host` | `String` | `[HOST]` | _no_ | Specify the IP address that Hops should bind to |
+| `port` | `String` | `[PORT]` | _no_ | Specify the Port that Hops should listen on |
+| `locations` | `Array<String>` | `[]` | _no_ | An array of locations for static rendering of HTML pages |
+| `basePath` | `String` | `''` | _no_ | The URL base path from which your application will be served |
+| `assetPath` | `String` | `<basePath>` | _no_ | The URL base path from which the assets will be served from |
+| `buildDir` | `String` | `<rootDir>/dist` | _no_ | The directory in which the build outputs will be written to |
 
 ##### `https`
 

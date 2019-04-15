@@ -54,10 +54,10 @@ This is the main export of `hops-pwa` which, when executed, will register the co
 
 #### Preset Options
 
-| Name         | Type     | Default              | Required | Description                                   |
-| ------------ | -------- | -------------------- | -------- | --------------------------------------------- |
-| `workerPath` | `String` | `<basePath>/sw.js`   | _no_     | The path on which to serve the service worker |
-| `workerFile` | `String` | `hops-pwa/worker.js` | _yes_    | The path to the service worker entry file     |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `workerPath` | `String` | `<basePath>/sw.js` | _no_ | The path on which to serve the service worker |
+| `workerFile` | `String` | `hops-pwa/worker.js` | _yes_ | The path to the service worker entry file |
 
 ##### `workerPath`
 

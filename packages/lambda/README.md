@@ -106,15 +106,15 @@ This preset can be configured through the `"aws"` key in your preset config.
 }
 ```
 
-| Name                             | Type     | Default                                        | Required | Description                                                                                        |
-| -------------------------------- | -------- | ---------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| `aws.region`\*                   | `String` | `us-east-1`                                    | _no_     | The AWS Region in which the resources should be created                                            |
-| `aws.uniqueName`                 | `String` | `hops-lambda-$name`                            | _no_     | A unique name that is used to identify the AWS CloudFormation Stack and S3 bucket.                 |
-| `aws.memorySize`                 | `Number` | `128`                                          | _no_     | The memory allocated to your Lambda function                                                       |
-| `aws.stageName`                  | `String` | `prod`                                         | _no_     | The name of your API Gateway stage                                                                 |
-| `aws.domainName`                 | `String` | `''`                                           | _no_     | A custom domain name                                                                               |
-| `aws.certificateArn`             | `String` | `''`                                           | _no_     | If a custom domain is used, this option needs to specify the ARN of a valid SSL certificate in ACM |
-| `aws.cloudformationTemplateFile` | `String` | `node_modules/hops-lambda/cloudformation.yaml` | _no_     | Path to a custom CloudFormation template                                                           |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `aws.region`\* | `String` | `us-east-1` | _no_ | The AWS Region in which the resources should be created |
+| `aws.uniqueName` | `String` | `hops-lambda-$name` | _no_ | A unique name that is used to identify the AWS CloudFormation Stack and S3 bucket. |
+| `aws.memorySize` | `Number` | `128` | _no_ | The memory allocated to your Lambda function |
+| `aws.stageName` | `String` | `prod` | _no_ | The name of your API Gateway stage |
+| `aws.domainName` | `String` | `''` | _no_ | A custom domain name |
+| `aws.certificateArn` | `String` | `''` | _no_ | If a custom domain is used, this option needs to specify the ARN of a valid SSL certificate in ACM |
+| `aws.cloudformationTemplateFile` | `String` | `node_modules/hops-lambda/cloudformation.yaml` | _no_ | Path to a custom CloudFormation template |
 
 - \* If no region is configured via the preset config, `hops-lambda` will try to read `AWS_REGION` and `AWS_DEFAULT_REGION` from your environment first before defaulting to `us-east-1`.
 

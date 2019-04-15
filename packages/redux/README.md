@@ -28,9 +28,9 @@ Check out this [integration test](https://github.com/xing/hops/tree/master/packa
 
 #### Preset Options
 
-| Name                     | Type      | Default | Required | Description                                                                          |
-| ------------------------ | --------- | ------- | -------- | ------------------------------------------------------------------------------------ |
-| `shouldPrefetchOnServer` | `Boolean` | `true`  | _no_     | Whether Hops should execute route-bound action creators during server-side rendering |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering |
 
 ##### `shouldPrefetchOnServer`
 
@@ -48,12 +48,12 @@ This option controls whether you want Hops to execute the configured [route-boun
 
 This preset has only a single runtime option which can be passed to the `render()` options inside the `redux` key (see example above).
 
-| Name                                  | Type      | Default                  | Required | Description                                                                                                                                                         |
-| ------------------------------------- | --------- | ------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `redux.reducers`                      | `Object`  | `{}`                     | _yes_    | An object [whose values](https://redux.js.org/api-reference/combinereducers#arguments) consists of all your reducer functions.                                      |
-| `redux.middlewares`                   | `Array`   | `[ReduxThunkMiddleware]` | _no_     | An array of all [redux middleware](https://redux.js.org/api-reference/applymiddleware) you want to use.                                                             |
-| `redux.actionCreators`                | `Array`   | `[]`                     | _no_     | An array of route-bound action creators to be dispatched when the current route matches.                                                                            |
-| `redux.alwaysDispatchActionsOnClient` | `boolean` | `undefined`              | _no_     | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `redux.reducers` | `Object` | `{}` | _yes_ | An object [whose values](https://redux.js.org/api-reference/combinereducers#arguments) consists of all your reducer functions. |
+| `redux.middlewares` | `Array` | `[ReduxThunkMiddleware]` | _no_ | An array of all [redux middleware](https://redux.js.org/api-reference/applymiddleware) you want to use. |
+| `redux.actionCreators` | `Array` | `[]` | _no_ | An array of route-bound action creators to be dispatched when the current route matches. |
+| `redux.alwaysDispatchActionsOnClient` | `boolean` | `undefined` | _no_ | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
 
 ##### `reducers`
 
