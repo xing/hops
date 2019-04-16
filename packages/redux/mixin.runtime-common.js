@@ -1,3 +1,5 @@
+const React = require('react');
+const { Provider } = require('react-redux');
 const { applyMiddleware } = require('redux');
 const ReduxThunkMiddleware = require('redux-thunk').default;
 const {
@@ -11,6 +13,7 @@ class ReduxRuntimeCommonMixin extends Mixin {
   constructor(config, element, { redux: options = {} } = {}) {
     super(config);
     this.middlewares = options.middlewares || [];
+    this.reducers = options.reducers || {};
   }
 
   getReduxMiddlewares() {
@@ -27,10 +30,19 @@ class ReduxRuntimeCommonMixin extends Mixin {
 
     return middlewares.map(m => applyMiddleware(m));
   }
+
+  enhanceElement(reactElement) {
+    return React.createElement(
+      Provider,
+      { store: this.getReduxStore() },
+      reactElement
+    );
+  }
 }
 
 ReduxRuntimeCommonMixin.strategies = {
   getReduxMiddlewares: override,
+  getReduxStore: override,
 };
 
 module.exports = ReduxRuntimeCommonMixin;
