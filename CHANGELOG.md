@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.6.1](https://github.com/xing/hops/compare/v11.6.0...v11.6.1) (2019-04-16)
+
+
+### Bug Fixes
+
+* **dependencies:** update dependency mini-css-extract-plugin to ^0.6.0 ([6be3e6c](https://github.com/xing/hops/commit/6be3e6c))
+* **development-proxy:** allow empty proxy targets in config ([8660df0](https://github.com/xing/hops/commit/8660df0))
+* upgrade to latest untool release ([ba7e50c](https://github.com/xing/hops/commit/ba7e50c))
+* **redux:** always add redux-thunk middlware ([900edc7](https://github.com/xing/hops/commit/900edc7))
+
+
+
+
+
 # [11.6.0](https://github.com/xing/hops/compare/v11.5.0...v11.6.0) (2019-04-09)
 
 

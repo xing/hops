@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.6.1](https://github.com/xing/hops/compare/v11.6.0...v11.6.1) (2019-04-16)
+
+
+### Bug Fixes
+
+* **redux:** always add redux-thunk middlware ([900edc7](https://github.com/xing/hops/commit/900edc7))
+
+
+
+
+
 # [11.6.0](https://github.com/xing/hops/compare/v11.5.0...v11.6.0) (2019-04-09)
 
 
