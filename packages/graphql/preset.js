@@ -18,7 +18,6 @@ module.exports = {
     },
     graphqlMockSchemaFile: {
       type: 'string',
-      absolutePath: true,
     },
     graphqlMockServerPath: {
       type: 'string',
