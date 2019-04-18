@@ -18,9 +18,9 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.0",
     "@untool/core": "^1.6.2",
     "@untool/react": "^1.6.2",
     "hops-mixin": "^11.6.1"
