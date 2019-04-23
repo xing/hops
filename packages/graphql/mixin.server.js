@@ -20,10 +20,14 @@ const fetch = require('cross-fetch');
 let introspectionResult = undefined;
 
 class GraphQLMixin extends Mixin {
-  constructor(config, element, { graphql: options = {} } = {}) {
+  constructor(config, element, { graphqlOptions = {} } = {}) {
     super(config, element);
 
+    const { linkOptions = {}, cacheOptions = {}, ...options } = graphqlOptions;
+
     this.options = options;
+    this.linkOptions = linkOptions;
+    this.cacheOptions = cacheOptions;
 
     if (introspectionResult === undefined) {
       try {
@@ -41,14 +45,20 @@ class GraphQLMixin extends Mixin {
     if (this.client) {
       return this.client;
     }
-    return (this.client = this.createClient(this.options));
+    return (this.client = this.createClient());
   }
 
-  createClient(options) {
-    return new ApolloClient(this.enhanceClientOptions(options));
+  createClient() {
+    return new ApolloClient(this.enhanceClientOptions());
   }
 
-  enhanceClientOptions(options) {
+  enhanceClientOptions() {
+    const {
+      UNSAFE_forwardCredentialsSSR,
+      filterCredentials,
+      ...options
+    } = this.options;
+
     return {
       ...options,
       link: this.getApolloLink(),
@@ -63,6 +73,7 @@ class GraphQLMixin extends Mixin {
       new HttpLink({
         uri: this.config.graphqlUri,
         fetch,
+        ...this.linkOptions,
       })
     );
   }
@@ -70,7 +81,10 @@ class GraphQLMixin extends Mixin {
   getApolloCache() {
     return (
       this.options.cache ||
-      new InMemoryCache({ fragmentMatcher: this.createFragmentMatcher() })
+      new InMemoryCache({
+        fragmentMatcher: this.createFragmentMatcher(),
+        ...this.cacheOptions,
+      })
     );
   }
 
