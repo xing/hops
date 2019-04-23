@@ -1012,7 +1012,7 @@ And now we need to make this mixin known to your application by specifying it in
 ```javascript
 {
   "hops": {
-    "mixins": ["<rootDir>/my-new-mixin"]
+    "mixins": ["./my-new-mixin"]
   }
 }
 ```
@@ -1145,7 +1145,7 @@ enhanceServerData(data, req, res) {
 **`my-component.js`**
 
 ```javascript
-const MyComponent = ({serverData}) => <div>{serverData.someKey}</div>
+const MyComponent = ({ serverData }) => <div>{serverData.someKey}</div>;
 
 export default withServerData(MyComponent);
 ```
