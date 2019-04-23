@@ -168,12 +168,18 @@ This option controls whether you want Hops to execute GraphQL queries during ser
 
 #### Render Options
 
-This preset has only a single runtime option which can be passed to the `render()` options inside the `styled` key (see example above).
+This preset has only a single runtime option which can be passed to the `render()` options inside the `graphql` key (see example above).
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
 | `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of a `apollo-link` |
 | `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of a `apollo-cache` |
+| `graphql.linkOptions` | `Object` | `{}` | _no_ | An options hash that should be passed into the `ApolloLink` constructor [read more](https://github.com/apollographql/apollo-link/tree/master/packages/apollo-link-http#options) |
+| `graphql.cacheOptions` | `Object` | `{}` | _no_ | An options hash that should be passed into the `ApolloCache` constructor [read more](https://github.com/apollographql/apollo-client/tree/master/packages/apollo-cache-inmemory#configuration) |
+| `graphql.UNSAFE_forwardCredentialsSSR` | `Boolean` | `false` | _no_ | Whether the server should forward its own cookies / authorization header to the GraphQL endpoint during server-side rendering |
+| `graphql.filterCredentials` | `Function` | `(i) => i` | _no_ | A function that can be used to customise which cookies should be forwarded |
+
+_All other options are being forwarded to the `ApolloClient` constructor [read more](https://www.apollographql.com/docs/react/api/apollo-client)_
 
 ##### `link`
 
@@ -205,6 +211,22 @@ export default render(<MyApp />, {
   },
 });
 ```
+
+##### `linkOptions`
+
+**TODO**
+
+##### `cacheOptions`
+
+**TODO**
+
+##### `UNSAFE_forwardCredentialsSSR`
+
+**TODO**
+
+##### `filterCredentials`
+
+**TODO**
 
 ### Mixin Hooks API
 
