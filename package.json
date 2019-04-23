@@ -112,7 +112,13 @@
       ],
       "prettier/prettier": "error",
       "no-console": "off",
-      "no-process-exit": "off"
+      "no-process-exit": "off",
+      "no-unused-vars": [
+        "error",
+        {
+          "ignoreRestSiblings": true
+        }
+      ]
     },
     "parserOptions": {
       "ecmaVersion": 2018
