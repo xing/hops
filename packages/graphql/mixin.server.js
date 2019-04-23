@@ -1,5 +1,6 @@
 const React = require('react');
 const { existsSync, readFileSync } = require('fs');
+const Url = require('url');
 const {
   Mixin,
   strategies: {
@@ -16,6 +17,7 @@ const {
   HeuristicFragmentMatcher,
 } = require('apollo-cache-inmemory');
 const fetch = require('cross-fetch');
+const psl = require('psl');
 
 let introspectionResult = undefined;
 
@@ -41,6 +43,10 @@ class GraphQLMixin extends Mixin {
     }
   }
 
+  bootstrap(req) {
+    this.req = req;
+  }
+
   getApolloClient() {
     if (this.client) {
       return this.client;
@@ -50,6 +56,51 @@ class GraphQLMixin extends Mixin {
 
   createClient() {
     return new ApolloClient(this.enhanceClientOptions());
+  }
+
+  createFetcher() {
+    const { filterCredentials = i => i } = this.options;
+    const { credentials, headers = {} } = this.linkOptions;
+    const {
+      authorization = headers.authorization,
+      cookie = headers.cookie,
+    } = this.req.headers;
+
+    return (...args) => {
+      const request = new fetch.Request(...args);
+
+      if (this.options.UNSAFE_forwardCredentialsSSR) {
+        const clientUrl = new Url(this.req.headers.host);
+        const clientDomain = psl.parse(clientUrl.hostname);
+        const requestedUrl = new Url(request.url);
+        const requestedDomain = psl.parse(requestedUrl.hostname);
+        const isSameOrigin = clientUrl.origin === requestedUrl.origin;
+        const isSameDomain = clientDomain.domain === requestedDomain.domain;
+
+        if (
+          (credentials === 'same-origin' && isSameOrigin) ||
+          (credentials === 'include' && isSameDomain)
+        ) {
+          const {
+            authorization: filteredAuthorization,
+            cookie: filteredCookie,
+          } = filterCredentials({
+            requestedDomain,
+            authorization,
+            cookie,
+          });
+
+          if (filteredAuthorization) {
+            request.headers.set('authorization', filteredAuthorization);
+          }
+          if (filteredCookie) {
+            request.headers.set('cookie', filteredCookie);
+          }
+        }
+      }
+
+      return fetch(request);
+    };
   }
 
   enhanceClientOptions() {
@@ -72,7 +123,7 @@ class GraphQLMixin extends Mixin {
       this.options.link ||
       new HttpLink({
         uri: this.config.graphqlUri,
-        fetch,
+        fetch: this.createFetcher(),
         ...this.linkOptions,
       })
     );
