@@ -1,5 +1,6 @@
 'use strict';
 
+var inspect = require('util').inspect;
 var fs = require('fs');
 var path = require('path');
 var AWS = require('aws-sdk');
@@ -259,7 +260,7 @@ module.exports = function deploy(
         }
       } else {
         if (logger) {
-          logger.error(error);
+          logger.error(inspect(error));
         }
       }
       process.exitCode = 1;
