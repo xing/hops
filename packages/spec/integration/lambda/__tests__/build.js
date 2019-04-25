@@ -23,16 +23,11 @@ async function zipFunctionCode(root) {
 function invokeFunction(root, path) {
   process.chdir(root);
   const { handler } = require('hops-lambda/lambda');
-  return new Promise((resolve, reject) => {
-    handler({ requestContext: { path }, path }, {}, (error, response) => {
-      if (error) {
-        return reject(error);
-      }
-      if (response.isBase64Encoded) {
-        response.body = Buffer.from(response.body, 'base64').toString('utf-8');
-      }
-      resolve(response);
-    });
+  return handler({ requestContext: { path }, path }, {}).then(response => {
+    if (response.isBase64Encoded) {
+      response.body = Buffer.from(response.body, 'base64').toString('utf-8');
+    }
+    return response;
   });
 }
 
