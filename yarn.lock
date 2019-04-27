@@ -7616,16 +7616,15 @@ load-json-file@^4.0.0:
     pify "^3.0.0"
     strip-bom "^3.0.0"
 
-load-json-file@^5.1.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-5.3.0.tgz#4d3c1e01fa1c03ea78a60ac7af932c9ce53403f3"
-  integrity sha512-cJGP40Jc/VXUsp8/OrnyKyTZ1y6v/dphm3bioS+RrKXjK2BB6wHUd6JptZEFDGgGahMT+InnZO5i1Ei9mpC8Bw==
+load-json-file@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-6.0.0.tgz#2f0983647a5b6b1e47e77dfa310a69289151f3be"
+  integrity sha512-3/eL1P4bnmFo3iQUGcDs9V+7IKUmwq//lcgRcduRsCf3AUe7NYFHkRIUUjbzOj3jpr0HIWfkZYUKrCdwLcMU/w==
   dependencies:
     graceful-fs "^4.1.15"
     parse-json "^4.0.0"
-    pify "^4.0.1"
     strip-bom "^3.0.0"
-    type-fest "^0.3.0"
+    type-fest "^0.4.1"
 
 loader-runner@^2.3.0:
   version "2.4.0"
@@ -11963,11 +11962,6 @@ type-check@~0.3.2:
   integrity sha1-WITKtRLPHTVeP7eE8wgEsrUg23I=
   dependencies:
     prelude-ls "~1.1.2"
-
-type-fest@^0.3.0:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.3.1.tgz#63d00d204e059474fe5e1b7c011112bbd1dc29e1"
-  integrity sha512-cUGJnCdr4STbePCgqNFbpVNCepa+kAVohJs1sLhxzdH+gnEoOd8VhbYa7pD3zZYGiURWM2xzEII3fQcRizDkYQ==
 
 type-fest@^0.4.1:
   version "0.4.1"
