@@ -34,7 +34,7 @@ class PWAMixin extends Mixin {
       webpackConfig.module.rules.push({
         test: require.resolve('./lib/loader-shim'),
         loader: configLoader.path,
-        options: { target: 'worker', config: this.config },
+        options: { type: 'worker', config: this.config },
       });
       webpackConfig.plugins.push(
         new ServiceWorkerPlugin({
