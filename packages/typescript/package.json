@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "hops-mixin": "^11.6.2",
-    "ts-loader": "^5.0.0",
+    "ts-loader": "^6.0.0",
     "typescript": "^3.2.1"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/typescript#readme"
