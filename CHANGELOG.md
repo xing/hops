@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.6.2](https://github.com/xing/hops/compare/v11.6.1...v11.6.2) (2019-05-06)
+
+
+### Bug Fixes
+
+* upgrade babel dependencies and remove obsolete object-rest-spread ([e7facba](https://github.com/xing/hops/commit/e7facba))
+* **dependencies:** update dependency load-json-file to v6 ([b195f5b](https://github.com/xing/hops/commit/b195f5b))
+* **dependencies:** update dependency serverless-http to v2 ([cfe2bac](https://github.com/xing/hops/commit/cfe2bac))
+* **dependencies:** update dependency strip-indent to v3 ([386efbe](https://github.com/xing/hops/commit/386efbe))
+* **dependencies:** update dependency write-pkg to v4 ([662fe73](https://github.com/xing/hops/commit/662fe73))
+* **graphql:** allow mock schema file to be a module identifier, too ([828aac9](https://github.com/xing/hops/commit/828aac9))
+* **lambda:** fallback config values to empty strings ([38a30be](https://github.com/xing/hops/commit/38a30be))
+* **lambda:** make sure to print errors correctly ([f8996e7](https://github.com/xing/hops/commit/f8996e7))
+* **spec:** call lambda handler as promise ([0a73258](https://github.com/xing/hops/commit/0a73258))
+
+
+
+
+
 ## [11.6.1](https://github.com/xing/hops/compare/v11.6.0...v11.6.1) (2019-04-16)
 
 

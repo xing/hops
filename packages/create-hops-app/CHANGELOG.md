@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.6.2](https://github.com/xing/hops/compare/v11.6.1...v11.6.2) (2019-05-06)
+
+
+### Bug Fixes
+
+* **dependencies:** update dependency load-json-file to v6 ([b195f5b](https://github.com/xing/hops/commit/b195f5b))
+* **dependencies:** update dependency write-pkg to v4 ([662fe73](https://github.com/xing/hops/commit/662fe73))
+
+
+
+
+
 # [11.6.0](https://github.com/xing/hops/compare/v11.5.0...v11.6.0) (2019-04-09)
 
 

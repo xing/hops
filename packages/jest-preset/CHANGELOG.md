@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.6.2](https://github.com/xing/hops/compare/v11.6.1...v11.6.2) (2019-05-06)
+
+
+### Bug Fixes
+
+* upgrade babel dependencies and remove obsolete object-rest-spread ([e7facba](https://github.com/xing/hops/commit/e7facba))
+
+
+
+
+
 ## [11.6.1](https://github.com/xing/hops/compare/v11.6.0...v11.6.1) (2019-04-16)
 
 **Note:** Version bump only for package jest-preset-hops

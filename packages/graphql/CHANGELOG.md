@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.6.2](https://github.com/xing/hops/compare/v11.6.1...v11.6.2) (2019-05-06)
+
+
+### Bug Fixes
+
+* **dependencies:** update dependency strip-indent to v3 ([386efbe](https://github.com/xing/hops/commit/386efbe))
+* **graphql:** allow mock schema file to be a module identifier, too ([828aac9](https://github.com/xing/hops/commit/828aac9))
+
+
+
+
+
 ## [11.6.1](https://github.com/xing/hops/compare/v11.6.0...v11.6.1) (2019-04-16)
 
 
