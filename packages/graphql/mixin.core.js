@@ -1,6 +1,8 @@
 const { existsSync } = require('fs');
+const { relative, join } = require('path');
 const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
+const resolveFrom = require('resolve-from');
 const {
   internal: { createWebpackMiddleware, StatsFilePlugin },
 } = require('@untool/webpack');
@@ -12,6 +14,31 @@ function exists(path) {
   } catch (e) {
     return false;
   }
+}
+
+function contextRelativeExternals({ rootDir }, ...externals) {
+  const countSubstrings = (input, search) => {
+    return (input.match(new RegExp(search, 'g')) || []).length;
+  };
+
+  return function(context, request, callback) {
+    if (externals.includes(request)) {
+      const absolutePath = resolveFrom(context, request);
+
+      if (countSubstrings(absolutePath, 'node_modules') > 1) {
+        const relativePath = relative(
+          join(rootDir, 'node_modules'),
+          absolutePath
+        );
+
+        return callback(null, `commonjs ${relativePath}`);
+      }
+
+      return callback(null, `commonjs ${request}`);
+    }
+
+    callback();
+  };
 }
 
 class GraphQLMixin extends Mixin {
@@ -85,7 +112,9 @@ class GraphQLMixin extends Mixin {
       loader: 'graphql-tag/loader',
     });
 
-    webpackConfig.externals.push('encoding');
+    webpackConfig.externals.push(
+      contextRelativeExternals(this.config, 'encoding')
+    );
 
     if (process.env.NODE_ENV === 'production') {
       return;
@@ -99,9 +128,12 @@ class GraphQLMixin extends Mixin {
 
     if (target === 'graphql-mock-server') {
       webpackConfig.externals.push(
-        'apollo-server-express',
-        'express',
-        'graphql'
+        contextRelativeExternals(
+          this.config,
+          'apollo-server-express',
+          'express',
+          'graphql'
+        )
       );
 
       webpackConfig.output.filename = 'hops-graphql-mock-server.js';
