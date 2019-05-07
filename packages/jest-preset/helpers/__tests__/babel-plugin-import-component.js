@@ -17,7 +17,7 @@ const tests = [
 const babelOptions = {
   plugins: [
     require.resolve('../babel-plugin-import-component'),
-    require.resolve('@babel/plugin-syntax-dynamic-import'),
+    require.resolve('babel-plugin-dynamic-import-node'),
   ],
   babelrc: false,
 };

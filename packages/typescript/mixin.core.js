@@ -24,9 +24,11 @@ class TypescriptMixin extends Mixin {
 
   diagnose() {
     const tsConfigPath = join(this.config.rootDir, 'tsconfig.json');
+    /* eslint-disable node/no-extraneous-require */
     const exampleTsConfigPath = require.resolve(
       'hops-typescript/tsconfig.json'
     );
+    /* eslint-enable node/no-extraneous-require */
     if (!existsSync(tsConfigPath)) {
       return `No "tsconfig.json" file found in your project root directory ("${
         this.config.rootDir

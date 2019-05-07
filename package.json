@@ -115,7 +115,8 @@
       "no-process-exit": "off"
     },
     "parserOptions": {
-      "ecmaVersion": 2018
+      "ecmaVersion": 2018,
+      "sourceType": "module"
     },
     "parser": "babel-eslint",
     "env": {
