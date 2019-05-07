@@ -33,7 +33,14 @@ function executeRemoteQuery(graphqlUri, optionalHeaders = [], query) {
 
 function executeLocalQuery(schemaFile, query) {
   return promisify(readFile)(schemaFile, 'utf-8')
-    .then(typeDefs => makeExecutableSchema({ typeDefs }))
+    .then(typeDefs =>
+      makeExecutableSchema({
+        typeDefs,
+        resolverValidationOptions: {
+          requireResolversForResolveType: false,
+        },
+      })
+    )
     .then(executableSchema => graphql(executableSchema, query));
 }
 
