@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.7.0](https://github.com/xing/hops/compare/v11.6.2...v11.7.0) (2019-05-09)
+
+**Note:** Version bump only for package hops-express
+
+
+
+
+
 ## [11.6.2](https://github.com/xing/hops/compare/v11.6.1...v11.6.2) (2019-05-06)
 
 **Note:** Version bump only for package hops-express

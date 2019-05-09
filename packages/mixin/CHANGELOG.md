@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.7.0](https://github.com/xing/hops/compare/v11.6.2...v11.7.0) (2019-05-09)
+
+
+### Features
+
+* upgrade untool to include multi-threaded webpack compiler ([cebfec6](https://github.com/xing/hops/commit/cebfec6))
+
+
+
+
+
 ## [11.6.2](https://github.com/xing/hops/compare/v11.6.1...v11.6.2) (2019-05-06)
 
 **Note:** Version bump only for package hops-mixin

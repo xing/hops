@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.7.0](https://github.com/xing/hops/compare/v11.6.2...v11.7.0) (2019-05-09)
+
+
+### Bug Fixes
+
+* **dependencies:** update dependency ts-loader to v6 ([b745183](https://github.com/xing/hops/commit/b745183))
+* silence eslint warnings and errors ([54c0d10](https://github.com/xing/hops/commit/54c0d10))
+* **graphql:** alert on duplicate "graphql" package ([d1a615f](https://github.com/xing/hops/commit/d1a615f))
+* **graphql:** silence warnings for local introspection queries ([342f02a](https://github.com/xing/hops/commit/342f02a))
+
+
+### Features
+
+* upgrade untool to include multi-threaded webpack compiler ([cebfec6](https://github.com/xing/hops/commit/cebfec6))
+
+
+
+
+
 ## [11.6.2](https://github.com/xing/hops/compare/v11.6.1...v11.6.2) (2019-05-06)
 
 
