@@ -60,7 +60,7 @@ class GraphQLMixin extends Mixin {
     );
   }
 
-  configureServer(rootApp, middleware) {
+  configureServer(rootApp, middleware, mode) {
     if (
       !exists(this.config.graphqlMockSchemaFile) ||
       process.env.NODE_ENV === 'production'
@@ -71,8 +71,9 @@ class GraphQLMixin extends Mixin {
     middleware.initial.push({
       path: this.config.graphqlMockServerPath,
       handler: createWebpackMiddleware(
-        this.getBuildConfig('graphql-mock-server', 'node'),
-        true
+        ['graphql-mock-server', 'node'],
+        mode === 'develop',
+        this
       ),
     });
   }
@@ -113,6 +114,10 @@ class GraphQLMixin extends Mixin {
         p => !(p instanceof StatsFilePlugin)
       );
     }
+  }
+
+  handleArguments(argv) {
+    this.options = { ...this.options, ...argv };
   }
 
   diagnose({ detectDuplicatePackages }) {
