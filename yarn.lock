@@ -1672,10 +1672,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@untool/core@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.7.0.tgz#149cd3ce00f2c70b98625ec478d6bd779c2ce8e0"
-  integrity sha512-UeMIA4r4vl2bAGfGsu3xKb/nCRtLOUmhhxYrGOe4O4O6OHxRvJ56yQsYiSd6odcuPCLFyebbqgWO3nJ7jvTfJw==
+"@untool/core@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.8.1.tgz#e91751abc7a04ee3d2b39ce575924ca41bde6880"
+  integrity sha512-Chdu9ZeGlMSBm6zGEcnEa/6IkO4YIWYqMKAgIDmgj60e0dOoDw3Tt7i+hAULtkbcgPNweMLk6q1bQnpfRXR5tQ==
   dependencies:
     ajv "^6.9.2"
     check-error "^1.0.2"
@@ -1691,13 +1691,13 @@
     mixinable "^4.0.0"
     supports-color "^6.0.0"
 
-"@untool/express@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.7.0.tgz#31005b46a258d34a9ef6c0d93812de41974cf8db"
-  integrity sha512-1jBVnckWYgfoSAAoLxXZlFdF27zgOBNuswjH3ssLIH5d+nyPjvnnp0csN52aRgi6mT3VbS2tSd+dex2E4gQ53Q==
+"@untool/express@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.8.1.tgz#ae868966653fa24a0281e779eba44410c2270bac"
+  integrity sha512-u2kJqeM8tqb+UWQAkIq8dxcyNipcmlBUHeIPz4E8wP0o9TmmDFOoGesSgU1tjVhk13qs487uqoI2GyMIlkqoXQ==
   dependencies:
-    "@untool/core" "^1.7.0"
-    "@untool/yargs" "^1.7.0"
+    "@untool/core" "^1.8.1"
+    "@untool/yargs" "^1.8.1"
     chalk "^2.4.2"
     debug "^4.0.0"
     directory-index "^0.1.0"
@@ -1717,25 +1717,25 @@
     split "^1.0.1"
     supports-color "^6.0.0"
 
-"@untool/info@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@untool/info/-/info-1.7.0.tgz#4f7dd2ac5b12cda444984a702f94d68d2c4b2c1d"
-  integrity sha512-p8NR+WNVkQ+mSgh44VwkQrsxmDdVOjr/w3cJOkspqkzyQX+WJLkIhWlCDcRuLmc4p4GYSaKyht72vnc5ePvgKA==
+"@untool/info@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@untool/info/-/info-1.8.1.tgz#277a7515d2289958f2110270ff6b09ab23059b07"
+  integrity sha512-GwfE/EV054DIGAUAmDLWvfkg0DHOeYBVYvx2NVpY4ZXl5mae/THY27ExeKq2RQlW65A0b6vbJl+Kl2fsZefObA==
   dependencies:
-    "@untool/core" "^1.7.0"
+    "@untool/core" "^1.8.1"
     chalk "^2.4.2"
     duplitect "^2.0.1"
     enhanced-resolve "^4.1.0"
     mixinable "^4.0.0"
 
-"@untool/react@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.7.0.tgz#8cab5be659e7ac488b4f4e3d4b8942e7e04d9b8e"
-  integrity sha512-FrVAPPDLVHICgZVzkP9rF8DXcpJ5jQynmz9i4TcM4D0CtPm82KHlWJjoRl1gJkopuHRiFE2r+qZpEyf+K215NA==
+"@untool/react@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.8.1.tgz#83f62119f37ce3bbf946f2d1f80a82c94b4a5aaf"
+  integrity sha512-r7uS2gum4kUmEZbsyrfHofdC0C8bM8I2bs6/eJZO883RazoOGbx4LU/OSBjLzTVuJkHJB/bV51peRS+B7LrCcA==
   dependencies:
     "@babel/core" "^7.4.0"
     "@babel/preset-react" "^7.0.0"
-    "@untool/core" "^1.7.0"
+    "@untool/core" "^1.8.1"
     babel-plugin-transform-react-remove-prop-types "^0.4.19"
     clone "^2.1.2"
     duplitect "^2.0.1"
@@ -1745,18 +1745,18 @@
     prop-types "^15.7.2"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.7.0.tgz#bd0e3c9f47347762d98d719ffd1a6f516623aa8a"
-  integrity sha512-JZ1jKEZUpgPn9tN/8WCi1k2Q6sm8vOAAtqesVSN12oK89GWJiZkIbPadIIgxY1mNxT4fa3TBmkupnKmw71nAYA==
+"@untool/webpack@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.8.1.tgz#e82ec985c39c2701a155f8f4eb748383b1973eb2"
+  integrity sha512-2jPo2X3O4xzmw9lAjouOZsblTrqQAGEnBuamxDonhhG+19GsGpGwuskMTj7jDc2dL1Xmb87a7ZHW5ho6j8swyw==
   dependencies:
     "@babel/core" "^7.4.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/polyfill" "^7.4.0"
     "@babel/preset-env" "^7.4.2"
-    "@untool/core" "^1.7.0"
-    "@untool/express" "^1.7.0"
-    "@untool/yargs" "^1.7.0"
+    "@untool/core" "^1.8.1"
+    "@untool/express" "^1.8.1"
+    "@untool/yargs" "^1.8.1"
     babel-loader "8"
     babel-plugin-dynamic-import-node "^2.0.0"
     caniuse-lite "^1.0.30000898"
@@ -1779,6 +1779,7 @@
     pretty-ms "^5.0.0"
     require-from-string "^2.0.1"
     rimraf "^2.6.2"
+    serialize-error "^4.1.0"
     source-map-support "^0.5.6"
     strip-ansi "^5.2.0"
     supports-color "^6.0.0"
@@ -1789,12 +1790,12 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.7.0.tgz#d3737156bb1f428f909d957a956c1f0842df3a7f"
-  integrity sha512-0F04tCD2tT1/uVzdSBGMtbc46LYYTHIpLWFL31L5HYcf0ymoEk6nLMtnOkTUCX5oJnBQYoYZRvOO83WmhZC2vw==
+"@untool/yargs@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.8.1.tgz#f3c407dec24218f473a40f2bf2b6303c582b77f5"
+  integrity sha512-Ni+Bw/tEg21xP3htuMatEwaXad0JSaqcTknHkpkg01z2W6bxOaNKqYhRT2vxaiv6nqYfIxPN67d4T5ThW7QskQ==
   dependencies:
-    "@untool/core" "^1.7.0"
+    "@untool/core" "^1.8.1"
     is-plain-obj "^2.0.0"
     mixinable "^4.0.0"
     yargs "^13.0.0"
@@ -11019,6 +11020,13 @@ send@0.16.2:
     range-parser "~1.2.0"
     statuses "~1.4.0"
 
+serialize-error@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-4.1.0.tgz#63e1e33ede20bcd89d9f0528ea4c15fbf0f2b78a"
+  integrity sha512-5j9GgyGsP9vV9Uj1S0lDCvlsd+gc2LEPVK7HHHte7IyPwOD4lVQFeaX143gx3U5AnoCi+wbcb3mvaxVysjpxEw==
+  dependencies:
+    type-fest "^0.3.0"
+
 serialize-javascript@^1.4.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-1.7.0.tgz#d6e0dfb2a3832a8c94468e6eb1db97e55a192a65"
@@ -12038,6 +12046,11 @@ type-check@~0.3.2:
   integrity sha1-WITKtRLPHTVeP7eE8wgEsrUg23I=
   dependencies:
     prelude-ls "~1.1.2"
+
+type-fest@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.3.1.tgz#63d00d204e059474fe5e1b7c011112bbd1dc29e1"
+  integrity sha512-cUGJnCdr4STbePCgqNFbpVNCepa+kAVohJs1sLhxzdH+gnEoOd8VhbYa7pD3zZYGiURWM2xzEII3fQcRizDkYQ==
 
 type-fest@^0.4.1:
   version "0.4.1"
