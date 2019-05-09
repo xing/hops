@@ -1,4 +1,5 @@
 const React = require('react');
+const renderToFragments = require('@untool/react/lib/fragments');
 const { existsSync, readFileSync } = require('fs');
 const {
   Mixin,
@@ -7,7 +8,7 @@ const {
   },
 } = require('hops-mixin');
 
-const { ApolloProvider, getDataFromTree } = require('react-apollo');
+const { ApolloProvider, getMarkupFromTree } = require('react-apollo');
 const { default: ApolloClient } = require('apollo-client');
 const { HttpLink } = require('apollo-link-http');
 const {
@@ -82,14 +83,19 @@ class GraphQLMixin extends Mixin {
         });
   }
 
-  fetchData(data = {}, element) {
-    return this.prefetchData(element).then(() => data);
-  }
-
-  prefetchData(element) {
-    const prefetchOnServer = this.canPrefetchOnServer().every(value => value);
-
-    return prefetchOnServer ? getDataFromTree(element) : Promise.resolve();
+  async renderToFragments(element) {
+    if (this.canPrefetchOnServer().every(value => value)) {
+      let fragments = {};
+      await getMarkupFromTree({
+        tree: element,
+        renderFunction: tree => {
+          fragments = renderToFragments(tree);
+          return fragments.reactMarkup;
+        },
+      });
+      return fragments;
+    }
+    return renderToFragments(element);
   }
 
   canPrefetchOnServer() {
