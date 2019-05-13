@@ -1,6 +1,7 @@
 const postcssImportPlugin = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const ExtractCSSPlugin = require('mini-css-extract-plugin');
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const { Mixin } = require('hops-mixin');
 const { join, trimSlashes } = require('pathifist');
@@ -88,6 +89,11 @@ class PostCSSMixin extends Mixin {
       getCSSLoaderConfig(this.config.browsers, ExtractCSSPlugin.loader)
     );
 
+    webpackConfig.plugins.unshift(
+      new FilterWarningsPlugin({
+        exclude: /\[mini-css-extract-plugin\][^]*Conflicting order between:/,
+      })
+    );
     webpackConfig.plugins.push(
       new ExtractCSSPlugin({
         filename: getAssetPath(
