@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.7.1](https://github.com/xing/hops/compare/v11.7.0...v11.7.1) (2019-05-13)
+
+
+### Bug Fixes
+
+* upgrade untool ([4e9481f](https://github.com/xing/hops/commit/4e9481f))
+
+
+
+
+
 # [11.7.0](https://github.com/xing/hops/compare/v11.6.2...v11.7.0) (2019-05-09)
 
 
