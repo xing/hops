@@ -201,5 +201,8 @@
     "lerna": "^3.0.3",
     "lint-staged": "^8.0.0",
     "prettier": "^1.14.0"
+  },
+  "resolutions": {
+    "fs-extra": "7.0.1"
   }
 }
