@@ -48,6 +48,12 @@ const erroneousResponse = {
 
 class GraphQlMixin extends Mixin {
   configureServer(app, middlewares) {
+    middlewares.preinitial.push((_, res, next) =>
+      this.getServerAddress().then(url => {
+        res.locals.url = url;
+        next();
+      })
+    );
     middlewares.initial.push.apply(middlewares.initial, endpointHandlers);
     middlewares.initial.push({
       path: '/graphql/failed',
