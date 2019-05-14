@@ -84,8 +84,12 @@ class GraphQLMixin extends Mixin {
   }
 
   async renderToFragments(element) {
-    if (this.canPrefetchOnServer().every(value => value)) {
-      let fragments = {};
+    if (this.canPrefetchOnServer().every(value => value) === false) {
+      return renderToFragments(element);
+    }
+
+    let fragments = {};
+    try {
       await getMarkupFromTree({
         tree: element,
         renderFunction: tree => {
@@ -93,9 +97,19 @@ class GraphQLMixin extends Mixin {
           return fragments.reactMarkup;
         },
       });
-      return fragments;
+    } catch (err) {
+      if (err.networkError && err.networkError.response) {
+        const { status, statusText, headers } = err.networkError.response;
+        const fetchError = Object.assign(new Error(statusText), {
+          headers: headers.raw(),
+          status,
+        });
+        throw fetchError;
+      } else {
+        throw err;
+      }
     }
-    return renderToFragments(element);
+    return fragments;
   }
 
   canPrefetchOnServer() {
