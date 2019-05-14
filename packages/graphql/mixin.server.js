@@ -99,8 +99,14 @@ class GraphQLMixin extends Mixin {
       });
     } catch (err) {
       if (err.networkError && err.networkError.response) {
-        const { status, statusText, headers } = err.networkError.response;
-        const fetchError = Object.assign(new Error(statusText), {
+        const {
+          status: statusCode,
+          statusText,
+          headers,
+        } = err.networkError.response;
+        const status = statusCode === 200 ? 406 : statusCode;
+        const message = status === 406 ? 'Not Acceptable' : statusText;
+        const fetchError = Object.assign(new Error(message), {
           headers: headers.raw(),
           status,
         });
