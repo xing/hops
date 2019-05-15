@@ -96,7 +96,7 @@ You can use either [`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-
 To create a new Hops application run the following in a terminal:
 
 ```shell
-npx create-hops-app my-hops-app
+npm init hops-app my-hops-app
 ```
 
 _Note: If you prefer to use `yarn`, you can substitute the above command with `yarn create hops-app my-hops-app`._
