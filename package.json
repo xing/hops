@@ -144,9 +144,15 @@
       "<rootDir>/packages/spec/integration/*"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.0",
     "canarist": "^1.2.1",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.3.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-import": "^2.12.0",
