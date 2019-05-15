@@ -1,5 +1,10 @@
 const fetch = require('cross-fetch');
-const { endpoints } = require('../mixin.core');
+const { endpoints: errorEndpoints } = require('../mixin.core');
+
+const endpoints = errorEndpoints.map(([status, ...rest]) => {
+  const expectedStatus = status === 429 ? 429 : 500;
+  return [status, expectedStatus, ...rest];
+});
 
 describe('graphql development client', () => {
   let url;
@@ -20,8 +25,8 @@ describe('graphql development client', () => {
       const response = await fetch(`${url}html`);
       const text = await response.text();
 
-      expect(response.status).toBe(406);
-      expect(text).toContain('<pre>Error: Not Acceptable');
+      expect(response.status).toBe(500);
+      expect(text).toContain('<pre>HopsGraphQlError: Not Acceptable');
     });
   });
 
@@ -54,22 +59,25 @@ describe('graphql development client', () => {
       const response = await fetch(`${url}failed`);
       const text = await response.text();
 
-      expect(response.status).toBe(400);
-      expect(text).toContain('<pre>Error: Bad Request');
+      expect(response.status).toBe(500);
+      expect(text).toContain('<pre>HopsGraphQlError: Bad Request');
     });
   });
 
-  describe.each(endpoints)('/%s => %s', (status, message, headers = {}) => {
-    it(`should respond with a ${status} error page`, async () => {
-      const response = await fetch(`${url}${status}`);
-      const text = await response.text();
+  describe.each(endpoints)(
+    '/%s => %s',
+    (status, expectedStatus, message, headers = {}) => {
+      it(`should respond with a ${status} error page`, async () => {
+        const response = await fetch(`${url}${status}`);
+        const text = await response.text();
 
-      expect(response.status).toBe(status);
-      expect(text).toContain(`<pre>Error: ${message}`);
+        expect(response.status).toBe(expectedStatus);
+        expect(text).toContain(`<pre>HopsGraphQlError: ${message}`);
 
-      Object.entries(headers).forEach(([key, value]) =>
-        expect(response.headers.get(key)).toBe(value)
-      );
-    });
-  });
+        Object.entries(headers).forEach(([key, value]) =>
+          expect(response.headers.get(key)).toBe(value)
+        );
+      });
+    }
+  );
 });
