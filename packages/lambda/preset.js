@@ -22,6 +22,7 @@ module.exports = {
         stageName: { type: 'string', minLength: 1 },
         uniqueName: { type: 'string', minLength: 1 },
         cloudformationTemplateFile: { type: 'string', absolutePath: true },
+        profile: { type: 'string' },
         include: {
           type: 'array',
           items: {

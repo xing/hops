@@ -63,6 +63,12 @@ function deleteStack(cloudFormation, stackName, logger) {
 }
 
 module.exports = function destroy({ awsConfig }, options, logger) {
+  if (awsConfig.profile) {
+    AWS.config.credentials = new AWS.SharedIniFileCredentials({
+      profile: awsConfig.profile,
+    });
+  }
+
   AWS.config.update({ region: awsConfig.region });
 
   AWS.config.apiVersions = {

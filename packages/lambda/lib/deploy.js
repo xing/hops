@@ -168,6 +168,12 @@ module.exports = function deploy(
     return process.exit(1);
   }
 
+  if (awsConfig.profile) {
+    AWS.config.credentials = new AWS.SharedIniFileCredentials({
+      profile: awsConfig.profile,
+    });
+  }
+
   AWS.config.update({ region: awsConfig.region });
 
   AWS.config.apiVersions = {

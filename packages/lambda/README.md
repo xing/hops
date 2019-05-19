@@ -115,6 +115,7 @@ This preset can be configured through the `"aws"` key in your preset config.
 | `aws.domainName` | `String` | `''` | _no_ | A custom domain name |
 | `aws.certificateArn` | `String` | `''` | _no_ | If a custom domain is used, this option needs to specify the ARN of a valid SSL certificate in ACM |
 | `aws.cloudformationTemplateFile` | `String` | `node_modules/hops-lambda/cloudformation.yaml` | _no_ | Path to a custom CloudFormation template |
+| `aws.profile` | `String` | `''` | _no_ | A profile name from your `~/.aws/credentials` file. |
 
 - \* If no region is configured via the preset config, `hops-lambda` will try to read `AWS_REGION` and `AWS_DEFAULT_REGION` from your environment first before defaulting to `us-east-1`.
 
@@ -183,6 +184,18 @@ In order to pass additional parameters to your CloudFormation stack you need to 
 "hops": {
   "aws": {
     "cloudformationTemplateFile": "./path/to/my/template.yaml"
+  }
+}
+```
+
+##### `profile`
+
+If you don't use the `default`-profile from the `~/.aws/credentials` file, set this option so the AWS-SDK knows which credentials to use.
+
+```json
+"hops": {
+  "aws": {
+    "profile": "my-custom-user"
   }
 }
 ```

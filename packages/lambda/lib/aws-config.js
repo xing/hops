@@ -22,6 +22,7 @@ module.exports = function getAWSConfig(hopsConfig) {
     cloudformationTemplateFile: awsConfig.cloudformationTemplateFile,
     include: [...(awsConfig.include || [])],
     exclude: [...(awsConfig.exclude || [])],
+    ...(awsConfig.profile ? { profile: awsConfig.profile } : null),
   };
 
   return config;
