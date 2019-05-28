@@ -19,11 +19,15 @@ matrix:
   include:
     - node_js: '8.10'
       name: 'Test on Node.js 8.10'
-      before_script: 'yarn lint'
+      before_script:
+        - 'commitlint-travis'
+        - 'yarn lint'
       script: 'yarn test --maxWorkers=2 --ci'
     - node_js: '10'
       name: 'Test on Node.js 10'
-      before_script: 'yarn lint'
+      before_script:
+        - 'commitlint-travis'
+        - 'yarn lint'
       script: 'yarn test --maxWorkers=2 --ci'
     - node_js: 'lts/*'
       name: 'Canarist test on Node.js lts/*'
