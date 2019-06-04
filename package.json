@@ -52,12 +52,7 @@
           "yarn test"
         ]
       }
-    ],
-    "rootManifest": {
-      "resolutions": {
-        "ts-loader": "5.3.3"
-      }
-    }
+    ]
   },
   "husky": {
     "hooks": {
