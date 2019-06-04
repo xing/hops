@@ -154,6 +154,7 @@
         2,
         "always",
         [
+          "dependencies",
           "config",
           "create-hops-app",
           "development-proxy",
