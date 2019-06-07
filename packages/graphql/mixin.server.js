@@ -17,9 +17,20 @@ const {
   HeuristicFragmentMatcher,
 } = require('apollo-cache-inmemory');
 const fetch = require('cross-fetch');
-const getGraphlQlError = require('./lib/get-graphql-error');
 
 let introspectionResult = undefined;
+
+const getApolloError = error => {
+  if (!error.networkError || !error.networkError.response) {
+    return error;
+  }
+  const { status, statusText } = error.networkError.response;
+  const message = status === 200 ? 'Not Acceptable' : statusText;
+  const fetchError = Object.assign(new Error(message), {
+    response: error.networkError.response,
+  });
+  throw fetchError;
+};
 
 class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
@@ -99,7 +110,7 @@ class GraphQLMixin extends Mixin {
         },
       });
     } catch (err) {
-      throw getGraphlQlError(err);
+      throw getApolloError(err);
     }
     return fragments;
   }
