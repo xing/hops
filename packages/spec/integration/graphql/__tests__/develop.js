@@ -1,10 +1,11 @@
 const fetch = require('cross-fetch');
 const { endpoints: errorEndpoints } = require('../mixin.core');
 
-const endpoints = errorEndpoints.map(([status, ...rest]) => {
-  const expectedStatus = status === 429 ? 429 : 500;
-  return [status, expectedStatus, ...rest];
-});
+const endpoints = errorEndpoints.map(([status, ...rest]) => [
+  status,
+  500,
+  ...rest,
+]);
 
 describe('graphql development client', () => {
   let url;
@@ -26,7 +27,7 @@ describe('graphql development client', () => {
       const text = await response.text();
 
       expect(response.status).toBe(500);
-      expect(text).toContain('<pre>HopsGraphQlError: Not Acceptable');
+      expect(text).toContain('<pre>Error: Not Acceptable');
     });
   });
 
@@ -60,24 +61,17 @@ describe('graphql development client', () => {
       const text = await response.text();
 
       expect(response.status).toBe(500);
-      expect(text).toContain('<pre>HopsGraphQlError: Bad Request');
+      expect(text).toContain('<pre>Error: Bad Request');
     });
   });
 
-  describe.each(endpoints)(
-    '/%s => %s',
-    (status, expectedStatus, message, headers = {}) => {
-      it(`should respond with a ${status} error page`, async () => {
-        const response = await fetch(`${url}${status}`);
-        const text = await response.text();
+  describe.each(endpoints)('/%s => %s', (status, expectedStatus, message) => {
+    it(`should respond with a ${status} error page`, async () => {
+      const response = await fetch(`${url}${status}`);
+      const text = await response.text();
 
-        expect(response.status).toBe(expectedStatus);
-        expect(text).toContain(`<pre>HopsGraphQlError: ${message}`);
-
-        Object.entries(headers).forEach(([key, value]) =>
-          expect(response.headers.get(key)).toBe(value)
-        );
-      });
-    }
-  );
+      expect(response.status).toBe(expectedStatus);
+      expect(text).toContain(`<pre>Error: ${message}`);
+    });
+  });
 });

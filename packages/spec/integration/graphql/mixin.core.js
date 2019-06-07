@@ -4,19 +4,15 @@ const endpoints = [
   [401, 'Unauthorized'],
   [403, 'Forbidden'],
   [404, 'Not Found'],
-  [429, 'Too Many Requests', { 'Retry-After': '1 year' }],
+  [429, 'Too Many Requests'],
   [503, 'Service Unavailable'],
 ];
 const endpointHandlers = endpoints.reduce(
-  (acc, [statusCode, message, additionalHeaders = {}]) =>
+  (acc, [statusCode, message]) =>
     acc.concat({
       path: `/graphql/${statusCode}`,
       method: 'post',
-      handler: (_, res) =>
-        res
-          .set(additionalHeaders)
-          .status(statusCode)
-          .send(message),
+      handler: (_, res) => res.status(statusCode).send(message),
     }),
   []
 );
