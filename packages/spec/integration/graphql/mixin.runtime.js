@@ -14,13 +14,13 @@ const customFetch = serverAddress => (uri, options) => {
 
 module.exports = class GraphQlMixin extends Mixin {
   bootstrap(_, res) {
-    this.root = res ? res.locals.url : '';
+    this.serverAddress = res ? res.locals.serverAddress : '';
   }
 
   getApolloLink() {
     return new HttpLink({
       uri: this.config.graphqlUri,
-      fetch: customFetch(this.root),
+      fetch: customFetch(this.serverAddress),
     });
   }
 };
