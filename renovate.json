@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base", "schedule:nonOfficeHours"],
+  "extends": ["config:base"],
   "pinVersions": false,
   "prCreation": "not-pending",
   "lockFileMaintenance": {
