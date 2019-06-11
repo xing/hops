@@ -30,11 +30,7 @@ class TypescriptMixin extends Mixin {
     );
     /* eslint-enable node/no-extraneous-require */
     if (!existsSync(tsConfigPath)) {
-      return `No "tsconfig.json" file found in your project root directory ("${
-        this.config.rootDir
-      }").\nAs a starting point you can copy our minimal example config file: "cp ${exampleTsConfigPath} ${
-        this.config.rootDir
-      }/tsconfig.json"`;
+      return `No "tsconfig.json" file found in your project root directory ("${this.config.rootDir}").\nAs a starting point you can copy our minimal example config file: "cp ${exampleTsConfigPath} ${this.config.rootDir}/tsconfig.json"`;
     }
   }
 }

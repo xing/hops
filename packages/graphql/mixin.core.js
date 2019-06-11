@@ -124,9 +124,7 @@ class GraphQLMixin extends Mixin {
     detectDuplicatePackages('graphql');
     if (!existsSync(this.config.fragmentsFile)) {
       return [
-        `Could not find a graphql introspection query result at "${
-          this.config.fragmentsFile
-        }".`,
+        `Could not find a graphql introspection query result at "${this.config.fragmentsFile}".`,
         'You might need to execute "hops graphql introspect"',
       ];
     }
