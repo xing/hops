@@ -8,6 +8,7 @@
   "packageRules": [
     {
       "packagePatterns": ["^@untool/"],
+      "packageNames": ["untool"],
       "groupName": "Update untool monorepo packages"
     },
     {
