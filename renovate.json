@@ -5,6 +5,8 @@
   "lockFileMaintenance": {
     "enabled": true
   },
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "dependencies",
   "packageRules": [
     {
       "packagePatterns": ["^@untool/"],
@@ -12,11 +14,18 @@
       "groupName": "Update untool monorepo packages"
     },
     {
+      "depTypeList": ["dependencies", "peerDependencies"],
       "semanticCommitType": "fix",
-      "semanticCommitScope": "dependencies",
-      "depTypeList": ["dependencies", "peerDependencies"]
+      "semanticCommitScope": "dependencies"
+    },
+    {
+      "depTypeList": ["peerDependencies"],
+      "rangeStrategy": "widen"
+    },
+    {
+      "depTypeList": ["devDependencies"],
+      "updateTypes": ["major", "minor"],
+      "rangeStrategy": "bump"
     }
-  ],
-  "semanticCommitType": "chore",
-  "semanticCommitScope": "dependencies"
+  ]
 }
