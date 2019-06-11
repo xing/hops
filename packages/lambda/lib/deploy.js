@@ -243,9 +243,7 @@ module.exports = function deploy(
 
       if (outputs.DistributionDomainName) {
         logger.info(
-          `Now you need to set your domain's A-Record or CNAME-Record to: ${
-            outputs.DistributionDomainName
-          }`
+          `Now you need to set your domain's A-Record or CNAME-Record to: ${outputs.DistributionDomainName}`
         );
       } else {
         logger.info(`Visit ${outputs.Url} in your browser.`);
