@@ -11,17 +11,6 @@ const QUERY = gql`
   }
 `;
 
-export const suffixes = [
-  'html',
-  'failed',
-  'erroneous',
-  '401',
-  '403',
-  '404',
-  '429',
-  '503',
-];
-
 const errorPolicy = searchString => {
   const allowedPolicies = ['none', 'ignore', 'all'];
   let result;
@@ -32,10 +21,6 @@ const errorPolicy = searchString => {
 };
 
 const TestQuery = ({ suffix, location: { search } }) => {
-  if (!suffixes.includes(suffix)) {
-    throw new Error(`Path suffix "${suffix}" is invalid.`);
-  }
-
   return (
     <Query
       query={QUERY}
