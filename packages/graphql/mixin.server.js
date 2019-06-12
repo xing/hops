@@ -20,7 +20,7 @@ const fetch = require('cross-fetch');
 
 let introspectionResult = undefined;
 
-const getApolloError = error => {
+const wrapNetworkError = error => {
   if (!error.networkError || !error.networkError.response) {
     return error;
   }
@@ -110,7 +110,7 @@ class GraphQLMixin extends Mixin {
         },
       });
     } catch (err) {
-      throw getApolloError(err);
+      throw wrapNetworkError(err);
     }
     return fragments;
   }
