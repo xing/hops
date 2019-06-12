@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 import { Query } from 'react-apollo';
 
-import TestQuery, { suffixes } from './query';
+import TestQuery from './query';
 
 const commits = gql`
   query commits {
@@ -54,14 +54,21 @@ const App = () => (
         </Query>
       )}
     />
-    {suffixes.map(path => (
-      <Route
-        key={path}
-        path={`/${path}`}
-        exact={true}
-        render={() => <TestQuery suffix={path} />}
-      />
-    ))}
+    <Route
+      path="/html"
+      exact={true}
+      render={() => <TestQuery suffix="html" />}
+    />
+    <Route
+      path="/failed"
+      exact={true}
+      render={() => <TestQuery suffix="failed" />}
+    />
+    <Route
+      path="/erroneous"
+      exact={true}
+      render={() => <TestQuery suffix="erroneous" />}
+    />
   </Switch>
 );
 

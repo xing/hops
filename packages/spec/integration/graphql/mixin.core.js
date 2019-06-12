@@ -1,21 +1,5 @@
 const { Mixin } = require('hops-mixin');
 
-const endpoints = [
-  [401, 'Unauthorized'],
-  [403, 'Forbidden'],
-  [404, 'Not Found'],
-  [429, 'Too Many Requests'],
-  [503, 'Service Unavailable'],
-];
-const endpointHandlers = endpoints.reduce(
-  (acc, [statusCode, message]) =>
-    acc.concat({
-      path: `/graphql/${statusCode}`,
-      method: 'post',
-      handler: (_, res) => res.status(statusCode).send(message),
-    }),
-  []
-);
 const failedResponse = {
   errors: [
     {
@@ -50,7 +34,6 @@ class GraphQlMixin extends Mixin {
         next();
       })
     );
-    middlewares.initial.push.apply(middlewares.initial, endpointHandlers);
     middlewares.initial.push({
       path: '/graphql/failed',
       method: 'post',
@@ -72,4 +55,3 @@ class GraphQlMixin extends Mixin {
 }
 
 module.exports = GraphQlMixin;
-GraphQlMixin.endpoints = endpoints;

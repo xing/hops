@@ -1,11 +1,4 @@
 const fetch = require('cross-fetch');
-const { endpoints: errorEndpoints } = require('../mixin.core');
-
-const endpoints = errorEndpoints.map(([status, ...rest]) => [
-  status,
-  500,
-  ...rest,
-]);
 
 describe('graphql development client', () => {
   let url;
@@ -22,7 +15,7 @@ describe('graphql development client', () => {
   });
 
   describe('/html', () => {
-    it('should render a 500 error page for a status 200 response', async () => {
+    it('should render a 500 error page for an invalid status 200 response', async () => {
       const response = await fetch(`${url}html`);
       const text = await response.text();
 
@@ -33,7 +26,7 @@ describe('graphql development client', () => {
 
   describe('/erroneous', () => {
     describe('errorPolicy: all', () => {
-      it('should render a GraphQL error', async () => {
+      it('should render a status 200 page with the GraphQL error', async () => {
         const response = await fetch(`${url}erroneous?errorPolicy=all`);
         const text = await response.text();
 
@@ -43,7 +36,7 @@ describe('graphql development client', () => {
     });
 
     describe('errorPolicy: none', () => {
-      it('should render an error page', async () => {
+      it('should render a status 500 error page', async () => {
         const response = await fetch(`${url}erroneous?errorPolicy=none`);
         const text = await response.text();
 
@@ -56,22 +49,12 @@ describe('graphql development client', () => {
   });
 
   describe('/failed', () => {
-    it('should render a 400 error page', async () => {
+    it('should render a 500 error page for status 400 response', async () => {
       const response = await fetch(`${url}failed`);
       const text = await response.text();
 
       expect(response.status).toBe(500);
       expect(text).toContain('<pre>Error: Bad Request');
-    });
-  });
-
-  describe.each(endpoints)('/%s => %s', (status, expectedStatus, message) => {
-    it(`should respond with a ${status} error page`, async () => {
-      const response = await fetch(`${url}${status}`);
-      const text = await response.text();
-
-      expect(response.status).toBe(expectedStatus);
-      expect(text).toContain(`<pre>Error: ${message}`);
     });
   });
 });
