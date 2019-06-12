@@ -22,7 +22,7 @@ describe('graphql development client', () => {
   });
 
   describe('/html', () => {
-    it('should render a 406 error page for a status 200 response', async () => {
+    it('should render a 500 error page for a status 200 response', async () => {
       const response = await fetch(`${url}html`);
       const text = await response.text();
 
