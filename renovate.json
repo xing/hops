@@ -6,7 +6,7 @@
     "enabled": true
   },
   "semanticCommitType": "chore",
-  "semanticCommitScope": "dependencies",
+  "semanticCommitScope": null,
   "packageRules": [
     {
       "packagePatterns": ["^@untool/"],
@@ -15,8 +15,7 @@
     },
     {
       "depTypeList": ["dependencies", "peerDependencies"],
-      "semanticCommitType": "fix",
-      "semanticCommitScope": "dependencies"
+      "semanticCommitType": "fix"
     },
     {
       "depTypeList": ["peerDependencies"],
