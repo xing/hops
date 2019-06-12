@@ -39,6 +39,9 @@ const getCSSLoaderConfig = (browsers, additionalLoader) => {
             postcssImportPlugin(),
             postcssPresetEnv({
               browsers,
+              autoprefixer: {
+                overrideBrowserslist: browsers,
+              },
               stage: 2,
               features: {
                 'nesting-rules': true,
