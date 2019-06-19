@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.8.0](https://github.com/xing/hops/compare/v11.7.1...v11.8.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* upgrade untool ([577c1e1](https://github.com/xing/hops/commit/577c1e1))
+
+
+### Features
+
+* **graphql:** forward network error to the client during SSR ([7c8d271](https://github.com/xing/hops/commit/7c8d271))
+* **graphql:** improve server-side GraphQL FetchError ([9614182](https://github.com/xing/hops/commit/9614182))
+* **graphql:** make the error handling during SSR more generic ([eba7576](https://github.com/xing/hops/commit/eba7576))
+
+
+
+
+
 ## [11.7.1](https://github.com/xing/hops/compare/v11.7.0...v11.7.1) (2019-05-13)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.8.0](https://github.com/xing/hops/compare/v11.7.1...v11.8.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* **dependencies:** update dependency mini-css-extract-plugin to ^0.7.0 ([6860178](https://github.com/xing/hops/commit/6860178))
+* **postcss:** filter conflicting order warnings ([115e220](https://github.com/xing/hops/commit/115e220)), closes [/github.com/webpack-contrib/mini-css-extract-plugin/issues/250#issuecomment-415345126](https://github.com//github.com/webpack-contrib/mini-css-extract-plugin/issues/250/issues/issuecomment-415345126)
+* rename "browsers" for autoprefixer to silence deprecation warning ([24bb948](https://github.com/xing/hops/commit/24bb948))
+
+
+
+
+
 ## [11.7.1](https://github.com/xing/hops/compare/v11.7.0...v11.7.1) (2019-05-13)
 
 **Note:** Version bump only for package hops-postcss

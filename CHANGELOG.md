@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.8.0](https://github.com/xing/hops/compare/v11.7.1...v11.8.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* add babel-core to templates to ensure it being present at top-level ([21fd923](https://github.com/xing/hops/commit/21fd923))
+* **dependencies:** update dependency file-loader to v4 ([875c539](https://github.com/xing/hops/commit/875c539))
+* **dependencies:** update dependency mini-css-extract-plugin to ^0.7.0 ([6860178](https://github.com/xing/hops/commit/6860178))
+* **graphql:** apply PR feedback ([83e2b65](https://github.com/xing/hops/commit/83e2b65))
+* **postcss:** filter conflicting order warnings ([115e220](https://github.com/xing/hops/commit/115e220)), closes [/github.com/webpack-contrib/mini-css-extract-plugin/issues/250#issuecomment-415345126](https://github.com//github.com/webpack-contrib/mini-css-extract-plugin/issues/250/issues/issuecomment-415345126)
+* correct yarn.lock ([7142c57](https://github.com/xing/hops/commit/7142c57))
+* rename "browsers" for autoprefixer to silence deprecation warning ([24bb948](https://github.com/xing/hops/commit/24bb948))
+* upgrade untool ([577c1e1](https://github.com/xing/hops/commit/577c1e1))
+
+
+### Features
+
+* **graphql:** forward network error to the client during SSR ([7c8d271](https://github.com/xing/hops/commit/7c8d271))
+* **graphql:** improve server-side GraphQL FetchError ([9614182](https://github.com/xing/hops/commit/9614182))
+* **graphql:** make the error handling during SSR more generic ([eba7576](https://github.com/xing/hops/commit/eba7576))
+
+
+
+
+
 ## [11.7.1](https://github.com/xing/hops/compare/v11.7.0...v11.7.1) (2019-05-13)
 
 
