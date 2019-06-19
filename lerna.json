@@ -7,7 +7,7 @@
     "publish": {
       "message": "chore: release %s",
       "conventionalCommits": true,
-      "githubRelease": true
+      "createRelease": "github"
     }
   }
 }
