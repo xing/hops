@@ -49,6 +49,11 @@ class GraphQlMixin extends Mixin {
       method: 'post',
       handler: (_, res) => res.send('<h1>Moini!</h1>'),
     });
+    middlewares.initial.push({
+      path: '/graphql/blocked',
+      method: 'post',
+      handler: (_, res) => res.status(429).send('Too many requests'),
+    });
 
     return app;
   }
