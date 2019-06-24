@@ -57,4 +57,14 @@ describe('graphql development client', () => {
       expect(text).toContain('<pre>Error: Bad Request');
     });
   });
+
+  describe('/blocked', () => {
+    it('should render a 500 error page for status 429 response', async () => {
+      const response = await fetch(`${url}blocked`);
+      const text = await response.text();
+
+      expect(response.status).toBe(500);
+      expect(text).toContain('<pre>Error: Too Many Request');
+    });
+  });
 });

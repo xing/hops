@@ -65,6 +65,11 @@ const App = () => (
       render={() => <TestQuery suffix="failed" />}
     />
     <Route
+      path="/blocked"
+      exact={true}
+      render={() => <TestQuery suffix="blocked" />}
+    />
+    <Route
       path="/erroneous"
       exact={true}
       render={() => <TestQuery suffix="erroneous" />}
