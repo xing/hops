@@ -90,6 +90,7 @@ class FixtureEnvironment extends NodeEnvironment {
           command: 'start',
           argv,
         });
+        // eslint-disable-next-line require-atomic-updates
         that.killServer = teardown;
         return url;
       },
