@@ -29,7 +29,7 @@ const wrapNetworkError = error => {
   const fetchError = Object.assign(new Error(message), {
     response: error.networkError.response,
   });
-  throw fetchError;
+  return fetchError;
 };
 
 class GraphQLMixin extends Mixin {
