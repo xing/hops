@@ -140,39 +140,6 @@
       "<rootDir>/packages/spec/integration/*"
     ]
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "scope-enum": [
-        2,
-        "always",
-        [
-          "dependencies",
-          "config",
-          "create-hops-app",
-          "development-proxy",
-          "express",
-          "graphql",
-          "hops",
-          "jest-preset",
-          "lambda",
-          "mixin",
-          "postcss",
-          "pwa",
-          "react",
-          "redux",
-          "spec",
-          "styled-components",
-          "template-graphql",
-          "template-react",
-          "template-redux",
-          "typescript"
-        ]
-      ]
-    }
-  },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
@@ -181,6 +148,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
+    "@commitlint/config-lerna-scopes": "^8.0.0",
     "@commitlint/travis-cli": "^8.0.0",
     "babel-eslint": "^10.0.0",
     "canarist": "^1.2.1",
