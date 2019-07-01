@@ -77,7 +77,7 @@ module.exports = function createLambdaBundle(
         globby(['**', '!node_modules/**'].concat(include).concat(patterns), {
           cwd: rootDir,
           dot: true,
-          followSymlinkedDirectories: true,
+          followSymbolicLinks: true,
           onlyFiles: true,
           ignore: ['.git/**'].concat(exclude),
         }).then(function(paths) {
