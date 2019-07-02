@@ -1,6 +1,6 @@
 {
   "name": "hops-graphql",
-  "version": "11.8.0",
+  "version": "11.8.1",
   "description": "React and GraphQL implementation for Hops",
   "keywords": [
     "hops",

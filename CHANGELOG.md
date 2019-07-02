@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.8.1](https://github.com/xing/hops/compare/v11.8.0...v11.8.1) (2019-07-02)
+
+
+### Bug Fixes
+
+* **graphql:** return error ([6e5adbc](https://github.com/xing/hops/commit/6e5adbc))
+* **styled-components:** temporarily restrict babel plugin version ([b5c10da](https://github.com/xing/hops/commit/b5c10da))
+* update dependency babel-plugin-styled-components to < 1.10.7 ([e448781](https://github.com/xing/hops/commit/e448781))
+* **styled-components:** update min version of babel plugin dependency ([242e845](https://github.com/xing/hops/commit/242e845))
+* update dependency globby to v10 ([ec83ea6](https://github.com/xing/hops/commit/ec83ea6))
+
+
+
+
+
 # [11.8.0](https://github.com/xing/hops/compare/v11.7.1...v11.8.0) (2019-06-19)
 
 
