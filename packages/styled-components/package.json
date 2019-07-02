@@ -18,7 +18,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "babel-plugin-styled-components": ">= 1.9.2 < 1.10.3",
+    "babel-plugin-styled-components": "< 1.10.7",
     "hops-mixin": "^11.8.0"
   },
   "peerDependencies": {
