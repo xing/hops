@@ -20,7 +20,7 @@ export const Home = ({ data: { loading, github: { repo } = {} } }) => (
         return (
           <p key={commit.sha}>
             <a href={`${repoUrl}/commit/${commit.sha}`}>"{commit.message}"</a>{' '}
-            by <b>{commit.author.login || commit.author.name}</b>
+            by <b>{commit.author.login}</b>
           </p>
         );
       })

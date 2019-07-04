@@ -14,9 +14,6 @@
             ...on GithubUser {
               login
             }
-            ...on GithubCommitAuthor {
-              name
-            }
           }
         }
       }

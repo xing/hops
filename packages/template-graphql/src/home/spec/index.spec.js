@@ -28,7 +28,7 @@ it('renders loaded state correctly', () => {
             sha: 'commit-sha-1',
             message: 'commit message',
             author: {
-              name: 'commit author name',
+              login: 'commit author login',
             },
           },
         ],
