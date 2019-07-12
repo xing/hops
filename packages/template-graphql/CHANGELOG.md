@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.8.2](https://github.com/xing/hops/compare/v11.8.1...v11.8.2) (2019-07-12)
+
+**Note:** Version bump only for package hops-template-graphql
+
+
+
+
+
 ## [11.8.1](https://github.com/xing/hops/compare/v11.8.0...v11.8.1) (2019-07-02)
 
 **Note:** Version bump only for package hops-template-graphql
