@@ -24,15 +24,21 @@
     "DJCordhose <oliver@zeigermann.de> (https://www.xing.com/profile/Oliver_Zeigermann)"
   ],
   "scripts": {
+    "check_gh_token": "/usr/bin/env bash -c \"[ -n '$GH_TOKEN' ] || (echo '\nPlease set a GH_TOKEN env var.\n' && exit 1)\"",
     "preinstall": "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'use yarn' && exit 1)\"",
     "start": "cd packages/template-react; yarn start",
     "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "jest",
     "lint": "eslint 'packages/**/*.js'",
+    "prerelease": "yarn check_gh_token",
     "release": "lerna publish",
+    "prerelease:major": "yarn check_gh_token",
     "release:major": "lerna publish major",
+    "prerelease:candidate": "yarn check_gh_token",
     "release:candidate": "lerna publish premajor --preid=rc --npm-tag=next",
+    "prerelease:candidate:feature": "yarn check_gh_token",
     "release:candidate:feature": "lerna publish preminor --preid=rc --npm-tag=next",
+    "prerelease:next": "yarn check_gh_token",
     "release:next": "lerna publish prerelease --preid=rc --npm-tag=next",
     "reset": "git clean -dfx && yarn",
     "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'"
