@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.8.3](https://github.com/xing/hops/compare/v11.8.1...v11.8.3) (2019-07-12)
+
+**Note:** Version bump only for package hops-postcss
+
+
+
+
+
 
 
 **Note:** Version bump only for package hops-postcss
