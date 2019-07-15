@@ -17,12 +17,13 @@ class ReduxRuntimeCommonMixin extends Mixin {
   }
 
   getReduxMiddlewares() {
-    return [
-      ...this.middlewares,
-      ReduxThunkMiddleware.withExtraArgument({
-        config: this.config,
-      }),
-    ];
+    return [...this.middlewares, this.createReduxThunkMiddleware()];
+  }
+
+  createReduxThunkMiddleware() {
+    return ReduxThunkMiddleware.withExtraArgument({
+      config: this.config,
+    });
   }
 
   applyMiddlewares() {
