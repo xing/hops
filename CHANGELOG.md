@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.8.4](https://github.com/xing/hops/compare/v11.8.3...v11.8.4) (2019-07-19)
+
+
+### Bug Fixes
+
+* update dependency mini-css-extract-plugin to ^0.8.0 ([6260eca](https://github.com/xing/hops/commit/6260eca))
+* upgrade untool ([9312357](https://github.com/xing/hops/commit/9312357))
+
+
+
+
+
 ## [11.8.3](https://github.com/xing/hops/compare/v11.8.1...v11.8.3) (2019-07-12)
 
 
