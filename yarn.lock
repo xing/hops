@@ -1999,10 +1999,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@untool/core@^1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.9.3.tgz#7c38f74b5bc724b69c5adf1cb3b26f7d6cac44a0"
-  integrity sha512-WrcgJOq681jwu3ekfOTPtNNt0Cb9j3LVuEo5cEtMP+6XYm72ZQQgpfvyq6fOmbr5spnwTH1S8xFg8/hJlr5pWA==
+"@untool/core@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-1.9.4.tgz#c71f8c774cc8ffe66b61e7debed00164776ae6f5"
+  integrity sha512-HiOFniRx8aB1NyFEUr67GCPCfz7LTxXwnfHpk/Qjb6JrmlQG1ySld2Y6REVGqyO6sadHLkKRCypNaoGx2J9QjQ==
   dependencies:
     ajv "^6.9.2"
     check-error "^1.0.2"
@@ -2018,13 +2018,13 @@
     mixinable "^4.0.0"
     supports-color "^7.0.0"
 
-"@untool/express@^1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.9.3.tgz#cdaddb14c5ecb5cb672f9c233ad0c61d1bb37017"
-  integrity sha512-Yp7WEcvp3+jMBHsUEvChyKms+izZmy6q3m+T7nuQYXYrcoVvCajXwO7j7hF/5JpeFIN6f5FH3/QUMFJ9zBODjw==
+"@untool/express@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-1.9.4.tgz#9cf5c5f26cd122bd6e6e9388700776c6c32416db"
+  integrity sha512-KLcUcvqKd7bCLOEfTCQLxqg+6OoWV8WbifeaJKH93bDEKwz1ct1XXhwt7JV7zkH7R6Ej8eGpHaPwTxINtjBkXA==
   dependencies:
-    "@untool/core" "^1.9.3"
-    "@untool/yargs" "^1.9.3"
+    "@untool/core" "^1.9.4"
+    "@untool/yargs" "^1.9.4"
     chalk "^2.4.2"
     debug "^4.0.0"
     directory-index "^0.1.0"
@@ -2044,25 +2044,25 @@
     split "^1.0.1"
     supports-color "^7.0.0"
 
-"@untool/info@^1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@untool/info/-/info-1.9.3.tgz#ee7854d0144eecbf58d3113a48ccc8b89f9bcbe2"
-  integrity sha512-/Cn6cca/brkQVoncSQyIJ6zT4jvRnvpJ59t/zutCwX1QNXZsWT+oiN/eQiTId/dFoSmUMm9n1n8O9qF5aFg20A==
+"@untool/info@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@untool/info/-/info-1.9.4.tgz#9e9e8dd9102ca2645979dca753a5c3a588d43ad7"
+  integrity sha512-F/R72360bLBq9k4BlH2UNGihWEtV/P5/zAdTLC1pi9Q8rBfzHBJgibWEH9Bk7oS9jKEAMB+A74kstRqvsGr0pg==
   dependencies:
-    "@untool/core" "^1.9.3"
+    "@untool/core" "^1.9.4"
     chalk "^2.4.2"
     duplitect "^2.0.1"
     enhanced-resolve "^4.1.0"
     mixinable "^4.0.0"
 
-"@untool/react@^1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.9.3.tgz#0fbf9ec5ad4fc991a30cd3338416365e305ca78b"
-  integrity sha512-YU+FA2SwstvX6ClH/dSnRMHYhWGVZw7ks83/TxzHJbhYaWiVSPgWZCJRKQBWJjhVKXDt+B1ZF/r8fyklY36lUw==
+"@untool/react@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-1.9.4.tgz#e828546fdf387a91079a3d4aa8c5fd716d563143"
+  integrity sha512-3/jC2FetzKjdCtyGsKs1/l6kOuAXV6kFWEFUaKbGo2mkSG0G2IbFgAFDGWVd0oPb6Wtvo292kanS0aLQ390VTg==
   dependencies:
     "@babel/core" "^7.4.0"
     "@babel/preset-react" "^7.0.0"
-    "@untool/core" "^1.9.3"
+    "@untool/core" "^1.9.4"
     babel-plugin-transform-react-remove-prop-types "^0.4.19"
     clone "^2.1.2"
     duplitect "^2.0.1"
@@ -2072,17 +2072,17 @@
     prop-types "^15.7.2"
     serialize-javascript "^1.4.0"
 
-"@untool/webpack@^1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.9.3.tgz#2e46409de75e2f09f0df12ee30e61c8bc97a5289"
-  integrity sha512-8AmloS7meKcE3PLT5TEp9XU7FnWAMevDsVmh9/YHoh8jS0KGfoFDYk8dolHQ5esQiG0lWCfYol+ejmOpntEt7A==
+"@untool/webpack@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-1.9.4.tgz#1b069cae336c5a9534b2d9373dc4d1ac4605ce3d"
+  integrity sha512-vPL5FJuqdsSwaD+/AibDr4C+ccB8nQ8VcC9Jn+gT7oYyQoFILe9/bsCSsHqjJo8wk63l9wl701Pv4QnrRj1fhQ==
   dependencies:
     "@babel/core" "^7.4.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/preset-env" "^7.4.2"
-    "@untool/core" "^1.9.3"
-    "@untool/express" "^1.9.3"
-    "@untool/yargs" "^1.9.3"
+    "@untool/core" "^1.9.4"
+    "@untool/express" "^1.9.4"
+    "@untool/yargs" "^1.9.4"
     babel-loader "^8.0.6"
     babel-plugin-dynamic-import-node "^2.0.0"
     caniuse-lite "^1.0.30000898"
@@ -2117,12 +2117,12 @@
     webpack-hot-middleware "^2.22.2"
     webpack-sources "^1.1.0"
 
-"@untool/yargs@^1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.9.3.tgz#a4c5ed5802ec412db1e24b81c828d739c1a2aeb5"
-  integrity sha512-vYVAHy+YJewlzDkPJKUGdZqu2a4Dsmb9thhE9RTlYYV1epiM1Q9YFojAvKar4x7aeoM6C2nc3LnLqkJhE8L3dw==
+"@untool/yargs@^1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-1.9.4.tgz#6dcbb813978cd1c3fbf278059d0ced39e14c7dd0"
+  integrity sha512-lT1ebOFQVlfju+eUyXxNanoIAM7dfNx+3FFXjHz0UFf6n+Bs9rFXXA5nFSpKiNwkhvb5GxO4tDc0fNUIdTpF6A==
   dependencies:
-    "@untool/core" "^1.9.3"
+    "@untool/core" "^1.9.4"
     is-plain-obj "^2.0.0"
     mixinable "^4.0.0"
     yargs "^13.0.0"
