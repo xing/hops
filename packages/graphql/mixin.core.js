@@ -14,6 +14,27 @@ function exists(path) {
   }
 }
 
+// - graphql                (prod: 29kb)
+// - react-apollo           (prod: 21kb)
+// - apollo-client          (prod: 37kb)
+// - apollo-utilities       (prod: 12kb)
+// - apollo-cache-inmemory  (prod: 25kb)
+// - apollo-link-http       (prod: 9kb)
+const getMaxAssetSizeIncrease = env => {
+  const bundleSizeProd = 133;
+  switch (env) {
+    case 'development::build':
+      return bundleSizeProd * 4.5 * 1024;
+    case 'development::develop':
+      return bundleSizeProd * 13 * 1024;
+    case 'production::develop':
+    case 'production::build':
+      return bundleSizeProd * 1024;
+    default:
+      return 0;
+  }
+};
+
 class GraphQLMixin extends Mixin {
   registerCommands(yargs) {
     yargs.command('graphql', 'Execute GraphQL specific tasks', yargs =>
@@ -80,6 +101,11 @@ class GraphQLMixin extends Mixin {
 
   configureBuild(webpackConfig, loaderConfigs, target) {
     const { allLoaderConfigs } = loaderConfigs;
+    const nodeEnv = process.env.NODE_ENV || 'development';
+
+    webpackConfig.performance.maxAssetSize += getMaxAssetSizeIncrease(
+      `${nodeEnv}::${target}`
+    );
 
     allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, {
       test: /\.(graphql|gql)$/,
@@ -88,7 +114,7 @@ class GraphQLMixin extends Mixin {
 
     webpackConfig.externals.push('encoding');
 
-    if (process.env.NODE_ENV === 'production') {
+    if (nodeEnv === 'production') {
       return;
     }
 
