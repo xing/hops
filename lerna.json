@@ -4,10 +4,13 @@
   "version": "11.8.5",
   "registry": "https://registry.npmjs.org/",
   "command": {
-    "publish": {
+    "version": {
       "message": "chore: release %s",
       "conventionalCommits": true,
       "createRelease": "github"
+    },
+    "publish": {
+      "preDistTag": "next"
     }
   }
 }
