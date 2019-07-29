@@ -5,6 +5,7 @@
   "lockFileMaintenance": {
     "enabled": true
   },
+  "postUpdateOptions": ["yarnDedupeHighest"],
   "semanticCommitType": "chore",
   "semanticCommitScope": null,
   "packageRules": [
