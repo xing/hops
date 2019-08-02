@@ -1,0 +1,21 @@
+{
+  "name": "redux-app",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "^10 || ^12"
+  },
+  "jest": {
+    "preset": "jest-preset-hops"
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-preset-jest": "*",
+    "hops-redux": "*",
+    "react-test-renderer": "*"
+  }
+}

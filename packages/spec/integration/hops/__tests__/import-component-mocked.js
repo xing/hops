@@ -1,14 +1,14 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import testRenderer from 'react-test-renderer';
+import { HopsTest } from 'hops-test';
 import { App } from '../';
 
 describe('ImportComponent mocked', () => {
   it('should display the loaded component', () => {
     const app = testRenderer.create(
-      <MemoryRouter>
+      <HopsTest>
         <App />
-      </MemoryRouter>
+      </HopsTest>
     );
 
     expect(app).toMatchSnapshot();

@@ -1,5 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default function Text({ subject }) {
-  return <p>Hello lazy {subject}!</p>;
-}
+const Text = withRouter(({ subject, location }) => (
+  <>
+    <p>Hello lazy {subject}!</p>
+    <p>Current pathname: {location.pathname}</p>
+  </>
+));
+
+export default Text;

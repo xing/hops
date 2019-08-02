@@ -1,6 +1,6 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import testRenderer from 'react-test-renderer';
+import { HopsTest } from 'hops-test';
 import { App } from '../';
 
 jest.mock('hops', () => {
@@ -17,9 +17,9 @@ jest.mock('hops', () => {
 describe('ImportComponent loading', () => {
   it('should display the loading state', () => {
     const app = testRenderer.create(
-      <MemoryRouter>
+      <HopsTest>
         <App />
-      </MemoryRouter>
+      </HopsTest>
     );
 
     expect(app).toMatchSnapshot();

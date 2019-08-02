@@ -1,0 +1,25 @@
+{
+  "name": "graphql-app",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "^10 || ^12"
+  },
+  "hops": {
+    "shouldPrefetchOnServer": false,
+    "graphqlMockSchemaFile": "<rootDir>/schema.js"
+  },
+  "jest": {
+    "preset": "jest-preset-hops"
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-graphql": "*",
+    "hops-preset-jest": "*",
+    "react-test-renderer": "*"
+  }
+}

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hops Redux should render the App correctly 1`] = `
+<h1>
+  hello 
+  test
+  .
+</h1>
+`;
