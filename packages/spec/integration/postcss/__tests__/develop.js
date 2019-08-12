@@ -19,7 +19,7 @@ describe('react-postcss', () => {
     expect(position).toBe('sticky');
     expect(fontFamily).toContain('-apple-system');
 
-    const stylesheet = await page.$('link[rel=stylesheet]');
+    const stylesheet = await page.$('link[rel=stylesheet],style');
     expect(stylesheet).not.toBeNull();
 
     await page.close();
@@ -31,7 +31,7 @@ describe('react-postcss', () => {
 
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    const stylesheet = await page.$('link[rel=stylesheet]');
+    const stylesheet = await page.$('link[rel=stylesheet],style');
     expect(stylesheet).toBeNull();
 
     await page.close();
