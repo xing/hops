@@ -30,6 +30,18 @@ async function getElementByText(rawText) {
   return handle[0];
 }
 
+function isReactLifecycleWarning(warning) {
+  const reReactLifecycleWarning = new RegExp(
+    'Warning: componentWill[^\\s]+ has been renamed, and is not recommended for use. ' +
+      'See https://fb.me/react-async-component-lifecycle-hooks for details.'
+  );
+  return Boolean(warning.match(reReactLifecycleWarning));
+}
+
+function isIntolerableWarning(type, text) {
+  return type === 'warning' && !isReactLifecycleWarning(text);
+}
+
 class FixtureEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
@@ -61,8 +73,10 @@ class FixtureEnvironment extends NodeEnvironment {
       });
 
       page.on('console', msg => {
-        if (['error', 'warning'].includes(msg.type())) {
-          throw new Error(`${msg.type()} in browser console: ${msg.text()}`);
+        const type = msg.type();
+        const text = msg.text();
+        if (type === 'error' || isIntolerableWarning(type, text)) {
+          throw new Error(`${type} in browser console: ${text}`);
         }
       });
 
