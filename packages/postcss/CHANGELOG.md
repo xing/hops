@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.9.0](https://github.com/xing/hops/compare/v11.8.5...v11.9.0) (2019-08-12)
+
+
+### Bug Fixes
+
+* update dependency style-loader to v1 ([7b7275d](https://github.com/xing/hops/commit/7b7275d))
+
+
+
+
+
 ## [11.8.5](https://github.com/xing/hops/compare/v11.8.4...v11.8.5) (2019-07-23)
 
 **Note:** Version bump only for package hops-postcss
