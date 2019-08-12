@@ -22,7 +22,7 @@
     "hops-postcss": "^11.8.5",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
-    "react-apollo": "^2.2.3",
+    "react-apollo": "^3.0.0",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^5.0.0"
