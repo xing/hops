@@ -9,9 +9,10 @@ const { join, trimSlashes } = require('pathifist');
 const getAssetPath = (...args) => trimSlashes(join(...args));
 
 const cssLoaderLocalOptions = {
-  camelCase: true,
-  modules: true,
-  localIdentName: '[folder]-[name]-[local]-[hash:8]',
+  modules: {
+    localIdentName: '[folder]-[name]-[local]-[hash:8]',
+  },
+  localsConvention: 'camelCase',
   sourceMap: process.env.NODE_ENV !== 'production',
 };
 
@@ -138,19 +139,21 @@ class PostCSSMixin extends Mixin {
         {
           resourceQuery: /global/,
           use: {
-            loader: require.resolve('css-loader/locals'),
+            loader: require.resolve('css-loader'),
             options: {
               ...cssLoaderGlobalOptions,
               importLoaders: 0,
+              onlyLocals: true,
             },
           },
         },
         {
           use: {
-            loader: require.resolve('css-loader/locals'),
+            loader: require.resolve('css-loader'),
             options: {
               ...cssLoaderLocalOptions,
               importLoaders: 0,
+              onlyLocals: true,
             },
           },
         },
