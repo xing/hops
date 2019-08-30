@@ -18,7 +18,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "css-loader": "^1.0.0",
+    "css-loader": "^3.2.0",
     "hops-mixin": "^11.9.1",
     "mini-css-extract-plugin": "^0.8.0",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
