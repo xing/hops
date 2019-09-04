@@ -56,7 +56,7 @@ class ProxyMixin extends Mixin {
       debug('Using proxy object version', proxyConfig);
 
       Object.entries(proxyConfig).forEach(([path, config]) => {
-        const { target, routes } =
+        const { target } =
           typeof config === 'string' ? { target: config } : config;
 
         if (target === '') {
@@ -72,7 +72,6 @@ class ProxyMixin extends Mixin {
           proxy(path, {
             ...options,
             target,
-            routes,
           })
         );
       });
