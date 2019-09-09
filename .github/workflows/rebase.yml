@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Rebase next against master
         env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/xing/hops.git
           git config --global user.email "action@github.com"
