@@ -20,6 +20,5 @@ jobs:
           git fetch origin master
           git fetch origin next
           git checkout -b next origin/next
-          git rebase origin/master
-          test "$(git diff --name-only --diff-filter=U)" = "yarn.lock" && yarn && git add yarn.lock && git rebase --continue
+          git rebase origin/master || test "$(git diff --name-only --diff-filter=U)" = "yarn.lock" && yarn && git add yarn.lock && git rebase --continue
           git push --force-with-lease
