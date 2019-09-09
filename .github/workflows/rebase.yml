@@ -17,8 +17,4 @@ jobs:
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/xing/hops.git
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git fetch origin master
-          git fetch origin next
-          git checkout -b next origin/next
-          git rebase origin/master || test "$(git diff --name-only --diff-filter=U)" = "yarn.lock" && yarn && git add yarn.lock && git rebase --continue
-          git push --force-with-lease
+          ./scripts/rebase.sh master next
