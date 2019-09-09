@@ -130,7 +130,7 @@
     "**/node_modules/**",
     "**/template-*/**",
     "**/__tests__/fixtures/**",
-    "**/spec/fixtures/**"
+    "**/spec/**"
   ],
   "workspaces": [
     "packages/*"

@@ -2,6 +2,7 @@ import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import hopsConfig from 'hops-config';
+// eslint-disable-next-line node/no-extraneous-import
 import schema from 'hops-graphql/schema';
 
 const apolloAppPromise = Promise.resolve(
