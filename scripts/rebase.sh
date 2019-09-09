@@ -29,7 +29,7 @@ while [[ $is_rebasing == 1 ]]; do
 done
 
 if [[ $is_rebasing -eq 0 ]]; then
-  git push "$base_brach" "$head_branch" --force-with-lease
+  git push origin "$head_branch" --force-with-lease
 else
   exit $exitcode
 fi
