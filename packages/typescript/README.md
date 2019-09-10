@@ -11,7 +11,7 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) th
 Add this preset to your existing Hops React project:
 
 ```bash
-npm install --save hops-typescript
+npm install --save hops-typescript typescript
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
@@ -32,11 +32,9 @@ Example:
 
 ```json
 {
-  "extends": "./node_modules/hops-typescript/tsconfig.json"
+  "extends": "hops-typescript/tsconfig.json"
 }
 ```
-
-Unfortunately `"extends"` only supports file relative paths at the moment. See https://github.com/Microsoft/TypeScript/issues/18865 for more information.
 
 ### Using static assets
 
