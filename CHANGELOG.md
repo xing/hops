@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.0](https://github.com/xing/hops/compare/v11.9.0...v12.0.0-alpha.0) (2019-09-10)
+
+
+### Bug Fixes
+
+* update dependency http-proxy-middleware to ^0.20.0 ([8510308](https://github.com/xing/hops/commit/8510308))
+* update dependency yargs to v14 ([5603ec8](https://github.com/xing/hops/commit/5603ec8))
+
+
+### Features
+
+* **postcss:** upgrade to css-loader v3 ([fa0a047](https://github.com/xing/hops/commit/fa0a047))
+* **typescript:** make typescript a peer dependency ([a1bf684](https://github.com/xing/hops/commit/a1bf684))
+
+
+### BREAKING CHANGES
+
+* **typescript:** TypeScript is now a peer dependency.
+* **postcss:** This upgrade contains two major releases of css-loader
+Please check out their release notes about breaking changes and upgrade
+guides:
+- https://github.com/webpack-contrib/css-loader/releases/tag/v2.0.0
+- https://github.com/webpack-contrib/css-loader/releases/tag/v3.0.0
+
+
+
+
+
 ## [11.9.1](https://github.com/xing/hops/compare/v11.9.0...v11.9.1) (2019-09-11)
 
 

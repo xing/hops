@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.0](https://github.com/xing/hops/compare/v11.9.0...v12.0.0-alpha.0) (2019-09-10)
+
+
+### Features
+
+* **postcss:** upgrade to css-loader v3 ([fa0a047](https://github.com/xing/hops/commit/fa0a047))
+
+
+### BREAKING CHANGES
+
+* **postcss:** This upgrade contains two major releases of css-loader
+Please check out their release notes about breaking changes and upgrade
+guides:
+- https://github.com/webpack-contrib/css-loader/releases/tag/v2.0.0
+- https://github.com/webpack-contrib/css-loader/releases/tag/v3.0.0
+
+
+
+
+
 ## [11.9.1](https://github.com/xing/hops/compare/v11.9.0...v11.9.1) (2019-09-11)
 
 **Note:** Version bump only for package hops-postcss
