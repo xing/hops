@@ -16,8 +16,13 @@
   },
   "dependencies": {
     "hops-mixin": "^11.9.1",
-    "ts-loader": "^6.0.0",
-    "typescript": "^3.2.1"
+    "ts-loader": "^6.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^3.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/typescript#readme"
 }
