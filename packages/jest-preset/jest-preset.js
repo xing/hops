@@ -16,7 +16,7 @@ module.exports = {
   ],
   transform: {
     '^.+\\.(js|jsx|mjs)$': 'jest-preset-hops/transforms/babel.js',
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(ts|tsx)$': require.resolve('ts-jest'),
     '^.+\\.(gql|graphql)$': 'jest-preset-hops/transforms/graphql.js',
   },
   transformIgnorePatterns: [],
