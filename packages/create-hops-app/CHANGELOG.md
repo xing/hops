@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.0](https://github.com/xing/hops/compare/v11.9.0...v12.0.0-alpha.0) (2019-09-10)
+
+
+### Bug Fixes
+
+* update dependency yargs to v14 ([5603ec8](https://github.com/xing/hops/commit/5603ec8))
+
+
+
+
+
 ## [11.9.1](https://github.com/xing/hops/compare/v11.9.0...v11.9.1) (2019-09-11)
 
 
