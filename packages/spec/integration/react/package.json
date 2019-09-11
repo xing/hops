@@ -6,13 +6,17 @@
     "node": ">= 8.10"
   },
   "hops": {
-    "mixins": ["./"],
+    "mixins": [
+      "./"
+    ],
     "hoc": "hoc-test-value",
     "context": "context-test-value"
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
-    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
   },
   "scripts": {
     "start": "hops start",

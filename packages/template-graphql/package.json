@@ -28,8 +28,7 @@
     "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
-    "babel-core": "^7.0.0-bridge.0",
-    "jest": "^23.4.2",
+    "jest": "^24.9.0",
     "jest-preset-hops": "^11.9.1",
     "react-test-renderer": "^16.4.2"
   },
