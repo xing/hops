@@ -7,7 +7,9 @@
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
-    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
   },
   "scripts": {
     "start": "hops start",
@@ -15,7 +17,9 @@
   },
   "hops": {
     "port": "8901",
-    "mixins": ["./"]
+    "mixins": [
+      "./"
+    ]
   },
   "dependencies": {
     "hops": "*",
