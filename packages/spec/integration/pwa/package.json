@@ -7,11 +7,15 @@
   },
   "hops": {
     "workerFile": "<rootDir>/service-worker.js",
-    "locations": ["/"]
+    "locations": [
+      "/"
+    ]
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
-    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
   },
   "scripts": {
     "start": "hops start",
