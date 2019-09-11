@@ -8,11 +8,15 @@
   "browser": "browser.js",
   "server": "server.js",
   "hops": {
-    "mixins": ["./"]
+    "mixins": [
+      "./"
+    ]
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
-    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
   },
   "scripts": {
     "start": "hops start",
