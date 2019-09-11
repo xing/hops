@@ -7,6 +7,8 @@
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
-    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
   }
 }
