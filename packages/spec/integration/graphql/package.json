@@ -6,12 +6,16 @@
     "node": ">= 8.10"
   },
   "hops": {
-    "mixins": ["./"],
+    "mixins": [
+      "./"
+    ],
     "graphqlUri": "https://www.graphqlhub.com/graphql"
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
-    "setupTestFrameworkScriptFile": "../../jest.setup.js"
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
   },
   "scripts": {
     "start": "hops start",
