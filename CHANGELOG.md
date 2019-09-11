@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.9.1](https://github.com/xing/hops/compare/v11.9.0...v11.9.1) (2019-09-11)
+
+
+### Bug Fixes
+
+* update dependency http-proxy-middleware to ^0.20.0 ([8510308](https://github.com/xing/hops/commit/8510308))
+* update dependency yargs to v14 ([5603ec8](https://github.com/xing/hops/commit/5603ec8))
+* upgrade untool ([0e4c4b4](https://github.com/xing/hops/commit/0e4c4b4))
+
+
+
+
+
 # [11.9.0](https://github.com/xing/hops/compare/v11.8.5...v11.9.0) (2019-08-12)
 
 

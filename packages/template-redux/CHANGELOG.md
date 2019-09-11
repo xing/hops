@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.9.1](https://github.com/xing/hops/compare/v11.9.0...v11.9.1) (2019-09-11)
+
+**Note:** Version bump only for package hops-template-redux
+
+
+
+
+
 # [11.9.0](https://github.com/xing/hops/compare/v11.8.5...v11.9.0) (2019-08-12)
 
 **Note:** Version bump only for package hops-template-redux
