@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "11.9.1",
+  "version": "12.0.0-alpha.1",
   "description": "Hops main Package to build and run Hops applications",
   "keywords": [
     "hops",
@@ -31,9 +31,9 @@
     "@untool/info": "^1.10.1",
     "@untool/webpack": "^1.10.1",
     "@untool/yargs": "^1.10.1",
-    "hops-express": "^11.9.1",
-    "hops-mixin": "^11.9.1",
-    "hops-react": "^11.9.1",
+    "hops-express": "^12.0.0-alpha.1",
+    "hops-mixin": "^12.0.0-alpha.1",
+    "hops-react": "^12.0.0-alpha.1",
     "webpack-bundle-analyzer": "^3.0.4"
   },
   "peerDependencies": {
