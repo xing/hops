@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.1](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.1) (2019-09-12)
+
+
+### Bug Fixes
+
+* **jest-preset:** add missing regenerator-runtime dependency ([e91272e](https://github.com/xing/hops/commit/e91272e))
+* **jest-preset:** remove unneeded dependency to @types/jest ([599c650](https://github.com/xing/hops/commit/599c650))
+
+
+### Features
+
+* upgrade to jest v24 ([859b88b](https://github.com/xing/hops/commit/859b88b)), closes [#815](https://github.com/xing/hops/issues/815)
+
+
+### BREAKING CHANGES
+
+* Jest v23 is no longer supported. Applications must
+provide Jest v24 through their dependencies.
+
+
+
+
+
 ## [11.9.1](https://github.com/xing/hops/compare/v11.9.0...v11.9.1) (2019-09-11)
 
 **Note:** Version bump only for package jest-preset-hops
