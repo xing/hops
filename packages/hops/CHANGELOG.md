@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.1](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.1) (2019-09-12)
+
+
+### Features
+
+* **hops:** simplify typings ([cf646ea](https://github.com/xing/hops/commit/cf646ea))
+
+
+### BREAKING CHANGES
+
+* **hops:** `withConfig` and `withServerData` have a simpler type definition now. They only take one generic argument instead of three.
+
+Co-Authored-By: Emanuel Kluge <emanuel.kluge@xing.com>
+
+
+
+
+
 ## [11.9.1](https://github.com/xing/hops/compare/v11.9.0...v11.9.1) (2019-09-11)
 
 

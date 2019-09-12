@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.1](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.1) (2019-09-12)
+
+
+### Bug Fixes
+
+* **jest-preset:** add missing regenerator-runtime dependency ([e91272e](https://github.com/xing/hops/commit/e91272e))
+* **jest-preset:** remove unneeded dependency to @types/jest ([599c650](https://github.com/xing/hops/commit/599c650))
+
+
+### Features
+
+* upgrade to jest v24 ([859b88b](https://github.com/xing/hops/commit/859b88b)), closes [#815](https://github.com/xing/hops/issues/815)
+* **hops:** simplify typings ([cf646ea](https://github.com/xing/hops/commit/cf646ea))
+* **postcss:** upgrade to css-loader v3 ([6e36d36](https://github.com/xing/hops/commit/6e36d36))
+* **typescript:** make typescript a peer dependency ([e4ddabe](https://github.com/xing/hops/commit/e4ddabe))
+
+
+### BREAKING CHANGES
+
+* **hops:** `withConfig` and `withServerData` have a simpler type definition now. They only take one generic argument instead of three.
+
+Co-Authored-By: Emanuel Kluge <emanuel.kluge@xing.com>
+* Jest v23 is no longer supported. Applications must
+provide Jest v24 through their dependencies.
+* **typescript:** TypeScript is now a peer dependency.
+* **postcss:** This upgrade contains two major releases of css-loader
+Please check out their release notes about breaking changes and upgrade
+guides:
+- https://github.com/webpack-contrib/css-loader/releases/tag/v2.0.0
+- https://github.com/webpack-contrib/css-loader/releases/tag/v3.0.0
+
+
+
+
+
 # [12.0.0-alpha.0](https://github.com/xing/hops/compare/v11.9.0...v12.0.0-alpha.0) (2019-09-10)
 
 
