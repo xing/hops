@@ -4,7 +4,6 @@ module.exports = {
     '@untool/webpack',
     '@untool/info',
     '@untool/express',
-    'hops-express',
     'hops-react',
   ],
 };
