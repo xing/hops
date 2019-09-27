@@ -21,8 +21,8 @@
     "@babel/core": "^7.4.0",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-transform-flow-strip-types": "^7.4.0",
-    "@untool/core": "^1.10.1",
-    "@untool/react": "^1.10.1",
+    "@untool/core": "^2.0.0-alpha.2",
+    "@untool/react": "^2.0.0-alpha.2",
     "hops-mixin": "^12.0.0-alpha.1"
   },
   "peerDependencies": {
