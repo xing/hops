@@ -9,7 +9,6 @@ module.exports = {
     '^.+\\.css(\\?global)?$': require.resolve('identity-obj-proxy'),
     '^hops$': require.resolve('./mocks/hops.js'),
   },
-  moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   testMatch: [
     ...defaults.testMatch,
     '**/__tests__/**/*.ts?(x)',
