@@ -31,7 +31,6 @@
     "@untool/info": "^1.10.1",
     "@untool/webpack": "^1.10.1",
     "@untool/yargs": "^1.10.1",
-    "hops-express": "^12.0.0-alpha.1",
     "hops-mixin": "^12.0.0-alpha.1",
     "hops-react": "^12.0.0-alpha.1",
     "webpack-bundle-analyzer": "^3.0.4"
