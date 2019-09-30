@@ -18,14 +18,14 @@ install:
 
 matrix:
   include:
-    - node_js: '8.10'
-      name: 'Test on Node.js 8.10'
+    - node_js: '10'
+      name: 'Test on Node.js 10'
       before_script:
         - 'commitlint-travis'
         - 'yarn lint'
       script: 'yarn test --maxWorkers=2 --ci'
-    - node_js: '10'
-      name: 'Test on Node.js 10'
+    - node_js: '12'
+      name: 'Test on Node.js 12'
       before_script:
         - 'commitlint-travis'
         - 'yarn lint'
