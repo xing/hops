@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": ">=8.10.0",
+    "node": "^10 || ^12",
     "yarn": ">=1.10.1"
   },
   "contributors": [
