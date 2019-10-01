@@ -47,7 +47,8 @@
         ]
       },
       {
-        "repository": "https://github.com/foosbyte/kicker-trainer.git",
+        "repository": "https://github.com/jhiode/kicker-trainer.git",
+        "branch": "next",
         "commands": [
           "yarn build -p",
           "yarn test"
