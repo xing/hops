@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
+
+
+### Bug Fixes
+
+* update dependency tar to v5 ([fb03c51](https://github.com/xing/hops/commit/fb03c51))
+
+
+### chore
+
+* **create-hops-app:** bump minimum required node version ([dd38f1c](https://github.com/xing/hops/commit/dd38f1c))
+
+
+### BREAKING CHANGES
+
+* **create-hops-app:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.1](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.1) (2019-09-12)
 
 **Note:** Version bump only for package create-hops-app
