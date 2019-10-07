@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
+
+
+### Bug Fixes
+
+* upgrade untool ([6d306fa](https://github.com/xing/hops/commit/6d306fa))
+
+
+### chore
+
+* **hops:** bump minimum required node version ([97afc00](https://github.com/xing/hops/commit/97afc00))
+
+
+### Features
+
+* **hops:** improve type definitions for withServerData and withConfig ([4cd6185](https://github.com/xing/hops/commit/4cd6185))
+* **hops:** simplify typings ([966989c](https://github.com/xing/hops/commit/966989c))
+
+
+### BREAKING CHANGES
+
+* **hops:** Hops drops support for Node v8
+* **hops:** `withConfig` and `withServerData` have a simpler type definition now. They only take one generic argument instead of three.
+
+Co-Authored-By: Emanuel Kluge <emanuel.kluge@xing.com>
+
+
+
+
+
 # [12.0.0-alpha.1](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.1) (2019-09-12)
 
 
