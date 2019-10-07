@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
+
+
+### chore
+
+* **development-proxy:** bump minimum required node version ([73f0ce6](https://github.com/xing/hops/commit/73f0ce6))
+
+
+### BREAKING CHANGES
+
+* **development-proxy:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.1](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.1) (2019-09-12)
 
 **Note:** Version bump only for package hops-development-proxy

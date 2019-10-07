@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
+
+
+### chore
+
+* **postcss:** bump minimum required node version ([313435b](https://github.com/xing/hops/commit/313435b))
+
+
+### Features
+
+* **postcss:** upgrade to css-loader v3 ([31067c2](https://github.com/xing/hops/commit/31067c2))
+
+
+### BREAKING CHANGES
+
+* **postcss:** Hops drops support for Node v8
+* **postcss:** This upgrade contains two major releases of css-loader
+Please check out their release notes about breaking changes and upgrade
+guides:
+- https://github.com/webpack-contrib/css-loader/releases/tag/v2.0.0
+- https://github.com/webpack-contrib/css-loader/releases/tag/v3.0.0
+
+
+
+
+
 # [12.0.0-alpha.1](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.1) (2019-09-12)
 
 
