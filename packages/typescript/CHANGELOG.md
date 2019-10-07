@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
+
+
+### chore
+
+* **typescript:** bump minimum required node version ([3e4c637](https://github.com/xing/hops/commit/3e4c637))
+
+
+### Features
+
+* **typescript:** make typescript a peer dependency ([aa0c2ee](https://github.com/xing/hops/commit/aa0c2ee))
+
+
+### BREAKING CHANGES
+
+* **typescript:** Hops drops support for Node v8
+* **typescript:** TypeScript is now a peer dependency.
+
+
+
+
+
 # [12.0.0-alpha.1](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.1) (2019-09-12)
 
 
