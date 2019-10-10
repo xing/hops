@@ -16,21 +16,21 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "graphql-tag": "^2.10.0",
+    "graphql-tag": "^2.10.1",
     "hops": "^12.0.0-alpha.2",
     "hops-graphql": "^12.0.0-alpha.2",
     "hops-postcss": "^12.0.0-alpha.2",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.2",
-    "react-apollo": "^3.0.0",
-    "react-dom": "^16.4.2",
-    "react-helmet": "^5.2.0",
-    "react-router-dom": "^5.0.0"
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-apollo": "^3.1.2",
+    "react-dom": "^16.10.2",
+    "react-helmet": "^5.2.1",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "jest": "^24.9.0",
     "jest-preset-hops": "^12.0.0-alpha.2",
-    "react-test-renderer": "^16.4.2"
+    "react-test-renderer": "^16.10.2"
   },
   "jest": {
     "preset": "jest-preset-hops"
