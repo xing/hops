@@ -21,22 +21,22 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "history": "^4.7.2",
+    "history": "^4.10.1",
     "hops-mixin": "^12.0.0-alpha.2",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.7.2"
   },
   "peerDependencies": {
-    "react": "^16.4.0",
-    "react-redux": "^5.0.7 || ^6.0.0 || ^7.0.0",
-    "react-router-dom": "^4.3.1 || ^5.0.0",
+    "react": "^16.8.0",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.1.0",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "react": "^16.4.2",
-    "react-redux": "^7.0.0",
-    "react-router-dom": "^5.0.0",
-    "redux": "^4.0.0",
+    "react": "^16.10.2",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/redux#readme"

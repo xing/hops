@@ -20,16 +20,16 @@
   "dependencies": {
     "@untool/core": "^2.0.0-alpha.3",
     "@untool/express": "^2.0.0-alpha.3",
-    "archiver": "^3.0.0",
-    "aws-sdk": "^2.286.2",
-    "globby": "^10.0.0",
+    "archiver": "^3.1.1",
+    "aws-sdk": "^2.546.0",
+    "globby": "^10.0.1",
     "hops-config": "^12.0.0-alpha.2",
     "hops-mixin": "^12.0.0-alpha.2",
     "pathifist": "^1.0.0",
     "prompt": "^1.0.0",
-    "resolve-tree": "^0.1.13",
-    "semver": "^6.0.0",
-    "serverless-http": "^2.0.0",
+    "resolve-tree": "^0.1.14",
+    "semver": "^6.3.0",
+    "serverless-http": "^2.3.0",
     "strip-indent": "^3.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/lambda#readme"
