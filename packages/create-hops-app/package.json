@@ -18,11 +18,11 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "load-json-file": "^6.0.0",
-    "tar": "^5.0.0",
+    "load-json-file": "^6.2.0",
+    "tar": "^5.0.5",
     "validate-npm-package-name": "^3.0.0",
     "write-pkg": "^4.0.0",
-    "yargs": "^14.0.0"
+    "yargs": "^14.2.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/create-hops-app#readme"
 }
