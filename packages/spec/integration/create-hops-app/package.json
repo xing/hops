@@ -10,5 +10,8 @@
     "setupFilesAfterEnv": [
       "../../jest.setup.js"
     ]
+  },
+  "dependencies": {
+    "semver": "^6.3.0"
   }
 }
