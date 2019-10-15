@@ -2,7 +2,9 @@ const path = require('path');
 const semver = require('semver');
 const { existsSync, readFileSync } = require('fs');
 const { execSync } = require('child_process');
-const { version } = require(require.resolve('create-hops-app/package.json'));
+const { version, bin } = require(require.resolve(
+  'create-hops-app/package.json'
+));
 
 const isPreRelease = semver(version).prerelease.length > 0;
 const createHopsAppBin = require.resolve('create-hops-app');
@@ -37,5 +39,16 @@ describe('create-hops-app', () => {
 
     expect(existsSync(lockFile)).toBeTruthy();
     expect(readFileSync(lockFile, 'utf-8')).toContain('@untool');
+  });
+
+  it(`has the @next-binary if it's a pre-release`, () => {
+    const binaries = Object.keys(bin);
+    const nextCommand = 'create-hops-app@next';
+
+    if (isPreRelease) {
+      expect(binaries).toContain(nextCommand);
+    } else {
+      expect(binaries).not.toContain(nextCommand);
+    }
   });
 });
