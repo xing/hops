@@ -1,11 +1,14 @@
 const path = require('path');
+const semver = require('semver');
 const { existsSync, readFileSync } = require('fs');
 const { execSync } = require('child_process');
+const { version } = require(require.resolve('create-hops-app/package.json'));
 
+const isPreRelease = semver(version).prerelease.length > 0;
 const createHopsAppBin = require.resolve('create-hops-app');
 
 describe('create-hops-app', () => {
-  const version = 'latest';
+  const version = isPreRelease ? 'next' : 'latest';
   const template = 'hops-template-react';
 
   beforeAll(() => {
