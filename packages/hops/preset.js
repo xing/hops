@@ -5,5 +5,6 @@ module.exports = {
     '@untool/info',
     '@untool/express',
     'hops-react',
+    'hops-test',
   ],
 };
