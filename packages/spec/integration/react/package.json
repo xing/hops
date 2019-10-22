@@ -10,7 +10,11 @@
       "./"
     ],
     "hoc": "hoc-test-value",
-    "context": "context-test-value"
+    "context": "context-test-value",
+    "browserWhitelist": {
+      "hoc": true,
+      "context": true
+    }
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",

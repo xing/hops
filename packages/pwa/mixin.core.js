@@ -1,5 +1,7 @@
 const { Mixin } = require('hops-mixin');
 const { join, trimSlashes } = require('pathifist');
+const get = require('lodash.get');
+const set = require('lodash.set');
 const ServiceWorkerPlugin = require('./lib/service-worker-plugin');
 
 const getAssetPath = (...args) => trimSlashes(join(...args));
@@ -31,7 +33,21 @@ class PWAMixin extends Mixin {
       webpackConfig.module.rules.push({
         test: require.resolve('./lib/loader-shim'),
         loader: require.resolve('@untool/webpack/lib/utils/loader'),
-        options: { target: 'worker', config: this.config },
+        options: {
+          type: 'worker',
+          config: Object.entries(this.config.browserWhitelist).reduce(
+            (config, [keyPath, visible]) => {
+              const value = get(this.config._config, keyPath);
+              if (visible && typeof value !== 'undefined') {
+                return set(config, keyPath, value);
+              }
+              return config;
+            },
+            {}
+          ),
+          mixins: this.config._mixins,
+          rootDir: this.config._config.rootDir,
+        },
       });
       webpackConfig.plugins.push(
         new ServiceWorkerPlugin({
