@@ -72,15 +72,18 @@ describe('react development server', () => {
     await page.close();
   });
 
-  it('passes server data through context', async () => {
-    const { page, getInnerText } = await createPage();
-    await page.goto(url);
+  it.each(['hook', 'hoc'])(
+    'passes server data through the %s',
+    async approach => {
+      const { page, getInnerText } = await createPage();
+      await page.goto(urlJoin(url, `/server-data-${approach}`));
 
-    const method = await getInnerText('output');
-    expect(method).toBe('GET');
+      const method = await getInnerText('output');
+      expect(method).toBe('GET');
 
-    await page.close();
-  });
+      await page.close();
+    }
+  );
 
   it('allows to use flow', async () => {
     const text = await fetch(urlJoin(url, '/flow')).then(r => r.text());
@@ -106,22 +109,13 @@ describe('react development server', () => {
     await page.close();
   });
 
-  it('renders config with hoc', async () => {
+  it.each(['hook', 'hoc'])('renders config with %s', async approach => {
     const { page } = await createPage();
-    await page.goto(urlJoin(url, '/config-hoc'), { waitUntil: 'networkidle2' });
-
-    expect(await page.content()).toMatch('hoc-test-value');
-
-    await page.close();
-  });
-
-  it('passes config through context', async () => {
-    const { page } = await createPage();
-    await page.goto(urlJoin(url, '/config-context'), {
+    await page.goto(urlJoin(url, `/config-${approach}`), {
       waitUntil: 'networkidle2',
     });
 
-    expect(await page.content()).toMatch('context-test-value');
+    expect(await page.content()).toMatch(`${approach}-test-value`);
 
     await page.close();
   });
