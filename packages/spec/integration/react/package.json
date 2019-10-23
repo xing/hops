@@ -10,10 +10,10 @@
       "./"
     ],
     "hoc": "hoc-test-value",
-    "context": "context-test-value",
+    "hook": "hook-test-value",
     "browserWhitelist": {
       "hoc": true,
-      "context": true
+      "hook": true
     }
   },
   "jest": {
