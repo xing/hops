@@ -3,25 +3,40 @@ import {
   importComponent,
   Miss,
   render,
-  ServerDataContext,
+  withServerData,
+  useServerData,
   Status,
-  ConfigContext,
   withConfig,
+  useConfig,
 } from 'hops';
 
 import React from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import FlowText from './flow-text';
+
 const Text = importComponent(() => import('./text'));
 
-const Config = withConfig(({ config: { hoc } }) => <h1>{hoc}</h1>);
+const ServerDataHoC = withServerData(({ serverData }) => (
+  <output>{serverData.method}</output>
+));
+
+const ServerDataHook = () => {
+  const serverData = useServerData();
+
+  return <output>{serverData.method}</output>;
+};
+
+const ConfigHoC = withConfig(({ config: { hoc } }) => <h1>{hoc}</h1>);
+
+const ConfigHook = () => {
+  const config = useConfig();
+
+  return <h1>{config.hook}</h1>;
+};
 
 export default render(
   <div>
     <Link to="/two">Link to two</Link>
-    <ServerDataContext.Consumer>
-      {({ method }) => <output>{method}</output>}
-    </ServerDataContext.Consumer>
     <Switch>
       <Route path="/" exact render={() => <h1>home</h1>} />
       <Route path="/two" exact render={() => <h1>two</h1>} />
@@ -34,16 +49,10 @@ export default render(
       />
       <Route path="/flow" exact render={() => <FlowText text="flow" />} />
       <Route path="/import" exact render={() => <Text text="imported" />} />
-      <Route path="/config-hoc" exact render={() => <Config />} />
-      <Route
-        path="/config-context"
-        exact
-        render={() => (
-          <ConfigContext.Consumer>
-            {({ context }) => <h1>{context}</h1>}
-          </ConfigContext.Consumer>
-        )}
-      />
+      <Route path="/server-data-hoc" exact component={ServerDataHoC} />
+      <Route path="/server-data-hook" exact component={ServerDataHook} />
+      <Route path="/config-hoc" exact component={ConfigHoC} />
+      <Route path="/config-hook" exact component={ConfigHook} />
       <Miss />
     </Switch>
   </div>
