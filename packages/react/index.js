@@ -7,9 +7,11 @@ const {
 } = require('@untool/react/lib/runtime');
 const ServerDataContext = require('./server-data/context');
 const withServerData = require('./server-data/with-server-data');
+const useServerData = require('./server-data/use-server-data');
 
 const ConfigContext = require('./config/context');
 const withConfig = require('./config/with-config');
+const useConfig = require('./config/use-config');
 
 module.exports = {
   Header,
@@ -19,6 +21,8 @@ module.exports = {
   render,
   ServerDataContext,
   withServerData,
+  useServerData,
   ConfigContext,
   withConfig,
+  useConfig,
 };
