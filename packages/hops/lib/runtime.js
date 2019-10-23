@@ -8,8 +8,10 @@ const {
   Status,
   ServerDataContext,
   withServerData,
+  useServerData,
   ConfigContext,
   withConfig,
+  useConfig,
 } = require('hops-react');
 
 const { Mixin, strategies } = require('hops-mixin');
@@ -22,8 +24,10 @@ module.exports = {
   render,
   ServerDataContext,
   withServerData,
+  useServerData,
   ConfigContext,
   withConfig,
+  useConfig,
   Mixin,
   strategies,
 };
