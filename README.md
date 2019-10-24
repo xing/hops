@@ -820,7 +820,7 @@ Now you can `import`/`require` your web app manifest and render a `<link />` tag
 ```javascript
 import { render } from 'hops';
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import manifest from './manifest.webmanifest';
 
 export default render(

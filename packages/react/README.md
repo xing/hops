@@ -4,14 +4,14 @@
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that enables React, JSX, React-Helmet and React-Router support in Hops applications.
+This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that enables React, JSX, React-Helmet Async and React-Router support in Hops applications.
 
 ### Installation
 
-Add this preset and its peer dependencies `react`, `react-dom`, `react-helmet` and `react-router-dom` to your existing Hops React project:
+Add this preset and its peer dependencies `react`, `react-dom`, `react-helmet-async` and `react-router-dom` to your existing Hops React project:
 
 ```bash
-npm install --save hops-react react react-dom react-helmet react-router-dom
+npm install --save hops-react react react-dom react-helmet-async react-router-dom
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
