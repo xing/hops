@@ -51,9 +51,13 @@ This side-effect component can be used to set specific HTTP status codes for ser
 
 Wrap your component with this HoC to get access to the prop `serverData` which contains all values of mixins that have implemented the `enhanceServerData` hook.
 
+##### `useServerData(): ServerData`
+
+React hook for accessing the `serverData`-property from inside a functional component.
+
 ##### `<ServerDataContext.Consumer>{data => /* render something */}</ServerDataContext.Consumer>`
 
-If you don't want to use the above mentioned HoC you can also use this React Context consumer instead. It will accept a function as a child component and pass the `serverData` object to it. You can also use `ServerDataContext` as [`contextType`](https://reactjs.org/docs/context.html#classcontexttype) or in [`useContext`](https://reactjs.org/docs/hooks-reference.html#usecontext) hook.
+If you don't want to use the above mentioned HoC or React hook you can also use this React Context consumer instead. It will accept a function as a child component and pass the `serverData` object to it. You can also use `ServerDataContext` as [`contextType`](https://reactjs.org/docs/context.html#classcontexttype) or in [`useContext`](https://reactjs.org/docs/hooks-reference.html#usecontext) hook.
 
 ### Configuration
 
