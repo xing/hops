@@ -601,11 +601,19 @@ Similarily, to test the `error`-state of the lazy-loading placeholder component,
 
 A component wrapped with this HoC (higher order component) will receive a prop called `config` which contains all [settings](#settings). Use this to pass custom settings to your application, for example to [make environment variables available](#environment-variables).
 
+###### `useConfig(): Config`
+
+React hook for accessing the `config`-property from inside a functional component.
+
 ###### `withServerData(Component)`
 
 A component wrapped with this HoC gets access to "server data" via a prop called `serverData` which is useful to share data from code that runs on the server to the front-end.
 
 This HoC is usually only useful for implementers of additional Hops presets.
+
+###### `useServerData(): ServerData`
+
+React hook for accessing the `serverData`-property from inside a functional component.
 
 ##### Options
 
