@@ -1,9 +1,18 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { HelmetProvider } from 'react-helmet-async';
 import { Home } from '../';
 
+HelmetProvider.canUseDOM = false;
+
 it('renders loading state correctly', () => {
-  const tree = renderer.create(<Home data={{ loading: true }} />).toJSON();
+  const tree = renderer
+    .create(
+      <HelmetProvider>
+        <Home data={{ loading: true }} />
+      </HelmetProvider>
+    )
+    .toJSON();
   expect(tree).toMatchSnapshot();
 });
 
@@ -35,6 +44,10 @@ it('renders loaded state correctly', () => {
       },
     },
   };
-  const tree = renderer.create(<Home data={data} />);
+  const tree = renderer.create(
+    <HelmetProvider>
+      <Home data={data} />
+    </HelmetProvider>
+  );
   expect(tree).toMatchSnapshot();
 });
