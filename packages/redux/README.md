@@ -149,7 +149,7 @@ const incrementFetch = () => (dispatch, getState, { fetch }) => {
 };
 ```
 
-#### `canPrefetchOnServer(): boolean` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **server**
+#### `canPrefetchOnServer(): boolean` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **server**
 
 This is a hook that can be used to customize the behavior of when Hops can prefetch data during server-side rendering. E.g. execute route-bound action creators during initial render. If any function of this sequence returns false it prevents server fetching for this request.
 
