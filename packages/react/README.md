@@ -57,7 +57,19 @@ React hook for accessing the `serverData`-property from inside a functional comp
 
 ##### `<ServerDataContext.Consumer>{data => /* render something */}</ServerDataContext.Consumer>`
 
-If you don't want to use the above mentioned HoC or React hook you can also use this React Context consumer instead. It will accept a function as a child component and pass the `serverData` object to it. You can also use `ServerDataContext` as [`contextType`](https://reactjs.org/docs/context.html#classcontexttype) or in [`useContext`](https://reactjs.org/docs/hooks-reference.html#usecontext) hook.
+If you don't want to use the above mentioned HoC or React hook you can also use this React Context consumer instead. It will accept a function as a child component and pass the `serverData` object to it. You can also use `ServerDataContext` as [`contextType`](https://reactjs.org/docs/context.html#classcontexttype) or in the [`useContext`](https://reactjs.org/docs/hooks-reference.html#usecontext) React hook.
+
+##### `withConfig(Component): HigherOrderComponent`
+
+Wrap your component with this HoC to get access to the prop `config` which contains all [settings](https://github.com/xing/hops#settings).
+
+##### `useConfig(): Config`
+
+React hook for accessing the `config`-property from inside a functional component.
+
+##### `<ConfigContext.Consumer>{data => /* render something */}</ConfigContext.Consumer>`
+
+If you don't want to use the above mentioned HoC or React hook you can also use this React Context consumer instead. It will accept a function as a child component and pass the `config` object to it. You can also use `ConfigContext` as [`contextType`](https://reactjs.org/docs/context.html#classcontexttype) or in the [`useContext`](https://reactjs.org/docs/hooks-reference.html#usecontext) React hook.
 
 ### Configuration
 
