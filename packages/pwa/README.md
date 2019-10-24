@@ -20,7 +20,7 @@ If you don't already have an existing Hops project read this section [on how to 
 
 #### Web App Manifest
 
-When you `import` / `require` a web app manifest in your application code you will get an URL to the web app manifet which you can, for example, render in a `<link />` element via [Helmet](https://github.com/nfl/react-helmet).
+When you `import` / `require` a web app manifest in your application code you will get an URL to the web app manifet which you can, for example, render in a `<link />` element via [React Helmet Async](https://github.com/staylor/react-helmet-async).
 
 ```javascript
 import manifest from './manifest.webmanifest';
