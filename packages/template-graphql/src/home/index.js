@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import query from './commits.gql';
 import styles from './styles.css';
 
