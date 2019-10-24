@@ -57,13 +57,17 @@ declare module 'hops' {
 
   export const ConfigContext: React.Context<Config>;
 
-  export function withServerData<P, C = ServerData,>(
+  export function withServerData<P, C = ServerData>(
     Component: React.ComponentType<P & { serverData: C }>
   ): React.ComponentType<P>;
+
+  export function useServerData<C = ServerData>(): C;
 
   export function withConfig<P, C = Config>(
     Component: React.ComponentType<P & { config: C }>
   ): React.ComponentType<P>;
+
+  export function useConfig<C = Config>(): C;
 
   export class Mixin {}
 
