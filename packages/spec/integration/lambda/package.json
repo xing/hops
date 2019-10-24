@@ -25,7 +25,7 @@
     "hops-lambda": "*",
     "react": "*",
     "react-dom": "*",
-    "react-helmet": "*",
+    "react-helmet-async": "*",
     "react-router-dom": "*"
   }
 }
