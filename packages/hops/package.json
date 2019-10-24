@@ -38,7 +38,7 @@
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-helmet": "^5.2.0",
+    "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.0"
   },
   "devDependencies": {
@@ -46,7 +46,7 @@
     "@types/react-router-dom": "*",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-helmet": "^5.2.1",
+    "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.2"
   }
 }
