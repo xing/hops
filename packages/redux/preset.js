@@ -1,8 +1,8 @@
 const path = require('path');
 module.exports = {
   mixins: [__dirname, path.join(__dirname, 'action-creator-dispatcher')],
-  shouldPrefetchOnServer: true,
+  allowServerSideDataFetching: true,
   configSchema: {
-    shouldPrefetchOnServer: { type: 'boolean' },
+    allowServerSideDataFetching: { type: 'boolean' },
   },
 };
