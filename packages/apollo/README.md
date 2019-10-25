@@ -55,7 +55,8 @@ Check out this [integration test](https://github.com/xing/hops/tree/master/packa
 | `fragmentsFile` | `String` | `<rootDir>/fragmentTypes.json` | _no_ | Where to store the generated fragment types file |
 | `graphqlUri` | `String` | `''` | _yes_ | Url to your GraphQL endpoint or mock server |
 | `graphqlSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema file |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute GraphQL queries during server-side rendering |
+| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute GraphQL queries during server-side rendering **[deprecated]** |
+| `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute GraphQL queries during server-side rendering |
 
 ##### `fragmentsFile`
 
@@ -91,7 +92,7 @@ In case your GraphQL server (configured via [`graphqlUri`](#graphqluri)) does no
 }
 ```
 
-##### `shouldPrefetchOnServer`
+##### `shouldPrefetchOnServer` **[deprecated]**
 
 Whether you want "full server-side rendering" or just "app shell" rendering.
 
@@ -102,6 +103,12 @@ This option controls whether you want Hops to execute GraphQL queries during ser
   "shouldPrefetchOnServer": false
 }
 ```
+
+##### `allowServerSideDataFetching`
+
+If you don't want Hops to do full server-side rendering, set this value to `false`.
+
+Bear in mind, that setting this value to `true` on the other hand has no mandatory character. This means that there's no way to force Hops to execute server-side requests. As soon as there's a single Hops preset in place, that either sets the `allowServerSideDataFetching`-value to `false` or implements the [`canPrefetchOnServer`](https://github.com/xing/hops/tree/master/packages/graphql#canprefetchonserver-boolean-sequence-server)-hook to return `false`, there won't be any server-side requests.
 
 #### Render Options
 
@@ -167,6 +174,6 @@ Allows to get the [fragment matcher](https://www.apollographql.com/docs/react/ad
 
 This is a hook that can be used to customize the behavior of when Hops can prefetch data during server-side rendering. E.g. execute GraphQL queries during initial render. If any function of this sequence returns false it prevents server fetching for this request.
 
-By default it returns whatever is configured in the [`shouldPrefetchOnServer` preset option](#shouldPrefetchOnServer).
+By default it returns whatever is configured in the [`allowServerSideDataFetching` preset option](#allowServerSideDataFetching).
 
 In case you need more control over the server-side rendering you can implement this method and provide your own implementation that decides if data should be prefetched during server-side rendering.
