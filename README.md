@@ -59,6 +59,7 @@ These are the main features:
     - [Default settings](#default-settings)
     - [Placeholders](#placeholders)
     - [Environment variables](#environment-variables)
+    - [Exposing values to the client](#exposing-values-to-the-client)
   - [Options](#options)
 - [Presets](#presets)
   - [Installing presets](#installing-presets)
@@ -292,6 +293,7 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 | `serverDir` | `String` | `node_modules/.cache/untool` | `<rootDir>/dist` | The directory where the generated server middleware will be stored |
 | `browsers` | `Array<String>` | `['defaults']` | `['last 1 Chrome versions']` | An array of browserslist queries to specify targets for which to transpile/polyfill (see [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for more information) |
 | `node` | `String` | `current` | `8.10` | A Node.js version identifier or `current` to specify for which target to transpile/polyfill |
+| `browserWhitelist` | `Object` | `{"basePath":true}` | A map of config keys that should be exposed to the client. Nested paths can be described using dot notation |
 
 Under the hood Hops uses [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig) to gather settings. So you're not limited to the `"hops"` key in your `package.json`, but can alternatively use an external settings file in the root directory of your project.\
 The filename then has to be `hops.config.js` or `.hopsrc{.json,.yaml,.js}`.
@@ -334,9 +336,7 @@ Hops has a concept of "universal environment variables", which are environment v
 
 Usually when you reference `process.env.FOO` in your code, webpack will replace that expression with the value that the environment variable `FOO` had at build time. This is also true for Hops applications.
 
-**But:** Since Hops renders applications on the server- and client-side, we can reference environment variables in the settings and pass them on to the client and therefore allow users to have environment variables that are evaluated at runtime.
-
-**Caution:** Be careful not to expose secrets to the client side, because all environment variables that you reference this way in the settings will be visible in the rendered HTML.
+**But:** Since Hops renders applications on the server- and client-side, we can reference environment variables in the settings and pass them on to the client and therefore allow users to have environment variables that are evaluated at runtime. In order to expose configuration values to the client, we need to [whitelist them](#exposing-values-to-the-client).
 
 **`package.json`**
 
@@ -366,6 +366,28 @@ This allows you to have just one build artifact that you can use in different en
 **Tip:** You can use Hops's configuration mechanism to provide custom values to your application. As seen in the environment variable example above, you can specify arbitrary keys in your settings and access them in your React application.
 
 **Tip:** Hops ships with integrated support for [`dotenv`](https://github.com/motdotla/dotenv), which means that it will try to read a `.env` file from your application root directory and load its values as environment variables.
+
+#### Exposing values to the client
+
+Hops requires you to whitelist all values from your configuration that need to be accessible to the client side. In order to do so, you can map the configuration keys to boolean values. For nested objects you can use the dot notation. Setting a value to `false` lets you override previously whitelisted values:
+
+**`package.json`**
+
+```json
+{
+  "hops": {
+    "myApiUrl": "[MY_API_URL]",
+    "some": {
+      "other": "value"
+    },
+    "browserWhitelist": {
+      "myApiUrl": true,
+      "some.other": true,
+      "basePath": false
+    }
+  }
+}
+```
 
 ### Options
 
