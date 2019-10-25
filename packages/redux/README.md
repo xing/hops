@@ -30,9 +30,12 @@ Check out this [integration test](https://github.com/xing/hops/tree/master/packa
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering |
+| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering **[deprecated]** |
+| `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute route-bound action creators during server-side rendering |
 
-##### `shouldPrefetchOnServer`
+##### `shouldPrefetchOnServer` [deprecated]
+
+**Note:** This option has been deprecated. See the [DEPRECATIONS document](https://github.com/xing/hops/blob/master/DEPRECATIONS.md#DEP0003) for more informations.
 
 Whether you want "full server-side rendering" or just "app shell" rendering.
 
@@ -43,6 +46,12 @@ This option controls whether you want Hops to execute the configured [route-boun
   "shouldPrefetchOnServer": false
 }
 ```
+
+##### `allowServerSideDataFetching`
+
+If you don't want Hops to execute route-bound action creators during server-side rendering, set this value to `false`.
+
+Bear in mind, that setting this value to `true` on the other hand has no mandatory character. This means that there's no way to force Hops to execute server-side requests. As soon as there's a single Hops preset in place, that either sets the `allowServerSideDataFetching`-value to `false` or implements the [`canPrefetchOnServer`](https://github.com/xing/hops/tree/master/packages/redux#canprefetchonserver-boolean-sequence-server)-hook to return `false`, there won't be any server-side requests.
 
 #### Render Options
 
@@ -153,6 +162,6 @@ const incrementFetch = () => (dispatch, getState, { fetch }) => {
 
 This is a hook that can be used to customize the behavior of when Hops can prefetch data during server-side rendering. E.g. execute route-bound action creators during initial render. If any function of this sequence returns false it prevents server fetching for this request.
 
-By default it returns whatever is configured in the [`shouldPrefetchOnServer` preset option](#shouldprefetchonserver).
+By default it returns whatever is configured in the [`allowServerSideDataFetching` preset option](#allowServerSideDataFetching).
 
 In case you need more control over the server-side rendering you can implement this method and provide your own implementation that decides if data should be prefetched during server-side rendering.
