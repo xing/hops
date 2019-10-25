@@ -1,7 +1,7 @@
 module.exports = {
   mixins: [__dirname],
   fragmentsFile: '<rootDir>/fragmentTypes.json',
-  shouldPrefetchOnServer: true,
+  allowServerSideDataFetching: true,
   browserWhitelist: {
     graphqlUri: true,
   },
@@ -18,7 +18,7 @@ module.exports = {
       type: 'string',
       absolutePath: true,
     },
-    shouldPrefetchOnServer: {
+    allowServerSideDataFetching: {
       type: 'boolean',
     },
   },

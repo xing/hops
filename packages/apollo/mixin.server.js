@@ -7,6 +7,7 @@ const {
     sync: { override, callable, sequence },
   },
 } = require('hops-mixin');
+const deprecate = require('depd')('hops-graphql');
 
 const { ApolloProvider, getMarkupFromTree } = require('react-apollo');
 const { default: ApolloClient } = require('apollo-client');
@@ -116,9 +117,19 @@ class GraphQLMixin extends Mixin {
   }
 
   canPrefetchOnServer() {
-    const { shouldPrefetchOnServer } = this.config;
+    const { shouldPrefetchOnServer, allowServerSideDataFetching } = this.config;
 
-    return shouldPrefetchOnServer !== false;
+    if (typeof shouldPrefetchOnServer === 'boolean') {
+      deprecate(
+        '[DEP0003] The config property "shouldPrefetchOnServer" is deprecated and will' +
+          ' be removed in favor of the property "allowServerSideDataFetching" in the next' +
+          ' major release of Hops.'
+      );
+    }
+
+    return (
+      shouldPrefetchOnServer !== false && allowServerSideDataFetching !== false
+    );
   }
 
   getTemplateData(data) {
