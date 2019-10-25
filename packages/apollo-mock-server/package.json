@@ -1,0 +1,40 @@
+{
+  "name": "hops-apollo-mock-server",
+  "version": "12.0.0-alpha.3",
+  "description": "Apollo based mock server for Hops",
+  "keywords": [
+    "hops",
+    "apollo",
+    "graphql",
+    "mock-server",
+    "unpreset",
+    "unmixin"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": "^10 || ^12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "@untool/webpack": "^2.0.0-alpha.4",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-server-express": "^2.9.5",
+    "cookie-parser": "^1.4.4",
+    "cross-fetch": "^3.0.4",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.5",
+    "hops-config": "^12.0.0-alpha.3",
+    "hops-mixin": "^12.0.0-alpha.3"
+  },
+  "peerDependencies": {
+    "graphql-tag": "^2.10.0"
+  },
+  "devDependencies": {
+    "graphql-tag": "^2.10.1"
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/graphql#readme"
+}
