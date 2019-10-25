@@ -1,0 +1,51 @@
+{
+  "name": "hops-apollo",
+  "version": "12.0.0-alpha.3",
+  "description": "React and GraphQL implementation for Hops",
+  "keywords": [
+    "hops",
+    "apollo",
+    "react",
+    "graphql",
+    "unpreset",
+    "unmixin"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": "^10 || ^12"
+  },
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "dependencies": {
+    "@untool/react": "^2.0.0-alpha.4",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link-http": "^1.5.16",
+    "cross-fetch": "^3.0.4",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.5",
+    "hops-config": "^12.0.0-alpha.3",
+    "hops-mixin": "^12.0.0-alpha.3",
+    "strip-indent": "^3.0.0"
+  },
+  "peerDependencies": {
+    "graphql-tag": "^2.10.0",
+    "react": "^16.8.0",
+    "react-apollo": "^3.1.0",
+    "react-dom": "^16.8.0",
+    "react-helmet-async": "^1.0.4",
+    "react-router-dom": "^5.1.0"
+  },
+  "devDependencies": {
+    "graphql-tag": "^2.10.1",
+    "react": "^16.10.2",
+    "react-apollo": "^3.1.2",
+    "react-dom": "^16.10.2",
+    "react-helmet-async": "^1.0.4",
+    "react-router-dom": "^5.1.2"
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/graphql#readme"
+}
