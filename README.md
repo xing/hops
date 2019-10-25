@@ -658,7 +658,8 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering |
+| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering **[deprecated]** |
+| `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute route-bound action creators during server-side rendering |
 
 ##### Options
 

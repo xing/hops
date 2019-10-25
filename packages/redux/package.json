@@ -21,6 +21,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "depd": "^2.0.0",
     "history": "^4.10.1",
     "hops-mixin": "^12.0.0-alpha.3",
     "prop-types": "^15.7.2"
