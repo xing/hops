@@ -7,3 +7,7 @@
 ### DEP0002
 
 `hops-express` is deprecated. The contained feature is now part of the hops package.
+
+### DEP0003
+
+The config property `shouldPrefetchOnServer` is deprecated and will be removed in favor of the property `allowServerSideDataFetching` in the next major release of Hops.
