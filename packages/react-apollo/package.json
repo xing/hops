@@ -1,5 +1,5 @@
 {
-  "name": "hops-apollo",
+  "name": "hops-react-apollo",
   "version": "12.0.0-alpha.3",
   "description": "React and GraphQL implementation for Hops",
   "keywords": [
