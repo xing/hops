@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
+
+
+### Bug Fixes
+
+* **jest-preset:** add missing regenerator-runtime dependency ([6d7b6a7](https://github.com/xing/hops/commit/6d7b6a707f4c12154737d4dd09bd586f74f54884))
+* **jest-preset:** remove unneeded dependency to @types/jest ([47d7bbc](https://github.com/xing/hops/commit/47d7bbc556c13c35e9fdd27278d0771459ab1657))
+* **jest-preset:** use core-js v3 ([b76c888](https://github.com/xing/hops/commit/b76c88838bc8f869373bff49f41aec2f68e39a4c))
+* switch to react-helmet-async ([f1c61d1](https://github.com/xing/hops/commit/f1c61d1c248db30532c1c1ecdafe266d8cc363ed))
+
+
+### chore
+
+* **jest-preset:** bump minimum required node version ([b51e858](https://github.com/xing/hops/commit/b51e858d5d02b6c27a4440053d8c4b23dbb96990))
+
+
+### Features
+
+* bump all packages to their latest available versions ([5fb0b5b](https://github.com/xing/hops/commit/5fb0b5bca2eec20ce2d9f652ac03985b31b7a5ef))
+* upgrade to jest v24 ([6482e51](https://github.com/xing/hops/commit/6482e51f63e3eb66f7680ee3e8a27f3701c078b1)), closes [#815](https://github.com/xing/hops/issues/815)
+
+
+### BREAKING CHANGES
+
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **jest-preset:** Hops drops support for Node v8
+* Jest v23 is no longer supported. Applications must
+provide Jest v24 through their dependencies.
+
+
+
+
+
 # [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
 
 
