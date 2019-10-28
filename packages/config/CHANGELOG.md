@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
+
+
+### Bug Fixes
+
+* upgrade untool ([4034440](https://github.com/xing/hops/commit/4034440864806f3e40677fcde5a2f871729596cd))
+
+
+### chore
+
+* **config:** bump minimum required node version ([9c39fbc](https://github.com/xing/hops/commit/9c39fbc3edeb46369fc37f8e57e804cc2c9bfebb))
+
+
+### Features
+
+* upgrade untool to 2.0.0-alpha.4 ([6fae67b](https://github.com/xing/hops/commit/6fae67be37e83e5d3a1f4770d47dfec236428d50))
+
+
+### BREAKING CHANGES
+
+* **config:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
 
 
