@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
+
+
+### chore
+
+* **redux:** bump minimum required node version ([25dae45](https://github.com/xing/hops/commit/25dae450d9dd61e701bcdf133b353a633e3e4f26))
+
+
+### Features
+
+* bump all packages to their latest available versions ([5fb0b5b](https://github.com/xing/hops/commit/5fb0b5bca2eec20ce2d9f652ac03985b31b7a5ef))
+
+
+### BREAKING CHANGES
+
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **redux:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
 
 

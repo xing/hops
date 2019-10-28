@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
+
+
+### chore
+
+* **postcss:** bump minimum required node version ([51797cc](https://github.com/xing/hops/commit/51797cc8fb56eb944796c643a2dcb5e1b5da5b63))
+
+
+### Features
+
+* **postcss:** upgrade to css-loader v3 ([721e798](https://github.com/xing/hops/commit/721e798c66ea2c7c53878739b89e047ba5a665ff))
+* bump all packages to their latest available versions ([5fb0b5b](https://github.com/xing/hops/commit/5fb0b5bca2eec20ce2d9f652ac03985b31b7a5ef))
+
+
+### BREAKING CHANGES
+
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **postcss:** Hops drops support for Node v8
+* **postcss:** This upgrade contains two major releases of css-loader
+Please check out their release notes about breaking changes and upgrade
+guides:
+- https://github.com/webpack-contrib/css-loader/releases/tag/v2.0.0
+- https://github.com/webpack-contrib/css-loader/releases/tag/v3.0.0
+
+
+
+
+
 # [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
 
 
