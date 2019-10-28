@@ -3,6 +3,9 @@ module.exports = {
   fragmentsFile: '<rootDir>/fragmentTypes.json',
   graphqlMockServerPath: '/graphql',
   shouldPrefetchOnServer: true,
+  browserWhitelist: {
+    graphqlUri: true,
+  },
   configSchema: {
     fragmentsFile: {
       type: 'string',
