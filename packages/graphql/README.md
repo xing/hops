@@ -6,7 +6,7 @@
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up an `<ApolloProvider />` and enable server-side and client-side support for GraphQL via the Apollo framework. Additionally it also brings an Apollo Server that can be used for mocking to enable faster local development.
 
-This preset is just combining the two presets [`hops-apollo`](https://github.com/xing/hops/blob/master/packages/apollo/README.md#presets) and [`hops-apollo-mock-server`](https://github.com/xing/hops/blob/master/packages/apollo-mock-server/README.md#presets).
+This preset is just combining the two presets [`hops-react-apollo`](https://github.com/xing/hops/blob/master/packages/apollo/README.md#presets) and [`hops-apollo-mock-server`](https://github.com/xing/hops/blob/master/packages/apollo-mock-server/README.md#presets).
 
 ### Installation
 
