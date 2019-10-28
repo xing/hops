@@ -67,7 +67,8 @@ These are the main features:
   - [Available presets](#available-presets)
     - [hops](#hops)
     - [hops-redux](#hops-redux)
-    - [hops-graphql](#hops-graphql)
+    - [hops-react-apollo](#hops-react-apollo)
+    - [hops-apollo-mock-server](#hops-apollo-mock-server)
     - [hops-postcss](#hops-postcss)
     - [hops-styled-components](#hops-styled-components)
     - [hops-typescript](#hops-typescript)
@@ -674,14 +675,14 @@ _Reminder: These options must be passed in an options hash as the second argumen
 
 For more details and more advanced use-cases, head over to the [full readme of `hops-redux`](https://github.com/xing/hops/tree/master/packages/redux).
 
-#### [`hops-graphql`](https://github.com/xing/hops/tree/master/packages/graphql)
+#### [`hops-react-apollo`](https://github.com/xing/hops/tree/master/packages/react-apollo)
 
 This preset will create an [Apollo client](https://www.apollographql.com/docs/react/) and take care of dehydration / rehydration and wrap your application in an `<ApolloProvider />`.
 
 Install it to your project:
 
 ```shell
-npm install --save hops-graphql graphql-tag react-apollo
+npm install --save hops-react-apollo graphql-tag react react-apollo react-dom react-helmet-async react-router-dom
 ```
 
 And specify your GraphQL endpoint URI in the settings:
@@ -705,7 +706,6 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 | `fragmentsFile` | `String` | `<rootDir>/fragmentTypes.json` | _no_ | Where to store the generated fragment types file |
 | `graphqlUri` | `String` | `''` | _yes_ | URI to your GraphQL endpoint or mock server |
 | `graphqlSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema file |
-| `graphqlMockSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL Schema mocks |
 | `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute GraphQL queries during server-side rendering **[deprecated]** |
 | `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute GraphQL queries during server-side rendering |
 
@@ -718,7 +718,20 @@ _Reminder: These options must be passed in an options hash as the second argumen
 | `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of a `apollo-link` |
 | `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of a `apollo-cache` |
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-graphql`](https://github.com/xing/hops/tree/master/packages/graphql) for more details.
+For more details and more advanced use-cases, head over to the [full readme of `hops-react-apollo`](https://github.com/xing/hops/tree/master/packages/react-apollo) for more details.
+
+#### [`hops-apollo-mock-server`](https://github.com/xing/hops/tree/master/packages/apollo-mock-server)
+
+This preset will provide a Apollo Server that can be used for GraphQL mocking. This can be useful for local development and automated test environments.
+
+_Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
+
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `graphqlMockSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema mocks |
+| `graphqlMockServerPath` | `String` | `'/graphql'` | _no_ | Path of the mock server endpoint |
+
+For more details and more advanced use-cases, head over to the [full readme of `hops-apollo-mock-server)`](https://github.com/xing/hops/tree/master/packages/apollo-mock-server) for more details.
 
 #### [`hops-postcss`](https://github.com/xing/hops/tree/master/packages/postcss)
 
