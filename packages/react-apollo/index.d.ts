@@ -3,7 +3,7 @@ import { ApolloLink } from 'apollo-link';
 import { ApolloCache } from 'apollo-cache';
 import { Omit } from 'hops';
 
-declare module 'hops-apollo' {
+declare module 'hops-react-apollo' {
   interface ApolloClientOptionsHops<TCacheShape>
     extends Omit<Omit<ApolloClientOptions<TCacheShape>, 'link'>, 'cache'> {
     link?: ApolloLink;
