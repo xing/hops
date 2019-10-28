@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
+
+
+### Bug Fixes
+
+* switch to react-helmet-async ([f1c61d1](https://github.com/xing/hops/commit/f1c61d1c248db30532c1c1ecdafe266d8cc363ed))
+* upgrade untool ([4034440](https://github.com/xing/hops/commit/4034440864806f3e40677fcde5a2f871729596cd))
+
+
+### chore
+
+* **pwa:** bump minimum required node version ([d395703](https://github.com/xing/hops/commit/d3957037482609e9de1df78a5a903297229a0e3e))
+
+
+### Features
+
+* bump all packages to their latest available versions ([5fb0b5b](https://github.com/xing/hops/commit/5fb0b5bca2eec20ce2d9f652ac03985b31b7a5ef))
+* upgrade untool to 2.0.0-alpha.4 ([6fae67b](https://github.com/xing/hops/commit/6fae67be37e83e5d3a1f4770d47dfec236428d50))
+* **pwa:** whitelist config keys that should be sent to the browser ([685aa1a](https://github.com/xing/hops/commit/685aa1a7cc4dbfb2a7cfc93c07d15b67801905af))
+
+
+### BREAKING CHANGES
+
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **pwa:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.2](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.2) (2019-10-07)
 
 
