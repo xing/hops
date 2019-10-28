@@ -12,8 +12,8 @@ This preset is just combining the two presets [`hops-apollo`](https://github.com
 
 _This preset must be used together with the [`hops-react`](https://github.com/xing/hops/blob/master/packages/react/README.md#presets) preset._
 
-Add this preset and its peer dependencies `graphql-tag` and `react-apollo` to your existing Hops React project:
+Add this preset and its peer dependencies to your existing Hops React project:
 
 ```bash
-npm install --save hops-graphql graphql-tag react-apollo
+npm install --save hops-graphql graphql-tag react react-apollo react-dom react-helmet-async react-router-dom
 ```
