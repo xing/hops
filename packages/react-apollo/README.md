@@ -1,6 +1,6 @@
-# `hops-apollo`
+# `hops-react-apollo`
 
-[![npm](https://img.shields.io/npm/v/hops-apollo.svg)](https://www.npmjs.com/package/hops-apollo)
+[![npm](https://img.shields.io/npm/v/hops-react-apollo.svg)](https://www.npmjs.com/package/hops-react-apollo)
 
 **Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
 
@@ -8,12 +8,12 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) th
 
 ### Installation
 
-_This preset must be used together with the [`hops-react`](<(https://github.com/xing/hops/blob/master/packages/react/README.md#presets)>) preset._
+_This preset must be used together with the [`hops-react`](https://github.com/xing/hops/blob/master/packages/react/README.md#presets) preset._
 
 Add this preset and its peer dependencies `graphql-tag` and `react-apollo` to your existing Hops React project:
 
 ```bash
-npm install --save hops-apollo graphql-tag react-apollo
+npm install --save hops-react-apollo graphql-tag react-apollo
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
