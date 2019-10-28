@@ -1,3 +1,3 @@
 module.exports = {
-  presets: ['hops-apollo', 'hops-apollo-mock-server'],
+  presets: ['hops-apollo-mock-server', 'hops-react-apollo'],
 };
