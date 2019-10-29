@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.4](https://github.com/xing/hops/compare/v12.0.0-alpha.3...v12.0.0-alpha.4) (2019-10-29)
+
+
+### Bug Fixes
+
+* **graphql:** add graphqlUri to browser whitelist ([e5279b8](https://github.com/xing/hops/commit/e5279b8c9717d77ba1b725a3148b0eadb90969ae))
+
+
+
+
+
 # [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
 
 
