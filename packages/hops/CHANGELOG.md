@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.4](https://github.com/xing/hops/compare/v12.0.0-alpha.3...v12.0.0-alpha.4) (2019-10-29)
+
+
+### Features
+
+* **hops:** add typings for config & server-data context hooks ([8677c9e](https://github.com/xing/hops/commit/8677c9e2df68bd1dd9ef7bef224000674ae24dff))
+* **hops:** re-export config & server-data hooks from hops-react ([578407e](https://github.com/xing/hops/commit/578407e274cf07f6055cde944c0446daecf4b742))
+
+
+
+
+
 # [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
 
 
