@@ -21,7 +21,8 @@
     "ZauberNerd <zaubernerd@zaubernerd.de> (https://www.xing.com/profile/Bjoern_Brauer5)",
     "ghost23 <mail@ghost23.de> (https://www.xing.com/profile/Sven_Busse)",
     "jhiode <mail@jhio.de> (https://www.xing.com/profile/Jonas_Holland)",
-    "DJCordhose <oliver@zeigermann.de> (https://www.xing.com/profile/Oliver_Zeigermann)"
+    "DJCordhose <oliver@zeigermann.de> (https://www.xing.com/profile/Oliver_Zeigermann)",
+    "herschel666 <kraemerseele@gmx.de> (https://www.xing.com/profile/Emanuel_Kluge)"
   ],
   "scripts": {
     "preinstall": "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'use yarn' && exit 1)\"",
