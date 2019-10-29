@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.4](https://github.com/xing/hops/compare/v12.0.0-alpha.3...v12.0.0-alpha.4) (2019-10-29)
+
+
+### Features
+
+* **redux:** deprecate config value "shouldPrefetchOnServer" ([2fc424e](https://github.com/xing/hops/commit/2fc424eb3b22b6003e9a8112a8db9d959ad4fd8b))
+
+
+
+
+
 # [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
 
 
