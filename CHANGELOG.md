@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.4](https://github.com/xing/hops/compare/v12.0.0-alpha.3...v12.0.0-alpha.4) (2019-10-29)
+
+
+### Bug Fixes
+
+* **graphql:** add graphqlUri to browser whitelist ([e5279b8](https://github.com/xing/hops/commit/e5279b8c9717d77ba1b725a3148b0eadb90969ae))
+
+
+### Features
+
+* **apollo:** deprecate config value "shouldPrefetchOnServer" ([2758f43](https://github.com/xing/hops/commit/2758f431bac85c77a529ba6e3a2ac37591d7f017))
+* **apollo:** introduce package ([f8892ff](https://github.com/xing/hops/commit/f8892ff01072168a7c76300ff6c2669c5cad9c6e))
+* **apollo-mock-server:** introduce package ([b35f618](https://github.com/xing/hops/commit/b35f6181166d7a7146e15846a808319c801ee21d))
+* **hops:** add typings for config & server-data context hooks ([8677c9e](https://github.com/xing/hops/commit/8677c9e2df68bd1dd9ef7bef224000674ae24dff))
+* **hops:** re-export config & server-data hooks from hops-react ([578407e](https://github.com/xing/hops/commit/578407e274cf07f6055cde944c0446daecf4b742))
+* **react:** provide hooks for config & server-data contexts ([6bfaf55](https://github.com/xing/hops/commit/6bfaf55b72fbc12f86f1cd3f55420e8f6c19f678))
+* **redux:** deprecate config value "shouldPrefetchOnServer" ([2fc424e](https://github.com/xing/hops/commit/2fc424eb3b22b6003e9a8112a8db9d959ad4fd8b))
+
+
+
+
+
 # [12.0.0-alpha.3](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.3) (2019-10-28)
 
 
