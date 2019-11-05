@@ -51,6 +51,30 @@ Depending on your ESLint rules, you might need to ignore the import line as ther
 import 'animate.css/animate.min.css?global';
 ```
 
+#### CSS Grid & Autoprefixer
+
+By default CSS Grid properties are not auto-prefixed and there are neither plans to turn on this feature globally in Hops, nor to provide a respective preset option.
+
+Still you can use CSS Grid already by either enabling auto-prefixing on a per-file basis with a comment or for the whole project with an environment variable.
+
+##### Enabling CSS Grid per file
+
+To enable auto-prefixing of CSS Grid properties for a single file, put the following comment at its beginning:
+
+```css
+/* autoprefixer grid: autoplace */
+```
+
+##### Enabling CSS Grid for the whole project
+
+To enable auto-prefixing of CSS Grid properties for the whole project, pass the environment variable `AUTOPREFIXER_GRID=autoplace` to the build-command:
+
+```sh
+AUTOPREFIXER_GRID=autoplace yarn hops build
+```
+
+For more information on that topic, please have a look at [the documentation of Autoprefixer](https://github.com/postcss/autoprefixer#grid-autoplacement-support-in-ie).
+
 ### Configuration
 
 #### Preset Options
