@@ -193,6 +193,8 @@ import styles from './styles.css';
 export default render(<h1 className={styles.headline}>Hello World!</h1>);
 ```
 
+:information_source: In case you want to use CSS Grid, check [the documentation of `hops-postcss`](/xing/hops/tree/master/packages/postcss#css-grid--autoprefixer) to learn how to enable it.
+
 ### Code-splitting and `hops`s `importComponent()` function
 
 You can use code-splitting (or bundle-splitting) to reduce the size of the assets that your users have to download by creating multiple bundles that contain only the code that is actually needed. Under the hood this uses [dynamic imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports) which webpack will transform into [separate bundles](https://webpack.js.org/guides/code-splitting/). Hops provides support for this with a custom function (called `importComponent()`) in order to render the actual content on the server-side and render a placeholder during client-side navigation.
