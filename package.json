@@ -55,7 +55,12 @@
           "yarn test"
         ]
       }
-    ]
+    ],
+    "rootManifest": {
+      "resolutions": {
+        "styled-components" : "4.4.1"
+      }
+    }
   },
   "husky": {
     "hooks": {
