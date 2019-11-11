@@ -17,5 +17,8 @@ module.exports = {
     graphqlMockServerPath: {
       type: 'string',
     },
+    graphqlMockContextExtenderFile: {
+      type: 'string',
+    },
   },
 };
