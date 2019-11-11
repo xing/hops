@@ -4,6 +4,8 @@ import express from 'express';
 import hopsConfig from 'hops-config';
 // eslint-disable-next-line node/no-extraneous-import
 import schema from 'hops-apollo-mock-server/schema';
+// eslint-disable-next-line node/no-extraneous-import
+import extendContext from 'hops-apollo-mock-server/context-extender';
 
 const apolloAppPromise = Promise.resolve(
   typeof schema === 'function' ? schema() : schema
@@ -18,7 +20,7 @@ const apolloAppPromise = Promise.resolve(
         'request.credentials': 'same-origin',
       },
     },
-    context: context => ({ ...context, config: hopsConfig }),
+    context: context => extendContext({ ...context, config: hopsConfig }),
   });
 
   server.applyMiddleware({
