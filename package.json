@@ -25,7 +25,7 @@
     "herschel666 <kraemerseele@gmx.de> (https://www.xing.com/profile/Emanuel_Kluge)"
   ],
   "scripts": {
-    "preinstall": "/usr/bin/env bash -c \"[[ $npm_execpath = *'yarn'* ]] || (echo 'use yarn' && exit 1)\"",
+    "preinstall": "node -e \"process.exit(process.env.npm_execpath.includes('yarn') ? 0 : 1)\"",
     "start": "cd packages/template-react; yarn start",
     "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "jest",
