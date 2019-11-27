@@ -18,13 +18,13 @@ install:
 
 matrix:
   include:
-    - node_js: '10'
+    - node_js: lts/dubnium
       name: 'Test on Node.js 10'
       before_script:
         - 'commitlint-travis'
         - 'yarn lint'
       script: 'yarn test --maxWorkers=2 --ci'
-    - node_js: '12'
+    - node_js: lts/*
       name: 'Test on Node.js 12'
       before_script:
         - 'commitlint-travis'
