@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
+
+
+### Bug Fixes
+
+* switch to react-helmet-async ([870aaa3](https://github.com/xing/hops/commit/870aaa3ff45c911aabbfe047ec4977d45d3aac4e))
+
+
+### Features
+
+* bump all packages to their latest available versions ([a4710b1](https://github.com/xing/hops/commit/a4710b1bf7005efc3a3809b6ebc4f905f9c0e003))
+* upgrade to jest v24 ([978ba4f](https://github.com/xing/hops/commit/978ba4f1817ee3789f731bd65ed1e43e125322ec)), closes [#815](https://github.com/xing/hops/issues/815)
+
+
+### BREAKING CHANGES
+
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* Jest v23 is no longer supported. Applications must
+provide Jest v24 through their dependencies.
+
+
+
+
+
 # [12.0.0-alpha.4](https://github.com/xing/hops/compare/v12.0.0-alpha.3...v12.0.0-alpha.4) (2019-10-29)
 
 **Note:** Version bump only for package hops-template-graphql
