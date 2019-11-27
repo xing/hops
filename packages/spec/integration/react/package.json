@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "^10 || ^12"
+    "node": "^10.13 || ^12.13"
   },
   "hops": {
     "mixins": [
