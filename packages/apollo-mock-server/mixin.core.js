@@ -1,4 +1,3 @@
-const { existsSync } = require('fs');
 const { Mixin } = require('hops-mixin');
 const {
   internal: { createWebpackMiddleware, StatsFilePlugin },
@@ -78,12 +77,6 @@ class GraphQLMixin extends Mixin {
 
   diagnose({ detectDuplicatePackages }) {
     detectDuplicatePackages('graphql');
-    if (!existsSync(this.config.fragmentsFile)) {
-      return [
-        `Could not find a graphql introspection query result at "${this.config.fragmentsFile}".`,
-        'You might need to execute "hops graphql introspect"',
-      ];
-    }
   }
 }
 
