@@ -1,6 +1,8 @@
 const { existsSync } = require('fs');
 const { join } = require('path');
 const { Mixin } = require('hops-mixin');
+// eslint-disable-next-line node/no-unpublished-require
+const chalk = require('chalk');
 
 class TypescriptMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig, allLoaderConfigs }) {
@@ -23,14 +25,23 @@ class TypescriptMixin extends Mixin {
   }
 
   diagnose() {
-    const tsConfigPath = join(this.config.rootDir, 'tsconfig.json');
-    /* eslint-disable node/no-extraneous-require */
-    const exampleTsConfigPath = require.resolve(
-      'hops-typescript/tsconfig.json'
-    );
-    /* eslint-enable node/no-extraneous-require */
+    const { rootDir } = this.config;
+    const tsConfigPath = join(rootDir, 'tsconfig.json');
+
     if (!existsSync(tsConfigPath)) {
-      return `No "tsconfig.json" file found in your project root directory ("${this.config.rootDir}").\nAs a starting point you can copy our minimal example config file: "cp ${exampleTsConfigPath} ${this.config.rootDir}/tsconfig.json"`;
+      const tsConfigContent = JSON.stringify(
+        {
+          extends: 'hops-typescript/tsconfig.json',
+        },
+        null,
+        2
+      );
+
+      return chalk`
+{red No "tsconfig.json" file found in your project root directory ("${rootDir}").}
+{red To get started, create a "tsconfig.json" file in your project's root with the following content:}
+{cyan ${tsConfigContent}}
+`;
     }
   }
 }
