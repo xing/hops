@@ -43,6 +43,21 @@ class TypescriptMixin extends Mixin {
 {cyan ${tsConfigContent}}
 `;
     }
+
+    const hopsTsConfig = require(join(__dirname, 'tsconfig.json'));
+    const tsConfig = require(tsConfigPath);
+
+    for (let property of ['target', 'moduleResolution']) {
+      if (
+        tsConfig.compilerOptions &&
+        tsConfig.compilerOptions[property] !==
+          hopsTsConfig.compilerOptions[property]
+      ) {
+        return chalk.red(
+          `Please do not overwrite the value "compilerOptions.${property}" in your "tsconfig.json", otherwise Hops will not work as expected.`
+        );
+      }
+    }
   }
 }
 
