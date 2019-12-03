@@ -5,8 +5,12 @@ const { Mixin } = require('hops-mixin');
 const chalk = require('chalk');
 
 class TypescriptMixin extends Mixin {
-  configureBuild(webpackConfig, { jsLoaderConfig, allLoaderConfigs }) {
+  configureBuild(webpackConfig, { jsLoaderConfig, allLoaderConfigs }, target) {
     const { loader, options, exclude } = jsLoaderConfig;
+    const targetDevelop = target === 'develop';
+    const compilerOptions = targetDevelop
+      ? { compilerOptions: { isolatedModules: true } }
+      : undefined;
 
     allLoaderConfigs.unshift({
       test: /\.tsx?$/,
@@ -18,6 +22,10 @@ class TypescriptMixin extends Mixin {
         },
         {
           loader: require.resolve('ts-loader'),
+          options: {
+            ...compilerOptions,
+            transpileOnly: targetDevelop,
+          },
         },
       ],
     });
