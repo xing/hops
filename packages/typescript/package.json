@@ -22,6 +22,7 @@
     "typescript": "^3.7.0"
   },
   "devDependencies": {
+    "chalk": "^3.0.0",
     "typescript": "^3.7.2"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/typescript#readme"
