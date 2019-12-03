@@ -26,7 +26,7 @@ Check out this [integration test](https://github.com/xing/hops/tree/master/packa
 
 The only required configuration is a `tsconfig.json` in your project root.
 
-This preset contains a [minimal `tsconfig.json`](https://github.com/xing/hops/blob/master/packages/typescript/tsconfig.json) file which you can extend or overwrite in your tsconfig.json:
+This preset contains a [minimal `tsconfig.json`](https://github.com/xing/hops/blob/master/packages/typescript/tsconfig.json) file which we recommend you extend in your `tsconfig.json`:
 
 Example:
 
@@ -35,6 +35,8 @@ Example:
   "extends": "hops-typescript/tsconfig.json"
 }
 ```
+
+Whether you extend the given TS config or completely provide your own — please take care to not overwrite the properties `compilerOptions.moduleResolution` and `compilerOptions.target`, because those are vital for Hops to work properly!
 
 ### Using static assets
 
