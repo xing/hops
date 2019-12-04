@@ -8,10 +8,10 @@ This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) in
 
 ### Installation
 
-Add this preset and its peer dependency `graphql-tag` to your existing Hops React project:
+Add this preset to your existing Hops React project:
 
 ```bash
-npm install --save hops-apollo-mock-server graphql-tag
+npm install --save hops-apollo-mock-server
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
