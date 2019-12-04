@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/jest-preset-hops.svg)](https://www.npmjs.com/package/jest-preset-hops)
 
-**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
 A [Jest preset](https://facebook.github.io/jest/docs/configuration.html#preset-string) that makes it easier for Hops powered apps to use Jest.
 

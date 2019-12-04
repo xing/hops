@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-development-proxy.svg)](https://www.npmjs.com/package/hops-development-proxy)
 
-**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
 [Hops preset](https://github.com/xing/hops/tree/master#presets) that adds an API-proxy for development.
 
