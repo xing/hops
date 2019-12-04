@@ -32,13 +32,6 @@ class GraphQLMixin extends Mixin {
   }
 
   configureBuild(webpackConfig, loaderConfigs, target) {
-    const { allLoaderConfigs } = loaderConfigs;
-
-    allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, {
-      test: /\.(graphql|gql)$/,
-      loader: 'graphql-tag/loader',
-    });
-
     webpackConfig.externals.push('encoding');
 
     if (process.env.NODE_ENV === 'production') {
