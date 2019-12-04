@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-react-apollo.svg)](https://www.npmjs.com/package/hops-react-apollo)
 
-**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
 This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up an `<ApolloProvider />` and enable client-side support for GraphQL via the Apollo framework.
 
