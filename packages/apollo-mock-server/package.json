@@ -30,11 +30,5 @@
     "hops-config": "^12.0.0-alpha.5",
     "hops-mixin": "^12.0.0-alpha.5"
   },
-  "peerDependencies": {
-    "graphql-tag": "^2.10.0"
-  },
-  "devDependencies": {
-    "graphql-tag": "^2.10.1"
-  },
   "homepage": "https://github.com/xing/hops/tree/master/packages/graphql#readme"
 }
