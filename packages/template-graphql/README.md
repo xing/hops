@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-template-graphql.svg)](https://www.npmjs.com/package/hops-template-graphql)
 
-**Please see the [main Hops Readme](https://github.com/xing/hops/blob/master/README.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
 This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React, GraphQL and Jest.
 
