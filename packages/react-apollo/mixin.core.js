@@ -3,6 +3,15 @@ const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
 
 class GraphQLMixin extends Mixin {
+  configureBuild(webpackConfig, loaderConfigs) {
+    const { allLoaderConfigs } = loaderConfigs;
+
+    allLoaderConfigs.splice(allLoaderConfigs.length - 1, 0, {
+      test: /\.(graphql|gql)$/,
+      loader: 'graphql-tag/loader',
+    });
+  }
+
   registerCommands(yargs) {
     yargs.command('graphql', 'Execute GraphQL specific tasks', yargs =>
       yargs
