@@ -6,20 +6,7 @@
   />
 </p>
 
-<h1 align="center">Hops Development Environment</h1>
-
-<p align="center">
-  <a href="https://gitter.im/xing-hops/Lobby">
-    <img src="https://img.shields.io/gitter/room/xing-hops/Lobby.svg">
-  </a>
-  <a href="https://www.npmjs.com/package/hops">
-    <img src="https://img.shields.io/npm/v/hops.svg">
-  </a>
-  <a href="https://travis-ci.org/xing/hops/branches">
-    <img src="https://img.shields.io/travis/xing/hops/master.svg">
-  </a>
-</p>
-<p>&nbsp;</p>
+<h1 align="center">Hops Documentation</h1>
 
 ## Introduction
 
