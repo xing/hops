@@ -19,7 +19,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/webpack": "^2.0.0-alpha.4",
+    "@untool/webpack": "^2.0.0-beta.0",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-server-express": "^2.9.5",
     "cookie-parser": "^1.4.4",
