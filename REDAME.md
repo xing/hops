@@ -23,7 +23,7 @@
 
 ## Docs
 
-[Read the docs here](https://github.com/xing/hops/blob/master/DOCUMENTATION.md).
+[Read the docs here](https://github.com/xing/hops/blob/v11.x/DOCUMENTATION.md).
 
 ## Contributing
 
