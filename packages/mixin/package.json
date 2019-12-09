@@ -18,7 +18,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^1.10.1",
+    "@untool/core": "^1.10.4",
     "mixinable": "^4.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme"
