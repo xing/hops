@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "11.9.1",
+  "version": "11.9.2",
   "description": "Customization for the our express server",
   "keywords": [
     "hops",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "compression": "^1.7.3",
-    "hops-mixin": "^11.9.1"
+    "hops-mixin": "^11.9.2"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/express#readme"
 }

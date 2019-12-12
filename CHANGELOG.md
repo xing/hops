@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.9.2](https://github.com/xing/hops/compare/v11.9.1...v11.9.2) (2019-12-12)
+
+
+### Bug Fixes
+
+* update dependency tar to v5 ([fb03c51](https://github.com/xing/hops/commit/fb03c51bff746e479869dcec45af1c1c8f799951))
+* update untool to v1.10.4 ([2e0f1a6](https://github.com/xing/hops/commit/2e0f1a63e6524a37f314a703d0ecd74ea503ef0e))
+
+
+
+
+
 ## [11.9.1](https://github.com/xing/hops/compare/v11.9.0...v11.9.1) (2019-09-11)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "create-hops-app",
-  "version": "11.9.1",
+  "version": "11.9.2",
   "description": "CLI tool to create Hops applications",
   "keywords": [
     "hops",
