@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### Bug Fixes
+
+* update dependency tar to v5 ([fb03c51](https://github.com/xing/hops/commit/fb03c51bff746e479869dcec45af1c1c8f799951))
+
+
+### chore
+
+* **create-hops-app:** bump minimum required node version ([8819c6a](https://github.com/xing/hops/commit/8819c6ac858ec453eb89b3d98a162b53123adfde))
+* **create-hops-app:** bump minimum required node versions ([bfbdea6](https://github.com/xing/hops/commit/bfbdea6a4609ec8af99646af2ada61d9e7bee506))
+
+
+### Features
+
+* bump all packages to their latest available versions ([29c2963](https://github.com/xing/hops/commit/29c29633fae95e2813dae9b1b6c8140d33332c35))
+
+
+### BREAKING CHANGES
+
+* **create-hops-app:** Hops drops support for non-LTS versions of Node
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **create-hops-app:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 

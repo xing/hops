@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### Bug Fixes
+
+* switch to react-helmet-async ([47cbd04](https://github.com/xing/hops/commit/47cbd0436cd43a67ecaf2ccc0994c21ac948c7c1))
+* upgrade untool ([c9a951d](https://github.com/xing/hops/commit/c9a951d0d6d51994af8a1214b369e1d71b20db1d))
+* upgrade untool to 2.0.0-beta.0 ([d6910f2](https://github.com/xing/hops/commit/d6910f2e097f77160c7176eb9c1f87e0636f55e0))
+* upgrade untool to 2.0.0-beta.1 ([2895a5c](https://github.com/xing/hops/commit/2895a5cd7617116be4476ffe87174bd2d15a0cdc))
+* **react:** increase required babel version to 7.7.0 ([8b0922e](https://github.com/xing/hops/commit/8b0922eb0c56c8db9d70bde61a60a56c5373a26a))
+
+
+### chore
+
+* **react:** bump minimum required node version ([c1f99fd](https://github.com/xing/hops/commit/c1f99fd9045e7990dc019d08809e438435b8a092))
+* **react:** bump minimum required node versions ([419558a](https://github.com/xing/hops/commit/419558a08746f992cc4dc6ed910a2d0f754f46e8))
+
+
+### Features
+
+* **react:** provide hooks for config & server-data contexts ([5638c21](https://github.com/xing/hops/commit/5638c21d54c22dbb17b84c98a38dd2464bdcf867))
+* bump all packages to their latest available versions ([29c2963](https://github.com/xing/hops/commit/29c29633fae95e2813dae9b1b6c8140d33332c35))
+* upgrade untool to 2.0.0-alpha.4 ([769ea81](https://github.com/xing/hops/commit/769ea81c279af6888a5c2bbf046e224b647aa38c))
+
+
+### BREAKING CHANGES
+
+* **react:** Hops drops support for non-LTS versions of Node
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **react:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 

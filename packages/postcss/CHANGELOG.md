@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### chore
+
+* **postcss:** bump minimum required node version ([6451dfa](https://github.com/xing/hops/commit/6451dfaebaa605d9aa860c6fe8822cfb2ca76253))
+* **postcss:** bump minimum required node versions ([09ede0a](https://github.com/xing/hops/commit/09ede0af0a9e0e45575806b5dfc52cd83513a756))
+
+
+### Features
+
+* bump all packages to their latest available versions ([29c2963](https://github.com/xing/hops/commit/29c29633fae95e2813dae9b1b6c8140d33332c35))
+* **postcss:** upgrade to css-loader v3 ([eb4fc74](https://github.com/xing/hops/commit/eb4fc748a3105fe489460642e25bdb503fdb46aa))
+
+
+### BREAKING CHANGES
+
+* **postcss:** Hops drops support for non-LTS versions of Node
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **postcss:** Hops drops support for Node v8
+* **postcss:** This upgrade contains two major releases of css-loader
+Please check out their release notes about breaking changes and upgrade
+guides:
+- https://github.com/webpack-contrib/css-loader/releases/tag/v2.0.0
+- https://github.com/webpack-contrib/css-loader/releases/tag/v3.0.0
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 

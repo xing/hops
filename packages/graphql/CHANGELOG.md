@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### Bug Fixes
+
+* **graphql:** add graphqlUri to browser whitelist ([eb9ebc9](https://github.com/xing/hops/commit/eb9ebc9bf00bf9a1e3ed1ad2716ab35863e0a892))
+* switch to react-helmet-async ([47cbd04](https://github.com/xing/hops/commit/47cbd0436cd43a67ecaf2ccc0994c21ac948c7c1))
+* upgrade untool ([c9a951d](https://github.com/xing/hops/commit/c9a951d0d6d51994af8a1214b369e1d71b20db1d))
+
+
+### chore
+
+* **graphql:** bump minimum required node version ([38abd01](https://github.com/xing/hops/commit/38abd011d679cca25846e254257db76be5f1f02a))
+* **graphql:** bump minimum required node versions ([27e049e](https://github.com/xing/hops/commit/27e049e9bb6bf4515b746d2a6cdddb87e545f05f))
+
+
+### Features
+
+* bump all packages to their latest available versions ([29c2963](https://github.com/xing/hops/commit/29c29633fae95e2813dae9b1b6c8140d33332c35))
+* upgrade untool to 2.0.0-alpha.4 ([769ea81](https://github.com/xing/hops/commit/769ea81c279af6888a5c2bbf046e224b647aa38c))
+
+
+### BREAKING CHANGES
+
+* **graphql:** Hops drops support for non-LTS versions of Node
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **graphql:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 
