@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### Bug Fixes
+
+* **jest-preset:** alias core-js to correct version ([b3fef5a](https://github.com/xing/hops/commit/b3fef5a18f9698ad68146745f13650622d0f71c1))
+* **jest-preset:** increase required babel version to 7.7.0 ([e44a764](https://github.com/xing/hops/commit/e44a7640532a9f993e841f5a91174b1886890f1f))
+* switch to react-helmet-async ([47cbd04](https://github.com/xing/hops/commit/47cbd0436cd43a67ecaf2ccc0994c21ac948c7c1))
+* **jest-preset:** add missing regenerator-runtime dependency ([7131a48](https://github.com/xing/hops/commit/7131a48b07f42150dd0500a3c205788312150245))
+* **jest-preset:** remove unneeded dependency to @types/jest ([58635bc](https://github.com/xing/hops/commit/58635bc0d724abf054a35009f3af54091b34ef5d))
+* **jest-preset:** use core-js v3 ([44ea13e](https://github.com/xing/hops/commit/44ea13e5cec0b3b761cc141b8796ca47ffb8f86f))
+
+
+### chore
+
+* **jest-preset:** bump minimum required node version ([e88b98e](https://github.com/xing/hops/commit/e88b98e7c5fd7b21a75595741a084de2a0c82909))
+* **jest-preset:** bump minimum required node versions ([6474142](https://github.com/xing/hops/commit/6474142a4a875cb0ec6ac57605efa85c16b59983))
+
+
+### Features
+
+* bump all packages to their latest available versions ([29c2963](https://github.com/xing/hops/commit/29c29633fae95e2813dae9b1b6c8140d33332c35))
+* upgrade to jest v24 ([2222ba2](https://github.com/xing/hops/commit/2222ba289f5daf707ab1ada9b435b5725ae72234)), closes [#815](https://github.com/xing/hops/issues/815)
+
+
+### BREAKING CHANGES
+
+* **jest-preset:** Hops drops support for non-LTS versions of Node
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **jest-preset:** Hops drops support for Node v8
+* Jest v23 is no longer supported. Applications must
+provide Jest v24 through their dependencies.
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 

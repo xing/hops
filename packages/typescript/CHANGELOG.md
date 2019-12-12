@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### Bug Fixes
+
+* **typescript:** warn more firmly on missing tsconfig.json ([7c2bbbb](https://github.com/xing/hops/commit/7c2bbbb7521e610afe2a444afe8e313ed04b17f1))
+* **typescript:** warn when certain tsconfig-values are overwritten ([7ac8889](https://github.com/xing/hops/commit/7ac88896c74e8ea831c12506122000d16c30cb73))
+
+
+### chore
+
+* **typescript:** bump minimum required node version ([098e6a6](https://github.com/xing/hops/commit/098e6a63fdba0715babe05d310e8d909e84a6dd3))
+* **typescript:** bump minimum required node versions ([35d7dc5](https://github.com/xing/hops/commit/35d7dc513b00297718366ceff033cb62ad9f144e))
+
+
+### Features
+
+* **typescript:** decrease incremental build times ([941c8e0](https://github.com/xing/hops/commit/941c8e017d736d26b18c97f40127b537e4dcafd5))
+* **typescript:** update typescript to v3.7 ([35456f8](https://github.com/xing/hops/commit/35456f836300187a65881b11faf21041c1f266c6))
+* bump all packages to their latest available versions ([29c2963](https://github.com/xing/hops/commit/29c29633fae95e2813dae9b1b6c8140d33332c35))
+* **typescript:** make typescript a peer dependency ([fc57dcf](https://github.com/xing/hops/commit/fc57dcfc3d30b3d4964731b51e268792d3d61cb0))
+
+
+### BREAKING CHANGES
+
+* **typescript:** Hops drops support for non-LTS versions of Node
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **typescript:** Hops drops support for Node v8
+* **typescript:** TypeScript is now a peer dependency.
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 

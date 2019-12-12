@@ -3,6 +3,150 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### Bug Fixes
+
+* upgrade untool to 2.0.0-beta.1 ([2895a5c](https://github.com/xing/hops/commit/2895a5cd7617116be4476ffe87174bd2d15a0cdc))
+* **jest-preset:** alias core-js to correct version ([b3fef5a](https://github.com/xing/hops/commit/b3fef5a18f9698ad68146745f13650622d0f71c1))
+* upgrade untool to 2.0.0-beta.0 ([d6910f2](https://github.com/xing/hops/commit/d6910f2e097f77160c7176eb9c1f87e0636f55e0))
+* **graphql:** add graphqlUri to browser whitelist ([eb9ebc9](https://github.com/xing/hops/commit/eb9ebc9bf00bf9a1e3ed1ad2716ab35863e0a892))
+* **jest-preset:** add missing regenerator-runtime dependency ([7131a48](https://github.com/xing/hops/commit/7131a48b07f42150dd0500a3c205788312150245))
+* **jest-preset:** increase required babel version to 7.7.0 ([e44a764](https://github.com/xing/hops/commit/e44a7640532a9f993e841f5a91174b1886890f1f))
+* **jest-preset:** remove unneeded dependency to @types/jest ([58635bc](https://github.com/xing/hops/commit/58635bc0d724abf054a35009f3af54091b34ef5d))
+* **jest-preset:** use core-js v3 ([44ea13e](https://github.com/xing/hops/commit/44ea13e5cec0b3b761cc141b8796ca47ffb8f86f))
+* **pwa:** update dependency file-loader to v5 ([84473cf](https://github.com/xing/hops/commit/84473cf5e35eea5a386fa16a4eae5f22be90782d))
+* **react:** increase required babel version to 7.7.0 ([8b0922e](https://github.com/xing/hops/commit/8b0922eb0c56c8db9d70bde61a60a56c5373a26a))
+* **typescript:** warn more firmly on missing tsconfig.json ([7c2bbbb](https://github.com/xing/hops/commit/7c2bbbb7521e610afe2a444afe8e313ed04b17f1))
+* **typescript:** warn when certain tsconfig-values are overwritten ([7ac8889](https://github.com/xing/hops/commit/7ac88896c74e8ea831c12506122000d16c30cb73))
+* switch to react-helmet-async ([47cbd04](https://github.com/xing/hops/commit/47cbd0436cd43a67ecaf2ccc0994c21ac948c7c1))
+* update dependency tar to v5 ([fb03c51](https://github.com/xing/hops/commit/fb03c51bff746e479869dcec45af1c1c8f799951))
+* update script to be platform neutral ([ce3c4c4](https://github.com/xing/hops/commit/ce3c4c4e1f5c82d0db1f6dbb6b492e40d499c4ac))
+* upgrade untool ([c9a951d](https://github.com/xing/hops/commit/c9a951d0d6d51994af8a1214b369e1d71b20db1d))
+
+
+### chore
+
+* **apollo-mock-server:** bump minimum required node versions ([79a9879](https://github.com/xing/hops/commit/79a9879662bc61c044cf2bba32cd68ce0b0e9b1d))
+* **config:** bump minimum required node version ([0518322](https://github.com/xing/hops/commit/0518322b1afe6be28cabf9c0b4f3d09f9a266d53))
+* **config:** bump minimum required node versions ([e731c70](https://github.com/xing/hops/commit/e731c70571e8110910962c79b87c38fb60299141))
+* **create-hops-app:** bump minimum required node version ([8819c6a](https://github.com/xing/hops/commit/8819c6ac858ec453eb89b3d98a162b53123adfde))
+* **create-hops-app:** bump minimum required node versions ([bfbdea6](https://github.com/xing/hops/commit/bfbdea6a4609ec8af99646af2ada61d9e7bee506))
+* **development-proxy:** bump minimum required node version ([5882302](https://github.com/xing/hops/commit/5882302679ca15efb61f88f655cdc9a8aed7e7fd))
+* **development-proxy:** bump minimum required node versions ([0b9765b](https://github.com/xing/hops/commit/0b9765b167aaea94467a33d7b7c9c40db319d4e5))
+* **express:** bump minimum required node version ([0e71867](https://github.com/xing/hops/commit/0e71867b7a3bbc7c56d6b9f32900dd2e1c75c909))
+* **express:** bump minimum required node versions ([6119c20](https://github.com/xing/hops/commit/6119c2077a187f3e81cb30cc34af9b4313c72978))
+* **graphql:** bump minimum required node version ([38abd01](https://github.com/xing/hops/commit/38abd011d679cca25846e254257db76be5f1f02a))
+* **graphql:** bump minimum required node versions ([27e049e](https://github.com/xing/hops/commit/27e049e9bb6bf4515b746d2a6cdddb87e545f05f))
+* **hops:** bump minimum required node version ([20c3e2e](https://github.com/xing/hops/commit/20c3e2e1fdf0cfd3c238bb96ad4f9b0d8eaf122a))
+* **hops:** bump minimum required node versions ([cd8da87](https://github.com/xing/hops/commit/cd8da87026789a7afda34ca6bd32cbc353870525))
+* **jest-preset:** bump minimum required node version ([e88b98e](https://github.com/xing/hops/commit/e88b98e7c5fd7b21a75595741a084de2a0c82909))
+* **jest-preset:** bump minimum required node versions ([6474142](https://github.com/xing/hops/commit/6474142a4a875cb0ec6ac57605efa85c16b59983))
+* **lambda:** bump minimum required node version ([4370405](https://github.com/xing/hops/commit/4370405ac177fd01eb99d06e6ea49a5ccb3e7596))
+* **lambda:** bump minimum required node versions ([968baa0](https://github.com/xing/hops/commit/968baa061e24d32d75d0e81a0ec1242eec9d4bac))
+* **mixin:** bump minimum required node version ([052df59](https://github.com/xing/hops/commit/052df59e1bce0394510a0ac7a96e1f4cd7b972fa))
+* **mixin:** bump minimum required node versions ([a87ec3c](https://github.com/xing/hops/commit/a87ec3c2329479294ae11ff1c77dc5ca9e2c867a))
+* **postcss:** bump minimum required node version ([6451dfa](https://github.com/xing/hops/commit/6451dfaebaa605d9aa860c6fe8822cfb2ca76253))
+* **postcss:** bump minimum required node versions ([09ede0a](https://github.com/xing/hops/commit/09ede0af0a9e0e45575806b5dfc52cd83513a756))
+* **pwa:** bump minimum required node version ([6aab361](https://github.com/xing/hops/commit/6aab361c8885934df49d86f0b7a7aceaa3c50a93))
+* **pwa:** bump minimum required node versions ([484082c](https://github.com/xing/hops/commit/484082cebf6c644657272b61eaa1b6670b2fd1b3))
+* **react:** bump minimum required node version ([c1f99fd](https://github.com/xing/hops/commit/c1f99fd9045e7990dc019d08809e438435b8a092))
+* **react:** bump minimum required node versions ([419558a](https://github.com/xing/hops/commit/419558a08746f992cc4dc6ed910a2d0f754f46e8))
+* **react-apollo:** bump minimum required node versions ([daae3ed](https://github.com/xing/hops/commit/daae3edc6d774b29d387bb9c6e3d9215bebd07ff))
+* **redux:** bump minimum required node version ([2e206ce](https://github.com/xing/hops/commit/2e206cee24b502e2f30d6b6dbc1749b835bab8e1))
+* **redux:** bump minimum required node versions ([704c96a](https://github.com/xing/hops/commit/704c96a151b089a0c9de8f91f7aaee1d295ede2f))
+* **spec:** bump minimum required node version ([4eb684f](https://github.com/xing/hops/commit/4eb684fb81a9e24d6c0a780b3c1ba5e72c5f4b9d))
+* **styled-components:** bump minimum required node version ([888375e](https://github.com/xing/hops/commit/888375ee568035a260afe7e4f902e178028d6657))
+* **styled-components:** bump minimum required node versions ([d46702a](https://github.com/xing/hops/commit/d46702a0221015c65a686ca76e2000137abd5c46))
+* **typescript:** bump minimum required node version ([098e6a6](https://github.com/xing/hops/commit/098e6a63fdba0715babe05d310e8d909e84a6dd3))
+* **typescript:** bump minimum required node versions ([35d7dc5](https://github.com/xing/hops/commit/35d7dc513b00297718366ceff033cb62ad9f144e))
+* bump minimum required node version ([ceed1bc](https://github.com/xing/hops/commit/ceed1bc3a44e9be67b0f5e194978ed1af7a2ddec))
+
+
+### Features
+
+* **typescript:** decrease incremental build times ([941c8e0](https://github.com/xing/hops/commit/941c8e017d736d26b18c97f40127b537e4dcafd5))
+* create context extender api ([d948700](https://github.com/xing/hops/commit/d94870032e9d8534266c510ced2ccb8f46e92fba))
+* **apollo:** deprecate config value "shouldPrefetchOnServer" ([6f3b651](https://github.com/xing/hops/commit/6f3b65163feee2d9256dc0ca126fdb8e9f9795bf))
+* **apollo:** introduce package ([1eab141](https://github.com/xing/hops/commit/1eab1414dcd6f02afd3606dd33dda0e02ebbef3c))
+* **apollo-mock-server:** introduce package ([98ef040](https://github.com/xing/hops/commit/98ef0407c64758065ddb7d6f47a962be7f60f32e))
+* **hops:** add typings for config & server-data context hooks ([2c831f7](https://github.com/xing/hops/commit/2c831f7479e6f637bd3c9526fb982865c7f320d8))
+* **hops:** improve type definitions for withServerData and withConfig ([6dc2053](https://github.com/xing/hops/commit/6dc2053941e7d252fc4b2c0aa11d6caab59dc9f5))
+* **hops:** re-export config & server-data hooks from hops-react ([9bd6c24](https://github.com/xing/hops/commit/9bd6c24637422913666f466291f86991dc812df2))
+* **hops:** simplify typings ([40f72d9](https://github.com/xing/hops/commit/40f72d9ea09f1a66bae31b8b4b1a65a3fa43d23e))
+* **postcss:** upgrade to css-loader v3 ([eb4fc74](https://github.com/xing/hops/commit/eb4fc748a3105fe489460642e25bdb503fdb46aa))
+* **pwa:** whitelist config keys that should be sent to the browser ([d82e037](https://github.com/xing/hops/commit/d82e03758345b1fd13e3b79cceb4f2894554f8e0))
+* **react:** provide hooks for config & server-data contexts ([5638c21](https://github.com/xing/hops/commit/5638c21d54c22dbb17b84c98a38dd2464bdcf867))
+* **redux:** deprecate config value "shouldPrefetchOnServer" ([7565432](https://github.com/xing/hops/commit/756543227d330e8c4aa4d16e633bbc52f43d7460))
+* **typescript:** make typescript a peer dependency ([fc57dcf](https://github.com/xing/hops/commit/fc57dcfc3d30b3d4964731b51e268792d3d61cb0))
+* **typescript:** update typescript to v3.7 ([35456f8](https://github.com/xing/hops/commit/35456f836300187a65881b11faf21041c1f266c6))
+* bump all packages to their latest available versions ([29c2963](https://github.com/xing/hops/commit/29c29633fae95e2813dae9b1b6c8140d33332c35))
+* upgrade to jest v24 ([2222ba2](https://github.com/xing/hops/commit/2222ba289f5daf707ab1ada9b435b5725ae72234)), closes [#815](https://github.com/xing/hops/issues/815)
+* upgrade untool to 2.0.0-alpha.4 ([769ea81](https://github.com/xing/hops/commit/769ea81c279af6888a5c2bbf046e224b647aa38c))
+
+
+### BREAKING CHANGES
+
+* **typescript:** Hops drops support for non-LTS versions of Node
+* **styled-components:** Hops drops support for non-LTS versions of Node
+* **redux:** Hops drops support for non-LTS versions of Node
+* **react:** Hops drops support for non-LTS versions of Node
+* **react-apollo:** Hops drops support for non-LTS versions of Node
+* **pwa:** Hops drops support for non-LTS versions of Node
+* **postcss:** Hops drops support for non-LTS versions of Node
+* **mixin:** Hops drops support for non-LTS versions of Node
+* **lambda:** Hops drops support for non-LTS versions of Node
+* **jest-preset:** Hops drops support for non-LTS versions of Node
+* **hops:** Hops drops support for non-LTS versions of Node
+* **graphql:** Hops drops support for non-LTS versions of Node
+* **express:** Hops drops support for non-LTS versions of Node
+* **development-proxy:** Hops drops support for non-LTS versions of Node
+* **create-hops-app:** Hops drops support for non-LTS versions of Node
+* **config:** Hops drops support for non-LTS versions of Node
+* **apollo-mock-server:** Hops drops support for non-LTS versions of Node
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **jest-preset:** Hops drops support for Node v8
+* **react:** Hops drops support for Node v8
+* **redux:** Hops drops support for Node v8
+* **development-proxy:** Hops drops support for Node v8
+* **lambda:** Hops drops support for Node v8
+* **create-hops-app:** Hops drops support for Node v8
+* **pwa:** Hops drops support for Node v8
+* **graphql:** Hops drops support for Node v8
+* **spec:** Hops drops support for Node v8
+* **postcss:** Hops drops support for Node v8
+* **mixin:** Hops drops support for Node v8
+* **typescript:** Hops drops support for Node v8
+* **config:** Hops drops support for Node v8
+* **express:** Hops drops support for Node v8
+* **hops:** Hops drops support for Node v8
+* **styled-components:** Hops drops support for Node v8
+* Hops drops support for Node v8
+* **hops:** `withConfig` and `withServerData` have a simpler type definition now. They only take one generic argument instead of three.
+
+Co-Authored-By: Emanuel Kluge <emanuel.kluge@xing.com>
+* Jest v23 is no longer supported. Applications must
+provide Jest v24 through their dependencies.
+* **typescript:** TypeScript is now a peer dependency.
+* **postcss:** This upgrade contains two major releases of css-loader
+Please check out their release notes about breaking changes and upgrade
+guides:
+- https://github.com/webpack-contrib/css-loader/releases/tag/v2.0.0
+- https://github.com/webpack-contrib/css-loader/releases/tag/v3.0.0
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 

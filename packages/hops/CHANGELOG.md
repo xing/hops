@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### Bug Fixes
+
+* switch to react-helmet-async ([47cbd04](https://github.com/xing/hops/commit/47cbd0436cd43a67ecaf2ccc0994c21ac948c7c1))
+* upgrade untool ([c9a951d](https://github.com/xing/hops/commit/c9a951d0d6d51994af8a1214b369e1d71b20db1d))
+* upgrade untool to 2.0.0-beta.0 ([d6910f2](https://github.com/xing/hops/commit/d6910f2e097f77160c7176eb9c1f87e0636f55e0))
+* upgrade untool to 2.0.0-beta.1 ([2895a5c](https://github.com/xing/hops/commit/2895a5cd7617116be4476ffe87174bd2d15a0cdc))
+
+
+### chore
+
+* **hops:** bump minimum required node version ([20c3e2e](https://github.com/xing/hops/commit/20c3e2e1fdf0cfd3c238bb96ad4f9b0d8eaf122a))
+* **hops:** bump minimum required node versions ([cd8da87](https://github.com/xing/hops/commit/cd8da87026789a7afda34ca6bd32cbc353870525))
+
+
+### Features
+
+* **hops:** add typings for config & server-data context hooks ([2c831f7](https://github.com/xing/hops/commit/2c831f7479e6f637bd3c9526fb982865c7f320d8))
+* **hops:** re-export config & server-data hooks from hops-react ([9bd6c24](https://github.com/xing/hops/commit/9bd6c24637422913666f466291f86991dc812df2))
+* bump all packages to their latest available versions ([29c2963](https://github.com/xing/hops/commit/29c29633fae95e2813dae9b1b6c8140d33332c35))
+* upgrade untool to 2.0.0-alpha.4 ([769ea81](https://github.com/xing/hops/commit/769ea81c279af6888a5c2bbf046e224b647aa38c))
+* **hops:** improve type definitions for withServerData and withConfig ([6dc2053](https://github.com/xing/hops/commit/6dc2053941e7d252fc4b2c0aa11d6caab59dc9f5))
+* **hops:** simplify typings ([40f72d9](https://github.com/xing/hops/commit/40f72d9ea09f1a66bae31b8b4b1a65a3fa43d23e))
+
+
+### BREAKING CHANGES
+
+* **hops:** Hops drops support for non-LTS versions of Node
+* The following peer dependencies have increased versions
+- `jest`: 24.9.0
+- `react` & `react-dom`: 16.8.0
+- `react-apollo`: 3.1.0
+- `react-redux`: 7.1.0
+- `react-router-dom`: 5.1.0
+- `redux-thunk`: 2.3.0
+- `styled-components: 4.4.0
+- `typescript`: 3.6.0
+* **hops:** Hops drops support for Node v8
+* **hops:** `withConfig` and `withServerData` have a simpler type definition now. They only take one generic argument instead of three.
+
+Co-Authored-By: Emanuel Kluge <emanuel.kluge@xing.com>
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 

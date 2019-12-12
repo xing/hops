@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
+
+
+### Bug Fixes
+
+* upgrade untool ([c9a951d](https://github.com/xing/hops/commit/c9a951d0d6d51994af8a1214b369e1d71b20db1d))
+* upgrade untool to 2.0.0-beta.0 ([d6910f2](https://github.com/xing/hops/commit/d6910f2e097f77160c7176eb9c1f87e0636f55e0))
+* upgrade untool to 2.0.0-beta.1 ([2895a5c](https://github.com/xing/hops/commit/2895a5cd7617116be4476ffe87174bd2d15a0cdc))
+
+
+### chore
+
+* **config:** bump minimum required node version ([0518322](https://github.com/xing/hops/commit/0518322b1afe6be28cabf9c0b4f3d09f9a266d53))
+* **config:** bump minimum required node versions ([e731c70](https://github.com/xing/hops/commit/e731c70571e8110910962c79b87c38fb60299141))
+
+
+### Features
+
+* upgrade untool to 2.0.0-alpha.4 ([769ea81](https://github.com/xing/hops/commit/769ea81c279af6888a5c2bbf046e224b647aa38c))
+
+
+### BREAKING CHANGES
+
+* **config:** Hops drops support for non-LTS versions of Node
+* **config:** Hops drops support for Node v8
+
+
+
+
+
 # [12.0.0-alpha.5](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-alpha.5) (2019-11-27)
 
 
