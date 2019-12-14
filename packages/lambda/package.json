@@ -28,7 +28,7 @@
     "pathifist": "^1.0.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.14",
-    "semver": "^6.3.0",
+    "semver": "^7.0.0",
     "serverless-http": "^2.3.0",
     "strip-indent": "^3.0.0"
   },
