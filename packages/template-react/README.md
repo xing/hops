@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React.
+This is a small example application showing [hops](../../DOCUMENTATION.md) in action. It demonstrates how to use hops with React.
 
 It has the following folder structure:
 
@@ -54,7 +54,9 @@ It can also be used to statically build HTML pages for all `locations` that are 
 
 In this scenario it will iterate through the `locations` and render each location to a HTML document that will be placed in the `dist/` folder.
 
-To make use of this execute `npm run build -- --static` or `yarn build --static`.
+To make use of this execute `npm run build -- --static`¹ or `yarn build --static`¹.
+
+**¹:** the static HTML export has been [deprecated](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003).
 
 ### `npm test` / `yarn test`
 
@@ -66,10 +68,10 @@ To serve your application using a production-ready Express.js server, execute th
 
 ## Configuration
 
-Please refer to the [main readme](https://github.com/xing/hops#installing--configuring-a-preset) for an example of how to configure your presets and check out the individual preset readme files for the presets used in this project for more in-depth explanations:
+Please refer to the [main readme](../../DOCUMENTATION.md#installing--configuring-a-preset) for an example of how to configure your presets and check out the individual preset readme files for the presets used in this project for more in-depth explanations:
 
-- [hops-preset-defaults](https://github.com/xing/hops/tree/master/packages/preset-defaults)
-- [hops-react](https://github.com/xing/hops/tree/master/packages/react)
-- [hops-postcss](https://github.com/xing/hops/tree/master/packages/postcss)
+- [hops-preset-defaults](../preset-defaults)
+- [hops-react](../react)
+- [hops-postcss](../postcss)
 
 In this project we configure `babel` and `postcss` through the `"browsers"` field and we specify two loctions `/` and `/counter` through the `"locations"` hash.
