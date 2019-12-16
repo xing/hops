@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up a `<ThemeProvider />` and enable server-side rendering support for [styled-components](https://www.styled-components.com/) in Hops.
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to set up a `<ThemeProvider />` and enable server-side rendering support for [styled-components](https://www.styled-components.com/) in Hops.
 
 ### Installation
 
@@ -16,7 +16,7 @@ Add this preset and its peer dependency `styled-components` to your existing Hop
 npm install --save hops-styled-components styled-components
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ### Usage
 
@@ -31,7 +31,7 @@ const Headline = styled.h1`
 export default render(<Headline>Hello World!</Headline>);
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/styled-components) as an example for how to use this preset.
+Check out this [integration test](../spec/integration/styled-components) as an example for how to use this preset.
 
 ### Configuration
 
