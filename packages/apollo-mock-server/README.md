@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) in order to start and configure an Apollo Server that can be used for GraphQL mocking to enable faster local development.
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) in order to start and configure an Apollo Server that can be used for GraphQL mocking to enable faster local development.
 
 ### Installation
 
@@ -14,7 +14,7 @@ Add this preset and its peer dependency `graphql-tag` to your existing Hops Reac
 npm install --save hops-apollo-mock-server graphql-tag
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ### Usage
 
