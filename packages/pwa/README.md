@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to enable [progressive web app](https://developers.google.com/web/progressive-web-apps/) features like a [web app manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) and [service worker](https://developers.google.com/web/fundamentals/primers/service-workers/) usage in Hops.
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to enable [progressive web app](https://developers.google.com/web/progressive-web-apps/) features like a [web app manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) and [service worker](https://developers.google.com/web/fundamentals/primers/service-workers/) usage in Hops.
 
 ### Installation
 
@@ -14,7 +14,7 @@ Add this preset to your existing Hops React project:
 npm install --save hops-pwa
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ### Usage
 
@@ -42,7 +42,7 @@ import installServiceWorker from 'hops-pwa';
 installServiceWorker();
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/pwa) as an example for how to use this preset.
+Check out this [integration test](../spec/integration/pwa) as an example for how to use this preset.
 
 #### Consumer API
 
