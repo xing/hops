@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that takes care of deploying your application to [AWS Lambda](https://aws.amazon.com/lambda/).
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that takes care of deploying your application to [AWS Lambda](https://aws.amazon.com/lambda/).
 
 ### Installation
 
@@ -14,7 +14,7 @@ Add this preset to your existing Hops project:
 npm install --save hops-lambda
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ### CLI
 
