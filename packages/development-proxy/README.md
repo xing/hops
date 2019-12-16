@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-[Hops preset](https://github.com/xing/hops/tree/master#presets) that adds an API-proxy for development.
+[Hops preset](../../DOCUMENTATION.md#presets) that adds an API-proxy for development.
 
 Hops apps are often run on the same host as their backend/api endpoints. However, when working locally, backend apps often run on a different host as the frontend application. This can cause issues with cross origin requests during development that are of no concern in the production environment.
 
@@ -28,7 +28,7 @@ npm install --save hops-development-proxy
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `proxy` | `String` \| `Object` | `undefined` | _no_ | Proxy target configuration |
+| `proxy` | `String | Object` | `undefined` | _no_ | Proxy target configuration |
 
 ##### proxy
 
