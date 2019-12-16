@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that, when installed, will enable css loaders for [PostCSS Preset Env](https://github.com/csstools/postcss-preset-env) with support for [CSS Modules](https://github.com/css-modules/css-modules).
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that, when installed, will enable css loaders for [PostCSS Preset Env](https://github.com/csstools/postcss-preset-env) with support for [CSS Modules](https://github.com/css-modules/css-modules).
 
 ### Installation
 
@@ -14,7 +14,7 @@ Add this preset to your existing Hops React project:
 npm install --save hops-postcss
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ### Usage
 
@@ -32,7 +32,7 @@ import styles from './styles.css';
 export default render(<h1 className={styles.headline}>hello</h1>);
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/postcss) as an example for how to use this preset.
+Check out this [integration test](../spec/integration/postcss) as an example for how to use this preset.
 
 #### CSS Modules opt-out
 
