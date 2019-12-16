@@ -4,11 +4,11 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to set up an `<ApolloProvider />` and enable client-side support for GraphQL via the Apollo framework.
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to set up an `<ApolloProvider />` and enable client-side support for GraphQL via the Apollo framework.
 
 ### Installation
 
-_This preset must be used together with the [`hops-react`](https://github.com/xing/hops/blob/master/packages/react/README.md#presets) preset._
+_This preset must be used together with the [`hops-react`](../react/README.md#presets) preset._
 
 Add this preset and its peer dependencies to your existing Hops React project:
 
@@ -16,7 +16,7 @@ Add this preset and its peer dependencies to your existing Hops React project:
 npm install --save hops-react-apollo graphql-tag react react-apollo react-dom react-helmet-async react-router-dom
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ### CLI
 
@@ -44,7 +44,7 @@ This argument can be specified multiple times to add multiple HTTP headers.
 
 In order to start using GraphQL in your application install this preset and configure the required options (see below).
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/graphql) as an example for how to use this preset.
+Check out this [integration test](../spec/integration/graphql) as an example for how to use this preset.
 
 ### Configuration
 
@@ -108,7 +108,7 @@ This option controls whether you want Hops to execute GraphQL queries during ser
 
 If you don't want Hops to do full server-side rendering, set this value to `false`.
 
-Bear in mind, that setting this value to `true` on the other hand has no mandatory character. This means that there's no way to force Hops to execute server-side requests. As soon as there's a single Hops preset in place, that either sets the `allowServerSideDataFetching`-value to `false` or implements the [`canPrefetchOnServer`](https://github.com/xing/hops/tree/master/packages/graphql#canprefetchonserver-boolean-sequence-server)-hook to return `false`, there won't be any server-side requests.
+Bear in mind, that setting this value to `true` on the other hand has no mandatory character. This means that there's no way to force Hops to execute server-side requests. As soon as there's a single Hops preset in place, that either sets the `allowServerSideDataFetching`-value to `false` or implements the [`canPrefetchOnServer`](../graphql#canprefetchonserver-boolean-sequence-server)-hook to return `false`, there won't be any server-side requests.
 
 #### Render Options
 
