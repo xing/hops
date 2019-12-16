@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to add redux support to your Hops project.
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to add redux support to your Hops project.
 
 ### Installation
 
@@ -16,13 +16,13 @@ Add this preset and its peer dependencies `react-redux`, `redux` and `redux-thun
 npm install --save hops-redux react-redux redux redux-thunk
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ### Usage
 
 In order to use Redux in your application install the plugin and configure your reducers [via render options](#render-options).
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/redux) as an example for how to use this preset.
+Check out this [integration test](../spec/integration/redux) as an example for how to use this preset.
 
 ### Configuration
 
@@ -35,7 +35,7 @@ Check out this [integration test](https://github.com/xing/hops/tree/master/packa
 
 ##### `shouldPrefetchOnServer` [deprecated]
 
-**Note:** This option has been deprecated. See the [DEPRECATIONS document](https://github.com/xing/hops/blob/master/DEPRECATIONS.md#DEP0003) for more informations.
+**Note:** This option has been deprecated. See the [DEPRECATIONS document](../../DEPRECATIONS.md#DEP0003) for more informations.
 
 Whether you want "full server-side rendering" or just "app shell" rendering.
 
@@ -51,7 +51,7 @@ This option controls whether you want Hops to execute the configured [route-boun
 
 If you don't want Hops to execute route-bound action creators during server-side rendering, set this value to `false`.
 
-Bear in mind, that setting this value to `true` on the other hand has no mandatory character. This means that there's no way to force Hops to execute server-side requests. As soon as there's a single Hops preset in place, that either sets the `allowServerSideDataFetching`-value to `false` or implements the [`canPrefetchOnServer`](https://github.com/xing/hops/tree/master/packages/redux#canprefetchonserver-boolean-sequence-server)-hook to return `false`, there won't be any server-side requests.
+Bear in mind, that setting this value to `true` on the other hand has no mandatory character. This means that there's no way to force Hops to execute server-side requests. As soon as there's a single Hops preset in place, that either sets the `allowServerSideDataFetching`-value to `false` or implements the [`canPrefetchOnServer`](../redux#canprefetchonserver-boolean-sequence-server)-hook to return `false`, there won't be any server-side requests.
 
 #### Render Options
 
