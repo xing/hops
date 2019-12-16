@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a small example application showing [hops](https://github.com/xing/hops) in action. It demonstrates how to use hops with React, GraphQL and Jest.
+This is a small example application showing [hops](../../DOCUMENTATION.md) in action. It demonstrates how to use hops with React, GraphQL and Jest.
 
 It has the following folder structure:
 
@@ -50,7 +50,9 @@ It can also be used to statically build HTML pages for all `locations` that are 
 
 In this scenario it will iterate through the `locations` and render each location to a HTML document that will be placed in the `build/` folder.
 
-To make use of this execute `npm run build -- --static` or `yarn build --static`.
+To make use of this execute `npm run build -- --static`¹ or `yarn build --static`¹.
+
+**¹:** the static HTML export has been [deprecated](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003).
 
 ### `npm test` / `yarn test`
 
@@ -58,6 +60,6 @@ This command will test your code with [jest](https://facebook.github.io/jest/) a
 
 ## Configuration
 
-Please refer to [hops-config](https://github.com/xing/hops/tree/master/packages/config) to see a list of all supported options.
+Please refer to the [main readme](../../DOCUMENTATION.md#installing--configuring-a-preset) to see a list of all supported options.
 
 In this project we configure `babel` and `postcss` through the `"browsers"` field, we specify one location through the `"locations"` hash and we specify the URL of the GraphQL server through the `"graphqlUri"` field.
