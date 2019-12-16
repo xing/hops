@@ -11,13 +11,7 @@ It ensures that Babel works correctly out of the box and that requiring files su
 ## Installation
 
 ```bash
-npm install --save jest-preset-hops
-```
-
-You also [need to install 'babel-core@^7.0.0-0' as devDependency](https://jestjs.io/docs/en/getting-started#using-babel).
-
-```bash
-npm install --save --dev 'babel-core@^7.0.0-0'
+npm install --save-dev jest-preset-hops jest
 ```
 
 ## Usage
@@ -31,3 +25,7 @@ Add `jest-preset-hops` as [preset](https://facebook.github.io/jest/docs/en/confi
   }
 }
 ```
+
+Feel free to extend the `"jest"`-configuration object along the way.
+
+For running tests, use the [Jest CLI](https://jestjs.io/docs/en/cli).
