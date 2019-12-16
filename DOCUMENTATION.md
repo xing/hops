@@ -25,7 +25,7 @@ These are the main features:
 - Universal JavaScript (the same code runs in both the server and the client)
 - Server- and client-side HMR (Hot Module Reloading) - no more restarting the server after editing your application files
 - Environment variable support at runtime (to be able to use a single build artifact for different environments)
-- Export your pages as static HTML files (static pages generator)
+- Export your pages as static HTML files [[**deprecated**]](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003)
 - ES2018+ & JSX support (All new language features are supported - and, if required, automatically polyfilled - via babel-preset-env)
 - Bundle Splitting (with support for server-side rendering)
 - Curated list of presets (for data fetching, styling, deployment, etc)
@@ -76,7 +76,7 @@ These are the main features:
 
 ## System requirements
 
-Hops is built on modern technologies and therefore needs at least Node.js _v8.10_ or higher.
+Hops is built on modern technologies and therefore needs at least Node.js _v10.13_ or higher.
 
 You can use either [`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) (which is included in npm v5.2+) or [`npm init`](https://docs.npmjs.com/cli/init) (with npm v6+) or [`yarn create`](https://yarnpkg.com/lang/en/docs/cli/create/) to create a Hops application and run Hops CLI commands.
 
@@ -239,7 +239,9 @@ _The production flag (`--production` or `-p`) is a shortcut for setting the envi
 
 - `npm start` starts the development server with hot module reloading, etc.
 - `npm start -- --production` executes a production build and then starts the production server.
-- `npm start -- --production --static` exports static HTML pages for all configured [locations](#default-settings) and then starts the production server (_this only works in tandem with production mode_).
+- `npm start -- --production --static`¹ exports static HTML pages for all configured [locations](#default-settings) and then starts the production server (_this only works in tandem with production mode_).
+
+**¹:** the static HTML export has been [deprecated](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003).
 
 #### `npm run build`
 
@@ -247,9 +249,11 @@ This command will execute a single build of all your assets.
 
 - `npm run build` builds all assets in development mode.
 - `npm run build -- --production` builds all assets in production mode (which includes minification, etc).
-- `npm run build -- --static` export static HTML pages for all configured [locations](#default-settings) in development mode.
-- `npm run build -- --production --static` export static HTML pages in production mode (enables minification, etc).
+- `npm run build -- --static`¹ export static HTML pages for all configured [locations](#default-settings) in development mode.
+- `npm run build -- --production --static`¹ export static HTML pages in production mode (enables minification, etc).
 - `npm run build -- --analyze-client-bundle` visualize bundles' contents with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
+
+**¹:** the static HTML export has been [deprecated](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003).
 
 #### `npm run serve`
 
@@ -271,7 +275,7 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 
 | Name | Type | Default | Example | Description |
 | --- | --- | --- | --- | --- |
-| `https` | `Boolean` / `Object` | `false` | `true` or<br/>`{ "keyFile": "./my.key", "certFile": "./my.cert" }` | Configure HTTPS support for Hops |
+| `https` | `Boolean | Object` | `false` | `true` or<br/>`{ "keyFile": "./my.key", "certFile": "./my.cert" }` | Configure HTTPS support for Hops |
 | `host` | `String` | `[HOST]` | `10.10.10.10` | Specify the IP address that Hops should bind to |
 | `port` | `String` | `[PORT]` | `1337` | Specify the Port that Hops should listen on |
 | `locations` | `Array<String>` | `[]` | `["/", "/about"]` | An array of locations for static rendering of HTML pages |
@@ -280,9 +284,10 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 | `distDir` | `String` | `<rootDir>/dist` | `<rootDir>/out` | The directory from which static assets will be served |
 | `serverDir` | `String` | `node_modules/.cache/untool` | `<rootDir>/dist` | The directory where the generated server middleware will be stored |
 | `browsers` | `Array<String>` | `['defaults']` | `['last 1 Chrome versions']` | An array of browserslist queries to specify targets for which to transpile/polyfill (see [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for more information) |
-| `node` | `String` | `current` | `8.10` | A Node.js version identifier or `current` to specify for which target to transpile/polyfill |
+| `node` | `String` | `current` | `10.13` | A Node.js version identifier or `current` to specify for which target to transpile/polyfill |
 | `browserWhitelist` | `Object` | `{"basePath":true}` | A map of config keys that should be exposed to the client. Nested paths can be described using dot notation |
 
+<a name="hops-alternative-config-file-format" title="Custom jump anchor: do not remove!"></a>
 Under the hood Hops uses [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig) to gather settings. So you're not limited to the `"hops"` key in your `package.json`, but can alternatively use an external settings file in the root directory of your project.\
 The filename then has to be `hops.config.js` or `.hopsrc{.json,.yaml,.js}`.
 
@@ -353,6 +358,16 @@ This allows you to have just one build artifact that you can use in different en
 
 **Tip:** You can use Hops's configuration mechanism to provide custom values to your application. As seen in the environment variable example above, you can specify arbitrary keys in your settings and access them in your React application.
 
+**Tip:** When leveraging the bracket-notation you're able to set a default value, e.g. for your local development environment.
+
+```json
+{
+  "hops": {
+    "myApiUrl": "[MY_API_URL=http://localhost:9000]"
+  }
+}
+```
+
 **Tip:** Hops ships with integrated support for [`dotenv`](https://github.com/motdotla/dotenv), which means that it will try to read a `.env` file from your application root directory and load its values as environment variables.
 
 #### Exposing values to the client
@@ -421,7 +436,7 @@ Some presets require (or allow) additional configuration. Read the sections belo
 
 ### Available presets
 
-#### [`hops`](https://github.com/xing/hops/tree/master/packages/hops)
+#### [`hops`](packages/hops)
 
 This is the default preset that contains the basic building blocks for Hops itself, therefore it will always be available when creating a new Hops application. It takes care of setting up the CLI, Express.js server, webpack and React.js support.
 
@@ -551,7 +566,7 @@ const Home = importComponent('./home', 'Home');
 export default render(<Home />);
 ```
 
-During tests `importComponent` simply outputs the referenced component. If you'd rather like to test the `loading`- or the `error`-state of the lazy-loading placeholder component, you currently have to provide your own mock.
+During tests `importComponent` simply outputs the referenced component. If you'd rather like to test the `loading`- or the `error`-state of the lazy-loading placeholder component, you have to provide your own mock.
 
 **Example: check the loading state**
 
@@ -614,9 +629,9 @@ _Reminder: These options must be passed in an options hash as the second argumen
 | `router.forceRefresh` | `Boolean` | `false` | The [`<BrowserRouter />`s forceRefresh prop](https://reacttraining.com/react-router/web/api/BrowserRouter/forcerefresh-bool) |
 | `router.keyLength` | `Number` | `6` | The [`<BrowserRouter />`s keyLength prop](https://reacttraining.com/react-router/web/api/BrowserRouter/keylength-number) |
 
-For more details and more advanced use-cases, head over to the [full readme of the `hops` preset](https://github.com/xing/hops/tree/master/packages/hops).
+For more details and more advanced use-cases, head over to the [full readme of the `hops` preset](packages/hops).
 
-#### [`hops-redux`](https://github.com/xing/hops/tree/master/packages/redux)
+#### [`hops-redux`](packages/redux)
 
 This preset will set-up a Redux store, take care of dehydration / rehydration and wrap your application in a `<Provider />`.
 
@@ -642,7 +657,7 @@ export default render(<MyApp />, { redux: { reducers: myReducers } });
 
 ##### Settings
 
-_Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
+_Reminder: These settings go into your `package.json` or [Hops configuration file](#hops-alternative-config-file-format)._
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -660,16 +675,16 @@ _Reminder: These options must be passed in an options hash as the second argumen
 | `redux.actionCreators` | `Array` | `[]` | _no_ | An array of route-bound action creators to be dispatched when the current route matches. |
 | `redux.alwaysDispatchActionsOnClient` | `boolean` | `undefined` | _no_ | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-redux`](https://github.com/xing/hops/tree/master/packages/redux).
+For more details and more advanced use-cases, head over to the [full readme of `hops-redux`](packages/redux).
 
-#### [`hops-react-apollo`](https://github.com/xing/hops/tree/master/packages/react-apollo)
+#### [`hops-react-apollo`](packages/react-apollo)
 
 This preset will create an [Apollo client](https://www.apollographql.com/docs/react/) and take care of dehydration / rehydration and wrap your application in an `<ApolloProvider />`.
 
 Install it to your project:
 
 ```shell
-npm install --save hops-react-apollo graphql-tag react react-apollo react-dom react-helmet-async react-router-dom
+npm install --save hops-react-apollo graphql-tag react-apollo
 ```
 
 And specify your GraphQL endpoint URI in the settings:
@@ -686,7 +701,7 @@ And specify your GraphQL endpoint URI in the settings:
 
 ##### Settings
 
-_Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
+_Reminder: These settings go into your `package.json` or [Hops configuration file](#hops-alternative-config-file-format)._
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
@@ -705,22 +720,22 @@ _Reminder: These options must be passed in an options hash as the second argumen
 | `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of a `apollo-link` |
 | `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of a `apollo-cache` |
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-react-apollo`](https://github.com/xing/hops/tree/master/packages/react-apollo) for more details.
+For more details and more advanced use-cases, head over to the [full readme of `hops-react-apollo`](packages/react-apollo) for more details.
 
-#### [`hops-apollo-mock-server`](https://github.com/xing/hops/tree/master/packages/apollo-mock-server)
+#### [`hops-apollo-mock-server`](packages/apollo-mock-server)
 
 This preset will provide a Apollo Server that can be used for GraphQL mocking. This can be useful for local development and automated test environments.
 
-_Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
+_Reminder: These settings go into your `package.json` or [Hops configuration file](#hops-alternative-config-file-format)._
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
 | `graphqlMockSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema mocks |
 | `graphqlMockServerPath` | `String` | `'/graphql'` | _no_ | Path of the mock server endpoint |
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-apollo-mock-server)`](https://github.com/xing/hops/tree/master/packages/apollo-mock-server) for more details.
+For more details and more advanced use-cases, head over to the [full readme of `hops-apollo-mock-server)`](packages/apollo-mock-server) for more details.
 
-#### [`hops-postcss`](https://github.com/xing/hops/tree/master/packages/postcss)
+#### [`hops-postcss`](packages/postcss)
 
 This preset will enable PostCSS support with [CSS modules](https://github.com/css-modules/css-modules) and add the [PostCSS Preset Env](https://github.com/csstools/postcss-preset-env) to your project.
 
@@ -753,9 +768,9 @@ export default render(<h1 className={styles.headline}>hello world</h1>);
 
 **Hint:** You can opt-out of css-modules by appending a `?global` query parameter to your import statement (for example: `import styles from 'animate.css/animate.min.css?global';`).
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-postcss`](https://github.com/xing/hops/tree/master/packages/postcss).
+For more details and more advanced use-cases, head over to the [full readme of `hops-postcss`](packages/postcss).
 
-#### [`hops-styled-components`](https://github.com/xing/hops/tree/master/packages/styled-components)
+#### [`hops-styled-components`](packages/styled-components)
 
 This preset will enable support for server-side rendering of [styled-components](https://www.styled-components.com/) and set-up a `<ThemeProvider />` for you.
 
@@ -789,9 +804,9 @@ _Reminder: These options must be passed in an options hash as the second argumen
 | --- | --- | --- | --- | --- |
 | `styled.theme` | `Object` | `{}` | _no_ | A theme object for the styled-components `<ThemeProvider />` |
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-styled-components`](https://github.com/xing/hops/tree/master/packages/styled-components).
+For more details and more advanced use-cases, head over to the [full readme of `hops-styled-components`](packages/styled-components).
 
-#### [`hops-typescript`](https://github.com/xing/hops/tree/master/packages/typescript)
+#### [`hops-typescript`](packages/typescript)
 
 This preset will enable you to write your Hops application using [TypeScript](https://www.typescriptlang.org/).
 
@@ -799,6 +814,7 @@ Install it to your project:
 
 ```shell
 npm install --save hops-typescript
+npm install --save-dev typescript
 ```
 
 And create a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file in your application root folder (you are free to extend our [minimal `tsconfig.json`](https://github.com/xing/hops/blob/master/packages/typescript/tsconfig.json) that we ship with this module or write it yourself).
@@ -811,9 +827,9 @@ And create a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsco
 }
 ```
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-typescript`](https://github.com/xing/hops/tree/master/packages/typescript).
+For more details and more advanced use-cases, head over to the [full readme of `hops-typescript`](packages/typescript).
 
-#### [`hops-pwa`](https://github.com/xing/hops/tree/master/packages/pwa)
+#### [`hops-pwa`](packages/pwa)
 
 This preset enables PWA features, such as web app manifest and service workers for Hops projects.
 
@@ -869,16 +885,16 @@ export default render(<h1>hello world</h1>);
 
 ##### Settings
 
-_Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
+_Reminder: These settings go into your `package.json` or [Hops configuration file](#hops-alternative-config-file-format)._
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
 | `workerPath` | `String` | `<basePath>/sw.js` | _no_ | The path on which to serve the service worker |
 | `workerFile` | `String` | `hops-pwa/worker.js` | _yes_ | The path to the service worker entry file |
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-pwa`](https://github.com/xing/hops/tree/master/packages/pwa).
+For more details and more advanced use-cases, head over to the [full readme of `hops-pwa`](packages/pwa).
 
-#### [`hops-development-proxy`](https://github.com/xing/hops/tree/master/packages/development-proxy)
+#### [`hops-development-proxy`](packages/development-proxy)
 
 Hops apps are often served on the same host as their backend/API, so during development we provide this preset, that sets up an HTTP proxy to forward any unknown requests to the configured remote URL.
 
@@ -902,17 +918,17 @@ And configure your remote endpoint:
 
 ##### Settings
 
-_Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
+_Reminder: These settings go into your `package.json` or [Hops configuration file](#hops-alternative-config-file-format)._
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `proxy` | `String \| Object` | `undefined` | _no_ | Proxy target configuration |
+| `proxy` | `String | Object` | `undefined` | _no_ | Proxy target configuration |
 
 This will proxy all requests that are not assets and don't have `text/html` in its `Accept` header to the configured proxy endpoint.
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-development-proxy`](https://github.com/xing/hops/tree/master/packages/development-proxy).
+For more details and more advanced use-cases, head over to the [full readme of `hops-development-proxy`](packages/development-proxy).
 
-#### [`hops-lambda`](https://github.com/xing/hops/tree/master/packages/lambda)
+#### [`hops-lambda`](packages/lambda)
 
 This preset enables simple deployment workflows to AWS Lambda.
 
@@ -922,7 +938,7 @@ Install it to your project:
 npm install --save hops-lambda
 ```
 
-Now all you need to do is [configure your AWS credentials](https://github.com/xing/hops/tree/master/packages/lambda#aws-configuration)\
+Now all you need to do is [configure your AWS credentials](packages/lambda#aws-configuration)\
 and set your [`basePath`](#default-settings) to `prod` and then you are all set to deploy your application:
 
 **`package.json`**
@@ -943,7 +959,7 @@ npx hops lambda deploy
 
 ##### Settings
 
-_Reminder: These settings go into your `package.json` or [Hops configuration file](#settings)._
+_Reminder: These settings go into your `package.json` or [Hops configuration file](#hops-alternative-config-file-format)._
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -957,9 +973,9 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 
 _\* If no region is configured via the preset config, `hops-lambda` will try to read `AWS_REGION` and `AWS_DEFAULT_REGION` from your environment first before defaulting to `us-east-1`._
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-lambda`](https://github.com/xing/hops/tree/master/packages/lambda).
+For more details and more advanced use-cases, head over to the [full readme of `hops-lambda`](packages/lambda).
 
-#### [`jest-preset-hops`](https://github.com/xing/hops/tree/master/packages/jest-preset)
+#### [`jest-preset-hops`](packages/jest-preset)
 
 Hops uses wepback to configure and instrument your application. However, test runners aren't compatible with this setup out of the box.
 
@@ -968,7 +984,7 @@ Hops uses wepback to configure and instrument your application. However, test ru
 Install it to your project:
 
 ```shell
-npm install --save --dev jest-preset-hops babel-core@^7.0.0-0
+npm install --save-dev jest-preset-hops jest
 ```
 
 Add `jest-preset-hops` as [preset](https://facebook.github.io/jest/docs/en/configuration.html#preset-string) to your Jest config. This can for example be done by adding it to your package.json.
@@ -1153,7 +1169,7 @@ module.exports = MyExpressMixin;
 
 #### Example: Passing data from server to a React component
 
-To pass data we will use the [`enhanceServerData` mixin hook](https://github.com/xing/hops/tree/master/packages/react#enhanceserverdataserverdata-req-res-serverdata-pipe-server) to pass data. The HoC[`withServerData`](https://github.com/xing/hops/tree/master/packages/react#withserverdatacomponent-higherordercomponent) will expose the data via the `serverData` prop.
+To pass data we will use the [`enhanceServerData` mixin hook](packages/react#enhanceserverdataserverdata-req-res-serverdata-pipe-server) to pass data. The HoC[`withServerData`](packages/react#withserverdatacomponent-higherordercomponent) will expose the data via the `serverData` prop.
 
 **`mixin.core.js`**
 
