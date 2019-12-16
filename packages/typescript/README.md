@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that can be used to enable [TypeScript](https://www.typescriptlang.org/) support for Hops projects.
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to enable [TypeScript](https://www.typescriptlang.org/) support for Hops projects.
 
 ## Installation
 
@@ -14,19 +14,19 @@ Add this preset to your existing Hops React project:
 npm install --save hops-typescript typescript
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ## Usage
 
 Once this preset is installed and you have a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) in your application root you can start writing your app using TypeScript.
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/typescript) as an example for how to use this preset.
+Check out this [integration test](../spec/integration/typescript) as an example for how to use this preset.
 
 ## Configuration
 
 The only required configuration is a `tsconfig.json` in your project root.
 
-This preset contains a [minimal `tsconfig.json`](https://github.com/xing/hops/blob/master/packages/typescript/tsconfig.json) file which we recommend you extend in your `tsconfig.json`:
+This preset contains a [minimal `tsconfig.json`](../typescript/tsconfig.json) file which we recommend you extend in your `tsconfig.json`:
 
 Example:
 
