@@ -4,17 +4,9 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is one of the core presets for Hops (and is included by default in [`hops-preset-defaults`](https://github.com/xing/hops/tree/master/packages/preset-defaults)) and provides the development and production server configuration and mixin infrastructure in order to build a Hops application.
+This package has been [deprecated](../../DEPRECATIONS.md#dep0002) as of version 12 of Hops, the contained Express configuration has been moved to [`@untool/express`](https://github.com/untool/untool/tree/master/packages/express). If you happened to have installed this package to create a custom collection of presets, you can safely remove it.
 
-### Installation
-
-As this is a base preset that is always required and is included in `hops-preset-defaults` you should add the defaults preset to your project:
-
-```bash
-npm install --save hops-preset-defaults
-```
-
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+This package will be removed with the next major release of Hops.
 
 ### CLI
 
@@ -38,7 +30,7 @@ You may use either `hops serve -p` or its equivalent `NODE_ENV=production hops s
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `https` | `Boolean` / `Object` | `false` | _no_ | Configure HTTPS support for Hops |
+| `https` | `Boolean | Object` | `false` | _no_ | Configure HTTPS support for Hops |
 | `host` | `String` | `[HOST]` | _no_ | Specify the IP address that Hops should bind to |
 | `port` | `String` | `[PORT]` | _no_ | Specify the Port that Hops should listen on |
 | `locations` | `Array<String>` | `[]` | _no_ | An array of locations for static rendering of HTML pages |
