@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](https://github.com/xing/hops/tree/master#presets) that enables React, JSX, React-Helmet Async and React-Router support in Hops applications.
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that enables React, JSX, React-Helmet Async and React-Router support in Hops applications.
 
 ### Installation
 
@@ -14,7 +14,7 @@ Add this preset and its peer dependencies `react`, `react-dom`, `react-helmet-as
 npm install --save hops-react react react-dom react-helmet-async react-router-dom
 ```
 
-If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](https://github.com/xing/hops/tree/master#quick-start)
+If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
 
 ### Usage
 
@@ -27,7 +27,7 @@ import React from 'react';
 export default render(<h1>Hello World!</h1>);
 ```
 
-Check out this [integration test](https://github.com/xing/hops/tree/master/packages/spec/integration/react) as an example for how to use this preset.
+Check out this [integration test](../spec/integration/react) as an example for how to use this preset.
 
 #### Consumer API
 
@@ -61,7 +61,7 @@ If you don't want to use the above mentioned HoC or React hook you can also use 
 
 ##### `withConfig(Component): HigherOrderComponent`
 
-Wrap your component with this HoC to get access to the prop `config` which contains all [settings](https://github.com/xing/hops#settings).
+Wrap your component with this HoC to get access to the prop `config` which contains all [settings](../../DOCUMENTATION.md#settings).
 
 ##### `useConfig(): Config`
 
