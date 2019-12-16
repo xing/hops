@@ -6,7 +6,7 @@
 
 Contains the building blocks needed to build your own hops mixins. Mixins allow you to alter and extend Hops' functionality.
 
-Tap into them using your own mixins and [reconfigure Webpack](https://github.com/xing/hops/blob/master/packages/styled-components/mixin.core.js#L4), [register additional Express](https://github.com/xing/hops/blob/master/packages/development-proxy/mixin.core.js#L6) middlewares and [Yargs commands](https://github.com/xing/hops/blob/master/packages/graphql/mixin.core.js#L5) or [fetch data to bootstrap your React application](https://github.com/xing/hops/blob/master/packages/react/server-data/mixin.server.js#L11).
+Tap into them using your own mixins and [reconfigure Webpack](../styled-components/mixin.core.js#L4), [register additional Express](../development-proxy/mixin.core.js#L6) middlewares and [Yargs commands](../graphql/mixin.core.js#L5) or [fetch data to bootstrap your React application](../react/server-data/mixin.server.js#L11).
 
 Please be aware that the mixin hooks are not part of the SemVer API contract. This means that hook methods and signatures can change even in minor releases. Therefore it's up to you to make sure that all hooks that you are using in your own mixins still adhere to the new implementation after an upgrade of a Hops packages.
 
