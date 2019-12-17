@@ -14,7 +14,7 @@
   "hops": {
     "basePath": "prod",
     "assetPath": "prod",
-    "node": "8.10"
+    "node": "10.13"
   },
   "scripts": {
     "start": "hops start",
