@@ -8,7 +8,9 @@ const { trimSlashes } = require('pathifist');
 const semver = require('semver');
 const strip = require('strip-indent');
 
-const MAX_NODE_VERSION = '8.10';
+const {
+  engines: { node: nodeVersionRange },
+} = require('./package.json');
 const getAWSConfig = require('./lib/aws-config');
 
 class LambdaMixin extends Mixin {
@@ -88,22 +90,18 @@ class LambdaMixin extends Mixin {
 
   diagnose() {
     const warnings = [];
-    const targetNodeVersion =
+    const { version: targetNodeVersion } = semver.coerce(
       !this.config.node || this.config.node === 'current'
         ? process.version
-        : this.config.node;
+        : this.config.node
+    );
 
-    if (
-      semver.gt(
-        semver.coerce(targetNodeVersion),
-        semver.coerce(MAX_NODE_VERSION)
-      )
-    ) {
+    if (!semver.intersects(targetNodeVersion, nodeVersionRange)) {
       warnings.push(
         [
-          `AWS Lambda only supports Node.js up to version: ${MAX_NODE_VERSION}.`,
-          'Please specify or use a Node.js version lower than or equal to this',
-          'version in your Hops config (hops.node) to tell Babel for which version',
+          `AWS Lambda only supports the Node.js version range "${nodeVersionRange}".`,
+          'Please specify or use a Node.js version intersecting this range',
+          'in your Hops config (hops.node) to tell Babel for which version',
           'it should transpile for.',
         ].join('\n')
       );
