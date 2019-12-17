@@ -3,6 +3,13 @@ Transform: AWS::Serverless-2016-10-31
 Description: Hops Serverless Express Application / Powered by hops-lambda
 
 Parameters:
+  Runtime:
+    Type: String
+    Description: Set the Node version of the Lambda runtime; supported versions are nodejs10.x and nodejs12.x
+    Default: nodejs12.x
+    AllowedValues:
+      - nodejs10.x
+      - nodejs12.x
   LambdaMemorySize:
     Type: Number
     MinValue: 128
@@ -130,7 +137,7 @@ Resources:
       Handler: node_modules/hops-lambda/lambda.handler
       MemorySize: !Ref LambdaMemorySize
       Role: !GetAtt LambdaExecutionRole.Arn
-      Runtime: nodejs8.10
+      Runtime: !Ref Runtime
       Timeout: 30
       Events:
         KeepWarm:
