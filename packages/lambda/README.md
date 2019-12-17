@@ -69,6 +69,12 @@ $ hops lambda deploy
 
 To update your application, simply do your code changes, build again and execute `hops lambda deploy` again and it will only update the parts that have changed since your last deployment.
 
+#### NodeJS Runtime
+
+The Lambda runtime supports two Node versions, that intersects Hops's supported version range: `nodejs10.x` and `nodejs12.x`. To explicitly set a Node version, use the [`"node"`-property](https://github.com/untool/untool/tree/v2.x/packages/webpack#node) of the Hops config. If the property is not set, Hops will detect and use the Node version of the development environment.
+
+[Learn more about the available Lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+
 #### Custom Domain
 
 If you want your application to be available on a custom domain, you need to configure `domainName` and `certificateArn`. Optionally you can set a custom `basePath` and `assetPath` if you want your application to be available on a different path.
