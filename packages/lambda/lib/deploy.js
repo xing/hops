@@ -213,6 +213,7 @@ module.exports = function deploy(
           var parameters = formatParameters(
             Object.assign(
               {
+                Runtime: awsConfig.runtime,
                 LambdaMemorySize: awsConfig.memorySize,
                 StageName: awsConfig.stageName,
                 BasePath: awsConfig.basePath,
