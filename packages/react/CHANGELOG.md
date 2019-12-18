@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.1](https://github.com/xing/hops/compare/v12.0.0-beta.0...v12.0.0-beta.1) (2019-12-18)
+
+
+### Features
+
+* **react:** warn on non-whitelisted config property ([e914be4](https://github.com/xing/hops/commit/e914be4d5afaadaeaa6d898b9ef1ff379c52e43e))
+
+
+
+
+
 # [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.1](https://github.com/xing/hops/compare/v12.0.0-beta.0...v12.0.0-beta.1) (2019-12-18)
+
+
+### Bug Fixes
+
+* **apollo-mock-server:** check if graphql-tag/loader is already added ([83dc87b](https://github.com/xing/hops/commit/83dc87b15fbe42144a603d1e0989a4cd5993ae91))
+
+
+### Reverts
+
+* Revert "refactor(apollo-mock-server): remove graphql-tag loader" ([42c6e72](https://github.com/xing/hops/commit/42c6e72a14a057119902b96d9c480049d1111960))
+
+
+
+
+
 # [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
 
 

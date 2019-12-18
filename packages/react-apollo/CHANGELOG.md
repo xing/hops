@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-beta.1](https://github.com/xing/hops/compare/v12.0.0-beta.0...v12.0.0-beta.1) (2019-12-18)
+
+
+### Bug Fixes
+
+* **react-apollo:** check if graphql-tag/loader is already added ([4673dcf](https://github.com/xing/hops/commit/4673dcf7bf3096b6b2e5619acb9ba697d216bea2))
+
+
+
+
+
 # [12.0.0-beta.0](https://github.com/xing/hops/compare/v11.9.1...v12.0.0-beta.0) (2019-12-12)
 
 
