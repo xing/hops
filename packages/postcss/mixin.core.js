@@ -38,6 +38,7 @@ const getCSSLoaderConfig = (browsers, additionalLoader) => {
         options: {
           ident: 'postcss',
           plugins: [
+            // see #1012
             postcssImportPlugin({
               resolve: (id, base, options) =>
                 postcssImportResolver(
