@@ -103,11 +103,11 @@ Implement this method to fetch additional data before React's `renderToString()`
 
 #### `getTemplateData(data): data` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **server**
 
-Implement this method to modify the `data` object after React's rendering has occured. This is useful when you need to collect the data during rendering, like [styled-components](https://www.styled-components.com/docs/advanced#server-side-rendering) or [react-loadable](https://github.com/jamiebuilds/react-loadable#finding-out-which-dynamic-modules-were-rendered). See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#gettemplatedatadata-pipe-server-only) for more details.
+Implement this method to modify the `data` object after React's rendering has occurred. This is useful when you need to collect the data during rendering, like [styled-components](https://www.styled-components.com/docs/advanced#server-side-rendering) or [react-loadable](https://github.com/jamiebuilds/react-loadable#finding-out-which-dynamic-modules-were-rendered). See [`@untool/react`](https://github.com/untool/untool/tree/master/packages/react#gettemplatedatadata-pipe-server-only) for more details.
 
 #### `enhanceServerData(serverData, req, res): serverData` ([pipe](https://github.com/untool/mixinable/blob/master/README.md#definepipe)) **server**
 
-In some cases you need to share data from the server-side to the client-side (for example request specific data or derived data). For these circumstances you can implement the `enhanceServerData()` hook (which will get passed the previous `serverData` object and Express `request` and `response` objects) and add your key/value pairs that you want to make accessible on the client-side via the [above mentioned HoC](#withserverdatacomponent-higherordercomponent") or [Context consumer](#serverdatacontextconsumerdata---render-something-serverdatacontextconsumer).
+In some cases you need to share data from the server-side to the client-side (for example request specific data or derived data). For these circumstances you can implement the `enhanceServerData()` hook (which will get passed the previous `serverData` object and Express `request` and `response` objects) and add your key/value pairs that you want to make accessible on the client-side via the [above mentioned HoC](#withserverdatacomponent-higherordercomponent) or [Context consumer](#serverdatacontextconsumerdata---render-something-serverdatacontextconsumer).
 
 #### `getServerData(): serverData` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
