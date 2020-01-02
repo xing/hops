@@ -183,7 +183,7 @@ The ARN of your SSL certificate that you have imported or generated through the 
 
 In case you need additional resources in your CloudFormation template, you can overwrite the default CloudFormation template using this option.
 
-In order to pass additional parameters to your CloudFormation stack you need to call the [`deployLambda(parameterOverrides)`](#deploylambdaparameteroverrides-promiseoutputs) mixin method yourself. These parameters will get merged with the default parameters that Hops sends to the stack.
+In order to pass additional parameters to your CloudFormation stack you need to call the [`deployLambda(parameterOverrides)`](#deploylambdaparameteroverrides-promiseoutputs-override-core) mixin method yourself. These parameters will get merged with the default parameters that Hops sends to the stack.
 
 ```json
 "hops": {
