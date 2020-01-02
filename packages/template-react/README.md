@@ -68,10 +68,10 @@ To serve your application using a production-ready Express.js server, execute th
 
 ## Configuration
 
-Please refer to the [main readme](../../DOCUMENTATION.md#installing--configuring-a-preset) for an example of how to configure your presets and check out the individual preset readme files for the presets used in this project for more in-depth explanations:
+Please refer to the [main readme](../../DOCUMENTATION.md#presets) for an example of how to configure your presets and check out the individual preset readme files for the presets used in this project for more in-depth explanations:
 
-- [hops-preset-defaults](../preset-defaults)
+- [hops](../hops)
 - [hops-react](../react)
 - [hops-postcss](../postcss)
 
-In this project we configure `babel` and `postcss` through the `"browsers"` field and we specify two loctions `/` and `/counter` through the `"locations"` hash.
+In this project we configure `babel` and `postcss` through the `"browsers"` field and we specify two locations `/` and `/counter` through the `"locations"` hash.

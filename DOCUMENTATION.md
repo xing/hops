@@ -182,7 +182,7 @@ import styles from './styles.css';
 export default render(<h1 className={styles.headline}>Hello World!</h1>);
 ```
 
-:information_source: In case you want to use CSS Grid, check [the documentation of `hops-postcss`](/xing/hops/tree/master/packages/postcss#css-grid--autoprefixer) to learn how to enable it.
+:information_source: In case you want to use CSS Grid, check [the documentation of `hops-postcss`](packages/postcss#css-grid--autoprefixer) to learn how to enable it.
 
 ### Code-splitting and `hops`s `importComponent()` function
 
@@ -414,7 +414,7 @@ In order to install a preset you need to add it as a dependency to your applicat
 npm install --save hops-redux
 ```
 
-Sometimes presets have `peerDependencies` which need to be installed as well - take a look at the [indiviual preset sections](#available-presets) or watch out for peer dependency warnings in your terminal.
+Sometimes presets have `peerDependencies` which need to be installed as well - take a look at the [individual preset sections](#available-presets) or watch out for peer dependency warnings in your terminal.
 
 ### Activating presets
 
@@ -598,7 +598,7 @@ it('should display the loading state', () => {
 });
 ```
 
-Similarily, to test the `error`-state of the lazy-loading placeholder component, pass `{ error: true }` into the `render`-function of the `importComponent`-mock.
+Similarly, to test the `error`-state of the lazy-loading placeholder component, pass `{ error: true }` into the `render`-function of the `importComponent`-mock.
 
 ###### `withConfig(Component)`
 
@@ -670,8 +670,8 @@ _Reminder: These options must be passed in an options hash as the second argumen
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `redux.reducers` | `Object` | `{}` | _yes_ | An object [whose values](https://redux.js.org/api-reference/combinereducers#arguments) consists of all your reducer functions. |
-| `redux.middlewares` | `Array` | `[ReduxThunkMiddleware]` | _no_ | An array of all [redux middlewares](https://redux.js.org/api-reference/applymiddleware) you want to use. |
+| `redux.reducers` | `Object` | `{}` | _yes_ | An object [whose values](https://redux.js.org/api/combinereducers/#arguments) consists of all your reducer functions. |
+| `redux.middlewares` | `Array` | `[ReduxThunkMiddleware]` | _no_ | An array of all [redux middlewares](https://redux.js.org/api/applymiddleware/) you want to use. |
 | `redux.actionCreators` | `Array` | `[]` | _no_ | An array of route-bound action creators to be dispatched when the current route matches. |
 | `redux.alwaysDispatchActionsOnClient` | `boolean` | `undefined` | _no_ | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
 
@@ -733,7 +733,7 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 | `graphqlMockSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema mocks |
 | `graphqlMockServerPath` | `String` | `'/graphql'` | _no_ | Path of the mock server endpoint |
 
-For more details and more advanced use-cases, head over to the [full readme of `hops-apollo-mock-server)`](packages/apollo-mock-server) for more details.
+For more details and more advanced use-cases, head over to the [full readme of `hops-apollo-mock-server`](packages/apollo-mock-server) for more details.
 
 #### [`hops-postcss`](packages/postcss)
 
@@ -977,7 +977,7 @@ For more details and more advanced use-cases, head over to the [full readme of `
 
 #### [`jest-preset-hops`](packages/jest-preset)
 
-Hops uses wepback to configure and instrument your application. However, test runners aren't compatible with this setup out of the box.
+Hops uses webpack to configure and instrument your application. However, test runners aren't compatible with this setup out of the box.
 
 `jest-preset-hops` is a [Jest preset](https://jestjs.io/docs/en/configuration.html#preset-string) that allows to write tests for Hops applications. It aims to support all features that the official `hops-*` packages provide (e.g. transpiling your files with babel) inside of your Jest tests.
 
@@ -1079,10 +1079,10 @@ The `configureBuild` hook will be called with these three arguments:
 
 - `webpackConfig` is the entire webpack configuration object which you can mutate in place to achieve different behaviours
 - `loaderConfigs` is a custom object that contains references to the loaders for easier access
-  - `loaderConfigs.jsLoaderConfig` is a direct reference to the [`babel-loader`](https://github.com/babel/babel-loader) config [object](https://github.com/untool/untool/blob/v1.0.0-rc.14/packages/webpack/lib/configs/build.js#L22)
-  - `loaderConfigs.urlLoaderConfig` is a direct reference to the [`url-loader`](https://github.com/webpack-contrib/url-loader) config [object](https://github.com/untool/untool/blob/v1.0.0-rc.14/packages/webpack/lib/configs/build.js#L48)
-  - `loaderConfigs.fileLoaderConfig` is a direct reference to the [`file-loader`](https://github.com/webpack-contrib/file-loader) config [object](https://github.com/untool/untool/blob/v1.0.0-rc.14/packages/webpack/lib/configs/build.js#L57)
-  - `loaderConfigs.allLoaderConfigs` is a reference to the [array containing all loaders](https://github.com/untool/untool/blob/v1.0.0-rc.14/packages/webpack/lib/configs/build.js#L65) which gets applied to [`module.rules.oneOf`](https://webpack.js.org/configuration/module/#rule-oneof).
+  - `loaderConfigs.jsLoaderConfig` is a direct reference to the [`babel-loader`](https://github.com/babel/babel-loader) config [object](https://github.com/untool/untool/blob/v2.0.0/packages/webpack/lib/configs/build.js#L22)
+  - `loaderConfigs.urlLoaderConfig` is a direct reference to the [`url-loader`](https://github.com/webpack-contrib/url-loader) config [object](https://github.com/untool/untool/blob/v2.0.0/packages/webpack/lib/configs/build.js#L58)
+  - `loaderConfigs.fileLoaderConfig` is a direct reference to the [`file-loader`](https://github.com/webpack-contrib/file-loader) config [object](https://github.com/untool/untool/blob/v2.0.0/packages/webpack/lib/configs/build.js#L50)
+  - `loaderConfigs.allLoaderConfigs` is a reference to the [array containing all loaders](https://github.com/untool/untool/blob/v2.0.0/packages/webpack/lib/configs/build.js#L75) which gets applied to [`module.rules.oneOf`](https://webpack.js.org/configuration/module/#rule-oneof).
 - `target` indicates what the current config will be used for and will be one of:
   - `build` this is the webpack config that will be used for the client-side build when you execute `hops build`
   - `develop` this is the webpack config that will be used for the client-side development build when you execute `hops start`
