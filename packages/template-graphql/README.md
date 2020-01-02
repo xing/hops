@@ -60,6 +60,6 @@ This command will test your code with [jest](https://facebook.github.io/jest/) a
 
 ## Configuration
 
-Please refer to the [main readme](../../DOCUMENTATION.md#installing--configuring-a-preset) to see a list of all supported options.
+Please refer to the [main readme](../../DOCUMENTATION.md#presets) to see a list of all supported options.
 
 In this project we configure `babel` and `postcss` through the `"browsers"` field, we specify one location through the `"locations"` hash and we specify the URL of the GraphQL server through the `"graphqlUri"` field.
