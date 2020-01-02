@@ -8,7 +8,7 @@ This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to 
 
 ### Installation
 
-_This preset must be used together with the [`hops-react`](../react/README.md#presets) preset._
+_This preset must be used together with the [`hops-react`](../react/README.md) preset._
 
 Add this preset and its peer dependencies to your existing Hops React project:
 
@@ -28,7 +28,7 @@ This preset takes care of setting up the Apollo cache and fragment matchers - if
 
 This is not strictly necessary but is recommended if you have a more complex schema and are querying fragments on unions or interfaces.
 
-Head over to https://github.com/apollographql/react-docs/blob/master/source/initialization.md#using-fragments-on-unions-and-interfaces to read more details about this.
+Head over to https://www.apollographql.com/docs/react/data/fragments/#fragments-on-unions-and-interfaces to read more details about this.
 
 ##### Arguments
 
@@ -108,7 +108,7 @@ This option controls whether you want Hops to execute GraphQL queries during ser
 
 If you don't want Hops to do full server-side rendering, set this value to `false`.
 
-Bear in mind, that setting this value to `true` on the other hand has no mandatory character. This means that there's no way to force Hops to execute server-side requests. As soon as there's a single Hops preset in place, that either sets the `allowServerSideDataFetching`-value to `false` or implements the [`canPrefetchOnServer`](../graphql#canprefetchonserver-boolean-sequence-server)-hook to return `false`, there won't be any server-side requests.
+Bear in mind, that setting this value to `true` on the other hand has no mandatory character. This means that there's no way to force Hops to execute server-side requests. As soon as there's a single Hops preset in place, that either sets the `allowServerSideDataFetching`-value to `false` or implements the [`canPrefetchOnServer`](#canprefetchonserver-boolean-sequence-server)-hook to return `false`, there won't be any server-side requests.
 
 #### Render Options
 
@@ -126,7 +126,7 @@ By default this preset creates an `HttpLink` with the configured [`graphqlUri`](
 Read more about Apollo links here:
 
 - https://www.apollographql.com/docs/link/
-- https://www.apollographql.com/docs/react/advanced/network-layer.html
+- https://www.apollographql.com/docs/react/networking/network-layer/
 
 ```javascript
 export default render(<MyApp />, {
@@ -136,11 +136,11 @@ export default render(<MyApp />, {
 
 ##### `cache`
 
-By default this preset creates an [`InMemoryCache`](https://www.apollographql.com/docs/react/advanced/caching.html) which uses either the [`IntrospectionFragmentMatcher` or `HeuristicFragmentMatcher`](https://www.apollographql.com/docs/react/advanced/fragments.html#fragment-matcher) depending on whether fragment introspection results are available or not (create them with [`$ hops graphql introspect`](#graphql-introspect)).
+By default this preset creates an [`InMemoryCache`](https://www.apollographql.com/docs/react/caching/cache-configuration/) which uses either the [`IntrospectionFragmentMatcher` or `HeuristicFragmentMatcher`](https://www.apollographql.com/docs/react/data/fragments/) depending on whether fragment introspection results are available or not (create them with [`$ hops graphql introspect`](#graphql-introspect)).
 
 In case you need to configure a different Apollo cache you can pass an instantiated cache to the render options.
 
-Read more about Apollo caches here: https://www.apollographql.com/docs/react/advanced/caching.html#configuration
+Read more about Apollo caches here: https://www.apollographql.com/docs/react/caching/cache-configuration/
 
 ```javascript
 export default render(<MyApp />, {
