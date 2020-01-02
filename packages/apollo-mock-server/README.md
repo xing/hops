@@ -27,7 +27,7 @@ When you are using GraphQL on client side to fetch and bind data into your UI co
 - Faster execution of component integration test using local mock data sets
 - Mock data set support to prove experimental/feature functionality thesis
 
-You can enable mocking by configuring a file that exports an executable schema. Read more about [schema stitching](https://www.apollographql.com/docs/graphql-tools/schema-stitching.html) and check out [this blog post](https://blog.hasura.io/the-ultimate-guide-to-schema-stitching-in-graphql-f30178ac0072) for more examples.
+You can enable mocking by configuring a file that exports an executable schema. Read more about [schema stitching](https://www.apollographql.com/docs/graphql-tools/schema-stitching/) and check out [this blog post](https://blog.hasura.io/the-ultimate-guide-to-schema-stitching-in-graphql-f30178ac0072) for more examples.
 
 **Supports Local GraphQL Playground against your GraphQL schema**
 
