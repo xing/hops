@@ -75,6 +75,6 @@ This command will test your code with [jest](https://facebook.github.io/jest/) a
 
 ## Configuration
 
-Please refer to the [main readme](../../DOCUMENTATION.md#installing--configuring-a-preset) to see a list of all supported options.
+Please refer to the [main readme](../../DOCUMENTATION.md#presets) to see a list of all supported options.
 
-In this project we configure `babel` and `postcss` through the `"browsers"` field and we specify two loctions `/` and `/counter` through the `"locations"` hash.
+In this project we configure `babel` and `postcss` through the `"browsers"` field and we specify two locations `/` and `/counter` through the `"locations"` hash.
