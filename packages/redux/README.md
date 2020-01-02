@@ -59,14 +59,14 @@ This preset has only a single runtime option which can be passed to the `render(
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `redux.reducers` | `Object` | `{}` | _yes_ | An object [whose values](https://redux.js.org/api-reference/combinereducers#arguments) consists of all your reducer functions. |
-| `redux.middlewares` | `Array` | `[ReduxThunkMiddleware]` | _no_ | An array of all [redux middleware](https://redux.js.org/api-reference/applymiddleware) you want to use. |
+| `redux.reducers` | `Object` | `{}` | _yes_ | An object [whose values](https://redux.js.org/api/combinereducers/#arguments) consists of all your reducer functions. |
+| `redux.middlewares` | `Array` | `[ReduxThunkMiddleware]` | _no_ | An array of all [redux middleware](https://redux.js.org/api/applymiddleware/) you want to use. |
 | `redux.actionCreators` | `Array` | `[]` | _no_ | An array of route-bound action creators to be dispatched when the current route matches. |
 | `redux.alwaysDispatchActionsOnClient` | `boolean` | `undefined` | _no_ | When using server side rendering the route-matching actions will be dispatched on the server only - pass `true` to also dispatch these actions on the client again. |
 
 ##### `reducers`
 
-An object with key/value pairs of namespaces and reducer functions which will shape your state tree. This will be used with the [`combineReducers` function](https://redux.js.org/api-reference/combinereducers#arguments).
+An object with key/value pairs of namespaces and reducer functions which will shape your state tree. This will be used with the [`combineReducers` function](https://redux.js.org/api/combinereducers/#arguments).
 
 ```javascript
 const reducers = {
@@ -95,7 +95,7 @@ These objects have the same properties as the [`<Route />` component](https://re
 
 When server-side rendering/data fetching is enabled, this will dispatch matching actions on the server and prefill the store for client-side.
 
-On the client-side by default this will dispatch matching actions only on client-side navigation (can be overriden by setting `alwaysDispatchActionsOnClient` to `true`).
+On the client-side by default this will dispatch matching actions only on client-side navigation (can be overridden by setting `alwaysDispatchActionsOnClient` to `true`).
 
 Actions receive two parameters: `params` (see [URL Parameters](https://reacttraining.com/react-router/web/example/url-params) in the react-router docs) and an object containing `location` (the react router [`location`](https://reacttraining.com/react-router/web/api/location) object) and [`match`]((https://reacttraining.com/react-router/web/api/match).
 
@@ -137,7 +137,7 @@ export default render(<MyApp />, {
 
 #### `getReduxStore(): Store` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
-Use this method in your own mixins to get a reference to the currently used Redux [Store](https://redux.js.org/api-reference/store) instance.
+Use this method in your own mixins to get a reference to the currently used Redux [Store](https://redux.js.org/api/store/) instance.
 
 #### `getReduxMiddlewares(): [middleware]` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
