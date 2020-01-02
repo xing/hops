@@ -71,7 +71,7 @@ When the object notation is used, every request that is not handled by the webpa
 
 **Caution**: Please be aware that the mixin hooks are not part of the SemVer API contract. This means that hook methods and signatures can change even in minor releases. Therefore it's up to you to make sure that all hooks that you are using in your own mixins still adhere to the new implementation after an upgrade of a Hops packages.
 
-#### `onProxyReq(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#definesequence)) **core**
+#### `onProxyReq(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **core**
 
 Hook to implement [http-proxy-middleware `onProxyReq` event callback](https://github.com/chimurai/http-proxy-middleware#http-proxy-events).
 
@@ -93,10 +93,10 @@ class MyMixin extends Mixin {
 module.exports = MyMixin;
 ```
 
-#### `onProxyRes(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#definesequence)) **core**
+#### `onProxyRes(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **core**
 
 Hook to implement [http-proxy-middleware `onProxyRes` event callback](https://github.com/chimurai/http-proxy-middleware#http-proxy-events).
 
-#### `onProxyError(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#definesequence)) **core**
+#### `onProxyError(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **core**
 
 Hook to implement [http-proxy-middleware `onError` event callback](https://github.com/chimurai/http-proxy-middleware#http-proxy-events).
