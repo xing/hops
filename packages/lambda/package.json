@@ -18,8 +18,8 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^2.0.0-beta.1",
-    "@untool/express": "^2.0.0-beta.1",
+    "@untool/core": "^2.0.0",
+    "@untool/express": "^2.0.0",
     "archiver": "^3.1.1",
     "aws-sdk": "^2.546.0",
     "globby": "^11.0.0",
