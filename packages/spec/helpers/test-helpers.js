@@ -26,9 +26,9 @@ const startServer = ({ cwd, command, argv = [] }) =>
 
     const hopsBin = resolveFrom(cwd, 'hops/bin');
 
-    const args = [command].concat(argv);
+    const args = [hopsBin, command].concat(argv);
     debug('Spawning server', [hopsBin, ...args].join(' '));
-    const started = spawn(hopsBin, args, {
+    const started = spawn(process.argv[0], args, {
       cwd,
     });
     const teardown = () => {
