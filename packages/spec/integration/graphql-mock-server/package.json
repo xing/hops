@@ -6,7 +6,7 @@
     "node": "^10.13 || ^12.13"
   },
   "hops": {
-    "shouldPrefetchOnServer": false,
+    "allowServerSideDataFetching": true,
     "port": "8029",
     "graphqlUri": "http://localhost:8029/graphql",
     "graphqlMockSchemaFile": "<rootDir>/mock-schema.js"
