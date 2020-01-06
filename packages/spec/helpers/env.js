@@ -113,11 +113,11 @@ class FixtureEnvironment extends NodeEnvironment {
 
   async teardown() {
     await super.teardown();
-    await this.removeWorkingDir();
     await this.closeBrowser();
     if (this.killServer) {
       await this.killServer();
     }
+    await this.removeWorkingDir();
   }
 }
 
