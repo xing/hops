@@ -2699,6 +2699,11 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@zendeskgarden/css-arrows@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-arrows/-/css-arrows-3.1.1.tgz#dce2103b8e30c289df99894721713726853010fd"
+  integrity sha512-CM0H4fCdKUCZHZEpFuIGkaoK7TSh29FrMV0ejst1wlv9aQG90IlFYmv7/JRovtYCb8aSkrJUBlkvENO7hSsDnQ==
+
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"

@@ -37,6 +37,7 @@
     "url-join": "^4.0.1"
   },
   "dependencies": {
+    "@zendeskgarden/css-arrows": "^3.1.1",
     "animate.css": "^3.7.2"
   }
 }
