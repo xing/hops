@@ -16,6 +16,7 @@ describe('postcss production static build', () => {
       textAlign,
       paddingTop,
       paddingLeft,
+      borderRadius,
     } = await page.evaluate(() => {
       const {
         position,
@@ -23,16 +24,24 @@ describe('postcss production static build', () => {
         textAlign,
         paddingTop,
         paddingLeft,
+        borderRadius,
       } = window.getComputedStyle(document.querySelector('h1'));
-      return { position, fontFamily, textAlign, paddingTop, paddingLeft };
+      return {
+        position,
+        fontFamily,
+        textAlign,
+        paddingTop,
+        paddingLeft,
+        borderRadius,
+      };
     });
 
     expect(position).toBe('sticky');
     expect(fontFamily).toContain('-apple-system');
     expect(textAlign).toBe('center');
     expect(paddingTop).toBe('50px');
-    expect(paddingLeft).toBe('27.4285px');
-    // todo: add expectation for c-arrow class
+    expect(paddingLeft).toBe('38px');
+    expect(borderRadius).toBe('100px');
 
     // there should be 2 stylesheets
     // the global animate.css and the css-modules import
