@@ -1,3 +1,4 @@
+require('core-js/features/array/flat');
 const { dirname } = require('path');
 const { create } = require('enhanced-resolve');
 const postcssModulesExtractImports = require('postcss-modules-extract-imports');
