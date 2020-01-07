@@ -1,10 +1,10 @@
 @import url(imported-from-css.css);
-@import '@zendeskgarden/css-arrows';
+@import '@zendeskgarden/css-buttons';
 
 .headline {
   composes: compose from './for-composing.css';
-  composes: c-arrow from '~@zendeskgarden/css-arrows/src/index.css';
-  padding-left: var(--zd-arrow-size);
+  composes: c-btn--pill from '@zendeskgarden/css-buttons';
+  padding-left: var(--zd-btn-line-height);
   color: aqua;
   position: sticky;
   font-family: system-ui;
