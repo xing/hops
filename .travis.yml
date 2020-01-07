@@ -1,9 +1,5 @@
 language: node_js
 
-env:
-  global:
-    - HOST=0.0.0.0
-
 cache:
   yarn: true
   directories:
@@ -12,20 +8,30 @@ cache:
 before_install:
   - npm i -g yarn@latest
 
+env:
+  global:
+    - HOST=0.0.0.0
+
 install:
   - yarn install --frozen-lockfile
 
 matrix:
   include:
-    - node_js: lts/dubnium
+    - node_js: '10.13'
       name: 'Test on Node.js 10'
       script: 'yarn test --maxWorkers=2 --ci'
-    - node_js: lts/*
+      env:
+        - CACHE_NAME=node-v10
+    - node_js: '12.13'
       name: 'Test on Node.js 12'
       before_script:
         - 'commitlint-travis'
         - 'yarn lint'
       script: 'yarn test --maxWorkers=2 --ci'
-    - node_js: 'lts/*'
-      name: 'Canarist test on Node.js lts/*'
+      env:
+        - CACHE_NAME=node-v12
+    - node_js: 'node'
+      name: 'Canarist test on Node.js latest'
       script: 'yarn canarist'
+      env:
+        - CACHE_NAME=canary
