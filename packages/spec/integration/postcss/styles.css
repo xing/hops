@@ -1,4 +1,10 @@
+@import url(imported-from-css.css);
+@import '@zendeskgarden/css-arrows';
+
 .headline {
+  composes: compose from './for-composing.css';
+  composes: c-arrow from '~@zendeskgarden/css-arrows/src/index.css';
+  padding-left: var(--zd-arrow-size);
   color: aqua;
   position: sticky;
   font-family: system-ui;
