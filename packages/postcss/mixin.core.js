@@ -2,7 +2,6 @@
 require('./patch-postcss-modules-extract-imports');
 
 const postcssImportPlugin = require('postcss-import');
-const postcssImportResolver = require('postcss-import/lib/resolve-id');
 const postcssPresetEnv = require('postcss-preset-env');
 const ExtractCSSPlugin = require('mini-css-extract-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
@@ -41,15 +40,7 @@ const getCSSLoaderConfig = (browsers, additionalLoader) => {
         options: {
           ident: 'postcss',
           plugins: [
-            // see #1012
-            postcssImportPlugin({
-              resolve: (id, base, options) =>
-                postcssImportResolver(
-                  id.startsWith('~') ? id.slice(1) : id,
-                  base,
-                  options
-                ),
-            }),
+            postcssImportPlugin(),
             postcssPresetEnv({
               browsers,
               autoprefixer: {
