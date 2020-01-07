@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-rc.0](https://github.com/xing/hops/compare/v12.0.0-beta.1...v12.0.0-rc.0) (2020-01-07)
+
+
+### Bug Fixes
+
+* update dependency globby to v11 ([5202da5](https://github.com/xing/hops/commit/5202da54b5cf134fc8040822417b6e8cefe66620))
+* update dependency mini-css-extract-plugin to ^0.9.0 ([e217005](https://github.com/xing/hops/commit/e2170054a169de7de889caea2d8ea789a947b89d))
+
+
+### Features
+
+* **lambda:** make node version configurable ([4a77c6d](https://github.com/xing/hops/commit/4a77c6dd36b8d19af6036d6516d1a2bf74b1e99c))
+* upgrade untool ([fd64a80](https://github.com/xing/hops/commit/fd64a80f111f7430dd6b5871b358a8e53cb5bb82))
+
+
+### BREAKING CHANGES
+
+* **lambda:** remove support for `nodejs8.10`.
+
+
+
+
+
 # [12.0.0-beta.1](https://github.com/xing/hops/compare/v12.0.0-beta.0...v12.0.0-beta.1) (2019-12-18)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "hops-lambda",
-  "version": "12.0.0-beta.1",
+  "version": "12.0.0-rc.0",
   "description": "Quick and easy deployment of Hops applications to AWS Lambda",
   "keywords": [
     "hops",
@@ -23,8 +23,8 @@
     "archiver": "^3.1.1",
     "aws-sdk": "^2.546.0",
     "globby": "^11.0.0",
-    "hops-config": "^12.0.0-beta.1",
-    "hops-mixin": "^12.0.0-beta.1",
+    "hops-config": "^12.0.0-rc.0",
+    "hops-mixin": "^12.0.0-rc.0",
     "pathifist": "^1.0.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.14",
