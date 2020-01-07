@@ -1,3 +1,6 @@
+// XXX: This file creates multiple side-effects
+require('./patch-postcss-modules-extract-imports');
+
 const postcssImportPlugin = require('postcss-import');
 const postcssImportResolver = require('postcss-import/lib/resolve-id');
 const postcssPresetEnv = require('postcss-preset-env');
