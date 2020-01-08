@@ -2,6 +2,7 @@ import { render } from 'hops';
 import React from 'react';
 import { connect } from 'react-redux';
 import fetch from 'cross-fetch';
+import { Helmet } from 'react-helmet-async';
 
 const reducers = {
   counter(state = 0, action) {
@@ -49,11 +50,14 @@ const setMatchParam = (params, { match: { params: matchParams } }) => {
 };
 
 const Counter = ({ count, increment, val }) => (
-  <React.Fragment>
+  <>
+    <Helmet>
+      <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    </Helmet>
     <button onClick={increment}>+</button>
     <counter>{count}</counter>
     <value>{val}</value>
-  </React.Fragment>
+  </>
 );
 
 const ConnectedCounter = connect(
