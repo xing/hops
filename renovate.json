@@ -8,6 +8,7 @@
   "postUpdateOptions": ["yarnDedupeHighest"],
   "semanticCommitType": "chore",
   "semanticCommitScope": null,
+  "masterIssue": true,
   "baseBranches": ["master", "v12.x", "v11.x"],
   "packageRules": [
     {
