@@ -12,14 +12,14 @@ const renderText = ({ Component, loading, ...props }) => {
 };
 
 export function App() {
-  return (
-    <>
-      <Helmet>
-        <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
-      </Helmet>
-      <Text loader={loader} render={renderText} subject="world" />
-    </>
-  );
+  return <Text loader={loader} render={renderText} subject="world" />;
 }
 
-export default render(<App />);
+export default render(
+  <>
+    <Helmet>
+      <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    </Helmet>
+    <App />
+  </>
+);
