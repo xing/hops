@@ -8,6 +8,7 @@
   "postUpdateOptions": ["yarnDedupeHighest"],
   "semanticCommitType": "chore",
   "semanticCommitScope": null,
+  "baseBranches": ["master", "v12.x", "v11.x"],
   "packageRules": [
     {
       "packagePatterns": ["^@untool/"],
@@ -26,6 +27,11 @@
       "depTypeList": ["devDependencies"],
       "updateTypes": ["major", "minor"],
       "rangeStrategy": "bump"
+    },
+    {
+      "baseBranchList": ["v11.x"],
+      "major": { "enabled": false },
+      "minor": { "enabled": false }
     }
   ]
 }
