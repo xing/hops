@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-rc.1](https://github.com/xing/hops/compare/v12.0.0-rc.0...v12.0.0-rc.1) (2020-01-13)
+
+
+### Bug Fixes
+
+* workaround for css-loader path issue ([7d218f5](https://github.com/xing/hops/commit/7d218f57eb050ddd016fce969b027764dfade47e))
+
+
+
+
+
 # [12.0.0-rc.0](https://github.com/xing/hops/compare/v12.0.0-beta.1...v12.0.0-rc.0) (2020-01-07)
 
 **Note:** Version bump only for package hops-spec

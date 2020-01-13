@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-rc.1](https://github.com/xing/hops/compare/v12.0.0-rc.0...v12.0.0-rc.1) (2020-01-13)
+
+
+### Bug Fixes
+
+* update dependency yargs to v15 ([5161de9](https://github.com/xing/hops/commit/5161de9372ae9201d4c5196dc507232b8a3eda6f))
+
+
+
+
+
 # [12.0.0-rc.0](https://github.com/xing/hops/compare/v12.0.0-beta.1...v12.0.0-rc.0) (2020-01-07)
 
 **Note:** Version bump only for package create-hops-app

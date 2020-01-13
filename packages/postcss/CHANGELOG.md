@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0-rc.1](https://github.com/xing/hops/compare/v12.0.0-rc.0...v12.0.0-rc.1) (2020-01-13)
+
+
+### Bug Fixes
+
+* add array-flat polyfill for node 10 ([34d7d9d](https://github.com/xing/hops/commit/34d7d9dcc4107513a9207abed02cce962d52fa7a))
+* workaround for css-loader path issue ([7d218f5](https://github.com/xing/hops/commit/7d218f57eb050ddd016fce969b027764dfade47e))
+* workaround for css-loader path issue ([d129f14](https://github.com/xing/hops/commit/d129f146a8f1c2b992a892f969b06c2dd3da81a6))
+
+
+
+
+
 # [12.0.0-rc.0](https://github.com/xing/hops/compare/v12.0.0-beta.1...v12.0.0-rc.0) (2020-01-07)
 
 
