@@ -392,6 +392,34 @@ Hops requires you to whitelist all values from your configuration that need to b
 }
 ```
 
+**Note:** Have in mind that you must explicitly whitelist config properties, that hold an environment variable placeholder, otherwise the interpolation fails.
+
+```json
+{
+  "foo": {
+    "bar": "[FOOBAR]"
+  },
+  "browserWhitelist": {
+    "foo.bar": true
+  }
+}
+```
+
+If you instead whitelist the whole nested object, that holds this property, Hops is currently not able to detect the placeholder.
+
+```json
+{
+  "foo": {
+    "bar": "[FOOBAR]"
+  },
+  "browserWhitelist": {
+    "foo": true
+  }
+}
+```
+
+Besides that, whitelisting of nested objects as a whole is fine. Also this is considered a bug and will be fixed in one of the next minor releases.
+
 ### Options
 
 You can provide options to your application by passing an options hash (a plain JavaScript object) as the second argument to the [`render()`](#renderelement-options) function in order to provide runtime configuration.
