@@ -6,6 +6,7 @@
     "node": "^10.13 || ^12.13"
   },
   "hops": {
+    "gracePeriod": 0,
     "workerFile": "<rootDir>/service-worker.js",
     "locations": [
       "/"

@@ -16,6 +16,7 @@
     "build": "hops build"
   },
   "hops": {
+    "gracePeriod": 0,
     "port": "8901",
     "mixins": [
       "./"

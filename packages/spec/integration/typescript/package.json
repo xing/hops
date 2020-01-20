@@ -11,6 +11,9 @@
       "../../jest.setup.js"
     ]
   },
+  "hops": {
+    "gracePeriod": 0
+  },
   "scripts": {
     "start": "hops start",
     "build": "hops build"
