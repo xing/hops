@@ -20,6 +20,7 @@
     "hops-postcss": "*"
   },
   "hops": {
+    "gracePeriod": 0,
     "locations": [
       "/"
     ]

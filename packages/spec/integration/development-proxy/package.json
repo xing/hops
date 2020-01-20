@@ -8,6 +8,7 @@
   "browser": "browser.js",
   "server": "server.js",
   "hops": {
+    "gracePeriod": 0,
     "mixins": [
       "./"
     ]

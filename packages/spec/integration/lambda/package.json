@@ -12,6 +12,7 @@
     ]
   },
   "hops": {
+    "gracePeriod": 0,
     "basePath": "prod",
     "assetPath": "prod",
     "node": "10.13"

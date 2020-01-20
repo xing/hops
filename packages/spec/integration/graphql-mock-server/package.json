@@ -6,6 +6,7 @@
     "node": "^10.13 || ^12.13"
   },
   "hops": {
+    "gracePeriod": 0,
     "allowServerSideDataFetching": true,
     "port": "8029",
     "graphqlUri": "http://localhost:8029/graphql",
