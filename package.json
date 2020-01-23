@@ -49,18 +49,12 @@
       },
       {
         "repository": "https://github.com/foosbyte/kicker-trainer.git",
-        "branch": "next",
         "commands": [
           "yarn build -p",
           "yarn test"
         ]
       }
-    ],
-    "rootManifest": {
-      "resolutions": {
-        "styled-components" : "4.4.1"
-      }
-    }
+    ]
   },
   "husky": {
     "hooks": {
