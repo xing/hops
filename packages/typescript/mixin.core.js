@@ -4,6 +4,28 @@ const { Mixin } = require('hops-mixin');
 // eslint-disable-next-line node/no-unpublished-require
 const chalk = require('chalk');
 
+const getCompilerOptions = (ts, rootPath) => {
+  const parseConfigHost = {
+    fileExists: ts.sys.fileExists,
+    readFile: ts.sys.readFile,
+    readDirectory: ts.sys.readDirectory,
+    useCaseSensitiveFileNames: true,
+  };
+  const configFileName = ts.findConfigFile(
+    rootPath,
+    ts.sys.fileExists,
+    'tsconfig.json'
+  );
+  const { config } = ts.readConfigFile(configFileName, ts.sys.readFile);
+  const { options } = ts.parseJsonConfigFileContent(
+    config,
+    parseConfigHost,
+    rootPath
+  );
+
+  return options;
+};
+
 class TypescriptMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig, allLoaderConfigs }, target) {
     const { loader, options, exclude } = jsLoaderConfig;
@@ -33,6 +55,12 @@ class TypescriptMixin extends Mixin {
   }
 
   diagnose() {
+    let ts;
+    try {
+      ts = require('typescript');
+    } catch (e) {
+      return;
+    }
     const { rootDir } = this.config;
     const tsConfigPath = join(rootDir, 'tsconfig.json');
 
@@ -52,15 +80,14 @@ class TypescriptMixin extends Mixin {
 `;
     }
 
-    const hopsTsConfig = require(join(__dirname, 'tsconfig.json'));
-    const tsConfig = require(tsConfigPath);
+    const compilerOptions = getCompilerOptions(ts, rootDir);
+    const properties = {
+      target: ts.ModuleKind.ESNext,
+      moduleResolution: ts.ModuleResolutionKind.NodeJs,
+    };
 
-    for (let property of ['target', 'moduleResolution']) {
-      if (
-        tsConfig.compilerOptions &&
-        tsConfig.compilerOptions[property] !==
-          hopsTsConfig.compilerOptions[property]
-      ) {
+    for (let [property, value] of Object.entries(properties)) {
+      if (compilerOptions[property] !== value) {
         return chalk.red(
           `Please do not overwrite the value "compilerOptions.${property}" in your "tsconfig.json", otherwise Hops will not work as expected.`
         );
