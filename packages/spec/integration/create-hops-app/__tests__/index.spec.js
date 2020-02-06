@@ -5,7 +5,7 @@ const { execSync } = require('child_process');
 const createHopsAppBin = require.resolve('create-hops-app');
 
 describe('create-hops-app', () => {
-  const version = 'latest';
+  const version = '^11';
   const template = 'hops-template-react';
 
   beforeAll(() => {
