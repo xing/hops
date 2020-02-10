@@ -44,6 +44,6 @@ describe('lambda production build', () => {
     const response = await invokeFunction(unzipDir, '/prod');
 
     expect(response.statusCode).toBe(200);
-    expect(response.body).toContain('<h1>hello lambda</h1>');
+    expect(response.body).toContain('<h1>hello <!-- -->lambda</h1>');
   });
 });
