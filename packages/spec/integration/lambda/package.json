@@ -15,7 +15,11 @@
     "gracePeriod": 0,
     "basePath": "prod",
     "assetPath": "prod",
-    "node": "10.13"
+    "node": "10.13",
+    "subject": "lambda",
+    "browserWhitelist": {
+      "subject": true
+    }
   },
   "scripts": {
     "start": "hops start",
