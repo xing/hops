@@ -1,5 +1,6 @@
 import { render, withConfig } from 'hops';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const App = withConfig(({ config }) => (
   <>
