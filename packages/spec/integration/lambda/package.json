@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "^10.13 || ^12.13"
+    "node": "^10.13 || ^12.13 || ^13.0"
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
@@ -14,7 +14,11 @@
   "hops": {
     "basePath": "prod",
     "assetPath": "prod",
-    "node": "10.13"
+    "node": "10.13",
+    "subject": "lambda",
+    "browserWhitelist": {
+      "subject": true
+    }
   },
   "scripts": {
     "start": "hops start",

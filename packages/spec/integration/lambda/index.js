@@ -1,4 +1,13 @@
-import { render } from 'hops';
+import { render, withConfig } from 'hops';
 import React from 'react';
 
-export default render(<h1>hello lambda</h1>);
+const App = withConfig(({ config }) => (
+  <>
+    <Helmet>
+      <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    </Helmet>
+    <h1>hello {config.subject}</h1>
+  </>
+));
+
+export default render(<App />);

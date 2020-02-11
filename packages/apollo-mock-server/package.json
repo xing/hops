@@ -12,14 +12,14 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "^10.13 || ^12.13"
+    "node": "^10.13 || ^12.13 || ^13.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/webpack": "^2.0.1",
+    "@untool/webpack": "^2.1.1",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-server-express": "^2.9.5",
     "cookie-parser": "^1.4.4",

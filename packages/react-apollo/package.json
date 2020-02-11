@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "^10.13 || ^12.13"
+    "node": "^10.13 || ^12.13 || ^13.0"
   },
   "types": "index.d.ts",
   "repository": {
@@ -20,7 +20,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/react": "^2.0.1",
+    "@untool/react": "^2.1.1",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-http": "^1.5.16",

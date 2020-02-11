@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "^10.13 || ^12.13"
+    "node": "^10.13 || ^12.13 || ^13.0"
   },
   "bin": {
     "hops": "bin.js"
@@ -27,10 +27,10 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/express": "^2.0.1",
-    "@untool/info": "^2.0.1",
-    "@untool/webpack": "^2.0.1",
-    "@untool/yargs": "^2.0.1",
+    "@untool/express": "^2.1.1",
+    "@untool/info": "^2.1.1",
+    "@untool/webpack": "^2.1.1",
+    "@untool/yargs": "^2.1.1",
     "hops-mixin": "^12.0.0",
     "hops-react": "^12.0.0",
     "webpack-bundle-analyzer": "^3.5.2"

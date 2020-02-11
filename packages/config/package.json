@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "^10.13 || ^12.13"
+    "node": "^10.13 || ^12.13 || ^13.0"
   },
   "main": "index.js",
   "esnext:main": "browser.js",
@@ -17,8 +17,8 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^2.0.1",
-    "@untool/webpack": "^2.0.1",
+    "@untool/core": "^2.1.1",
+    "@untool/webpack": "^2.1.1",
     "depd": "^2.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/config#readme"
