@@ -9,7 +9,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "^10.13 || ^12.13 || ^13.0"
+    "node": "^10.13 || ^12.13"
   },
   "main": "index.js",
   "esnext": "index.js",
@@ -18,7 +18,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^2.1.1",
+    "@untool/core": "^2.0.1",
     "mixinable": "^4.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme"

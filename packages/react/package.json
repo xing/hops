@@ -9,7 +9,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "^10.13 || ^12.13 || ^13.0"
+    "node": "^10.13 || ^12.13"
   },
   "main": "index.js",
   "esnext": "index.js",
@@ -21,8 +21,8 @@
     "@babel/core": "^7.7.0",
     "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/plugin-transform-flow-strip-types": "^7.7.0",
-    "@untool/core": "^2.1.1",
-    "@untool/react": "^2.1.1",
+    "@untool/core": "^2.0.1",
+    "@untool/react": "^2.0.1",
     "hops-mixin": "^12.0.0"
   },
   "peerDependencies": {

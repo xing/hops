@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "^10.13 || ^12.13 || ^13.0"
+    "node": "^10.13 || ^12.13"
   },
   "bin": {
     "create-hops-app": "./index.js"

@@ -30,11 +30,6 @@ matrix:
       script: 'yarn test --maxWorkers=2 --ci'
       env:
         - CACHE_NAME=node-v12
-    - node_js: '13'
-      name: 'Test on Node.js 13 (latest)'
-      script: 'yarn test --maxWorkers=2 --ci'
-      env:
-        - CACHE_NAME=node-v13
     - node_js: 'lts/*'
       name: 'Canarist test on Node.js latest lts'
       script: 'yarn canarist'

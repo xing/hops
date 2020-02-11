@@ -1,14 +1,5 @@
-import { render, withConfig } from 'hops';
+import { render } from 'hops';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const App = withConfig(({ config }) => (
-  <>
-    <Helmet>
-      <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
-    </Helmet>
-    <h1>hello {config.subject}</h1>
-  </>
-));
-
-export default render(<App />);
+export default render(<h1>hello lambda</h1>);
