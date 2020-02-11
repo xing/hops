@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0](https://github.com/xing/hops/compare/v12.0.0...v12.1.0) (2020-02-11)
+
+
+### Bug Fixes
+
+* **create-hops-app:** remove [@next](https://github.com/next) bin workaround ([#1050](https://github.com/xing/hops/issues/1050)) ([a5f2587](https://github.com/xing/hops/commit/a5f2587ae0c909c36b03854d9a6bdce3cf64f294))
+* update dependency tar to v6 ([#1057](https://github.com/xing/hops/issues/1057)) ([001da16](https://github.com/xing/hops/commit/001da163881d451c7fb6f24d88c88441a79fb5c9))
+
+
+
+
+
 # [12.0.0](https://github.com/xing/hops/compare/v12.0.0-rc.2...v12.0.0) (2020-01-22)
 
 **Note:** Version bump only for package create-hops-app
