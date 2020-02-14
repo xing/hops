@@ -2477,10 +2477,10 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@untool/core@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-2.1.1.tgz#d4a1b900a4dd0e077de33325878c419ac1f83cf0"
-  integrity sha512-+GJ03ubf/bKB8Kr8luwnEEoswFlqeODllIy/1oQn3O8gPoAy84dvbRWCpcUTH+KbqMa3a+bZNdvs4QubTzfxCQ==
+"@untool/core@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@untool/core/-/core-2.1.2.tgz#2e019c5afe459ee69cfeb3e5ba27814029b12a67"
+  integrity sha512-iWJDbBzJIw/Lx7q0BOEVAHWRveyswwcTUkSWKlwIOGQEhahu7katAIgFlVfkR1ICQUMPdjN1OsNz65mTLIInXQ==
   dependencies:
     ajv "^6.10.2"
     check-error "^1.0.2"
@@ -2496,12 +2496,12 @@
     mixinable "^4.0.0"
     supports-color "^7.1.0"
 
-"@untool/express@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-2.1.1.tgz#e5e54e09bb280e50bc4b83d5053b6a373372df1a"
-  integrity sha512-yuIs8SNuthh9hiNbYO2DJCXfrBFIIMRHR3qWgBs+NXqlWXoNgEDWku0V+GABNxH876C9SB20P6CaJCxvrGWSaA==
+"@untool/express@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@untool/express/-/express-2.1.2.tgz#a61456a127577d8f11745372f6f98c19923dfb59"
+  integrity sha512-RjpPakQa3v4g61Yaze5vNlziHgwst6anN6IptZrrR69MnP+ZWDf9yBml5O1dWJT8bKy7C9mMev9u+XtLUmGq7w==
   dependencies:
-    "@untool/yargs" "^2.1.1"
+    "@untool/yargs" "^2.1.2"
     chalk "^3.0.0"
     compression "^1.7.4"
     cookie-parser "^1.4.4"
@@ -2519,30 +2519,30 @@
     pathifist "^1.0.0"
     portfinder "^1.0.24"
     pretty-bytes "^5.3.0"
-    pretty-ms "^5.0.0"
+    pretty-ms "^6.0.0"
     split "^1.0.1"
     supports-color "^7.1.0"
 
-"@untool/info@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@untool/info/-/info-2.1.1.tgz#6ea0b51ebb010321270b29b989a5231c791c3492"
-  integrity sha512-pkSHRAJ9R9ccFA4eAq+P16W8Mef+pyM05rOJ4+yL/ojbgavP5krWhG3hU2kIXvdTJwL7FGBGdof2zIckh+zgRg==
+"@untool/info@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@untool/info/-/info-2.1.2.tgz#5075c7df2923878c1207d6999dbfec6d47d57aa4"
+  integrity sha512-nWyzHfTrxLGVXjmT7uT40OQUiauj35cdRFKpfAuS5J4D07/EYpb+tKwEHfn5iVqE74v+aTIvY3HHOPg56Yzdrg==
   dependencies:
-    "@untool/core" "^2.1.1"
+    "@untool/core" "^2.1.2"
     chalk "^3.0.0"
     duplitect "^2.0.1"
     enhanced-resolve "^4.1.1"
     escape-string-regexp "^2.0.0"
     mixinable "^4.0.0"
 
-"@untool/react@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@untool/react/-/react-2.1.1.tgz#f3d10685083221b2a6f71b9c33e5fe996a990c08"
-  integrity sha512-IVyy1Vo1NEdv39P196a2dP+4MZELDPnNpmFlG14YmEYg46JgMEOJYYzmgsg6HAtbmV3dCL2UI3Kfx331teTA4Q==
+"@untool/react@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@untool/react/-/react-2.1.2.tgz#fabf4562bfc0296fc0583b0e359098e51664da54"
+  integrity sha512-KIYt+nJKs6PgkI14//R/HZDyzHfnYLSzBaNseVTX7A7+zQfS6nheatHlA1MxtfKIurqlK9Pq3iCuyOqa4tUd9w==
   dependencies:
     "@babel/core" "^7.7.0"
     "@babel/preset-react" "^7.7.0"
-    "@untool/core" "^2.1.1"
+    "@untool/core" "^2.1.2"
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     clone "^2.1.2"
     depd "^2.0.0"
@@ -2553,17 +2553,17 @@
     prop-types "^15.7.2"
     serialize-javascript "^2.1.1"
 
-"@untool/webpack@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-2.1.1.tgz#4f4655861ed9453292e80d43be61c3cfd977b03b"
-  integrity sha512-850SQLDPWl9Dw1ypb8TJvQAtH0MueqWPiYLEDip6j8jvKuh//g2DSrNvhl03Gf2WpxuhbD4c8fozKpC7Apcihg==
+"@untool/webpack@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-2.1.2.tgz#5c40894536c194f828ac711337f8afc843528ca0"
+  integrity sha512-Kby+QMD+S0jJjy4A4DR1VWN1jSz23F5zetkjIxFGEuRedKOM03XUO3n4KrfI/Hv3NCE5KXM6hiqM0IvPruNLsA==
   dependencies:
     "@babel/core" "^7.7.0"
     "@babel/plugin-syntax-dynamic-import" "^7.7.0"
     "@babel/preset-env" "^7.7.0"
-    "@untool/core" "^2.1.1"
-    "@untool/express" "^2.1.1"
-    "@untool/yargs" "^2.1.1"
+    "@untool/core" "^2.1.2"
+    "@untool/express" "^2.1.2"
+    "@untool/yargs" "^2.1.2"
     babel-loader "^8.0.6"
     babel-plugin-dynamic-import-node "^2.3.0"
     caniuse-lite "^1.0.30000898"
@@ -2588,7 +2588,7 @@
     mixinable "^4.0.0"
     pathifist "^1.0.0"
     pretty-bytes "^5.3.0"
-    pretty-ms "^5.0.0"
+    pretty-ms "^6.0.0"
     regenerator-runtime "^0.13.3"
     require-from-string "^2.0.2"
     rimraf "^3.0.0"
@@ -2603,12 +2603,12 @@
     webpack-hot-middleware "^2.25.0"
     webpack-sources "^1.4.3"
 
-"@untool/yargs@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-2.1.1.tgz#067fc7e52598fe4260e2ac290e96b903f319d7a5"
-  integrity sha512-tEzuG/VY1zqNSliIb3nVduOBwcaiSkiTKzMXsGvIT3jEdsI/c6Mxi7Uo3aVcmz7gwpKM+i3/8QE+1TMDTaVmNQ==
+"@untool/yargs@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-2.1.2.tgz#57b4935d32bb9d67c8c6e7c72fac464efa2b1438"
+  integrity sha512-rIXPLOfABv9KdVIDetvZzXDEFVjYHR5wGbGjhSUSlerT3oa8mVgdgt5ErfDvx6QVYNUzDDZ7Ura4PTDS55VCrg==
   dependencies:
-    "@untool/core" "^2.1.1"
+    "@untool/core" "^2.1.2"
     is-plain-obj "^2.0.0"
     mixinable "^4.0.0"
     yargs "^13.0.0"
@@ -6443,7 +6443,6 @@ fsevents@^1.2.7:
   dependencies:
     bindings "^1.5.0"
     nan "^2.12.1"
-    node-pre-gyp "*"
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -10831,10 +10830,10 @@ pretty-format@^24.9.0:
     ansi-styles "^3.2.0"
     react-is "^16.8.4"
 
-pretty-ms@^5.0.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-5.1.0.tgz#b906bdd1ec9e9799995c372e2b1c34f073f95384"
-  integrity sha512-4gaK1skD2gwscCfkswYQRmddUb2GJZtzDGRjHWadVHtK/DIKFufa12MvES6/xu1tVbUYeia5bmLcwJtZJQUqnw==
+pretty-ms@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/pretty-ms/-/pretty-ms-6.0.0.tgz#39a0eb5f31d359bcee43c9579e6ddf4a02a82ff0"
+  integrity sha512-X5i1y9/8VuBMb9WU8zubTiLKnJG4lcKvL7eaCEVc/jpTe3aS74gCcBM6Yd1vvUDoTCXm4Y15obNS/16yB0FTaQ==
   dependencies:
     parse-ms "^2.1.0"
 
