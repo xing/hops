@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.1](https://github.com/xing/hops/compare/v12.1.0...v12.1.1) (2020-02-14)
+
+
+### Bug Fixes
+
+* update dependency styled-components to v5 ([333dccb](https://github.com/xing/hops/commit/333dccbacdc058bfd2d521fa99330610bdb7e86b))
+* update untool to v2.1.2 ([9c9f584](https://github.com/xing/hops/commit/9c9f584783c8f70447986b18f901a1b3b5f452d6))
+
+
+
+
+
 # [12.1.0](https://github.com/xing/hops/compare/v12.0.0...v12.1.0) (2020-02-11)
 
 
