@@ -16,7 +16,7 @@
   "dependencies": {
     "debug": "^4.1.1",
     "hops-mixin": "^0.0.0",
-    "http-proxy-middleware": "^0.20.0"
+    "http-proxy-middleware": "^0.21.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/development-proxy#readme"
 }
