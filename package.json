@@ -56,7 +56,6 @@
         ],
         "resolutions": {
           "husky": "^3.0.0",
-          "mkdirp": "^0.5.1",
           "semver": "7.0.0"
         }
       }
@@ -175,6 +174,7 @@
   },
   "resolutions": {
     "fs-extra": "7.0.1",
-    "lodash": "^4.17.13"
+    "lodash": "^4.17.13",
+    "mkdirp": "^0.5.1"
   }
 }
