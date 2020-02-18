@@ -275,7 +275,7 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 
 | Name | Type | Default | Example | Description |
 | --- | --- | --- | --- | --- |
-| `https` | `Boolean | Object` | `false` | `true` or<br/>`{ "keyFile": "./my.key", "certFile": "./my.cert" }` | Configure HTTPS support for Hops |
+| `https` | `Boolean` | `Object` | `false` | `true` or<br/>`{ "keyFile": "./my.key", "certFile": "./my.cert" }` | Configure HTTPS support for Hops |
 | `host` | `String` | `[HOST]` | `10.10.10.10` | Specify the IP address that Hops should bind to |
 | `port` | `String` | `[PORT]` | `1337` | Specify the Port that Hops should listen on |
 | `locations` | `Array<String>` | `[]` | `["/", "/about"]` | An array of locations for static rendering of HTML pages |
