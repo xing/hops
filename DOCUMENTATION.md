@@ -950,7 +950,7 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `proxy` | `String | Object` | `undefined` | _no_ | Proxy target configuration |
+| `proxy` | `String \| Object` | `undefined` | _no_ | Proxy target configuration |
 
 This will proxy all requests that are not assets and don't have `text/html` in its `Accept` header to the configured proxy endpoint.
 
