@@ -156,7 +156,6 @@
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@commitlint/config-lerna-scopes": "^8.0.0",
-    "@commitlint/travis-cli": "^8.0.0",
     "babel-eslint": "^10.0.0",
     "canarist": "^1.2.1",
     "cz-conventional-changelog": "^2.1.0",
