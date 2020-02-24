@@ -1,0 +1,30 @@
+{
+  "name": "fixture-typescript-unit-testing",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "^10.13 || ^12.13 || ^13.0"
+  },
+  "jest": {
+    "preset": "jest-preset-hops",
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
+  },
+  "hops": {
+    "gracePeriod": 0
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-typescript": "*",
+    "typescript": "*"
+  },
+  "devDependencies": {
+    "jest-preset-hops": "^0.0.0"
+  }
+}

@@ -1,6 +1,6 @@
 const babelJest = require('babel-jest');
 
-module.exports = babelJest.createTransformer({
+const babelConfig = {
   presets: [
     [
       '@babel/preset-env',
@@ -21,4 +21,7 @@ module.exports = babelJest.createTransformer({
     require.resolve('@babel/plugin-proposal-class-properties'),
   ],
   babelrc: false,
-});
+};
+
+module.exports = babelJest.createTransformer(babelConfig);
+module.exports.babelConfig = babelConfig;
