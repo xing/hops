@@ -34,38 +34,77 @@ module.exports = ({ types: t }) => ({
       const binding = path.scope.getBinding(bindingName);
 
       binding.referencePaths.forEach(refPath => {
-        const call = refPath.parentPath;
-        t.assertCallExpression(call);
+        let importComponentCallExpression = refPath.parentPath;
 
-        const argument = call.get('arguments.0');
+        // jest --coverage adds instrumentation code so we need to find the
+        // actual call expression
+        if (importComponentCallExpression.isSequenceExpression()) {
+          importComponentCallExpression = importComponentCallExpression
+            .get('expressions')
+            .find(path => path.isCallExpression());
+        }
+
+        t.assertCallExpression(importComponentCallExpression);
+
+        const argument = importComponentCallExpression.get('arguments.0');
         if (!argument) {
           throw new Error(
             '"importComponent" must be called with at least one parameter!'
           );
         }
 
+        function objectWithSyncRequire(moduleIdentifier) {
+          return t.objectExpression([
+            t.objectProperty(
+              t.identifier('component'),
+              t.callExpression(t.identifier('require'), [
+                t.stringLiteral(moduleIdentifier),
+              ])
+            ),
+          ]);
+        }
+
         let importedComponent;
+        let importCallExpression;
+        let pathReplacement = (path, moduleIdentifier) =>
+          path.replaceWith(objectWithSyncRequire(moduleIdentifier));
 
         if (t.isStringLiteral(argument)) {
           importedComponent = argument.node.value;
         } else {
           t.assertArrowFunctionExpression(argument);
-          t.assertCallExpression(argument.get('body'));
-          t.assertImport(argument.get('body.callee'));
 
-          importedComponent = argument.get('body.arguments.0').node.value;
+          importCallExpression = argument.get('body');
+
+          // jest adds coverage instrumentation to the arrow function so we need
+          // to find the `import()` call expression in the return statement
+          if (importCallExpression.isBlockStatement()) {
+            importCallExpression = importCallExpression
+              .get('body')
+              .find(p => p.isReturnStatement())
+              .get('argument');
+
+            pathReplacement = (path, moduleIdentifier) => {
+              path.traverse({
+                CallExpression(path) {
+                  if (path.get('callee').isImport()) {
+                    path.replaceWith(objectWithSyncRequire(moduleIdentifier));
+                  }
+                },
+              });
+
+              path.replaceWith(t.CallExpression(path.node, []));
+            };
+          }
+
+          t.assertCallExpression(importCallExpression);
+          t.assertImport(importCallExpression.get('callee'));
+
+          importedComponent = importCallExpression.get('arguments.0').node
+            .value;
         }
 
-        argument.replaceWith(
-          t.objectExpression([
-            t.objectProperty(
-              t.identifier('component'),
-              t.callExpression(t.identifier('require'), [
-                t.stringLiteral(importedComponent),
-              ])
-            ),
-          ])
-        );
+        pathReplacement(argument, importedComponent);
       });
     },
   },
