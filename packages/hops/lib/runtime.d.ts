@@ -80,5 +80,5 @@ declare module 'hops' {
   export function render<Options = { [key: string]: any }, P = {}>(
     reactElement: React.ReactElement<P>,
     options?: Options & HopsOptions
-  ): void;
+  ): () => void;
 }
