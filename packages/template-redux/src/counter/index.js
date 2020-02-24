@@ -11,7 +11,4 @@ export const actionCreators = {
   decrement,
 };
 
-export default connect(
-  mapStateToProps,
-  actionCreators
-)(Counter);
+export default connect(mapStateToProps, actionCreators)(Counter);
