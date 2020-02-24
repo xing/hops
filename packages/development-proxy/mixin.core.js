@@ -5,7 +5,7 @@ const {
     sync: { sequence },
   },
 } = require('hops-mixin');
-const proxy = require('http-proxy-middleware');
+const { createProxyMiddleware: proxy } = require('http-proxy-middleware');
 
 class ProxyMixin extends Mixin {
   configureServer(app, middlewares) {
