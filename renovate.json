@@ -7,6 +7,9 @@
     "enabled": true
   },
   "postUpdateOptions": ["yarnDedupeHighest"],
+  "automergeType": "pr-comment",
+  "automergeComment": "bors merge",
+  "requiredStatusChecks": null,
   "semanticCommitType": "chore",
   "semanticCommitScope": null,
   "baseBranches": ["master", "v12.x", "v11.x"],
