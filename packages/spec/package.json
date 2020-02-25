@@ -25,6 +25,7 @@
     "node": "^10.13 || ^12.13 || ^13.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^9.4.0",
     "create-hops-app": "^12.1.1",
     "cross-fetch": "^3.0.4",
     "fs-extra": "^8.1.0",

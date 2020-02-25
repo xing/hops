@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ImportComponent loading should display the loading state 1`] = `
-<p>
-  Fetching content…
-</p>
+Array [
+  <p>
+    Fetching content…
+  </p>,
+  <p>
+    Fetching content…
+  </p>,
+  <p>
+    Fetching content…
+  </p>,
+  <p>
+    Fetching content…
+  </p>,
+]
 `;

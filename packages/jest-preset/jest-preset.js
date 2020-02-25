@@ -1,6 +1,11 @@
 const { defaults } = require('jest-config');
 
 module.exports = {
+  globals: {
+    'ts-jest': {
+      babelConfig: require('./transforms/babel.js').babelConfig,
+    },
+  },
   moduleNameMapper: {
     '^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$': require.resolve(
       './mocks/file.js'
