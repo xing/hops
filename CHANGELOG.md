@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2](https://github.com/xing/hops/compare/v12.1.1...v12.1.2) (2020-02-26)
+
+
+### Bug Fixes
+
+* **development-proxy:** adapt import to breaking change in package ([cf2e847](https://github.com/xing/hops/commit/cf2e8471167c2c8bfd7b5426d1878eb7b2bfd723))
+* all test files need to run through babel ([#1085](https://github.com/xing/hops/issues/1085)) ([82f0757](https://github.com/xing/hops/commit/82f075715692283e9f78816cc4460011009a751f))
+* the render function returns a function ([#1087](https://github.com/xing/hops/issues/1087)) ([3fe1d78](https://github.com/xing/hops/commit/3fe1d785f499674254bff8ae0ce1a116055bf336))
+* update dependency http-proxy-middleware to ^0.21.0 ([04c1c0e](https://github.com/xing/hops/commit/04c1c0ec9344eac9aab68bbbc4e4f5db4af63074))
+* update dependency http-proxy-middleware to v1 ([fdc8074](https://github.com/xing/hops/commit/fdc80744cd01ff1c9b564f995d719a0c4c663163))
+* **jest-preset:** correctly handle coverage instrumented importComponent ([#1084](https://github.com/xing/hops/issues/1084)) ([243a908](https://github.com/xing/hops/commit/243a908ef0fd7850ab96e6ed6fb0fc2807280520)), closes [#1080](https://github.com/xing/hops/issues/1080)
+* upgrade untool to v2.1.3 ([5916f7d](https://github.com/xing/hops/commit/5916f7dc4274801f8705571d60755dc0ed0e040c)), closes [#580](https://github.com/xing/hops/issues/580)
+
+
+
+
+
 ## [12.1.1](https://github.com/xing/hops/compare/v12.1.0...v12.1.1) (2020-02-14)
 
 

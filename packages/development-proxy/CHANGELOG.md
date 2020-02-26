@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2](https://github.com/xing/hops/compare/v12.1.1...v12.1.2) (2020-02-26)
+
+
+### Bug Fixes
+
+* update dependency http-proxy-middleware to ^0.21.0 ([04c1c0e](https://github.com/xing/hops/commit/04c1c0ec9344eac9aab68bbbc4e4f5db4af63074))
+* update dependency http-proxy-middleware to v1 ([fdc8074](https://github.com/xing/hops/commit/fdc80744cd01ff1c9b564f995d719a0c4c663163))
+* **development-proxy:** adapt import to breaking change in package ([cf2e847](https://github.com/xing/hops/commit/cf2e8471167c2c8bfd7b5426d1878eb7b2bfd723))
+
+
+
+
+
 ## [12.1.1](https://github.com/xing/hops/compare/v12.1.0...v12.1.1) (2020-02-14)
 
 **Note:** Version bump only for package hops-development-proxy

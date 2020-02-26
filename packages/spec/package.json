@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "12.1.1",
+  "version": "12.1.2",
   "private": true,
   "files": [],
   "eslintConfig": {
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.4.0",
-    "create-hops-app": "^12.1.1",
+    "create-hops-app": "^12.1.2",
     "cross-fetch": "^3.0.4",
     "fs-extra": "^8.1.0",
     "jest-environment-node": "^24.9.0",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2](https://github.com/xing/hops/compare/v12.1.1...v12.1.2) (2020-02-26)
+
+
+### Bug Fixes
+
+* upgrade untool to v2.1.3 ([5916f7d](https://github.com/xing/hops/commit/5916f7dc4274801f8705571d60755dc0ed0e040c)), closes [#580](https://github.com/xing/hops/issues/580)
+
+
+
+
+
 ## [12.1.1](https://github.com/xing/hops/compare/v12.1.0...v12.1.1) (2020-02-14)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.2](https://github.com/xing/hops/compare/v12.1.1...v12.1.2) (2020-02-26)
+
+
+### Bug Fixes
+
+* all test files need to run through babel ([#1085](https://github.com/xing/hops/issues/1085)) ([82f0757](https://github.com/xing/hops/commit/82f075715692283e9f78816cc4460011009a751f))
+* **jest-preset:** correctly handle coverage instrumented importComponent ([#1084](https://github.com/xing/hops/issues/1084)) ([243a908](https://github.com/xing/hops/commit/243a908ef0fd7850ab96e6ed6fb0fc2807280520)), closes [#1080](https://github.com/xing/hops/issues/1080)
+
+
+
+
+
 ## [12.1.1](https://github.com/xing/hops/compare/v12.1.0...v12.1.1) (2020-02-14)
 
 **Note:** Version bump only for package jest-preset-hops
