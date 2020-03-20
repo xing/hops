@@ -2,6 +2,7 @@ import { render } from 'hops';
 import React from 'react';
 import { connect } from 'react-redux';
 import fetch from 'cross-fetch';
+import { Route } from 'react-router-dom';
 
 const reducers = {
   counter(state = 0, action) {
@@ -49,11 +50,20 @@ const setMatchParam = (params, { match: { params: matchParams } }) => {
 };
 
 const Counter = ({ count, increment, val }) => (
-  <React.Fragment>
+  <>
     <button onClick={increment}>+</button>
     <counter>{count}</counter>
     <value>{val}</value>
-  </React.Fragment>
+    <Route
+      path="/increment"
+      render={() => (
+        <>
+          <hr />
+          <a href="#some-hash">Set location hash&hellip;</a>
+        </>
+      )}
+    />
+  </>
 );
 
 const ConnectedCounter = connect(
