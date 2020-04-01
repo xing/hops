@@ -5,7 +5,7 @@ env:
     - HOST=0.0.0.0
 
 cache:
-  yarn: true
+  yarn: false
   directories:
     - node_modules
 
