@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import fetch from 'cross-fetch';
 import { Helmet } from 'react-helmet-async';
+import { Route } from 'react-router-dom';
 
 const reducers = {
   counter(state = 0, action) {
@@ -57,6 +58,15 @@ const Counter = ({ count, increment, val }) => (
     <button onClick={increment}>+</button>
     <counter>{count}</counter>
     <value>{val}</value>
+    <Route
+      path="/increment"
+      render={() => (
+        <>
+          <hr />
+          <a href="#some-hash">Set location hash&hellip;</a>
+        </>
+      )}
+    />
   </>
 );
 
