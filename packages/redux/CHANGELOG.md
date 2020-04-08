@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.3](https://github.com/xing/hops/compare/v12.1.2...v12.1.3) (2020-04-08)
+
+
+### Bug Fixes
+
+* **redux:** prevent route actions from being dispatched on hashchange ([a6355a5](https://github.com/xing/hops/commit/a6355a50ef34fd41a51fa06554a0b61c7154678d))
+
+
+
+
+
 ## [12.1.2](https://github.com/xing/hops/compare/v12.1.1...v12.1.2) (2020-02-26)
 
 **Note:** Version bump only for package hops-redux

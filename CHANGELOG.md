@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.3](https://github.com/xing/hops/compare/v12.1.2...v12.1.3) (2020-04-08)
+
+
+### Bug Fixes
+
+* update dependency file-loader to v6 ([3c17530](https://github.com/xing/hops/commit/3c17530e4ca0969a9c50e6685e04ff14af3ddd62))
+* **react:** ignore prop-types symbol check ([43faa21](https://github.com/xing/hops/commit/43faa210eb534db98b3208d8752eb243d627d02b)), closes [#1097](https://github.com/xing/hops/issues/1097)
+* **redux:** prevent route actions from being dispatched on hashchange ([a6355a5](https://github.com/xing/hops/commit/a6355a50ef34fd41a51fa06554a0b61c7154678d))
+
+
+
+
+
 ## [12.1.2](https://github.com/xing/hops/compare/v12.1.1...v12.1.2) (2020-02-26)
 
 

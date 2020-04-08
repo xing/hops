@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.3](https://github.com/xing/hops/compare/v12.1.2...v12.1.3) (2020-04-08)
+
+
+### Bug Fixes
+
+* **react:** ignore prop-types symbol check ([43faa21](https://github.com/xing/hops/commit/43faa210eb534db98b3208d8752eb243d627d02b)), closes [#1097](https://github.com/xing/hops/issues/1097)
+
+
+
+
+
 ## [12.1.2](https://github.com/xing/hops/compare/v12.1.1...v12.1.2) (2020-02-26)
 
 
