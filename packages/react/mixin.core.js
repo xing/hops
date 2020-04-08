@@ -1,8 +1,8 @@
 const { Mixin } = require('hops-mixin');
 
-const getPluginName = plugin => (Array.isArray(plugin) ? plugin[0] : plugin);
-const getPluginConfig = plugin => (Array.isArray(plugin) ? plugin[1] : {});
-const isBabelPlugin = name => plugin =>
+const getPluginName = (plugin) => (Array.isArray(plugin) ? plugin[0] : plugin);
+const getPluginConfig = (plugin) => (Array.isArray(plugin) ? plugin[1] : {});
+const isBabelPlugin = (name) => (plugin) =>
   require.resolve(getPluginName(plugin)) === require.resolve(name);
 
 class ReactCoreMixin extends Mixin {

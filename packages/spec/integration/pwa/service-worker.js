@@ -1,13 +1,13 @@
 const CACHE_NAME = 'hops-pwa-cache';
 
 export default (config, assets) => {
-  const cacheables = assets.map(a => '/' + a).concat(config.locations);
+  const cacheables = assets.map((a) => '/' + a).concat(config.locations);
 
-  self.addEventListener('install', evt => {
+  self.addEventListener('install', (evt) => {
     evt.waitUntil(precache());
   });
 
-  self.addEventListener('fetch', evt => {
+  self.addEventListener('fetch', (evt) => {
     // bypass service worker entirely for non-cached assets so that
     // Response.fromServiceWorker() correctly returns "false" for non-cached
     // responses

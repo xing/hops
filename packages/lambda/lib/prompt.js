@@ -2,7 +2,7 @@
 
 var prompt = require('prompt');
 
-module.exports = function(message) {
+module.exports = function (message) {
   var yesno = {
     name: 'yesno',
     message: message,
@@ -11,8 +11,8 @@ module.exports = function(message) {
     default: 'no',
   };
 
-  return new Promise(function(resolve, reject) {
-    prompt.get(yesno, function(error, answer) {
+  return new Promise(function (resolve, reject) {
+    prompt.get(yesno, function (error, answer) {
       if (error) {
         return reject(error);
       }

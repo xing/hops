@@ -36,7 +36,7 @@ module.exports = class ServiceWorkerPlugin {
         new RawSource(
           'HOPS_ASSETS = ' +
             JSON.stringify(
-              Object.keys(compilation.assets).filter(function(item) {
+              Object.keys(compilation.assets).filter(function (item) {
                 return (
                   !item.match(
                     /hot-update\.js(:?on)?|\.webmanifest|\.map|assets\.json$/

@@ -9,7 +9,7 @@ var progressWriter = require('./progress-writer');
 var fsUtils = require('./fs-utils');
 
 function formatParameters(params) {
-  return Object.keys(params).map(function(key) {
+  return Object.keys(params).map(function (key) {
     return {
       ParameterKey: key,
       ParameterValue: String(params[key]),
@@ -21,11 +21,11 @@ function createBucketIfNotExists(s3, bucketName) {
   return s3
     .headBucket({ Bucket: bucketName })
     .promise()
-    .catch(function() {
+    .catch(function () {
       return s3
         .createBucket({ Bucket: bucketName })
         .promise()
-        .then(function() {
+        .then(function () {
           return s3.waitFor('bucketExists', { Bucket: bucketName }).promise();
         });
     });
@@ -33,7 +33,7 @@ function createBucketIfNotExists(s3, bucketName) {
 
 function uploadFile(s3, bucketName, file, logger) {
   var progress = progressWriter('uploading ' + path.basename(file), logger);
-  return fsUtils.hashFileContents(file).then(function(hash) {
+  return fsUtils.hashFileContents(file).then(function (hash) {
     var parsedPath = path.parse(file);
     return s3
       .upload({
@@ -45,7 +45,7 @@ function uploadFile(s3, bucketName, file, logger) {
         Body: fs.createReadStream(file),
       })
       .promise()
-      .then(function(result) {
+      .then(function (result) {
         progress(1, 1);
         return result;
       });
@@ -53,14 +53,14 @@ function uploadFile(s3, bucketName, file, logger) {
 }
 
 function getStackOutput(cloudformation, stackName, logger) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     function poll() {
       cloudformation
         .describeStacks({
           StackName: stackName,
         })
         .promise()
-        .then(function(result) {
+        .then(function (result) {
           var stack = result.Stacks[0];
           if (logger) {
             logger.info(`stack status: ${result.Stacks[0].StackStatus}`);
@@ -96,13 +96,13 @@ function createOrUpdateStack(
   return cloudformation
     .describeStacks({ StackName: stackName })
     .promise()
-    .then(function() {
+    .then(function () {
       return 'UPDATE';
     })
-    .catch(function() {
+    .catch(function () {
       return 'CREATE';
     })
-    .then(function(changeSetType) {
+    .then(function (changeSetType) {
       var changeSetName = stackName + '-changeset' + Date.now();
 
       return cloudformation
@@ -115,7 +115,7 @@ function createOrUpdateStack(
           Parameters: params,
         })
         .promise()
-        .then(function() {
+        .then(function () {
           if (logger) {
             logger.info('Creating stack change set');
           }
@@ -129,7 +129,7 @@ function createOrUpdateStack(
             })
             .promise();
         })
-        .then(function() {
+        .then(function () {
           if (logger) {
             logger.info('Executing stack change set');
           }
@@ -140,11 +140,11 @@ function createOrUpdateStack(
             })
             .promise();
         })
-        .then(function() {
+        .then(function () {
           return getStackOutput(cloudformation, stackName, logger);
         })
-        .then(function(stack) {
-          return stack.Outputs.reduce(function(result, output) {
+        .then(function (stack) {
+          return stack.Outputs.reduce(function (result, output) {
             result[output.OutputKey] = output.OutputValue;
             return result;
           }, {});
@@ -180,7 +180,7 @@ module.exports = function deploy(
 
   return fsUtils
     .createTmpDirectory()
-    .then(function(tmpDirectory) {
+    .then(function (tmpDirectory) {
       var zippedBundleLocation = path.join(tmpDirectory, 'lambda.zip');
 
       var progress = progressWriter('zipping');
@@ -198,7 +198,7 @@ module.exports = function deploy(
         ),
         createBucketIfNotExists(s3, awsConfig.bucketName),
       ])
-        .then(function() {
+        .then(function () {
           return Promise.all([
             uploadFile(s3, awsConfig.bucketName, zippedBundleLocation, logger),
             uploadFile(
@@ -209,7 +209,7 @@ module.exports = function deploy(
             ),
           ]);
         })
-        .then(function(values) {
+        .then(function (values) {
           var parameters = formatParameters(
             Object.assign(
               {
@@ -235,7 +235,7 @@ module.exports = function deploy(
           );
         });
     })
-    .then(function(outputs) {
+    .then(function (outputs) {
       if (!logger) {
         return outputs;
       }
@@ -252,7 +252,7 @@ module.exports = function deploy(
 
       return outputs;
     })
-    .catch(function(error) {
+    .catch(function (error) {
       if (error.code) {
         if (logger) {
           logger.error(`AWS: (${error.code}) ${error.message}`);

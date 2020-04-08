@@ -15,7 +15,7 @@ export const Home = ({ data: { loading, github: { repo } = {} } }) => (
     {loading ? (
       <div>loading commits...</div>
     ) : (
-      repo.commits.map(commit => {
+      repo.commits.map((commit) => {
         const repoUrl = `https://github.com/${repo.owner.login}/${repo.name}`;
         return (
           <p key={commit.sha}>

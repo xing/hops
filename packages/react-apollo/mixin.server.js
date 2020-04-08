@@ -21,7 +21,7 @@ const fetch = require('cross-fetch');
 
 let introspectionResult = undefined;
 
-const wrapNetworkError = error => {
+const wrapNetworkError = (error) => {
   if (!error.networkError || !error.networkError.response) {
     return error;
   }
@@ -97,7 +97,7 @@ class GraphQLMixin extends Mixin {
   }
 
   async renderToFragments(element) {
-    if (this.canPrefetchOnServer().every(value => value) === false) {
+    if (this.canPrefetchOnServer().every((value) => value) === false) {
       return renderToFragments(element);
     }
 
@@ -105,7 +105,7 @@ class GraphQLMixin extends Mixin {
     try {
       await getMarkupFromTree({
         tree: element,
-        renderFunction: tree => {
+        renderFunction: (tree) => {
           fragments = renderToFragments(tree);
           return fragments.reactMarkup;
         },

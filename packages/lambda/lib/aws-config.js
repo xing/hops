@@ -3,7 +3,7 @@
 const { trimSlashes } = require('pathifist');
 const semver = require('semver');
 
-const getRuntimeNodeVersion = nodeVersion => {
+const getRuntimeNodeVersion = (nodeVersion) => {
   const { major } = semver.coerce(nodeVersion);
 
   switch (major) {
