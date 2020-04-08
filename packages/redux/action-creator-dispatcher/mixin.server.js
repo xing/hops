@@ -35,7 +35,7 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
   }
 
   async fetchData(data) {
-    if (this.canPrefetchOnServer().every(value => value)) {
+    if (this.canPrefetchOnServer().every((value) => value)) {
       await this.dispatchAll(createLocation(this.request.originalUrl));
       this.prefetchedOnServer = true;
     }

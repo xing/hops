@@ -24,7 +24,7 @@ module.exports = ({ types: t }) => ({
     ImportDeclaration(path) {
       const specifiers = path.get('specifiers');
       const specifier = specifiers.find(
-        specifier =>
+        (specifier) =>
           specifier.node.imported &&
           specifier.node.imported.name === 'importComponent'
       );
@@ -33,7 +33,7 @@ module.exports = ({ types: t }) => ({
       const bindingName = specifier.node.local.name;
       const binding = path.scope.getBinding(bindingName);
 
-      binding.referencePaths.forEach(refPath => {
+      binding.referencePaths.forEach((refPath) => {
         let importComponentCallExpression = refPath.parentPath;
 
         // jest --coverage adds instrumentation code so we need to find the
@@ -41,7 +41,7 @@ module.exports = ({ types: t }) => ({
         if (importComponentCallExpression.isSequenceExpression()) {
           importComponentCallExpression = importComponentCallExpression
             .get('expressions')
-            .find(path => path.isCallExpression());
+            .find((path) => path.isCallExpression());
         }
 
         t.assertCallExpression(importComponentCallExpression);
@@ -81,7 +81,7 @@ module.exports = ({ types: t }) => ({
           if (importCallExpression.isBlockStatement()) {
             importCallExpression = importCallExpression
               .get('body')
-              .find(p => p.isReturnStatement())
+              .find((p) => p.isReturnStatement())
               .get('argument');
 
             pathReplacement = (path, moduleIdentifier) => {

@@ -12,12 +12,12 @@ function validateName(name) {
       'because of the following npm restrictions:'
     );
     if (validationResult.errors) {
-      validationResult.errors.forEach(msg => {
+      validationResult.errors.forEach((msg) => {
         console.error(msg);
       });
     }
     if (validationResult.warnings) {
-      validationResult.warnings.forEach(msg => {
+      validationResult.warnings.forEach((msg) => {
         console.warn(msg);
       });
     }

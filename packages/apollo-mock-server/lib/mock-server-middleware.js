@@ -9,7 +9,7 @@ import extendContext from 'hops-apollo-mock-server/context-extender';
 
 const apolloAppPromise = Promise.resolve(
   typeof schema === 'function' ? schema() : schema
-).then(resolvedSchema => {
+).then((resolvedSchema) => {
   const app = express();
   app.use(cookieParser());
 
@@ -20,7 +20,7 @@ const apolloAppPromise = Promise.resolve(
         'request.credentials': 'same-origin',
       },
     },
-    context: context => extendContext({ ...context, config: hopsConfig }),
+    context: (context) => extendContext({ ...context, config: hopsConfig }),
   });
 
   server.applyMiddleware({
@@ -38,5 +38,5 @@ const apolloAppPromise = Promise.resolve(
 });
 
 export default (req, res, next) => {
-  apolloAppPromise.then(app => app.handle(req, res, next), next);
+  apolloAppPromise.then((app) => app.handle(req, res, next), next);
 };

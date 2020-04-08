@@ -1,1 +1,1 @@
-module.exports = context => context;
+module.exports = (context) => context;

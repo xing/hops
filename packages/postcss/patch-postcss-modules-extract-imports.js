@@ -14,15 +14,15 @@ const plugin = postcssModulesExtractImports();
 
 (function patchModules() {
   module.children
-    .filter(mod => mod.id.includes('postcss-modules-extract-imports'))
-    .forEach(mod => {
+    .filter((mod) => mod.id.includes('postcss-modules-extract-imports'))
+    .forEach((mod) => {
       // XXX: The following line mutates exports of a CommonJS module
       mod.exports = postcssModulesExtractImportsPatched;
     });
 })();
 
 function postcssModulesExtractImportsPatched() {
-  return css => {
+  return (css) => {
     const inputPath = dirname(css.source.input.file);
     // XXX: The "patchDeclarationValue" mutates the CSS AST
     findComposesDeclarations(css).forEach(patchDeclarationValue(inputPath));
@@ -32,13 +32,13 @@ function postcssModulesExtractImportsPatched() {
 
 function findComposesDeclarations(css) {
   return css.nodes
-    .filter(node => node.type === 'rule')
-    .map(rule => rule.nodes)
+    .filter((node) => node.type === 'rule')
+    .map((rule) => rule.nodes)
     .flat()
-    .filter(node => node.type === 'decl' && node.prop === 'composes');
+    .filter((node) => node.type === 'decl' && node.prop === 'composes');
 }
 
-const patchDeclarationValue = inputPath => declaration => {
+const patchDeclarationValue = (inputPath) => (declaration) => {
   const matches = declaration.value.match(matchImports);
   if (matches) {
     const [, symbols, doubleQuotePath, singleQuotePath, global] = matches;

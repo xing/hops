@@ -42,7 +42,7 @@ function getValidatedTemplateName(name, root) {
 }
 
 function renameDotFiles(root, files) {
-  files.forEach(dotFile => {
+  files.forEach((dotFile) => {
     if (existsSync(path.join(root, dotFile))) {
       renameSync(
         path.join(root, dotFile),
@@ -53,7 +53,7 @@ function renameDotFiles(root, files) {
 }
 
 function deleteFiles(root, files) {
-  files.forEach(fileName => {
+  files.forEach((fileName) => {
     const file = path.isAbsolute(fileName)
       ? fileName
       : path.join(root, fileName);
@@ -112,7 +112,7 @@ function init(root, appName, options) {
           pm.hasBeenInstalledViaYarn(options) ? '`yarn hops`' : '`npx hops`'
         );
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error while unpacking tar archive:', tarball);
         console.error(error);
         process.exit(1);

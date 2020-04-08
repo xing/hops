@@ -5,7 +5,7 @@ const { Mixin } = require('hops-mixin');
 
 const { Provider } = require('./context');
 
-const warnOnIncompleteBrowserWhitelist = config => {
+const warnOnIncompleteBrowserWhitelist = (config) => {
   if (process.env.NODE_ENV === 'development' && typeof Proxy === 'function') {
     return new Proxy(config, {
       get: (obj, prop) => {

@@ -28,7 +28,7 @@ class ReduxRuntimeCommonMixin extends Mixin {
   applyMiddlewares() {
     const middlewares = this.getReduxMiddlewares();
 
-    return middlewares.map(m => applyMiddleware(m));
+    return middlewares.map((m) => applyMiddleware(m));
   }
 
   enhanceElement(reactElement) {

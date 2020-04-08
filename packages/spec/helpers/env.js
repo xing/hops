@@ -9,8 +9,8 @@ const {
 
 function getProperty(property, selector) {
   return this.$(selector)
-    .then(h => h.getProperty(property))
-    .then(h => h.jsonValue());
+    .then((h) => h.getProperty(property))
+    .then((h) => h.jsonValue());
 }
 
 async function getElementByText(rawText) {
@@ -65,14 +65,14 @@ class FixtureEnvironment extends NodeEnvironment {
     this.global.createPage = async () => {
       const page = await browser.newPage();
       page.setDefaultNavigationTimeout(2 * 60 * 1000);
-      page.on('error', error => {
+      page.on('error', (error) => {
         throw error;
       });
-      page.on('pageerror', error => {
+      page.on('pageerror', (error) => {
         throw error;
       });
 
-      page.on('console', msg => {
+      page.on('console', (msg) => {
         const type = msg.type();
         const text = msg.text();
         if (type === 'error' || isIntolerableWarning(type, text)) {
