@@ -19,18 +19,19 @@ matrix:
   include:
     - node_js: '10.13'
       name: 'Test on Node.js 10'
-      if: branch =~ /(master|staging|trying|v\d+\.x)/
+      if: branch =~ /(master|staging|trying|v\d+\.x)/ AND NOT branch =~ /\.tmp$/
       script: 'yarn test --maxWorkers=2 --ci'
       env:
         - CACHE_NAME=node-v10
     - node_js: '12.13'
       name: 'Test on Node.js 12'
-      if: branch =~ /(master|staging|trying|v\d+\.x)/
+      if: branch =~ /(master|staging|trying|v\d+\.x)/ AND NOT branch =~ /\.tmp$/
       script: 'yarn test --maxWorkers=2 --ci'
       env:
         - CACHE_NAME=node-v12
     - node_js: '13'
       name: 'Test on Node.js 13 (latest)'
+      if: NOT branch =~ /\.tmp$/
       before_script:
         - 'yarn lint'
       script: 'yarn test --maxWorkers=2 --ci'
@@ -38,7 +39,7 @@ matrix:
         - CACHE_NAME=node-v13
     - node_js: 'lts/*'
       name: 'Canarist test on Node.js latest lts'
-      if: branch =~ /(master|staging|trying|v\d+\.x)/
+      if: branch =~ /(master|staging|trying|v\d+\.x)/ AND NOT branch =~ /\.tmp$/
       script: 'yarn canarist'
       env:
         - CACHE_NAME=canary
