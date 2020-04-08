@@ -10,8 +10,12 @@ const warnOnIncompleteBrowserWhitelist = config => {
     return new Proxy(config, {
       get: (obj, prop) => {
         const value = obj[prop];
+        const isPropTypesSymbolCheck = prop === '@@toStringTag';
 
-        if (!Object.prototype.hasOwnProperty.call(obj, prop)) {
+        if (
+          !Object.prototype.hasOwnProperty.call(obj, prop) &&
+          !isPropTypesSymbolCheck
+        ) {
           console.warn(
             `The property "${prop}" does not exist. Did you forget to add it to the browserWhitelist of your Hops config?`
           );

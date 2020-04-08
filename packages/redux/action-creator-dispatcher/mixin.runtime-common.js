@@ -14,14 +14,22 @@ const Dispatcher = withRouter(
       alwaysDispatchActionsOnClient: PropTypes.bool,
       prefetchedOnServer: PropTypes.bool.isRequired,
     };
+    previousPathname = null;
 
     dispatchAll() {
-      if (this.props.location) {
-        this.props.dispatchAll(this.props.location);
+      const { location } = this.props;
+      const pathnameChanged =
+        location && location.pathname !== this.previousPathname;
+
+      if (pathnameChanged) {
+        this.previousPathname = location.pathname;
+        this.props.dispatchAll(location);
       }
     }
 
     componentDidMount() {
+      this.previousPathname = this.props.location.pathname;
+
       // after the initial page load, the actions should not be dispatched immediately again,
       // because it was already done on the server and
       // this would often lead to flickering pages, unnecessary loading spinners and network requests

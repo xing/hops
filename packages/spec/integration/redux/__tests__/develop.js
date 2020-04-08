@@ -46,6 +46,23 @@ describe('redux development server', () => {
       await page.close();
     });
 
+    it('will not be executed if the location hash changes', async () => {
+      const { page, getInnerText } = await createPage();
+      const hashValue = '#some-hash';
+      await page.goto(urlJoin(url, '/increment'), {
+        waitUntil: 'networkidle2',
+      });
+      await page.click(`a[href="${hashValue}"]`);
+
+      const { hash } = new URL(page.url());
+      const count = await getInnerText('counter');
+
+      expect(hash).toBe(hashValue);
+      expect(count).toBe('1');
+
+      await page.close();
+    });
+
     it('will be executed if a search query or hash is present', async () => {
       const { page, getInnerText } = await createPage();
       await page.goto(urlJoin(url, '/increment?foo=bar#hash'), {
