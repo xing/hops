@@ -11,7 +11,7 @@ const QUERY = gql`
   }
 `;
 
-const errorPolicy = searchString => {
+const errorPolicy = (searchString) => {
   const allowedPolicies = ['none', 'ignore', 'all'];
   let result;
   try {

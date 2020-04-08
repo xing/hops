@@ -48,7 +48,7 @@ const App = () => (
               }
               return (
                 <ul id="commits">
-                  {data.github.repo.commits.map(commit => (
+                  {data.github.repo.commits.map((commit) => (
                     <li key={commit.sha}>
                       {commit.message} by <b>{commit.author.login}</b>
                     </li>

@@ -70,7 +70,7 @@ An object with key/value pairs of namespaces and reducer functions which will sh
 
 ```javascript
 const reducers = {
-  counter: function(state, action) {
+  counter: function (state, action) {
     return action.type === 'increment' ? state + action.payload : state;
   },
 };
@@ -151,7 +151,7 @@ Beware that middlewares passed as render option take precedence.
 // Object with fetch is passed as third parameter to thunks
 const incrementFetch = () => (dispatch, getState, { fetch }) => {
   return fetch('/api')
-    .then(r => r.json())
+    .then((r) => r.json())
     .then(({ value }) => {
       dispatch({ type: 'INCREMENT', payload: value });
     });

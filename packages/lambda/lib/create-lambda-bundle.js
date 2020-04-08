@@ -7,13 +7,13 @@ var archiver = require('archiver');
 var resolveTree = require('resolve-tree');
 
 function omitSubPaths(_path, i, paths) {
-  var isSubPath = paths.some(function(_path1) {
+  var isSubPath = paths.some(function (_path1) {
     return (
       _path1 !== _path &&
       path
         .relative(_path, _path1)
         .split(path.sep)
-        .every(function(part) {
+        .every(function (part) {
           return part === '..';
         })
     );
@@ -22,15 +22,15 @@ function omitSubPaths(_path, i, paths) {
 }
 
 function getProductionDependencies(manifest) {
-  return new Promise(function(resolve, reject) {
-    resolveTree.manifest(manifest, function(error, tree) {
+  return new Promise(function (resolve, reject) {
+    resolveTree.manifest(manifest, function (error, tree) {
       if (error) {
         return reject(error);
       }
       resolve(
         resolveTree
           .flattenMap(tree, 'root')
-          .filter(function(dependency, i, self) {
+          .filter(function (dependency, i, self) {
             return self.indexOf(dependency) === i;
           })
           .filter(omitSubPaths)
@@ -47,7 +47,7 @@ module.exports = function createLambdaBundle(
   onProgress,
   logger
 ) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     var output = fs
       .createWriteStream(outFile)
       .on('error', reject)
@@ -67,11 +67,11 @@ module.exports = function createLambdaBundle(
       require(path.join(rootDir, 'package.json'))
     );
 
-    output.on('open', function() {
+    output.on('open', function () {
       archive.pipe(output);
 
-      productionDependencies.then(function(paths) {
-        var patterns = paths.map(function(p) {
+      productionDependencies.then(function (paths) {
+        var patterns = paths.map(function (p) {
           return p + '/**';
         });
         globby(['**', '!node_modules/**'].concat(include).concat(patterns), {
@@ -80,8 +80,8 @@ module.exports = function createLambdaBundle(
           followSymbolicLinks: true,
           onlyFiles: true,
           ignore: ['.git/**'].concat(exclude),
-        }).then(function(paths) {
-          paths.forEach(function(file) {
+        }).then(function (paths) {
+          paths.forEach(function (file) {
             archive.file(file, { name: path.relative(rootDir, file) });
           });
           archive.finalize();

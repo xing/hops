@@ -10,7 +10,7 @@ function getLoader() {
     return require('graphql-tag/loader');
   } catch (_) {
     console.warn('graphql-tag/loader not found');
-    return function() {
+    return function () {
       return '{}';
     };
   }
@@ -18,6 +18,6 @@ function getLoader() {
 
 module.exports = {
   process(src) {
-    return getLoader().call({ cacheable: function() {} }, src);
+    return getLoader().call({ cacheable: function () {} }, src);
   },
 };

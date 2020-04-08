@@ -10,16 +10,16 @@ function emptyBucket(s3, bucketName, logger) {
   return s3
     .headBucket({ Bucket: bucketName })
     .promise()
-    .then(function() {
+    .then(function () {
       return s3
         .listObjectsV2({ Bucket: bucketName })
         .promise()
-        .then(function(data) {
-          return data.Contents.map(function(object) {
+        .then(function (data) {
+          return data.Contents.map(function (object) {
             return { Key: object.Key };
           });
         })
-        .then(function(objects) {
+        .then(function (objects) {
           return s3
             .deleteObjects({
               Bucket: bucketName,
@@ -38,7 +38,7 @@ function deleteBucket(s3, bucketName, logger) {
   return s3
     .headBucket(params)
     .promise()
-    .then(function() {
+    .then(function () {
       return s3.deleteBucket(params).promise();
     });
 }
@@ -52,7 +52,7 @@ function deleteStack(cloudFormation, stackName, logger) {
       StackName: stackName,
     })
     .promise()
-    .then(function() {
+    .then(function () {
       return cloudFormation.waitFor('stackDeleteComplete', {
         StackName: stackName,
         $waiter: {
@@ -75,12 +75,12 @@ module.exports = function destroy({ awsConfig }, options, logger) {
 
   function main() {
     return deleteStack(cloudFormation, awsConfig.stackName, logger)
-      .then(function() {
+      .then(function () {
         if (!options.keepFiles) {
           return emptyBucket(s3, awsConfig.bucketName, logger);
         }
       })
-      .then(function() {
+      .then(function () {
         if (!(options.keepFiles || options.keepBucket)) {
           return deleteBucket(s3, awsConfig.bucketName, logger);
         }
@@ -100,7 +100,7 @@ module.exports = function destroy({ awsConfig }, options, logger) {
         'This will delete your Lambda function and all its AWS resources. ' +
           'Are you sure you want to continue?'
       )
-        .then(function(confirmed) {
+        .then(function (confirmed) {
           return confirmed ? main() : logger && logger.info('Aborted.');
         })
         .catch(onError);

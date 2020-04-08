@@ -17,7 +17,7 @@ class GraphQLMixin extends Mixin {
   }
 
   registerCommands(yargs) {
-    yargs.command('graphql', 'Execute GraphQL specific tasks', yargs =>
+    yargs.command('graphql', 'Execute GraphQL specific tasks', (yargs) =>
       yargs
         .usage('Usage: hops graphql <command>')
         .command({
@@ -35,7 +35,7 @@ class GraphQLMixin extends Mixin {
               `),
             },
           },
-          handler: argv => {
+          handler: (argv) => {
             require('./lib/fragments')({
               graphqlUri: this.config.graphqlUri,
               schemaFile: this.config.graphqlSchemaFile,
@@ -47,7 +47,7 @@ class GraphQLMixin extends Mixin {
                   this.getLogger().info('Fetched and saved GraphQL fragments');
                 }
               })
-              .catch(err => {
+              .catch((err) => {
                 if (typeof this.getLogger === 'function') {
                   this.getLogger().error('Could not fetch GraphQL fragments:');
                   this.getLogger().error(err);

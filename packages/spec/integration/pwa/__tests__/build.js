@@ -17,7 +17,7 @@ describe('pwa production build', () => {
 
     // save all requests during the second visit
     const requests = new Map();
-    page.on('request', req => {
+    page.on('request', (req) => {
       requests.set(req.url(), req);
     });
 
@@ -30,7 +30,7 @@ describe('pwa production build', () => {
 
     // all responses should now come from the service worker
     expect(
-      Array.from(requests.values()).map(r => r.response().fromServiceWorker())
+      Array.from(requests.values()).map((r) => r.response().fromServiceWorker())
     ).toEqual([true, true, true]);
 
     await page.close();
@@ -39,12 +39,14 @@ describe('pwa production build', () => {
   it('generates webmanifest and references images', async () => {
     const distDir = path.join(cwd, 'dist');
     const distFiles = fs.readdirSync(distDir);
-    const manifestFile = distFiles.find(file => file.endsWith('.webmanifest'));
+    const manifestFile = distFiles.find((file) =>
+      file.endsWith('.webmanifest')
+    );
     const {
       icons: [{ src: icon }],
     } = JSON.parse(fs.readFileSync(path.join(distDir, manifestFile), 'utf-8'));
     const hasIconFile =
-      typeof distFiles.find(file => icon.includes(file)) !== 'undefined';
+      typeof distFiles.find((file) => icon.includes(file)) !== 'undefined';
     expect(hasIconFile).toBe(true);
   });
 });

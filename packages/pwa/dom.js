@@ -4,7 +4,7 @@ const {
   internal: { getConfig },
 } = require('@untool/core');
 
-const isLocalHost = host => {
+const isLocalHost = (host) => {
   return (
     host === 'localhost' ||
     host === '[::]' ||

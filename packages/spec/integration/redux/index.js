@@ -26,9 +26,9 @@ const reducers = {
 
 const increment = () => ({ type: 'INCREMENT', payload: 1 });
 
-const incrementFetch = () => dispatch => {
+const incrementFetch = () => (dispatch) => {
   return fetch('http://localhost:8901/api')
-    .then(r => r.json())
+    .then((r) => r.json())
     .then(({ value }) => {
       dispatch({ type: 'INCREMENT', payload: value });
     });

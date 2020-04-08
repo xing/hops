@@ -2,7 +2,7 @@ const { Mixin } = require('hops-mixin');
 const fetch = require('cross-fetch');
 const { HttpLink } = require('apollo-link-http');
 
-const customFetch = serverAddress => (uri, options) => {
+const customFetch = (serverAddress) => (uri, options) => {
   const urlSuffix =
     typeof Headers !== 'undefined' && options.headers instanceof Headers
       ? options.headers.get('x-url-suffix')

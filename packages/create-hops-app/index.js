@@ -43,7 +43,7 @@ const options = yargs
   .wrap(72)
   .parse(process.argv);
 
-const argv = options._.filter(a => !path.isAbsolute(a));
+const argv = options._.filter((a) => !path.isAbsolute(a));
 options.projectName = argv[argv.length - 1];
 
 if (!options.projectName) {

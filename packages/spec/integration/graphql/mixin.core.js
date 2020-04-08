@@ -29,7 +29,7 @@ const erroneousResponse = {
 class GraphQlMixin extends Mixin {
   configureServer(app, middlewares) {
     middlewares.preinitial.push((_, res, next) =>
-      this.getServerAddress().then(serverAddress => {
+      this.getServerAddress().then((serverAddress) => {
         res.locals.serverAddress = serverAddress;
         next();
       })
