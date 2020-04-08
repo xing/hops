@@ -22,7 +22,7 @@ const build = async ({ cwd, argv = [] }) => {
 const startServer = ({ cwd, command, argv = [] }) =>
   new Promise((resolve, reject) => {
     let onTeardown;
-    const teardownPromise = new Promise(resolve => (onTeardown = resolve));
+    const teardownPromise = new Promise((resolve) => (onTeardown = resolve));
 
     const hopsBin = resolveFrom(cwd, 'hops/bin');
 
@@ -36,7 +36,7 @@ const startServer = ({ cwd, command, argv = [] }) =>
       return teardownPromise;
     };
 
-    started.stdout.on('data', data => {
+    started.stdout.on('data', (data) => {
       const line = data.toString('utf-8');
       debug('stdout >', line);
       const match = line.match(/listening at (.*)/i);
@@ -48,13 +48,13 @@ const startServer = ({ cwd, command, argv = [] }) =>
     });
 
     let stderr = '';
-    started.stderr.on('data', data => {
+    started.stderr.on('data', (data) => {
       const line = data.toString('utf-8');
       debug('stderr >', line);
       stderr += line;
     });
 
-    started.on('close', code => {
+    started.on('close', (code) => {
       debug('Server stopped. exitcode:', code);
       onTeardown();
       if (code) {
@@ -62,7 +62,7 @@ const startServer = ({ cwd, command, argv = [] }) =>
       }
     });
 
-    started.on('error', error => reject(error));
+    started.on('error', (error) => reject(error));
   });
 
 const launchPuppeteer = async () => {
@@ -82,7 +82,7 @@ const launchPuppeteer = async () => {
   };
 };
 
-const createWorkingDir = async srcDir => {
+const createWorkingDir = async (srcDir) => {
   const cwdRootPath = path.resolve(__dirname, '..', '.tmp');
   await mkdirp(cwdRootPath);
   const cwdPath = await mktemp(path.resolve(cwdRootPath, 'XXXXX'));

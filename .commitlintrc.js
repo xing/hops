@@ -6,11 +6,11 @@ module.exports = {
     '@commitlint/config-lerna-scopes',
   ],
   rules: {
-    'scope-enum': context =>
-      getPackages(context).then(packages => [
+    'scope-enum': (context) =>
+      getPackages(context).then((packages) => [
         2,
         'always',
-        packages.map(p => p.replace(/^hops-|-hops$/, '')),
+        packages.map((p) => p.replace(/^hops-|-hops$/, '')),
       ]),
   },
 };

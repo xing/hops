@@ -7,10 +7,10 @@ const Text1 = importComponent('./text', 'default');
 const Text2 = importComponent(() => import('./text'));
 const Text3 = importComponent(
   () => import('./text'),
-  exports => exports.default
+  (exports) => exports.default
 );
 
-const loader = load =>
+const loader = (load) =>
   Promise.race([new Promise((_, reject) => setTimeout(reject, 10000)), load()]);
 
 const renderText = ({ Component, loading, ...props }) => {

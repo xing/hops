@@ -74,7 +74,7 @@ class GraphQLMixin extends Mixin {
       );
 
       webpackConfig.plugins = webpackConfig.plugins.filter(
-        p => !(p instanceof StatsFilePlugin)
+        (p) => !(p instanceof StatsFilePlugin)
       );
     }
   }

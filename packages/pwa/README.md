@@ -74,7 +74,7 @@ The `assets` parameter is an array of asset urls that your build produced (refer
 ```javascript
 export default (config, assets) => {
   // your worker code goes here. e.g.:
-  self.addEventListener('install', event => {
+  self.addEventListener('install', (event) => {
     event.waitUntil(precache(assets));
   });
 };

@@ -6,9 +6,7 @@ const serverlessHttp = require('serverless-http');
 const config = require('hops-config');
 const { trimSlashes } = require('pathifist');
 
-const app = require('@untool/express')
-  .configure(config)
-  .createServer('serve');
+const app = require('@untool/express').configure(config).createServer('serve');
 
 const awsConfig = require('./lib/aws-config')(config);
 
@@ -47,7 +45,7 @@ const binaryMimeTypes = [
 
 exports.handler = serverlessHttp(app, {
   binary: binaryMimeTypes,
-  request: function(request, context) {
+  request: function (request, context) {
     if (shouldIncludeStageInRequest) {
       request.url = context.requestContext.path;
     }

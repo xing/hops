@@ -32,10 +32,7 @@ describe('react development server', () => {
   it('redirects server-side', async () => {
     const { page } = await createPage();
     const response = await page.goto(urlJoin(url, '/redirect'));
-    const firstPageResponse = response
-      .request()
-      .redirectChain()[0]
-      .response();
+    const firstPageResponse = response.request().redirectChain()[0].response();
     expect(firstPageResponse.status()).toBe(301);
     expect(firstPageResponse.headers()['location']).toBe('/two');
 
@@ -59,13 +56,13 @@ describe('react development server', () => {
     const { page, getElementByText } = await createPage();
     await page.goto(url);
 
-    page.on('request', request => {
+    page.on('request', (request) => {
       if (request.isNavigationRequest()) {
         throw new Error('Router Link click should not trigger page navigation');
       }
     });
 
-    await getElementByText('Link to two').then(e => e.click());
+    await getElementByText('Link to two').then((e) => e.click());
 
     expect(await page.content()).toMatch('<h1>two</h1>');
 
@@ -74,7 +71,7 @@ describe('react development server', () => {
 
   it.each(['hook', 'hoc'])(
     'passes server data through the %s',
-    async approach => {
+    async (approach) => {
       const { page, getInnerText } = await createPage();
       await page.goto(urlJoin(url, `/server-data-${approach}`));
 
@@ -86,7 +83,7 @@ describe('react development server', () => {
   );
 
   it('allows to use flow', async () => {
-    const text = await fetch(urlJoin(url, '/flow')).then(r => r.text());
+    const text = await fetch(urlJoin(url, '/flow')).then((r) => r.text());
     expect(text).toMatch('text:flow');
   });
 
@@ -109,7 +106,7 @@ describe('react development server', () => {
     await page.close();
   });
 
-  it.each(['hook', 'hoc'])('renders config with %s', async approach => {
+  it.each(['hook', 'hoc'])('renders config with %s', async (approach) => {
     const { page } = await createPage();
     await page.goto(urlJoin(url, `/config-${approach}`), {
       waitUntil: 'networkidle2',

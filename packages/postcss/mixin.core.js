@@ -25,7 +25,7 @@ const cssLoaderGlobalOptions = {
 };
 
 const getCSSLoaderConfig = (browsers, additionalLoader) => {
-  const getLoaders = options =>
+  const getLoaders = (options) =>
     [
       additionalLoader,
       {

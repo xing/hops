@@ -38,7 +38,7 @@ class LambdaMixin extends Mixin {
   }
 
   registerCommands(yargs) {
-    yargs.command('lambda', 'manage your lambda deployment', yargs =>
+    yargs.command('lambda', 'manage your lambda deployment', (yargs) =>
       yargs
         .usage('Usage: hops lambda <command>')
         .command({

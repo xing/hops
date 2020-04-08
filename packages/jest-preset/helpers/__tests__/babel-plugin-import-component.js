@@ -5,7 +5,7 @@ const { readFileSync: readFile } = require('fs');
 const babel = require('@babel/core');
 
 const fixtureFolder = resolve(__dirname, 'fixture');
-const fixture = filename =>
+const fixture = (filename) =>
   readFile(join(fixtureFolder, filename), 'utf8').trim();
 const tests = [
   ['code-01.txt', 'expected-01.txt'],

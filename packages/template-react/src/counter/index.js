@@ -6,11 +6,11 @@ export default class Counter extends React.Component {
   };
 
   increment = () => {
-    this.setState(state => ({ count: state.count + 1 }));
+    this.setState((state) => ({ count: state.count + 1 }));
   };
 
   decrement = () => {
-    this.setState(state => ({ count: state.count - 1 }));
+    this.setState((state) => ({ count: state.count - 1 }));
   };
 
   render() {
