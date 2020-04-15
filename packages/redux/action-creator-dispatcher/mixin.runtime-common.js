@@ -14,21 +14,25 @@ const Dispatcher = withRouter(
       alwaysDispatchActionsOnClient: PropTypes.bool,
       prefetchedOnServer: PropTypes.bool.isRequired,
     };
-    previousPathname = null;
+    previousLocation = {};
 
     dispatchAll() {
-      const { location } = this.props;
+      const { location = {} } = this.props;
       const pathnameChanged =
-        location && location.pathname !== this.previousPathname;
+        location.pathname !== this.previousLocation.pathname;
+      const hashChanged = location.hash !== this.previousLocation.hash;
+      const onlyHashChanged = hashChanged && !pathnameChanged;
+      this.previousLocation = location;
 
-      if (pathnameChanged) {
-        this.previousPathname = location.pathname;
-        this.props.dispatchAll(location);
+      if (onlyHashChanged) {
+        return;
       }
+
+      this.props.dispatchAll(location);
     }
 
     componentDidMount() {
-      this.previousPathname = this.props.location.pathname;
+      this.previousLocation = this.props.location;
 
       // after the initial page load, the actions should not be dispatched immediately again,
       // because it was already done on the server and
