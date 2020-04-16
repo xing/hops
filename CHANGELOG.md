@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.4](https://github.com/xing/hops/compare/v12.1.3...v12.1.4) (2020-04-16)
+
+
+### Bug Fixes
+
+* **redux:** ensure to really only ignore hash-changes in dispatcher ([b2df6cc](https://github.com/xing/hops/commit/b2df6cccac08f48bbb0c7ac1b0c9614c2b8a93c5))
+
+
+
+
+
 ## [12.1.3](https://github.com/xing/hops/compare/v12.1.2...v12.1.3) (2020-04-08)
 
 
