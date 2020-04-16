@@ -1,0 +1,26 @@
+{
+  "name": "fixture-redux-without-ssr",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "^10.13 || ^12.13 || ^13.0"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js",
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "hops": {
+    "gracePeriod": 0,
+    "shouldPrefetchOnServer": false
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-redux": "*"
+  }
+}
