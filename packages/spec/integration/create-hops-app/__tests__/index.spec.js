@@ -26,7 +26,7 @@ describe('create-hops-app', () => {
     const lockFile = path.join(cwd, name, 'yarn.lock');
 
     expect(existsSync(lockFile)).toBeTruthy();
-    expect(readFileSync(lockFile, 'utf-8')).toContain('@untool');
+    expect(readFileSync(lockFile, 'utf-8')).toContain('hops-react');
   });
 
   it('initializes a Hops app with npm', () => {
@@ -38,7 +38,7 @@ describe('create-hops-app', () => {
     const lockFile = path.join(cwd, name, 'package-lock.json');
 
     expect(existsSync(lockFile)).toBeTruthy();
-    expect(readFileSync(lockFile, 'utf-8')).toContain('@untool');
+    expect(readFileSync(lockFile, 'utf-8')).toContain('hops-react');
   });
 
   it(`has the @next-binary if it's a pre-release`, () => {

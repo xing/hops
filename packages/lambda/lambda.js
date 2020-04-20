@@ -6,7 +6,7 @@ const serverlessHttp = require('serverless-http');
 const config = require('hops-config');
 const { trimSlashes } = require('pathifist');
 
-const app = require('@untool/express').configure(config).createServer('serve');
+const app = require('hops-express').configure(config).createServer('serve');
 
 const awsConfig = require('./lib/aws-config')(config);
 

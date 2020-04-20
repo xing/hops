@@ -13,13 +13,13 @@ class ReactCoreMixin extends Mixin {
     );
 
     const untoolPluginIndex = jsLoaderConfig.options.plugins.findIndex(
-      isBabelPlugin('@untool/react/lib/babel')
+      isBabelPlugin('hops-react/lib/babel')
     );
 
     const untoolPlugin = jsLoaderConfig.options.plugins[untoolPluginIndex];
 
     jsLoaderConfig.options.plugins[untoolPluginIndex] = [
-      require.resolve('@untool/react/lib/babel'),
+      require.resolve('hops-react/lib/babel'),
       {
         ...getPluginConfig(untoolPlugin),
         module: 'hops',

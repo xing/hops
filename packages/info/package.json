@@ -1,0 +1,26 @@
+{
+  "name": "hops-info",
+  "version": "0.0.0",
+  "description": "Hops info mixin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xing/hops/issues"
+  },
+  "homepage": "https://github.com/xing/hops#readme",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "duplitect": "^2.0.1",
+    "enhanced-resolve": "^4.1.1",
+    "escape-string-regexp": "^3.0.0",
+    "hops-bootstrap": "^0.0.0",
+    "hops-mixin": "^0.0.0",
+    "mixinable": "^4.0.0"
+  },
+  "engines": {
+    "node": "^10.13 || ^12.13 || ^13.0"
+  }
+}

@@ -1,7 +1,7 @@
 const { Mixin } = require('hops-mixin');
 const {
   internal: { createWebpackMiddleware, StatsFilePlugin },
-} = require('@untool/webpack');
+} = require('hops-webpack');
 
 function exists(path) {
   try {
@@ -69,7 +69,11 @@ class GraphQLMixin extends Mixin {
       );
 
       webpackConfig.output.filename = 'hops-graphql-mock-server.js';
+      // todo: remove this if not used anymore
       webpackConfig.resolve.alias['@untool/entrypoint'] = require.resolve(
+        './lib/mock-server-middleware'
+      );
+      webpackConfig.resolve.alias['hops/entrypoint'] = require.resolve(
         './lib/mock-server-middleware'
       );
 
