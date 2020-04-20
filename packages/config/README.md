@@ -8,7 +8,7 @@ This is a package that exposes your applications configuration and is mostly her
 
 Please use [`withConfig`](../../DOCUMENTATION.md#withconfigcomponent) or [`useConfig`](../../DOCUMENTATION.md#useconfig-config) to access the configuration inside your application's React components.
 
-Inside [mixins](https://github.com/untool/untool/tree/master/packages/core#mixins) you can access the config through `this.config`.
+Inside [mixins](../bootstrap#mixins) you can access the config through `this.config`.
 
 ### Installation
 

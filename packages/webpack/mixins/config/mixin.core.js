@@ -17,7 +17,7 @@ const {
 const {
   Mixin,
   internal: { validate, invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 class WebpackConfigMixin extends Mixin {
   getBuildConfig(target, baseConfig) {
@@ -49,7 +49,7 @@ class WebpackConfigMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs, target) {
     const { module, performance } = webpackConfig;
     const configLoaderConfig = {
-      test: require.resolve('@untool/core/lib/config'),
+      test: require.resolve('hops-bootstrap/lib/config'),
       loader: require.resolve('../../lib/utils/loader'),
       options: {
         type: target,

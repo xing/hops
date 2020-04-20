@@ -10,7 +10,7 @@ const {
 const {
   Mixin,
   internal: { validate, invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 const sequenceWithReturn = (functions, arg, ...args) => {
   sequence(functions, arg, ...args);

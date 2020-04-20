@@ -15,11 +15,6 @@
   "baseBranches": ["master", "v12.x", "v11.x"],
   "packageRules": [
     {
-      "packagePatterns": ["^@untool/"],
-      "packageNames": ["untool"],
-      "groupName": "Update untool monorepo packages"
-    },
-    {
       "depTypeList": ["dependencies", "peerDependencies"],
       "semanticCommitType": "fix"
     },

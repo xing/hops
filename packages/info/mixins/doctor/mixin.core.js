@@ -8,7 +8,7 @@ const { Mixin } = require('hops-mixin');
 
 const {
   internal: { validate, invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 const { createDoctor } = require('../../lib/doctor');
 
@@ -19,7 +19,7 @@ class DoctorMixin extends Mixin {
   }
   diagnose({ validateConfig, detectDuplicatePackages }) {
     validateConfig();
-    detectDuplicatePackages('@untool/*');
+    detectDuplicatePackages('hops-*');
   }
   bootstrap() {
     const { doctor } = this;

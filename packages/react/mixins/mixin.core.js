@@ -1,6 +1,6 @@
 'use strict';
 
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-bootstrap');
 
 module.exports = class ReactMixin extends Mixin {
   configureBuild(webpackConfig, { fileLoaderConfig, jsLoaderConfig }, target) {

@@ -2621,25 +2621,6 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
 
-"@untool/core@^2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@untool/core/-/core-2.1.3.tgz#255f08034531e7f879b35c363e2be1e9f4db1ffb"
-  integrity sha512-KWIsuGMtP4Fs9CQGFuTVyL35SMF/rW+L16dbvO83u5xUQd7mVvLAShK2DPOWOCCe+BVgu2w0lYI/C1d0tiExPg==
-  dependencies:
-    ajv "^6.10.2"
-    check-error "^1.0.2"
-    cosmiconfig "^6.0.0"
-    debug "^4.1.1"
-    dotenv "^8.1.0"
-    enhanced-resolve "^4.1.1"
-    escape-string-regexp "^2.0.0"
-    find-up "^4.1.0"
-    flat "^5.0.0"
-    is-plain-obj "^2.0.0"
-    lodash.mergewith "^4.6.2"
-    mixinable "^4.0.0"
-    supports-color "^7.1.0"
-
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -5681,11 +5662,6 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
-
-escape-string-regexp@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
-  integrity sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==
 
 escape-string-regexp@^3.0.0:
   version "3.0.0"

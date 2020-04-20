@@ -10,7 +10,7 @@ const {
 const {
   Mixin,
   internal: { validate, invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 class WebpackBuildMixin extends Mixin {
   clean() {

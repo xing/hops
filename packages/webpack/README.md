@@ -1,6 +1,6 @@
 # `hops-webpack`
 
-`hops-webpack` is the largest and most complex of `hops`'s core packages. It contains half of its total lines of code and provides both a [preset](../core/README.md#presets) and a [core mixin](../core/README.md#mixins). It provides a comprehensive, but rather minimal [`Webpack`](https://webpack.js.org) setup as a basis for your own configurations.
+`hops-webpack` is the largest and most complex of `hops`'s core packages. It contains half of its total lines of code and provides both a [preset](../boostrap/README.md#presets) and a [core mixin](../boostrap/README.md#mixins). It provides a comprehensive, but rather minimal [`Webpack`](https://webpack.js.org) setup as a basis for your own configurations.
 
 Based on [`hops-express`](../express/README.md), it also features development and production servers. The former even comes with [hot module replacement (HMR)](https://webpack.js.org/concepts/hot-module-replacement/).
 
@@ -95,16 +95,16 @@ const { build } = configure(configOverrides, options);
 build();
 ```
 
-The above example is functionally equivalent to directly working with `@untool/core`'s [`bootstrap`](../core/README.md#bootstrapconfigoverrides-options-build-only) export.
+The above example is functionally equivalent to directly working with `hops-bootstrap`'s [`bootstrap`](../boostrap/README.md#bootstrapconfigoverrides-options-build-only) export.
 
 ### `configureBuild(webpackConfig, loaderConfigs, target)` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
 
-If you implement this mixin hook in your `@untool/core` [`core` mixin](../core/README.md#mixins), you will be able to modify the different Webpack configs `hops` uses in any way you like.
+If you implement this mixin hook in your `hops-bootstrap` [`core` mixin](../boostrap/README.md#mixins), you will be able to modify the different Webpack configs `hops` uses in any way you like.
 
 In addition to the actual `webpackConfig`, which, by the way, your implementation is expected to return, you will receive an object containing all `loaderConfigs` and a `target` argument. This last argument can be `build`, `develop`, or `node`.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class MyMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs, target) {

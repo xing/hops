@@ -13,7 +13,7 @@ const {
 const {
   Mixin,
   internal: { validate, invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 class WebpackStatsMixin extends Mixin {
   constructor(...args) {

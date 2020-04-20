@@ -2,7 +2,7 @@
 
 const {
   internal: { getConfig },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 const isLocalHost = (host) => {
   return (
