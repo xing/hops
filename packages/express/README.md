@@ -4,9 +4,9 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This package has been [deprecated](../../DEPRECATIONS.md#dep0002) as of version 12 of Hops, the contained Express configuration has been moved to [`@untool/express`](https://github.com/untool/untool/tree/master/packages/express). If you happened to have installed this package to create a custom collection of presets, you can safely remove it.
+This is one of the core presets for Hops and provides the development and production server configuration and mixin infrastructure in order to build a Hops application.
 
-This package will be removed with the next major release of Hops.
+`hops-express` strives to gracefully handle exceptions and to facilitate infrastructure integration: in case of uncaught middleware errors or upon receiving a [`SIGTERM`](https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html) signal, the server's [`close`](https://nodejs.org/api/net.html#net_server_close_callback) method will be called before exiting the process.
 
 ### CLI
 
@@ -33,10 +33,8 @@ You may use either `hops serve -p` or its equivalent `NODE_ENV=production hops s
 | `https` | `Boolean | Object` | `false` | _no_ | Configure HTTPS support for Hops |
 | `host` | `String` | `[HOST]` | _no_ | Specify the IP address that Hops should bind to |
 | `port` | `String` | `[PORT]` | _no_ | Specify the Port that Hops should listen on |
-| `locations` | `Array<String>` | `[]` | _no_ | An array of locations for static rendering of HTML pages |
-| `basePath` | `String` | `''` | _no_ | The URL base path from which your application will be served |
-| `assetPath` | `String` | `<basePath>` | _no_ | The URL base path from which the assets will be served from |
-| `buildDir` | `String` | `<rootDir>/dist` | _no_ | The directory in which the build outputs will be written to |
+| `distDir` | `String` | `'<rootDir>/dist'` | _no_ | The folder from which to serve static assets |
+| `gracePeriod` | `number` | `30000` | _no_ | Time to wait (in ms) until killing the server |
 
 ##### `https`
 
@@ -73,43 +71,23 @@ The port on which the server will be listening. By default Hops will try to read
 }
 ```
 
-##### `locations`
-
-Use this setting to define routes for static prerendering. Simply list all URLs that you want to prerender and execute `$ hops build -ps`.
-
-```json
-"hops": {
-  "locations": ["/foo", "/bar"]
-}
-```
-
-##### `basePath`
-
-This is the URL base path, for example, when you want to serve your application from a subfolder.
-
-```json
-"hops": {
-  "basePath": "/foo"
-}
-```
-
-##### `assetPath`
-
-This is the URL base path (subfolder) from which your assets will be served.
-
-```json
-"hops": {
-  "assetPath": "<basePath>/assets"
-}
-```
-
-##### `buildDir`
+##### `distDir`
 
 This is the file-system path to where the generated assets will be written and served from.
 
 ```json
 "hops": {
-  "buildDir": "<rootDir>/dist"
+  "distDir": "<rootDir>/dist"
+}
+```
+
+##### `gracePeriod`
+
+The amount of time (in milliseconds) to wait after receiving a [`SIGTERM`](https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html) signal or catching an unhandled middleware exception and before killing the server completely.
+
+```json
+{
+  "gracePeriod": 60000
 }
 ```
 
@@ -181,13 +159,3 @@ It accepts `develop`, `serve` or `static` as `mode`.
 In case you want to programmatically start a server, you can use this mixin hook.
 
 It accepts `develop` or `serve` as `mode`.
-
-#### `createRenderer(): (options) => Promise<Response>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
-
-This mixin method creates the static renderer. When called it returns a function that accepts an options hash or an url and returns a Promise that resolves to the statically rendered page.
-
-#### `renderLocations(): Promise<Responses>` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
-
-This mixin method creates a fully configured Express.js application and renders all your configured `locations` to strings.
-
-It returns a Promise that resolves to an object whose keys are your configured `locations` and the values are the rendered pages.
