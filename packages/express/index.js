@@ -1,6 +1,6 @@
 'use strict';
 
-const { initialize } = require('@untool/core');
+const { initialize } = require('hops-bootstrap');
 
 const configure = (config, options) => ({
   runServer(...args) {

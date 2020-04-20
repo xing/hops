@@ -24,7 +24,7 @@ All code in this repository is expected to be formatted using [prettier](https:/
 
 #### Releasing a new version
 
-Releasing Hops requires the environment variable `GH_TOKEN` [to be set](https://github.com/lerna/lerna/tree/master/commands/version#--github-release) to a valid [GitHub access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with the `public_repo` scope in order to publish the release notes to the [GitHub releases page](https://github.com/untool/untool/releases).
+Releasing Hops requires the environment variable `GH_TOKEN` [to be set](https://github.com/lerna/lerna/tree/master/commands/version#--github-release) to a valid [GitHub access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) with the `public_repo` scope in order to publish the release notes to the [GitHub releases page](https://github.com/xing/hops/releases).
 
 Thanks! :green_heart:
 

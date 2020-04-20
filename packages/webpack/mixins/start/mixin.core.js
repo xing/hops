@@ -1,6 +1,6 @@
 'use strict';
 
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-bootstrap');
 
 class WebpackStartMixin extends Mixin {
   registerCommands(yargs) {

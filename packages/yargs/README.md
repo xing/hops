@@ -1,6 +1,6 @@
 # `hops-yargs`
 
-`hops-yargs` is a [core mixin](../core/README.md#mixins) powering `hops`'s command line interface and allowing other mixins to define their own commands. These custom commands will work exactly as those defined by `hops`'s own modules and can be called using executables such as [Hops CLI](https://github.com/xing/hops/blob/master/packages/cli/README.md).
+`hops-yargs` is a [core mixin](../boostrap/README.md#mixins) powering `hops`'s command line interface and allowing other mixins to define their own commands. These custom commands will work exactly as those defined by `hops`'s own modules and can be called using executables such as [Hops CLI](https://github.com/xing/hops/blob/master/packages/cli/README.md).
 
 ### Installation
 
@@ -37,7 +37,7 @@ $ yarn exec un start # OR npx un start
 Within this method, you are expected to set up your application. If you need to do something asynchronous at this point, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooMixin extends Mixin {
   bootstrap(yargs) {
@@ -51,7 +51,7 @@ module.exports = class FooMixin extends Mixin {
 This is the most relevant hook provided by `hops-yargs`: it enables other mixins to register their respective commands. Implementations of this mixin method will receive a single argument: a [`yargs`](http://yargs.js.org) instance.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooMixin extends Mixin {
   registerCommands(yargs) {
@@ -71,7 +71,7 @@ module.exports = class FooMixin extends Mixin {
 By implementing this method, your mixin can intercept and alter command configuration. Its main purpose is to enable you to add arguments to commands defined by other mixins.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooBarMixin extends Mixin {
   configureCommand(definition) {
@@ -87,14 +87,14 @@ module.exports = class FooBarMixin extends Mixin {
 };
 ```
 
-**Caveat**: please be advised that, while we strive to keep the `definition` argument very stable, it may change between `minor` versions of `@untool/*` packages that provide commands. Additionally, other mixins may alter the command you want to modify in relevant ways, so code accordingly.
+**Caveat**: please be advised that, while we strive to keep the `definition` argument very stable, it may change between `minor` versions of the Hops packages that provide commands. Additionally, other mixins may alter the command you want to modify in relevant ways, so code accordingly.
 
 ### `handleArguments(argv)` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
 
 Your mixin's implementation of this method will receive the parsed CLI arguments passed to `hops-yargs`. You may want to implement it if you need to alter mixin behaviour according to these args.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooMixin extends Mixin {
   handleArguments(argv) {
@@ -108,7 +108,7 @@ module.exports = class FooMixin extends Mixin {
 By implementing this method, you can handle exceptions occuring in your application - even uncaught errors and unhandled promise rejections. **If `receoverable' is 'false`, `hops-yargs` will automatically terminate the [running process](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly).**
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 const { logError } = require('./logger');
 
 module.exports = class FooMixin extends Mixin {

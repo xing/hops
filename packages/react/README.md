@@ -8,9 +8,9 @@ This is a [preset for Hops](../../DOCUMENTATION.md#presets) that enables React, 
 
 `hops-react`'s main runtime exports are a couple of React components that allow implementers to declaratively control server (or system) behavior. Additionally, `hops-react` features full support for [`react-router`](https://github.com/ReactTraining/react-router)'s and [`react-helmet-async`](https://github.com/staylor/react-helmet-async)'s components.
 
-`hops-react` provides all three types of `@untool/core` [mixin types](../core/README.md#mixins). Its `core` mixin uses `hops-webpack`'s [`configureBuild`](../webpack/README.md#configurebuildwebpackconfig-loaderconfigs-target-pipe) hook to add some settings specific to [React](https://reactjs.org), for example support for [JSX](https://reactjs.org/docs/introducing-jsx.html) syntax.
+`hops-react` provides all three types of `hops-bootstrap` [mixin types](../bootstrap/README.md#mixins). Its `core` mixin uses `hops-webpack`'s [`configureBuild`](../webpack/README.md#configurebuildwebpackconfig-loaderconfigs-target-pipe) hook to add some settings specific to [React](https://reactjs.org), for example support for [JSX](https://reactjs.org/docs/introducing-jsx.html) syntax.
 
-Its `runtime`, i.e. `browser` and `server`, mixins are a bit more interesting as they are `hops-react`'s only default [`render`](../core/README.md#renderargs-runtime-only) mixins. They set up [React](https://reactjs.org) for client- and server-side rendering. Additionally, they provide mixin hooks of their own to allow you to add your own features, for example [Redux](https://redux.js.org) support.
+Its `runtime`, i.e. `browser` and `server`, mixins are a bit more interesting as they are `hops-react`'s only default [`render`](../bootstrap/README.md#renderargs-runtime-only) mixins. They set up [React](https://reactjs.org) for client- and server-side rendering. Additionally, they provide mixin hooks of their own to allow you to add your own features, for example [Redux](https://redux.js.org) support.
 
 During application startup, `hops-react` runs a check to determine if certain npm packages are installed multiple times. If you see warnings telling you that this is the case, you will want to make sure you get rid of these duplicates, as they will almost certainly break things in interesting ways.
 
@@ -167,7 +167,7 @@ This preset has no runtime configuration options.
 This method is being called whenever you call the main `render` method. In a server-side, i.e. Node.js, environment it receives the usual arguments any Express [middleware](https://expressjs.com/en/guide/writing-middleware.html) receives: `req`, `res`, and `next`. In a client-side, i.e. browser, environment it receives no arguments whatsoever.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooMixin extends Mixin {
   render(req, res, next) {
@@ -187,7 +187,7 @@ You will not usually have to override this method as it exposes the following mi
 Within this method, you are expected to set up your application. Your implementation will receive both Express' [`req`](https://expressjs.com/en/4x/api.html#req) and [`res`](https://expressjs.com/en/4x/api.html#res) objects for you to do whatever you like with. If you need to do something asynchronous in this method, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooMixin extends Mixin {
   bootstrap(req, res) {
@@ -207,7 +207,7 @@ Remember you can register custom middlewares using [`hops-express`](../express/R
 With this method, you can wrap the React root element with additional components, like Redux' [Provider](https://redux.js.org/basics/usage-with-react). If you need to do something asynchronous in this method, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) resolving to the wrapped element.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooMixin extends Mixin {
   enhanceElement(element) {
@@ -221,7 +221,7 @@ module.exports = class FooMixin extends Mixin {
 Most applications need some sort of data. Implement this method in your mixin, to fetch said data before rendering and return an object with that additional data. If you need to do something asynchronous in this method, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) resolving to the data.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooMixin extends Mixin {
   fetchData(data, element) {
@@ -235,7 +235,7 @@ module.exports = class FooMixin extends Mixin {
 In case you need to gather additional template data after React rendering, e.g. if you are using [styled components](https://www.styled-components.com), you can add the required data by implementing this hook in your custom mixin. To do so asynchronously, have this method return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) resolving to the extended data.
 
 ```javascript
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops');
 
 module.exports = class FooMixin extends Mixin {
   getTemplateData(data) {

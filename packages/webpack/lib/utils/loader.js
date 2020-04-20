@@ -36,7 +36,7 @@ const configs = {};
 exports.getConfig = (overrides = {}) => {
   const key = Object.keys(overrides).length ? JSON.stringify(overrides) : '_';
   if (!configs[key]) {
-    const utils = require('@untool/core/lib/utils');
+    const utils = require('hops-bootstrap/lib/utils');
     const { environmentalize, placeholdify, merge } = utils;
     const raw = merge()(${getConfig(type, config, rootDir)}, overrides);
     configs[key] = environmentalize(placeholdify(raw), ${escapeJS(

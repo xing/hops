@@ -8,7 +8,7 @@ const { Mixin } = require('hops-mixin');
 
 const {
   internal: { validate, invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 const { createLogger, logLevels } = require('../../lib/logger');
 

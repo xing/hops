@@ -144,7 +144,7 @@
   ],
   "jest": {
     "projects": [
-      "<rootDir>/packages/!(spec)",
+      "<rootDir>/packages/!(spec|bootstrap)",
       "<rootDir>/packages/spec/integration/*"
     ]
   },

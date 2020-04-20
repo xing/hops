@@ -69,6 +69,10 @@ class GraphQLMixin extends Mixin {
       );
 
       webpackConfig.output.filename = 'hops-graphql-mock-server.js';
+      // todo: remove this if not used anymore
+      webpackConfig.resolve.alias['@untool/entrypoint'] = require.resolve(
+        './lib/mock-server-middleware'
+      );
       webpackConfig.resolve.alias['hops/entrypoint'] = require.resolve(
         './lib/mock-server-middleware'
       );

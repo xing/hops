@@ -1,6 +1,6 @@
 'use strict';
 
-const { initialize } = require('@untool/core');
+const { initialize } = require('hops-bootstrap');
 
 const createWebpackMiddleware = require('./lib/middlewares/render');
 const createStatsMiddleware = require('./lib/middlewares/stats');
