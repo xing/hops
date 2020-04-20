@@ -1,4 +1,4 @@
-const { Mixin } = require('@untool/core');
+const { Mixin } = require('hops-bootstrap');
 const { sync, async } = require('mixinable');
 
 module.exports = {

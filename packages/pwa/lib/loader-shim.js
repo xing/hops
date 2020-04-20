@@ -1,1 +1,1 @@
-export { getConfig } from '@untool/core/lib/config';
+export { getConfig } from 'hops-bootstrap/lib/config';

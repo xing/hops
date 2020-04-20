@@ -5,7 +5,7 @@ const createYargs = require('yargs');
 const {
   initialize,
   internal: { invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 const configure = (config, options) => ({
   run(...args) {

@@ -12,7 +12,7 @@ const { join: joinUrl, ensureLeadingSlash } = require('pathifist');
 const {
   Mixin,
   internal: { validate, invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 class WebpackRenderMixin extends Mixin {
   getRenderRequests() {

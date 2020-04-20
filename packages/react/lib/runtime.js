@@ -10,7 +10,7 @@ const deprecate = require('depd')('hops-react');
 const {
   initialize,
   internal: { invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 exports.render = (element, options) => (...args) => {
   invariant(

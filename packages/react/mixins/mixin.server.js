@@ -18,7 +18,7 @@ const { ensureLeadingSlash, trimTrailingSlash } = require('pathifist');
 const {
   Mixin,
   internal: { validate, invariant },
-} = require('@untool/core');
+} = require('hops-bootstrap');
 
 const renderToFragments = require('../lib/fragments');
 const getAssets = require('../lib/assets');
