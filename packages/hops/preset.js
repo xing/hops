@@ -2,7 +2,7 @@ module.exports = {
   presets: [
     'hops-yargs',
     'hops-webpack',
-    '@untool/info',
+    'hops-info',
     'hops-express',
     'hops-react',
   ],
