@@ -287,8 +287,7 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 | `node` | `String` | `current` | `10.13` | A Node.js version identifier or `current` to specify for which target to transpile/polyfill |
 | `browserWhitelist` | `Object` | `{"basePath":true}` | A map of config keys that should be exposed to the client. Nested paths can be described using dot notation |
 
-<a name="hops-alternative-config-file-format" title="Custom jump anchor: do not remove!"></a>
-Under the hood Hops uses [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig) to gather settings. So you're not limited to the `"hops"` key in your `package.json`, but can alternatively use an external settings file in the root directory of your project.\
+<a name="hops-alternative-config-file-format" title="Custom jump anchor: do not remove!"></a> Under the hood Hops uses [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig) to gather settings. So you're not limited to the `"hops"` key in your `package.json`, but can alternatively use an external settings file in the root directory of your project.\
 The filename then has to be `hops.config.js` or `.hopsrc{.json,.yaml,.js}`.
 
 #### Placeholders
@@ -548,7 +547,7 @@ import { render, importComponent } from 'hops';
 
 const Home = importComponent(
   () => import('./home'),
-  namespace => namespace.Home
+  (namespace) => namespace.Home
 );
 
 export default render(<Home />);
@@ -561,7 +560,7 @@ import { render, importComponent } from 'hops';
 
 const About = importComponent(() => import('./about'));
 
-const loader = load =>
+const loader = (load) =>
   Promise.race([
     new Promise((resolve, reject) => setTimeout(reject, 10000)),
     load(),
@@ -1039,7 +1038,7 @@ DEBUG=hops*,untool* npm start
 ```
 
 Another common issue is multiple versions of the same dependency. For example `webpack`, `untool` and `hops` should only ever be installed in one version.\
-Use `npm ls hops; npm ls webpack; npm ls @untool/core; npm ls @untool/express; npm ls @untool/webpack; npm ls @untool/yargs` (or, if you are using yarn: `yarn list --pattern 'hops|@untool|webpack'`) to find out if there are duplicate packages and try to remove the duplication by re-installing or deleting your lock files, etc.
+Use `npm ls hops; npm ls webpack; npm ls @untool/core; npm ls @untool/express; npm ls hops-webpack; npm ls @untool/yargs` (or, if you are using yarn: `yarn list --pattern 'hops|@untool|webpack'`) to find out if there are duplicate packages and try to remove the duplication by re-installing or deleting your lock files, etc.
 
 ### Mixins
 
@@ -1278,7 +1277,7 @@ const theme = observable(
 );
 
 const MyApp = inject('theme')(
-  observer(props => (
+  observer((props) => (
     <h1
       style={{ color: props.theme.color }}
       onClick={() => props.theme.setColor('green')}
