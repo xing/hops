@@ -11,5 +11,6 @@ if (module.hot) {
 }
 
 module.exports = (...args) => {
+  // eslint-disable-next-line node/no-missing-require
   return require('hops/entrypoint').default(...args);
 };

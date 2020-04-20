@@ -1,7 +1,7 @@
 const { Mixin } = require('hops-mixin');
 const {
   internal: { createWebpackMiddleware, StatsFilePlugin },
-} = require('@untool/webpack');
+} = require('hops-webpack');
 
 function exists(path) {
   try {

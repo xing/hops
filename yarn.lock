@@ -2640,33 +2640,6 @@
     mixinable "^4.0.0"
     supports-color "^7.1.0"
 
-"@untool/express@^2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@untool/express/-/express-2.1.3.tgz#70f020fca6c6d906682d85e209af79f37dad6a8d"
-  integrity sha512-XGWM3/592seMdUzwnGZBgRmnDXKcHEFiNaGzTtUVoXsBV7WoQkAxekVQUHCKVmmXlqJpOeEQcacYGkTGLWjiUQ==
-  dependencies:
-    "@untool/yargs" "^2.1.3"
-    chalk "^3.0.0"
-    compression "^1.7.4"
-    cookie-parser "^1.4.4"
-    debug "^4.1.1"
-    directory-index "^0.1.0"
-    eprom "^1.0.0"
-    express "^4.17.1"
-    finalhandler "^1.1.2"
-    helmet "^3.21.1"
-    is-plain-obj "^2.0.0"
-    mime "^2.4.4"
-    mixinable "^4.0.0"
-    morgan "^1.9.1"
-    node-mocks-http "^1.8.0"
-    pathifist "^1.0.0"
-    portfinder "^1.0.24"
-    pretty-bytes "^5.3.0"
-    pretty-ms "^6.0.0"
-    split "^1.0.1"
-    supports-color "^7.1.0"
-
 "@untool/info@^2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@untool/info/-/info-2.1.3.tgz#c37d957f1720f673d3e02aceea4ec58023013048"
@@ -2696,66 +2669,6 @@
     pathifist "^1.0.0"
     prop-types "^15.7.2"
     serialize-javascript "^3.0.0"
-
-"@untool/webpack@^2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@untool/webpack/-/webpack-2.1.3.tgz#89bffccf48344eca8e426b1e98763cd9c570f285"
-  integrity sha512-Hb2NrgqkhSJ724i+cqq32p8R10f0HlOoPqFsNnYEOdWORSnCGFvIJfmU/e9wfsm4h9nOjXqpAm1wYwWL4ako1A==
-  dependencies:
-    "@babel/core" "^7.7.0"
-    "@babel/plugin-syntax-dynamic-import" "^7.7.0"
-    "@babel/preset-env" "^7.7.0"
-    "@untool/core" "^2.1.3"
-    "@untool/express" "^2.1.3"
-    "@untool/yargs" "^2.1.3"
-    babel-loader "^8.0.6"
-    babel-plugin-dynamic-import-node "^2.3.0"
-    caniuse-lite "^1.0.30000898"
-    chalk "^3.0.0"
-    core-js "^3.2.1"
-    debug "^4.1.1"
-    depd "^2.0.0"
-    directory-index "^0.1.0"
-    duplitect "^2.0.1"
-    enhanced-resolve "^4.1.1"
-    eprom "^1.0.0"
-    escape-string-regexp "^2.0.0"
-    event-source-polyfill "^1.0.9"
-    file-loader "^5.0.0"
-    find-up "^4.1.0"
-    is-plain-obj "^2.0.0"
-    jsesc "^2.5.2"
-    loader-utils "^1.2.3"
-    lodash.get "^4.4.2"
-    lodash.set "^4.3.2"
-    memory-fs "^0.5.0"
-    mixinable "^4.0.0"
-    pathifist "^1.0.0"
-    pretty-bytes "^5.3.0"
-    pretty-ms "^6.0.0"
-    regenerator-runtime "^0.13.3"
-    require-from-string "^2.0.2"
-    rimraf "^3.0.0"
-    serialize-error "^5.0.0"
-    source-map-support "^0.5.13"
-    strip-ansi "^6.0.0"
-    supports-color "^7.1.0"
-    terser-webpack-plugin "^2.2.3"
-    url-loader "^3.0.0"
-    webpack "^4.41.0"
-    webpack-dev-middleware "^3.7.2"
-    webpack-hot-middleware "^2.25.0"
-    webpack-sources "^1.4.3"
-
-"@untool/yargs@^2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@untool/yargs/-/yargs-2.1.3.tgz#9996e0a3e05ddea449fa1605b8a19200a8bc1098"
-  integrity sha512-dx9DLRxCZWjPzYKYhDX6daKes5KR+1lbjZpFyFBGnLiVqncGbofgADkq43OTIpIXKMKaTv1WLDfvk4lKfDTmqw==
-  dependencies:
-    "@untool/core" "^2.1.3"
-    is-plain-obj "^2.0.0"
-    mixinable "^4.0.0"
-    yargs "^13.0.0"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -6350,14 +6263,6 @@ file-entry-cache@^5.0.1:
   dependencies:
     flat-cache "^2.0.1"
 
-file-loader@^5.0.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-5.1.0.tgz#cb56c070efc0e40666424309bd0d9e45ac6f2bb8"
-  integrity sha512-u/VkLGskw3Ue59nyOwUwXI/6nuBCo7KBkniB/l7ICwr/7cPNGsL1WCXUp3GB0qgOOKU1TiP49bv4DZF/LJqprg==
-  dependencies:
-    loader-utils "^1.4.0"
-    schema-utils "^2.5.0"
-
 file-loader@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-6.0.0.tgz#97bbfaab7a2460c07bcbd72d3a6922407f67649f"
@@ -8432,7 +8337,7 @@ jsdom@^11.5.1:
     ws "^5.2.0"
     xml-name-validator "^3.0.0"
 
-jsesc@^2.5.1, jsesc@^2.5.2:
+jsesc@^2.5.1:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
@@ -12008,7 +11913,7 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
-schema-utils@^2.5.0, schema-utils@^2.6.0, schema-utils@^2.6.4, schema-utils@^2.6.5:
+schema-utils@^2.6.0, schema-utils@^2.6.4, schema-utils@^2.6.5:
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.6.5.tgz#c758f0a7e624263073d396e29cd40aa101152d8a"
   integrity sha512-5KXuwKziQrTVHh8j/Uxz+QUbxkaLW9X/86NBlx/gnKgtsZA2GIVMUn17qWhRFwF8jdYb3Dig5hRO/W5mZqy6SQ==
@@ -12064,13 +11969,6 @@ send@0.17.1:
     on-finished "~2.3.0"
     range-parser "~1.2.1"
     statuses "~1.5.0"
-
-serialize-error@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-5.0.0.tgz#a7ebbcdb03a5d71a6ed8461ffe0fc1a1afed62ac"
-  integrity sha512-/VtpuyzYf82mHYTtI4QKtwHa79vAdU5OQpNPAmE/0UDdlGT0ZxHwC+J6gXkw29wwoVI8fMPsfcVHOwXtUQYYQA==
-  dependencies:
-    type-fest "^0.8.0"
 
 serialize-error@^6.0.0:
   version "6.0.0"
@@ -13183,7 +13081,7 @@ type-fest@^0.6.0:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.6.0.tgz#8d2a2370d3df886eb5c90ada1c5bf6188acf838b"
   integrity sha512-q+MB8nYR1KDLrgr4G5yemftpMC7/QLqVndBmEEdqzmNj5dcFOO4Oo8qlwZE3ULT3+Zim1F8Kq4cBnikNhlCMlg==
 
-type-fest@^0.8.0, type-fest@^0.8.1:
+type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
@@ -13344,15 +13242,6 @@ url-join@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/url-join/-/url-join-4.0.1.tgz#b642e21a2646808ffa178c4c5fda39844e12cde7"
   integrity sha512-jk1+QP6ZJqyOiuEI9AEWQfju/nB2Pw466kbA0LEZljHwKeMgd9WrAEgEGxjPDD2+TNbbb37rTyhEfrCXfuKXnA==
-
-url-loader@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-3.0.0.tgz#9f1f11b371acf6e51ed15a50db635e02eec18368"
-  integrity sha512-a84JJbIA5xTFTWyjjcPdnsu+41o/SNE8SpXMdUvXs6Q+LuhCD9E2+0VCiuDWqgo3GGXVlFHzArDmBpj9PgWn4A==
-  dependencies:
-    loader-utils "^1.2.3"
-    mime "^2.4.4"
-    schema-utils "^2.5.0"
 
 url-loader@^4.0.0:
   version "4.1.0"
