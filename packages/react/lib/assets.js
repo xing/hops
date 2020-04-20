@@ -8,6 +8,7 @@ module.exports = (stats, modules) => {
     (result, module) => [...result, ...moduleFileMap[module]],
     []
   );
+
   return [...vendorFiles, ...moduleFiles, ...entryFiles]
     .filter(
       (asset, index, self) =>
@@ -19,6 +20,7 @@ module.exports = (stats, modules) => {
       (result, asset) => {
         const extension = extname(asset).substring(1);
         result[extension].push(asset);
+
         return result;
       },
       { css: [], js: [] }

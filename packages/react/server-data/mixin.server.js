@@ -1,7 +1,6 @@
 /* eslint-env browser, node */
 
 const React = require('react');
-
 const {
   Mixin,
   strategies: {
