@@ -1,8 +1,6 @@
-'use strict';
 /* eslint-disable no-console */
 
 const { format } = require('util');
-
 const chalk = require('chalk');
 const escapeRegExp = require('escape-string-regexp');
 
@@ -22,9 +20,11 @@ class Logger {
         '.'
       );
   }
+
   setLogLevel(level) {
     this.level = level;
   }
+
   error(error, ...args) {
     const { level, name, getCleanMessage } = this;
     const prefix = colorize(`${name}:error`, 'red');
@@ -33,6 +33,7 @@ class Logger {
       console.error(`${prefix} ${format(message, ...args)}`);
     }
   }
+
   warn(warning, ...args) {
     const { level, name, getCleanMessage } = this;
     const prefix = colorize(`${name}:warning`, 'yellow');
@@ -41,6 +42,7 @@ class Logger {
       console.warn(`${prefix} ${format(message, ...args)}`);
     }
   }
+
   info(message, ...args) {
     const { level, name } = this;
     const prefix = colorize(`${name}:info`, 'gray');
@@ -48,6 +50,7 @@ class Logger {
       console.log(`${prefix} ${format(message, ...args)}`);
     }
   }
+
   _(type, message, ...args) {
     const { level, name } = this;
     const prefix = colorize(`${name}:${type}`, 'gray');

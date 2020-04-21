@@ -1,5 +1,3 @@
-'use strict';
-
 const chalk = require('chalk');
 
 module.exports = class ConfigValidationMixin {
@@ -7,12 +5,15 @@ module.exports = class ConfigValidationMixin {
     this.config = config;
     this.warnings = [];
   }
+
   validateConfig() {
     const { _warnings } = this.config;
     this.warnings = _warnings;
   }
+
   logResults(logger) {
     const { warnings } = this;
+
     if (warnings.length) {
       logger.warn(
         'Invalid configuration value(s) detected:\n' +
@@ -20,6 +21,7 @@ module.exports = class ConfigValidationMixin {
             .map((message) => `${chalk.yellow('-')} ${message}`)
             .join('\n')
       );
+
       logger.hint(
         'Fix invalid configuration value(s):\n' +
           'Please review your project configuration and make sure to fix all ' +

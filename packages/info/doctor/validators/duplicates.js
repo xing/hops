@@ -1,5 +1,3 @@
-'use strict';
-
 const chalk = require('chalk');
 const detectDuplicates = require('duplitect');
 
@@ -8,6 +6,7 @@ module.exports = class DetectDuplicatePackagesMixin {
     this.config = config;
     this.duplicates = [];
   }
+
   detectDuplicatePackages(...packages) {
     const { _workspace } = this.config;
     const duplicates = detectDuplicates(_workspace, ...packages);
@@ -17,13 +16,16 @@ module.exports = class DetectDuplicatePackagesMixin {
       )
     );
   }
+
   logResults(logger) {
     const { duplicates } = this;
+
     if (duplicates.length) {
       const warnings = duplicates.map((name) => `${chalk.yellow('-')} ${name}`);
       logger.warn(
         'Problematic duplicate package(s) detected:\n' + warnings.join('\n')
       );
+
       logger.hint(
         'Fix duplicate package(s):\n' +
           'Please use your package manager of choice (npm or yarn) to ' +

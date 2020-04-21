@@ -1,5 +1,3 @@
-'use strict';
-
 const { initialize } = require('hops-bootstrap');
 
 const configure = (config, options) => ({

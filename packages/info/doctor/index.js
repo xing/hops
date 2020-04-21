@@ -1,5 +1,3 @@
-'use strict';
-
 const define = require('mixinable');
 
 const {
