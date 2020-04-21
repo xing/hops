@@ -15,3 +15,7 @@ The config property `shouldPrefetchOnServer` is deprecated and will be removed i
 ### DEP0004
 
 Deep imports to `hops-react/lib/runtime` are deprecated and should be changed to `hops-react` instead.
+
+### DEP0005
+
+`hops-mixin` is deprecated, please import the `Mixin` class from `hops-bootstrap` instead and the strategies from `mixinable`.
