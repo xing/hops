@@ -1,21 +1,18 @@
-'use strict';
-
 const debug = require('debug')('hops:webpack:stats');
+const { sync, async } = require('mixinable');
+const { Mixin, internal: bootstrap } = require('hops-bootstrap');
 
+const { sequence } = sync;
+const { callable } = async;
 const {
-  sync: { sequence },
-  async: { callable },
-} = require('mixinable');
-
-const {
-  Mixin,
-  internal: { validate, invariant },
-} = require('hops-bootstrap');
+  validate, invariant
+} = bootstrap;
 
 class WebpackBuildMixin extends Mixin {
   clean() {
     const rimraf = require('rimraf');
     const { buildDir, serverDir } = this.config;
+
     return Promise.all([
       new Promise((resolve, reject) =>
         rimraf(buildDir, (error) => (error ? reject(error) : resolve()))
@@ -25,10 +22,12 @@ class WebpackBuildMixin extends Mixin {
       ),
     ]);
   }
+
   build() {
     const webpack = require('webpack');
     const webpackConfigs = [];
     this.collectBuildConfigs(webpackConfigs);
+
     return new Promise((resolve, reject) =>
       webpack(
         webpackConfigs.length === 1 ? webpackConfigs[0] : webpackConfigs
@@ -47,11 +46,13 @@ class WebpackBuildMixin extends Mixin {
       return stats;
     });
   }
+
   inspectBuild(stats) {
     debug(
       stats.toString({ chunks: false, modules: false, entrypoints: false })
     );
   }
+
   registerCommands(yargs) {
     const { name } = this.config;
     yargs.command(
@@ -79,6 +80,7 @@ class WebpackBuildMixin extends Mixin {
       })
     );
   }
+
   diagnose({ detectDuplicatePackages }) {
     detectDuplicatePackages('webpack');
   }
