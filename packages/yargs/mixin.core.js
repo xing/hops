@@ -1,16 +1,10 @@
-'use strict';
-
 const isPlainObject = require('is-plain-obj');
+const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { sync, async } = require('mixinable');
 
-const {
-  sync: { sequence, override },
-  async: { parallel },
-} = require('mixinable');
-
-const {
-  Mixin,
-  internal: { validate, invariant },
-} = require('hops-bootstrap');
+const { validate, invariant } = bootstrap;
+const { sequence, override } = sync;
+const { parallel } = async;
 
 const sequenceWithReturn = (functions, arg, ...args) => {
   sequence(functions, arg, ...args);
@@ -19,7 +13,10 @@ const sequenceWithReturn = (functions, arg, ...args) => {
 
 const overrideHandleError = (functions, error, recoverable) => {
   override(functions, error, recoverable);
-  if (!recoverable) process.exit(1);
+
+  if (!recoverable) {
+    process.exit(1);
+  }
 };
 
 class YargsMixin extends Mixin {
