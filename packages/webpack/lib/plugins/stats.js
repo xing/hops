@@ -1,7 +1,4 @@
-'use strict';
-
 const { RawSource } = require('webpack-sources');
-
 const { trimTrailingSlash } = require('pathifist');
 
 const analyzeCompilation = ({ chunks, chunkGroups }) => {
@@ -15,6 +12,7 @@ const analyzeCompilation = ({ chunks, chunkGroups }) => {
     ],
     []
   );
+
   const chunksByModule = chunks.reduce(
     (result, chunk) =>
       Array.from(chunk.modulesIterable).reduce((result, module) => {
@@ -25,6 +23,7 @@ const analyzeCompilation = ({ chunks, chunkGroups }) => {
       }, result),
     []
   );
+
   return { entryChunks, vendorChunks, chunksByModule };
 };
 
@@ -35,6 +34,7 @@ const extractFiles = (chunkData, rawPublicPath) => {
     ...result,
     ...files.map((file) => `${publicPath}/${file}`),
   ];
+
   return {
     entryFiles: entryChunks.reduce(gatherFiles, []),
     vendorFiles: vendorChunks.reduce(gatherFiles, []),
@@ -51,9 +51,11 @@ exports.StatsPlugin = class StatsPlugin {
       compiler.hooks.compilation.tap('StatsPlugin', (compilation) => {
         compilation.hooks.additionalAssets.tap('StatsPlugin', () => {
           const { publicPath } = compilation.outputOptions;
+
           if (compilation.compiler.isChild()) {
             return;
           }
+
           try {
             enhancedPromise.resolve({
               ...compilation.getStats().toJson({ source: false }),
@@ -64,6 +66,7 @@ exports.StatsPlugin = class StatsPlugin {
           }
         });
       });
+
       compiler.hooks.watchRun.tap('StatsPlugin', () => enhancedPromise.reset());
     };
   }

@@ -1,5 +1,3 @@
-'use strict';
-
 const indexFile = require('directory-index');
 const { RawSource } = require('webpack-sources');
 const deprecate = require('depd')('hops-webpack');
@@ -17,6 +15,7 @@ exports.RenderPlugin = class RenderPlugin {
         if (compilation.compiler.isChild()) {
           return;
         }
+
         const promise = requests.then((requests) =>
           Promise.all(
             requests.map((request) =>
@@ -29,6 +28,7 @@ exports.RenderPlugin = class RenderPlugin {
             )
           )
         );
+
         compilation.hooks.additionalAssets.tapPromise('RenderPlugin', () =>
           promise.then((results) =>
             results.forEach(({ outfile, content }) => {
