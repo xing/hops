@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function createStatsMiddleware(enhancedPromise) {
   return function statsMiddleware(req, res, next) {
     enhancedPromise
