@@ -1,10 +1,9 @@
-'use strict';
-
 const { Mixin } = require('hops-bootstrap');
 
 class WebpackStartMixin extends Mixin {
   registerCommands(yargs) {
     const { name } = this.config;
+
     yargs.command(
       this.configureCommand({
         command: 'start',

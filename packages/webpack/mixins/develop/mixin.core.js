@@ -1,5 +1,3 @@
-'use strict';
-
 const { Mixin } = require('hops-bootstrap');
 
 class WebpackDevelopMixin extends Mixin {
@@ -10,6 +8,7 @@ class WebpackDevelopMixin extends Mixin {
       const createWebpackHotMiddleware = require('webpack-hot-middleware');
       const webpackDevelopConfig = this.getBuildConfig('develop');
       const compiler = webpack(webpackDevelopConfig);
+
       middlewares.initial.push(
         createWebpackDevMiddleware(compiler, {
           noInfo: true,
@@ -21,6 +20,7 @@ class WebpackDevelopMixin extends Mixin {
       );
     }
   }
+
   registerCommands(yargs) {
     const { name } = this.config;
     yargs.command(

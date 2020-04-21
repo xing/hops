@@ -1,23 +1,16 @@
-'use strict';
-
 const { existsSync: exists } = require('fs');
-
 const isPlainObject = require('is-plain-obj');
 const get = require('lodash.get');
 const set = require('lodash.set');
-
 const debug = require('debug');
+const { sync } = require('mixinable');
+const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+
+const { sequence, callable } = sync;
+const { validate, invariant } = bootstrap;
+
 const debugConfig = (target, config) =>
   debug(`hops:webpack:config:${target}`)(config);
-
-const {
-  sync: { sequence, callable },
-} = require('mixinable');
-
-const {
-  Mixin,
-  internal: { validate, invariant },
-} = require('hops-bootstrap');
 
 class WebpackConfigMixin extends Mixin {
   getBuildConfig(target, baseConfig) {
@@ -33,19 +26,25 @@ class WebpackConfigMixin extends Mixin {
           if (baseConfig && exists(baseConfig)) {
             return require(baseConfig)(this.config, target);
           }
+
           throw new Error(`Can't get build config ${baseConfig || target}`);
       }
     })();
+
     this.configureBuild(webpackConfig, loaderConfigs, target);
     debugConfig(target, webpackConfig);
+
     return webpackConfig;
   }
+
   collectBuildConfigs(webpackConfigs) {
     webpackConfigs.push(this.getBuildConfig('build'));
+
     if (!this.options.static) {
       webpackConfigs.push(this.getBuildConfig('node'));
     }
   }
+
   configureBuild(webpackConfig, loaderConfigs, target) {
     const { module, performance } = webpackConfig;
     const configLoaderConfig = {
@@ -58,30 +57,39 @@ class WebpackConfigMixin extends Mixin {
         rootDir: this.config._config.rootDir,
       },
     };
+
     if (target === 'node') {
       configLoaderConfig.options.type = 'server';
     }
+
     if (target === 'develop' || target === 'build') {
       configLoaderConfig.options.type = 'browser';
       configLoaderConfig.options.config = Object.entries(
         this.config.browserWhitelist
       ).reduce((config, [keyPath, visible]) => {
         const value = get(this.config._config, keyPath);
+
         if (visible && typeof value !== 'undefined') {
           return set(config, keyPath, value);
         }
+
         return config;
       }, {});
     }
+
     module.rules.push(configLoaderConfig);
+
     if (typeof this.getLogger === 'function') {
       const { LoggerPlugin } = require('../../lib/plugins/log');
+
       webpackConfig.plugins.push(
         new LoggerPlugin(this.getLogger(), { ...performance }, target)
       );
+
       webpackConfig.performance.hints = false;
     }
   }
+
   handleArguments(argv) {
     this.options = { ...this.options, ...argv };
   }
