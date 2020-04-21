@@ -1,34 +1,34 @@
-'use strict';
-
 const {
   async: { parallel },
 } = require('mixinable');
-
 const { Mixin } = require('hops-mixin');
-
 const {
   internal: { validate, invariant },
 } = require('hops-bootstrap');
-
-const { createDoctor } = require('../../lib/doctor');
+const { createDoctor } = require('.');
 
 class DoctorMixin extends Mixin {
   constructor(...args) {
     super(...args);
+
     this.doctor = createDoctor(this.config);
   }
+
   diagnose({ validateConfig, detectDuplicatePackages }) {
     validateConfig();
     detectDuplicatePackages('hops-*');
   }
+
   bootstrap() {
     const { doctor } = this;
+
     return this.diagnose(doctor).then((results) =>
       doctor.collectResults(
         ...[].concat(...results.filter((result) => result !== undefined))
       )
     );
   }
+
   handleArguments() {
     const { doctor } = this;
     const logger = this.getLogger();
