@@ -1,26 +1,23 @@
-'use strict';
-
-const {
-  sync: { callable },
-} = require('mixinable');
-
+const { sync } = require('mixinable');
 const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('hops-bootstrap');
+const { createLogger, logLevels } = require('.');
 
-const {
-  internal: { validate, invariant },
-} = require('hops-bootstrap');
-
-const { createLogger, logLevels } = require('../../lib/logger');
+const { callable } = sync;
+const { validate, invariant } = bootstrap;
 
 class LogMixin extends Mixin {
   constructor(...args) {
     super(...args);
+
     this.logger = createLogger(this.config);
     this.handleArguments(this.options);
   }
+
   getLogger() {
     return this.logger;
   }
+
   registerCommands(yargs) {
     yargs
       .option('quiet', {
@@ -39,6 +36,7 @@ class LogMixin extends Mixin {
         type: 'boolean',
       });
   }
+
   handleArguments(argv) {
     this.options = { ...this.options, ...argv };
     const { quiet = 0, verbose = 0, _: commands = [] } = this.options;
@@ -54,9 +52,11 @@ class LogMixin extends Mixin {
       );
     }
   }
+
   handleError(error) {
     this.getLogger().error(error);
   }
+
   inspectWarnings(warnings) {
     warnings.forEach((warning) => this.getLogger().warn(warning));
   }
