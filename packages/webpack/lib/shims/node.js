@@ -1,5 +1,3 @@
-'use strict';
-
 if (!require('module').prototype._compile.__sourceMapSupport) {
   require('source-map-support/register');
 }

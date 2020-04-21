@@ -1,4 +1,3 @@
-'use strict';
 /* eslint-env browser */
 
 if (typeof window.EventSource === 'undefined') {
