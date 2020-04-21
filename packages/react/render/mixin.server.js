@@ -1,25 +1,15 @@
 'use strict';
 
-// eslint-disable-next-line node/no-deprecated-api
-const { parse } = require('url');
-
-const { createElement, isValidElement } = require('react');
-const { StaticRouter } = require('react-router-dom');
-const { HelmetProvider } = require('react-helmet-async');
-
+const { isValidElement } = require('react');
 const isPlainObject = require('is-plain-obj');
-
 const {
   override: overrideSync,
   async: { compose, parallel, pipe, override: overrideAsync },
 } = require('mixinable');
-const { ensureLeadingSlash, trimTrailingSlash } = require('pathifist');
-
 const {
   Mixin,
   internal: { validate, invariant },
 } = require('hops-bootstrap');
-
 const renderToFragments = require('../lib/fragments');
 const getAssets = require('../lib/assets');
 const template = require('../lib/template');
@@ -28,38 +18,27 @@ class ReactMixin extends Mixin {
   constructor(config, element, options) {
     super(config, options);
     this.element = element;
-    this.context = { modules: [] };
   }
+
   bootstrap(req, res) {
-    this.url = parse(req.url);
     this.stats = res.locals.stats;
   }
-  enhanceElement(element) {
-    const { pathname, search } = this.url;
-    const props = {
-      ...this.options.router,
-      location: { pathname, search },
-      basename: trimTrailingSlash(ensureLeadingSlash(this.config.basePath)),
-      context: this.context,
-    };
-    return createElement(
-      StaticRouter,
-      props,
-      createElement(HelmetProvider, { context: this.context }, element)
-    );
-  }
+
   renderToFragments(element) {
     return renderToFragments(element);
   }
+
   renderTemplate(fragments, { modules }) {
     const assets = getAssets(this.stats, modules);
     const globals = { _env: this.config._env };
+
     return this.getTemplateData({
       fragments,
       assets,
       globals,
     }).then((templateData) => template(templateData));
   }
+
   render(req, res, next) {
     Promise.resolve()
       .then(() => this.bootstrap(req, res))
@@ -68,26 +47,33 @@ class ReactMixin extends Mixin {
         this.fetchData({}, element).then(() => this.renderToFragments(element))
       )
       .then((fragments) => {
+        // note: res.locals.helmet is set by the ReactHelmetMixin
         Object.assign(
           fragments,
-          Object.entries(this.context.helmet).reduce(
+          Object.entries(res.locals.helmet).reduce(
             (result, [key, value]) => ({ ...result, [key]: value.toString() }),
             { headPrefix: '', headSuffix: '' }
           )
         );
-        if (this.context.miss) {
+
+        // note: res.locals.router is set by the ReactRouterMixin
+        const { router } = res.locals;
+
+        if (router.miss) {
           next();
         } else {
-          if (this.context.headers) {
-            res.set(this.context.headers);
+          if (router.headers) {
+            res.set(router.headers);
           }
-          if (this.context.url) {
-            res.redirect(this.context.status || 301, this.context.url);
+          if (router.url) {
+            res.redirect(router.status || 301, router.url);
           } else {
-            res.status(this.context.status || 200);
-            return this.renderTemplate(fragments, this.context).then((page) =>
-              res.send(page)
-            );
+            res.status(router.status || 200);
+
+            // note: res.locals.modules is set by the ImportComponentMixin
+            return this.renderTemplate(fragments, {
+              modules: res.locals.modules,
+            }).then((page) => res.send(page));
           }
         }
       })

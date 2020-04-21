@@ -2,19 +2,13 @@
 
 /* eslint-env browser */
 
-const { createElement, isValidElement } = require('react');
+const { isValidElement } = require('react');
 const { unmountComponentAtNode, hydrate, render } = require('react-dom');
-const { BrowserRouter } = require('react-router-dom');
-const { HelmetProvider } = require('react-helmet-async');
-
 const isPlainObject = require('is-plain-obj');
-
 const {
   override,
   async: { compose, parallel, pipe },
 } = require('mixinable');
-const { ensureLeadingSlash, trimTrailingSlash } = require('pathifist');
-
 const {
   Mixin,
   internal: { validate, invariant },
@@ -25,17 +19,7 @@ class ReactMixin extends Mixin {
     super(config, options);
     this.element = element;
   }
-  enhanceElement(element) {
-    const props = {
-      ...this.options.router,
-      basename: trimTrailingSlash(ensureLeadingSlash(this.config.basePath)),
-    };
-    return createElement(
-      BrowserRouter,
-      props,
-      createElement(HelmetProvider, {}, element)
-    );
-  }
+
   render() {
     Promise.resolve()
       .then(() => this.bootstrap())
@@ -44,6 +28,7 @@ class ReactMixin extends Mixin {
         this.fetchData({}, element).then(() => {
           const mountpoint = document.querySelector('[data-mountpoint]');
           const isMounted = mountpoint.hasAttribute('data-mounted');
+
           if (isMounted) {
             unmountComponentAtNode(mountpoint);
             render(element, mountpoint);
