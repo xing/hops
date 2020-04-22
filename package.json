@@ -168,6 +168,6 @@
     "prettier": "^2.0.0"
   },
   "resolutions": {
-    "babel-plugin-dynamic-import-node": "2.3.0"
+    "babel-plugin-dynamic-import-node": "2.3.3"
   }
 }
