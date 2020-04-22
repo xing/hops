@@ -5,6 +5,7 @@ const set = require('lodash.set');
 const debug = require('debug');
 const { sync } = require('mixinable');
 const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 
 const { sequence, callable } = sync;
 const { validate, invariant } = bootstrap;
@@ -32,9 +33,19 @@ class WebpackConfigMixin extends Mixin {
     })();
 
     this.configureBuild(webpackConfig, loaderConfigs, target);
-    debugConfig(target, webpackConfig);
 
-    return webpackConfig;
+    const isBuild =
+      target === 'build' ||
+      (target === 'node' && process.env.NODE_ENV === 'production');
+
+    const smp = new SpeedMeasurePlugin({
+      disable: !(this.options.profile && isBuild),
+    });
+    const wrapped = smp.wrap(webpackConfig);
+
+    debugConfig(target, wrapped);
+
+    return wrapped;
   }
 
   collectBuildConfigs(webpackConfigs) {
