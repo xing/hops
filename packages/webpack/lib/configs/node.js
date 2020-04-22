@@ -1,18 +1,15 @@
-'use strict';
-
 const { dirname, resolve } = require('path');
-
 const {
   EnvironmentPlugin,
   HotModuleReplacementPlugin,
   HashedModuleIdsPlugin,
   NamedModulesPlugin,
-  optimize: { LimitChunkCountPlugin },
+  optimize,
 } = require('webpack');
-
 const { join, trimSlashes } = require('pathifist');
-
 const getModules = require('../utils/modules');
+
+const { LimitChunkCountPlugin } = optimize;
 
 module.exports = function getConfig(config, name) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));

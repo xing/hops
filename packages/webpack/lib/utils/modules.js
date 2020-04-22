@@ -1,5 +1,3 @@
-'use strict';
-
 const { join, delimiter, isAbsolute } = require('path');
 
 module.exports = function getModules(rootDir) {

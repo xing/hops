@@ -1,11 +1,7 @@
-'use strict';
-
 const { EOL } = require('os');
-
 const prettyMS = require('pretty-ms');
 const prettyBytes = require('pretty-bytes');
 const chalk = require('chalk');
-
 const { BuildError } = require('../utils/errors');
 
 const statsToJsonOptions = {
@@ -26,6 +22,7 @@ const formatAssets = (assets) =>
           ? chalk.red(prettyBytes(size))
           : `${prettyBytes(size)} !!!`
         : prettyBytes(size);
+
       return `${chalk.gray('-')} ${name} (${prettySize})`;
     })
     .join(EOL);
@@ -52,12 +49,15 @@ exports.LoggerPlugin = class LoggerPlugin {
     this.target = target;
     this.lastHashes = {};
   }
+
   apply(compiler) {
     compiler.hooks.done.tap('HopsLoggerPlugin', (stats) => {
       const { name } = stats.compilation;
+
       if (this.lastHashes[name] === stats.hash) {
         return;
       }
+
       const { hints, maxAssetSize } = this.performance;
       const { hash, startTime, endTime } = stats;
       const isRebuild = Boolean(this.lastHashes[name]);
@@ -102,6 +102,7 @@ exports.LoggerPlugin = class LoggerPlugin {
           .concat(...children.map((c) => c.warnings))
           .forEach((warning) => this.logger.warn(warning));
       }
+
       this.lastHashes[name] = hash;
     });
   }

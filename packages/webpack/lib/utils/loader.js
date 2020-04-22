@@ -1,8 +1,5 @@
-'use strict';
-
 const escapeJS = require('jsesc');
 const escapeRegExp = require('escape-string-regexp');
-
 const { getOptions } = require('loader-utils');
 
 const getHelpers = (type) =>
@@ -24,12 +21,15 @@ const getMixins = (type, mixins) => {
   const requires = (mixins[type] || []).map(
     (mixin) => `((m) => m.default || m )(require('${escapeJS(mixin)}'))`
   );
+
   return `[${requires.join(',')}]`;
 };
 
 module.exports = function configLoader() {
   this.cacheable();
+
   const { type, mixins, config, rootDir } = getOptions(this);
+
   return `
 ${getHelpers(type)}
 const configs = {};

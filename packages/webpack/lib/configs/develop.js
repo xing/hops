@@ -1,15 +1,10 @@
-'use strict';
-
 const { dirname, relative } = require('path');
-
 const {
   EnvironmentPlugin,
   HotModuleReplacementPlugin,
   NamedModulesPlugin,
 } = require('webpack');
-
 const { join, trimSlashes } = require('pathifist');
-
 const getModules = require('../utils/modules');
 
 module.exports = function getConfig(config, name) {

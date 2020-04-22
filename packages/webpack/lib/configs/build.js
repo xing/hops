@@ -1,19 +1,15 @@
-'use strict';
-
 const { dirname, relative } = require('path');
-
 const {
   EnvironmentPlugin,
   HashedModuleIdsPlugin,
   NamedModulesPlugin,
-  optimize: { ModuleConcatenationPlugin },
+  optimize,
 } = require('webpack');
-
 const TerserPlugin = require('terser-webpack-plugin');
-
 const { join, trimSlashes } = require('pathifist');
-
 const getModules = require('../utils/modules');
+
+const { ModuleConcatenationPlugin } = optimize;
 
 module.exports = function getConfig(config, name) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
