@@ -38,7 +38,7 @@ module.exports = function getConfig(config, name) {
           },
         ],
       ],
-      plugins: [require.resolve('babel-plugin-dynamic-import-node')],
+      plugins: [],
       sourceType: 'unambiguous',
     },
   };

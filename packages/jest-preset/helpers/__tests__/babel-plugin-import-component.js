@@ -15,10 +15,7 @@ const tests = [
 ].map(([code, expected], i) => [String(++i), fixture(code), fixture(expected)]);
 
 const babelOptions = {
-  plugins: [
-    require.resolve('../babel-plugin-import-component'),
-    require.resolve('babel-plugin-dynamic-import-node'),
-  ],
+  plugins: [require.resolve('../babel-plugin-import-component')],
   babelrc: false,
 };
 

@@ -166,8 +166,5 @@
     "lerna": "^3.17.0",
     "lint-staged": "^10.0.0",
     "prettier": "^2.0.0"
-  },
-  "resolutions": {
-    "babel-plugin-dynamic-import-node": "2.3.0"
   }
 }
