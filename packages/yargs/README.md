@@ -1,6 +1,6 @@
 # `hops-yargs`
 
-`hops-yargs` is a [core mixin](../boostrap/README.md#mixins) powering `hops`'s command line interface and allowing other mixins to define their own commands. These custom commands will work exactly as those defined by `hops`'s own modules and can be called using executables such as [Hops CLI](https://github.com/xing/hops/blob/master/packages/cli/README.md).
+`hops-yargs` is a [core mixin](../boostrap/README.md#mixins) powering `hops`'s command line interface and allowing other mixins to define their own commands. These custom commands will work exactly as those defined by `hops`'s own modules and can be called using executables such as [Hops CLI](../cli/README.md).
 
 ### Installation
 
