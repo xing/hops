@@ -844,7 +844,7 @@ npm install --save hops-typescript
 npm install --save-dev typescript
 ```
 
-And create a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file in your application root folder (you are free to extend our [minimal `tsconfig.json`](https://github.com/xing/hops/blob/master/packages/typescript/tsconfig.json) that we ship with this module or write it yourself).
+And create a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file in your application root folder (you are free to extend our [minimal `tsconfig.json`](./packages/typescript/tsconfig.json) that we ship with this module or write it yourself).
 
 **`tsconfig.json`**
 
