@@ -9,7 +9,7 @@
   "license": "MIT",
   "homepage": "https://github.com/xing/hops/tree/master/packages/yargs#readme",
   "dependencies": {
-    "hops-bootstrap": "^0.0.0",
+    "hops-bootstrap": "^12.1.4",
     "is-plain-obj": "^2.0.0",
     "mixinable": "^4.0.0",
     "yargs": "^13.0.0"
