@@ -66,7 +66,7 @@ $ hops start # OR hops start -p
 
 ##### `-p` / `--production`
 
-If called in `production` mode, `hops start` will first perform a build and start an express server afterwards. Otherwise it will start a development server. `hopsstart -ps` is thus equivalent to `hops start -ps && hops serve -ps`, while `hops start -s` is equivalent to `hops develop -s`. All arguments are used as documented with those other commands.
+If called in `production` mode, `hops start` will first perform a build and start an express server afterwards. Otherwise it will start a development server. `hops start -ps` is thus equivalent to `hops start -ps && hops serve -ps`, while `hops start -s` is equivalent to `hops develop -s`. All arguments are used as documented with those other commands.
 
 Of course, once again, you can also manually set `$NODE_ENV`.
 
