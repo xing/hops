@@ -17,9 +17,9 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@untool/core": "^2.1.3",
-    "@untool/webpack": "^2.1.3",
-    "depd": "^2.0.0"
+    "depd": "^2.0.0",
+    "hops-bootstrap": "^12.1.4",
+    "hops-webpack": "^12.1.4"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/config#readme"
 }

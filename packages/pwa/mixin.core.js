@@ -32,7 +32,7 @@ class PWAMixin extends Mixin {
       };
       webpackConfig.module.rules.push({
         test: require.resolve('./lib/loader-shim'),
-        loader: require.resolve('@untool/webpack/lib/utils/loader'),
+        loader: require.resolve('hops-webpack/lib/utils/loader'),
         options: {
           type: 'worker',
           config: Object.entries(this.config.browserWhitelist).reduce(

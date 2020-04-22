@@ -11,3 +11,7 @@
 ### DEP0003
 
 The config property `shouldPrefetchOnServer` is deprecated and will be removed in favor of the property `allowServerSideDataFetching` in the next major release of Hops.
+
+### DEP0004
+
+Deep imports to `hops-react/lib/runtime` are deprecated and should be changed to `hops-react` instead.

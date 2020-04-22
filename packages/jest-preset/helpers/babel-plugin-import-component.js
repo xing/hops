@@ -17,7 +17,7 @@
  * ```
  *
  * The optional second argument of `importComponent` is left
- * untouched as in @untool/react/lib/babel.
+ * untouched as in hops-react/lib/babel.
  */
 module.exports = ({ types: t }) => ({
   visitor: {

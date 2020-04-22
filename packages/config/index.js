@@ -1,3 +1,3 @@
-module.exports = require('@untool/core').internal.getConfig({
+module.exports = require('hops-bootstrap').internal.getConfig({
   untoolNamespace: 'hops',
 });

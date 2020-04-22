@@ -262,7 +262,7 @@ Starts a production ready Express.js server.
 - `npm run serve` starts the server in development mode (without optimizations).
 - `npm run serve -- --production` starts the server in production mode (enables gzip and other optimizations).
 
-In order to deploy your application, you need to make sure to also include the `./node_modules/.cache/untool` directory in your deployment, because that is where the build output of the server middleware will be stored.\
+In order to deploy your application, you need to make sure to also include the `./node_modules/.cache/hops-webpack` directory in your deployment, because that is where the build output of the server middleware will be stored.\
 You can also change that location by specifying a different [`serverDir`](#default-settings).
 
 ## Configuration
@@ -282,13 +282,12 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 | `basePath` | `String` | `''` | `/my-app` | The URL base path from which your application will be served |
 | `assetPath` | `String` | `<basePath>` | `<basePath>/assets` | The URL base path from which the assets will be served |
 | `distDir` | `String` | `<rootDir>/dist` | `<rootDir>/out` | The directory from which static assets will be served |
-| `serverDir` | `String` | `node_modules/.cache/untool` | `<rootDir>/dist` | The directory where the generated server middleware will be stored |
+| `serverDir` | `String` | `node_modules/.cache/hops-webpack` | `<rootDir>/dist` | The directory where the generated server middleware will be stored |
 | `browsers` | `Array<String>` | `['defaults']` | `['last 1 Chrome versions']` | An array of browserslist queries to specify targets for which to transpile/polyfill (see [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for more information) |
 | `node` | `String` | `current` | `10.13` | A Node.js version identifier or `current` to specify for which target to transpile/polyfill |
 | `browserWhitelist` | `Object` | `{"basePath":true}` | A map of config keys that should be exposed to the client. Nested paths can be described using dot notation |
 
-<a name="hops-alternative-config-file-format" title="Custom jump anchor: do not remove!"></a>
-Under the hood Hops uses [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig) to gather settings. So you're not limited to the `"hops"` key in your `package.json`, but can alternatively use an external settings file in the root directory of your project.\
+<a name="hops-alternative-config-file-format" title="Custom jump anchor: do not remove!"></a> Under the hood Hops uses [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig) to gather settings. So you're not limited to the `"hops"` key in your `package.json`, but can alternatively use an external settings file in the root directory of your project.\
 The filename then has to be `hops.config.js` or `.hopsrc{.json,.yaml,.js}`.
 
 #### Placeholders
@@ -548,7 +547,7 @@ import { render, importComponent } from 'hops';
 
 const Home = importComponent(
   () => import('./home'),
-  namespace => namespace.Home
+  (namespace) => namespace.Home
 );
 
 export default render(<Home />);
@@ -561,7 +560,7 @@ import { render, importComponent } from 'hops';
 
 const About = importComponent(() => import('./about'));
 
-const loader = load =>
+const loader = (load) =>
   Promise.race([
     new Promise((resolve, reject) => setTimeout(reject, 10000)),
     load(),
@@ -845,7 +844,7 @@ npm install --save hops-typescript
 npm install --save-dev typescript
 ```
 
-And create a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file in your application root folder (you are free to extend our [minimal `tsconfig.json`](https://github.com/xing/hops/blob/master/packages/typescript/tsconfig.json) that we ship with this module or write it yourself).
+And create a [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) file in your application root folder (you are free to extend our [minimal `tsconfig.json`](./packages/typescript/tsconfig.json) that we ship with this module or write it yourself).
 
 **`tsconfig.json`**
 
@@ -1032,14 +1031,14 @@ Add `jest-preset-hops` as [preset](https://facebook.github.io/jest/docs/en/confi
 Hops and its underlying tools provide debugging output via the [`debug`](https://www.npmjs.com/package/debug) module.\
 In order to enable debug output you need to set an environment variable called `DEBUG`.
 
-For example the following command would log all debug statements of Hops and untool:
+For example the following command would log all debug statements of Hops:
 
 ```shell
-DEBUG=hops*,untool* npm start
+DEBUG=hops* npm start
 ```
 
-Another common issue is multiple versions of the same dependency. For example `webpack`, `untool` and `hops` should only ever be installed in one version.\
-Use `npm ls hops; npm ls webpack; npm ls @untool/core; npm ls @untool/express; npm ls @untool/webpack; npm ls @untool/yargs` (or, if you are using yarn: `yarn list --pattern 'hops|@untool|webpack'`) to find out if there are duplicate packages and try to remove the duplication by re-installing or deleting your lock files, etc.
+Another common issue is multiple versions of the same dependency. For example `webpack` and `hops` should only ever be installed in one version.\
+Use `npm ls hops; npm ls webpack;` (or, if you are using yarn: `yarn list --pattern 'hops|webpack'`) to find out if there are duplicate packages and try to remove the duplication by re-installing or deleting your lock files, etc.
 
 ### Mixins
 
@@ -1107,10 +1106,10 @@ The `configureBuild` hook will be called with these three arguments:
 
 - `webpackConfig` is the entire webpack configuration object which you can mutate in place to achieve different behaviours
 - `loaderConfigs` is a custom object that contains references to the loaders for easier access
-  - `loaderConfigs.jsLoaderConfig` is a direct reference to the [`babel-loader`](https://github.com/babel/babel-loader) config [object](https://github.com/untool/untool/blob/v2.0.0/packages/webpack/lib/configs/build.js#L22)
-  - `loaderConfigs.urlLoaderConfig` is a direct reference to the [`url-loader`](https://github.com/webpack-contrib/url-loader) config [object](https://github.com/untool/untool/blob/v2.0.0/packages/webpack/lib/configs/build.js#L58)
-  - `loaderConfigs.fileLoaderConfig` is a direct reference to the [`file-loader`](https://github.com/webpack-contrib/file-loader) config [object](https://github.com/untool/untool/blob/v2.0.0/packages/webpack/lib/configs/build.js#L50)
-  - `loaderConfigs.allLoaderConfigs` is a reference to the [array containing all loaders](https://github.com/untool/untool/blob/v2.0.0/packages/webpack/lib/configs/build.js#L75) which gets applied to [`module.rules.oneOf`](https://webpack.js.org/configuration/module/#rule-oneof).
+  - `loaderConfigs.jsLoaderConfig` is a direct reference to the [`babel-loader`](https://github.com/babel/babel-loader) config [object](./packages/webpack/lib/configs/build.js#L22)
+  - `loaderConfigs.urlLoaderConfig` is a direct reference to the [`url-loader`](https://github.com/webpack-contrib/url-loader) config [object](./packages/webpack/lib/configs/build.js#L58)
+  - `loaderConfigs.fileLoaderConfig` is a direct reference to the [`file-loader`](https://github.com/webpack-contrib/file-loader) config [object](./packages/webpack/lib/configs/build.js#L50)
+  - `loaderConfigs.allLoaderConfigs` is a reference to the [array containing all loaders](./packages/webpack/lib/configs/build.js#L75) which gets applied to [`module.rules.oneOf`](https://webpack.js.org/configuration/module/#rule-oneof).
 - `target` indicates what the current config will be used for and will be one of:
   - `build` this is the webpack config that will be used for the client-side build when you execute `hops build`
   - `develop` this is the webpack config that will be used for the client-side development build when you execute `hops start`
@@ -1278,7 +1277,7 @@ const theme = observable(
 );
 
 const MyApp = inject('theme')(
-  observer(props => (
+  observer((props) => (
     <h1
       style={{ color: props.theme.color }}
       onClick={() => props.theme.setColor('green')}

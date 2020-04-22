@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 const path = require('path');
-const { configure } = require('@untool/yargs');
+const { configure } = require('hops-yargs');
 
 configure({
   untoolNamespace: 'hops',

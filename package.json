@@ -22,7 +22,8 @@
     "ghost23 <mail@ghost23.de> (https://www.xing.com/profile/Sven_Busse)",
     "jhiode <mail@jhio.de> (https://www.xing.com/profile/Jonas_Holland)",
     "DJCordhose <oliver@zeigermann.de> (https://www.xing.com/profile/Oliver_Zeigermann)",
-    "herschel666 <kraemerseele@gmx.de> (https://www.xing.com/profile/Emanuel_Kluge)"
+    "herschel666 <kraemerseele@gmx.de> (https://www.xing.com/profile/Emanuel_Kluge)",
+    "KnisterPeter <markus.wolf@new-work.se> (https://www.xing.com/profile/Markus_Wolf22)"
   ],
   "scripts": {
     "preinstall": "node -e \"process.exit(process.env.npm_execpath.includes('yarn') ? 0 : 1)\"",
@@ -143,7 +144,7 @@
   ],
   "jest": {
     "projects": [
-      "<rootDir>/packages/!(spec)",
+      "<rootDir>/packages/!(spec|bootstrap)",
       "<rootDir>/packages/spec/integration/*"
     ]
   },

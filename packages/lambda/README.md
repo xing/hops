@@ -71,7 +71,7 @@ To update your application, simply do your code changes, build again and execute
 
 #### NodeJS Runtime
 
-The Lambda runtime supports two Node versions, that intersects Hops's supported version range: `nodejs10.x` and `nodejs12.x`. To explicitly set a Node version, use the [`"node"`-property](https://github.com/untool/untool/tree/v2.x/packages/webpack#node) of the Hops config. If the property is not set, Hops will detect and use the Node version of the development environment.
+The Lambda runtime supports two Node versions, that intersects Hops's supported version range: `nodejs10.x` and `nodejs12.x`. To explicitly set a Node version, use the [`"node"`-property](../webpack#node) of the Hops config. If the property is not set, Hops will detect and use the Node version of the development environment.
 
 [Learn more about the available Lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 
