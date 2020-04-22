@@ -72,6 +72,11 @@ class WebpackBuildMixin extends Mixin {
             describe: 'Clean up before building',
             type: 'boolean',
           },
+          profile: {
+            default: false,
+            describe: 'Print performance profiling stats after each build',
+            type: 'boolean',
+          },
         },
         handler: (argv) =>
           Promise.resolve(argv.clean && this.clean())
