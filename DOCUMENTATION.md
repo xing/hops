@@ -238,6 +238,7 @@ This command will either start the development server or execute a production bu
 _The production flag (`--production` or `-p`) is a shortcut for setting the environment variable `NODE_ENV=production`, so these two are interchangeable._
 
 - `npm start` starts the development server with hot module reloading, etc.
+- `npm start -- --fast-dev` (**experimental**) starts the development server with some optimizations for faster builds (_warning:_ this will lead to different bundles than in production, use with caution).
 - `npm start -- --production` executes a production build and then starts the production server.
 - `npm start -- --production --static`¹ exports static HTML pages for all configured [locations](#default-settings) and then starts the production server (_this only works in tandem with production mode_).
 
