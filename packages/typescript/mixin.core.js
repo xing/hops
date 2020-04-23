@@ -29,9 +29,11 @@ const getCompilerOptions = (ts, rootPath) => {
 class TypescriptMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig, allLoaderConfigs }, target) {
     const { loader, options, exclude } = jsLoaderConfig;
-    const targetDevelop = target === 'develop';
-    const compilerOptions = targetDevelop
-      ? { compilerOptions: { isolatedModules: true } }
+    const isDevelop =
+      target === 'develop' ||
+      (target === 'node' && process.env.NODE_ENV !== 'production');
+    const loaderOptions = isDevelop
+      ? { compilerOptions: { isolatedModules: true }, transpileOnly: true }
       : undefined;
 
     allLoaderConfigs.unshift({
@@ -44,10 +46,7 @@ class TypescriptMixin extends Mixin {
         },
         {
           loader: require.resolve('ts-loader'),
-          options: {
-            ...compilerOptions,
-            transpileOnly: targetDevelop,
-          },
+          options: loaderOptions,
         },
       ],
     });
