@@ -21,6 +21,12 @@ class WebpackStartMixin extends Mixin {
             describe: 'Clean up before building',
             type: 'boolean',
           },
+          fastDev: {
+            default: false,
+            describe:
+              'Experimental: Enable faster development mode (modern browsers only)',
+            type: 'boolean',
+          },
         },
         handler: (argv) => {
           if (process.env.NODE_ENV === 'production') {

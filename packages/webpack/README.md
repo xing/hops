@@ -78,6 +78,12 @@ $ NODE_ENV=production hops start
 
 In `static` mode, static HTML pages will be generated for the [`locations`](../express/README.md#locations) configured for your application.
 
+##### `--fast-dev` _experimental_
+
+Using the experimental `--fast-dev` option will disable automatic polyfilling and transpiling of all `node_modules` files through babel to enable faster development times. This will lead to a different bundle being created than in production mode and will not work on all browsers (modern browsers only). Use with caution and report any bugs you may encounter.
+
+**DO NOT USE THIS MODE FOR QA OR PRODUCTION**
+
 ## API
 
 `hops-webpack` provides a couple of configurable exports for your convenience: mixin hooks marked with 'callable' below can be called like in the following example example:
