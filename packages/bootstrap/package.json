@@ -18,7 +18,7 @@
     "debug": "^4.1.1",
     "dotenv": "^8.1.0",
     "enhanced-resolve": "^4.1.1",
-    "escape-string-regexp": "^3.0.0",
+    "escape-string-regexp": "^4.0.0",
     "find-up": "^4.1.0",
     "flat": "^5.0.0",
     "is-plain-obj": "^2.0.0",
