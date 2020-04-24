@@ -1,8 +1,6 @@
-const define = require('mixinable');
+const { define, sync } = require('mixinable');
 
-const {
-  sync: { callable, sequence },
-} = define;
+const { callable, sequence } = sync;
 
 const strategies = {
   validateConfig: callable,

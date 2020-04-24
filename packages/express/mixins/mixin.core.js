@@ -2,15 +2,13 @@
 
 const prettyMS = require('pretty-ms');
 const isPlainObject = require('is-plain-obj');
-
 const EnhancedPromise = require('eprom');
-const {
-  async: { callable: callableAsync },
-  sync: { sequence, callable: callableSync },
-} = require('mixinable');
+const { async, sync } = require('mixinable');
 const { trimLeadingSlash } = require('pathifist');
-
 const { Mixin } = require('hops-mixin');
+
+const { callable: callableAsync } = async;
+const { sequence, callable: callableSync } = sync;
 
 const {
   internal: { validate, invariant },
