@@ -21,11 +21,11 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@babel/core": "^7.7.0",
-    "@babel/plugin-proposal-class-properties": "^7.7.0",
-    "@babel/plugin-transform-flow-strip-types": "^7.7.0",
-    "@babel/preset-env": "^7.7.0",
-    "@babel/preset-react": "^7.7.0",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-flow-strip-types": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
     "babel-jest": "^24.9.0",
     "core-js": "^3.2.1",
     "hops": "^0.0.0",
