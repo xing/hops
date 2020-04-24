@@ -18,7 +18,7 @@ describe.skip('hot module reload', () => {
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start();
+    url = await HopsCLI.start('--fast-dev');
   });
 
   it('reflects changes automatically', async () => {

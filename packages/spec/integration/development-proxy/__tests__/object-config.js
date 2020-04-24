@@ -21,7 +21,7 @@ describe('development proxy object config', () => {
     };
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-    url = await HopsCLI.start();
+    url = await HopsCLI.start('--fast-dev');
   });
 
   it('proxies with proxy config set as object', async () => {

@@ -15,7 +15,7 @@ describe('development proxy string config', () => {
     packageJson.hops.proxy = `http://localhost:${PORT}/proxy`;
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-    url = await HopsCLI.start();
+    url = await HopsCLI.start('--fast-dev');
   });
 
   it('proxies with proxy config set as string', async () => {
