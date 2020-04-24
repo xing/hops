@@ -57,7 +57,7 @@ class ExpressMixin extends Mixin {
           redirect: false,
         })
       );
-      middlewares.postfiles.push(helmet.noCache());
+      middlewares.postfiles.push(nocache());
       if (typeof this.getLogger === 'function') {
         const loggerMiddleware = require('../lib/log');
         app.use(loggerMiddleware(this.getLogger()));
