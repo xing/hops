@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "hops-bootstrap": "^12.1.4",
-    "mixinable": "^4.0.0"
+    "mixinable": "^5.0.1"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme"
 }

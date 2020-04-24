@@ -2,17 +2,14 @@
 
 const { isValidElement } = require('react');
 const isPlainObject = require('is-plain-obj');
-const {
-  override: overrideSync,
-  async: { compose, parallel, pipe, override: overrideAsync },
-} = require('mixinable');
-const {
-  Mixin,
-  internal: { validate, invariant },
-} = require('hops-bootstrap');
+const { override: overrideSync, async } = require('mixinable');
+const { Mixin, internal: bootstrap } = require('hops-bootstrap');
 const renderToFragments = require('../lib/fragments');
 const getAssets = require('../lib/assets');
 const template = require('../lib/template');
+
+const { compose, parallel, pipe, override: overrideAsync } = async;
+const { validate, invariant } = bootstrap;
 
 class ReactMixin extends Mixin {
   constructor(config, element, options) {
