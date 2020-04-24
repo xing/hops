@@ -19,7 +19,7 @@
   "dependencies": {
     "depd": "^2.0.0",
     "hops-bootstrap": "^0.0.0",
-    "mixinable": "^4.0.0"
+    "mixinable": "^5.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme"
 }
