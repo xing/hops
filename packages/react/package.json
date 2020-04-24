@@ -30,7 +30,7 @@
     "hops-mixin": "^12.1.4",
     "hops-react": "^12.1.4",
     "is-plain-obj": "^2.0.0",
-    "mixinable": "^5.0.0",
+    "mixinable": "^5.0.1",
     "pathifist": "^1.0.0",
     "prop-types": "^15.7.2",
     "serialize-javascript": "^3.0.0"

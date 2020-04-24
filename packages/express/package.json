@@ -32,7 +32,7 @@
     "hops-yargs": "^12.1.4",
     "is-plain-obj": "^2.0.0",
     "mime": "^2.4.4",
-    "mixinable": "^5.0.0",
+    "mixinable": "^5.0.1",
     "morgan": "^1.9.1",
     "nocache": "^2.1.0",
     "node-mocks-http": "^1.8.0",
