@@ -5,14 +5,11 @@
 const { isValidElement } = require('react');
 const { unmountComponentAtNode, hydrate, render } = require('react-dom');
 const isPlainObject = require('is-plain-obj');
-const {
-  override,
-  async: { compose, parallel, pipe },
-} = require('mixinable');
-const {
-  Mixin,
-  internal: { validate, invariant },
-} = require('hops-bootstrap');
+const { override, async } = require('mixinable');
+const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+
+const { compose, parallel, pipe } = async;
+const { validate, invariant } = bootstrap;
 
 class ReactMixin extends Mixin {
   constructor(config, element, options) {

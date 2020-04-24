@@ -2,7 +2,7 @@
 
 const debug = require('debug')('hops:bootstrap');
 const isPlainObject = require('is-plain-obj');
-const define = require('mixinable');
+const { define } = require('mixinable');
 
 const { getConfig, getMixins } = require('./lib/config');
 

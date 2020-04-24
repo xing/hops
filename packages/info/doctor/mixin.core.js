@@ -1,11 +1,10 @@
-const {
-  async: { parallel },
-} = require('mixinable');
+const { async } = require('mixinable');
 const { Mixin } = require('hops-mixin');
-const {
-  internal: { validate, invariant },
-} = require('hops-bootstrap');
+const { internal: bootstrap } = require('hops-bootstrap');
 const { createDoctor } = require('.');
+
+const { parallel } = async;
+const { validate, invariant } = bootstrap;
 
 class DoctorMixin extends Mixin {
   constructor(...args) {
@@ -39,7 +38,12 @@ class DoctorMixin extends Mixin {
 DoctorMixin.strategies = {
   diagnose: validate(parallel, ([doctor]) =>
     invariant(
-      doctor instanceof createDoctor,
+      [
+        'validateConfig',
+        'detectDuplicatePackages',
+        'collectResults',
+        'logResults',
+      ].every((fn) => typeof doctor[fn] === 'function'),
       'diagnose(): Received invalid doctor argument'
     )
   ),

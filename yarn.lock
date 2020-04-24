@@ -9189,10 +9189,10 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-mixinable@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-4.0.0.tgz#b8318bf1915dd7bb9ea53c26de7861cbcfc4201b"
-  integrity sha512-CrWY87QrzCuO4c26RWqjqtSfIYw7acY56FP4KcP+Q8aH9CFwET0Y9w36V00+Wg5NKhB1puxMHuO8ls2srOp32g==
+mixinable@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/mixinable/-/mixinable-5.0.1.tgz#6f69d41c4df54a09fe12bf6423070483f6e7e179"
+  integrity sha512-Y6UFG2e4I7UEQiWsSTwope9pARslOFgxfJEIf45/kUDxDt8mhtBISL7JqbcYyxF93pNc54CSHg0EIHLAArT8zQ==
 
 mkdirp-promise@^5.0.1:
   version "5.0.1"
