@@ -1,7 +1,10 @@
 if (!require('module').prototype._compile.__sourceMapSupport) {
   require('source-map-support/register');
 }
-require('core-js');
+
+if (process.env.__HOPS_FAST_DEV__ !== 'true') {
+  require('core-js');
+}
 
 if (module.hot) {
   require('webpack/hot/log').setLogLevel('none');

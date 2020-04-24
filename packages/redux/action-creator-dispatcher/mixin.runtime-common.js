@@ -4,60 +4,60 @@ const { matchPath, withRouter } = require('react-router-dom');
 
 const { Mixin } = require('hops-mixin');
 
-const Dispatcher = withRouter(
-  // eslint-disable-next-line react/display-name
-  class extends React.Component {
-    static propTypes = {
-      dispatchAll: PropTypes.func.isRequired,
-      location: PropTypes.object.isRequired,
-      children: PropTypes.node,
-      alwaysDispatchActionsOnClient: PropTypes.bool,
-      prefetchedOnServer: PropTypes.bool.isRequired,
-    };
-    previousLocation = {};
+class Dispatcher extends React.Component {
+  previousLocation = {};
 
-    dispatchAll() {
-      const { location = {} } = this.props;
-      const pathnameChanged =
-        location.pathname !== this.previousLocation.pathname;
-      const hashChanged = location.hash !== this.previousLocation.hash;
-      const onlyHashChanged = hashChanged && !pathnameChanged;
-      this.previousLocation = location;
+  dispatchAll() {
+    const { location = {} } = this.props;
+    const pathnameChanged =
+      location.pathname !== this.previousLocation.pathname;
+    const hashChanged = location.hash !== this.previousLocation.hash;
+    const onlyHashChanged = hashChanged && !pathnameChanged;
+    this.previousLocation = location;
 
-      if (onlyHashChanged) {
-        return;
-      }
-
-      this.props.dispatchAll(location);
+    if (onlyHashChanged) {
+      return;
     }
 
-    componentDidMount() {
-      this.previousLocation = this.props.location;
+    this.props.dispatchAll(location);
+  }
 
-      // after the initial page load, the actions should not be dispatched immediately again,
-      // because it was already done on the server and
-      // this would often lead to flickering pages, unnecessary loading spinners and network requests
-      // therefore we do not dispatch the first time and only dispatch on following attempts
-      // the behavior can be overridden by passing alwaysDispatchActionsOnClient:true to the options
-      if (
-        this.props.alwaysDispatchActionsOnClient ||
-        !this.props.prefetchedOnServer
-      ) {
-        this.dispatchAll();
-      }
-    }
+  componentDidMount() {
+    this.previousLocation = this.props.location;
 
-    componentDidUpdate() {
+    // after the initial page load, the actions should not be dispatched immediately again,
+    // because it was already done on the server and
+    // this would often lead to flickering pages, unnecessary loading spinners and network requests
+    // therefore we do not dispatch the first time and only dispatch on following attempts
+    // the behavior can be overridden by passing alwaysDispatchActionsOnClient:true to the options
+    if (
+      this.props.alwaysDispatchActionsOnClient ||
+      !this.props.prefetchedOnServer
+    ) {
       this.dispatchAll();
     }
-
-    render() {
-      return this.props.children
-        ? React.Children.only(this.props.children)
-        : null;
-    }
   }
-);
+
+  componentDidUpdate() {
+    this.dispatchAll();
+  }
+
+  render() {
+    return this.props.children
+      ? React.Children.only(this.props.children)
+      : null;
+  }
+}
+
+Dispatcher.propTypes = {
+  dispatchAll: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
+  children: PropTypes.node,
+  alwaysDispatchActionsOnClient: PropTypes.bool,
+  prefetchedOnServer: PropTypes.bool.isRequired,
+};
+
+const RoutedDispatcher = withRouter(Dispatcher);
 
 class ReduxActionCreatorRuntimeMixin extends Mixin {
   constructor(config, element, { redux: options = {} } = {}) {
@@ -89,7 +89,7 @@ class ReduxActionCreatorRuntimeMixin extends Mixin {
   enhanceElement(reactElement) {
     const { alwaysDispatchActionsOnClient } = this.options;
     return React.createElement(
-      Dispatcher,
+      RoutedDispatcher,
       {
         dispatchAll: this.dispatchAll.bind(this),
         alwaysDispatchActionsOnClient: alwaysDispatchActionsOnClient,

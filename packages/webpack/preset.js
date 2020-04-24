@@ -19,6 +19,7 @@ module.exports = {
     join(__dirname, 'mixins', 'render'),
     join(__dirname, 'mixins', 'start'),
     join(__dirname, 'mixins', 'stats'),
+    join(__dirname, 'mixins', 'fast-dev'),
   ],
   mixinTypes: {
     browser: {
