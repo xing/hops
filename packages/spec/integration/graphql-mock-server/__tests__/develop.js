@@ -2,7 +2,7 @@ describe('graphql mock server', () => {
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start();
+    url = await HopsCLI.start('--fast-dev');
   });
 
   it('renders a mocked quote', async () => {

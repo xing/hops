@@ -4,7 +4,7 @@ describe('redux development server', () => {
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start();
+    url = await HopsCLI.start('--fast-dev');
   });
 
   it('has default state', async () => {

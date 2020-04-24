@@ -5,10 +5,9 @@
   "license": "MIT",
   "homepage": "https://github.com/xing/hops/tree/master/packages/hops-webpack#readme",
   "dependencies": {
-    "@babel/core": "^7.7.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.7.0",
-    "@babel/preset-env": "^7.7.0",
-    "babel-loader": "^8.0.6",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
     "caniuse-lite": "^1.0.30000898",
     "chalk": "^4.0.0",
     "core-js": "^3.2.1",
