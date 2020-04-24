@@ -18,7 +18,7 @@
     "escape-string-regexp": "^3.0.0",
     "hops-bootstrap": "^0.0.0",
     "hops-mixin": "^0.0.0",
-    "mixinable": "^5.0.0"
+    "mixinable": "^5.0.1"
   },
   "engines": {
     "node": "^10.13 || ^12.13 || ^13.0"
