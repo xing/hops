@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
+
+
+### Bug Fixes
+
+* mixinable@5.0.0 contains bugs ([26cfa31](https://github.com/xing/hops/commit/26cfa31bdd2109c01e5db391269920b7796b9cad))
+* update dependency mixinable to v5 ([2dfcc62](https://github.com/xing/hops/commit/2dfcc6222ee8d0cb2716e50a0dfa190f1068a835))
+
+
+
+
+
 ## [12.1.4](https://github.com/xing/hops/compare/v12.1.3...v12.1.4) (2020-04-16)
 
 **Note:** Version bump only for package hops-mixin

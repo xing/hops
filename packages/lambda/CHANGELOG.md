@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
+
+
+### Bug Fixes
+
+* update dependency archiver to v4 ([2de22ce](https://github.com/xing/hops/commit/2de22ce09a324c5662fcbb042aa4fb3ca2ea689b))
+
+
+
+
+
 ## [12.1.4](https://github.com/xing/hops/compare/v12.1.3...v12.1.4) (2020-04-16)
 
 **Note:** Version bump only for package hops-lambda

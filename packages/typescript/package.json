@@ -1,6 +1,6 @@
 {
   "name": "hops-typescript",
-  "version": "12.1.4",
+  "version": "12.2.0",
   "description": "TypeScript support for Hops applications",
   "keywords": [
     "hops",
@@ -15,7 +15,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-mixin": "^12.1.4",
+    "hops-mixin": "^12.2.0",
     "ts-loader": "^7.0.0"
   },
   "peerDependencies": {

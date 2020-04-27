@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
+
+
+### Bug Fixes
+
+* update dependency ts-loader to v7 ([c706f6b](https://github.com/xing/hops/commit/c706f6bb5d748775df09a0ad681dbabafe1f3dfa))
+
+
+### Performance Improvements
+
+* use transpileOnly flag of ts-loader for node dev build ([446641d](https://github.com/xing/hops/commit/446641d250878fba8e4f3f71080c5be08dd09d5c))
+
+
+
+
+
 ## [12.1.4](https://github.com/xing/hops/compare/v12.1.3...v12.1.4) (2020-04-16)
 
 **Note:** Version bump only for package hops-typescript

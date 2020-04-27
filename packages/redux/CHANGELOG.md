@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
+
+
+### Bug Fixes
+
+* **redux:** packages must only contain syntactically valid ES5/ES6 ([ebaf15e](https://github.com/xing/hops/commit/ebaf15e24136e9ab69c973a5421d1e4dcb6cddcc))
+
+
+
+
+
 ## [12.1.4](https://github.com/xing/hops/compare/v12.1.3...v12.1.4) (2020-04-16)
 
 
