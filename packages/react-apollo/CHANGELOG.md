@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.1](https://github.com/xing/hops/compare/v12.2.0...v12.2.1) (2020-04-27)
+
+
+### Bug Fixes
+
+* update dependency graphql-tools to v5 ([9ecb2e0](https://github.com/xing/hops/commit/9ecb2e0d64b848af584538df31fa821be34d7b1c))
+
+
+
+
+
 # [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
 
 **Note:** Version bump only for package hops-react-apollo

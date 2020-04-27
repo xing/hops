@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.1](https://github.com/xing/hops/compare/v12.2.0...v12.2.1) (2020-04-27)
+
+**Note:** Version bump only for package hops-bootstrap
+
+
+
+
+
 # [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
 
 

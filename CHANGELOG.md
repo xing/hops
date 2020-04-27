@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.1](https://github.com/xing/hops/compare/v12.2.0...v12.2.1) (2020-04-27)
+
+
+### Bug Fixes
+
+* **react:** remove extraneous depedency "hops-react" ([3fe178a](https://github.com/xing/hops/commit/3fe178a38ed4067a657f38e17cb519afb01769f6))
+* **redux:** remove usage of unsupported es class properties ([64a2a99](https://github.com/xing/hops/commit/64a2a99490201e0a3541d572eec2c352d0af2cd4))
+* update dependency graphql-tools to v5 ([9ecb2e0](https://github.com/xing/hops/commit/9ecb2e0d64b848af584538df31fa821be34d7b1c))
+
+
+
+
+
 # [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
 
 

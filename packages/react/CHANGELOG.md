@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.1](https://github.com/xing/hops/compare/v12.2.0...v12.2.1) (2020-04-27)
+
+
+### Bug Fixes
+
+* **react:** remove extraneous depedency "hops-react" ([3fe178a](https://github.com/xing/hops/commit/3fe178a38ed4067a657f38e17cb519afb01769f6))
+
+
+
+
+
 # [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
 
 

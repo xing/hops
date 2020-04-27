@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.1](https://github.com/xing/hops/compare/v12.2.0...v12.2.1) (2020-04-27)
+
+
+### Bug Fixes
+
+* **redux:** remove usage of unsupported es class properties ([64a2a99](https://github.com/xing/hops/commit/64a2a99490201e0a3541d572eec2c352d0af2cd4))
+
+
+
+
+
 # [12.2.0](https://github.com/xing/hops/compare/v12.1.4...v12.2.0) (2020-04-27)
 
 
