@@ -5,7 +5,11 @@ const { matchPath, withRouter } = require('react-router-dom');
 const { Mixin } = require('hops-mixin');
 
 class Dispatcher extends React.Component {
-  previousLocation = {};
+  constructor(props) {
+    super(props);
+
+    this.previousLocation = {};
+  }
 
   dispatchAll() {
     const { location = {} } = this.props;
