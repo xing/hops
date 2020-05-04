@@ -4112,20 +4112,17 @@ camelize@1.0.0, camelize@^1.0.0:
   resolved "https://registry.yarnpkg.com/camelize/-/camelize-1.0.0.tgz#164a5483e630fa4321e5af07020e531831b2609b"
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
-canarist@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/canarist/-/canarist-1.3.2.tgz#74b9b59206e53409b3414db326a43ab9ba23aaa8"
-  integrity sha512-GU1bbpnthXFhwlUXQBGlEk9N71yOcoeIXvxbpsnp0q/NL5Jcbc5ILbgvOUMV0KFshMdK49xj1QXrpR9RWgAfiw==
+canarist@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/canarist/-/canarist-2.0.1.tgz#ccd0636afa2b97ce09b7fd937824598e3591863a"
+  integrity sha512-MjOKEG2wTmiJ0AhVVHTwQ/+jltWru4t+w9gbcptyPXDCyaqknzcTEcHMyE9zLmOh/hFB34MuMECIzBwhZezeQA==
   dependencies:
     cosmiconfig "^6.0.0"
     debug "^4.1.1"
     fast-glob "^3.2.2"
     git-url-parse "^11.1.2"
-    make-dir "^3.0.2"
-    merge-options "^2.0.0"
+    lodash.mergewith "^4.6.2"
     minimist "^1.2.5"
-    semver "^7.2.1"
-    write-pkg "^4.0.0"
 
 caniuse-api@^3.0.0:
   version "3.0.0"
@@ -8941,13 +8938,6 @@ merge-descriptors@1.0.1, merge-descriptors@^1.0.1:
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
   integrity sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
 
-merge-options@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/merge-options/-/merge-options-2.0.0.tgz#36ca5038badfc3974dbde5e58ba89d3df80882c3"
-  integrity sha512-S7xYIeWHl2ZUKF7SDeBhGg6rfv5bKxVBdk95s/I7wVF8d+hjLSztJ/B271cnUiF6CAFduEQ5Zn3HYwAjT16DlQ==
-  dependencies:
-    is-plain-obj "^2.0.0"
-
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
@@ -11916,7 +11906,7 @@ semver@7.0.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.0.0.tgz#5f3ca35761e47e05b206c6daff2cf814f0316b8e"
   integrity sha512-+GB6zVA9LWh6zovYQLALHwv5rb2PHGlJi3lfiqIHxR0uuwCgefcOJc59v9fv1w8GbStwxuuqqAjI9NMAOOgq1A==
 
-semver@^7.0.0, semver@^7.2.1:
+semver@^7.0.0:
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
   integrity sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
