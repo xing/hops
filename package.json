@@ -43,13 +43,13 @@
   "canarist": {
     "repositories": [
       {
-        "repository": ".",
+        "url": ".",
         "commands": [
           ""
         ]
       },
       {
-        "repository": "https://github.com/foosbyte/kicker-trainer.git",
+        "url": "https://github.com/foosbyte/kicker-trainer.git",
         "commands": [
           "yarn build -p",
           "yarn test"
