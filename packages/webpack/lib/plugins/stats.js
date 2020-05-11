@@ -58,7 +58,7 @@ exports.StatsPlugin = class StatsPlugin {
 
           try {
             enhancedPromise.resolve({
-              ...compilation.getStats().toJson({ source: false }),
+              ...compilation.getStats().toJson({ all: false, assets: true }),
               ...extractFiles(analyzeCompilation(compilation), publicPath),
             });
           } catch (error) {
