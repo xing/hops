@@ -12,6 +12,8 @@ export default render(
     <Helmet>
       <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
     </Helmet>
-    <h1 className={`${styles.headline} fancy-headline animated`}>hello</h1>
+    <h1 className={`${styles.headline} fancy-headline animate__animated`}>
+      hello
+    </h1>
   </>
 );
