@@ -8,5 +8,7 @@ import 'animate.css/animate.min.css?global';
 /* eslint-enable import/no-unresolved */
 
 export default render(
-  <h1 className={`${styles.headline} fancy-headline animated`}>hello</h1>
+  <h1 className={`${styles.headline} fancy-headline animate__animated`}>
+    hello
+  </h1>
 );
