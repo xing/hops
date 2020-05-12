@@ -44,10 +44,10 @@ class ReactMixin extends Mixin {
         this.fetchData({}, element).then(() => this.renderToFragments(element))
       )
       .then((fragments) => {
-        // note: res.locals.helmet is set by the ReactHelmetMixin
+        // note: res.locals.helmetContext is set by the ReactHelmetMixin
         Object.assign(
           fragments,
-          Object.entries(res.locals.helmet).reduce(
+          Object.entries(res.locals.helmetContext.helmet).reduce(
             (result, [key, value]) => ({ ...result, [key]: value.toString() }),
             { headPrefix: '', headSuffix: '' }
           )
