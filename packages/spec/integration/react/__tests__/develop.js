@@ -116,4 +116,10 @@ describe('react development server', () => {
 
     await page.close();
   });
+
+  it('renders helmet <link> server-side', async () => {
+    const response = await fetch(url);
+    const content = await response.text();
+    expect(content).toMatch('data:;base64,iVBORw0KGgo=');
+  });
 });

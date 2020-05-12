@@ -5,17 +5,17 @@ const { HelmetProvider } = require('react-helmet-async');
 class ReactHelmetMixin extends Mixin {
   constructor(config, _element, options) {
     super(config, options);
-    this.helmet = {};
+    this.context = {};
   }
 
   bootstrap(_req, res) {
     if (res) {
-      res.locals.helmet = this.helmet;
+      res.locals.helmetContext = this.context;
     }
   }
 
   enhanceElement(element) {
-    return createElement(HelmetProvider, { context: this.helmet }, element);
+    return createElement(HelmetProvider, { context: this.context }, element);
   }
 }
 
