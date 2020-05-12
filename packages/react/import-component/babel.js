@@ -30,6 +30,7 @@ module.exports = ({ types: t }) => ({
         }
 
         let importedComponent;
+        let leadingComments;
 
         if (t.isStringLiteral(argument)) {
           importedComponent = argument.node.value;
@@ -41,8 +42,12 @@ module.exports = ({ types: t }) => ({
           t.assertCallExpression(argument.get('body'));
           t.assertImport(argument.get('body.callee'));
 
-          importedComponent = argument.get('body.arguments.0').node.value;
+          const { node } = argument.get('body.arguments.0');
+          importedComponent = node.value;
+          leadingComments = node.leadingComments;
         }
+
+        const resourcePathNode = t.stringLiteral(importedComponent);
 
         argument.replaceWith(
           t.objectExpression([
@@ -51,7 +56,7 @@ module.exports = ({ types: t }) => ({
               t.arrowFunctionExpression(
                 [],
                 t.callExpression(t.identifier('import'), [
-                  t.stringLiteral(importedComponent),
+                  t.addComments(resourcePathNode, 'leading', leadingComments),
                 ])
               )
             ),
@@ -62,7 +67,7 @@ module.exports = ({ types: t }) => ({
                   t.identifier('require'),
                   t.identifier('resolveWeak')
                 ),
-                [t.stringLiteral(importedComponent)]
+                [resourcePathNode]
               )
             ),
           ])
