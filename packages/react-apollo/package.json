@@ -25,7 +25,7 @@
     "apollo-link-http": "^1.5.16",
     "cross-fetch": "^3.0.4",
     "depd": "^2.0.0",
-    "graphql": "^14.5.8",
+    "graphql": "^15.0.0",
     "graphql-tools": "^5.0.0",
     "hops-config": "^12.2.1",
     "hops-mixin": "^12.2.1",
