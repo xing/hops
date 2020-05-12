@@ -38,7 +38,7 @@
     "url-join": "^4.0.1"
   },
   "dependencies": {
-    "@zendeskgarden/css-buttons": "^7.0.17",
+    "@zendeskgarden/css-buttons": "^8.0.0",
     "animate.css": "^4.0.0"
   }
 }

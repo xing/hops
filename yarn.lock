@@ -2792,10 +2792,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zendeskgarden/css-buttons@^7.0.17":
-  version "7.0.19"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-buttons/-/css-buttons-7.0.19.tgz#8755e54bd9e0cf472dddf2b8041d05cd03b78bf6"
-  integrity sha512-Fv+vDvwwsf2SIoqxKPbg5hXPnYlqJ74ZCat9k9TvxAkz+BW8ufQlKksSzztfVBKRIJNJR4IQoEL9Yz7GPBl3xw==
+"@zendeskgarden/css-buttons@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-buttons/-/css-buttons-8.0.0.tgz#36d7ba003fea4db3653a0f2056a1fde875bd115b"
+  integrity sha512-evmybZFoONmxp29ELv+Zw/ajsNCEsAQpx3whrIVqfjSbBtffHMdQKbxS/AMXAfgaevaIpDRI/I3iFjFoHwLq5g==
   dependencies:
     "@zendeskgarden/css-variables" "^6.4.5"
 
