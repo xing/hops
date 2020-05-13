@@ -10,6 +10,7 @@ installServiceWorker();
 export default render(
   <>
     <Helmet>
+      <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
       <link rel="manifest" href={manifest} />
     </Helmet>
     <h1>hello</h1>
