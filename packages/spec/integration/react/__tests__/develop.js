@@ -93,6 +93,23 @@ describe('react development server', () => {
     await page.goto(urlJoin(url, '/import'));
 
     expect(await page.content()).toMatch('imported');
+    expect(await page.content()).toMatch(/Hello bold [^a-z]+text[^a-z]+\!/);
+
+    await page.close();
+  });
+
+  it('prints resource hints server-side', async () => {
+    const { page, getProperty } = await createPage();
+    await page.setJavaScriptEnabled(false);
+    await page.goto(urlJoin(url, '/import'));
+
+    const preloadHref = await getProperty('href', 'link[rel="preload"]');
+    const preloadAs = await getProperty('as', 'link[rel="preload"]');
+    const prefetchHref = await getProperty('href', 'link[rel="prefetch"]');
+
+    expect(preloadHref).toMatch(/\/fixture-react-[0-9].js$/);
+    expect(preloadAs).toBe('script');
+    expect(prefetchHref).toMatch(/\/fixture-react-[0-9].js$/);
 
     await page.close();
   });

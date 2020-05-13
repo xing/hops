@@ -6,6 +6,7 @@ const { override: overrideSync, async } = require('mixinable');
 const { Mixin, internal: bootstrap } = require('hops-bootstrap');
 const renderToFragments = require('../lib/fragments');
 const getAssets = require('../lib/assets');
+const getResourceHints = require('../lib/resource-hints');
 const template = require('../lib/template');
 
 const { compose, parallel, pipe, override: overrideAsync } = async;
@@ -27,12 +28,14 @@ class ReactMixin extends Mixin {
 
   renderTemplate(fragments, { modules }) {
     const assets = getAssets(this.stats, modules);
+    const resourceHints = getResourceHints(this.stats);
     const globals = { _env: this.config._env };
 
     return this.getTemplateData({
       fragments,
       assets,
       globals,
+      resourceHints,
     }).then((templateData) => template(templateData));
   }
 

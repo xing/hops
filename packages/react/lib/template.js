@@ -2,14 +2,19 @@
 
 const esc = require('serialize-javascript');
 
+const printResourceHint = ({ rel, href, htmlAs }) =>
+  `<link rel="${rel}" href="${href}" ${htmlAs ? `as="${htmlAs}" ` : ''}/>`;
+
 module.exports = ({
   fragments = {},
   globals = {},
   assets: { css = [], js = [] } = {},
+  resourceHints,
 }) =>
   `<!DOCTYPE html>
 <html ${fragments.htmlAttributes || ''}>
   <head>
+    ${resourceHints.map(printResourceHint).join('')}
     ${fragments.headPrefix || ''}
     ${fragments.title || ''}
     ${fragments.base || ''}
