@@ -12,6 +12,7 @@ import {
 
 import React from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import FlowText from './flow-text';
 
 const Text = importComponent(() => import('./text'));
@@ -35,25 +36,30 @@ const ConfigHook = () => {
 };
 
 export default render(
-  <div>
-    <Link to="/two">Link to two</Link>
-    <Switch>
-      <Route path="/" exact render={() => <h1>home</h1>} />
-      <Route path="/two" exact render={() => <h1>two</h1>} />
-      <Route path="/status" exact render={() => <Status code={418} />} />
-      <Route path="/redirect" exact render={() => <Redirect to="/two" />} />
-      <Route
-        path="/header"
-        exact
-        render={() => <Header name="X-Foo" value="Bar" />}
-      />
-      <Route path="/flow" exact render={() => <FlowText text="flow" />} />
-      <Route path="/import" exact render={() => <Text text="imported" />} />
-      <Route path="/server-data-hoc" exact component={ServerDataHoC} />
-      <Route path="/server-data-hook" exact component={ServerDataHook} />
-      <Route path="/config-hoc" exact component={ConfigHoC} />
-      <Route path="/config-hook" exact component={ConfigHook} />
-      <Miss />
-    </Switch>
-  </div>
+  <>
+    <Helmet>
+      <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    </Helmet>
+    <div>
+      <Link to="/two">Link to two</Link>
+      <Switch>
+        <Route path="/" exact render={() => <h1>home</h1>} />
+        <Route path="/two" exact render={() => <h1>two</h1>} />
+        <Route path="/status" exact render={() => <Status code={418} />} />
+        <Route path="/redirect" exact render={() => <Redirect to="/two" />} />
+        <Route
+          path="/header"
+          exact
+          render={() => <Header name="X-Foo" value="Bar" />}
+        />
+        <Route path="/flow" exact render={() => <FlowText text="flow" />} />
+        <Route path="/import" exact render={() => <Text text="imported" />} />
+        <Route path="/server-data-hoc" exact component={ServerDataHoC} />
+        <Route path="/server-data-hook" exact component={ServerDataHook} />
+        <Route path="/config-hoc" exact component={ConfigHoC} />
+        <Route path="/config-hook" exact component={ConfigHook} />
+        <Miss />
+      </Switch>
+    </div>
+  </>
 );

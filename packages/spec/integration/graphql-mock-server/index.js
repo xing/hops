@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 import { render } from 'hops';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Query } from 'react-apollo';
 
 const query = gql`
@@ -15,26 +16,31 @@ const query = gql`
 `;
 
 export default render(
-  <Query query={query}>
-    {({ loading, error, data: { chirpById } = {} }) => {
-      if (loading) return <strong id="loading">loading...</strong>;
-      if (error)
+  <>
+    <Helmet>
+      <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    </Helmet>
+    <Query query={query}>
+      {({ loading, error, data: { chirpById } = {} }) => {
+        if (loading) return <strong id="loading">loading...</strong>;
+        if (error)
+          return (
+            <strong id="error">
+              Error: {error.message}
+              <pre>{JSON.stringify(error, null, 2)}</pre>
+            </strong>
+          );
         return (
-          <strong id="error">
-            Error: {error.message}
-            <pre>{JSON.stringify(error, null, 2)}</pre>
-          </strong>
+          <div>
+            <blockquote>
+              <p>{chirpById.text}</p>
+              <footer>
+                by <cite>{chirpById.author.email}</cite>
+              </footer>
+            </blockquote>
+          </div>
         );
-      return (
-        <div>
-          <blockquote>
-            <p>{chirpById.text}</p>
-            <footer>
-              by <cite>{chirpById.author.email}</cite>
-            </footer>
-          </blockquote>
-        </div>
-      );
-    }}
-  </Query>
+      }}
+    </Query>
+  </>
 );
