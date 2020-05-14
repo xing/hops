@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.2](https://github.com/xing/hops/compare/v12.2.1...v12.2.2) (2020-05-14)
+
+
+### Bug Fixes
+
+* update dependency pretty-ms to v7 ([604873a](https://github.com/xing/hops/commit/604873aa64f1d63c41c174cb8fa7e7ec6a900312))
+* update dependency serialize-error to v7 ([ec6fe25](https://github.com/xing/hops/commit/ec6fe259cd86a5b5527c1576f69fbf6bbe07ca4f))
+
+
+### Performance Improvements
+
+* reduce memory footprint by not serializing all stats ([0d7a023](https://github.com/xing/hops/commit/0d7a0237cd79e99eebb6d15031deb0a9f41f933c))
+
+
+
+
+
 ## [12.2.1](https://github.com/xing/hops/compare/v12.2.0...v12.2.1) (2020-04-27)
 
 **Note:** Version bump only for package hops-webpack

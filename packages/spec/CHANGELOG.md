@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.2](https://github.com/xing/hops/compare/v12.2.1...v12.2.2) (2020-05-14)
+
+
+### Bug Fixes
+
+* **react:** render react-helmet-async values on the server ([5f99735](https://github.com/xing/hops/commit/5f997351636c974fc3f90fd1cf613ed622fb9452)), closes [/github.com/untool/untool/blob/ef7abccc693ee5fb24c1c17bc7a33098aafed0b1/packages/react/mixins/mixin.server.js#L47](https://github.com//github.com/untool/untool/blob/ef7abccc693ee5fb24c1c17bc7a33098aafed0b1/packages/react/mixins/mixin.server.js/issues/L47)
+* update dependency @zendeskgarden/css-buttons to v8 ([fea2f87](https://github.com/xing/hops/commit/fea2f876e35e8391dc0618e33e10516e69b7bb71))
+* update dependency animate.css to v4 ([38d732d](https://github.com/xing/hops/commit/38d732de08237a415c1a2a862122df91ed3baf94))
+
+
+
+
+
 ## [12.2.1](https://github.com/xing/hops/compare/v12.2.0...v12.2.1) (2020-04-27)
 
 **Note:** Version bump only for package hops-spec

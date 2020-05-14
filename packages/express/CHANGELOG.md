@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.2](https://github.com/xing/hops/compare/v12.2.1...v12.2.2) (2020-05-14)
+
+
+### Bug Fixes
+
+* **express:** use nocache module to skip deprecation warning ([8a7e62e](https://github.com/xing/hops/commit/8a7e62ed20cbcdffddac71c0b6c15590442d8a3c))
+* update dependency pretty-ms to v7 ([604873a](https://github.com/xing/hops/commit/604873aa64f1d63c41c174cb8fa7e7ec6a900312))
+
+
+
+
+
 ## [12.2.1](https://github.com/xing/hops/compare/v12.2.0...v12.2.1) (2020-04-27)
 
 **Note:** Version bump only for package hops-express
