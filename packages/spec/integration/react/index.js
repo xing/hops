@@ -15,7 +15,15 @@ import { Link, Redirect, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import FlowText from './flow-text';
 
-const Text = importComponent(() => import('./text'));
+const Text = importComponent(() =>
+  import(/* webpackPrefetch: true */ './text')
+);
+const BoldText = importComponent(() =>
+  import(
+    // webpackPreload: true
+    './bold-text'
+  )
+);
 
 const ServerDataHoC = withServerData(({ serverData }) => (
   <output>{serverData.method}</output>
@@ -35,6 +43,14 @@ const ConfigHook = () => {
   return <h1>{config.hook}</h1>;
 };
 
+const RichText = () => (
+  <>
+    <Text text="imported" />
+    <br />
+    <BoldText subject="text" />
+  </>
+);
+
 export default render(
   <>
     <Helmet>
@@ -53,7 +69,7 @@ export default render(
           render={() => <Header name="X-Foo" value="Bar" />}
         />
         <Route path="/flow" exact render={() => <FlowText text="flow" />} />
-        <Route path="/import" exact render={() => <Text text="imported" />} />
+        <Route path="/import" exact render={RichText} />
         <Route path="/server-data-hoc" exact component={ServerDataHoC} />
         <Route path="/server-data-hook" exact component={ServerDataHook} />
         <Route path="/config-hoc" exact component={ConfigHoC} />
