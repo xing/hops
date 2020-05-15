@@ -81,7 +81,7 @@ class TypescriptMixin extends Mixin {
 
     const compilerOptions = getCompilerOptions(ts, rootDir);
     const properties = {
-      target: ts.ModuleKind.ESNext,
+      target: ts.ScriptTarget.ESNext,
       moduleResolution: ts.ModuleResolutionKind.NodeJs,
     };
 
