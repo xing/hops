@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0](https://github.com/xing/hops/compare/v12.2.2...v12.3.0) (2020-05-18)
+
+**Note:** Version bump only for package hops-info
+
+
+
+
+
 ## [12.2.2](https://github.com/xing/hops/compare/v12.2.1...v12.2.2) (2020-05-14)
 
 **Note:** Version bump only for package hops-info

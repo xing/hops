@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0](https://github.com/xing/hops/compare/v12.2.2...v12.3.0) (2020-05-18)
+
+
+### Bug Fixes
+
+* use the correct type to determine ts target ([64eec6b](https://github.com/xing/hops/commit/64eec6bcffa1c874915e4ace4a393e14cc382434))
+
+
+### Features
+
+* **react:** pass on Webpack's magic comments in importComponent ([23e0a2f](https://github.com/xing/hops/commit/23e0a2f72561f2db8baba0b70d1d2f1fc8deb469))
+* **react:** print resource hints during SSR ([6360396](https://github.com/xing/hops/commit/6360396fe5057846894d0cb9ea6e1cc91dce1200))
+* **webpack:** include entrypoints into stats object ([965c5c0](https://github.com/xing/hops/commit/965c5c024ec99486a086777d3aed35c4f36ee949))
+
+
+
+
+
 ## [12.2.2](https://github.com/xing/hops/compare/v12.2.1...v12.2.2) (2020-05-14)
 
 
