@@ -11,7 +11,7 @@ This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to 
 Add this preset to your existing Hops React project:
 
 ```bash
-npm install --save hops-typescript typescript
+npm install --save @xingternal/hops-typescript typescript
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
