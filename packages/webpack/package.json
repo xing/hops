@@ -14,7 +14,7 @@
     "debug": "^4.1.1",
     "depd": "^2.0.0",
     "directory-index": "^0.1.0",
-    "duplitect": "^2.0.1",
+    "duplitect": "^3.0.0",
     "enhanced-resolve": "^4.1.1",
     "eprom": "^1.0.0",
     "escape-string-regexp": "^4.0.0",
