@@ -25,7 +25,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "clone": "^2.1.2",
     "depd": "^2.0.0",
-    "duplitect": "^2.0.1",
+    "duplitect": "^3.0.0",
     "hops-bootstrap": "^12.3.0",
     "hops-mixin": "^12.3.0",
     "is-plain-obj": "^2.0.0",
