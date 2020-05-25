@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const detectDuplicates = require('duplitect');
+const { getDuplicates: detectDuplicates } = require('duplitect');
 
 module.exports = class DetectDuplicatePackagesMixin {
   constructor(config) {
