@@ -5496,10 +5496,10 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-duplitect@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/duplitect/-/duplitect-2.0.1.tgz#7dd660e000a87e83eae3c7ce3c6f0f1a497d059a"
-  integrity sha512-6xNZTPP4w9IaW2rXl4lHOixntrAVMgH7d0XCeTAljnUK6x3Zd4mXzHWOZV+Z58uWl3zOjuNvux/vwhued4AiwA==
+duplitect@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/duplitect/-/duplitect-3.0.0.tgz#c989de88c36720c9c2ad71ed5a76926ece729960"
+  integrity sha512-x9jW+7IA5175Dv43+4/MwVJhYiYjX/ISNKEeAPBU0kPpPAyqMVjpIBW+G8/vHoWNAHLX79tDxWRt2kmHLEd/iQ==
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -6503,7 +6503,6 @@ fsevents@^1.2.7:
   dependencies:
     bindings "^1.5.0"
     nan "^2.12.1"
-    node-pre-gyp "*"
 
 function-bind@^1.1.1:
   version "1.1.1"
