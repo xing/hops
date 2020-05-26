@@ -76,7 +76,7 @@ These are the main features:
 
 ## System requirements
 
-Hops is built on modern technologies and therefore needs at least Node.js _v10.13_ or higher.
+Hops is built on modern technologies and therefore needs at least Node.js _v10_ or higher.
 
 You can use either [`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) (which is included in npm v5.2+) or [`npm init`](https://docs.npmjs.com/cli/init) (with npm v6+) or [`yarn create`](https://yarnpkg.com/lang/en/docs/cli/create/) to create a Hops application and run Hops CLI commands.
 
