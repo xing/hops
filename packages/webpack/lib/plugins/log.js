@@ -38,7 +38,13 @@ const formatWarning = (name, duration, assets, isRebuild) => {
 };
 
 const formatSuccess = (name, duration, assets, isRebuild) => {
-  const message = `bundling '${name}' finished after ${duration}`;
+  const totalSize = Object.values(assets).reduce(
+    (sum, asset) => sum + asset.size,
+    0
+  );
+  const message = `bundling '${name}' finished after ${duration} (${prettyBytes(
+    totalSize
+  )})`;
   return isRebuild ? `re-${message}` : `${message}\n${formatAssets(assets)}`;
 };
 
