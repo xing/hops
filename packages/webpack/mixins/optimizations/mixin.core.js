@@ -8,16 +8,19 @@ function findResolved(a, b) {
   }
 }
 
-class FastDevWebpackMixin extends Mixin {
+class WebpackOptimizationsMixin extends Mixin {
   configureBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }, target) {
-    if (
-      target === 'build' ||
-      (target === 'node' && process.env.NODE_ENV === 'production')
-    ) {
+    const { fastDev } = this.options;
+
+    if (!fastDev) {
       return;
     }
 
-    if (this.options.fastDev) {
+    const { NODE_ENV } = process.env;
+    const isDevelop = target === 'develop' || NODE_ENV !== 'production';
+    const skipPolyfilling = fastDev && isDevelop;
+
+    if (skipPolyfilling) {
       jsLoaderConfig.exclude = [/node_modules\//];
 
       const presetEnv = jsLoaderConfig.options.presets.find((preset) => {
@@ -63,4 +66,4 @@ class FastDevWebpackMixin extends Mixin {
   }
 }
 
-module.exports = FastDevWebpackMixin;
+module.exports = WebpackOptimizationsMixin;
