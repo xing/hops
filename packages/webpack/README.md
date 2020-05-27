@@ -40,6 +40,12 @@ This is equivalent to manually setting `$NODE_ENV` before calling the actual com
 $ NODE_ENV=production hops build
 ```
 
+##### `--fast-build` _experimental_
+
+Using the experimental `--fast-build` option will only transpile a predefined set of node modules. If you use a node module that ships ES language features that aren't supported by your browser matrix it might break your website. Therefore only use this feature if you have a comprehensive test setup which covers all your supported browsers.
+
+You can extend this predefined set though by adding glob patterns to the `experimental.babelIncludePatterns` config.
+
 ##### `-s` / `--static` (**deprecated**)
 
 In `static` mode, static HTML pages will be generated for the [`locations`](../express/README.md#locations) configured for your application. In `no-static` mode, `server.js` and `stats.json` files will be created instead.
