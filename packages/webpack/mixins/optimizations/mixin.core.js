@@ -11,6 +11,10 @@ function include(patterns) {
     patterns.some((rule) => minimatch(path, rule));
 }
 
+function unique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
 function findResolved(a, b) {
   try {
     return a === require.resolve(b);
@@ -21,17 +25,18 @@ function findResolved(a, b) {
 
 class WebpackOptimizationsMixin extends Mixin {
   configureBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }, target) {
-    const { fastDev } = this.options;
+    const { fastBuild, fastDev } = this.options;
 
-    if (!fastDev) {
+    if (!fastDev && !fastBuild) {
       return;
     }
 
     const { NODE_ENV } = process.env;
     const isDevelop = target === 'develop' || NODE_ENV !== 'production';
     const skipPolyfilling = fastDev && isDevelop;
+    const skipNodeModules = !skipPolyfilling && fastBuild;
 
-    if (skipPolyfilling) {
+    if (skipPolyfilling || skipNodeModules) {
       const { experimental: { babelIncludePatterns = [] } = {} } = this.config;
 
       jsLoaderConfig.include = include(babelIncludePatterns);
@@ -47,17 +52,30 @@ class WebpackOptimizationsMixin extends Mixin {
           .find(([path]) => findResolved(path, '@babel/preset-env')) || [];
 
       if (presetEnvOptions) {
-        presetEnvOptions.useBuiltIns = false;
-        delete presetEnvOptions.corejs;
-      }
+        if (skipPolyfilling) {
+          presetEnvOptions.useBuiltIns = false;
+          delete presetEnvOptions.corejs;
+        } else if (skipNodeModules) {
+          presetEnvOptions.useBuiltIns = 'entry';
 
+          webpackConfig.entry = [
+            require.resolve('core-js/stable'),
+            require.resolve('regenerator-runtime/runtime'),
+          ]
+            .concat(webpackConfig.entry)
+            .filter(unique);
+        }
+      }
+    }
+
+    if (skipPolyfilling) {
       allLoaderConfigs
         .filter((loader) => {
           return loader.test instanceof RegExp && loader.test.test('.tsx');
         })
         .forEach((loader) => {
-          const babelLoader = loader.use.find((l) => {
-            return findResolved(l.loader, 'babel-loader');
+          const babelLoader = loader.use.find(({ loader }) => {
+            return findResolved(loader, 'babel-loader');
           });
 
           if (babelLoader) {
