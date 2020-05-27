@@ -249,6 +249,7 @@ _The production flag (`--production` or `-p`) is a shortcut for setting the envi
 This command will execute a single build of all your assets.
 
 - `npm run build` builds all assets in development mode.
+- `npm run build -- --fast-build` (**experimental**) only transpiles a predefined set of node modules (_warning:_ you might have node modules which needs to be transpiled, use with caution).
 - `npm run build -- --production` builds all assets in production mode (which includes minification, etc).
 - `npm run build -- --static`¹ export static HTML pages for all configured [locations](#default-settings) in development mode.
 - `npm run build -- --production --static`¹ export static HTML pages in production mode (enables minification, etc).
