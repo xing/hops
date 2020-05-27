@@ -1,4 +1,15 @@
+const minimatch = require('minimatch');
 const { Mixin } = require('hops-bootstrap');
+
+function include(patterns) {
+  return (path) =>
+    // allow everything outside of node_modules
+    !path.includes('node_modules') ||
+    // allow all hops packages
+    /node_modules[/\\]hops/.test(path) ||
+    // check if any other rule matches
+    patterns.some((rule) => minimatch(path, rule));
+}
 
 function findResolved(a, b) {
   try {
@@ -21,22 +32,24 @@ class WebpackOptimizationsMixin extends Mixin {
     const skipPolyfilling = fastDev && isDevelop;
 
     if (skipPolyfilling) {
-      jsLoaderConfig.exclude = [/node_modules\//];
+      const { experimental: { babelIncludePatterns = [] } = {} } = this.config;
 
-      const presetEnv = jsLoaderConfig.options.presets.find((preset) => {
-        return findResolved(preset[0], '@babel/preset-env');
-      });
-
-      if (presetEnv) {
-        presetEnv[1].useBuiltIns = false;
-        delete presetEnv[1].corejs;
-      }
+      jsLoaderConfig.include = include(babelIncludePatterns);
+      jsLoaderConfig.exclude = [];
 
       webpackConfig.entry = []
         .concat(webpackConfig.entry)
-        .filter(
-          (entry) => /(core-js|regenerator-runtime)/.test(entry) == false
-        );
+        .filter((entry) => !/(core-js|regenerator-runtime)/.test(entry));
+
+      const [, presetEnvOptions] =
+        jsLoaderConfig.options.presets
+          .filter(Array.isArray)
+          .find(([path]) => findResolved(path, '@babel/preset-env')) || [];
+
+      if (presetEnvOptions) {
+        presetEnvOptions.useBuiltIns = false;
+        delete presetEnvOptions.corejs;
+      }
 
       allLoaderConfigs
         .filter((loader) => {
