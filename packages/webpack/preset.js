@@ -43,6 +43,15 @@ module.exports = {
       type: 'array',
       items: { type: 'string', minLength: 1 },
     },
+    experimental: {
+      type: 'object',
+      properties: {
+        babelIncludePatterns: {
+          type: 'array',
+          items: { type: 'string', minLength: 1 },
+        },
+      },
+    },
     node: { type: 'string', minLength: 1 },
     locations: {
       type: 'array',
