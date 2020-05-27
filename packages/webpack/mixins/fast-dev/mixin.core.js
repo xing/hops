@@ -18,8 +18,6 @@ class FastDevWebpackMixin extends Mixin {
     }
 
     if (this.options.fastDev) {
-      process.env.__HOPS_FAST_DEV__ = 'true';
-
       jsLoaderConfig.exclude = [/node_modules\//];
 
       const presetEnv = jsLoaderConfig.options.presets.find((preset) => {
@@ -30,6 +28,12 @@ class FastDevWebpackMixin extends Mixin {
         presetEnv[1].useBuiltIns = false;
         delete presetEnv[1].corejs;
       }
+
+      webpackConfig.entry = []
+        .concat(webpackConfig.entry)
+        .filter(
+          (entry) => /(core-js|regenerator-runtime)/.test(entry) == false
+        );
 
       allLoaderConfigs
         .filter((loader) => {
