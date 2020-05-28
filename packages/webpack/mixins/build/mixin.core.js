@@ -1,20 +1,12 @@
 const debug = require('debug')('hops:webpack:stats');
 const { sync, async } = require('mixinable');
 const { Mixin, internal: bootstrap } = require('hops-bootstrap');
-const findUp = require('find-up');
-const { dirname } = require('path');
-const { getDuplicatesDetails } = require('duplitect');
-const semver = require('semver');
-const chalk = require('chalk');
 
 const { sequence } = sync;
 const { callable } = async;
-const { validate, invariant } = bootstrap;
-
-const prettyPrintCoreJsVersions = (versions) =>
-  versions
-    .map(({ version: v, pathName: p }, i) => `${++i}) v${v}\tLocation: ${p}`)
-    .join('\n');
+const {
+  validate, invariant
+} = bootstrap;
 
 class WebpackBuildMixin extends Mixin {
   clean() {
@@ -96,52 +88,6 @@ class WebpackBuildMixin extends Mixin {
 
   diagnose({ detectDuplicatePackages }) {
     detectDuplicatePackages('webpack');
-    findUp('yarn.lock').then(async (yarnLockPath) => {
-      if (!yarnLockPath) {
-        return;
-      }
-
-      const rootDir = dirname(yarnLockPath);
-      const coreJsVersions = (await getDuplicatesDetails(rootDir, 'core-js'))
-        .filter(({ name }) => name === 'core-js')
-        .map(({ version, pathName }) => ({
-          pathName: dirname(pathName).replace(rootDir, ''),
-          major: semver.major(version),
-          version,
-        }));
-
-      const distinctCoreJsMajorVersions = coreJsVersions.reduce(
-        (distinct, coreJs) => {
-          if (!distinct.some(({ major }) => major === coreJs.major)) {
-            distinct.push(coreJs);
-          }
-          return distinct;
-        },
-        []
-      );
-
-      if (distinctCoreJsMajorVersions.length > 1) {
-        const listOfVersions = prettyPrintCoreJsVersions(
-          distinctCoreJsMajorVersions.sort((a, b) => b.major > a.major)
-        );
-        const message = chalk.red(`
-There are mismatching major versions of "core-js" in your project.
-
-${listOfVersions}
-
-This is likely caused by one of the project's dependencies bringing
-their own version of "core-js". Unfortunately there can only be one
-major version of this package. Otherwise the deep imports, that are
-used for integrating this package, break. Which might lead to resolve
-errors like "Can't resolve 'core-js/...' in '...'"
-
-To fix this situation, remove every occurrence of the core-js package,
-except the top-level one.
-`);
-
-        console.log(message);
-      }
-    });
   }
 }
 
