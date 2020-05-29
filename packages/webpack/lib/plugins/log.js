@@ -2,7 +2,7 @@ const { EOL } = require('os');
 const prettyMS = require('pretty-ms');
 const prettyBytes = require('pretty-bytes');
 const chalk = require('chalk');
-const { BuildError } = require('../utils/errors');
+const { BuildError, CoreJsResolutionError } = require('../utils/errors');
 
 const statsToJsonOptions = {
   all: false,
@@ -11,6 +11,14 @@ const statsToJsonOptions = {
   errors: true,
   warnings: true,
   children: true,
+};
+
+const getCoreJsResolutionErrorCulprit = (error) => {
+  const [, pkg] =
+    error.match(
+      /^[^\n]+\nModule not found: Error: Can't resolve 'core-js\/[^']+' in '[^']+\/node_modules\/([^/]+)[^']+'$/
+    ) || [];
+  return pkg;
 };
 
 const formatAssets = (assets) =>
@@ -103,7 +111,27 @@ exports.LoggerPlugin = class LoggerPlugin {
       if (hasErrors || hasWarnings) {
         errors
           .concat(...children.map((c) => c.errors))
-          .forEach((error) => this.logger.error(new BuildError(error)));
+          .reduce((acc, error) => {
+            const coreJsResolutionErrorCulprit = getCoreJsResolutionErrorCulprit(
+              error
+            );
+            if (coreJsResolutionErrorCulprit) {
+              const isFirstOccurrence = !acc.some(
+                (e) =>
+                  e instanceof CoreJsResolutionError &&
+                  e.pkg === coreJsResolutionErrorCulprit
+              );
+              if (isFirstOccurrence) {
+                acc.push(
+                  new CoreJsResolutionError(coreJsResolutionErrorCulprit)
+                );
+              }
+            } else {
+              acc.push(new BuildError(error));
+            }
+            return acc;
+          }, [])
+          .forEach((error) => this.logger.error(error));
         warnings
           .concat(...children.map((c) => c.warnings))
           .forEach((warning) => this.logger.warn(warning));
