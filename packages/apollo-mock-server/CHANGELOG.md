@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0](https://github.com/xing/hops/compare/v12.3.0...v12.4.0) (2020-06-02)
+
+**Note:** Version bump only for package hops-apollo-mock-server
+
+
+
+
+
 # [12.3.0](https://github.com/xing/hops/compare/v12.2.2...v12.3.0) (2020-05-18)
 
 **Note:** Version bump only for package hops-apollo-mock-server

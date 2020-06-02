@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0](https://github.com/xing/hops/compare/v12.3.0...v12.4.0) (2020-06-02)
+
+
+### Bug Fixes
+
+* update duplitect ([a30838b](https://github.com/xing/hops/commit/a30838b54783c684450b060aa14186d79905a9bb))
+
+
+### Features
+
+* **webpack:** apply optimization to more targets ([90f6688](https://github.com/xing/hops/commit/90f6688a1135fd95ec49eda662aad85f1ff72d3b))
+* **webpack:** improve error output for core-js issues ([2832703](https://github.com/xing/hops/commit/283270301a935b058686f424191fd85fb06ef67b))
+* **webpack:** improve feedback on conflicting core-js versions ([ce5611c](https://github.com/xing/hops/commit/ce5611ccfc2797f4e64f8fa2ddfdcdf749b242f6))
+* **webpack:** introduce experimental fast-build mode ([3b8f3b5](https://github.com/xing/hops/commit/3b8f3b59a2f8c201ae19dc53bafacc5b5db381b3))
+* **webpack:** print total bundle size ([e2a431d](https://github.com/xing/hops/commit/e2a431dff5b818c70176f46bc10cea82ca424a4d))
+* **webpack:** use an include list instead of exclude ([aeb0f1e](https://github.com/xing/hops/commit/aeb0f1e01461d8b8e79caf84b7ac0c5f7ef34c40))
+
+
+
+
+
 # [12.3.0](https://github.com/xing/hops/compare/v12.2.2...v12.3.0) (2020-05-18)
 
 

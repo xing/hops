@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0](https://github.com/xing/hops/compare/v12.3.0...v12.4.0) (2020-06-02)
+
+
+### Bug Fixes
+
+* update duplitect ([a30838b](https://github.com/xing/hops/commit/a30838b54783c684450b060aa14186d79905a9bb))
+
+
+
+
+
 # [12.3.0](https://github.com/xing/hops/compare/v12.2.2...v12.3.0) (2020-05-18)
 
 
