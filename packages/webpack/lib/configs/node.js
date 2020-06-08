@@ -41,6 +41,19 @@ module.exports = function getConfig(config, name) {
       plugins: [],
       sourceType: 'unambiguous',
     },
+    resolve: {
+      mainFields: [
+        'esnext:server',
+        'jsnext:server',
+        'server',
+        'module',
+        'esnext',
+        'jsnext',
+        'esnext:main',
+        'jsnext:main',
+        'main',
+      ],
+    },
   };
 
   const fileLoaderConfig = {
@@ -112,17 +125,7 @@ module.exports = function getConfig(config, name) {
         'core-js': dirname(require.resolve('core-js/package.json')),
       },
       extensions: ['.mjs', '.js'],
-      mainFields: [
-        'esnext:server',
-        'jsnext:server',
-        'server',
-        'module',
-        'esnext',
-        'jsnext',
-        'esnext:main',
-        'jsnext:main',
-        'main',
-      ],
+      mainFields: ['server', 'module', 'main'],
     },
     module: {
       rules: [{ oneOf: allLoaderConfigs }],
