@@ -1,10 +1,11 @@
-const { existsSync: exists } = require('fs');
 const { join } = require('path');
 const { async } = require('mixinable');
 const { join: joinUrl, ensureLeadingSlash } = require('pathifist');
 const { Mixin, internal: bootstrap } = require('hops-bootstrap');
-
-const { createRenderMiddleware } = require('../../lib/middlewares/render');
+const {
+  createRenderMiddleware,
+  tryLoadRenderMiddleware,
+} = require('../../lib/middlewares/render');
 
 const { override } = async;
 const { validate, invariant } = bootstrap;
@@ -39,14 +40,12 @@ class WebpackRenderMixin extends Mixin {
       middlewares.routes.push(
         createRenderMiddleware(['node'], mode === 'develop', this)
       );
-    }
-
-    if (mode === 'serve') {
+    } else if (mode === 'serve') {
       const { serverDir, serverFile } = this.config;
-      const serverFilePath = join(serverDir, serverFile);
+      const middleware = tryLoadRenderMiddleware(join(serverDir, serverFile));
 
-      if (exists(serverFilePath)) {
-        middlewares.routes.push(require(serverFilePath));
+      if (middleware) {
+        middlewares.routes.push(middleware);
       }
     }
   }

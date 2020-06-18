@@ -6,7 +6,7 @@ const { createRenderMiddleware } = require('./lib/middlewares/render');
 const { createStatsMiddleware } = require('./lib/middlewares/stats');
 
 const { RenderPlugin } = require('./lib/plugins/render');
-const { StatsPlugin, StatsFilePlugin } = require('./lib/plugins/stats');
+const { StatsWritePlugin } = require('./lib/plugins/stats');
 
 const { BuildError } = require('./lib/utils/errors');
 const configLoader = require('./lib/utils/loader');
@@ -25,8 +25,7 @@ const configure = (config, options) => ({
     createWebpackMiddleware: createRenderMiddleware,
     createStatsMiddleware,
     RenderPlugin,
-    StatsPlugin,
-    StatsFilePlugin,
+    StatsWritePlugin,
     BuildError,
     configLoader,
   },

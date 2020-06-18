@@ -4,6 +4,7 @@ const isPlainObject = require('is-plain-obj');
 const EnhancedPromise = require('eprom');
 const { async } = require('mixinable');
 const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { StatsWritePlugin } = require('../../lib/plugins/stats');
 
 const { callable } = async;
 const { validate, invariant } = bootstrap;
@@ -13,7 +14,6 @@ class WebpackStatsMixin extends Mixin {
     super(...args);
 
     this.statsPromise = new EnhancedPromise();
-    this.handleArguments(this.options);
   }
 
   getBuildStats() {
@@ -24,15 +24,9 @@ class WebpackStatsMixin extends Mixin {
     const { plugins } = webpackConfig;
 
     if (target === 'develop' || target === 'build') {
-      const { StatsPlugin } = require('../../lib/plugins/stats');
+      const statsFile = join(this.config.serverDir, this.config.statsFile);
 
-      plugins.unshift(new StatsPlugin(this.statsPromise));
-    }
-
-    if (target === 'node' && this.writeStats) {
-      const { StatsFilePlugin } = require('../../lib/plugins/stats');
-
-      plugins.unshift(new StatsFilePlugin(this.statsPromise, this.config));
+      plugins.unshift(new StatsWritePlugin(this.statsPromise, statsFile));
     }
   }
 
@@ -49,15 +43,6 @@ class WebpackStatsMixin extends Mixin {
     const { createStatsMiddleware } = require('../../lib/middlewares/stats');
 
     middlewares.preroutes.push(createStatsMiddleware(this.statsPromise));
-  }
-
-  handleArguments(argv) {
-    this.options = { ...this.options, ...argv };
-    const { _: commands = [] } = this.options;
-    const isProduction = process.env.NODE_ENV === 'production';
-    this.writeStats =
-      commands.includes('build') ||
-      (commands.includes('start') && isProduction);
   }
 }
 

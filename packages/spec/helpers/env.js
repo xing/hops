@@ -113,7 +113,9 @@ class FixtureEnvironment extends NodeEnvironment {
 
   async teardown() {
     await super.teardown();
-    await this.closeBrowser();
+    if (this.closeBrowser) {
+      await this.closeBrowser();
+    }
     if (this.killServer) {
       await this.killServer();
     }
