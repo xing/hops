@@ -3,15 +3,18 @@ const {
   spawnForkedCompilation,
 } = require('../utils/compiler');
 
-module.exports = (buildConfigArgs, watch, mixin) => {
+function createWebpackMiddleware(buildConfigArgs, watch, mixin) {
   let enhancedPromise;
 
-  if (mixin) {
-    enhancedPromise = watch
-      ? spawnForkedCompilation(mixin, buildConfigArgs)
-      : spawnCompilation(mixin, buildConfigArgs);
+  const [buildName, webpackTarget] =
+    buildConfigArgs.length === 1
+      ? ['render', buildConfigArgs[0]]
+      : buildConfigArgs;
+
+  if (mixin && watch) {
+    enhancedPromise = spawnForkedCompilation(mixin, buildName, webpackTarget);
   } else {
-    enhancedPromise = spawnCompilation(mixin, buildConfigArgs);
+    enhancedPromise = spawnCompilation(mixin, buildName, webpackTarget);
   }
 
   return function renderMiddleware(req, res, next) {
@@ -19,4 +22,8 @@ module.exports = (buildConfigArgs, watch, mixin) => {
       .then((middleware) => middleware(req, res, next))
       .catch(next);
   };
+}
+
+module.exports = {
+  createWebpackMiddleware,
 };

@@ -13,8 +13,8 @@ function createCompiler(webpackConfig) {
   return compiler;
 }
 
-function spawnCompilation(mixin, buildConfigArgs) {
-  const webpackConfig = mixin.getBuildConfig(...buildConfigArgs);
+function spawnCompilation(mixin, name, webpackTarget, options = {}) {
+  const webpackConfig = mixin.getWebpackConfig(name, webpackTarget, options);
 
   const compiler = createCompiler(webpackConfig);
   compiler.outputFileSystem = new MemoryFS();
@@ -48,9 +48,9 @@ function spawnCompilation(mixin, buildConfigArgs) {
   });
 }
 
-function spawnForkedCompilation(mixin, buildConfigArgs) {
+function spawnForkedCompilation(mixin, name, webpackTarget, options = {}) {
   const {
-    options,
+    mixinOptions,
     config: { _overrides: overrides },
   } = mixin;
 
@@ -60,9 +60,9 @@ function spawnForkedCompilation(mixin, buildConfigArgs) {
 
   child.send({
     name: 'start',
-    buildConfigArgs,
+    webpackConfigArgs: [name, webpackTarget, options],
     overrides,
-    options,
+    options: mixinOptions,
   });
 
   let middleware;

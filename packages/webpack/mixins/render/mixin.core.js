@@ -34,10 +34,12 @@ class WebpackRenderMixin extends Mixin {
 
   configureServer(app, middlewares, mode) {
     if (mode === 'static' || mode === 'develop') {
-      const createRenderMiddleware = require('../../lib/middlewares/render');
+      const {
+        createWebpackMiddleware,
+      } = require('../../lib/middlewares/render');
 
       middlewares.routes.push(
-        createRenderMiddleware(['node'], mode === 'develop', this)
+        createWebpackMiddleware(['node'], mode === 'develop', this)
       );
     }
 

@@ -46,7 +46,7 @@ class WebpackStatsMixin extends Mixin {
       );
     }
 
-    const createStatsMiddleware = require('../../lib/middlewares/stats');
+    const { createStatsMiddleware } = require('../../lib/middlewares/stats');
 
     middlewares.preroutes.push(createStatsMiddleware(this.statsPromise));
   }

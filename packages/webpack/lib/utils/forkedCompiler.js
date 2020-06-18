@@ -8,9 +8,9 @@ const { createCompiler } = require('./compiler');
 process.on('message', (message) => {
   if (message.name !== 'start') return;
 
-  const { buildConfigArgs, overrides, options } = message;
-  const webpackConfig = configure(overrides, options).getBuildConfig(
-    ...buildConfigArgs
+  const { webpackConfigArgs, overrides, options } = message;
+  const webpackConfig = configure(overrides, options).getWebpackConfig(
+    ...webpackConfigArgs
   );
 
   try {
