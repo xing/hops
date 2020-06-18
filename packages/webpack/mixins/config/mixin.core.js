@@ -1,4 +1,3 @@
-const { existsSync: exists } = require('fs');
 const isPlainObject = require('is-plain-obj');
 const get = require('lodash.get');
 const set = require('lodash.set');
@@ -15,37 +14,52 @@ const debugConfig = (target, config) =>
 
 class WebpackConfigMixin extends Mixin {
   getBuildConfig(target, baseConfig) {
-    const { loaderConfigs = {}, ...webpackConfig } = (() => {
+    // TODO: deprecate function in favour of getWebpackConfig
+    const buildName = target;
+    const [buildTarget, watch] = (() => {
       switch (baseConfig || target) {
         case 'build':
-          return require('../../lib/configs/build')(this.config, target);
+          return ['browser', false];
         case 'develop':
-          return require('../../lib/configs/develop')(this.config, target);
-        case 'node':
-          return require('../../lib/configs/node')(this.config, target);
+          return ['browser', true];
         default:
-          if (baseConfig && exists(baseConfig)) {
-            return require(baseConfig)(this.config, target);
-          }
-
-          throw new Error(`Can't get build config ${baseConfig || target}`);
+          return ['server', process.env.NODE_ENV !== 'production'];
       }
     })();
 
-    this.configureBuild(webpackConfig, loaderConfigs, target);
+    const webpackConfig = this.getWebpackConfig(buildName, buildTarget, {
+      watch,
+    });
 
     const isBuild =
       target === 'build' ||
       (target === 'node' && process.env.NODE_ENV === 'production');
 
+    // TODO: move this to where the build happens
     const smp = new SpeedMeasurePlugin({
       disable: !(this.options.profile && isBuild),
     });
     const wrapped = smp.wrap(webpackConfig);
 
-    debugConfig(target, wrapped);
-
     return wrapped;
+  }
+
+  getWebpackConfig(buildName, buildTarget, options = {}) {
+    const { watch } = options;
+    const configName =
+      buildTarget === 'web' ? (watch ? 'develop' : 'build') : 'node';
+    // TODO: simplify this to 'web' and 'node' only
+    const configPath = `../../lib/configs/${configName}`;
+    const { loaderConfigs = {}, ...webpackConfig } = require(configPath)(
+      this.config,
+      buildName
+    );
+
+    this.configureBuild(webpackConfig, loaderConfigs, buildName);
+
+    debugConfig(buildName, webpackConfig);
+
+    return webpackConfig;
   }
 
   collectBuildConfigs(webpackConfigs) {
@@ -57,6 +71,7 @@ class WebpackConfigMixin extends Mixin {
   }
 
   configureBuild(webpackConfig, loaderConfigs, target) {
+    // TODO: deprecate function in favour of configureWebpack
     const { module, performance } = webpackConfig;
     const configLoaderConfig = {
       test: require.resolve('hops-bootstrap/lib/config'),
@@ -140,6 +155,20 @@ WebpackConfigMixin.strategies = {
       );
     }
   ),
+  getWebpackConfig: validate(callable, ([buildName, buildTarget, options]) => {
+    invariant(
+      typeof buildName === 'string',
+      'getWebpackConfig(): Received invalid buildName string'
+    );
+    invariant(
+      ['browser', 'server'].includes(buildTarget),
+      'getWebpackConfig(): Received invalid buildTarget string, must be "browser" or "server"'
+    );
+    invariant(
+      options === undefined || isPlainObject(options),
+      'getWebpackConfig(): Received invalid options object'
+    );
+  }),
 };
 
 module.exports = WebpackConfigMixin;

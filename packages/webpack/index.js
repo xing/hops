@@ -21,6 +21,9 @@ const configure = (config, options) => ({
   getBuildConfig(...args) {
     return initialize(config, options).getBuildConfig(...args);
   },
+  getWebpackConfig(...args) {
+    return initialize(config, options).getWebpackConfig(...args);
+  },
   internal: {
     createWebpackMiddleware: createRenderMiddleware,
     createStatsMiddleware,
