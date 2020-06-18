@@ -4,6 +4,11 @@ const isPlainObject = require('is-plain-obj');
 const EnhancedPromise = require('eprom');
 const { async } = require('mixinable');
 const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const {
+  StatsPlugin,
+  StatsWritePlugin,
+  StatsFilePlugin,
+} = require('../../lib/plugins/stats');
 
 const { callable } = async;
 const { validate, invariant } = bootstrap;
@@ -23,15 +28,13 @@ class WebpackStatsMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs, target) {
     const { plugins } = webpackConfig;
 
-    if (target === 'develop' || target === 'build') {
-      const { StatsPlugin } = require('../../lib/plugins/stats');
+    if (target === 'build' && this.options.parallelBuild) {
+      const { serverDir, statsFile } = this.config;
 
+      plugins.unshift(new StatsWritePlugin(join(serverDir, statsFile)));
+    } else if (target === 'develop' || target === 'build') {
       plugins.unshift(new StatsPlugin(this.statsPromise));
-    }
-
-    if (target === 'node' && this.writeStats) {
-      const { StatsFilePlugin } = require('../../lib/plugins/stats');
-
+    } else if (target === 'node' && this.writeStats) {
       plugins.unshift(new StatsFilePlugin(this.statsPromise, this.config));
     }
   }
@@ -56,8 +59,9 @@ class WebpackStatsMixin extends Mixin {
     const { _: commands = [] } = this.options;
     const isProduction = process.env.NODE_ENV === 'production';
     this.writeStats =
-      commands.includes('build') ||
-      (commands.includes('start') && isProduction);
+      this.options.parallelBuild !== true &&
+      (commands.includes('build') ||
+        (commands.includes('start') && isProduction));
   }
 }
 

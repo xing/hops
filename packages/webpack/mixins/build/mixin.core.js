@@ -1,12 +1,20 @@
 const debug = require('debug')('hops:webpack:stats');
+const webpack = require('webpack');
 const { sync, async } = require('mixinable');
 const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { spawnCompilation } = require('../../lib/utils/compiler');
 
 const { sequence } = sync;
 const { callable } = async;
-const {
-  validate, invariant
-} = bootstrap;
+const { validate, invariant } = bootstrap;
+
+const toPromise = (observable) =>
+  new Promise((resolve, reject) => {
+    observable.subscribe({
+      next: resolve,
+      error: reject,
+    });
+  });
 
 class WebpackBuildMixin extends Mixin {
   clean() {
@@ -24,27 +32,44 @@ class WebpackBuildMixin extends Mixin {
   }
 
   build() {
-    const webpack = require('webpack');
-    const webpackConfigs = [];
-    this.collectBuildConfigs(webpackConfigs);
+    const { parallelBuild } = this.options;
+    const compilationRequests = [];
+    this.collectCompilationRequests('build', compilationRequests)
 
-    return new Promise((resolve, reject) =>
-      webpack(
-        webpackConfigs.length === 1 ? webpackConfigs[0] : webpackConfigs
-      ).run((error, stats) => {
-        if (error) {
-          reject(error);
-        } else if (stats.hasErrors()) {
-          const { errors } = stats.toJson({ all: false, errors: true });
-          reject(new Error(`Build failed with ${errors.length} error(s)`));
-        } else {
-          resolve(stats);
-        }
-      })
-    ).then((stats) => {
-      this.inspectBuild(stats, webpackConfigs);
-      return stats;
+    const compilations = compilationRequests.map(({ name, target }) => {
+      return toPromise(
+        spawnCompilation(this, name, target, { forkProcess: parallelBuild })
+      );
     });
+
+    return Promise.all(compilations).then((allStats) => {
+      allStats.forEach((stats) => {
+        if (stats instanceof webpack.Stats) {
+          this.inspectBuild(stats);
+        } else {
+          debug(stats);
+        }
+      });
+    });
+  }
+
+  collectBuildConfigs(webpackConfigs) {
+    webpackConfigs.push(this.getBuildConfig('build'));
+
+    if (!this.options.static) {
+      webpackConfigs.push(this.getBuildConfig('node'));
+    }
+  }
+
+  collectCompilationRequests(mode, requests) {
+    if (mode === 'build') {
+      requests.push({ name: 'node-build', target: 'node' });
+      requests.push({ name: 'web-build', target: 'web' });
+    }
+  }
+
+  handleArguments(argv) {
+    this.options = { ...this.options, ...argv };
   }
 
   inspectBuild(stats) {

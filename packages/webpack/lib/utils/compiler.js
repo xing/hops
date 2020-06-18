@@ -1,9 +1,7 @@
-const { fork } = require('child_process');
 const { join } = require('path');
-const requireFromString = require('require-from-string');
-const MemoryFS = require('memory-fs');
-const sourceMapSupport = require('source-map-support');
-const EnhancedPromise = require('eprom');
+const { fork } = require('child_process');
+const Observable = require('zen-observable');
+
 const { BuildError, CompilerError } = require('../utils/errors');
 
 function createCompiler(webpackConfig) {
@@ -13,44 +11,58 @@ function createCompiler(webpackConfig) {
   return compiler;
 }
 
-function spawnCompilation(mixin, name, webpackTarget, options = {}) {
+function spawnCompilation(
+  mixin,
+  name,
+  webpackTarget,
+  { forkProcess, ...options }
+) {
+  if (forkProcess === true) {
+    return spawnForkedCompilation(mixin, name, webpackTarget, options);
+  }
+
+  const { develop } = options;
   const webpackConfig = mixin.getWebpackConfig(name, webpackTarget, options);
-
   const compiler = createCompiler(webpackConfig);
-  compiler.outputFileSystem = new MemoryFS();
+  const { path, filename } = webpackConfig.output;
 
-  sourceMapSupport.install({ environment: 'node', hookRequire: true });
-
-  return new Promise((resolve, reject) => {
-    compiler.run((compileError, stats) => {
-      if (compileError) {
-        reject(new CompilerError(compileError));
+  return new Observable((subscriber) => {
+    const callback = (error, stats) => {
+      if (error) {
+        subscriber.error(new CompilerError(error));
       } else if (stats.hasErrors()) {
-        reject(
+        subscriber.error(
           new BuildError(
             stats.toJson({ all: false, errors: true }).errors.shift()
           )
         );
       } else {
-        const { path, filename } = webpackConfig.output;
-        const filepath = join(path, filename);
-
-        compiler.outputFileSystem.readFile(
-          filepath,
-          'utf-8',
-          (error, content) => {
-            if (error) return reject(error);
-            resolve(requireFromString(content, filepath));
-          }
-        );
+        subscriber.next({
+          output: { path, filename },
+          stats: stats.toJson({
+            chunks: false,
+            modules: false,
+            entrypoints: false,
+          }),
+        });
       }
-    });
+
+      if (!develop) {
+        subscriber.complete();
+      }
+    };
+
+    if (develop) {
+      compiler.watch(webpackConfig.watchOptions, callback);
+    } else {
+      compiler.run(callback);
+    }
   });
 }
 
 function spawnForkedCompilation(mixin, name, webpackTarget, options = {}) {
   const {
-    mixinOptions,
+    options: mixinOptions,
     config: { _overrides: overrides },
   } = mixin;
 
@@ -59,28 +71,27 @@ function spawnForkedCompilation(mixin, name, webpackTarget, options = {}) {
   process.on('exit', () => child.kill());
 
   child.send({
-    name: 'start',
+    name: 'build',
     webpackConfigArgs: [name, webpackTarget, options],
     overrides,
     options: mixinOptions,
   });
 
-  let middleware;
-
-  return new EnhancedPromise((resolve, reject, reset) => {
+  return new Observable((subscriber) => {
     child.on('message', ({ type, data, reason }) => {
       if (type === 'reject') {
-        reject(
+        subscriber.error(
           typeof reason === 'string'
             ? new BuildError(reason)
             : new CompilerError(reason)
         );
-      } else if (type === 'reset') {
-        reset();
       } else if (type === 'resolve') {
-        if (middleware) process.emit('RELOAD');
+        subscriber.next(data);
+      }
 
-        resolve((middleware = middleware || require(data)));
+      if (!options.develop) {
+        subscriber.complete();
+        child.kill();
       }
     });
   });

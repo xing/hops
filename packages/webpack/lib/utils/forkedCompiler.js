@@ -1,4 +1,3 @@
-const { join } = require('path');
 const { serializeError } = require('serialize-error');
 
 const { configure } = require('../../');
@@ -6,20 +5,18 @@ const { BuildError, CompilerError } = require('../utils/errors');
 const { createCompiler } = require('./compiler');
 
 process.on('message', (message) => {
-  if (message.name !== 'start') return;
+  if (message.name !== 'build') return;
 
   const { webpackConfigArgs, overrides, options } = message;
   const webpackConfig = configure(overrides, options).getWebpackConfig(
     ...webpackConfigArgs
   );
+  const { path, filename } = webpackConfig.output;
+  const [, , { develop }] = webpackConfigArgs;
 
   try {
     const compiler = createCompiler(webpackConfig);
-    compiler.hooks.watchRun.tap('RenderMiddleware', () =>
-      process.send({ type: 'reset' })
-    );
-
-    compiler.watch(webpackConfig.watchOptions, (compileError, stats) => {
+    const callback = (compileError, stats) => {
       if (compileError) {
         process.send({
           type: 'reject',
@@ -33,11 +30,25 @@ process.on('message', (message) => {
           ),
         });
       } else {
-        const { path, filename } = webpackConfig.output;
-        const filepath = join(path, filename);
-        process.send({ type: 'resolve', data: filepath });
+        process.send({
+          type: 'resolve',
+          data: {
+            output: { path, filename },
+            stats: stats.toJson({
+              chunks: false,
+              modules: false,
+              entrypoints: false,
+            }),
+          },
+        });
       }
-    });
+    };
+
+    if (develop) {
+      compiler.watch(webpackConfig.watchOptions, callback);
+    } else {
+      compiler.run(callback);
+    }
   } catch (error) {
     process.send({
       type: 'reject',
