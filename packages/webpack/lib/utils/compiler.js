@@ -51,7 +51,7 @@ function startCompilation(webpackConfig, options = {}) {
   });
 }
 
-function forkCompilation(mixin, buildConfigArgs, options = {}) {
+function forkCompilation(mixin, name, webpackTarget, options = {}) {
   const { watch } = options;
   const configureArgs = [mixin.config._overrides, mixin.options];
   const child = fork(join(__dirname, 'compiler-fork'));
@@ -60,7 +60,7 @@ function forkCompilation(mixin, buildConfigArgs, options = {}) {
 
   child.send({
     name: 'start',
-    buildConfigArgs,
+    webpackConfigArgs: [name, webpackTarget, options],
     configureArgs,
     options,
   });

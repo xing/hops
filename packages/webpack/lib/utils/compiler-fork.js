@@ -9,12 +9,12 @@ process.on('message', (message) => {
   if (message.name !== 'start') return;
 
   const {
-    buildConfigArgs,
+    webpackConfigArgs,
     configureArgs,
     options: { watch },
   } = message;
-  const webpackConfig = configure(...configureArgs).getBuildConfig(
-    ...buildConfigArgs
+  const webpackConfig = configure(...configureArgs).getWebpackConfig(
+    ...webpackConfigArgs
   );
   const {
     output: { path, filename },
