@@ -74,6 +74,8 @@ class WebpackConfigMixin extends Mixin {
     }
   }
 
+  collectCompilationRequests() {}
+
   configureBuild(webpackConfig, loaderConfigs, target) {
     const { module, performance } = webpackConfig;
     const configLoaderConfig = {
@@ -153,6 +155,16 @@ WebpackConfigMixin.strategies = {
     invariant(
       options === undefined || isPlainObject(options),
       'getWebpackConfig(): Received invalid options object'
+    );
+  }),
+  collectCompilationRequests: validate(sequence, ([mode, requests]) => {
+    invariant(
+      typeof mode === 'string',
+      'collectCompilationRequests(): Received invalid mode string'
+    );
+    invariant(
+      Array.isArray(requests),
+      'collectCompilationRequests(): Received invalid requests array'
     );
   }),
   configureBuild: validate(
