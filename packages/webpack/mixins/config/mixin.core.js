@@ -1,4 +1,3 @@
-const { existsSync: exists } = require('fs');
 const isPlainObject = require('is-plain-obj');
 const get = require('lodash.get');
 const set = require('lodash.set');
@@ -15,37 +14,56 @@ const debugConfig = (target, config) =>
 
 class WebpackConfigMixin extends Mixin {
   getBuildConfig(target, baseConfig) {
-    const { loaderConfigs = {}, ...webpackConfig } = (() => {
+    // TODO: deprecate function in favour of getWebpackConfig
+    const name = target;
+    const [webpackTarget, options] = (() => {
       switch (baseConfig || target) {
         case 'build':
-          return require('../../lib/configs/build')(this.config, target);
+          return ['web', {}];
         case 'develop':
-          return require('../../lib/configs/develop')(this.config, target);
-        case 'node':
-          return require('../../lib/configs/node')(this.config, target);
+          return ['web', { develop: true }];
         default:
-          if (baseConfig && exists(baseConfig)) {
-            return require(baseConfig)(this.config, target);
-          }
-
-          throw new Error(`Can't get build config ${baseConfig || target}`);
+          return ['node', { develop: process.env.NODE_ENV !== 'production' }];
       }
     })();
 
-    this.configureBuild(webpackConfig, loaderConfigs, target);
+    const webpackConfig = this.getWebpackConfig(name, webpackTarget, options);
 
     const isBuild =
       target === 'build' ||
       (target === 'node' && process.env.NODE_ENV === 'production');
 
+    // TODO: move this to where the build happens
     const smp = new SpeedMeasurePlugin({
       disable: !(this.options.profile && isBuild),
     });
     const wrapped = smp.wrap(webpackConfig);
 
-    debugConfig(target, wrapped);
-
     return wrapped;
+  }
+
+  getWebpackConfig(name, webpackTarget, options = {}) {
+    // TODO: simplify this to 'web' and 'node' only
+    const baseConfig =
+      webpackTarget === 'web'
+        ? options.develop
+          ? 'develop'
+          : 'build'
+        : 'node';
+    const { buildName = baseConfig } = options;
+    const configPath = `../../lib/configs/${baseConfig}`;
+    const { loaderConfigs = {}, ...webpackConfig } = require(configPath)(
+      this.config,
+      `${name}:${webpackTarget}`
+    );
+
+    // TODO: rename this to configureWebpack.
+    // Configuring debug things should also work the same for 'node' and 'web'.
+    this.configureBuild(webpackConfig, loaderConfigs, buildName, webpackTarget);
+
+    debugConfig(buildName, webpackConfig);
+
+    return webpackConfig;
   }
 
   collectBuildConfigs(webpackConfigs) {
@@ -121,6 +139,20 @@ WebpackConfigMixin.strategies = {
     invariant(
       Array.isArray(webpackConfigs),
       'collectBuildConfigs(): Received invalid webpackConfigs array'
+    );
+  }),
+  getWebpackConfig: validate(callable, ([name, webpackTarget, options]) => {
+    invariant(
+      typeof name === 'string',
+      'getWebpackConfig(): Received invalid name string'
+    );
+    invariant(
+      typeof webpackTarget === 'string',
+      'getWebpackConfig(): Received invalid webpackTarget string'
+    );
+    invariant(
+      options === undefined || isPlainObject(options),
+      'getWebpackConfig(): Received invalid options object'
     );
   }),
   configureBuild: validate(
