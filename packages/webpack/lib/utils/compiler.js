@@ -1,119 +1,88 @@
-const { fork } = require('child_process');
 const { join } = require('path');
-const requireFromString = require('require-from-string');
-const webpack = require('webpack');
-const MemoryFS = require('memory-fs');
+const { fork } = require('child_process');
+const Observable = require('zen-observable');
 const sourceMapSupport = require('source-map-support');
-const { serializeError } = require('serialize-error');
-const EnhancedPromise = require('eprom');
-const { configure } = require('../../');
+
 const { BuildError, CompilerError } = require('../utils/errors');
 
 function createCompiler(webpackConfig) {
+  const webpack = require('webpack');
   const compiler = webpack(webpackConfig);
-  compiler.outputFileSystem = new MemoryFS();
+
+  return compiler;
+}
+
+function startCompilation(webpackConfig, options = {}) {
+  const { watch } = options;
+  const compiler = createCompiler(webpackConfig);
+  const output = join(webpackConfig.output.path, webpackConfig.output.filename);
 
   sourceMapSupport.install({ environment: 'node', hookRequire: true });
 
-  return new Promise((resolve, reject) => {
-    compiler.run((compileError, stats) => {
-      if (compileError) {
-        reject(new CompilerError(compileError));
+  return new Observable((subscriber) => {
+    const callback = (error, stats) => {
+      if (error) {
+        subscriber.error(new CompilerError(error));
       } else if (stats.hasErrors()) {
-        reject(
-          new BuildError(
-            stats.toJson({ all: false, errors: true }).errors.shift()
-          )
-        );
+        stats.toJson({ all: false, errors: true }).errors.forEach((error) => {
+          subscriber.error(new BuildError(error));
+        });
       } else {
-        const { path, filename } = webpackConfig.output;
-        const filepath = join(path, filename);
-
-        compiler.outputFileSystem.readFile(
-          filepath,
-          'utf-8',
-          (error, content) => {
-            if (error) return reject(error);
-            resolve(requireFromString(content, filepath));
-          }
-        );
+        subscriber.next({
+          output,
+          stats: stats.toJson({
+            chunks: false,
+            modules: false,
+            entrypoints: false,
+          }),
+        });
       }
-    });
+
+      if (!watch) {
+        subscriber.complete();
+      }
+    };
+
+    if (watch) {
+      compiler.watch(webpackConfig.watchOptions, callback);
+    } else {
+      compiler.run(callback);
+    }
   });
 }
-exports.createCompiler = createCompiler;
 
-function createWatchCompiler(buildConfigArgs, options, overrides) {
-  const child = fork(__filename);
+function forkCompilation(mixin, buildConfigArgs, options = {}) {
+  const { watch } = options;
+  const configureArgs = [mixin.config._overrides, mixin.options];
+  const child = fork(join(__dirname, 'compiler-fork'));
 
   process.on('exit', () => child.kill());
 
   child.send({
     name: 'start',
     buildConfigArgs,
-    overrides,
+    configureArgs,
     options,
   });
 
-  let middleware;
-
-  return new EnhancedPromise((resolve, reject, reset) => {
+  return new Observable((subscriber) => {
     child.on('message', ({ type, data, reason }) => {
       if (type === 'reject') {
-        reject(
+        subscriber.error(
           typeof reason === 'string'
             ? new BuildError(reason)
             : new CompilerError(reason)
         );
-      } else if (type === 'reset') {
-        reset();
       } else if (type === 'resolve') {
-        if (middleware) process.emit('RELOAD');
+        subscriber.next(data);
+      }
 
-        resolve((middleware = middleware || require(data)));
+      if (!watch) {
+        subscriber.complete();
+        child.kill();
       }
     });
   });
 }
-exports.createWatchCompiler = createWatchCompiler;
 
-process.on('message', (message) => {
-  if (message.name !== 'start') return;
-
-  const { buildConfigArgs, overrides, options } = message;
-  const webpackConfig = configure(overrides, options).getBuildConfig(
-    ...buildConfigArgs
-  );
-
-  try {
-    const compiler = webpack(webpackConfig);
-    compiler.hooks.watchRun.tap('RenderMiddleware', () =>
-      process.send({ type: 'reset' })
-    );
-
-    compiler.watch(webpackConfig.watchOptions, (compileError, stats) => {
-      if (compileError) {
-        process.send({
-          type: 'reject',
-          reason: new CompilerError(compileError),
-        });
-      } else if (stats.hasErrors()) {
-        process.send({
-          type: 'reject',
-          reason: new BuildError(
-            stats.toJson({ all: false, errors: true }).errors.shift()
-          ),
-        });
-      } else {
-        const { path, filename } = webpackConfig.output;
-        const filepath = join(path, filename);
-        process.send({ type: 'resolve', data: filepath });
-      }
-    });
-  } catch (error) {
-    process.send({
-      type: 'reject',
-      reason: serializeError(error),
-    });
-  }
-});
+module.exports = { createCompiler, startCompilation, forkCompilation };

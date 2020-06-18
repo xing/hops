@@ -4,6 +4,8 @@ const { async } = require('mixinable');
 const { join: joinUrl, ensureLeadingSlash } = require('pathifist');
 const { Mixin, internal: bootstrap } = require('hops-bootstrap');
 
+const { createRenderMiddleware } = require('../../lib/middlewares/render');
+
 const { override } = async;
 const { validate, invariant } = bootstrap;
 
@@ -34,8 +36,6 @@ class WebpackRenderMixin extends Mixin {
 
   configureServer(app, middlewares, mode) {
     if (mode === 'static' || mode === 'develop') {
-      const createRenderMiddleware = require('../../lib/middlewares/render');
-
       middlewares.routes.push(
         createRenderMiddleware(['node'], mode === 'develop', this)
       );
