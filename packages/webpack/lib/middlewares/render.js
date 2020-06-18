@@ -1,18 +1,17 @@
-const { createCompiler, createWatchCompiler } = require('../utils/compiler');
+const {
+  spawnCompilation,
+  spawnForkedCompilation,
+} = require('../utils/compiler');
 
 module.exports = (buildConfigArgs, watch, mixin) => {
   let enhancedPromise;
 
   if (mixin) {
-    const { options, config, getBuildConfig } = mixin;
-    const { _overrides: overrides } = config;
-    const webpackConfig = getBuildConfig(...buildConfigArgs);
-
     enhancedPromise = watch
-      ? createWatchCompiler(buildConfigArgs, options, overrides)
-      : createCompiler(webpackConfig);
+      ? spawnForkedCompilation(mixin, buildConfigArgs)
+      : spawnCompilation(mixin, buildConfigArgs);
   } else {
-    enhancedPromise = createCompiler(buildConfigArgs);
+    enhancedPromise = spawnCompilation(mixin, buildConfigArgs);
   }
 
   return function renderMiddleware(req, res, next) {
