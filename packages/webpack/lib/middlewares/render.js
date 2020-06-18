@@ -1,23 +1,50 @@
-const { createCompiler, createWatchCompiler } = require('../utils/compiler');
+const { existsSync } = require('fs');
+const EnhancedPromise = require('eprom');
+const { startCompilation, forkCompilation } = require('../utils/compiler');
 
-module.exports = (buildConfigArgs, watch, mixin) => {
-  let enhancedPromise;
+function createRenderMiddleware(buildConfigArgs, watch, mixin) {
+  let compilation;
+  let webpackConfig = buildConfigArgs;
 
   if (mixin) {
-    const { options, config, getBuildConfig } = mixin;
-    const { _overrides: overrides } = config;
-    const webpackConfig = getBuildConfig(...buildConfigArgs);
+    webpackConfig = mixin.getBuildConfig(...buildConfigArgs);
 
-    enhancedPromise = watch
-      ? createWatchCompiler(buildConfigArgs, options, overrides)
-      : createCompiler(webpackConfig);
+    compilation = watch
+      ? forkCompilation(mixin, buildConfigArgs, { watch })
+      : startCompilation(webpackConfig, { watch });
   } else {
-    enhancedPromise = createCompiler(buildConfigArgs);
+    compilation = startCompilation(webpackConfig, { watch });
   }
+
+  const enhancedPromise = new EnhancedPromise();
+
+  compilation.subscribe(({ output }) => {
+    enhancedPromise.reset();
+    enhancedPromise.resolve(loadRenderMiddleware(output));
+  });
 
   return function renderMiddleware(req, res, next) {
     enhancedPromise
       .then((middleware) => middleware(req, res, next))
       .catch(next);
   };
+}
+
+function loadRenderMiddleware(filepath) {
+  delete require.cache[filepath];
+  return require(filepath);
+}
+
+function tryLoadRenderMiddleware(filepath) {
+  if (existsSync(filepath)) {
+    return require(filepath);
+  } else {
+    return null;
+  }
+}
+
+module.exports = {
+  createRenderMiddleware,
+  loadRenderMiddleware,
+  tryLoadRenderMiddleware,
 };

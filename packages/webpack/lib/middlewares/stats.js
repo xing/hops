@@ -1,4 +1,4 @@
-module.exports = function createStatsMiddleware(enhancedPromise) {
+function createStatsMiddleware(enhancedPromise) {
   return function statsMiddleware(req, res, next) {
     enhancedPromise
       .then((stats) => {
@@ -7,4 +7,6 @@ module.exports = function createStatsMiddleware(enhancedPromise) {
       })
       .catch(next);
   };
-};
+}
+
+module.exports = { createStatsMiddleware };
