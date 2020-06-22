@@ -1,7 +1,13 @@
 const { Mixin } = require('hops-mixin');
 const {
+  sync: { pipe },
+} = require('mixinable');
+const {
   internal: { createWebpackMiddleware, StatsFilePlugin },
 } = require('hops-webpack');
+const {
+  internal: { validate, invariant },
+} = require('hops-bootstrap');
 
 function exists(path) {
   try {
@@ -10,6 +16,10 @@ function exists(path) {
   } catch (e) {
     return false;
   }
+}
+
+function isResponseObject(res) {
+  return typeof res === 'object' && res.setHeader && res.send;
 }
 
 class GraphQLMixin extends Mixin {
@@ -23,11 +33,14 @@ class GraphQLMixin extends Mixin {
 
     middleware.initial.push({
       path: this.config.graphqlMockServerPath,
-      handler: createWebpackMiddleware(
-        ['graphql-mock-server', 'node'],
-        mode === 'develop',
-        this
-      ),
+      handler: (req, res, next) => {
+        this.enhanceApolloMockServerResponse(res);
+        createWebpackMiddleware(
+          ['graphql-mock-server', 'node'],
+          mode === 'develop',
+          this
+        )(req, res, next);
+      },
     });
   }
 
@@ -87,5 +100,14 @@ class GraphQLMixin extends Mixin {
     detectDuplicatePackages('graphql');
   }
 }
+
+GraphQLMixin.strategies = {
+  enhanceApolloMockServerResponse: validate(pipe, ([res]) => {
+    invariant(
+      isResponseObject(res),
+      'enhanceApolloMockServerResponse(): Received invalid response object'
+    );
+  }),
+};
 
 module.exports = GraphQLMixin;
