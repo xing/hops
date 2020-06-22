@@ -55,11 +55,21 @@ class WebpackConfigMixin extends Mixin {
       buildName
     );
 
-    this.configureBuild(webpackConfig, loaderConfigs, buildName);
+    this.configureWebpack(
+      webpackConfig,
+      loaderConfigs,
+      buildName,
+      buildTarget,
+      options
+    );
 
     debugConfig(buildName, webpackConfig);
 
     return webpackConfig;
+  }
+
+  configureWebpack(webpackConfig, loaderConfigs, buildName) {
+    this.configureBuild(webpackConfig, loaderConfigs, buildName);
   }
 
   collectBuildConfigs(webpackConfigs) {
@@ -169,6 +179,31 @@ WebpackConfigMixin.strategies = {
       'getWebpackConfig(): Received invalid options object'
     );
   }),
+  configureWebpack: validate(
+    sequence,
+    ([webpackConfig, loaderConfigs, buildName, buildTarget, options]) => {
+      invariant(
+        isPlainObject(webpackConfig),
+        'configureWebpack(): Received invalid webpackConfig object'
+      );
+      invariant(
+        isPlainObject(loaderConfigs),
+        'configureWebpack(): Received invalid loaderConfigs object'
+      );
+      invariant(
+        typeof buildName === 'string',
+        'configureWebpack(): Received invalid buildName string'
+      );
+      invariant(
+        typeof buildTarget === 'string',
+        'configureWebpack(): Received invalid buildTarget string'
+      );
+      invariant(
+        isPlainObject(options),
+        'configureWebpack(): Received invalid options object'
+      );
+    }
+  ),
 };
 
 module.exports = WebpackConfigMixin;
