@@ -124,3 +124,7 @@ addMockFunctionsToSchema({
 
 export default mockSchema;
 ```
+
+#### `enhanceApolloMockServerResponse(res): res` ([pipe](https://www.npmjs.com/package/mixinable#definepipe)) **core**
+
+With this mixin hook it is possible to enhance the Apollo Mock-Server's response object, for e.g. setting a custom header on it.
