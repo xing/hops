@@ -10,7 +10,8 @@
     "allowServerSideDataFetching": true,
     "port": "8029",
     "graphqlUri": "http://localhost:8029/graphql",
-    "graphqlMockSchemaFile": "<rootDir>/mock-schema.js"
+    "graphqlMockSchemaFile": "<rootDir>/mock-schema.js",
+    "mixins": ["."]
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",

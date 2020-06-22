@@ -5,11 +5,11 @@ describe('graphql mock server', () => {
     url = await HopsCLI.start('--fast-dev');
   });
 
-  it('renders a mocked quote', async () => {
+  it('renders the altered quote', async () => {
     const { page, getInnerText } = await createPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 
-    expect(await getInnerText('p')).toBe('Hello World');
+    expect(await getInnerText('p')).toBe('Hello altered text.');
 
     await page.close();
   });
