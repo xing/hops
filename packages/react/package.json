@@ -33,7 +33,7 @@
     "mixinable": "^5.0.1",
     "pathifist": "^1.0.0",
     "prop-types": "^15.7.2",
-    "serialize-javascript": "^3.0.0"
+    "serialize-javascript": "^4.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
