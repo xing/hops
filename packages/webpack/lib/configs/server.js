@@ -1,13 +1,17 @@
-const { dirname, relative } = require('path');
+const { dirname, resolve } = require('path');
 const {
   EnvironmentPlugin,
   HotModuleReplacementPlugin,
+  HashedModuleIdsPlugin,
   NamedModulesPlugin,
+  optimize,
 } = require('webpack');
 const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
 
-module.exports = function getConfig(config, name) {
+const { LimitChunkCountPlugin } = optimize;
+
+module.exports = function getConfig(config, name, isProduction) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
 
   const jsLoaderConfig = {
@@ -17,16 +21,16 @@ module.exports = function getConfig(config, name) {
     loader: require.resolve('babel-loader'),
     options: {
       babelrc: false,
-      compact: false,
+      compact: isProduction,
       cacheDirectory: true,
-      cacheIdentifier: `development:${name}`,
+      cacheIdentifier: `${process.env.NODE_ENV || 'development'}:${name}`,
       presets: [
         [
           require.resolve('@babel/preset-env'),
           {
             modules: false,
-            useBuiltIns: 'usage',
-            targets: { browsers: config.browsers },
+            useBuiltIns: 'entry',
+            targets: { node: config.node },
             corejs: 3,
             include: [],
             exclude: [],
@@ -44,6 +48,7 @@ module.exports = function getConfig(config, name) {
     options: {
       name: getAssetPath('[name]-[hash:16].[ext]'),
       esModule: false,
+      emitFile: false,
     },
   };
 
@@ -59,6 +64,7 @@ module.exports = function getConfig(config, name) {
         options: {
           limit: 10000,
           name: getAssetPath('[name]-[hash:16].[ext]'),
+          emitFile: false,
           esModule: false,
         },
       },
@@ -68,7 +74,7 @@ module.exports = function getConfig(config, name) {
   const allLoaderConfigs = [jsLoaderConfig, urlLoaderConfig, fileLoaderConfig];
 
   return {
-    // invalid for webpack, needed with hops mixins
+    // invalid for webpack, required with hops mixins
     loaderConfigs: {
       jsLoaderConfig,
       urlLoaderConfig,
@@ -76,17 +82,25 @@ module.exports = function getConfig(config, name) {
       allLoaderConfigs,
     },
     name,
-    mode: 'development',
+    target: 'async-node',
+    mode: isProduction ? 'production' : 'development',
+    bail: isProduction,
     context: config.rootDir,
-    entry: require.resolve('../shims/develop'),
+    entry: [
+      ...(isProduction
+        ? []
+        : [require.resolve('webpack/hot/signal') + '?RELOAD']),
+      require.resolve('core-js/stable'),
+      require.resolve('../shims/node'),
+    ],
     output: {
-      path: config.buildDir,
+      path: config.serverDir,
       publicPath: '/',
       pathinfo: true,
-      filename: getAssetPath(`${config.name}.js`),
-      chunkFilename: getAssetPath(`${config.name}-[id].js`),
+      filename: config.serverFile,
+      libraryTarget: 'commonjs2',
       devtoolModuleFilenameTemplate: (info) =>
-        relative(config.rootDir, info.absoluteResourcePath),
+        resolve(info.absoluteResourcePath),
     },
     resolve: {
       modules: getModules(config.rootDir),
@@ -94,16 +108,13 @@ module.exports = function getConfig(config, name) {
         // todo: remove this if not used anymore
         '@untool/entrypoint': config.rootDir,
         'hops/entrypoint': config.rootDir,
-        'regenerator-runtime': dirname(
-          require.resolve('regenerator-runtime/package.json')
-        ),
         'core-js': dirname(require.resolve('core-js/package.json')),
       },
       extensions: ['.mjs', '.js'],
       mainFields: [
-        'esnext:browser',
-        'jsnext:browser',
-        'browser',
+        'esnext:server',
+        'jsnext:server',
+        'server',
         'module',
         'esnext',
         'jsnext',
@@ -117,19 +128,20 @@ module.exports = function getConfig(config, name) {
     },
     externals: [],
     optimization: {
-      splitChunks: { chunks: 'all', name: false },
+      minimizer: [],
     },
     plugins: [
-      new NamedModulesPlugin(),
-      new HotModuleReplacementPlugin(),
+      new LimitChunkCountPlugin({ maxChunks: 1 }),
+      new (isProduction ? HashedModuleIdsPlugin : NamedModulesPlugin)(),
+      isProduction ? { apply: () => {} } : new HotModuleReplacementPlugin(),
       new EnvironmentPlugin({ NODE_ENV: 'development' }),
     ],
     performance: {
       hints: false,
-      maxEntrypointSize: 5242880,
+      maxEntrypointSize: 52428800,
       maxAssetSize: 52428800,
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'inline-source-map',
     watchOptions: { aggregateTimeout: 300, ignored: /node_modules/ },
   };
 };

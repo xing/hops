@@ -45,14 +45,13 @@ class WebpackConfigMixin extends Mixin {
   }
 
   getWebpackConfig(buildName, buildTarget, options = {}) {
-    const { watch } = options;
-    const configName =
-      buildTarget === 'web' ? (watch ? 'develop' : 'build') : 'node';
-    // TODO: simplify this to 'web' and 'node' only
-    const configPath = `../../lib/configs/${configName}`;
+    const { isProduction = process.env.NODE_ENV === 'production' } = options;
+    const configPath = `../../lib/configs/${buildTarget}`;
+    const configName = `${buildName}:${buildTarget}`;
     const { loaderConfigs = {}, ...webpackConfig } = require(configPath)(
       this.config,
-      buildName
+      configName,
+      isProduction
     );
 
     this.configureWebpack(
@@ -60,10 +59,13 @@ class WebpackConfigMixin extends Mixin {
       loaderConfigs,
       buildName,
       buildTarget,
-      options
+      {
+        ...options,
+        isProduction,
+      }
     );
 
-    debugConfig(buildName, webpackConfig);
+    debugConfig(configName, webpackConfig);
 
     return webpackConfig;
   }
