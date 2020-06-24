@@ -4,9 +4,7 @@ const { Mixin, internal: bootstrap } = require('hops-bootstrap');
 
 const { sequence } = sync;
 const { callable } = async;
-const {
-  validate, invariant
-} = bootstrap;
+const { validate, invariant } = bootstrap;
 
 class WebpackBuildMixin extends Mixin {
   clean() {
@@ -75,6 +73,12 @@ class WebpackBuildMixin extends Mixin {
           profile: {
             default: false,
             describe: 'Print performance profiling stats after each build',
+            type: 'boolean',
+          },
+          fastBuild: {
+            default: false,
+            describe:
+              'Experimental: increase build speed (modern browsers only)',
             type: 'boolean',
           },
         },
