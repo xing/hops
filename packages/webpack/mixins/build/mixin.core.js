@@ -4,9 +4,7 @@ const { Mixin, internal: bootstrap } = require('hops-bootstrap');
 
 const { sequence } = sync;
 const { callable } = async;
-const {
-  validate, invariant
-} = bootstrap;
+const { validate, invariant } = bootstrap;
 
 class WebpackBuildMixin extends Mixin {
   clean() {
