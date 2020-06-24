@@ -84,6 +84,12 @@ $ NODE_ENV=production hops start
 
 In `static` mode, static HTML pages will be generated for the [`locations`](../express/README.md#locations) configured for your application.
 
+##### `--parallel-build` / `--no-parallel-build`
+
+A Hops build will fork its process in order to let the Webpack builds run in parallel child processes. While it usually does not reduce the build time it actually helps to significantly reduce the peak memory consumption of the build.
+
+This feature is enabled by default and can be disabled via the `--no-parallel-build` (or `--parallel-build=false`) argument.
+
 ##### `--fast-dev` _experimental_
 
 Using the experimental `--fast-dev` option will disable automatic polyfilling and transpiling of all `node_modules` files through babel to enable faster development times. This will lead to a different bundle being created than in production mode and will not work on all browsers (modern browsers only). Use with caution and report any bugs you may encounter.

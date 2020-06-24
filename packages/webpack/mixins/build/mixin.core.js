@@ -121,6 +121,11 @@ class WebpackBuildMixin extends Mixin {
               'Experimental: increase build speed (modern browsers only)',
             type: 'boolean',
           },
+          parallelBuild: {
+            default: true,
+            describe: 'Run webpack builds in parallel',
+            type: 'boolean',
+          },
         },
         handler: (argv) =>
           Promise.resolve(argv.clean && this.clean())
