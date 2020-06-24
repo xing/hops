@@ -33,7 +33,7 @@ function invokeFunction(root, path) {
 
 describe('lambda production build', () => {
   beforeAll(async () => {
-    await HopsCLI.build('-p');
+    await HopsCLI.build('-p', '--parallel-build');
   });
 
   it('renders something', async () => {
