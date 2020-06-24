@@ -75,6 +75,12 @@ class WebpackBuildMixin extends Mixin {
             describe: 'Print performance profiling stats after each build',
             type: 'boolean',
           },
+          fastBuild: {
+            default: false,
+            describe:
+              'Experimental: increase build speed (modern browsers only)',
+            type: 'boolean',
+          },
         },
         handler: (argv) =>
           Promise.resolve(argv.clean && this.clean())
