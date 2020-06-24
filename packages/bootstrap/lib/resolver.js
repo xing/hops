@@ -7,14 +7,7 @@ const {
   create: { sync: createResolver },
 } = require('enhanced-resolve');
 
-const defaultConfig = {
-  symlinks: !(
-    process.env.NODE_PRESERVE_SYMLINKS == 1 ||
-    (typeof process.env.NODE_OPTIONS === 'string' &&
-      process.env.NODE_OPTIONS.includes('--preserve-symlinks')) ||
-    process.execArgv.includes('--preserve-symlinks')
-  ),
-};
+const defaultConfig = { symlinks: false };
 
 exports.resolve = resolve;
 
