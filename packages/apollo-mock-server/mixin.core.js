@@ -1,6 +1,6 @@
 const { Mixin } = require('hops-mixin');
 const {
-  internal: { createWebpackMiddleware, StatsFilePlugin },
+  internal: { createWebpackMiddleware },
 } = require('hops-webpack');
 
 function exists(path) {
@@ -75,10 +75,6 @@ class GraphQLMixin extends Mixin {
       );
       webpackConfig.resolve.alias['hops/entrypoint'] = require.resolve(
         './lib/mock-server-middleware'
-      );
-
-      webpackConfig.plugins = webpackConfig.plugins.filter(
-        (p) => !(p instanceof StatsFilePlugin)
       );
     }
   }
