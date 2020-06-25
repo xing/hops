@@ -15,7 +15,9 @@ class Loader {
   }
   load(context, module) {
     const { load } = cosmiconfig(this.namespace);
-    return load(resolvePreset(context, module));
+    const presetJsFilePath = resolvePreset(context, module);
+    const loadedPreset = load(presetJsFilePath);
+    return loadedPreset;
   }
   search(stopDir) {
     const { search } = cosmiconfig(this.namespace, { stopDir });

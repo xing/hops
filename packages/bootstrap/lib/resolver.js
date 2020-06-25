@@ -7,9 +7,12 @@ const {
   create: { sync: createResolver },
 } = require('enhanced-resolve');
 
+const defaultConfig = { symlinks: false };
+
 exports.resolve = resolve;
 
 exports.resolvePreset = createResolver({
+  ...defaultConfig,
   mainFiles: ['preset'],
   mainFields: ['preset'],
 });
@@ -18,7 +21,7 @@ exports.resolveMixins = (context, types, mixins) => {
   const result = {};
   const resolvers = {};
   Object.entries(types).forEach(([type, config]) => {
-    resolvers[type] = createResolver(config);
+    resolvers[type] = createResolver({ ...defaultConfig, ...config });
     result[type] = [];
   });
   return mixins.reduce((result, mixin) => {
