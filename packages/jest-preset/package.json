@@ -32,7 +32,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-config": "^24.9.0",
     "regenerator-runtime": "^0.13.3",
-    "ts-jest": "^24.1.0"
+    "ts-jest": "^26.0.0"
   },
   "peerDependencies": {
     "jest": "^24.9.0",
