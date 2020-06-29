@@ -26,11 +26,11 @@
     "@babel/plugin-transform-flow-strip-types": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
-    "babel-jest": "^24.9.0",
+    "babel-jest": "^26.0.0",
     "core-js": "^3.2.1",
     "hops": "^12.4.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest-config": "^24.9.0",
+    "jest-config": "^26.0.0",
     "regenerator-runtime": "^0.13.3",
     "ts-jest": "^24.1.0"
   },
@@ -42,7 +42,7 @@
     "react-router-dom": "^5.1.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0",
+    "jest": "^26.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet-async": "^1.0.4",
