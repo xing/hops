@@ -6,6 +6,14 @@ const { sequence } = sync;
 const { callable } = async;
 const { validate, invariant } = bootstrap;
 
+const toPromise = (observable) =>
+  new Promise((resolve, reject) => {
+    observable.subscribe({
+      next: resolve,
+      error: reject,
+    });
+  });
+
 class WebpackBuildMixin extends Mixin {
   clean() {
     const rimraf = require('rimraf');
@@ -23,6 +31,29 @@ class WebpackBuildMixin extends Mixin {
 
   build() {
     const webpack = require('webpack');
+    const { parallelBuild } = this.options;
+
+    if (parallelBuild) {
+      const { forkCompilation } = require('../../lib/utils/compiler');
+      const buildRequests = [];
+      this.collectBuildRequests(buildRequests);
+
+      const compilations = buildRequests.map(({ buildName }) => {
+        const compilation = forkCompilation(this, [buildName]);
+        return toPromise(compilation);
+      });
+
+      return Promise.all(compilations).then((allStats) => {
+        allStats.forEach((stats) => {
+          if (stats instanceof webpack.Stats) {
+            this.inspectBuild(stats);
+          } else {
+            debug(stats);
+          }
+        });
+      });
+    }
+
     const webpackConfigs = [];
     this.collectBuildConfigs(webpackConfigs);
 
@@ -43,6 +74,15 @@ class WebpackBuildMixin extends Mixin {
       this.inspectBuild(stats, webpackConfigs);
       return stats;
     });
+  }
+
+  collectBuildRequests(requests) {
+    requests.push({ buildName: 'node' });
+    requests.push({ buildName: 'build' });
+  }
+
+  handleArguments(argv) {
+    this.options = { ...this.options, ...argv };
   }
 
   inspectBuild(stats) {
@@ -79,6 +119,11 @@ class WebpackBuildMixin extends Mixin {
             default: false,
             describe:
               'Experimental: increase build speed (modern browsers only)',
+            type: 'boolean',
+          },
+          parallelBuild: {
+            default: true,
+            describe: 'Run webpack builds in parallel',
             type: 'boolean',
           },
         },
@@ -118,6 +163,12 @@ WebpackBuildMixin.strategies = {
     invariant(
       stats && typeof stats.toString === 'function',
       'inspectBuild(): Received invalid Webpack Stats object'
+    );
+  }),
+  collectBuildRequests: validate(sequence, ([requests]) => {
+    invariant(
+      Array.isArray(requests),
+      'collectBuildRequests(): Received invalid requests array'
     );
   }),
 };
