@@ -29,7 +29,7 @@
     "create-hops-app": "^0.0.0",
     "cross-fetch": "^3.0.4",
     "fs-extra": "^9.0.0",
-    "jest-environment-node": "^24.9.0",
+    "jest-environment-node": "^26.0.0",
     "mktemp": "^1.0.0",
     "puppeteer": "^4.0.0",
     "react-helmet-async": "^1.0.4",
