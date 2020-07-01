@@ -58,6 +58,7 @@ export default render(
     </Helmet>
     <div>
       <Link to="/two">Link to two</Link>
+      <Link to="/import">Link to import</Link>
       <Switch>
         <Route path="/" exact render={() => <h1>home</h1>} />
         <Route path="/two" exact render={() => <h1>two</h1>} />
