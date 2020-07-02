@@ -51,15 +51,14 @@ function tryLoadRenderMiddleware(filepath) {
 
 function createRenderMiddlewareWrapper(buildConfigArgs, watch, mixin) {
   // TODO: deprecate
-  const [buildName, webpackTarget] =
-    buildConfigArgs.length === 1
-      ? [buildConfigArgs[0], buildConfigArgs[0]]
-      : buildConfigArgs;
+  const [buildName, baseConfig] = buildConfigArgs;
+  const buildTarget = ['build', 'develop'].includes(baseConfig || buildName)
+    ? 'browser'
+    : 'server';
 
-  return createRenderMiddleware(mixin, buildName, webpackTarget, {
+  return createRenderMiddleware(mixin, buildName, buildTarget, {
     buildName,
     watch,
-    forkProcess: watch,
   });
 }
 
