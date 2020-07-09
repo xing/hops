@@ -19,7 +19,6 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "^1.6.3",
     "apollo-server-express": "^2.9.5",
     "cookie-parser": "^1.4.4",
     "cross-fetch": "^3.0.4",
