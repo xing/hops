@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0](https://github.com/xing/hops/compare/v12.4.0...v12.5.0) (2020-07-13)
+
+
+### Bug Fixes
+
+* update dependency ts-loader to v8 ([7b21f60](https://github.com/xing/hops/commit/7b21f60bad8ba46ac31a5d43c308677d7dcd0253))
+* **webpack:** re-enable the --fast-build CLI flag ([7bdb297](https://github.com/xing/hops/commit/7bdb29743cc27b69da7b7e5f5be47f6d53ad675d))
+* update dependency serialize-javascript to v4 ([15d9272](https://github.com/xing/hops/commit/15d92724cf3c1c10eee424d28af6fea8af814bdb))
+* update dependency terser-webpack-plugin to v3 ([29e5598](https://github.com/xing/hops/commit/29e55985f2a144b66a7d2570c6cfc693771d5e08))
+* update dependency yargs to v15 ([c19be89](https://github.com/xing/hops/commit/c19be89966e8d1c8eec42d7f0c485c9dd0d12559))
+
+
+### Features
+
+* **webpack:** allow to run webpack builds in parallel ([0e30a8b](https://github.com/xing/hops/commit/0e30a8bb084f4b5bc45e8b10ef7eea86508d1bd9))
+* **webpack:** enable parallel builds by default ([bf1469c](https://github.com/xing/hops/commit/bf1469cebccfc209bfcc88498eb9df0fcb731843))
+
+
+
+
+
 # [12.4.0](https://github.com/xing/hops/compare/v12.3.0...v12.4.0) (2020-06-02)
 
 

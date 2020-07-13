@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0](https://github.com/xing/hops/compare/v12.4.0...v12.5.0) (2020-07-13)
+
+
+### Bug Fixes
+
+* update dependency yargs to v15 ([c19be89](https://github.com/xing/hops/commit/c19be89966e8d1c8eec42d7f0c485c9dd0d12559))
+
+
+
+
+
 # [12.4.0](https://github.com/xing/hops/compare/v12.3.0...v12.4.0) (2020-06-02)
 
 **Note:** Version bump only for package hops-yargs

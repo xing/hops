@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0](https://github.com/xing/hops/compare/v12.4.0...v12.5.0) (2020-07-13)
+
+
+### Bug Fixes
+
+* **webpack:** re-enable the --fast-build CLI flag ([7bdb297](https://github.com/xing/hops/commit/7bdb29743cc27b69da7b7e5f5be47f6d53ad675d))
+* update dependency terser-webpack-plugin to v3 ([29e5598](https://github.com/xing/hops/commit/29e55985f2a144b66a7d2570c6cfc693771d5e08))
+
+
+### Features
+
+* **webpack:** allow to run webpack builds in parallel ([0e30a8b](https://github.com/xing/hops/commit/0e30a8bb084f4b5bc45e8b10ef7eea86508d1bd9))
+* **webpack:** enable parallel builds by default ([bf1469c](https://github.com/xing/hops/commit/bf1469cebccfc209bfcc88498eb9df0fcb731843))
+
+
+
+
+
 # [12.4.0](https://github.com/xing/hops/compare/v12.3.0...v12.4.0) (2020-06-02)
 
 

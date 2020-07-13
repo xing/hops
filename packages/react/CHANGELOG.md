@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0](https://github.com/xing/hops/compare/v12.4.0...v12.5.0) (2020-07-13)
+
+
+### Bug Fixes
+
+* update dependency serialize-javascript to v4 ([15d9272](https://github.com/xing/hops/commit/15d92724cf3c1c10eee424d28af6fea8af814bdb))
+
+
+
+
+
 # [12.4.0](https://github.com/xing/hops/compare/v12.3.0...v12.4.0) (2020-06-02)
 
 
