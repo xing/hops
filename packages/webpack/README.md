@@ -206,7 +206,7 @@ This is the target Node.js version Babel's [`preset-env`](https://babeljs.io/doc
 
 ```json
 {
-  "node": "12.13"
+  "node": "14.5"
 }
 ```
 
