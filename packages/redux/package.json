@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "depd": "^2.0.0",
-    "history": "^4.10.1",
+    "history": "^5.0.0",
     "hops-mixin": "^12.5.0",
     "prop-types": "^15.7.2"
   },
