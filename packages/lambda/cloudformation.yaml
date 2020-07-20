@@ -5,10 +5,9 @@ Description: Hops Serverless Express Application / Powered by hops-lambda
 Parameters:
   Runtime:
     Type: String
-    Description: Set the Node version of the Lambda runtime; supported versions are nodejs10.x and nodejs12.x
+    Description: Set the Node version of the Lambda runtime; currently only nodejs12.x is supported
     Default: nodejs12.x
     AllowedValues:
-      - nodejs10.x
       - nodejs12.x
   LambdaMemorySize:
     Type: Number

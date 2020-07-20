@@ -6,14 +6,11 @@ const semver = require('semver');
 const getRuntimeNodeVersion = (nodeVersion) => {
   const { major } = semver.coerce(nodeVersion);
 
-  switch (major) {
-    case 10:
-      return 'nodejs10.x';
-    case 12:
-      return 'nodejs12.x';
-    default:
-      throw new Error(`Node version ${nodeVersion} is not supported.`);
+  if (major === 12) {
+    return 'nodejs12.x';
   }
+
+  throw new Error(`Node version ${nodeVersion} is not supported.`);
 };
 
 module.exports = function getAWSConfig(hopsConfig) {
