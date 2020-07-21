@@ -6,7 +6,8 @@ const { createTmpDirectory } = require('hops-lambda/lib/fs-utils');
 
 async function zipFunctionCode(root) {
   process.chdir(root);
-  const hopsConfig = require('hops-config');
+  const bootstrap = require('hops-bootstrap');
+  const hopsConfig = bootstrap.internal.getConfig();
   const awsConfig = require('hops-lambda/lib/aws-config')(hopsConfig);
 
   const tmpDir = await createTmpDirectory();
