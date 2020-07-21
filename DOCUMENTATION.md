@@ -690,7 +690,6 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering **[deprecated]** |
 | `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute route-bound action creators during server-side rendering |
 
 ##### Options
@@ -737,7 +736,6 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 | `fragmentsFile` | `String` | `<rootDir>/fragmentTypes.json` | _no_ | Where to store the generated fragment types file |
 | `graphqlUri` | `String` | `''` | _yes_ | URI to your GraphQL endpoint or mock server |
 | `graphqlSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema file |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute GraphQL queries during server-side rendering **[deprecated]** |
 | `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute GraphQL queries during server-side rendering |
 
 ##### Options
