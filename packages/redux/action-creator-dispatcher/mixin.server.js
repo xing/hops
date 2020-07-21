@@ -4,7 +4,6 @@ const {
     sync: { sequence },
   },
 } = require('hops-mixin');
-const deprecate = require('depd')('hops-redux');
 
 const ReduxActionCreatorCommonMixin = require('./mixin.runtime-common');
 
@@ -19,19 +18,7 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
   }
 
   canPrefetchOnServer() {
-    const { shouldPrefetchOnServer, allowServerSideDataFetching } = this.config;
-
-    if (typeof shouldPrefetchOnServer === 'boolean') {
-      deprecate(
-        '[DEP0003] The config property "shouldPrefetchOnServer" is deprecated and will' +
-          ' be removed in favor of the property "allowServerSideDataFetching" in the next' +
-          ' major release of Hops.'
-      );
-    }
-
-    return (
-      shouldPrefetchOnServer !== false && allowServerSideDataFetching !== false
-    );
+    return this.config.allowServerSideDataFetching !== false;
   }
 
   async fetchData(data) {

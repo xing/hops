@@ -30,22 +30,7 @@ Check out this [integration test](../spec/integration/redux) as an example for h
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering **[deprecated]** |
 | `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute route-bound action creators during server-side rendering |
-
-##### `shouldPrefetchOnServer` [deprecated]
-
-**Note:** This option has been deprecated. See the [DEPRECATIONS document](../../DEPRECATIONS.md#DEP0003) for more informations.
-
-Whether you want "full server-side rendering" or just "app shell" rendering.
-
-This option controls whether you want Hops to execute the configured [route-bound `actionCreators`](#actioncreators) during server-side rendering, so that your components will get rendered with actual data and the redux store will be dehydrated/rehydrated between server and client.
-
-```json
-"hops": {
-  "shouldPrefetchOnServer": false
-}
-```
 
 ##### `allowServerSideDataFetching`
 
