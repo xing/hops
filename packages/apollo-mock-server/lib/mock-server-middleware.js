@@ -1,11 +1,13 @@
 import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import express from 'express';
-import hopsConfig from 'hops-config';
+import bootstrap from 'hops-bootstrap';
 // eslint-disable-next-line node/no-extraneous-import
 import schema from 'hops-apollo-mock-server/schema';
 // eslint-disable-next-line node/no-extraneous-import
 import extendContext from 'hops-apollo-mock-server/context-extender';
+
+const hopsConfig = bootstrap.internal.getConfig();
 
 const apolloAppPromise = Promise.resolve(
   typeof schema === 'function' ? schema() : schema
