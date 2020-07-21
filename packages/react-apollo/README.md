@@ -55,7 +55,6 @@ Check out this [integration test](../spec/integration/graphql) as an example for
 | `fragmentsFile` | `String` | `<rootDir>/fragmentTypes.json` | _no_ | Where to store the generated fragment types file |
 | `graphqlUri` | `String` | `''` | _yes_ | Url to your GraphQL endpoint or mock server |
 | `graphqlSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema file |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute GraphQL queries during server-side rendering **[deprecated]** |
 | `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute GraphQL queries during server-side rendering |
 
 ##### `fragmentsFile`
@@ -89,18 +88,6 @@ In case your GraphQL server (configured via [`graphqlUri`](#graphqluri)) does no
 ```json
 "hops": {
   "graphqlSchemaFile": "<rootDir>/schema.graphql"
-}
-```
-
-##### `shouldPrefetchOnServer` **[deprecated]**
-
-Whether you want "full server-side rendering" or just "app shell" rendering.
-
-This option controls whether you want Hops to execute GraphQL queries during server-side rendering, so that the actual components with actual data will get rendered (if set to false, Hops will not fetch data during server-side rendering).
-
-```json
-"hops": {
-  "shouldPrefetchOnServer": false
 }
 ```
 
