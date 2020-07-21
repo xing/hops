@@ -3,12 +3,14 @@
 process.env.NODE_ENV = 'production';
 
 const serverlessHttp = require('serverless-http');
-const config = require('hops-config');
+const bootstrap = require('hops-bootstrap');
 const { trimSlashes } = require('pathifist');
 
 const app = require('hops-express').configure(config).createServer('serve');
 
 const awsConfig = require('./lib/aws-config')(config);
+
+const config = bootstrap.internal.getConfig();
 
 const shouldIncludeStageInRequest =
   trimSlashes(config.basePath).indexOf(awsConfig.stageName) === 0 &&
