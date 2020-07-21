@@ -17,7 +17,7 @@
   },
   "hops": {
     "gracePeriod": 0,
-    "shouldPrefetchOnServer": false
+    "allowServerSideDataFetching": false
   },
   "dependencies": {
     "hops": "*",
