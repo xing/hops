@@ -22,7 +22,7 @@
     }
   },
   "engines": {
-    "node": "10 || 12 || 13 || 14"
+    "node": "12 || 14"
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.0",

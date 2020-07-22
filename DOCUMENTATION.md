@@ -76,7 +76,7 @@ These are the main features:
 
 ## System requirements
 
-Hops is built on modern technologies and therefore needs at least Node.js _v10_ or higher.
+Hops is built on modern technologies and therefore needs at least Node.js _v12_ or higher.
 
 You can use either [`npx`](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) (which is included in npm v5.2+) or [`npm init`](https://docs.npmjs.com/cli/init) (with npm v6+) or [`yarn create`](https://yarnpkg.com/lang/en/docs/cli/create/) to create a Hops application and run Hops CLI commands.
 
@@ -286,7 +286,7 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 | `distDir` | `String` | `<rootDir>/dist` | `<rootDir>/out` | The directory from which static assets will be served |
 | `serverDir` | `String` | `node_modules/.cache/hops-webpack` | `<rootDir>/dist` | The directory where the generated server middleware will be stored |
 | `browsers` | `Array<String>` | `['defaults']` | `['last 1 Chrome versions']` | An array of browserslist queries to specify targets for which to transpile/polyfill (see [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) for more information) |
-| `node` | `String` | `current` | `10.13` | A Node.js version identifier or `current` to specify for which target to transpile/polyfill |
+| `node` | `String` | `current` | `14.5` | A Node.js version identifier or `current` to specify for which target to transpile/polyfill |
 | `browserWhitelist` | `Object` | `{"basePath":true}` | A map of config keys that should be exposed to the client. Nested paths can be described using dot notation |
 
 <a name="hops-alternative-config-file-format" title="Custom jump anchor: do not remove!"></a> Under the hood Hops uses [`cosmiconfig`](https://github.com/davidtheclark/cosmiconfig) to gather settings. So you're not limited to the `"hops"` key in your `package.json`, but can alternatively use an external settings file in the root directory of your project.\

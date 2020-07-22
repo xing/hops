@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "10 || 12 || 13 || 14"
+    "node": "12 || 14"
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
@@ -15,7 +15,7 @@
     "gracePeriod": 0,
     "basePath": "prod",
     "assetPath": "prod",
-    "node": "10.13",
+    "node": "12.18",
     "subject": "lambda",
     "browserWhitelist": {
       "subject": true
