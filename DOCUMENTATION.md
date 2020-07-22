@@ -585,16 +585,6 @@ export default render(<About loader={loader} render={renderAbout} />);
 
 Components (and their dependencies) imported using `importComponent` will be placed into separate chunks (i.e. asset files). Hops makes sure that all asset files containing modules used for server-side rendering are referenced in the initial HTML output.
 
-**Note about `importComponent(moduleName, [exportResolver])`:** We still support the "string" syntax, where you could just pass a string for the file name to the `importComponent` function, but we are discouraging the use of it, because it is not compatible with type-checked code and does not provide editor integration (point & click to open the file).
-
-```javascript
-import { render, importComponent } from 'hops';
-
-const Home = importComponent('./home', (namespace) => namespace.Home);
-
-export default render(<Home />);
-```
-
 During tests `importComponent` simply outputs the referenced component. If you'd rather like to test the `loading`- or the `error`-state of the lazy-loading placeholder component, you have to provide your own mock.
 
 **Example: check the loading state**
