@@ -20,13 +20,13 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
+    "@graphql-tools/schema": "^6.0.12",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-http": "^1.5.16",
     "cross-fetch": "^3.0.4",
     "depd": "^2.0.0",
     "graphql": "^15.0.0",
-    "graphql-tools": "^5.0.0",
     "hops-config": "^0.0.0",
     "hops-react": "^0.0.0",
     "hops-mixin": "^0.0.0",

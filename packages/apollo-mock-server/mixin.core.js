@@ -12,6 +12,14 @@ function exists(path) {
   }
 }
 
+function tryResolve(name) {
+  try {
+    return require.resolve(name);
+  } catch (e) {
+    return '';
+  }
+}
+
 class GraphQLMixin extends Mixin {
   configureServer(rootApp, middleware, mode) {
     if (
@@ -63,9 +71,13 @@ class GraphQLMixin extends Mixin {
 
     if (target === 'graphql-mock-server') {
       webpackConfig.externals.push(
-        'apollo-server-express',
-        'express',
-        'graphql'
+        {
+          'apollo-server-express': tryResolve('apollo-server-express'),
+          express: tryResolve('express'),
+          graphql: tryResolve('graphql'),
+        },
+        'graphql-tools',
+        /^@graphql-tools\/.+$/
       );
 
       webpackConfig.output.filename = 'hops-graphql-mock-server.js';

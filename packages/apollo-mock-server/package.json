@@ -19,13 +19,11 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "apollo-cache-inmemory": "^1.6.3",
     "apollo-server-express": "^2.9.5",
     "cookie-parser": "^1.4.4",
     "cross-fetch": "^3.0.4",
     "express": "^4.17.1",
     "graphql": "^15.0.0",
-    "graphql-tools": "^5.0.0",
     "hops-config": "^0.0.0",
     "hops-mixin": "^0.0.0",
     "hops-webpack": "^0.0.0"

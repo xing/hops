@@ -4,7 +4,7 @@ const fetch = require('cross-fetch');
 const { access, readFile, writeFile } = require('fs');
 const { promisify } = require('util');
 const { graphql } = require('graphql');
-const { makeExecutableSchema } = require('graphql-tools');
+const { makeExecutableSchema } = require('@graphql-tools/schema');
 
 function writeFragmentTypesFile(fragmentsFile, result) {
   result.data.__schema.types = result.data.__schema.types.filter(

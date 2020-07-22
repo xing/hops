@@ -1,8 +1,7 @@
-import {
-  makeExecutableSchema,
-  addMockFunctionsToSchema,
-  mergeSchemas,
-} from 'graphql-tools';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { addMocksToSchema } from '@graphql-tools/mock';
+import { stitchSchemas } from '@graphql-tools/stitch';
+import { delegateToSchema } from '@graphql-tools/delegate';
 
 // Mocked chirp schema
 const chirpSchema = makeExecutableSchema({
@@ -20,7 +19,7 @@ const chirpSchema = makeExecutableSchema({
   `,
 });
 
-addMockFunctionsToSchema({ schema: chirpSchema });
+const mockedChirpSchema = addMocksToSchema({ schema: chirpSchema });
 
 // Mocked author schema
 const authorSchema = makeExecutableSchema({
@@ -41,7 +40,10 @@ const authorSchema = makeExecutableSchema({
   },
 });
 
-addMockFunctionsToSchema({ schema: authorSchema, preserveResolvers: true });
+const mockedAuthorSchema = addMocksToSchema({
+  schema: authorSchema,
+  preserveResolvers: true,
+});
 
 const linkTypeDefs = `
   extend type User {
@@ -53,15 +55,16 @@ const linkTypeDefs = `
   }
 `;
 
-export default mergeSchemas({
-  schemas: [chirpSchema, authorSchema, linkTypeDefs],
+export default stitchSchemas({
+  subschemas: [{ schema: mockedChirpSchema }, { schema: mockedAuthorSchema }],
+  typeDefs: linkTypeDefs,
   resolvers: {
     User: {
       chirps: {
-        fragment: `... on User { id }`,
+        selectionSet: `{ id }`,
         resolve(user, args, context, info) {
-          return info.mergeInfo.delegateToSchema({
-            schema: chirpSchema,
+          return delegateToSchema({
+            schema: mockedChirpSchema,
             operation: 'query',
             fieldName: 'chirpsByAuthorId',
             args: {
@@ -75,10 +78,10 @@ export default mergeSchemas({
     },
     Chirp: {
       author: {
-        fragment: `... on Chirp { authorId }`,
+        selectionSet: `{ authorId }`,
         resolve(chirp, args, context, info) {
-          return info.mergeInfo.delegateToSchema({
-            schema: authorSchema,
+          return delegateToSchema({
+            schema: mockedAuthorSchema,
             operation: 'query',
             fieldName: 'userById',
             args: {
