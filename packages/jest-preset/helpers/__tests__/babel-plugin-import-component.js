@@ -10,8 +10,6 @@ const fixture = (filename) =>
 const tests = [
   ['code-01.txt', 'expected-01.txt'],
   ['code-02.txt', 'expected-02.txt'],
-  ['code-03.txt', 'expected-03.txt'],
-  ['code-04.txt', 'expected-04.txt'],
 ].map(([code, expected], i) => [String(++i), fixture(code), fixture(expected)]);
 
 const babelOptions = {
