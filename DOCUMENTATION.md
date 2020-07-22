@@ -585,12 +585,12 @@ export default render(<About loader={loader} render={renderAbout} />);
 
 Components (and their dependencies) imported using `importComponent` will be placed into separate chunks (i.e. asset files). Hops makes sure that all asset files containing modules used for server-side rendering are referenced in the initial HTML output.
 
-**Note about `importComponent(moduleName, [exportName])`:** We still support the "string" syntax, where you could just pass a string for the file name and another string for the export name to the `importComponent` function, but we are discouraging the use of it, because it is not compatible with type-checked code and does not provide editor integration (point & click to open the file).
+**Note about `importComponent(moduleName, [exportResolver])`:** We still support the "string" syntax, where you could just pass a string for the file name to the `importComponent` function, but we are discouraging the use of it, because it is not compatible with type-checked code and does not provide editor integration (point & click to open the file).
 
 ```javascript
 import { render, importComponent } from 'hops';
 
-const Home = importComponent('./home', 'Home');
+const Home = importComponent('./home', (namespace) => namespace.Home);
 
 export default render(<Home />);
 ```
