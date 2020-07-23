@@ -89,9 +89,9 @@ export default render(<MyApp />, { redux: { middlewares: [logger, thunk] } });
 
 ##### `actionCreators`
 
-In order to dispatch actions based on the currently matching route you can specify a list of actions for [matching urls](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/matchPath.md).
+In order to dispatch actions based on the currently matching route you can specify a list of actions for [matching urls](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/matchPath.md). Those can either be plain objects or functions returning objects. Functions get the Hops config passed in as an argument when called internally. So if you need a property from the Hops config in your action, opt for the function syntax.
 
-These objects have the same properties as the [`<Route />` component](https://reacttraining.com/react-router/core/api/Route/path-string) and an additional `action` key with which the action that is to be dispatched can be specified.
+These objects — whether plain or as the return value of a function — have the same properties as the [`<Route />` component](https://reacttraining.com/react-router/core/api/Route/path-string) and an additional `action` key with which the action that is to be dispatched can be specified.
 
 When server-side rendering/data fetching is enabled, this will dispatch matching actions on the server and prefill the store for client-side.
 
@@ -113,6 +113,10 @@ export default render(<MyApp />, {
         path: '/users/:id',
         action: ({ id }) => fetchUser(id),
       },
+      (config) => ({
+        path: '/items',
+        action: () => fetchItems(config.apiBaseUrl),
+      }),
     ],
   },
 });
