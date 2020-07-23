@@ -17,7 +17,11 @@
   },
   "hops": {
     "gracePeriod": 0,
-    "shouldPrefetchOnServer": false
+    "shouldPrefetchOnServer": false,
+    "arbitraryValue": "foo123",
+    "browserWhitelist": {
+      "arbitraryValue": true
+    }
   },
   "dependencies": {
     "hops": "*",

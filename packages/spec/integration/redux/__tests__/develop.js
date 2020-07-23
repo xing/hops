@@ -1,4 +1,7 @@
 const urlJoin = require('url-join');
+const {
+  hops: { port },
+} = require('../package.json');
 
 describe('redux development server', () => {
   let url;
@@ -124,6 +127,19 @@ describe('redux development server', () => {
       const matchParam = await getInnerText('value');
 
       expect(matchParam).toBe('foobar');
+
+      await page.close();
+    });
+
+    it('will be provided with the Hops config if passed in as a function', async () => {
+      const { page, getInnerText } = await createPage();
+      await page.goto(urlJoin(url, '/config-test'), {
+        waitUntil: 'networkidle2',
+      });
+
+      const param = await getInnerText('value');
+
+      expect(param).toBe(port);
 
       await page.close();
     });

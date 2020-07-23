@@ -50,6 +50,8 @@ const setMatchParam = (params, { match: { params: matchParams } }) => {
   };
 };
 
+const setConfigValue = (value) => ({ type: 'SET_VALUE', payload: value });
+
 const Counter = ({ count, increment, val }) => (
   <>
     <Helmet>
@@ -99,6 +101,10 @@ export default render(<ConnectedCounter />, {
         path: '/match-test/:test',
         action: setMatchParam,
       },
+      (config) => ({
+        path: '/config-test',
+        action: () => setConfigValue(config.port),
+      }),
     ],
   },
 });
