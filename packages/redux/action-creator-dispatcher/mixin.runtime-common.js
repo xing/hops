@@ -76,7 +76,10 @@ class ReduxActionCreatorRuntimeMixin extends Mixin {
 
     return Promise.all(
       actionCreators.map((actionCreator) => {
-        const { action, path, exact = true, strict = false } = actionCreator;
+        const { action, path, exact = true, strict = false } =
+          typeof actionCreator === 'function'
+            ? actionCreator(this.config)
+            : actionCreator;
         var match = matchPath(location.pathname.replace(basePathRegEx, ''), {
           path: path,
           exact: exact,
