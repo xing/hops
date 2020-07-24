@@ -18,7 +18,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "archiver": "^4.0.0",
+    "archiver": "^5.0.0",
     "aws-sdk": "^2.546.0",
     "globby": "^11.0.0",
     "hops-bootstrap": "^12.5.0",
