@@ -1,4 +1,4 @@
-const { createLocation } = require('history');
+const { parsePath } = require('history');
 const {
   strategies: {
     sync: { sequence },
@@ -36,7 +36,7 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
 
   async fetchData(data) {
     if (this.canPrefetchOnServer().every((value) => value)) {
-      await this.dispatchAll(createLocation(this.request.originalUrl));
+      await this.dispatchAll(parsePath(this.request.originalUrl));
       this.prefetchedOnServer = true;
     }
     return data;
