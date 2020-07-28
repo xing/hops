@@ -1,18 +1,12 @@
 /* global __webpack_modules__, __webpack_require__ */
 const { createElement, Component, useContext } = require('react');
 const PropTypes = require('prop-types');
-const deprecate = require('depd')('hops-react');
 const ImportComponentContext = require('./context');
 
-exports.importComponent = ({ load, moduleId }, name = 'default') => {
-  const resolve = typeof name === 'function' ? name : (module) => module[name];
-
-  if (typeof name === 'string' && name !== 'default') {
-    deprecate(
-      '[DEP002] Using a string to resolve the module of `importComponent` is deprecated and will be removed in a future major release (https://github.com/untool/untool/blob/master/DEPRECATIONS.md).'
-    );
-  }
-
+exports.importComponent = (
+  { load, moduleId },
+  resolve = (module) => module.default
+) => {
   class Importer extends Component {
     constructor({ hasModules }) {
       super();

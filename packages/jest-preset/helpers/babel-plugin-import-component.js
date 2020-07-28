@@ -5,8 +5,7 @@
  * Compiles `importComponent` calls like...
  *
  * ```javascript
- * importComponent('./test');
- * importComponent(() => import('./another-test'));
+ * importComponent(() => import('./test'));
  * ```
  *
  * ...to ones where the `require`-call is inserted.
@@ -64,45 +63,38 @@ module.exports = ({ types: t }) => ({
           ]);
         }
 
-        let importedComponent;
-        let importCallExpression;
+        let importCallExpression = argument.get('body');
         let pathReplacement = (path, moduleIdentifier) =>
           path.replaceWith(objectWithSyncRequire(moduleIdentifier));
 
-        if (t.isStringLiteral(argument)) {
-          importedComponent = argument.node.value;
-        } else {
-          t.assertArrowFunctionExpression(argument);
+        t.assertArrowFunctionExpression(argument);
 
-          importCallExpression = argument.get('body');
+        // jest adds coverage instrumentation to the arrow function so we need
+        // to find the `import()` call expression in the return statement
+        if (importCallExpression.isBlockStatement()) {
+          importCallExpression = importCallExpression
+            .get('body')
+            .find((p) => p.isReturnStatement())
+            .get('argument');
 
-          // jest adds coverage instrumentation to the arrow function so we need
-          // to find the `import()` call expression in the return statement
-          if (importCallExpression.isBlockStatement()) {
-            importCallExpression = importCallExpression
-              .get('body')
-              .find((p) => p.isReturnStatement())
-              .get('argument');
+          pathReplacement = (path, moduleIdentifier) => {
+            path.traverse({
+              CallExpression(path) {
+                if (path.get('callee').isImport()) {
+                  path.replaceWith(objectWithSyncRequire(moduleIdentifier));
+                }
+              },
+            });
 
-            pathReplacement = (path, moduleIdentifier) => {
-              path.traverse({
-                CallExpression(path) {
-                  if (path.get('callee').isImport()) {
-                    path.replaceWith(objectWithSyncRequire(moduleIdentifier));
-                  }
-                },
-              });
-
-              path.replaceWith(t.CallExpression(path.node, []));
-            };
-          }
-
-          t.assertCallExpression(importCallExpression);
-          t.assertImport(importCallExpression.get('callee'));
-
-          importedComponent = importCallExpression.get('arguments.0').node
-            .value;
+            path.replaceWith(t.CallExpression(path.node, []));
+          };
         }
+
+        t.assertCallExpression(importCallExpression);
+        t.assertImport(importCallExpression.get('callee'));
+
+        const importedComponent = importCallExpression.get('arguments.0').node
+          .value;
 
         pathReplacement(argument, importedComponent);
       });

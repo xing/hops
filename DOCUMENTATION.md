@@ -585,16 +585,6 @@ export default render(<About loader={loader} render={renderAbout} />);
 
 Components (and their dependencies) imported using `importComponent` will be placed into separate chunks (i.e. asset files). Hops makes sure that all asset files containing modules used for server-side rendering are referenced in the initial HTML output.
 
-**Note about `importComponent(moduleName, [exportName])`:** We still support the "string" syntax, where you could just pass a string for the file name and another string for the export name to the `importComponent` function, but we are discouraging the use of it, because it is not compatible with type-checked code and does not provide editor integration (point & click to open the file).
-
-```javascript
-import { render, importComponent } from 'hops';
-
-const Home = importComponent('./home', 'Home');
-
-export default render(<Home />);
-```
-
 During tests `importComponent` simply outputs the referenced component. If you'd rather like to test the `loading`- or the `error`-state of the lazy-loading placeholder component, you have to provide your own mock.
 
 **Example: check the loading state**
@@ -690,7 +680,6 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute route-bound action creators during server-side rendering **[deprecated]** |
 | `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute route-bound action creators during server-side rendering |
 
 ##### Options
@@ -737,7 +726,6 @@ _Reminder: These settings go into your `package.json` or [Hops configuration fil
 | `fragmentsFile` | `String` | `<rootDir>/fragmentTypes.json` | _no_ | Where to store the generated fragment types file |
 | `graphqlUri` | `String` | `''` | _yes_ | URI to your GraphQL endpoint or mock server |
 | `graphqlSchemaFile` | `String` | `''` | _no_ | Path to your GraphQL schema file |
-| `shouldPrefetchOnServer` | `Boolean` | `true` | _no_ | Whether Hops should execute GraphQL queries during server-side rendering **[deprecated]** |
 | `allowServerSideDataFetching` | `Boolean` | `true` | _no_ | Whether Hops is allowed to execute GraphQL queries during server-side rendering |
 
 ##### Options

@@ -4,22 +4,12 @@ exports[`ImportComponent mocked should display the loaded component 1`] = `
 Array [
   <p>
     Hello lazy 
-    world
-    !
-  </p>,
-  <p>
-    Hello lazy 
     world1
     !
   </p>,
   <p>
     Hello lazy 
     world2
-    !
-  </p>,
-  <p>
-    Hello lazy 
-    world3
     !
   </p>,
 ]

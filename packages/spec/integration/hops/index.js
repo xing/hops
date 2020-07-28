@@ -2,10 +2,8 @@ import React from 'react';
 import { importComponent, render } from 'hops';
 import { Helmet } from 'react-helmet-async';
 
-const Text = importComponent('./text');
-const Text1 = importComponent('./text', 'default');
-const Text2 = importComponent(() => import('./text'));
-const Text3 = importComponent(
+const Text1 = importComponent(() => import('./text'));
+const Text2 = importComponent(
   () => import('./text'),
   (exports) => exports.default
 );
@@ -20,10 +18,8 @@ const renderText = ({ Component, loading, ...props }) => {
 export function App() {
   return (
     <>
-      <Text loader={loader} render={renderText} subject="world" />
       <Text1 loader={loader} render={renderText} subject="world1" />
       <Text2 loader={loader} render={renderText} subject="world2" />
-      <Text3 loader={loader} render={renderText} subject="world3" />
     </>
   );
 }

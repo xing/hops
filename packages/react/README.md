@@ -53,7 +53,7 @@ export default render(<h1>hello world</h1>);
 
 The `render` function serves two main purposes: 'universalifying' or 'isomorphizing' you application, i.e. making sure your app's code can run both on a server and in a browser, and integrating `hops`'s build and runtime environments.
 
-### `importComponent(module|moduleLoader, [exportName|exportResolver])`
+### `importComponent(moduleLoader, [exportResolver])`
 
 Using the `importComponent` helper, you can asynchronously require components into your application to help you reduce asset sizes. It works similarly to [`react-loadable`](https://github.com/jamiebuilds/react-loadable), but is deeply integrated with `hops` and e.g. supports server-side-rendering.
 
@@ -68,14 +68,17 @@ const Home = importComponent(
 export default () => <Home />;
 ```
 
-If you do not specify an `exportName` or `exportResolver`, `importComponent` will fall back to the imported modules `default` export.
+If you do not specify an `exportResolver`, `importComponent` will fall back to the imported modules `default` export.
 
 `importComponent` itself returns a React component supporting some props that enable you to control module loading and (placeholder) rendering.
 
 ```javascript
 import { importComponent } from 'hops-react';
 
-const About = importComponent('./about', 'About');
+const About = importComponent(
+  () => import('./about'),
+  (namespace) => namespace.About
+);
 
 const loader = (load) =>
   Promise.race([

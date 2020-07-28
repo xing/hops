@@ -1,7 +1,5 @@
 'use strict';
 
-const deprecate = require('depd')('hops-react');
-
 module.exports = ({ types: t }) => ({
   visitor: {
     ImportDeclaration(path) {
@@ -29,24 +27,13 @@ module.exports = ({ types: t }) => ({
           );
         }
 
-        let importedComponent;
-        let leadingComments;
+        t.assertArrowFunctionExpression(argument);
+        t.assertCallExpression(argument.get('body'));
+        t.assertImport(argument.get('body.callee'));
 
-        if (t.isStringLiteral(argument)) {
-          importedComponent = argument.node.value;
-          deprecate(
-            '[DEP001] Using a string as loader for `importComponent` is deprecated and will be removed in a future major release (https://github.com/untool/untool/blob/master/DEPRECATIONS.md).'
-          );
-        } else {
-          t.assertArrowFunctionExpression(argument);
-          t.assertCallExpression(argument.get('body'));
-          t.assertImport(argument.get('body.callee'));
-
-          const { node } = argument.get('body.arguments.0');
-          importedComponent = node.value;
-          leadingComments = node.leadingComments;
-        }
-
+        const { node } = argument.get('body.arguments.0');
+        const importedComponent = node.value;
+        const leadingComments = node.leadingComments;
         const resourcePathNode = t.stringLiteral(importedComponent);
 
         argument.replaceWith(
