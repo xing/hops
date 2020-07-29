@@ -66,8 +66,11 @@ exports.StatsWritePlugin = class StatsWritePlugin {
 
           mkdirSync(dirname(statsFile), { recursive: true });
           writeFileSync(statsFile, JSON.stringify(stats), 'utf8');
-
           enhancedPromise.resolve(stats);
+        });
+
+        compiler.hooks.watchRun.tap('StatsWritePlugin', () => {
+          enhancedPromise.reset();
         });
       });
     };
