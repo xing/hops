@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.1](https://github.com/xing/hops/compare/v12.5.0...v12.5.1) (2020-07-29)
+
+
+### Bug Fixes
+
+* **webpack:** reset stats promise on watch run events ([0fea0ab](https://github.com/xing/hops/commit/0fea0abc46a102428f8d3755460c7a2f41f72624))
+
+
+
+
+
 # [12.5.0](https://github.com/xing/hops/compare/v12.4.0...v12.5.0) (2020-07-13)
 
 
