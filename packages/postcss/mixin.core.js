@@ -14,8 +14,8 @@ const getAssetPath = (...args) => trimSlashes(join(...args));
 const cssLoaderLocalOptions = {
   modules: {
     localIdentName: '[folder]-[name]-[local]-[hash:8]',
+    exportLocalsConvention: 'camelCase',
   },
-  localsConvention: 'camelCase',
   sourceMap: process.env.NODE_ENV !== 'production',
 };
 
@@ -146,7 +146,6 @@ class PostCSSMixin extends Mixin {
             options: {
               ...cssLoaderGlobalOptions,
               importLoaders: 0,
-              onlyLocals: true,
             },
           },
         },
@@ -156,7 +155,12 @@ class PostCSSMixin extends Mixin {
             options: {
               ...cssLoaderLocalOptions,
               importLoaders: 0,
-              onlyLocals: true,
+              modules: {
+                ...cssLoaderLocalOptions.modules,
+                exportLocalsConvention: 'camelCaseOnly',
+                namedExport: true,
+                exportOnlyLocals: true,
+              },
             },
           },
         },
