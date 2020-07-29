@@ -62,7 +62,7 @@ exports.importComponent = (
     render: PropTypes.func,
   };
 
-  return function Import({ loader, render, ...ownProps }) {
+  function Import({ loader, render, ...ownProps }) {
     const modules = useContext(ImportComponentContext);
 
     if (modules) {
@@ -75,5 +75,12 @@ exports.importComponent = (
       render,
       ownProps,
     });
+  }
+
+  Import.propTypes = {
+    loader: PropTypes.func,
+    render: PropTypes.func,
   };
+
+  return Import;
 };
