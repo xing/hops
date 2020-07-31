@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-alpha.1](https://github.com/xing/hops/compare/v13.0.0-alpha.0...v13.0.0-alpha.1) (2020-07-31)
+
+
+### Bug Fixes
+
+* **react:** declare propTypes for Import component ([a929c7d](https://github.com/xing/hops/commit/a929c7d20a5f477930373d1f99f2eea079a4880e))
+* **react:** remove support of react-helmet ([3ea3cc5](https://github.com/xing/hops/commit/3ea3cc534f83cb75dcf8bff61a0dad8ac4cb7d45))
+* **react:** require export resolver function in importComponent ([ff71be6](https://github.com/xing/hops/commit/ff71be69ad4d03f453d2c3bdc4177da7961c2bdd))
+* **react:** require module loader function in importComponent ([dd6e501](https://github.com/xing/hops/commit/dd6e5017422fff1e3cb20a610c9010e8acc3c2fb))
+* **react-apollo:** remove support for shouldPrefetchOnServer ([e52a467](https://github.com/xing/hops/commit/e52a467749f95d4fefacf023198166d967000f49))
+* **redux:** remove support for shouldPrefetchOnServer ([1e2e1f2](https://github.com/xing/hops/commit/1e2e1f2bd7ed21fb7d22d95b2803e6ccffcac250))
+* **webpack:** reset stats promise on watch run events ([0cd654d](https://github.com/xing/hops/commit/0cd654d33c56f068fdf5412e6e45901312948b0d))
+* update dependency archiver to v5 ([30740dc](https://github.com/xing/hops/commit/30740dc6bc34310254052cb2393bf4e900c42ba5))
+
+
+### BREAKING CHANGES
+
+* **react:** Hops does not support the synchronous
+`react-helmet`-package anymore; you have thus to update your
+`import`-statements to import the `Helmet`-component from
+`react-helmet-async` instead.
+* **react:** `importComponent` does not accept a module identifier
+as the first argument anymore, but requires you to pass in a function,
+that returns the `Promise` of the dynamic import of the module.
+* **react:** `importComponent` now requires the second argument,
+that resolves a named export, to be a function.
+* **redux:** Replace the outdated `shouldPrefetchOnServer` in your Hops
+configuration with the new config value `allowServerSideDataFetching`.
+* **react-apollo:** Replace the outdated `shouldPrefetchOnServer` in your Hops
+configuration with the new config value `allowServerSideDataFetching`.
+
+
+
+
+
 # [13.0.0-alpha.0](https://github.com/xing/hops/compare/v12.0.0-rc99...v13.0.0-alpha.0) (2020-07-23)
 
 

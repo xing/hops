@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-alpha.1](https://github.com/xing/hops/compare/v13.0.0-alpha.0...v13.0.0-alpha.1) (2020-07-31)
+
+
+### Bug Fixes
+
+* **react-apollo:** remove support for shouldPrefetchOnServer ([e52a467](https://github.com/xing/hops/commit/e52a467749f95d4fefacf023198166d967000f49))
+
+
+### BREAKING CHANGES
+
+* **react-apollo:** Replace the outdated `shouldPrefetchOnServer` in your Hops
+configuration with the new config value `allowServerSideDataFetching`.
+
+
+
+
+
 # [13.0.0-alpha.0](https://github.com/xing/hops/compare/v12.0.0-rc99...v13.0.0-alpha.0) (2020-07-23)
 
 
