@@ -23,6 +23,7 @@
     "@graphql-tools/schema": "^6.0.12",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
+    "apollo-link": "^1.2.14",
     "apollo-link-http": "^1.5.16",
     "cross-fetch": "^3.0.4",
     "graphql": "^15.0.0",
