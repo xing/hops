@@ -1,0 +1,29 @@
+{
+  "name": "fixture-graphql-mock-server-no-ssr",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "12 || 14"
+  },
+  "hops": {
+    "gracePeriod": 0,
+    "allowServerSideDataFetching": false,
+    "port": "8030",
+    "graphqlUri": "http://localhost:8030/graphql",
+    "graphqlMockSchemaFile": "<rootDir>/mock-schema.js"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js",
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-graphql": "*"
+  }
+}
