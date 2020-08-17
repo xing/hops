@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.2](https://github.com/xing/hops/compare/v12.5.1...v12.5.2) (2020-08-17)
+
+
+### Bug Fixes
+
+* **react-apollo:** prevent requests on server when SSR is turned off ([c21d481](https://github.com/xing/hops/commit/c21d481dba972edc011d8c1634d03c84c85c4eb4))
+
+
+
+
+
 ## [12.5.1](https://github.com/xing/hops/compare/v12.5.0...v12.5.1) (2020-07-29)
 
 **Note:** Version bump only for package hops-react-apollo

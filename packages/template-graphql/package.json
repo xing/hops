@@ -1,6 +1,6 @@
 {
   "name": "hops-template-graphql",
-  "version": "12.5.1",
+  "version": "12.5.2",
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "graphql-tag": "^2.10.1",
-    "hops": "^12.5.1",
-    "hops-graphql": "^12.5.1",
-    "hops-postcss": "^12.5.1",
+    "hops": "^12.5.2",
+    "hops-graphql": "^12.5.2",
+    "hops-postcss": "^12.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-apollo": "^3.1.2",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "jest": "^24.9.0",
-    "jest-preset-hops": "^12.5.1",
+    "jest-preset-hops": "^12.5.2",
     "react-test-renderer": "^16.10.2"
   },
   "jest": {

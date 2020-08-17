@@ -1,6 +1,6 @@
 {
   "name": "hops-config",
-  "version": "12.5.1",
+  "version": "12.5.2",
   "description": "Hops core configuration",
   "keywords": [
     "hops",
@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "depd": "^2.0.0",
-    "hops-bootstrap": "^12.5.1",
-    "hops-webpack": "^12.5.1"
+    "hops-bootstrap": "^12.5.2",
+    "hops-webpack": "^12.5.2"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/config#readme"
 }
