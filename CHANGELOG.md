@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-alpha.2](https://github.com/xing/hops/compare/v13.0.0-alpha.1...v13.0.0-alpha.2) (2020-08-17)
+
+
+### Bug Fixes
+
+* **react-apollo:** prevent requests on server when SSR is turned off ([6e2cdf9](https://github.com/xing/hops/commit/6e2cdf97fdf6bb0b15212920d9f05ec956af0093))
+
+
+
+
+
 # [13.0.0-alpha.1](https://github.com/xing/hops/compare/v13.0.0-alpha.0...v13.0.0-alpha.1) (2020-07-31)
 
 
