@@ -1,4 +1,4 @@
-import { makeExecutableSchema } from '@graphql-tools/schema';
+import { makeExecutableSchema } from 'graphql-tools';
 
 const typeDefs = `
   type Subject {
