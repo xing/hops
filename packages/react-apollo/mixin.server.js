@@ -10,6 +10,7 @@ const {
 
 const { ApolloProvider, getMarkupFromTree } = require('react-apollo');
 const { default: ApolloClient } = require('apollo-client');
+const { ApolloLink } = require('apollo-link');
 const { HttpLink } = require('apollo-link-http');
 const {
   InMemoryCache,
@@ -62,11 +63,17 @@ class GraphQLMixin extends Mixin {
   }
 
   enhanceClientOptions(options) {
+    const canPrefetchOnServer =
+      this.canPrefetchOnServer().every((value) => value) === true;
+    const link = canPrefetchOnServer
+      ? this.getApolloLink()
+      : ApolloLink.empty();
+
     return {
       ...options,
-      link: this.getApolloLink(),
       cache: this.getApolloCache(),
-      ssrMode: true,
+      ssrMode: canPrefetchOnServer,
+      link,
     };
   }
 
