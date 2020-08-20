@@ -11,7 +11,32 @@ exports.initialize = function initialize(overrides = {}, ...args) {
   return exports.bootstrap(config, mixins, ...args);
 };
 
-exports.bootstrap = function bootstrap(config, mixins, ...args) {
+function hasClasses(mixins) {
+  return mixins.every((mixin) => mixin instanceof Object);
+}
+
+exports.bootstrap = function bootstrap(
+  { _mixins, _type = 'core', _workspace, ...overrides } = {},
+  ...args
+) {
+  const config = _mixins
+    ? getConfig({
+        getDefaults() {
+          return {
+            rootDir: overrides.rootDir || '',
+            name: overrides.name || '',
+            version: overrides.version || '',
+            workspace: _workspace || '',
+            settings: overrides,
+          };
+        },
+        _mixins,
+      })
+    : getConfig(overrides);
+
+  const mixins =
+    _mixins && hasClasses(_mixins[_type]) ? _mixins[_type] : getMixins(config);
+
   const strategies = {
     ...mixins.reduce(
       (result, mixin) => ({ ...result, ...mixin.strategies }),
