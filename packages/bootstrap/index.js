@@ -8,6 +8,10 @@ const { getConfig, getMixins } = require('./lib/config');
 exports.initialize = function initialize(overrides = {}, ...args) {
   const config = getConfig(overrides);
   const mixins = getMixins(config);
+  return exports.bootstrap(config, mixins, ...args);
+};
+
+exports.bootstrap = function bootstrap(config, mixins, ...args) {
   const strategies = {
     ...mixins.reduce(
       (result, mixin) => ({ ...result, ...mixin.strategies }),
