@@ -25,7 +25,7 @@
     "eprom": "^1.0.0",
     "express": "^4.17.1",
     "finalhandler": "^1.1.2",
-    "helmet": "^3.21.1",
+    "helmet": "^4.0.0",
     "hops-bootstrap": "^13.0.0-alpha.2",
     "hops-mixin": "^13.0.0-alpha.2",
     "hops-yargs": "^13.0.0-alpha.2",
