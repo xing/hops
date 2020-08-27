@@ -44,7 +44,10 @@ class ExpressMixin extends Mixin {
       const mime = require('mime');
       const cookieParser = require('cookie-parser');
       const { distDir } = this.config;
-      middlewares.preinitial.push(helmet(), cookieParser());
+      middlewares.preinitial.push(
+        helmet({ contentSecurityPolicy: false }),
+        cookieParser()
+      );
       middlewares.files.push(
         express.static(distDir, {
           maxAge: '1y',
