@@ -14,7 +14,7 @@
   "dependencies": {
     "ajv": "^6.10.2",
     "check-error": "^1.0.2",
-    "cosmiconfig": "^6.0.0",
+    "cosmiconfig": "^7.0.0",
     "debug": "^4.1.1",
     "dotenv": "^8.1.0",
     "enhanced-resolve": "^4.1.1",
