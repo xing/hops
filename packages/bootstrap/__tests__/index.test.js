@@ -1,17 +1,15 @@
+/* eslint-env node, jest */
 const { join } = require('path');
 // eslint-disable-next-line node/no-missing-require
-const test = require('ava');
-// eslint-disable-next-line node/no-missing-require
-const sinon = require('sinon');
 const { initialize } = require('..');
 
-test('Should create a explicitly given mixin', (t) => {
+test('Should create a explicitly given mixin', () => {
   initialize({ mixins: [join(__dirname, 'fixtures', 'test-mixin')] });
 
-  t.truthy(require('./fixtures/test-mixin').mixinCreated);
+  expect(require('./fixtures/test-mixin').mixinCreated).toBeTruthy();
 });
 
-test('Should connect mixins through strategies', (t) => {
+test('Should connect mixins through strategies', () => {
   const instance = initialize({
     mixins: [
       join(__dirname, 'fixtures', 'a-mixin'),
@@ -19,10 +17,10 @@ test('Should connect mixins through strategies', (t) => {
     ],
   });
 
-  t.is(instance.callFirst(), 'execute callSecond');
+  expect(instance.callFirst()).toBe('execute callSecond');
 });
 
-test('Should support override stategie by order of mixins', (t) => {
+test('Should support override stategie by order of mixins', () => {
   const instance1 = initialize({
     mixins: [
       join(__dirname, 'fixtures', 'a-mixin'),
@@ -36,11 +34,11 @@ test('Should support override stategie by order of mixins', (t) => {
     ],
   });
 
-  t.is(instance1.override(), 'from another-mixin');
-  t.is(instance2.override(), 'from a-mixin');
+  expect(instance1.override()).toBe('from another-mixin');
+  expect(instance2.override()).toBe('from a-mixin');
 });
 
-test('Should support parallel stategie', (t) => {
+test('Should support parallel stategie', () => {
   const instance = initialize({
     mixins: [
       join(__dirname, 'fixtures', 'a-mixin'),
@@ -48,10 +46,10 @@ test('Should support parallel stategie', (t) => {
     ],
   });
 
-  t.deepEqual(instance.parallel(), ['from a-mixin', 'from another-mixin']);
+  expect(instance.parallel()).toEqual(['from a-mixin', 'from another-mixin']);
 });
 
-test('Should support pipe stategie', (t) => {
+test('Should support pipe stategie', () => {
   const instance = initialize({
     mixins: [
       join(__dirname, 'fixtures', 'a-mixin'),
@@ -59,10 +57,10 @@ test('Should support pipe stategie', (t) => {
     ],
   });
 
-  t.is(instance.pipe(''), 'Hello World');
+  expect(instance.pipe('')).toBe('Hello World');
 });
 
-test('Should support compose stategie', (t) => {
+test('Should support compose stategie', () => {
   const instance = initialize({
     mixins: [
       join(__dirname, 'fixtures', 'a-mixin'),
@@ -70,12 +68,12 @@ test('Should support compose stategie', (t) => {
     ],
   });
 
-  t.deepEqual(instance.compose({ input: 0 }), {
+  expect(instance.compose({ input: 0 })).toEqual({
     'a-mixin': { 'another-mixin': { input: 0 } },
   });
 });
 
-test('Should allow placeholders in the configuration which are resolved', (t) => {
+test('Should allow placeholders in the configuration which are resolved', () => {
   const instance = initialize({
     key: 'value',
     nested: {
@@ -88,16 +86,16 @@ test('Should allow placeholders in the configuration which are resolved', (t) =>
 
   const config = instance.getConfig();
 
-  t.is(config.result1, 'value');
-  t.is(config.result2, 'value');
+  expect(config.result1).toBe('value');
+  expect(config.result2).toBe('value');
 });
 
-test('Should allow env-vars in the configuration which are resolved', (t) => {
-  process.env.UNTOOL_TEST_KEY = 'value';
+test('Should allow env-vars in the configuration which are resolved', () => {
+  process.env.HOPS_TEST_KEY = 'value';
   process.env.ENV_KEY_WITH_DEFAULT2 = 'value';
 
   const instance = initialize({
-    result1: '[UNTOOL_TEST_KEY]',
+    result1: '[HOPS_TEST_KEY]',
     result2: '[ENV_KEY_WITH_DEFAULT1=default-value]',
     result3: '[ENV_KEY_WITH_DEFAULT2=default-value]',
     mixins: [join(__dirname, 'fixtures', 'config-mixin')],
@@ -105,40 +103,40 @@ test('Should allow env-vars in the configuration which are resolved', (t) => {
 
   const config = instance.getConfig();
 
-  t.is(config.result1, 'value');
-  t.is(config.result2, 'default-value');
-  t.is(config.result3, 'value');
+  expect(config.result1).toBe('value');
+  expect(config.result2).toBe('default-value');
+  expect(config.result3).toBe('value');
 });
 
-test('Should ignore non-string values when checking for placeholders', (t) => {
-  const spy = sinon.spy(RegExp.prototype, 'test');
+test('Should ignore non-string values when checking for placeholders', () => {
+  const spy = jest.spyOn(RegExp.prototype, 'test');
   const preset = {
     result1: () => '[SOME_ENV_VAR]',
     result2: () => '<result1>',
     result3: 'foobar',
     result4: '<result3>',
-    result5: '[UNTOOL_TEST_KEY]',
+    result5: '[HOPS_TEST_KEY]',
     mixins: [join(__dirname, 'fixtures', 'config-mixin')],
   };
   const instance = initialize(preset);
   const config = instance.getConfig();
 
-  t.is(preset.result1, config.result1);
-  t.is(preset.result2, config.result2);
-  t.false(spy.calledWith(preset.result1));
-  t.false(spy.calledWith(preset.result2));
-  t.true(spy.calledWith('<result3>'));
-  t.true(spy.calledWith('[UNTOOL_TEST_KEY]'));
+  expect(preset.result1).toBe(config.result1);
+  expect(preset.result2).toBe(config.result2);
+  expect(spy).not.toHaveBeenCalledWith(preset.result1);
+  expect(spy).not.toHaveBeenCalledWith(preset.result2);
+  expect(spy).toHaveBeenCalledWith('<result3>');
+  expect(spy).toHaveBeenCalledWith('[HOPS_TEST_KEY]');
 
-  spy.restore();
+  spy.mockRestore();
 });
 
-test('Should support validate stategie decorator', (t) => {
+test('Should support validate stategie decorator', () => {
   const instance = initialize({
     mixins: [join(__dirname, 'fixtures', 'validate-mixin')],
   });
 
-  t.throws(() => instance.validateAndFailArgs(), 'This is invalid');
-  t.throws(() => instance.validateAndFailResult(), 'This is invalid');
-  t.is(instance.validateAndSucceed(), 'Call result');
+  expect(() => instance.validateAndFailArgs()).toThrow('This is invalid');
+  expect(() => instance.validateAndFailResult()).toThrow('This is invalid');
+  expect(instance.validateAndSucceed()).toBe('Call result');
 });

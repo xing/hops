@@ -1,8 +1,8 @@
 const { callable } = require('mixinable');
-const {
-  Mixin,
-  internal: { validate },
-} = require('../..');
+const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('../..');
+
+const { validate } = bootstrap;
 
 class ValidateMixin extends Mixin {
   validateAndFailArgs() {

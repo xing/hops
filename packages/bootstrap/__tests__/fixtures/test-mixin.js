@@ -1,4 +1,4 @@
-const { Mixin } = require('../..');
+const { Mixin } = require('hops-mixin');
 
 class TestMixin extends Mixin {
   constructor(...args) {
