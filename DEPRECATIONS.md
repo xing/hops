@@ -14,4 +14,4 @@ Deep imports to `hops-react/lib/runtime` are deprecated and should be changed to
 
 ### DEP0005
 
-`hops-mixin` is deprecated, please import the `Mixin` class from `hops-bootstrap` instead and the strategies from `mixinable`.
+`hops-mixin` is deprecated, please import the `Mixin` class and strategies from `hops-bootstrap` instead.
