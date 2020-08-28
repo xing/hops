@@ -2,7 +2,7 @@
 
 const { initialize } = require('hops-bootstrap');
 
-const { createRenderMiddleware } = require('./lib/middlewares/render');
+const { createRenderMiddlewareWrapper } = require('./lib/middlewares/render');
 const { createStatsMiddleware } = require('./lib/middlewares/stats');
 
 const { RenderPlugin } = require('./lib/plugins/render');
@@ -21,8 +21,11 @@ const configure = (config, options) => ({
   getBuildConfig(...args) {
     return initialize(config, options).getBuildConfig(...args);
   },
+  getWebpackConfig(...args) {
+    return initialize(config, options).getWebpackConfig(...args);
+  },
   internal: {
-    createWebpackMiddleware: createRenderMiddleware,
+    createWebpackMiddleware: createRenderMiddlewareWrapper,
     createStatsMiddleware,
     RenderPlugin,
     StatsWritePlugin,

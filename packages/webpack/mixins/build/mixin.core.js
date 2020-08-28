@@ -38,10 +38,18 @@ class WebpackBuildMixin extends Mixin {
       const buildRequests = [];
       this.collectBuildRequests(buildRequests);
 
-      const compilations = buildRequests.map(({ buildName }) => {
-        const compilation = forkCompilation(this, [buildName]);
-        return toPromise(compilation);
-      });
+      const compilations = buildRequests.map(
+        ({ buildName, webpackTarget, options = {} }) => {
+          const compilation = forkCompilation(
+            this,
+            buildName,
+            webpackTarget,
+            options
+          );
+
+          return toPromise(compilation);
+        }
+      );
 
       return Promise.all(compilations).then((allStats) => {
         allStats.forEach((stats) => {
@@ -77,8 +85,8 @@ class WebpackBuildMixin extends Mixin {
   }
 
   collectBuildRequests(requests) {
-    requests.push({ buildName: 'node' });
-    requests.push({ buildName: 'build' });
+    requests.push({ buildName: 'node', webpackTarget: 'server' });
+    requests.push({ buildName: 'build', webpackTarget: 'browser' });
   }
 
   handleArguments(argv) {

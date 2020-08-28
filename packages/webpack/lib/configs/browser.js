@@ -1,19 +1,18 @@
-const { dirname, resolve } = require('path');
+const { dirname, relative } = require('path');
 const {
   EnvironmentPlugin,
-  HotModuleReplacementPlugin,
   HashedModuleIdsPlugin,
   NamedModulesPlugin,
   optimize,
 } = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
 
-const { LimitChunkCountPlugin } = optimize;
+const { ModuleConcatenationPlugin } = optimize;
 
-module.exports = function getConfig(config, name) {
+module.exports = function getConfig(config, name, isProduction) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
-  const isProduction = process.env.NODE_ENV === 'production';
 
   const jsLoaderConfig = {
     test: [/\.m?js$/],
@@ -30,8 +29,8 @@ module.exports = function getConfig(config, name) {
           require.resolve('@babel/preset-env'),
           {
             modules: false,
-            useBuiltIns: 'entry',
-            targets: { node: config.node },
+            useBuiltIns: 'usage',
+            targets: { browsers: config.browsers },
             corejs: 3,
             include: [],
             exclude: [],
@@ -49,7 +48,6 @@ module.exports = function getConfig(config, name) {
     options: {
       name: getAssetPath('[name]-[hash:16].[ext]'),
       esModule: false,
-      emitFile: false,
     },
   };
 
@@ -65,7 +63,6 @@ module.exports = function getConfig(config, name) {
         options: {
           limit: 10000,
           name: getAssetPath('[name]-[hash:16].[ext]'),
-          emitFile: false,
           esModule: false,
         },
       },
@@ -75,7 +72,7 @@ module.exports = function getConfig(config, name) {
   const allLoaderConfigs = [jsLoaderConfig, urlLoaderConfig, fileLoaderConfig];
 
   return {
-    // invalid for webpack, required with hops mixins
+    // invalid for webpack, needed for hops mixins
     loaderConfigs: {
       jsLoaderConfig,
       urlLoaderConfig,
@@ -83,25 +80,18 @@ module.exports = function getConfig(config, name) {
       allLoaderConfigs,
     },
     name,
-    target: 'async-node',
     mode: isProduction ? 'production' : 'development',
     bail: isProduction,
     context: config.rootDir,
-    entry: [
-      ...(isProduction
-        ? []
-        : [require.resolve('webpack/hot/signal') + '?RELOAD']),
-      require.resolve('core-js/stable'),
-      require.resolve('../shims/node'),
-    ],
+    entry: require.resolve('../shims/build'),
     output: {
-      path: config.serverDir,
+      path: config.buildDir,
       publicPath: '/',
       pathinfo: true,
-      filename: config.serverFile,
-      libraryTarget: 'commonjs2',
+      filename: getAssetPath(`${config.name}-[chunkhash:12].js`),
+      chunkFilename: getAssetPath(`${config.name}-[id]-[chunkhash:12].js`),
       devtoolModuleFilenameTemplate: (info) =>
-        resolve(info.absoluteResourcePath),
+        relative(config.rootDir, info.absoluteResourcePath),
     },
     resolve: {
       modules: getModules(config.rootDir),
@@ -109,13 +99,16 @@ module.exports = function getConfig(config, name) {
         // todo: remove this if not used anymore
         '@untool/entrypoint': config.rootDir,
         'hops/entrypoint': config.rootDir,
+        'regenerator-runtime': dirname(
+          require.resolve('regenerator-runtime/package.json')
+        ),
         'core-js': dirname(require.resolve('core-js/package.json')),
       },
       extensions: ['.mjs', '.js'],
       mainFields: [
-        'esnext:server',
-        'jsnext:server',
-        'server',
+        'esnext:browser',
+        'jsnext:browser',
+        'browser',
         'module',
         'esnext',
         'jsnext',
@@ -129,20 +122,29 @@ module.exports = function getConfig(config, name) {
     },
     externals: [],
     optimization: {
-      minimizer: [],
+      splitChunks: {
+        chunks: 'all',
+        name: false,
+      },
+      minimizer: [
+        new TerserPlugin({
+          extractComments: false,
+          terserOptions: {
+            output: { comments: false },
+          },
+        }),
+      ],
     },
     plugins: [
-      new LimitChunkCountPlugin({ maxChunks: 1 }),
       new (isProduction ? HashedModuleIdsPlugin : NamedModulesPlugin)(),
-      isProduction ? { apply: () => {} } : new HotModuleReplacementPlugin(),
+      new ModuleConcatenationPlugin(),
       new EnvironmentPlugin({ NODE_ENV: 'development' }),
     ],
     performance: {
       hints: false,
-      maxEntrypointSize: 52428800,
-      maxAssetSize: 52428800,
+      maxEntrypointSize: 262144,
+      maxAssetSize: 262144,
     },
-    devtool: 'inline-source-map',
-    watchOptions: { aggregateTimeout: 300, ignored: /node_modules/ },
+    devtool: 'hidden-source-map',
   };
 };
