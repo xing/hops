@@ -1,5 +1,6 @@
 const isPlainObject = require('is-plain-obj');
-const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('hops-bootstrap');
 const { sync, async } = require('mixinable');
 
 const { validate, invariant } = bootstrap;

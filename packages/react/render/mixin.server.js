@@ -3,7 +3,8 @@
 const { isValidElement } = require('react');
 const isPlainObject = require('is-plain-obj');
 const { override: overrideSync, async } = require('mixinable');
-const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('hops-bootstrap');
 const renderToFragments = require('../lib/fragments');
 const getAssets = require('../lib/assets');
 const getResourceHints = require('../lib/resource-hints');

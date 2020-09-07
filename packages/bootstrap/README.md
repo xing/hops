@@ -187,7 +187,7 @@ If you create custom mixins that define additional mixin strategies, you probabl
 ### `Mixin(config, options)`
 
 ```javascript
-import { Mixin } from 'hops-bootstrap';
+import { Mixin } from 'hops-mixin';
 
 class MyMixin extends Mixin {
   myMethod() {}
@@ -202,7 +202,7 @@ The `Mixin` constructor expects two arguments: `config`, the main configuration 
 
 ```javascript
 import { override } from 'mixinable';
-import { Mixin } from 'hops-bootstrap';
+import { Mixin } from 'hops-mixin';
 
 class MyMixin extends Mixin {
   constructor(config, options) {
@@ -231,42 +231,3 @@ Note that you can call all defined mixinable methods directly on your mixin inst
 This is a semi-private function that is mainly being used internally, for example by [`hops-yargs`](../yargs/README.md). It returns the core mixin container - this allows you to call all defined mixin methods.
 
 You will only ever have to call it if you want to use `hops-bootstrap` programmatically. You can pass it an `configOverrides` object that will be merged into the main config object, and and options object mixins might use instead of CLI arguments.
-
-#### strategies
-
-Strategies allow to define mixin hooks that are usable by other mixins. There are various types of strategies. `callable` will make the method available to other mixins. Methods with strategy `pipe` pass each implementation's output to the next, using the first argument as the initial value. All other arguments are being passed to all implementations as-is.
-
-For a complete list of available strategies, have a look at the [mixinable documentation](https://github.com/untool/mixinable).
-
-##### Callable example
-
-A mixin that exposes a method to retrieve the build config.
-
-```javascript
-const {
-  Mixin,
-  strategies: { sync: callable },
-} = require('hops-bootstrap');
-
-class BuildConfigMixin extends Mixin {
-  getBuildConfig() {
-    return this.buildConfig;
-  }
-}
-
-MyMixin.strategies = {
-  getBuildConfig: callable,
-};
-```
-
-Other mixins are now able to call the method.
-
-```javascript
-const { Mixin } = require('hops-bootstrap');
-
-class ConsumerMixin extends Mixin {
-  myMethod() {
-    const config = this.getBuildConfig();
-  }
-}
-```

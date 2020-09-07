@@ -1,20 +1,9 @@
 'use strict';
 
 const debug = require('debug')('hops:bootstrap');
-const isPlainObject = require('is-plain-obj');
-const { async, define, sync } = require('mixinable');
+const { define } = require('mixinable');
 
 const { getConfig, getMixins } = require('./lib/config');
-
-exports.Mixin = class Mixin {
-  constructor(config, ...args) {
-    const options = args[args.length - 1];
-    this.config = config;
-    this.options = isPlainObject(options) ? options : {};
-  }
-};
-
-exports.strategies = { async, sync };
 
 exports.initialize = function initialize(overrides = {}, ...args) {
   const config = getConfig(overrides);

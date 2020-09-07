@@ -4,7 +4,8 @@ const get = require('lodash.get');
 const set = require('lodash.set');
 const debug = require('debug');
 const { sync } = require('mixinable');
-const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('hops-bootstrap');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 
 const { sequence, callable } = sync;

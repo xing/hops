@@ -3,7 +3,8 @@ const { join } = require('path');
 const isPlainObject = require('is-plain-obj');
 const EnhancedPromise = require('eprom');
 const { async } = require('mixinable');
-const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('hops-bootstrap');
 const { StatsWritePlugin } = require('../../lib/plugins/stats');
 
 const { callable } = async;
