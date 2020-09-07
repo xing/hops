@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-rc.0](https://github.com/xing/hops/compare/v13.0.0-alpha.2...v13.0.0-rc.0) (2020-09-07)
+
+
+### Bug Fixes
+
+* update dependency find-up to v5 ([ce11652](https://github.com/xing/hops/commit/ce1165227b2a0782f6e945e0a1c8de8adb1a4ea9))
+* update dependency terser-webpack-plugin to v4 ([b0c5132](https://github.com/xing/hops/commit/b0c51320984d42bce065718cf8626080a75928a4))
+
+
+
+
+
 # [13.0.0-alpha.2](https://github.com/xing/hops/compare/v13.0.0-alpha.1...v13.0.0-alpha.2) (2020-08-17)
 
 **Note:** Version bump only for package hops-webpack

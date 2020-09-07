@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-rc.0](https://github.com/xing/hops/compare/v13.0.0-alpha.2...v13.0.0-rc.0) (2020-09-07)
+
+
+### Bug Fixes
+
+* remove superfluous dependencies ([afb2de0](https://github.com/xing/hops/commit/afb2de0063c3031b215cb8d989c3babe2aa81231))
+* **express:** disable helmet csp option for now ([1683035](https://github.com/xing/hops/commit/16830354363b7f1faae88b65304eed3f71e34699))
+* update dependency cosmiconfig to v7 ([44e0f84](https://github.com/xing/hops/commit/44e0f84dfb464e2e9df776f4636185fbaf126c04))
+* update dependency find-up to v5 ([ce11652](https://github.com/xing/hops/commit/ce1165227b2a0782f6e945e0a1c8de8adb1a4ea9))
+* update dependency helmet to v4 ([712ce25](https://github.com/xing/hops/commit/712ce25e949bd5ee3b85edd1d2b0ba5a42147180))
+* update dependency mini-css-extract-plugin to ^0.10.0 ([f77a14f](https://github.com/xing/hops/commit/f77a14f23b217d301446f05bc207a0f8a2a8a917))
+* update dependency terser-webpack-plugin to v4 ([b0c5132](https://github.com/xing/hops/commit/b0c51320984d42bce065718cf8626080a75928a4))
+* update dependency typescript to v4 ([d2ec9fc](https://github.com/xing/hops/commit/d2ec9fc52063694fd46a5dafe42f9317bf96262e))
+
+
+### Reverts
+
+* Revert "chore: deprecate "hops-mixin" in favor of "hops-bootstrap"" ([79438bb](https://github.com/xing/hops/commit/79438bb1a2054f5ef8362d59b4aefd412cd9be86))
+
+
+
+
+
 # [13.0.0-alpha.2](https://github.com/xing/hops/compare/v13.0.0-alpha.1...v13.0.0-alpha.2) (2020-08-17)
 
 
