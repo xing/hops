@@ -1,4 +1,4 @@
-const { Mixin } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
 const { createCompiler } = require('../../lib/utils/compiler');
 
 class WebpackDevelopMixin extends Mixin {

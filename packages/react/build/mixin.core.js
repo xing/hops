@@ -1,4 +1,4 @@
-const { Mixin } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
 
 class ReactCoreMixin extends Mixin {
   configureBuild(webpackConfig, { fileLoaderConfig, jsLoaderConfig }, target) {

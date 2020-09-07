@@ -1,4 +1,4 @@
-const { Mixin } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
 
 class ImportComponentCoreMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig }) {

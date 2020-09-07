@@ -1,4 +1,4 @@
-const { Mixin } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
 
 class WebpackStartMixin extends Mixin {
   registerCommands(yargs) {

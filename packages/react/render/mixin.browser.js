@@ -6,7 +6,8 @@ const { isValidElement } = require('react');
 const { unmountComponentAtNode, hydrate, render } = require('react-dom');
 const isPlainObject = require('is-plain-obj');
 const { override, async } = require('mixinable');
-const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('hops-bootstrap');
 
 const { compose, parallel, pipe } = async;
 const { validate, invariant } = bootstrap;

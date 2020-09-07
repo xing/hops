@@ -187,7 +187,7 @@ If you create custom mixins that define additional mixin strategies, you probabl
 ### `Mixin(config, options)`
 
 ```javascript
-import { Mixin } from 'hops-bootstrap';
+import { Mixin } from 'hops-mixin';
 
 class MyMixin extends Mixin {
   myMethod() {}
@@ -202,7 +202,7 @@ The `Mixin` constructor expects two arguments: `config`, the main configuration 
 
 ```javascript
 import { override } from 'mixinable';
-import { Mixin } from 'hops-bootstrap';
+import { Mixin } from 'hops-mixin';
 
 class MyMixin extends Mixin {
   constructor(config, options) {

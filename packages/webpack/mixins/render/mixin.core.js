@@ -1,7 +1,8 @@
 const { join } = require('path');
 const { async } = require('mixinable');
 const { join: joinUrl, ensureLeadingSlash } = require('pathifist');
-const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('hops-bootstrap');
 const {
   createRenderMiddleware,
   tryLoadRenderMiddleware,

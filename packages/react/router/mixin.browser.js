@@ -1,4 +1,4 @@
-const { Mixin } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
 const { createElement } = require('react');
 const { BrowserRouter } = require('react-router-dom');
 const { ensureLeadingSlash, trimTrailingSlash } = require('pathifist');

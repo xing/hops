@@ -1,5 +1,5 @@
 const minimatch = require('minimatch');
-const { Mixin } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
 
 function include(patterns) {
   return (path) =>

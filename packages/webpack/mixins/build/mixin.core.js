@@ -1,6 +1,7 @@
 const debug = require('debug')('hops:webpack:stats');
 const { sync, async } = require('mixinable');
-const { Mixin, internal: bootstrap } = require('hops-bootstrap');
+const { Mixin } = require('hops-mixin');
+const { internal: bootstrap } = require('hops-bootstrap');
 
 const { sequence } = sync;
 const { callable } = async;
