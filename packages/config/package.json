@@ -18,8 +18,7 @@
   },
   "dependencies": {
     "depd": "^2.0.0",
-    "hops-bootstrap": "^13.0.0-alpha.2",
-    "hops-webpack": "^13.0.0-alpha.2"
+    "hops-bootstrap": "^13.0.0-alpha.2"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/config#readme"
 }
