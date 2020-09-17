@@ -7,13 +7,6 @@ describe('graphql development client', () => {
     url = await HopsCLI.start();
   });
 
-  it('renders a list of commits', async () => {
-    const { page } = await createPage();
-    await page.goto(url, { waitUntil: 'networkidle2' });
-    await page.waitForSelector('#commits', { timeout: 10000 });
-    await page.close();
-  });
-
   describe('/html', () => {
     it('should render a 500 error page for an invalid status 200 response', async () => {
       const response = await fetch(`${url}html`);
