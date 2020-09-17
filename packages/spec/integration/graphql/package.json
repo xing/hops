@@ -10,7 +10,7 @@
     "mixins": [
       "./"
     ],
-    "graphqlUri": "https://www.graphqlhub.com/graphql"
+    "graphqlUri": "https://some.graphql/api"
   },
   "jest": {
     "testEnvironment": "../../helpers/env.js",
