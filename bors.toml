@@ -4,8 +4,18 @@ status = [
   "canarist/1"
 ]
 
+pr_status = [
+  "continuous-integration/travis-ci/push",
+  "canarist/0",
+  "canarist/1"
+]
+
+block_labels = [
+  ":hand: blocked",
+  ":construction: wip",
+  "on hold"
+]
+
 required_approvals = 1
-
 delete_merged_branches = true
-
 cut_body_after = "\n\n"
