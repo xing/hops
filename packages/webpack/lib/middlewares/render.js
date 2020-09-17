@@ -17,10 +17,18 @@ function createRenderMiddleware(buildConfigArgs, watch, mixin) {
   }
 
   const enhancedPromise = new EnhancedPromise();
+  let middleware;
 
   compilation.subscribe(({ output }) => {
     enhancedPromise.reset();
-    enhancedPromise.resolve(loadRenderMiddleware(output));
+
+    if (middleware) {
+      process.emit('RELOAD');
+    } else {
+      middleware = loadRenderMiddleware(output);
+    }
+
+    enhancedPromise.resolve(middleware);
   });
 
   return function renderMiddleware(req, res, next) {
