@@ -17,7 +17,7 @@
     "cosmiconfig": "^7.0.0",
     "debug": "^4.1.1",
     "dotenv": "^8.1.0",
-    "enhanced-resolve": "^4.1.1",
+    "enhanced-resolve": "^5.0.0",
     "escape-string-regexp": "^4.0.0",
     "find-up": "^5.0.0",
     "flat": "^5.0.0",
