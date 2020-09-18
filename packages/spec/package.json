@@ -29,7 +29,7 @@
     "@graphql-tools/mock": "^6.0.0",
     "@graphql-tools/schema": "^6.0.0",
     "@graphql-tools/stitch": "^6.0.0",
-    "@testing-library/react": "^10.0.0",
+    "@testing-library/react": "^11.0.0",
     "create-hops-app": "^13.0.0-rc.0",
     "cross-fetch": "^3.0.4",
     "fs-extra": "^9.0.0",
