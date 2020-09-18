@@ -46,7 +46,7 @@
     "webpack": "^4.41.0",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-sources": "^1.4.3",
+    "webpack-sources": "^2.0.0",
     "zen-observable": "^0.8.15"
   },
   "engines": {
