@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.3](https://github.com/xing/hops/compare/v12.5.2...v12.5.3) (2020-09-21)
+
+
+### Bug Fixes
+
+* update dependency cosmiconfig to v7 ([8849985](https://github.com/xing/hops/commit/8849985d29f4d451fb22a193de017bec65927c26))
+* update dependency find-up to v5 ([63f4fa9](https://github.com/xing/hops/commit/63f4fa91aa984dba53d8c25e6460d5b8cf4f7e3e))
+
+
+
+
+
 ## [12.5.2](https://github.com/xing/hops/compare/v12.5.1...v12.5.2) (2020-08-17)
 
 **Note:** Version bump only for package hops-bootstrap

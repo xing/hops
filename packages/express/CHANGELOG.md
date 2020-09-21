@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.3](https://github.com/xing/hops/compare/v12.5.2...v12.5.3) (2020-09-21)
+
+
+### Bug Fixes
+
+* **express:** disable helmet csp option for now ([c235f32](https://github.com/xing/hops/commit/c235f3295cd014e9146f2138fe1edd95a53f2f52))
+* update dependency helmet to v4 ([74634e9](https://github.com/xing/hops/commit/74634e93dcc6aff13ccb6fa407f878de37fa455b))
+
+
+
+
+
 ## [12.5.2](https://github.com/xing/hops/compare/v12.5.1...v12.5.2) (2020-08-17)
 
 **Note:** Version bump only for package hops-express

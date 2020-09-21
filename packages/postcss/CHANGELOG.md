@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.3](https://github.com/xing/hops/compare/v12.5.2...v12.5.3) (2020-09-21)
+
+
+### Bug Fixes
+
+* update dependency mini-css-extract-plugin to ^0.10.0 ([ac54eb0](https://github.com/xing/hops/commit/ac54eb0a0e834f78e746b1ddac164f8941bc807c))
+
+
+
+
+
 ## [12.5.2](https://github.com/xing/hops/compare/v12.5.1...v12.5.2) (2020-08-17)
 
 **Note:** Version bump only for package hops-postcss

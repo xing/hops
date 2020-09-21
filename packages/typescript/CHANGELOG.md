@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.3](https://github.com/xing/hops/compare/v12.5.2...v12.5.3) (2020-09-21)
+
+
+### Bug Fixes
+
+* update dependency typescript to v4 ([b67438a](https://github.com/xing/hops/commit/b67438a729f09ba66edd156d99bba3370801a555))
+
+
+
+
+
 ## [12.5.2](https://github.com/xing/hops/compare/v12.5.1...v12.5.2) (2020-08-17)
 
 **Note:** Version bump only for package hops-typescript
