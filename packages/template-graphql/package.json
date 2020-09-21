@@ -28,7 +28,7 @@
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
-    "jest": "^24.9.0",
+    "jest": "^26.0.0",
     "jest-preset-hops": "^12.5.3",
     "react-test-renderer": "^16.10.2"
   },
