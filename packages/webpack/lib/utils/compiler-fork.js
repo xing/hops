@@ -1,8 +1,11 @@
 const { join } = require('path');
-const { serializeError } = require('serialize-error');
 
 const { configure } = require('../../');
-const { BuildError, CompilerError } = require('../utils/errors');
+const {
+  BuildError,
+  CompilerError,
+  serializeError,
+} = require('../utils/errors');
 const { createCompiler } = require('./compiler');
 
 process.on('message', (message) => {
