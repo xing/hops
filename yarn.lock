@@ -6249,9 +6249,9 @@ etag@~1.8.1:
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
 event-source-polyfill@^1.0.9:
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/event-source-polyfill/-/event-source-polyfill-1.0.18.tgz#186488ddb81b4efce3e22f59c2fa68bd0df27c56"
-  integrity sha512-4ooLMUkUYFNXjYl96twwoMkXrhwmue5aI5ayU4ORswP2b8F6bYGNsdkYqutWV77DKJLI+ZRRLvZZTSuZcUCVTA==
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/event-source-polyfill/-/event-source-polyfill-1.0.20.tgz#cd40856d79bd402fe3ed6a6c07cb4bb50600d7b2"
+  integrity sha512-+uOWalBp4xnbtSwKsRfqkVMnx1jPHNjC0PISYBjGJqV8N3YVxnkdm5ZqzO0RCRQvrQy0TFC32+nFcEcA+dZ+gA==
 
 eventemitter3@^3.1.0:
   version "3.1.2"
