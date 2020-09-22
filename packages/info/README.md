@@ -71,4 +71,4 @@ module.exports = class FooMixin extends Mixin {
 };
 ```
 
-Additionally, you can use the helper methods defined on our semi-private [doctor](../info/lib/doctor.js) object that is being passed into this hook.
+Additionally, you can use the helper methods defined on our semi-private [doctor](./doctor/index.js) object that is being passed into this hook.

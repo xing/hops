@@ -1,3 +1,1 @@
-module.exports = require('hops-bootstrap').internal.getConfig({
-  untoolNamespace: 'hops',
-});
+module.exports = require('hops-bootstrap').internal.getConfig();

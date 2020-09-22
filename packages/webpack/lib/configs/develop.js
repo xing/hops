@@ -91,8 +91,6 @@ module.exports = function getConfig(config, name) {
     resolve: {
       modules: getModules(config.rootDir),
       alias: {
-        // todo: remove this if not used anymore
-        '@untool/entrypoint': config.rootDir,
         'hops/entrypoint': config.rootDir,
         'regenerator-runtime': dirname(
           require.resolve('regenerator-runtime/package.json')

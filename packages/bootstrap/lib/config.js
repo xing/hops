@@ -17,7 +17,7 @@ const {
   getMixinSortOrder,
 } = require('./utils');
 
-exports.getConfig = ({ untoolNamespace = 'hops', ...overrides } = {}) => {
+exports.getConfig = (overrides = {}) => {
   const pkgFile = findUp('package.json');
   const pkgData = require(pkgFile);
   const rootDir = dirname(pkgFile);
@@ -42,7 +42,7 @@ exports.getConfig = ({ untoolNamespace = 'hops', ...overrides } = {}) => {
       version: { type: 'string', minLength: 1 },
     },
   };
-  const settings = loadConfig(untoolNamespace, pkgData, rootDir);
+  const settings = loadConfig(pkgData, rootDir);
 
   const merge = mergeFactory(getMixinSortOrder(settings, overrides));
   const raw = merge(defaults, settings, overrides);
@@ -54,7 +54,7 @@ exports.getConfig = ({ untoolNamespace = 'hops', ...overrides } = {}) => {
     _mixins: resolveMixins(rootDir, mixinTypes, mixins),
     _warnings: validate(processed, configSchema),
     _workspace: lockFile ? dirname(lockFile) : rootDir,
-    _overrides: { untoolNamespace, ...overrides },
+    _overrides: overrides,
   };
   debug(config);
   return config;
