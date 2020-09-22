@@ -1,6 +1,34 @@
 const { EOL } = require('os');
 const stripAnsi = require('strip-ansi');
-const { serializeError } = require('serialize-error');
+
+function serializeError(error, _type = undefined) {
+  return {
+    _type,
+    name: error.name,
+    message: error.message,
+    stack: error.stack,
+  };
+}
+
+exports.serializeError = serializeError;
+
+function deserializeError(data) {
+  if (!data || typeof data !== 'object') {
+    return new Error(String(error));
+  }
+
+  const { _type, ...error } = data;
+
+  if (_type === 'BuildError') {
+    return new BuildError(error);
+  } else if (_type === 'CompileError') {
+    return new CompilerError(error);
+  } else {
+    return Object.assign(new Error(error.message), error);
+  }
+}
+
+exports.deserializeError = deserializeError;
 
 class BuildError extends Error {
   constructor(stack) {
@@ -11,7 +39,7 @@ class BuildError extends Error {
   }
 
   toJSON() {
-    return this.stack;
+    return serializeError(this, 'BuildError');
   }
 }
 
@@ -19,17 +47,18 @@ exports.BuildError = BuildError;
 
 class CompilerError extends Error {
   constructor(error) {
-    super();
+    const isObject = error && typeof error === 'object';
+    const message = isObject ? error.message : String(error);
 
-    if (error && typeof error === 'object' && error.name && error.message) {
+    super(message);
+
+    if (isObject) {
       Object.assign(this, error);
-    } else {
-      this.message = error;
     }
   }
 
   toJSON() {
-    return serializeError(this);
+    return serializeError(this, 'CompilerError');
   }
 }
 

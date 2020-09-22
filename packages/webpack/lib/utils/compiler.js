@@ -3,7 +3,11 @@ const { fork } = require('child_process');
 const Observable = require('zen-observable');
 const sourceMapSupport = require('source-map-support');
 
-const { BuildError, CompilerError } = require('../utils/errors');
+const {
+  BuildError,
+  CompilerError,
+  deserializeError,
+} = require('../utils/errors');
 
 function createCompiler(webpackConfig) {
   const webpack = require('webpack');
@@ -71,7 +75,7 @@ function forkCompilation(mixin, buildConfigArgs, options = {}) {
         subscriber.error(
           typeof reason === 'string'
             ? new BuildError(reason)
-            : new CompilerError(reason)
+            : deserializeError(reason)
         );
       } else if (type === 'resolve') {
         subscriber.next(data);
