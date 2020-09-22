@@ -106,8 +106,6 @@ module.exports = function getConfig(config, name) {
     resolve: {
       modules: getModules(config.rootDir),
       alias: {
-        // todo: remove this if not used anymore
-        '@untool/entrypoint': config.rootDir,
         'hops/entrypoint': config.rootDir,
         'core-js': dirname(require.resolve('core-js/package.json')),
       },
