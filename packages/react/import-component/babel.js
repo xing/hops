@@ -3,7 +3,7 @@
 module.exports = ({ types: t }) => ({
   visitor: {
     ImportDeclaration(path) {
-      const modules = ['hops-react', 'untool', this.opts.module];
+      const modules = ['hops-react', this.opts.module];
       const source = path.node.source.value;
       if (!modules.includes(source)) return;
 
