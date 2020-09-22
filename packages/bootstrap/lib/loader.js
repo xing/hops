@@ -9,18 +9,17 @@ const { merge: mergeFactory, getMixinSortOrder } = require('./utils');
 const { resolve, resolvePreset, isResolveError } = require('./resolver');
 
 class Loader {
-  constructor(namespace, pkgData) {
-    this.namespace = namespace;
+  constructor(pkgData) {
     this.pkgData = pkgData;
   }
   load(context, module) {
-    const { load } = cosmiconfig(this.namespace);
+    const { load } = cosmiconfig('hops');
     const presetJsFilePath = resolvePreset(context, module);
     const loadedPreset = load(presetJsFilePath);
     return loadedPreset;
   }
   search(stopDir) {
-    const { search } = cosmiconfig(this.namespace, { stopDir });
+    const { search } = cosmiconfig('hops', { stopDir });
     return search(stopDir);
   }
   loadPreset(context, preset) {
@@ -77,8 +76,8 @@ class Loader {
   }
 }
 
-exports.loadConfig = (namespace, pkgData, rootDir) => {
-  const loader = new Loader(namespace, pkgData);
+exports.loadConfig = (pkgData, rootDir) => {
+  const loader = new Loader(pkgData);
 
   const settings = loader.loadSettings(rootDir);
   settings.presets = settings.presets.filter(
