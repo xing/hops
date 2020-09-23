@@ -123,6 +123,8 @@ class LambdaMixin extends Mixin {
         'Setting a custom domain name also requires to specify the ACM certificate ARN.'
       );
     }
+
+    return warnings;
   }
 }
 
