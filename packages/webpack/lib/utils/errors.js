@@ -22,7 +22,7 @@ function deserializeError(data) {
   switch (_type) {
     case 'BuildError':
       return new BuildError(error);
-    case 'CompileError':
+    case 'CompilerError':
       return new CompilerError(error);
     default:
       return Object.assign(new Error(error.message), error);
