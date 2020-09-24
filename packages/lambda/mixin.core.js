@@ -109,8 +109,9 @@ class LambdaMixin extends Mixin {
 
     if (
       !this.awsConfig.domainName &&
-      this.awsConfig.basePath.indexOf(this.awsConfig.stageName) !== 0 &&
-      trimSlashes(this.config.assetPath).indexOf(this.awsConfig.stageName) !== 0
+      (this.awsConfig.basePath.indexOf(this.awsConfig.stageName) !== 0 ||
+        trimSlashes(this.config.assetPath).indexOf(this.awsConfig.stageName) !==
+          0)
     ) {
       warnings.push(
         `When no custom domain is configured, the stageName (${this.awsConfig.stageName}) should be the first path segment in basePath (${this.awsConfig.basePath}) and assetPath (${this.config.assetPath}).`
@@ -122,6 +123,8 @@ class LambdaMixin extends Mixin {
         'Setting a custom domain name also requires to specify the ACM certificate ARN.'
       );
     }
+
+    return warnings;
   }
 }
 
