@@ -1,0 +1,28 @@
+{
+  "name": "fixture-doctor",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "12 || 14"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js",
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "hops": {
+    "mixins": [
+      "./mixin-a/mixin.core.js",
+      "./mixin-b/mixin.core.js"
+    ]
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-preset-jest": "*"
+  }
+}
