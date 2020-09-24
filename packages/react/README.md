@@ -170,7 +170,7 @@ This preset has no runtime configuration options.
 This method is being called whenever you call the main `render` method. In a server-side, i.e. Node.js, environment it receives the usual arguments any Express [middleware](https://expressjs.com/en/guide/writing-middleware.html) receives: `req`, `res`, and `next`. In a client-side, i.e. browser, environment it receives no arguments whatsoever.
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
   render(req, res, next) {
@@ -190,7 +190,7 @@ You will not usually have to override this method as it exposes the following mi
 Within this method, you are expected to set up your application. Your implementation will receive both Express' [`req`](https://expressjs.com/en/4x/api.html#req) and [`res`](https://expressjs.com/en/4x/api.html#res) objects for you to do whatever you like with. If you need to do something asynchronous in this method, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
   bootstrap(req, res) {
@@ -210,7 +210,7 @@ Remember you can register custom middlewares using [`hops-express`](../express/R
 With this method, you can wrap the React root element with additional components, like Redux' [Provider](https://redux.js.org/basics/usage-with-react). If you need to do something asynchronous in this method, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) resolving to the wrapped element.
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
   enhanceElement(element) {
@@ -224,7 +224,7 @@ module.exports = class FooMixin extends Mixin {
 Most applications need some sort of data. Implement this method in your mixin, to fetch said data before rendering and return an object with that additional data. If you need to do something asynchronous in this method, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) resolving to the data.
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
   fetchData(data, element) {
@@ -238,7 +238,7 @@ module.exports = class FooMixin extends Mixin {
 In case you need to gather additional template data after React rendering, e.g. if you are using [styled components](https://www.styled-components.com), you can add the required data by implementing this hook in your custom mixin. To do so asynchronously, have this method return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) resolving to the extended data.
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
   getTemplateData(data) {

@@ -1058,7 +1058,7 @@ Then, inside this folder, we will create a file named `mixin.core.js` which will
 **`mixin.core.js`**
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 class MyMixin extends Mixin {
   configureBuild(webpackConfig) {
@@ -1112,7 +1112,7 @@ In this example we will add the [webpack `BannerPlugin`](https://webpack.js.org/
 **`mixin.core.js`**
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 const { BannerPlugin } = require('webpack');
 
 class MyWebpackMixin extends Mixin {
@@ -1133,7 +1133,7 @@ In this example we will add a [babel plugin](https://babeljs.io/docs/en/plugins)
 **`mixin.core.js`**
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 class MyWebpackMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs, target) {
@@ -1172,7 +1172,7 @@ In this example we will add the [`cookie-parser` middleware](https://expressjs.c
 **`mixin.core.js`**
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 const cookieParser = require('cookie-parser');
 
 class MyExpressMixin extends Mixin {
@@ -1191,27 +1191,42 @@ To pass data we will use the [`enhanceServerData` mixin hook](packages/react#enh
 **`mixin.core.js`**
 
 ```javascript
-configureServer(app, middlewares, mode) {
-  middlewares.initial.push((req, res, next) => {
-    // Note: res.locals should be used for locally scoped data
-    // https://expressjs.com/en/4x/api.html#res.locals
-    res.locals.someKey = "someValue"
-    next();
-  });
+const { Mixin } = require('hops-mixin');
+
+class MyExpressMixin extends Mixin {
+  configureServer(app, middlewares, mode) {
+    middlewares.initial.push((req, res, next) => {
+      // Note: res.locals should be used for locally scoped data
+      // https://expressjs.com/en/4x/api.html#res.locals
+      res.locals.someKey = 'someValue';
+      next();
+    });
+  }
 }
+
+module.exports = MyExpressMixin;
 ```
 
 **`mixin.server.js`**
 
 ```javascript
-enhanceServerData(data, req, res) {
-  return { ...data, someKey: res.locals.someKey };
+const { Mixin } = require('hops-mixin');
+
+class MyExpressMixin extends Mixin {
+  enhanceServerData(data, req, res) {
+    return { ...data, someKey: res.locals.someKey };
+  }
 }
+
+module.exports = MyExpressMixin;
 ```
 
 **`my-component.js`**
 
 ```javascript
+import React from 'react';
+import { withServerData } from 'hops';
+
 const MyComponent = ({ serverData }) => <div>{serverData.someKey}</div>;
 
 export default withServerData(MyComponent);
@@ -1228,7 +1243,7 @@ The following example demonstrates how you could implement a custom [mobx](https
 **`mixin.runtime.js`**
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 const { Provider } = require('mobx-react');
 const React = require('react');
 

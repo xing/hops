@@ -12,12 +12,12 @@ $ yarn add hops-yargs # OR npm install hops-yargs
 
 `hops-yargs` does not define any commands of its own, but only takes care of basically setting up [`yargs`](http://yargs.js.org).
 
-`hops-yargs` provides a basic command line interface you can use to control your application. It is called `un` - and it is best used inside your `package.json` scripts section.
+`hops-yargs` provides a basic command line interface you can use to control your application. It is called `hops` - and it is best used inside your `package.json` scripts section.
 
 ```json
 {
   "scripts": {
-    "start": "un start"
+    "start": "hops start"
   }
 }
 ```
@@ -25,7 +25,7 @@ $ yarn add hops-yargs # OR npm install hops-yargs
 Alternatively, you can call it directly inside your project using `npx` or `yarn exec`. Call it without any command to see the available commands and options.
 
 ```bash
-$ yarn exec un start # OR npx un start
+$ yarn exec hops start # OR npx hops start
 ```
 
 ## API
@@ -37,7 +37,7 @@ $ yarn exec un start # OR npx un start
 Within this method, you are expected to set up your application. If you need to do something asynchronous at this point, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
   bootstrap(yargs) {
@@ -51,7 +51,7 @@ module.exports = class FooMixin extends Mixin {
 This is the most relevant hook provided by `hops-yargs`: it enables other mixins to register their respective commands. Implementations of this mixin method will receive a single argument: a [`yargs`](http://yargs.js.org) instance.
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
   registerCommands(yargs) {
@@ -71,7 +71,7 @@ module.exports = class FooMixin extends Mixin {
 By implementing this method, your mixin can intercept and alter command configuration. Its main purpose is to enable you to add arguments to commands defined by other mixins.
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooBarMixin extends Mixin {
   configureCommand(definition) {
@@ -94,7 +94,7 @@ module.exports = class FooBarMixin extends Mixin {
 Your mixin's implementation of this method will receive the parsed CLI arguments passed to `hops-yargs`. You may want to implement it if you need to alter mixin behaviour according to these args.
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
   handleArguments(argv) {
@@ -108,7 +108,7 @@ module.exports = class FooMixin extends Mixin {
 By implementing this method, you can handle exceptions occuring in your application - even uncaught errors and unhandled promise rejections. **If `receoverable' is 'false`, `hops-yargs` will automatically terminate the [running process](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly).**
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 const { logError } = require('./logger');
 
 module.exports = class FooMixin extends Mixin {
