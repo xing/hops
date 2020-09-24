@@ -11,3 +11,7 @@ The config property `shouldPrefetchOnServer` is deprecated and will be removed i
 ### DEP0004
 
 Deep imports to `hops-react/lib/runtime` are deprecated and should be changed to `hops-react` instead.
+
+### DEP0005
+
+Returning warnings from `hops-doctor`'s `diagnose`-hook is deprecated. Please use the doctor's `pushWarning`- and `pushError`-functions instead.

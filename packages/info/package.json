@@ -13,6 +13,7 @@
   "homepage": "https://github.com/xing/hops#readme",
   "dependencies": {
     "chalk": "^4.0.0",
+    "depd": "^2.0.0",
     "duplitect": "^3.0.0",
     "enhanced-resolve": "^5.0.0",
     "eprom": "^1.0.0",
