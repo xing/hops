@@ -1,8 +1,8 @@
 const colors = require('colors');
 const { defaults } = require('jest-config');
-const jestVersion = require('jest/package.json').version;
+const [jestMajorVersion] = require('jest/package.json').version.split('.');
 
-if (jestVersion[0] < 26) {
+if (Number(jestMajorVersion) < 26) {
   console.error(
     colors.red(
       'Error: You are using an unsupported version of Jest! Please upgrade to Jest v26.'
