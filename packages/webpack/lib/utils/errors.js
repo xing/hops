@@ -1,7 +1,7 @@
 const { EOL } = require('os');
 const stripAnsi = require('strip-ansi');
 
-function serializeError(error, _type = undefined) {
+function serializeError(error, _type) {
   return {
     _type,
     name: error.name,
@@ -19,12 +19,13 @@ function deserializeError(data) {
 
   const { _type, ...error } = data;
 
-  if (_type === 'BuildError') {
-    return new BuildError(error);
-  } else if (_type === 'CompileError') {
-    return new CompilerError(error);
-  } else {
-    return Object.assign(new Error(error.message), error);
+  switch (_type) {
+    case 'BuildError':
+      return new BuildError(error);
+    case 'CompileError':
+      return new CompilerError(error);
+    default:
+      return Object.assign(new Error(error.message), error);
   }
 }
 
