@@ -26,9 +26,9 @@ npm install --save hops-development-proxy
 
 #### Preset Options
 
-| Name | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `proxy` | `String | Object` | `undefined` | _no_ | Proxy target configuration |
+| Name    | Type    | Default | Required    | Description |
+| ------- | ------- | ------- | ----------- | ----------- |
+| `proxy` | `String | Object` | `undefined` | _no_        | Proxy target configuration |
 
 ##### proxy
 
@@ -82,7 +82,7 @@ Sometimes additional request headers are needed, for example to add a fake user 
 `mixin.core.js`
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 class MyMixin extends Mixin {
   onProxyReq(proxyReq) {

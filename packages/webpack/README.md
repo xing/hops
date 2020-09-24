@@ -122,7 +122,7 @@ If you implement this mixin hook in your `hops-bootstrap` [`core` mixin](../boos
 In addition to the actual `webpackConfig`, which, by the way, your implementation is expected to return, you will receive an object containing all `loaderConfigs` and a `target` argument. This last argument can be `build`, `develop`, or `node`.
 
 ```javascript
-const { Mixin } = require('hops');
+const { Mixin } = require('hops-mixin');
 
 module.exports = class MyMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs, target) {

@@ -1,6 +1,6 @@
 # `hops-bootstrap`
 
-`hops-bootstrap` is the functional foundation every other `hops` component is built upon. It contains a comprehensive configuration engine and a mixin base class.
+`hops-bootstrap` is the functional foundation every other `hops` component is built upon. It contains a comprehensive configuration engine and takes care of loading mixins and presets.
 
 ### Installation
 
@@ -32,7 +32,7 @@ It allows you to set up mixins and pull in presets. Mixins provide extra functio
 Now if you start your app in an environment in which the corresponding variable is defined, it will be picked up _at runtime_. To streamline development workflows, `hops-bootstrap` comes with built-in support for [`dotenv`](https://github.com/motdotla/dotenv).
 
 ```bash
-$ PORT=12345 un start
+$ PORT=12345 hops start
 ```
 
 Furthermore those placeholders accept fallback values. So — regarding our example — if there's no `PORT`-variable given _at runtime_, `hops-bootstrap` is able to fall back to a value provided via the configuration.
@@ -230,4 +230,4 @@ Note that you can call all defined mixinable methods directly on your mixin inst
 
 This is a semi-private function that is mainly being used internally, for example by [`hops-yargs`](../yargs/README.md). It returns the core mixin container - this allows you to call all defined mixin methods.
 
-You will only ever have to call it if you want to use `hops-bootstrap` programmatically. You can pass it an `configOverrides` object that will be merged into the main config object, and and options object mixins might use instead of CLI arguments.
+You will only ever have to call it if you want to use `hops-bootstrap` programmatically. You can pass it an `configOverrides` object that will be merged into the main config object, and an options object mixins might use instead of CLI arguments.
