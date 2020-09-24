@@ -1,4 +1,4 @@
-const { define, sync } = require('mixinable');
+const { define, sync, async: asyncHooks } = require('mixinable');
 
 const { callable, sequence } = sync;
 
@@ -6,7 +6,11 @@ const strategies = {
   validateConfig: callable,
   detectDuplicatePackages: callable,
   collectResults: callable,
+  pushWarning: callable,
+  pushError: callable,
   logResults: sequence,
+  setMode: callable,
+  getMode: asyncHooks.callable,
 };
 
 const mixins = [
