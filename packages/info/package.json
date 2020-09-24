@@ -15,6 +15,7 @@
     "chalk": "^4.0.0",
     "duplitect": "^3.0.0",
     "enhanced-resolve": "^5.0.0",
+    "eprom": "^1.0.0",
     "escape-string-regexp": "^4.0.0",
     "hops-bootstrap": "^14.0.0-nightly.0",
     "hops-mixin": "^14.0.0-nightly.0",
