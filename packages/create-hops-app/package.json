@@ -11,7 +11,7 @@
     "node": "12 || 14"
   },
   "bin": {
-    "create-hops-app@next": "./index.js"
+    "create-hops-app": "./index.js"
   },
   "repository": {
     "type": "git",
