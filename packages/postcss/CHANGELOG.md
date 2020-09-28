@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/xing/hops/compare/v13.0.0-rc.0...v13.0.0) (2020-09-28)
+
+
+### Bug Fixes
+
+* update dependency enhanced-resolve to v5 ([4842d30](https://github.com/xing/hops/commit/4842d307931699b3d5aef656a8b0900e038be768))
+* update dependency mini-css-extract-plugin to ^0.11.0 ([544ece2](https://github.com/xing/hops/commit/544ece2e24d4120b604fb7a1358cf7044159c8bf))
+
+
+
+
+
 # [13.0.0-rc.0](https://github.com/xing/hops/compare/v13.0.0-alpha.2...v13.0.0-rc.0) (2020-09-07)
 
 

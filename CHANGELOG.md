@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/xing/hops/compare/v13.0.0-rc.0...v13.0.0) (2020-09-28)
+
+
+### Bug Fixes
+
+* **jest-preset:** fix warning in case of outdated Jest version ([4ef9ad8](https://github.com/xing/hops/commit/4ef9ad8408913ee2fcc029219796820addf26405))
+* **lambda:** correct condition ([71a55e1](https://github.com/xing/hops/commit/71a55e12742d8d4dd5685b2480ee3844ead6a04b))
+* **lambda:** ensure warnings are printed ([92cdeb4](https://github.com/xing/hops/commit/92cdeb4f828b3ad07c443a9dc31a0319df6f9a2f))
+* **webpack:** replace serialize-error with a custom implementation ([65931fc](https://github.com/xing/hops/commit/65931fcb319198b61f20baf07bfbd8d7d3d750dd))
+* update dependency enhanced-resolve to v5 ([4842d30](https://github.com/xing/hops/commit/4842d307931699b3d5aef656a8b0900e038be768))
+* update dependency mini-css-extract-plugin to ^0.11.0 ([544ece2](https://github.com/xing/hops/commit/544ece2e24d4120b604fb7a1358cf7044159c8bf))
+* update dependency serialize-javascript to v5 ([5f22713](https://github.com/xing/hops/commit/5f22713d77272513f80d8f1bdf0169178bfd2f2c))
+* update dependency webpack-sources to v2 ([12134a4](https://github.com/xing/hops/commit/12134a40aec57c8b2cbdedbbcfd15bd3883e224e))
+* **webpack:** use webpack HMR for node build to fix memory leak ([2826fdf](https://github.com/xing/hops/commit/2826fdfa64084507fdd07be7a34cee66763ee73a))
+
+
+### Features
+
+* **jest-preset:** print an error when Jest version is unsupported ([cb2126a](https://github.com/xing/hops/commit/cb2126aed02a060138764cd7fd22909648254889))
+
+
+
+
+
 # [13.0.0-rc.0](https://github.com/xing/hops/compare/v13.0.0-alpha.2...v13.0.0-rc.0) (2020-09-07)
 
 

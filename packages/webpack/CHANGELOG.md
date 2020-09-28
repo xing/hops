@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/xing/hops/compare/v13.0.0-rc.0...v13.0.0) (2020-09-28)
+
+
+### Bug Fixes
+
+* **webpack:** replace serialize-error with a custom implementation ([65931fc](https://github.com/xing/hops/commit/65931fcb319198b61f20baf07bfbd8d7d3d750dd))
+* update dependency enhanced-resolve to v5 ([4842d30](https://github.com/xing/hops/commit/4842d307931699b3d5aef656a8b0900e038be768))
+* update dependency webpack-sources to v2 ([12134a4](https://github.com/xing/hops/commit/12134a40aec57c8b2cbdedbbcfd15bd3883e224e))
+* **webpack:** use webpack HMR for node build to fix memory leak ([2826fdf](https://github.com/xing/hops/commit/2826fdfa64084507fdd07be7a34cee66763ee73a))
+
+
+
+
+
 # [13.0.0-rc.0](https://github.com/xing/hops/compare/v13.0.0-alpha.2...v13.0.0-rc.0) (2020-09-07)
 
 

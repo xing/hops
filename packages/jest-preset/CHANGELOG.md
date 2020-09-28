@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/xing/hops/compare/v13.0.0-rc.0...v13.0.0) (2020-09-28)
+
+
+### Bug Fixes
+
+* **jest-preset:** fix warning in case of outdated Jest version ([4ef9ad8](https://github.com/xing/hops/commit/4ef9ad8408913ee2fcc029219796820addf26405))
+
+
+### Features
+
+* **jest-preset:** print an error when Jest version is unsupported ([cb2126a](https://github.com/xing/hops/commit/cb2126aed02a060138764cd7fd22909648254889))
+
+
+
+
+
 # [13.0.0-rc.0](https://github.com/xing/hops/compare/v13.0.0-alpha.2...v13.0.0-rc.0) (2020-09-07)
 
 **Note:** Version bump only for package jest-preset-hops

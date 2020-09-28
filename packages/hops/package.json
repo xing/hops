@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "13.0.0-rc.0",
+  "version": "13.0.0",
   "description": "Hops main Package to build and run Hops applications",
   "keywords": [
     "hops",
@@ -27,12 +27,12 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-express": "^13.0.0-rc.0",
-    "hops-info": "^13.0.0-rc.0",
-    "hops-mixin": "^13.0.0-rc.0",
-    "hops-react": "^13.0.0-rc.0",
-    "hops-webpack": "^13.0.0-rc.0",
-    "hops-yargs": "^13.0.0-rc.0",
+    "hops-express": "^13.0.0",
+    "hops-info": "^13.0.0",
+    "hops-mixin": "^13.0.0",
+    "hops-react": "^13.0.0",
+    "hops-webpack": "^13.0.0",
+    "hops-yargs": "^13.0.0",
     "webpack-bundle-analyzer": "^3.5.2"
   },
   "peerDependencies": {
