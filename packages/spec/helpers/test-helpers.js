@@ -11,15 +11,15 @@ const mkdirp = promisify(require('mkdirp'));
 const debug = require('debug')('hops-spec:test-helpers');
 const resolveFrom = require('resolve-from');
 
-const build = async ({ cwd, argv = [] }) => {
+const build = async ({ cwd, env = {}, argv = [] }) => {
   const hopsBin = resolveFrom(cwd, 'hops/bin');
   const command = `${hopsBin} build ${argv.join(' ')}`;
   debug('Starting', command);
-  await exec(command, { cwd });
+  await exec(command, { env, cwd });
 
   return cwd;
 };
-const startServer = ({ cwd, command, argv = [] }) =>
+const startServer = ({ cwd, command, env = {}, argv = [] }) =>
   new Promise((resolve, reject) => {
     let onTeardown;
     const teardownPromise = new Promise((resolve) => (onTeardown = resolve));
@@ -29,6 +29,7 @@ const startServer = ({ cwd, command, argv = [] }) =>
     const args = [hopsBin, command].concat(argv);
     debug('Spawning server', [hopsBin, ...args].join(' '));
     const started = spawn(process.argv[0], args, {
+      env,
       cwd,
     });
     const teardown = () => {

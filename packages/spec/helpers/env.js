@@ -42,6 +42,16 @@ function isIntolerableWarning(type, text) {
   return type === 'warning' && !isReactLifecycleWarning(text);
 }
 
+function getCommandModifications(args) {
+  const [maybeEnv, ...rest] = args;
+  const env =
+    typeof maybeEnv === 'object' && maybeEnv !== null ? maybeEnv : undefined;
+  return {
+    argv: env ? rest : args,
+    env,
+  };
+}
+
 class FixtureEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
@@ -90,18 +100,21 @@ class FixtureEnvironment extends NodeEnvironment {
 
     const that = this;
     this.global.HopsCLI = {
-      build(...argv) {
-        return build({ cwd: that.cwd, argv });
+      build(...args) {
+        const { env, argv } = getCommandModifications(args);
+        return build({ cwd: that.cwd, argv, env });
       },
-      async start(...argv) {
+      async start(...args) {
         if (that.killServer) {
           throw new Error(
             'Another long running task ("hops start") is already running. You can only start one task per file.'
           );
         }
+        const { env, argv } = getCommandModifications(args);
         const { url, teardown } = await startServer({
           cwd: that.cwd,
           command: 'start',
+          env,
           argv,
         });
         // eslint-disable-next-line require-atomic-updates
