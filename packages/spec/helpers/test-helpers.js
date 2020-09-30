@@ -13,7 +13,7 @@ const resolveFrom = require('resolve-from');
 
 const build = async ({ cwd, env = {}, argv = [] }) => {
   const hopsBin = resolveFrom(cwd, 'hops/bin');
-  const command = `${hopsBin} build ${argv.join(' ')}`;
+  const command = `${process.argv[0]} ${hopsBin} build ${argv.join(' ')}`;
   debug('Starting', command);
   try {
     return await exec(command, { env, cwd });
