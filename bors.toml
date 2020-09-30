@@ -1,13 +1,11 @@
 status = [
   "continuous-integration/travis-ci/push",
   "canarist/0",
-  "canarist/1"
 ]
 
 pr_status = [
   "continuous-integration/travis-ci/push",
   "canarist/0",
-  "canarist/1"
 ]
 
 block_labels = [
