@@ -25,6 +25,6 @@
     "typescript": "*"
   },
   "devDependencies": {
-    "jest-preset-hops": "^14.0.0-nightly.0"
+    "jest-preset-hops": "^13.0.0"
   }
 }
