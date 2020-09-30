@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "core-js": "^3.2.1",
-    "css-loader": "^3.2.0",
+    "css-loader": "^4.0.0",
     "enhanced-resolve": "^5.0.0",
     "hops-mixin": "^13.0.0",
     "mini-css-extract-plugin": "^0.11.0",
