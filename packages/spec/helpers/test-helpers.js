@@ -15,9 +15,11 @@ const build = async ({ cwd, env = {}, argv = [] }) => {
   const hopsBin = resolveFrom(cwd, 'hops/bin');
   const command = `${hopsBin} build ${argv.join(' ')}`;
   debug('Starting', command);
-  await exec(command, { env, cwd });
-
-  return cwd;
+  try {
+    return await exec(command, { env, cwd });
+  } catch (err) {
+    return { stderr: err.message };
+  }
 };
 const startServer = ({ cwd, command, env = {}, argv = [] }) =>
   new Promise((resolve, reject) => {
