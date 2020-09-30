@@ -13,7 +13,7 @@
     "hops-mixin": "^13.0.0",
     "is-plain-obj": "^2.0.0",
     "mixinable": "^5.0.1",
-    "yargs": "^15.0.0"
+    "yargs": "^16.0.0"
   },
   "engines": {
     "node": "12 || 14"
