@@ -57,7 +57,7 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) =>
 
     started.on('close', (code) => {
       debug('Server stopped. exitcode:', code);
-      onTeardown();
+      onTeardown(stderr);
       if (code) {
         reject(stderr);
       }
