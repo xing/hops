@@ -54,19 +54,29 @@ module.exports = class FooMixin extends Mixin {
 };
 ```
 
-### `diagnose(doctor)` ([parallel](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
+### `diagnose(doctor, mode)` ([parallel](https://github.com/untool/mixinable/blob/master/README.md#defineparallel))
 
-By implementing this method, your core mixin can perform pre-flight checks during application startup and return an array of warnings. If you need to do something asynchronous at this point, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+By implementing this method, your core mixin can perform pre-flight checks during application startup/build and create warnings & errors. If you need to do something asynchronous at this point, just return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+
+The second argument `mode` lets you create context-sensitive warnings/errors. Its possible values are:
+
+- `'build-serve'`
+- `'develop'`
+- `'serve'`
+- `'build'`
+- `'indeterminate'`
 
 ```javascript
 const { Mixin } = require('hops-mixin');
 
 module.exports = class FooMixin extends Mixin {
-  diagnose(doctor) {
+  diagnose(doctor, mode) {
     doctor.diagnoseDuplicatePackages('bar');
-    if (1 + 1 !== 2) {
-      return ['Math is broken.'];
-    }
+    const mathIsBroken = 1 + 1 !== 2;
+    const message = 'Math is broken.';
+
+    if (mode === 'develop') doctor.pushWarning(message);
+    if (mode === 'serve') doctor.pushError('heavy-math', message);
   }
 };
 ```
