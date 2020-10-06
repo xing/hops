@@ -1,0 +1,3 @@
+{
+  "extends": "hops-typescript/tsconfig.json"
+}

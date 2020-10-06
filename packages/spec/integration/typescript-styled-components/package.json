@@ -1,0 +1,27 @@
+{
+  "name": "fixture-typescript-styled-components",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "12 || 14"
+  },
+  "jest": {
+    "testEnvironment": "../../helpers/env.js",
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
+  },
+  "hops": {
+    "gracePeriod": 0
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "hops": "*",
+    "hops-styled-components": "*",
+    "hops-typescript": "*",
+    "typescript": "*"
+  }
+}
