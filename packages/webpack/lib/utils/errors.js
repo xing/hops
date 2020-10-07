@@ -32,11 +32,20 @@ function deserializeError(data) {
 exports.deserializeError = deserializeError;
 
 class BuildError extends Error {
-  constructor(stack) {
-    super();
-    this.name = this.constructor.name;
-    this.stack = `${this.name}: ${stripAnsi(stack)}`;
-    this.message = this.stack.slice(0, this.stack.indexOf(EOL));
+  constructor(error) {
+    if (typeof error === 'object' && error) {
+      super(error.message);
+
+      Object.assign(this, error);
+    } else if (typeof error === 'string') {
+      const [message, ...lines] = stripAnsi(error).split(EOL);
+
+      super(message);
+
+      this.stack = lines.join(EOL);
+    } else {
+      super();
+    }
   }
 
   toJSON() {
