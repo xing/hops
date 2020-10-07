@@ -9,30 +9,16 @@ exports[`renders loaded state correctly 1`] = `
   </h1>
   <p>
     <a
-      href="https://github.com/xing/hops/commit/commit-sha-0"
+      href="https://www.xing.com/jobs/1"
     >
       "
-      commit message
+      some job
       "
     </a>
+     at
      
-    by 
     <b>
-      commit author login
-    </b>
-  </p>
-  <p>
-    <a
-      href="https://github.com/xing/hops/commit/commit-sha-1"
-    >
-      "
-      commit message
-      "
-    </a>
-     
-    by 
-    <b>
-      commit author name
+      cool company
     </b>
   </p>
 </div>
@@ -46,7 +32,7 @@ exports[`renders loading state correctly 1`] = `
     Hello World!
   </h1>
   <div>
-    loading commits...
+    loading...
   </div>
 </div>
 `;
