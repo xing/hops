@@ -15,6 +15,7 @@ exports.resolvePreset = createResolver({
   ...defaultConfig,
   mainFiles: ['preset'],
   mainFields: ['preset'],
+  exportsFields: [],
 });
 
 exports.resolveMixins = (context, types, mixins) => {
