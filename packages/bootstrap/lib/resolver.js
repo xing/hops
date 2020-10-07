@@ -12,6 +12,7 @@ exports.resolve = resolve;
 exports.resolvePreset = createResolver({
   mainFiles: ['preset'],
   mainFields: ['preset'],
+  exportsFields: [],
 });
 
 exports.resolveMixins = (context, types, mixins) => {
