@@ -1,0 +1,23 @@
+query search {
+  jobSearchByQuery(
+    query: { keywords: "JavaScript" }
+    limit: 10
+    offset: 0
+    consumer: "hops"
+  ) {
+    collection {
+      jobDetail {
+        ... on VisibleJob {
+          id
+          title
+          url
+          companyInfo {
+            company {
+              companyName
+            }
+          }
+        }
+      }
+    }
+  }
+}

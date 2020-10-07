@@ -7,7 +7,7 @@
     "locations": [
       "/"
     ],
-    "graphqlUri": "https://www.graphqlhub.com/graphql"
+    "graphqlUri": "https://www.xing.com/xing-one/api"
   },
   "scripts": {
     "start": "hops start",

@@ -19,29 +19,21 @@ it('renders loading state correctly', () => {
 it('renders loaded state correctly', () => {
   const data = {
     loading: false,
-    github: {
-      repo: {
-        name: 'hops',
-        owner: {
-          login: 'xing',
+    jobSearchByQuery: {
+      collection: [
+        {
+          jobDetail: {
+            id: '1',
+            url: 'https://www.xing.com/jobs/1',
+            title: 'some job',
+            companyInfo: {
+              company: {
+                companyName: 'cool company',
+              },
+            },
+          },
         },
-        commits: [
-          {
-            sha: 'commit-sha-0',
-            message: 'commit message',
-            author: {
-              login: 'commit author login',
-            },
-          },
-          {
-            sha: 'commit-sha-1',
-            message: 'commit message',
-            author: {
-              name: 'commit author name',
-            },
-          },
-        ],
-      },
+      ],
     },
   };
   const tree = renderer.create(
