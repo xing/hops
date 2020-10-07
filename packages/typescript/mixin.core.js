@@ -83,6 +83,7 @@ class TypescriptMixin extends Mixin {
     const properties = {
       target: ts.ScriptTarget.ESNext,
       moduleResolution: ts.ModuleResolutionKind.NodeJs,
+      jsx: ts.JsxEmit.Preserve,
     };
 
     for (let [property, value] of Object.entries(properties)) {
