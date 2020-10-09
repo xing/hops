@@ -1,6 +1,6 @@
 {
   "name": "hops-styled-components",
-  "version": "13.0.0",
+  "version": "13.1.0",
   "description": "Styled components support for Hops applications",
   "keywords": [
     "hops",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
-    "hops-mixin": "^13.0.0"
+    "hops-mixin": "^13.1.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",

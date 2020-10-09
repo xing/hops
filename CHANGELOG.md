@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/xing/hops/compare/v13.0.0...v13.1.0) (2020-10-09)
+
+
+### Bug Fixes
+
+* **bootstrap:** ignore exports fields when resolving presets ([b9accbe](https://github.com/xing/hops/commit/b9accbefe824d27830926c7965d19f8e7f488449))
+* **create-hops-app:** remove "[@next](https://github.com/next)" suffix of binary ([4f556ab](https://github.com/xing/hops/commit/4f556ab4b9af1f4f889b4967e7edaa802de8eb3f))
+* **typescript:** preserve JSX ([03f73ae](https://github.com/xing/hops/commit/03f73aed3939bc1bf4825ed9f0c251d04fbf470f))
+* **webpack:** accept object argument in BuildError ([33e378f](https://github.com/xing/hops/commit/33e378f7e1b4a65b816bafa8da0fd88caf563fdc))
+
+
+### Features
+
+* **info:** introduce helpers for emitting warnings & errors ([4937fde](https://github.com/xing/hops/commit/4937fde43f4c6f8af164d4d127897dc64f75ad91))
+
+
+
+
+
 # [13.0.0](https://github.com/xing/hops/compare/v13.0.0-rc.0...v13.0.0) (2020-09-28)
 
 

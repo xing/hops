@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/xing/hops/compare/v13.0.0...v13.1.0) (2020-10-09)
+
+
+### Features
+
+* **info:** introduce helpers for emitting warnings & errors ([4937fde](https://github.com/xing/hops/commit/4937fde43f4c6f8af164d4d127897dc64f75ad91))
+
+
+
+
+
 # [13.0.0](https://github.com/xing/hops/compare/v13.0.0-rc.0...v13.0.0) (2020-09-28)
 
 

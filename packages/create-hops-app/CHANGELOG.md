@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/xing/hops/compare/v13.0.0...v13.1.0) (2020-10-09)
+
+
+### Bug Fixes
+
+* **create-hops-app:** remove "[@next](https://github.com/next)" suffix of binary ([4f556ab](https://github.com/xing/hops/commit/4f556ab4b9af1f4f889b4967e7edaa802de8eb3f))
+
+
+
+
+
 # [13.0.0](https://github.com/xing/hops/compare/v13.0.0-rc.0...v13.0.0) (2020-09-28)
 
 **Note:** Version bump only for package create-hops-app

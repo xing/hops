@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/xing/hops/compare/v13.0.0...v13.1.0) (2020-10-09)
+
+
+### Bug Fixes
+
+* **webpack:** accept object argument in BuildError ([33e378f](https://github.com/xing/hops/commit/33e378f7e1b4a65b816bafa8da0fd88caf563fdc))
+
+
+
+
+
 # [13.0.0](https://github.com/xing/hops/compare/v13.0.0-rc.0...v13.0.0) (2020-09-28)
 
 
