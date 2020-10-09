@@ -6,11 +6,23 @@ const { version, bin } = require(require.resolve(
   'create-hops-app/package.json'
 ));
 
-const isPreRelease = semver(version).prerelease.length > 0;
+const { major, prerelease } = semver(version);
+const isPreRelease = prerelease.length > 0;
 const createHopsAppBin = require.resolve('create-hops-app');
 
+const getDistTag = () => {
+  switch (true) {
+    case isPreRelease:
+      return 'next';
+    case major === 12:
+      return 'v12';
+    default:
+      return 'latest';
+  }
+};
+
 describe('create-hops-app', () => {
-  const version = isPreRelease ? 'next' : 'latest';
+  const distTag = getDistTag();
   const template = 'hops-template-react';
 
   beforeAll(() => {
@@ -19,7 +31,7 @@ describe('create-hops-app', () => {
 
   it('initializes a Hops app with yarn', () => {
     const name = 'my-app-yarn';
-    const args = [name, `--template ${template}@${version}`].join(' ');
+    const args = [name, `--template ${template}@${distTag}`].join(' ');
 
     execSync(`${createHopsAppBin} ${args}`, { stdio: 'ignore' });
 
@@ -31,7 +43,7 @@ describe('create-hops-app', () => {
 
   it('initializes a Hops app with npm', () => {
     const name = 'my-app-npm';
-    const args = [name, `--template ${template}@${version}`, `--npm`].join(' ');
+    const args = [name, `--template ${template}@${distTag}`, `--npm`].join(' ');
 
     execSync(`${createHopsAppBin} ${args}`, { stdio: 'ignore' });
 
