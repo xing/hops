@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.4](https://github.com/xing/hops/compare/v12.5.3...v12.5.4) (2020-10-09)
+
+
+### Bug Fixes
+
+* **webpack:** replace serialize-error with a custom implementation ([32ad089](https://github.com/xing/hops/commit/32ad08970537a76ca6e2a2e6e2b1bf098443e31b))
+
+
+
+
+
 ## [12.5.3](https://github.com/xing/hops/compare/v12.5.2...v12.5.3) (2020-09-21)
 
 
