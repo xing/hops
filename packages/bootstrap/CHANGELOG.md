@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.5](https://github.com/xing/hops/compare/v12.5.4...v12.5.5) (2020-10-13)
+
+
+### Bug Fixes
+
+* **bootstrap:** ignore exports fields when resolving presets ([3cb3cb4](https://github.com/xing/hops/commit/3cb3cb4b63c88a8ad87fc85be81750624bc19485))
+
+
+
+
+
 ## [12.5.4](https://github.com/xing/hops/compare/v12.5.3...v12.5.4) (2020-10-09)
 
 **Note:** Version bump only for package hops-bootstrap
