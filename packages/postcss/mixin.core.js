@@ -131,7 +131,10 @@ class PostCSSMixin extends Mixin {
     allLoaderConfigs.splice(
       allLoaderConfigs.indexOf(jsLoaderConfig),
       0,
-      getCSSLoaderConfig(this.config.browsers, require.resolve('style-loader'))
+      getCSSLoaderConfig(this.config.browsers, {
+        loader: require.resolve('style-loader'),
+        options: { esModule: false },
+      })
     );
   }
 
