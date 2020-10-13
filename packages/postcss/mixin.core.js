@@ -103,6 +103,7 @@ class PostCSSMixin extends Mixin {
     );
     webpackConfig.plugins.push(
       new ExtractCSSPlugin({
+        esModule: false,
         filename: getAssetPath(
           this.config.assetPath,
           '[name]-[contenthash:12].css'
