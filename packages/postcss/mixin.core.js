@@ -38,24 +38,26 @@ const getCSSLoaderConfig = (browsers, additionalLoader) => {
       {
         loader: require.resolve('postcss-loader'),
         options: {
-          ident: 'postcss',
-          plugins: [
-            postcssImportPlugin(),
-            postcssPresetEnv({
-              browsers,
-              autoprefixer: {
-                overrideBrowserslist: browsers,
-              },
-              stage: 2,
-              features: {
-                'nesting-rules': true,
-                'custom-media-queries': true,
-                'custom-properties': {
-                  preserve: false,
+          postcssOptions: {
+            ident: 'postcss',
+            plugins: [
+              postcssImportPlugin(),
+              postcssPresetEnv({
+                browsers,
+                autoprefixer: {
+                  overrideBrowserslist: browsers,
                 },
-              },
-            }),
-          ],
+                stage: 2,
+                features: {
+                  'nesting-rules': true,
+                  'custom-media-queries': true,
+                  'custom-properties': {
+                    preserve: false,
+                  },
+                },
+              }),
+            ],
+          },
         },
       },
     ].filter(Boolean);
