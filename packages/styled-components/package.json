@@ -10,7 +10,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "12 || 14"
+    "node": "12 || 14 || 15"
   },
   "types": "index.d.ts",
   "repository": {
