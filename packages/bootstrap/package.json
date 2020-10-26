@@ -27,6 +27,6 @@
     "supports-color": "^7.1.0"
   },
   "engines": {
-    "node": "12 || 14"
+    "node": "12 || 14 || 15"
   }
 }
