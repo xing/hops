@@ -21,7 +21,7 @@ class LogMixin extends Mixin {
 
     middlewares.preinitial.unshift((_, res, next) => {
       Object.assign(res.locals, {
-        logger: this.logger,
+        logger: res.locals.logger || this.logger,
       });
       next();
     });
