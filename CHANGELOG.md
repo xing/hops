@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0](https://github.com/xing/hops/compare/v13.1.0...v13.2.0) (2020-11-06)
+
+
+### Features
+
+* **info:** make logger available in server runtime ([4d43a3f](https://github.com/xing/hops/commit/4d43a3f3c3448a87495df00a72bc1d2e7b7ea9c5))
+* **info:** use existing logger if available ([61c32b7](https://github.com/xing/hops/commit/61c32b785c05c3e86a99dcda7f0d0222eeb8b5d3))
+* add support for Node v15 ([3ea8714](https://github.com/xing/hops/commit/3ea8714702960d0408cb6eae4bf336cb637eea9d))
+
+
+
+
+
 # [13.1.0](https://github.com/xing/hops/compare/v13.0.0...v13.1.0) (2020-10-09)
 
 

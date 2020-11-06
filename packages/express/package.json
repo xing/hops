@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "13.1.0",
+  "version": "13.2.0",
   "description": "Customization for the our express server",
   "keywords": [
     "hops",
@@ -26,9 +26,9 @@
     "express": "^4.17.1",
     "finalhandler": "^1.1.2",
     "helmet": "^4.0.0",
-    "hops-bootstrap": "^13.1.0",
-    "hops-mixin": "^13.1.0",
-    "hops-yargs": "^13.1.0",
+    "hops-bootstrap": "^13.2.0",
+    "hops-mixin": "^13.2.0",
+    "hops-yargs": "^13.2.0",
     "is-plain-obj": "^2.0.0",
     "mime": "^2.4.4",
     "mixinable": "^5.0.1",
