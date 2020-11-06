@@ -1,6 +1,6 @@
 {
   "name": "hops-postcss",
-  "version": "14.0.0-nightly.0",
+  "version": "14.0.0-nightly.1",
   "description": "Configuration of PostCSS and Webpack for Hops",
   "keywords": [
     "hops",
@@ -21,7 +21,7 @@
     "core-js": "^3.2.1",
     "css-loader": "^3.2.0",
     "enhanced-resolve": "^5.0.0",
-    "hops-mixin": "^14.0.0-nightly.0",
+    "hops-mixin": "^14.0.0-nightly.1",
     "mini-css-extract-plugin": "^1.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "pathifist": "^1.0.0",
