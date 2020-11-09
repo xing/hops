@@ -11,7 +11,7 @@ It ensures that Babel works correctly out of the box and that requiring files su
 ## Installation
 
 ```bash
-npm install --save-dev jest-preset-hops jest
+npm install --save-dev jest-preset-hops jest babel-jest ts-jest
 ```
 
 ## Usage
