@@ -31,7 +31,7 @@
     "core-js": "^3.2.1",
     "hops": "^14.0.0-nightly.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest-config": "^26.0.0",
+    "import-from": "^3.0.0",
     "regenerator-runtime": "^0.13.3",
     "ts-jest": "^26.0.0"
   },
