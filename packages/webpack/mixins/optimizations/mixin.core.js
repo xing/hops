@@ -1,5 +1,6 @@
 const minimatch = require('minimatch');
 const { Mixin } = require('hops-mixin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 function include(patterns) {
   return (path) =>
@@ -25,7 +26,7 @@ function findResolved(a, b) {
 
 class WebpackOptimizationsMixin extends Mixin {
   configureBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }, target) {
-    const { fastBuild, fastDev } = this.options;
+    const { fastBuild, fastDev, fastRefresh } = this.options;
 
     if (!fastDev && !fastBuild) {
       return;
@@ -89,6 +90,20 @@ class WebpackOptimizationsMixin extends Mixin {
             };
           }
         });
+    }
+
+    if (fastRefresh && isDevelop) {
+      jsLoaderConfig.options.plugins.push(
+        require.resolve('react-refresh/babel')
+      );
+
+      webpackConfig.plugins.push(
+        new ReactRefreshWebpackPlugin({
+          overlay: {
+            sockIntegration: 'whm',
+          },
+        })
+      );
     }
   }
 

@@ -27,6 +27,12 @@ class WebpackStartMixin extends Mixin {
               'Experimental: Enable faster development mode (modern browsers only)',
             type: 'boolean',
           },
+          fastRefresh: {
+            default: false,
+            describe:
+              'Experimental: Enable instant feedback for changes in your React components',
+            type: 'boolean',
+          },
         },
         handler: (argv) => {
           if (process.env.NODE_ENV === 'production') {
