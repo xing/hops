@@ -1,6 +1,6 @@
 {
   "name": "hops-yargs",
-  "version": "14.0.0-nightly.1",
+  "version": "14.0.0-nightly.2",
   "description": "yargs support for Hops applications",
   "repository": {
     "type": "git",
@@ -9,8 +9,8 @@
   "license": "MIT",
   "homepage": "https://github.com/xing/hops/tree/master/packages/yargs#readme",
   "dependencies": {
-    "hops-bootstrap": "^14.0.0-nightly.1",
-    "hops-mixin": "^14.0.0-nightly.1",
+    "hops-bootstrap": "^14.0.0-nightly.2",
+    "hops-mixin": "^14.0.0-nightly.2",
     "is-plain-obj": "^2.0.0",
     "mixinable": "^5.0.1",
     "yargs": "^15.0.0"
