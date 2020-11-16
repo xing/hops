@@ -17,7 +17,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "is-plain-obj": "^2.0.0",
+    "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme"
