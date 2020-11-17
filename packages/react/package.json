@@ -35,14 +35,14 @@
     "serialize-javascript": "^5.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.0"
   },
   "devDependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.2"
   },
