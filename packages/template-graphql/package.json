@@ -21,16 +21,16 @@
     "hops-graphql": "^14.0.0-nightly.2",
     "hops-postcss": "^14.0.0-nightly.2",
     "prop-types": "^15.7.2",
-    "react": "^16.10.2",
+    "react": "^17.0.1",
     "react-apollo": "^3.1.2",
-    "react-dom": "^16.10.2",
+    "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "jest": "^26.0.0",
     "jest-preset-hops": "^14.0.0-nightly.2",
-    "react-test-renderer": "^16.10.2"
+    "react-test-renderer": "^17.0.1"
   },
   "jest": {
     "preset": "jest-preset-hops"

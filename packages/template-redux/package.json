@@ -20,8 +20,8 @@
     "hops-postcss": "^14.0.0-nightly.2",
     "hops-redux": "^14.0.0-nightly.2",
     "prop-types": "^15.7.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
@@ -31,7 +31,7 @@
   "devDependencies": {
     "jest": "^26.0.0",
     "jest-preset-hops": "^14.0.0-nightly.2",
-    "react-test-renderer": "^16.10.2"
+    "react-test-renderer": "^17.0.1"
   },
   "jest": {
     "preset": "jest-preset-hops"
