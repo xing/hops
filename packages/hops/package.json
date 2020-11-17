@@ -33,7 +33,7 @@
     "hops-react": "^14.0.0-nightly.2",
     "hops-webpack": "^14.0.0-nightly.2",
     "hops-yargs": "^14.0.0-nightly.2",
-    "webpack-bundle-analyzer": "^3.5.2"
+    "webpack-bundle-analyzer": "^4.1.0"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
