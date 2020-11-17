@@ -20,7 +20,8 @@
     "escape-string-regexp": "^4.0.0",
     "hops-bootstrap": "^14.0.0-nightly.2",
     "hops-mixin": "^14.0.0-nightly.2",
-    "mixinable": "^5.0.1"
+    "mixinable": "^5.0.1",
+    "pino": "^6.7.0"
   },
   "engines": {
     "node": "12 || 14 || 15"

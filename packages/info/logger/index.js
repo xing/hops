@@ -1,19 +1,24 @@
 /* eslint-disable no-console */
 
-const { format } = require('util');
-const chalk = require('chalk');
+const pino = require('pino');
 const escapeRegExp = require('escape-string-regexp');
-
-const colorize = (string, color) => {
-  return chalk.level > 0 ? chalk[color](string) : `[${string}]`;
-};
 
 const logLevels = { error: 0, warn: 1, info: 2, verbose: 3 };
 
 class Logger {
   constructor({ name, _workspace }) {
-    this.name = name;
     this.level = logLevels.info;
+    this.logger = pino({
+      hooks: {
+        logMethod(args, method) {
+          if (args.length === 2) {
+            args[0] = `${args[0]} %j`;
+          }
+          method.apply(this, args);
+        },
+      },
+      name,
+    });
     this.getCleanMessage = (error) =>
       String(error.stack || error).replace(
         new RegExp(escapeRegExp(_workspace), 'g'),
@@ -22,41 +27,44 @@ class Logger {
   }
 
   setLogLevel(level) {
-    this.level = level;
+    switch (level) {
+      case logLevels.error:
+        this.logger.level = 'error';
+        break;
+      case logLevels.warn:
+        this.logger.level = 'warn';
+        break;
+      case logLevels.info:
+        this.logger.level = 'info';
+        break;
+      case logLevels.verbose:
+        this.logger.level = 'debug';
+        break;
+      default:
+        throw new Error(`Unknown log level ${level}.`);
+    }
+  }
+
+  getTransport() {
+    return this.logger;
   }
 
   error(error, ...args) {
-    const { level, name, getCleanMessage } = this;
-    const prefix = colorize(`${name}:error`, 'red');
-    const message = getCleanMessage(error);
-    if (level >= logLevels.error) {
-      console.error(`${prefix} ${format(message, ...args)}`);
-    }
+    const message = this.getCleanMessage(error);
+    this.logger.error(message, ...args);
   }
 
   warn(warning, ...args) {
-    const { level, name, getCleanMessage } = this;
-    const prefix = colorize(`${name}:warning`, 'yellow');
-    const message = getCleanMessage(warning);
-    if (level >= logLevels.warn) {
-      console.warn(`${prefix} ${format(message, ...args)}`);
-    }
+    const message = this.getCleanMessage(warning);
+    this.logger.warn(message, ...args);
   }
 
   info(message, ...args) {
-    const { level, name } = this;
-    const prefix = colorize(`${name}:info`, 'gray');
-    if (level >= logLevels.info) {
-      console.log(`${prefix} ${format(message, ...args)}`);
-    }
+    this.logger.info(message, ...args);
   }
 
-  _(type, message, ...args) {
-    const { level, name } = this;
-    const prefix = colorize(`${name}:${type}`, 'gray');
-    if (level >= logLevels.verbose) {
-      console.log(`${prefix} ${format(message, ...args)}`);
-    }
+  _(_type, message, ...args) {
+    this.logger.debug(message, ...args);
   }
 }
 
