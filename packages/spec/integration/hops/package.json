@@ -11,6 +11,6 @@
   "dependencies": {
     "hops": "*",
     "hops-preset-jest": "*",
-    "react-test-renderer": "^16.8.1"
+    "react-test-renderer": "^16.8.1 || ^17.0.0"
   }
 }

@@ -25,7 +25,7 @@
     "hops-express": "^14.0.0-nightly.2",
     "hops-mixin": "^14.0.0-nightly.2",
     "hops-yargs": "^14.0.0-nightly.2",
-    "is-plain-obj": "^2.0.0",
+    "is-plain-obj": "^3.0.0",
     "jsesc": "^3.0.0",
     "loader-utils": "^2.0.0",
     "lodash.get": "^4.4.2",
@@ -44,7 +44,7 @@
     "terser-webpack-plugin": "^4.0.0",
     "url-loader": "^4.0.0",
     "webpack": "^4.41.0",
-    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-middleware": "^4.0.2",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-sources": "^2.0.0",
     "zen-observable": "^0.8.15"

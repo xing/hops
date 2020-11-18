@@ -28,21 +28,21 @@
     "duplitect": "^3.0.0",
     "hops-bootstrap": "^14.0.0-nightly.2",
     "hops-mixin": "^14.0.0-nightly.2",
-    "is-plain-obj": "^2.0.0",
+    "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "pathifist": "^1.0.0",
     "prop-types": "^15.7.2",
     "serialize-javascript": "^5.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.0"
   },
   "devDependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.2"
   },

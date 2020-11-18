@@ -11,9 +11,9 @@
   "dependencies": {
     "hops-bootstrap": "^14.0.0-nightly.2",
     "hops-mixin": "^14.0.0-nightly.2",
-    "is-plain-obj": "^2.0.0",
+    "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
-    "yargs": "^15.0.0"
+    "yargs": "^16.1.1"
   },
   "engines": {
     "node": "12 || 14 || 15"
