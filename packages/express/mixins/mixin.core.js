@@ -62,8 +62,11 @@ class ExpressMixin extends Mixin {
       );
       middlewares.postfiles.push(nocache());
       if (typeof this.getLogger === 'function') {
-        const loggerMiddleware = require('../lib/log');
-        app.use(loggerMiddleware(this.getLogger()));
+        const loggerMiddleware = require('pino-http')({
+          useLevel: 'debug',
+          logger: this.getLogger().getTransport(),
+        });
+        app.use(loggerMiddleware);
       }
     }
 
