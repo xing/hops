@@ -29,7 +29,7 @@
     "hops-bootstrap": "^13.2.0",
     "hops-mixin": "^13.2.0",
     "hops-yargs": "^13.2.0",
-    "is-plain-obj": "^2.0.0",
+    "is-plain-obj": "^3.0.0",
     "mime": "^2.4.4",
     "mixinable": "^5.0.1",
     "morgan": "^1.9.1",
