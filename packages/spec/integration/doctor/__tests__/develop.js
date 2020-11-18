@@ -1,6 +1,6 @@
 const delay = () => new Promise((resolve) => setTimeout(resolve, 200));
 
-describe('doctor - develop', () => {
+xdescribe('doctor - develop', () => {
   let logs;
 
   const getFromLogs = (type, message) =>
