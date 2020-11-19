@@ -1,11 +1,11 @@
 status = [
-  "continuous-integration/travis-ci/push",
+  "Node.js CI / tests %",
   "canarist/0",
   "canarist/1"
 ]
 
 pr_status = [
-  "continuous-integration/travis-ci/push",
+  "Node.js CI / tests %",
   "canarist/0",
   "canarist/1"
 ]
