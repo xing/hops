@@ -53,6 +53,7 @@ class WebpackOptimizationsMixin extends Mixin {
 
       if (presetEnvOptions) {
         if (skipPolyfilling) {
+          presetEnvOptions.targets.browsers = ['last 1 chrome versions'];
           presetEnvOptions.useBuiltIns = false;
           delete presetEnvOptions.corejs;
         } else if (skipNodeModules) {
