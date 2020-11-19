@@ -1,0 +1,53 @@
+name: Node.js CI
+
+on:
+  push:
+    branches-ignore:
+      - 'staging.tmp'
+      - 'trying.tmp'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      HOST: 0.0.0.0
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 15.x]
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.OS }}-node-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.OS }}-node-${{ matrix.node-version }}-
+          ${{ runner.OS }}-node-
+          ${{ runner.OS }}-
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    - name: Run tests
+      run: yarn test --maxWorkers=2 --ci
+
+  canarist:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+    - name: Use Node.js LTS
+      uses: actions/setup-node@v1
+      with:
+        node-version: 15.x
+    - name: Install canarist
+      run: npm i -g canarist
+    - name: Run canarist
+      run: canarist
