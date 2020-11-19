@@ -1,5 +1,5 @@
 status = [
-  "continuous-integration/travis-ci/push"
+  "Node.js CI / tests %"
 ]
 
 required_approvals = 1
