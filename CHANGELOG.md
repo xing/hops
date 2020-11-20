@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.6](https://github.com/xing/hops/compare/v12.5.5...v12.5.6) (2020-11-20)
+
+
+### Bug Fixes
+
+* **webpack:** compile browser bundle for latest chrome only ([3290928](https://github.com/xing/hops/commit/3290928cad3fc6d6720c26b9a743350d85dc7eb4))
+
+
+
+
+
 ## [12.5.5](https://github.com/xing/hops/compare/v12.5.4...v12.5.5) (2020-10-13)
 
 
