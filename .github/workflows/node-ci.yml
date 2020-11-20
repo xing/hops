@@ -36,4 +36,4 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: Run tests
-      run: yarn test --maxWorkers=2 --ci
+      run: ./node_modules/.bin/jest --maxWorkers=2 --ci
