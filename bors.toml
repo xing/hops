@@ -4,12 +4,6 @@ status = [
   "canarist/1"
 ]
 
-pr_status = [
-  "Node.js CI / tests %",
-  "canarist/0",
-  "canarist/1"
-]
-
 block_labels = [
   ":hand: blocked",
   ":construction: wip",
