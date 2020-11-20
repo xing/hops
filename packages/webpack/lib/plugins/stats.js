@@ -68,10 +68,10 @@ exports.StatsWritePlugin = class StatsWritePlugin {
           writeFileSync(statsFile, JSON.stringify(stats), 'utf8');
           enhancedPromise.resolve(stats);
         });
+      });
 
-        compiler.hooks.watchRun.tap('StatsWritePlugin', () => {
-          enhancedPromise.reset();
-        });
+      compiler.hooks.watchRun.tap('StatsWritePlugin', () => {
+        enhancedPromise.reset();
       });
     };
   }
