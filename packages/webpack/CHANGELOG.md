@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.1](https://github.com/xing/hops/compare/v13.2.0...v13.2.1) (2020-11-20)
+
+
+### Bug Fixes
+
+* **webpack:** compile browser bundle for latest chrome only ([d5d901a](https://github.com/xing/hops/commit/d5d901ab00e0cf92d5660a95ee65fb9cf44aa77d))
+* **webpack:** fix memory leak in StatsWriterPlugin ([276f049](https://github.com/xing/hops/commit/276f0499315a9dc786ee7c50ae1f52d62ad49092))
+* upgrade is-plain-obj to v3 ([fb864d7](https://github.com/xing/hops/commit/fb864d7ad007d135d033d46cc3ded7e78fd61f90))
+* upgrade webpack-dev-middleware to v4 ([3ff152b](https://github.com/xing/hops/commit/3ff152b8ee91199017fae28059fa82d8f87b58bd))
+
+
+
+
+
 # [13.2.0](https://github.com/xing/hops/compare/v13.1.0...v13.2.0) (2020-11-06)
 
 

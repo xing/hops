@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.1](https://github.com/xing/hops/compare/v13.2.0...v13.2.1) (2020-11-20)
+
+
+### Bug Fixes
+
+* allow react v17 and upgrade to v17 ([97b7385](https://github.com/xing/hops/commit/97b7385334e37af6c1e437d0572d36023eefb65f))
+* upgrade graphql-tools packages to v7 ([9dbfc5e](https://github.com/xing/hops/commit/9dbfc5e2d1ac86bb9d787873289964ce2bc9be4d))
+
+
+
+
+
 # [13.2.0](https://github.com/xing/hops/compare/v13.1.0...v13.2.0) (2020-11-06)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.1](https://github.com/xing/hops/compare/v13.2.0...v13.2.1) (2020-11-20)
+
+
+### Bug Fixes
+
+* upgrade is-plain-obj to v3 ([fb864d7](https://github.com/xing/hops/commit/fb864d7ad007d135d033d46cc3ded7e78fd61f90))
+* upgrade yargs to v16 ([3997617](https://github.com/xing/hops/commit/3997617a75021d824d7958a0c773540c54a1b744))
+
+
+
+
+
 # [13.2.0](https://github.com/xing/hops/compare/v13.1.0...v13.2.0) (2020-11-06)
 
 
