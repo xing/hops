@@ -1,6 +1,6 @@
 {
   "name": "jest-preset-hops",
-  "version": "14.0.0-nightly.1",
+  "version": "14.0.0-nightly.3",
   "description": "Jest preset to work with Hops powered projects",
   "keywords": [
     "hops",
@@ -26,28 +26,30 @@
     "@babel/plugin-transform-flow-strip-types": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
-    "babel-jest": "^26.0.0",
     "colors": "^1.4.0",
     "core-js": "^3.2.1",
-    "hops": "^14.0.0-nightly.1",
+    "hops": "^14.0.0-nightly.3",
     "identity-obj-proxy": "^3.0.0",
-    "jest-config": "^26.0.0",
-    "regenerator-runtime": "^0.13.3",
-    "ts-jest": "^26.0.0"
+    "import-from": "^3.0.0",
+    "regenerator-runtime": "^0.13.3"
   },
   "peerDependencies": {
+    "babel-jest": "^26.0.0",
     "jest": "^26.0.0",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0",
     "react-helmet-async": "^1.0.4",
-    "react-router-dom": "^5.1.0"
+    "react-router-dom": "^5.1.0",
+    "ts-jest": "^26.0.0"
   },
   "devDependencies": {
+    "babel-jest": "^26.0.0",
     "jest": "^26.0.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "ts-jest": "^26.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/jest-preset#readme"
 }

@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.3](https://github.com/xing/hops/compare/v14.0.0-nightly.2...v14.0.0-nightly.3) (2020-11-20)
+
+
+### Bug Fixes
+
+* **webpack:** compile browser bundle for latest chrome only ([ec7aa01](https://github.com/xing/hops/commit/ec7aa01f43bf989944aed464511a3bab52fe63af))
+* **webpack:** fix memory leak in StatsWriterPlugin ([42e7fc8](https://github.com/xing/hops/commit/42e7fc836a43f534efe381f17065ce77a3ab6c68))
+* upgrade dependency is-plain-obj ([3f9fb41](https://github.com/xing/hops/commit/3f9fb4144ddbcab62a0f02e11dd5947e5b81994b))
+* upgrade graphql-tools monorepo ([9530be1](https://github.com/xing/hops/commit/9530be135335dd454d44a0a4db8f3ef246279865))
+* upgrade react monorepo to v17 ([ccd74f0](https://github.com/xing/hops/commit/ccd74f01923b8b902c64deaa8990b67cfe781bed))
+* upgrade webpack-bundle-analyzer to v4 ([6522387](https://github.com/xing/hops/commit/65223876a1a35e936036194511de0a4ac4fbbb9f))
+* upgrade webpack-dev-middleware to v4 ([83b39ee](https://github.com/xing/hops/commit/83b39ee866a10e292a9c68c7b62673b038bf4205))
+* upgrade yargs to v16 ([35e48f1](https://github.com/xing/hops/commit/35e48f1a72e7e3ef220b3cedfc30209d00b715f7))
+* **spec:** hops dependencies should be wildcards ([88aab72](https://github.com/xing/hops/commit/88aab7229d127083b12c03873582e2c5a0aaa8ab))
+
+
+
+
+
+# [14.0.0-nightly.2](https://github.com/xing/hops/compare/v14.0.0-nightly.1...v14.0.0-nightly.2) (2020-11-13)
+
+
+### Features
+
+* **jest-preset:** import jest-config from jest package ([903d07c](https://github.com/xing/hops/commit/903d07c6cb80689ac342a7e55aa4f58f9b107247))
+* **jest-preset:** make babel-jest & ts-jest peer-dependencies ([af4c932](https://github.com/xing/hops/commit/af4c9321ad85b5181866ccd6358e5b1ff50e8b3e))
+
+
+### BREAKING CHANGES
+
+* **jest-preset:** babel-jest & ts-jest need to be installed additionally now in order
+to set up Jest for Hops.
+
+
+
+
+
 # [14.0.0-nightly.1](https://github.com/xing/hops/compare/v13.0.0...v14.0.0-nightly.1) (2020-11-06)
 
 

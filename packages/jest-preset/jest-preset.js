@@ -1,6 +1,13 @@
 const colors = require('colors');
-const { defaults } = require('jest-config');
+const importFrom = require('import-from');
+const jestConfig = importFrom.silent(require.resolve('jest'), 'jest-config');
 const [jestMajorVersion] = require('jest/package.json').version.split('.');
+
+if (!jestConfig) {
+  throw new Error(
+    'Could not initialize jest-preset-hops. Jest Config is missing.'
+  );
+}
 
 if (Number(jestMajorVersion) < 26) {
   console.error(
@@ -25,7 +32,7 @@ module.exports = {
     '^hops$': require.resolve('./mocks/hops.js'),
   },
   testMatch: [
-    ...defaults.testMatch,
+    ...jestConfig.defaults.testMatch,
     '**/__tests__/**/*.ts?(x)',
     '**/?(*.)+(spec|test).ts?(x)',
   ],

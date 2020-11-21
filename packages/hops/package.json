@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "14.0.0-nightly.1",
+  "version": "14.0.0-nightly.3",
   "description": "Hops main Package to build and run Hops applications",
   "keywords": [
     "hops",
@@ -27,25 +27,25 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-express": "^14.0.0-nightly.1",
-    "hops-info": "^14.0.0-nightly.1",
-    "hops-mixin": "^14.0.0-nightly.1",
-    "hops-react": "^14.0.0-nightly.1",
-    "hops-webpack": "^14.0.0-nightly.1",
-    "hops-yargs": "^14.0.0-nightly.1",
-    "webpack-bundle-analyzer": "^3.5.2"
+    "hops-express": "^14.0.0-nightly.3",
+    "hops-info": "^14.0.0-nightly.3",
+    "hops-mixin": "^14.0.0-nightly.3",
+    "hops-react": "^14.0.0-nightly.3",
+    "hops-webpack": "^14.0.0-nightly.3",
+    "hops-yargs": "^14.0.0-nightly.3",
+    "webpack-bundle-analyzer": "^4.1.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.0"
   },
   "devDependencies": {
     "@types/react": "*",
     "@types/react-router-dom": "*",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.2"
   }

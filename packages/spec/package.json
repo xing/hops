@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "14.0.0-nightly.1",
+  "version": "14.0.0-nightly.3",
   "private": true,
   "files": [],
   "eslintConfig": {
@@ -25,12 +25,12 @@
     "node": "12 || 14 || 15"
   },
   "devDependencies": {
-    "@graphql-tools/delegate": "^6.0.0",
-    "@graphql-tools/mock": "^6.0.0",
-    "@graphql-tools/schema": "^6.0.0",
-    "@graphql-tools/stitch": "^6.0.0",
+    "@graphql-tools/delegate": "^7.0.5",
+    "@graphql-tools/mock": "^7.0.0",
+    "@graphql-tools/schema": "^7.0.0",
+    "@graphql-tools/stitch": "^7.0.4",
     "@testing-library/react": "^11.0.0",
-    "create-hops-app": "^14.0.0-nightly.1",
+    "create-hops-app": "^14.0.0-nightly.3",
     "cross-fetch": "^3.0.4",
     "fs-extra": "^9.0.0",
     "jest-environment-node": "^26.0.0",
