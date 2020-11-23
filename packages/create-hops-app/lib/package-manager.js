@@ -40,7 +40,9 @@ function installPackages(packages, type, options) {
   } else {
     command =
       packages.length === 0
-        ? ['npm', 'install']
+        ? // TODO: remove the `--legacy-peer-deps` flag again when
+          // react-helmet-async supports react@17 (https://github.com/staylor/react-helmet-async/issues/109)
+          ['npm', 'install', '--legacy-peer-deps']
         : ['npm', 'install', type === 'dev' ? '--save-dev' : '--save'];
   }
   if (options.verbose) {
