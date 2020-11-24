@@ -1,5 +1,5 @@
 status = [
-  "Node.js CI / tests %",
+  "tests %",
   "canarist/0",
 ]
 
