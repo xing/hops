@@ -42,3 +42,8 @@ exports.resolveMixins = (context, types, mixins) => {
 };
 
 exports.isResolveError = (error) => compatibleMessage(error, /^Can't resolve/);
+exports.isESMExportsError = (error) =>
+  compatibleMessage(
+    error,
+    /^Package path .\/package\.json is not exported from package/
+  );

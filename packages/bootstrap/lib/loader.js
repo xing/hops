@@ -6,7 +6,12 @@ const { cosmiconfigSync: cosmiconfig } = require('cosmiconfig');
 const { compatibleMessage } = require('check-error');
 
 const { merge: mergeFactory, getMixinSortOrder } = require('./utils');
-const { resolve, resolvePreset, isResolveError } = require('./resolver');
+const {
+  resolve,
+  resolvePreset,
+  isResolveError,
+  isESMExportsError,
+} = require('./resolver');
 
 class Loader {
   constructor(pkgData) {
@@ -30,7 +35,7 @@ class Loader {
       try {
         return this.search(dirname(resolve(context, `${preset}/package.json`)));
       } catch (error) {
-        if (!isResolveError(error)) throw error;
+        if (!(isResolveError(error) || isESMExportsError(error))) throw error;
         throw new Error(`Can't find preset '${preset}' in '${context}'`);
       }
     }
