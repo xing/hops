@@ -24,7 +24,9 @@ module.exports = function getConfig(config, name) {
       babelrc: false,
       compact: isProduction,
       cacheDirectory: true,
-      cacheIdentifier: `${process.env.NODE_ENV || 'development'}:${name}`,
+      cacheIdentifier: `${process.env.NODE_ENV || 'development'}:${name}:${
+        process.versions.node
+      }`,
       presets: [
         [
           require.resolve('@babel/preset-env'),
@@ -33,7 +35,10 @@ module.exports = function getConfig(config, name) {
             useBuiltIns: 'entry',
             targets: { node: config.node },
             corejs: 3,
-            include: [],
+            include: [
+              '@babel/proposal-optional-chaining',
+              '@babel/proposal-nullish-coalescing-operator',
+            ],
             exclude: [],
           },
         ],
