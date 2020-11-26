@@ -28,7 +28,10 @@ module.exports = function getConfig(config, name) {
             useBuiltIns: 'usage',
             targets: { browsers: config.browsers },
             corejs: 3,
-            include: [],
+            include: [
+              '@babel/proposal-optional-chaining',
+              '@babel/proposal-nullish-coalescing-operator',
+            ],
             exclude: [],
           },
         ],
