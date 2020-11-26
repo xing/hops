@@ -35,7 +35,10 @@ module.exports = function getConfig(config, name) {
             useBuiltIns: 'entry',
             targets: { node: config.node },
             corejs: 3,
-            include: [],
+            include: [
+              '@babel/proposal-optional-chaining',
+              '@babel/proposal-nullish-coalescing-operator',
+            ],
             exclude: [],
           },
         ],
