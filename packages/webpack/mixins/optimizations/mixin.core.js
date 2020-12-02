@@ -25,51 +25,33 @@ function findResolved(a, b) {
 
 class WebpackOptimizationsMixin extends Mixin {
   configureBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }, target) {
-    const { fastBuild, fastDev } = this.options;
-
-    if (!fastDev && !fastBuild) {
-      return;
-    }
-
+    const { fastBuild: fastBuildFlag, fastDev: fastDevFlag } = this.options;
     const { NODE_ENV } = process.env;
-    const isDevelop = target === 'develop' || NODE_ENV !== 'production';
-    const skipPolyfilling = fastDev && isDevelop;
-    const skipNodeModules = !skipPolyfilling && fastBuild;
+    const fastBuild =
+      fastBuildFlag && (target === 'build' || target === 'node');
+    const fastDev =
+      fastDevFlag &&
+      NODE_ENV !== 'production' &&
+      (target === 'develop' || target === 'node');
 
-    if (skipPolyfilling || skipNodeModules) {
+    const [, presetEnvOptions] =
+      jsLoaderConfig.options.presets
+        .filter(Array.isArray)
+        .find(([path]) => findResolved(path, '@babel/preset-env')) || [];
+
+    if (fastBuild || fastDev) {
+      // do not transpile node_modules for either fastBuild or fastDev
       const { experimental: { babelIncludePatterns = [] } = {} } = this.config;
-
       jsLoaderConfig.include = include(babelIncludePatterns);
       jsLoaderConfig.exclude = [];
 
-      webpackConfig.entry = []
+      // always add "regenerator-runtime/runtime" because babel will still down-
+      // transpile async functions if the browserslist requires it
+      webpackConfig.entry = [require.resolve('regenerator-runtime/runtime')]
         .concat(webpackConfig.entry)
-        .filter((entry) => !/(core-js|regenerator-runtime)/.test(entry));
+        .filter(unique);
 
-      const [, presetEnvOptions] =
-        jsLoaderConfig.options.presets
-          .filter(Array.isArray)
-          .find(([path]) => findResolved(path, '@babel/preset-env')) || [];
-
-      if (presetEnvOptions) {
-        if (skipPolyfilling) {
-          presetEnvOptions.targets.browsers = ['last 1 chrome versions'];
-          presetEnvOptions.useBuiltIns = false;
-          delete presetEnvOptions.corejs;
-        } else if (skipNodeModules) {
-          presetEnvOptions.useBuiltIns = 'entry';
-
-          webpackConfig.entry = [
-            require.resolve('core-js/stable'),
-            require.resolve('regenerator-runtime/runtime'),
-          ]
-            .concat(webpackConfig.entry)
-            .filter(unique);
-        }
-      }
-    }
-
-    if (skipPolyfilling) {
+      // if we use TypeScript we only need to transpile `importComponent`
       allLoaderConfigs
         .filter((loader) => {
           return loader.test instanceof RegExp && loader.test.test('.tsx');
@@ -90,6 +72,23 @@ class WebpackOptimizationsMixin extends Mixin {
             };
           }
         });
+    }
+
+    if (fastBuild) {
+      // in fastBuild mode we want to play it safe and still include all
+      // necessary polyfills
+      presetEnvOptions.useBuiltIns = 'entry';
+
+      webpackConfig.entry = [require.resolve('core-js/stable')]
+        .concat(webpackConfig.entry)
+        .filter(unique);
+    }
+
+    if (fastDev) {
+      // in fastDev mode we don't want to include any polyfills, because we
+      // assume that developers are using modern browsers
+      presetEnvOptions.useBuiltIns = false;
+      presetEnvOptions.corejs = undefined;
     }
   }
 
