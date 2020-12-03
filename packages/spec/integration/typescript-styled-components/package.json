@@ -22,6 +22,10 @@
     "hops": "*",
     "hops-styled-components": "*",
     "hops-typescript": "*",
+    "styled-components": "*",
     "typescript": "*"
+  },
+  "devDependencies": {
+    "@types/styled-components": "*"
   }
 }
