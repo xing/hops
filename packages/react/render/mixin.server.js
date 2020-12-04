@@ -41,8 +41,7 @@ class ReactMixin extends Mixin {
   }
 
   render(req, res, next) {
-    Promise.resolve()
-      .then(() => this.bootstrap(req, res))
+    return this.bootstrap(req, res)
       .then(() => this.enhanceElement(this.element))
       .then((element) =>
         this.fetchData({}, element).then(() => this.renderToFragments(element))
