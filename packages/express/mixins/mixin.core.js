@@ -6,6 +6,7 @@ const EnhancedPromise = require('eprom');
 const { async, sync } = require('mixinable');
 const { trimLeadingSlash } = require('pathifist');
 const { Mixin } = require('hops-mixin');
+const { createCircuitBreaker } = require('../lib/circuit-breaker');
 
 const { callable: callableAsync } = async;
 const { sequence, callable: callableSync } = sync;
@@ -68,6 +69,7 @@ class ExpressMixin extends Mixin {
     }
 
     if (mode === 'serve' && process.env.NODE_ENV === 'production') {
+      middlewares.preinitial.unshift(createCircuitBreaker(app));
       middlewares.prefiles.push(require('compression')());
     }
   }
