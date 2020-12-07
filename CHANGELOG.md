@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.7](https://github.com/xing/hops/compare/v12.5.6...v12.5.7) (2020-12-07)
+
+
+### Bug Fixes
+
+* **webpack:** always transpile optional chaining and nullish coalescing ([0750daf](https://github.com/xing/hops/commit/0750daf97f719f70670a284fcffaab2d259b4d60))
+* **webpack:** consider the current node version for babel cache ([a9372a0](https://github.com/xing/hops/commit/a9372a0ebf31237de4750378ff56321ff1367a3d))
+
+
+
+
+
 ## [12.5.6](https://github.com/xing/hops/compare/v12.5.5...v12.5.6) (2020-11-20)
 
 
