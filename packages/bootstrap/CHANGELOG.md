@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.2](https://github.com/xing/hops/compare/v13.2.1...v13.2.2) (2020-12-07)
+
+
+### Bug Fixes
+
+* **bootstrap:** do not try to resolve ESM packages for presets ([1815f58](https://github.com/xing/hops/commit/1815f58f99fbd06ef77463caa4bd08f4e10eeea8))
+
+
+
+
+
 ## [13.2.1](https://github.com/xing/hops/compare/v13.2.0...v13.2.1) (2020-11-20)
 
 

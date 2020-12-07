@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.2](https://github.com/xing/hops/compare/v13.2.1...v13.2.2) (2020-12-07)
+
+
+### Bug Fixes
+
+* **create-hops-app:** force legacy peer deps handling for npm@7 ([de9c7db](https://github.com/xing/hops/commit/de9c7db4121437d38594ed7a5786917592c0bc74))
+
+
+
+
+
 ## [13.2.1](https://github.com/xing/hops/compare/v13.2.0...v13.2.1) (2020-11-20)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "hops-apollo-mock-server",
-  "version": "13.2.1",
+  "version": "13.2.2",
   "description": "Apollo based mock server for Hops",
   "keywords": [
     "hops",
@@ -24,9 +24,9 @@
     "cross-fetch": "^3.0.4",
     "express": "^4.17.1",
     "graphql": "^15.0.0",
-    "hops-config": "^13.2.1",
-    "hops-mixin": "^13.2.1",
-    "hops-webpack": "^13.2.1"
+    "hops-config": "^13.2.2",
+    "hops-mixin": "^13.2.2",
+    "hops-webpack": "^13.2.2"
   },
   "peerDependencies": {
     "graphql-tag": "^2.10.0"

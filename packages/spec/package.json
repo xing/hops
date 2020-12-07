@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "13.2.1",
+  "version": "13.2.2",
   "private": true,
   "files": [],
   "eslintConfig": {
@@ -31,7 +31,7 @@
     "@graphql-tools/stitch": "^7.0.4",
     "@testing-library/react": "^11.0.0",
     "@types/styled-components": "5.1.4",
-    "create-hops-app": "^13.2.1",
+    "create-hops-app": "^13.2.2",
     "cross-fetch": "^3.0.4",
     "fs-extra": "^9.0.0",
     "jest-environment-node": "^26.0.0",
