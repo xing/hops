@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.4](https://github.com/xing/hops/compare/v14.0.0-nightly.3...v14.0.0-nightly.4) (2020-12-07)
+
+
+### Bug Fixes
+
+* **bootstrap:** do not try to resolve ESM packages for presets ([e00c047](https://github.com/xing/hops/commit/e00c047c21eec896a4e00b7b2383771271b6cd63))
+* update dependency supports-color to v8 ([910aba9](https://github.com/xing/hops/commit/910aba9e16ebefab136db29c9eb242a59f548cbf))
+
+
+
+
+
 # [14.0.0-nightly.3](https://github.com/xing/hops/compare/v14.0.0-nightly.2...v14.0.0-nightly.3) (2020-11-20)
 
 

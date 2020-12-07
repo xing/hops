@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "14.0.0-nightly.3",
+  "version": "14.0.0-nightly.4",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -26,8 +26,8 @@
     "clone": "^2.1.2",
     "depd": "^2.0.0",
     "duplitect": "^3.0.0",
-    "hops-bootstrap": "^14.0.0-nightly.3",
-    "hops-mixin": "^14.0.0-nightly.3",
+    "hops-bootstrap": "^14.0.0-nightly.4",
+    "hops-mixin": "^14.0.0-nightly.4",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "pathifist": "^1.0.0",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.4](https://github.com/xing/hops/compare/v14.0.0-nightly.3...v14.0.0-nightly.4) (2020-12-07)
+
+
+### Bug Fixes
+
+* **create-hops-app:** force legacy peer deps handling for npm@7 ([c1fd0cb](https://github.com/xing/hops/commit/c1fd0cb47f206be3ad7dfaf5a5d8f1ab6400e518))
+
+
+
+
+
 # [14.0.0-nightly.3](https://github.com/xing/hops/compare/v14.0.0-nightly.2...v14.0.0-nightly.3) (2020-11-20)
 
 

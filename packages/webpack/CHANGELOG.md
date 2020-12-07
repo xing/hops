@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.4](https://github.com/xing/hops/compare/v14.0.0-nightly.3...v14.0.0-nightly.4) (2020-12-07)
+
+
+### Bug Fixes
+
+* **webpack:** always transpile optional chaining and nullish coalescing ([a996301](https://github.com/xing/hops/commit/a996301c5c7c6ce30bd594d414a1d93af946c0f1))
+* **webpack:** consider the current node version for babel cache ([70ab6b7](https://github.com/xing/hops/commit/70ab6b765bdb191c2a4f1a4b6474f7512de0929e))
+* update dependency supports-color to v8 ([910aba9](https://github.com/xing/hops/commit/910aba9e16ebefab136db29c9eb242a59f548cbf))
+
+
+
+
+
 # [14.0.0-nightly.3](https://github.com/xing/hops/compare/v14.0.0-nightly.2...v14.0.0-nightly.3) (2020-11-20)
 
 
