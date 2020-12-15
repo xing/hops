@@ -60,6 +60,34 @@
             ]
           }
         ]
+      },
+      {
+        "name": "internal-hops",
+        "repositories": [
+          {
+            "url": ".",
+            "commands": [
+              ""
+            ]
+          },
+          {
+            "url": "enc:r6BTklZr+axySHpOBj0JysOusV4S8o7YtSxZ9fi66rL5grn3vMkHUbMdb3OY5+tv"
+          }
+        ]
+      },
+      {
+        "name": "internal-workshop",
+        "repositories": [
+          {
+            "url": ".",
+            "commands": [
+              ""
+            ]
+          },
+          {
+            "url": "enc:r6BTklZr+axySHpOBj0JyiGPh/P525a+dfwfWHQq5kkrY1Wruq8QaSL2vCfb0cWp"
+          }
+        ]
       }
     ]
   },
