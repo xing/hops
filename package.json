@@ -41,18 +41,23 @@
     "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'"
   },
   "canarist": {
-    "repositories": [
+    "projects": [
       {
-        "url": ".",
-        "commands": [
-          ""
-        ]
-      },
-      {
-        "url": "https://github.com/foosbyte/kicker-trainer.git",
-        "commands": [
-          "yarn build -p",
-          "yarn test"
+        "name": "kicker-trainer",
+        "repositories": [
+          {
+            "url": ".",
+            "commands": [
+              ""
+            ]
+          },
+          {
+            "url": "https://github.com/foosbyte/kicker-trainer.git",
+            "commands": [
+              "yarn build -p",
+              "yarn test"
+            ]
+          }
         ]
       }
     ],
