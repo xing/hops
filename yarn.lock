@@ -4416,10 +4416,10 @@ camelize@^1.0.0:
   resolved "https://registry.yarnpkg.com/camelize/-/camelize-1.0.0.tgz#164a5483e630fa4321e5af07020e531831b2609b"
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
-canarist@^2.0.1:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/canarist/-/canarist-2.0.2.tgz#fd0ecf82f80b1b66d2dcd72bd6cacf53c6d9ef55"
-  integrity sha512-glV7JwJpJ4Zz5miLUZ01i/mlrYD+7ERUlSIbyOn2+jPcjXxaFb6P3vyaKtrKQR2G7HcG3uIlAe4XvOYFEf1ajA==
+canarist@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/canarist/-/canarist-2.2.2.tgz#333b217ad7892f524884a6061bc7f60f7e9f3f1a"
+  integrity sha512-aeVVc7QgevkuByso48zGtlnt+q7lJpR7X4owHBgkCVb23feL1v41GYgr1YzEl2GbmD9F747aY4Nu3h73sYJEyQ==
   dependencies:
     cosmiconfig "^7.0.0"
     debug "^4.1.1"
@@ -4427,6 +4427,7 @@ canarist@^2.0.1:
     git-url-parse "^11.1.2"
     lodash.mergewith "^4.6.2"
     minimist "^1.2.5"
+    rimraf "^3.0.2"
 
 caniuse-api@^3.0.0:
   version "3.0.0"
