@@ -50,4 +50,4 @@ jobs:
     - name: Install canarist
       run: npm i -g canarist
     - name: Run canarist
-      run: canarist
+      run: canarist -p kicker-trainer
