@@ -85,7 +85,8 @@
             ]
           },
           {
-            "url": "enc:r6BTklZr+axySHpOBj0JyiGPh/P525a+dfwfWHQq5kkrY1Wruq8QaSL2vCfb0cWp"
+            "url": "enc:r6BTklZr+axySHpOBj0JyiGPh/P525a+dfwfWHQq5kkrY1Wruq8QaSL2vCfb0cWp",
+            "branch": "hops-nightly"
           }
         ]
       }
