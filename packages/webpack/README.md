@@ -269,3 +269,11 @@ Path of your stats file, relative to [`serverDir`](../webpack/README.md#serverdi
   "assetFile": "stats.json"
 }
 ```
+
+## Debugging
+
+Available tags for the [`debug`](https://www.npmjs.com/package/debug)-module are:
+
+- `hops:webpack:config:build`
+- `hops:webpack:config:develop`
+- `hops:webpack:config:node`
