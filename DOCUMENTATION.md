@@ -1018,10 +1018,9 @@ Add `jest-preset-hops` as [preset](https://facebook.github.io/jest/docs/en/confi
 
 ### Debugging
 
-Hops and its underlying tools provide debugging output via the [`debug`](https://www.npmjs.com/package/debug) module.\
-In order to enable debug output you need to set an environment variable called `DEBUG`.
+Hops provides debugging output via the [`debug`](https://www.npmjs.com/package/debug) module. The available tags are listed in the READMEs of each Hops preset.
 
-For example the following command would log all debug statements of Hops:
+Since the tags are namespaced to `hops`, it's possible to log all debug statements of Hops by running…
 
 ```shell
 DEBUG=hops* npm start
