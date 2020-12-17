@@ -1,7 +1,6 @@
 status = [
   "Node.js CI / tests %",
-  "canarist/0",
-  "canarist/1"
+  "canarist/%"
 ]
 
 block_labels = [
