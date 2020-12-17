@@ -100,3 +100,9 @@ Hook to implement [http-proxy-middleware `onProxyRes` event callback](https://gi
 #### `onProxyError(): void` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **core**
 
 Hook to implement [http-proxy-middleware `onError` event callback](https://github.com/chimurai/http-proxy-middleware#http-proxy-events).
+
+## Debugging
+
+Available tags for the [`debug`](https://www.npmjs.com/package/debug)-module are:
+
+- `hops:development-proxy`
