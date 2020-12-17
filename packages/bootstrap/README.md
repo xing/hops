@@ -231,3 +231,10 @@ Note that you can call all defined mixinable methods directly on your mixin inst
 This is a semi-private function that is mainly being used internally, for example by [`hops-yargs`](../yargs/README.md). It returns the core mixin container - this allows you to call all defined mixin methods.
 
 You will only ever have to call it if you want to use `hops-bootstrap` programmatically. You can pass it an `configOverrides` object that will be merged into the main config object, and an options object mixins might use instead of CLI arguments.
+
+## Debugging
+
+Available tags for the [`debug`](https://www.npmjs.com/package/debug)-module are:
+
+- `hops:bootstrap`
+- `hops:config`
