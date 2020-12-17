@@ -1,6 +1,6 @@
 status = [
   "tests %",
-  "canarist/0",
+  "canarist/%",
 ]
 
 block_labels = [
