@@ -1,7 +1,12 @@
 status = [
   "tests %",
-  "canarist/0",
-  "canarist/1"
+  "canarist/%",
+]
+
+block_labels = [
+  ":hand: blocked",
+  ":construction: wip",
+  "on hold"
 ]
 
 required_approvals = 1
