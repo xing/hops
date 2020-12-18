@@ -159,3 +159,9 @@ It accepts `develop`, `serve` or `static` as `mode`.
 In case you want to programmatically start a server, you can use this mixin hook.
 
 It accepts `develop` or `serve` as `mode`.
+
+## Debugging
+
+Available tags for the [`debug`](https://www.npmjs.com/package/debug)-module are:
+
+- `hops:express`
