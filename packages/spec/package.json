@@ -30,7 +30,7 @@
     "@graphql-tools/schema": "^7.0.0",
     "@graphql-tools/stitch": "^7.0.4",
     "@testing-library/react": "^11.0.0",
-    "@types/styled-components": "5.1.4",
+    "@types/styled-components": "5.1.7",
     "create-hops-app": "^13.2.2",
     "cross-fetch": "^3.0.4",
     "fs-extra": "^9.0.0",
