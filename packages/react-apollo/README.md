@@ -46,6 +46,15 @@ In order to start using GraphQL in your application install this preset and conf
 
 Check out this [integration test](../spec/integration/graphql) as an example for how to use this preset.
 
+#### GraphQL in a Typescript project
+
+If you're importing queries from `.graphql`/`.gql`-files as modules, you have to make these module types known to the TS compiler. Therefore add them to [the `assets.d.ts`, that you should have in your project](../typescript#using-static-assets).
+
+```ts
+declare module '*.graphql';
+declare module '*.gql';
+```
+
 ### Configuration
 
 #### Preset Options
