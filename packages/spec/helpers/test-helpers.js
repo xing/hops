@@ -2,7 +2,6 @@ const { spawn } = require('child_process');
 const path = require('path');
 const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
-const puppeteer = require('puppeteer');
 const rimraf = promisify(require('rimraf'));
 
 const { copy } = require('fs-extra');
@@ -68,7 +67,18 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) =>
     started.on('error', (error) => reject(error));
   });
 
-const launchPuppeteer = async () => {
+const isPuppeteerDisabled = (pragmas) => {
+  if (pragmas['jest-hops-puppeteer'] === 'off') {
+    return true;
+  }
+  return false;
+};
+
+const launchPuppeteer = async (disablePuppeteer) => {
+  if (disablePuppeteer) {
+    return {};
+  }
+
   const isDebug = process.env.DEBUG_PUPPETEER === 'true';
   const config = {
     executablePath: process.env.CHROMIUM_PATH,
@@ -78,6 +88,7 @@ const launchPuppeteer = async () => {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   };
   debug('Starting puppeteer', config);
+  const { default: puppeteer } = await import('puppeteer');
   const browser = await puppeteer.launch(config);
   return {
     browser,
@@ -101,5 +112,6 @@ const createWorkingDir = async (srcDir) => {
 
 module.exports.startServer = startServer;
 module.exports.build = build;
+module.exports.isPuppeteerDisabled = isPuppeteerDisabled;
 module.exports.launchPuppeteer = launchPuppeteer;
 module.exports.createWorkingDir = createWorkingDir;

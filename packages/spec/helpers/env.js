@@ -1,6 +1,7 @@
 const NodeEnvironment = require('jest-environment-node');
 const debug = require('debug')('hops-spec:env');
 const {
+  isPuppeteerDisabled,
   launchPuppeteer,
   startServer,
   build,
@@ -53,10 +54,11 @@ function getCommandModifications(args) {
 }
 
 class FixtureEnvironment extends NodeEnvironment {
-  constructor(config) {
+  constructor(config, context) {
     super(config);
 
     this.config = config;
+    this.disablePuppeteer = isPuppeteerDisabled(context.docblockPragmas);
   }
   async setup() {
     await super.setup();
@@ -67,12 +69,18 @@ class FixtureEnvironment extends NodeEnvironment {
     debug('Working directory created:', cwd);
     this.cwd = cwd;
     this.removeWorkingDir = removeWorkingDir;
-    const { browser, teardown: closeBrowser } = await launchPuppeteer();
+    const { browser, teardown: closeBrowser } = await launchPuppeteer(
+      this.disablePuppeteer
+    );
     this.closeBrowser = closeBrowser;
     this.global.browser = browser;
     this.global.cwd = cwd;
 
     this.global.createPage = async () => {
+      if (this.disablePuppeteer) {
+        throw new Error('No browser available; please enable Puppeteer.');
+      }
+
       const page = await browser.newPage();
       page.setDefaultNavigationTimeout(2 * 60 * 1000);
       page.on('error', (error) => {
