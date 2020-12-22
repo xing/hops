@@ -1,3 +1,7 @@
+/**
+ * @jest-hops-puppeteer off
+ */
+
 describe('doctor - build', () => {
   let logs;
 

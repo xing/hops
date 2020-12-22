@@ -1,3 +1,7 @@
+/**
+ * @jest-hops-puppeteer off
+ */
+
 const fetch = require('cross-fetch');
 
 describe('graphql development client', () => {
