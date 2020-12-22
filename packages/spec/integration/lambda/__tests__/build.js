@@ -1,3 +1,7 @@
+/**
+ * @jest-hops-puppeteer off
+ */
+
 const path = require('path');
 const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);

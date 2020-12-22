@@ -1,3 +1,7 @@
+/**
+ * @jest-hops-puppeteer off
+ */
+
 describe('jest-preset', () => {
   it('allows to use typescript', () => {
     const calculator = require('./setup/calculator').default;

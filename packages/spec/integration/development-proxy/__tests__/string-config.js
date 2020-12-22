@@ -1,3 +1,7 @@
+/**
+ * @jest-hops-puppeteer off
+ */
+
 const fs = require('fs');
 const path = require('path');
 const fetch = require('cross-fetch');
