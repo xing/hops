@@ -1,3 +1,7 @@
+/**
+ * @jest-hops-puppeteer off
+ */
+
 const delay = () => new Promise((resolve) => setTimeout(resolve, 200));
 
 describe('doctor - develop', () => {
