@@ -1,3 +1,7 @@
+/**
+ * @jest-hops-puppeteer off
+ */
+
 const path = require('path');
 const semver = require('semver');
 const { existsSync, readFileSync } = require('fs');
