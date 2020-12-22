@@ -1,3 +1,7 @@
+/**
+ * @jest-hops-puppeteer off
+ */
+
 const { createElement } = require('react');
 const { render, screen } = require('@testing-library/react');
 
