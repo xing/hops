@@ -3,8 +3,6 @@ const debug = require('debug')('hops-spec:env');
 const {
   isPuppeteerDisabled,
   launchPuppeteer,
-  startServer,
-  build,
   createWorkingDir,
 } = require('./test-helpers');
 
@@ -41,16 +39,6 @@ function isReactLifecycleWarning(warning) {
 
 function isIntolerableWarning(type, text) {
   return type === 'warning' && !isReactLifecycleWarning(text);
-}
-
-function getCommandModifications(args) {
-  const [maybeEnv, ...rest] = args;
-  const env =
-    typeof maybeEnv === 'object' && maybeEnv !== null ? maybeEnv : undefined;
-  return {
-    argv: env ? rest : args,
-    env,
-  };
 }
 
 class FixtureEnvironment extends NodeEnvironment {
@@ -107,42 +95,12 @@ class FixtureEnvironment extends NodeEnvironment {
     };
 
     const that = this;
-    this.global.HopsCLI = {
-      build(...args) {
-        const { env, argv } = getCommandModifications(args);
-        return build({ cwd: that.cwd, argv, env });
-      },
-      async start(...args) {
-        if (that.killServer) {
-          throw new Error(
-            'Another long running task ("hops start") is already running. You can only start one task per file.'
-          );
-        }
-        const { env, argv } = getCommandModifications(args);
-        const { url, teardown } = await startServer({
-          cwd: that.cwd,
-          command: 'start',
-          env,
-          argv,
-        });
-        // eslint-disable-next-line require-atomic-updates
-        that.killServer = teardown;
-        that.global.killServer = () => {
-          delete that.killServer;
-          return teardown();
-        };
-        return url;
-      },
-    };
   }
 
   async teardown() {
     await super.teardown();
     if (this.closeBrowser) {
       await this.closeBrowser();
-    }
-    if (this.killServer) {
-      await this.killServer();
     }
     await this.removeWorkingDir();
   }
