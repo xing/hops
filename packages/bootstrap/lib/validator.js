@@ -4,7 +4,7 @@
 
 const { isAbsolute } = require('path');
 
-const Ajv = require('ajv');
+const { default: Ajv } = require('ajv');
 const isPlainObject = require('is-plain-obj');
 
 const configureAjv = (ajv) => {
