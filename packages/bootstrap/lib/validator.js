@@ -61,7 +61,10 @@ const configureAjv = (ajv) => {
 };
 
 exports.validate = (config, properties) => {
-  const ajv = new Ajv({ allErrors: true });
+  const ajv = new Ajv({
+    allErrors: true,
+    allowMatchingProperties: true,
+  });
   const additional = {
     patternProperties: {
       '^.*$': {
