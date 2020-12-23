@@ -1,8 +1,16 @@
+const { HopsCLI } = require('../../../helpers/hops-cli');
+
 describe('graphql mock server without SSR', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('--fast-dev');
+    hopsCli = HopsCLI.cmd('start').addArg('--fast-dev').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   it('requests data on the client & not on the server', async () => {

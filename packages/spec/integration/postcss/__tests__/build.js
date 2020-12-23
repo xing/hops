@@ -1,8 +1,16 @@
+const { HopsCLI } = require('../../../helpers/hops-cli');
+
 describe('postcss production build', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('-p');
+    hopsCli = HopsCLI.cmd('start').addArg('-p').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   it('styles when served in production mode', async () => {

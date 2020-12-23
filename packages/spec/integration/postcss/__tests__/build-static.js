@@ -1,9 +1,17 @@
+const { HopsCLI } = require('../../../helpers/hops-cli');
+
 // Test to ensure  https://github.com/xing/hops/issues/761 has been fixed
 describe('postcss production static build', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('-ps');
+    hopsCli = HopsCLI.cmd('start').addArg('-p').addArg('-s').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   it('styles when served in production mode', async () => {

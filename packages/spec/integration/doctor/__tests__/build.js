@@ -1,6 +1,7 @@
 /**
  * @jest-hops-puppeteer off
  */
+const { HopsCLI } = require('../../../helpers/hops-cli');
 
 describe('doctor - build', () => {
   let logs;
@@ -8,14 +9,19 @@ describe('doctor - build', () => {
   const getFromLogs = (type, message) =>
     logs.find((l) => l.endsWith(`:${type}] ${message}`));
 
+  const runHopsBuild = () =>
+    new Promise((resolve) => {
+      HopsCLI.cmd('build')
+        .addEnvVar('HOPS_IGNORE_ERRORS', 'doctor-mixin-a-two')
+        .addArg('-p')
+        .addArg('--parallel-build')
+        .run()
+        .once('end', ({ stderr }) => resolve(stderr))
+        .once('error', () => {}); // Hops Build Error needs handling
+    });
+
   beforeAll(async () => {
-    const { stderr } = await HopsCLI.build(
-      {
-        HOPS_IGNORE_ERRORS: 'doctor-mixin-a-two',
-      },
-      '-p',
-      '--parallel-build'
-    );
+    const stderr = await runHopsBuild();
     logs = stderr
       .split(/\n+/)
       .filter(Boolean)

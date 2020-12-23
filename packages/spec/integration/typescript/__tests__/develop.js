@@ -1,8 +1,16 @@
+const { HopsCLI } = require('../../../helpers/hops-cli');
+
 describe('typescript development server', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('--fast-dev');
+    hopsCli = HopsCLI.cmd('start').addArg('--fast-dev').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   it('renders a simple jsx site', async () => {

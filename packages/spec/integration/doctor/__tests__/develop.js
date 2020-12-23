@@ -2,7 +2,7 @@
  * @jest-hops-puppeteer off
  */
 
-const delay = () => new Promise((resolve) => setTimeout(resolve, 200));
+const { HopsCLI } = require('../../../helpers/hops-cli');
 
 describe('doctor - develop', () => {
   let logs;
@@ -10,13 +10,18 @@ describe('doctor - develop', () => {
   const getFromLogs = (type, message) =>
     logs.find((l) => l.endsWith(`:${type}] ${message}`));
 
+  const runHopsStart = () =>
+    new Promise(async (resolve, reject) => {
+      HopsCLI.cmd('start')
+        .addEnvVar('HOPS_IGNORE_ERRORS', 'doctor-mixin-a-one')
+        .addArg('--fast-dev')
+        .run()
+        .once('end', ({ stderr }) => resolve(stderr))
+        .once('error', reject);
+    });
+
   beforeAll(async () => {
-    await HopsCLI.start(
-      { HOPS_IGNORE_ERRORS: 'doctor-mixin-a-one' },
-      '--fast-dev'
-    );
-    await delay();
-    const stderr = await killServer();
+    const stderr = await runHopsStart();
     logs = stderr.split(/\n+/).filter(Boolean);
   });
 

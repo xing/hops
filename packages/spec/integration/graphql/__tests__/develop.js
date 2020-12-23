@@ -3,12 +3,19 @@
  */
 
 const fetch = require('cross-fetch');
+const { HopsCLI } = require('../../../helpers/hops-cli');
 
 describe('graphql development client', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('--fast-dev');
+    hopsCli = HopsCLI.cmd('start').addArg('--fast-dev').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   describe('/html', () => {

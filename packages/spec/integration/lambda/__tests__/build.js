@@ -7,6 +7,7 @@ const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
 const createBundle = require('hops-lambda/lib/create-lambda-bundle');
 const { createTmpDirectory } = require('hops-lambda/lib/fs-utils');
+const { HopsCLI } = require('../../../helpers/hops-cli');
 
 async function zipFunctionCode(root) {
   process.chdir(root);
@@ -35,9 +36,20 @@ function invokeFunction(root, path) {
   });
 }
 
+function runHopsBuild() {
+  return new Promise((resolve, reject) => {
+    HopsCLI.cmd('build')
+      .addArg('-p')
+      .addArg('--parallel-build')
+      .run()
+      .once('end', () => resolve())
+      .once('error', reject);
+  });
+}
+
 describe('lambda production build', () => {
   beforeAll(async () => {
-    await HopsCLI.build('-p', '--parallel-build');
+    await runHopsBuild();
   });
 
   it('renders something', async () => {

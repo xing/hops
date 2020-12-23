@@ -1,8 +1,16 @@
+const { HopsCLI } = require('../../../helpers/hops-cli');
+
 describe('react-postcss', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('--fast-dev');
+    hopsCli = HopsCLI.cmd('start').addArg('--fast-dev').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   it('styles when served in development mode', async () => {

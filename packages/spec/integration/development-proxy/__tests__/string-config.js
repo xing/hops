@@ -6,10 +6,12 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('cross-fetch');
 const urlJoin = require('url-join');
+const { HopsCLI } = require('../../../helpers/hops-cli');
 
 const PORT = 8999;
 
 describe('development proxy string config', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
@@ -19,7 +21,12 @@ describe('development proxy string config', () => {
     packageJson.hops.proxy = `http://localhost:${PORT}/proxy`;
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-    url = await HopsCLI.start('--fast-dev');
+    hopsCli = HopsCLI.cmd('start').addArg('--fast-dev').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   it('proxies with proxy config set as string', async () => {

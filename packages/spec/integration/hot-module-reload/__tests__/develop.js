@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { HopsCLI } = require('../../../helpers/hops-cli');
 
 function changeFile(id) {
   const content = `
@@ -15,10 +16,16 @@ function changeFile(id) {
 // An attempt to fix this did not lead to any satisfying result
 // More info can be found here: https://github.com/xing/hops/pull/760
 describe.skip('hot module reload', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('--fast-dev');
+    hopsCli = HopsCLI.cmd('start').addArg('--fast-dev').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   it('reflects changes automatically', async () => {

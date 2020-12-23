@@ -1,11 +1,18 @@
 const fs = require('fs');
 const path = require('path');
+const { HopsCLI } = require('../../../helpers/hops-cli');
 
 describe('pwa production build', () => {
+  let hopsCli;
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('-p');
+    hopsCli = HopsCLI.cmd('start').addArg('-p').run();
+    url = await hopsCli.getUrl();
+  });
+
+  afterAll(() => {
+    hopsCli.stop();
   });
 
   it('registers a service worker', async () => {
