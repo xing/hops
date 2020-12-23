@@ -8,7 +8,8 @@ const { default: Ajv } = require('ajv');
 const isPlainObject = require('is-plain-obj');
 
 const configureAjv = (ajv) => {
-  ajv.addKeyword('absolutePath', {
+  ajv.addKeyword({
+    keyword: 'absolutePath',
     errors: true,
     type: 'string',
     compile(expected, schema) {
@@ -32,7 +33,8 @@ const configureAjv = (ajv) => {
       return callback;
     },
   });
-  ajv.addKeyword('isFunction', {
+  ajv.addKeyword({
+    keyword: 'isFunction',
     compile(expected, schema) {
       const callback = (data) => {
         if (isPlainObject(data)) {
