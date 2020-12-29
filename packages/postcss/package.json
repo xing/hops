@@ -18,20 +18,17 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "core-js": "^3.2.1",
-    "css-loader": "^3.2.0",
-    "enhanced-resolve": "^5.0.0",
+    "css-loader": "^5.0.1",
     "hops-mixin": "^13.2.2",
-    "mini-css-extract-plugin": "^0.12.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "mini-css-extract-plugin": "^1.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "pathifist": "^1.0.0",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-modules-extract-imports": "^2.0.0",
+    "postcss": "^8.2.1",
+    "postcss-import": "^14.0.0",
+    "postcss-loader": "^4.1.0",
     "postcss-preset-env": "^6.7.0",
-    "style-loader": "^1.0.0",
-    "webpack": "^4.41.0",
-    "webpack-filter-warnings-plugin": "^1.2.1"
+    "style-loader": "^2.0.0",
+    "webpack": "^4.41.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/postcss#readme"
 }
