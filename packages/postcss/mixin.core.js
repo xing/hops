@@ -1,10 +1,6 @@
-// XXX: This file creates multiple side-effects
-require('./patch-postcss-modules-extract-imports');
-
 const postcssImportPlugin = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const ExtractCSSPlugin = require('mini-css-extract-plugin');
-const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const { Mixin } = require('hops-mixin');
 const { join, trimSlashes } = require('pathifist');
@@ -13,16 +9,29 @@ const getAssetPath = (...args) => trimSlashes(join(...args));
 
 const cssLoaderLocalOptions = {
   modules: {
+    auto: () => true,
     localIdentName: '[folder]-[name]-[local]-[hash:8]',
+    exportLocalsConvention: 'camelCase',
   },
-  localsConvention: 'camelCase',
+  esModule: false,
   sourceMap: process.env.NODE_ENV !== 'production',
 };
 
 const cssLoaderGlobalOptions = {
   modules: false,
+  esModule: false,
   sourceMap: process.env.NODE_ENV !== 'production',
 };
+
+const getPostCssLoader = (...additionalPlugins) => ({
+  loader: require.resolve('postcss-loader'),
+  options: {
+    postcssOptions: {
+      ident: 'postcss',
+      plugins: [postcssImportPlugin(), ...additionalPlugins],
+    },
+  },
+});
 
 const getCSSLoaderConfig = (browsers, additionalLoader) => {
   const getLoaders = (options) =>
@@ -35,29 +44,22 @@ const getCSSLoaderConfig = (browsers, additionalLoader) => {
           importLoaders: 1,
         },
       },
-      {
-        loader: require.resolve('postcss-loader'),
-        options: {
-          ident: 'postcss',
-          plugins: [
-            postcssImportPlugin(),
-            postcssPresetEnv({
-              browsers,
-              autoprefixer: {
-                overrideBrowserslist: browsers,
-              },
-              stage: 2,
-              features: {
-                'nesting-rules': true,
-                'custom-media-queries': true,
-                'custom-properties': {
-                  preserve: false,
-                },
-              },
-            }),
-          ],
-        },
-      },
+      getPostCssLoader(
+        postcssPresetEnv({
+          browsers,
+          autoprefixer: {
+            overrideBrowserslist: browsers,
+          },
+          stage: 2,
+          features: {
+            'nesting-rules': true,
+            'custom-media-queries': true,
+            'custom-properties': {
+              preserve: false,
+            },
+          },
+        })
+      ),
     ].filter(Boolean);
 
   return {
@@ -93,14 +95,17 @@ class PostCSSMixin extends Mixin {
     allLoaderConfigs.splice(
       allLoaderConfigs.indexOf(jsLoaderConfig),
       0,
-      getCSSLoaderConfig(this.config.browsers, ExtractCSSPlugin.loader)
-    );
-
-    webpackConfig.plugins.unshift(
-      new FilterWarningsPlugin({
-        exclude: /\[mini-css-extract-plugin\][^]*Conflicting order between:/,
+      getCSSLoaderConfig(this.config.browsers, {
+        loader: ExtractCSSPlugin.loader,
+        options: {
+          esModule: false,
+          modules: {
+            namedExport: true,
+          },
+        },
       })
     );
+
     webpackConfig.plugins.push(
       new ExtractCSSPlugin({
         filename: getAssetPath(
@@ -111,6 +116,7 @@ class PostCSSMixin extends Mixin {
           this.config.assetPath,
           '[name]-[contenthash:12].css'
         ),
+        ignoreOrder: true,
       })
     );
 
@@ -131,7 +137,15 @@ class PostCSSMixin extends Mixin {
     allLoaderConfigs.splice(
       allLoaderConfigs.indexOf(jsLoaderConfig),
       0,
-      getCSSLoaderConfig(this.config.browsers, require.resolve('style-loader'))
+      getCSSLoaderConfig(this.config.browsers, {
+        loader: require.resolve('style-loader'),
+        options: {
+          esModule: false,
+          modules: {
+            namedExport: true,
+          },
+        },
+      })
     );
   }
 
@@ -141,24 +155,36 @@ class PostCSSMixin extends Mixin {
       oneOf: [
         {
           resourceQuery: /global/,
-          use: {
-            loader: require.resolve('css-loader'),
-            options: {
-              ...cssLoaderGlobalOptions,
-              importLoaders: 0,
-              onlyLocals: true,
+          use: [
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                ...cssLoaderGlobalOptions,
+                modules: {
+                  auto: false,
+                  exportOnlyLocals: true,
+                },
+                importLoaders: 1,
+              },
             },
-          },
+            getPostCssLoader(),
+          ],
         },
         {
-          use: {
-            loader: require.resolve('css-loader'),
-            options: {
-              ...cssLoaderLocalOptions,
-              importLoaders: 0,
-              onlyLocals: true,
+          use: [
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                ...cssLoaderLocalOptions,
+                modules: {
+                  ...cssLoaderLocalOptions.modules,
+                  exportOnlyLocals: true,
+                },
+                importLoaders: 1,
+              },
             },
-          },
+            getPostCssLoader(),
+          ],
         },
       ],
     };
