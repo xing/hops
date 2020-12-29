@@ -1,4 +1,5 @@
 const debug = require('debug')('hops:webpack:stats');
+const isPlainObject = require('is-plain-obj');
 const { sync, async } = require('mixinable');
 const { Mixin } = require('hops-mixin');
 const { internal: bootstrap } = require('hops-bootstrap');
@@ -32,9 +33,8 @@ class WebpackBuildMixin extends Mixin {
 
   build() {
     const webpack = require('webpack');
-    const { parallelBuild } = this.options;
 
-    if (parallelBuild) {
+    if (this.allowForkBuild(this.options).every((value) => value) === true) {
       const { forkCompilation } = require('../../lib/utils/compiler');
       const buildRequests = [];
       this.collectBuildRequests(buildRequests);
@@ -80,6 +80,10 @@ class WebpackBuildMixin extends Mixin {
   collectBuildRequests(requests) {
     requests.push({ buildName: 'node' });
     requests.push({ buildName: 'build' });
+  }
+
+  allowForkBuild(options) {
+    return options.parallelBuild === true;
   }
 
   handleArguments(argv) {
@@ -172,6 +176,21 @@ WebpackBuildMixin.strategies = {
       'collectBuildRequests(): Received invalid requests array'
     );
   }),
+  allowForkBuild: validate(
+    sequence,
+    ([options]) => {
+      invariant(
+        isPlainObject(options),
+        'allowForkBuild(): Received invalid options argument'
+      );
+    },
+    (result) => {
+      invariant(
+        typeof result === 'boolean',
+        'allowForkBuild(): Returned non-boolean value'
+      );
+    }
+  ),
 };
 
 module.exports = WebpackBuildMixin;

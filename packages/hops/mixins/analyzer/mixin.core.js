@@ -11,9 +11,27 @@ module.exports = class AnalyzerCoreMixin extends Mixin {
       };
     }
   }
+
   handleArguments(argv) {
     this.options = { ...this.options, ...argv };
+
+    if (
+      this.options.parallelBuild === true &&
+      this.options.analyzeClientBundle === true &&
+      typeof this.getLogger === 'function'
+    ) {
+      this.getLogger().warn(
+        `Disabling parallel-build feature; otherwise can't analyze client bundle.`
+      );
+    }
   }
+
+  allowForkBuild(options) {
+    return (
+      options.analyzeClientBundle === false && options.parallelBuild === true
+    );
+  }
+
   configureBuild(webpackConfig, loaderConfigs, target) {
     if (
       !['build', 'develop'].includes(target) ||
