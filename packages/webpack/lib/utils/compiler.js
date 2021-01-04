@@ -83,7 +83,6 @@ function forkCompilation(mixin, buildConfigArgs, options = {}) {
 
       if (!watch) {
         subscriber.complete();
-        child.kill();
       }
     });
   });

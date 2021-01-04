@@ -8,7 +8,7 @@ const {
 } = require('../utils/errors');
 const { createCompiler } = require('./compiler');
 
-process.on('message', (message) => {
+process.once('message', (message) => {
   if (message.name !== 'start') return;
 
   const {
