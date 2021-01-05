@@ -1,6 +1,6 @@
 'use strict';
 
-const debug = require('debug')('hops:bootstrap');
+const debug = require('hops-debug')('hops:bootstrap');
 const { define } = require('mixinable');
 
 const { getConfig, getMixins } = require('./lib/config');

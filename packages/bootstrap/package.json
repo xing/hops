@@ -16,12 +16,12 @@
     "ajv-formats": "^1.5.1",
     "check-error": "^1.0.2",
     "cosmiconfig": "^7.0.0",
-    "debug": "^4.1.1",
     "dotenv": "^8.1.0",
     "enhanced-resolve": "^5.0.0",
     "escape-string-regexp": "^4.0.0",
     "find-up": "^5.0.0",
     "flat": "^5.0.0",
+    "hops-debug": "^13.3.5",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "supports-color": "^8.0.0"

@@ -1,4 +1,4 @@
-const debug = require('debug')('hops:development-proxy');
+const debug = require('hops-debug')('hops:development-proxy');
 const {
   Mixin,
   strategies: {

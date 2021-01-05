@@ -5,7 +5,7 @@ const { basename, dirname, join } = require('path');
 const { config: loadEnv } = require('dotenv');
 const { sync: findUp } = require('find-up');
 
-const debug = require('debug')('hops:config');
+const debug = require('hops-debug')('hops:config');
 
 const { loadConfig } = require('./loader');
 const { resolveMixins } = require('./resolver');

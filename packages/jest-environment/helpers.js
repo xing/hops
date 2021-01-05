@@ -6,7 +6,7 @@ const EProm = require('eprom');
 const { copy } = require('fs-extra');
 const mktemp = require('mktemp').createDir;
 const mkdirp = require('mkdirp');
-const debug = require('debug')('jest-env-hops:helpers');
+const debug = require('hops-debug')('jest-env-hops:helpers');
 const resolveFrom = require('resolve-from');
 
 const getHopsCommandModifications = (args) => {
