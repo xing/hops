@@ -46,7 +46,7 @@ class WebpackRenderMixin extends Mixin {
       const middleware = tryLoadRenderMiddleware(join(serverDir, serverFile));
 
       if (middleware) {
-        middlewares.routes.push(middleware);
+        middlewares.routes.push(middleware.default);
       }
     }
   }

@@ -1,9 +1,9 @@
-const { Mixin } = require('hops-mixin');
-const { createElement } = require('react');
-const { BrowserRouter } = require('react-router-dom');
-const { ensureLeadingSlash, trimTrailingSlash } = require('pathifist');
+import { Mixin } from 'hops-mixin';
+import { createElement } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { ensureLeadingSlash, trimTrailingSlash } from 'pathifist';
 
-class ReactRouterMixin extends Mixin {
+export default class ReactRouterMixin extends Mixin {
   enhanceElement(element) {
     const props = {
       ...this.options.router,
@@ -13,5 +13,3 @@ class ReactRouterMixin extends Mixin {
     return createElement(BrowserRouter, props, element);
   }
 }
-
-module.exports = ReactRouterMixin;

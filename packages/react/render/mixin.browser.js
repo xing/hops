@@ -2,17 +2,17 @@
 
 /* eslint-env browser */
 
-const { isValidElement } = require('react');
-const { unmountComponentAtNode, hydrate, render } = require('react-dom');
-const isPlainObject = require('is-plain-obj');
-const { override, async } = require('mixinable');
-const { Mixin } = require('hops-mixin');
-const { internal: bootstrap } = require('hops-bootstrap');
+import { isValidElement } from 'react';
+import { unmountComponentAtNode, hydrate, render } from 'react-dom';
+import isPlainObject from 'is-plain-obj';
+import { override, async } from 'mixinable';
+import { Mixin } from 'hops-mixin';
+import { internal as bootstrap } from 'hops-bootstrap';
 
 const { compose, parallel, pipe } = async;
 const { validate, invariant } = bootstrap;
 
-class ReactMixin extends Mixin {
+export default class ReactMixin extends Mixin {
   constructor(config, element, options) {
     super(config, options);
     this.element = element;
@@ -81,5 +81,3 @@ ReactMixin.strategies = {
     invariant(length === 0, 'render(): Received unexpected argument(s)');
   }),
 };
-
-module.exports = ReactMixin;

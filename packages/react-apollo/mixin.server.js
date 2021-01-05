@@ -1,5 +1,5 @@
 const React = require('react');
-const renderToFragments = require('hops-react/lib/fragments');
+const renderToFragments = require('hops-react/lib/fragments').default;
 const { existsSync, readFileSync } = require('fs');
 const {
   Mixin,

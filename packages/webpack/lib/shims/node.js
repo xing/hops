@@ -1,13 +1,12 @@
-if (!require('module').prototype._compile.__sourceMapSupport) {
-  require('source-map-support/register');
-}
+import 'source-map-support/register';
+
+// eslint-disable-next-line import/no-unresolved, node/no-missing-import
+import entryPoint from 'hops/entrypoint';
+import log from 'webpack/hot/log';
 
 if (module.hot) {
-  require('webpack/hot/log').setLogLevel('none');
-  module.hot.accept('hops/entrypoint');
+  log.setLogLevel('none');
+  module.hot.accept('hops/entrypoint', () => entryPoint());
 }
 
-module.exports = (...args) => {
-  // eslint-disable-next-line node/no-missing-require
-  return require('hops/entrypoint').default(...args);
-};
+export default entryPoint;

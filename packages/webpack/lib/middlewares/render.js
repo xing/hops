@@ -33,7 +33,7 @@ function createRenderMiddleware(buildConfigArgs, watch, mixin) {
 
   return function renderMiddleware(req, res, next) {
     enhancedPromise
-      .then((middleware) => middleware(req, res, next))
+      .then((middleware) => middleware.default(req, res, next))
       .catch(next);
   };
 }

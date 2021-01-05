@@ -1,22 +1,19 @@
-const React = require('react');
-const {
-  Mixin,
-  strategies: {
-    sync: { override, callable },
-  },
-} = require('hops-mixin');
+import 'cross-fetch/polyfill';
 
-const { ApolloProvider } = require('react-apollo');
-const { default: ApolloClient } = require('apollo-client');
-const { HttpLink } = require('apollo-link-http');
-const {
+import { createElement } from 'react';
+import { Mixin } from 'hops-mixin';
+import { override, callable } from 'mixinable';
+// eslint-disable-next-line node/no-extraneous-import
+import { ApolloProvider } from '@apollo/react-common';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import {
   InMemoryCache,
   IntrospectionFragmentMatcher,
   HeuristicFragmentMatcher,
-} = require('apollo-cache-inmemory');
-require('cross-fetch/polyfill');
+} from 'apollo-cache-inmemory';
 
-class GraphQLMixin extends Mixin {
+export default class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
     super(config, element);
 
@@ -71,7 +68,7 @@ class GraphQLMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return React.createElement(
+    return createElement(
       ApolloProvider,
       { client: this.getApolloClient() },
       reactElement
@@ -84,5 +81,3 @@ GraphQLMixin.strategies = {
   getApolloCache: override,
   createFragmentMatcher: callable,
 };
-
-module.exports = GraphQLMixin;

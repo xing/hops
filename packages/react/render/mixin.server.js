@@ -1,19 +1,18 @@
 'use strict';
-
-const { isValidElement } = require('react');
-const isPlainObject = require('is-plain-obj');
-const { override: overrideSync, async } = require('mixinable');
-const { Mixin } = require('hops-mixin');
-const { internal: bootstrap } = require('hops-bootstrap');
-const renderToFragments = require('../lib/fragments');
-const getAssets = require('../lib/assets');
-const getResourceHints = require('../lib/resource-hints');
-const template = require('../lib/template');
+import { isValidElement } from 'react';
+import isPlainObject from 'is-plain-obj';
+import { override as overrideSync, async } from 'mixinable';
+import { Mixin } from 'hops-mixin';
+import { internal as bootstrap } from 'hops-bootstrap';
+import renderToFragments from '../lib/fragments';
+import getAssets from '../lib/assets';
+import getResourceHints from '../lib/resource-hints';
+import template from '../lib/template';
 
 const { compose, parallel, pipe, override: overrideAsync } = async;
 const { validate, invariant } = bootstrap;
 
-class ReactMixin extends Mixin {
+export default class ReactMixin extends Mixin {
   constructor(config, element, options) {
     super(config, options);
     this.element = element;
@@ -190,5 +189,3 @@ ReactMixin.strategies = {
     );
   }),
 };
-
-module.exports = ReactMixin;

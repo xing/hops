@@ -96,7 +96,9 @@ module.exports = function getConfig(config, name) {
       ...(isProduction
         ? []
         : [require.resolve('webpack/hot/signal') + '?RELOAD']),
-      require.resolve('core-js/stable'),
+      ...(process.env.__HOPS_FAST_DEV__ !== 'true'
+        ? [require.resolve('core-js/stable')]
+        : []),
       require.resolve('../shims/node'),
     ],
     output: {

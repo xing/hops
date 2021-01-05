@@ -1,11 +1,11 @@
 // eslint-disable-next-line node/no-deprecated-api
-const { parse } = require('url');
-const { Mixin } = require('hops-mixin');
-const { createElement } = require('react');
-const { StaticRouter } = require('react-router-dom');
-const { ensureLeadingSlash, trimTrailingSlash } = require('pathifist');
+import { parse } from 'url';
+import { Mixin } from 'hops-mixin';
+import { createElement } from 'react';
+import { StaticRouter } from 'react-router-dom';
+import { ensureLeadingSlash, trimTrailingSlash } from 'pathifist';
 
-class ReactRouterMixin extends Mixin {
+export default class ReactRouterMixin extends Mixin {
   constructor(config, _element, options) {
     super(config, options);
     this.router = {};
@@ -28,5 +28,3 @@ class ReactRouterMixin extends Mixin {
     return createElement(StaticRouter, props, element);
   }
 }
-
-module.exports = ReactRouterMixin;

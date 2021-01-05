@@ -1,8 +1,8 @@
-const { Mixin } = require('hops-mixin');
-const { createElement } = require('react');
-const ImportComponentContext = require('./context');
+import { Mixin } from 'hops-mixin';
+import { createElement } from 'react';
+import ImportComponentContext from './context';
 
-class ImportComponentMixin extends Mixin {
+export default class ImportComponentMixin extends Mixin {
   bootstrap(_req, res) {
     if (res) {
       res.locals.modules = this.modules = [];
@@ -17,5 +17,3 @@ class ImportComponentMixin extends Mixin {
     );
   }
 }
-
-module.exports = ImportComponentMixin;

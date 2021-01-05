@@ -1,14 +1,12 @@
-const React = require('react');
-const { Consumer } = require('./context');
+import { createElement, Component as ReactComponent } from 'react';
+import context from './context';
 
-function withConfig(Component) {
-  return class WithConfig extends React.Component {
+export default function withConfig(Component) {
+  return class WithConfig extends ReactComponent {
     render() {
-      return React.createElement(Consumer, {}, (config) =>
-        React.createElement(Component, { ...this.props, config })
+      return createElement(context.Consumer, {}, (config) =>
+        createElement(Component, { ...this.props, config })
       );
     }
   };
 }
-
-module.exports = withConfig;

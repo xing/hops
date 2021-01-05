@@ -30,6 +30,7 @@
     "hops-config": "^14.0.0-nightly.4",
     "hops-mixin": "^14.0.0-nightly.4",
     "hops-react": "^14.0.0-nightly.4",
+    "mixinable": "^5.0.1",
     "strip-indent": "^3.0.0"
   },
   "peerDependencies": {

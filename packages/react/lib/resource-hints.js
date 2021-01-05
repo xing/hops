@@ -1,4 +1,4 @@
-const { extname } = require('path');
+import { extname } from 'path';
 
 const extnameToType = (extension) => {
   switch (extension) {
@@ -37,7 +37,7 @@ const augment = (rel) => (acc, resource) => {
   return acc;
 };
 
-module.exports = (stats) => {
+export default (stats) => {
   const { preload = [], prefetch = [] } = stats.entrypoints.main.childAssets;
 
   return [

@@ -1,11 +1,10 @@
-const { isValidElement } = require('react');
-const isPlainObject = require('is-plain-obj');
-const {
-  initialize,
-  internal: { invariant },
-} = require('hops-bootstrap');
+import { isValidElement } from 'react';
+import isPlainObject from 'is-plain-obj';
+import { initialize, internal } from 'hops-bootstrap';
 
-exports.render = (element, options) => (...args) => {
+const { invariant } = internal;
+
+export const render = (element, options) => (...args) => {
   invariant(
     isValidElement(element),
     'render(): Received invalid React element'
