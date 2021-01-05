@@ -7,7 +7,7 @@ const rimraf = promisify(require('rimraf'));
 const { copy } = require('fs-extra');
 const mktemp = require('mktemp').createDir;
 const mkdirp = promisify(require('mkdirp'));
-const debug = require('debug')('hops-spec:test-helpers');
+const debug = require('hops-debug')('hops-spec:test-helpers');
 const resolveFrom = require('resolve-from');
 
 const build = async ({ cwd, env = {}, argv = [] }) => {

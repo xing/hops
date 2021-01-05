@@ -1,5 +1,5 @@
 const NodeEnvironment = require('jest-environment-node');
-const debug = require('debug')('hops-spec:env');
+const debug = require('hops-debug')('hops-spec:env');
 const {
   isPuppeteerDisabled,
   launchPuppeteer,
