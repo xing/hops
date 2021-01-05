@@ -1,6 +1,5 @@
 'use strict';
 
-const mergeWith = require('lodash.mergewith');
 const flatten = require('flat');
 const isPlainObject = require('is-plain-obj');
 const escapeRegExp = require('escape-string-regexp');
@@ -33,6 +32,30 @@ exports.validate = (strategy, checkArgs = () => {}, checkResult = () => {}) =>
     { value: strategy.name }
   );
 
+function merge(target, ...args) {
+  // eslint-disable-next-line no-unused-vars
+  let merger = (leftSide, rightSide, _key) => {
+    return rightSide;
+  };
+  if (typeof args[args.length - 1] === 'function') {
+    merger = args.pop();
+  }
+
+  return args.reduce((acc, obj) => {
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (isPlainObject(obj[key])) {
+          acc[key] = merge(acc[key] || {}, obj[key], merger);
+        } else {
+          acc[key] = merger(acc[key], obj[key], key);
+        }
+      }
+    }
+
+    return acc;
+  }, target);
+}
+
 exports.getMixinSortOrder = (...args) =>
   args.reduce((enableLegacyMixinSortOrder, config) => {
     if ('enableLegacyMixinSortOrder' in config) {
@@ -42,7 +65,7 @@ exports.getMixinSortOrder = (...args) =>
   }, false);
 
 exports.merge = (enableLegacyMixinSortOrder = false) => (...args) => {
-  return mergeWith({}, ...args, (objValue, srcValue, key) => {
+  return merge({}, ...args, (objValue, srcValue, key) => {
     if (Array.isArray(objValue)) {
       if ('mixins' === key) {
         // #542: remove this in untool v3 if no potential side-effects have been
@@ -60,6 +83,7 @@ exports.merge = (enableLegacyMixinSortOrder = false) => (...args) => {
       }
       return srcValue;
     }
+    return srcValue;
   });
 };
 
