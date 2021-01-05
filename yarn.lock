@@ -2905,6 +2905,11 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.1.tgz#5668c0bce55a91f2b9566b1d8a4c0a8dbbc79764"
   integrity sha512-wmk0xQI6Yy7Fs/il4EpOcflG4uonUpYGqvZARESLc2oy4u69fkatFLbJOeW4Q6awO15P4rduAe6xkwHevpXcUQ==
 
+"@vishnucss/chips@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@vishnucss/chips/-/chips-1.1.2.tgz#3de6c0f689461a3e026b82baddc04759ca88de70"
+  integrity sha512-DrsKnnVBEsvYjeb3kv5ob3g14mIMH4hTU014c9EybYOXX4aXx4TbTQKSbrGCbayQ4cYv6SfeEbH98WEsuhOiVA==
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -3074,18 +3079,6 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
-
-"@zendeskgarden/css-buttons@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-buttons/-/css-buttons-8.0.0.tgz#36d7ba003fea4db3653a0f2056a1fde875bd115b"
-  integrity sha512-evmybZFoONmxp29ELv+Zw/ajsNCEsAQpx3whrIVqfjSbBtffHMdQKbxS/AMXAfgaevaIpDRI/I3iFjFoHwLq5g==
-  dependencies:
-    "@zendeskgarden/css-variables" "^6.4.5"
-
-"@zendeskgarden/css-variables@^6.4.5":
-  version "6.4.5"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.5.tgz#b51a50046f42a11b8d1bfec46e100b02fd6fc1d9"
-  integrity sha512-vX7vDJVQoyYFUshYXXX5QE2fL9M6K2bnxTeB2IVyEIaGRYEi20xjoY6cuO1uAQ7RaIRGCSyZFKgWW+/IrlQMKg==
 
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"

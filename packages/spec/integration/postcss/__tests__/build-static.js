@@ -14,24 +14,21 @@ describe('postcss production static build', () => {
       position,
       fontFamily,
       textAlign,
-      paddingTop,
-      paddingLeft,
+      padding,
       borderRadius,
     } = await page.evaluate(() => {
       const {
         position,
         fontFamily,
         textAlign,
-        paddingTop,
-        paddingLeft,
+        padding,
         borderRadius,
       } = window.getComputedStyle(document.querySelector('h1'));
       return {
         position,
         fontFamily,
         textAlign,
-        paddingTop,
-        paddingLeft,
+        padding,
         borderRadius,
       };
     });
@@ -39,9 +36,8 @@ describe('postcss production static build', () => {
     expect(position).toBe('sticky');
     expect(fontFamily).toContain('-apple-system');
     expect(textAlign).toBe('center');
-    expect(paddingTop).toBe('50px');
-    expect(paddingLeft).toBe('38px');
-    expect(borderRadius).toBe('100px');
+    expect(padding).toBe('32px');
+    expect(borderRadius).toBe('50px');
 
     // there should be 2 stylesheets
     // the global animate.css and the css-modules import

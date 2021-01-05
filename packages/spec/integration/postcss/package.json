@@ -23,6 +23,9 @@
     "gracePeriod": 0,
     "locations": [
       "/"
-    ]
+    ],
+    "postcss": {
+      "namedExport": true
+    }
   }
 }
