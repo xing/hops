@@ -13,13 +13,11 @@ const cssLoaderLocalOptions = {
     localIdentName: '[folder]-[name]-[local]-[hash:8]',
     exportLocalsConvention: 'camelCase',
   },
-  esModule: false,
   sourceMap: process.env.NODE_ENV !== 'production',
 };
 
 const cssLoaderGlobalOptions = {
   modules: false,
-  esModule: false,
   sourceMap: process.env.NODE_ENV !== 'production',
 };
 
@@ -98,9 +96,8 @@ class PostCSSMixin extends Mixin {
       getCSSLoaderConfig(this.config.browsers, {
         loader: ExtractCSSPlugin.loader,
         options: {
-          esModule: false,
           modules: {
-            namedExport: true,
+            namedExport: false,
           },
         },
       })
@@ -140,9 +137,8 @@ class PostCSSMixin extends Mixin {
       getCSSLoaderConfig(this.config.browsers, {
         loader: require.resolve('style-loader'),
         options: {
-          esModule: false,
           modules: {
-            namedExport: true,
+            namedExport: false,
           },
         },
       })
