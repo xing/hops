@@ -1,12 +1,10 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { Helmet } from 'react-helmet-async';
 import query from './jobs.gql';
 import styles from './styles.css';
 
-const withJobs = graphql(query);
-
-export const Home = ({ data: { loading, error, jobSearchByQuery } }) => {
+export const Home = ({ data: { loading, jobSearchByQuery } }) => {
   return (
     <div>
       <Helmet>
@@ -30,4 +28,7 @@ export const Home = ({ data: { loading, error, jobSearchByQuery } }) => {
   );
 };
 
-export default withJobs(Home);
+export default () => {
+  const data = useQuery(query);
+  return <Home data={data} />;
+};
