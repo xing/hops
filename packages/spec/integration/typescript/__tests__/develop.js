@@ -2,7 +2,8 @@ describe('typescript development server', () => {
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('--fast-dev');
+    const { getUrl } = HopsCLI.start('--fast-dev');
+    url = await getUrl();
   });
 
   it('renders a simple jsx site', async () => {
