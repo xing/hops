@@ -2,7 +2,8 @@ describe('redux development server', () => {
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('--fast-dev');
+    const { getUrl } = HopsCLI.start('--fast-dev');
+    url = await getUrl();
   });
 
   it('increments the counter on page load', async () => {
