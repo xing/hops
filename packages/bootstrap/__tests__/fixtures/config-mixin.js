@@ -1,5 +1,5 @@
 const { callable } = require('mixinable');
-const { Mixin } = require('../..');
+const { Mixin } = require('hops-mixin');
 
 class ConfigMixin extends Mixin {
   constructor(...args) {

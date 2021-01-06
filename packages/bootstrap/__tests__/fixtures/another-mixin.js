@@ -1,5 +1,5 @@
 const { callable, override, parallel, pipe, compose } = require('mixinable');
-const { Mixin } = require('../..');
+const { Mixin } = require('hops-mixin');
 
 class AnotherMixin extends Mixin {
   callSecond() {

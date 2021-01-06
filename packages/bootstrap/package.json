@@ -28,5 +28,10 @@
   },
   "engines": {
     "node": "12 || 14 || 15"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "fixtures"
+    ]
   }
 }

@@ -175,7 +175,7 @@
   ],
   "jest": {
     "projects": [
-      "<rootDir>/packages/!(spec|bootstrap)",
+      "<rootDir>/packages/!(spec)",
       "<rootDir>/packages/spec/integration/*"
     ]
   },
