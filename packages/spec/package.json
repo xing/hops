@@ -33,6 +33,7 @@
     "@types/styled-components": "5.1.7",
     "create-hops-app": "^14.0.0-nightly.4",
     "cross-fetch": "^3.0.4",
+    "eprom": "^1.0.0",
     "fs-extra": "^9.0.0",
     "jest-environment-node": "^26.0.0",
     "mktemp": "^1.0.0",
