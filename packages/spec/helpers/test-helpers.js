@@ -1,7 +1,6 @@
 const { spawn } = require('child_process');
 const path = require('path');
 const { promisify } = require('util');
-const exec = promisify(require('child_process').exec);
 const rimraf = promisify(require('rimraf'));
 
 const { copy } = require('fs-extra');
@@ -10,16 +9,29 @@ const mkdirp = promisify(require('mkdirp'));
 const debug = require('debug')('hops-spec:test-helpers');
 const resolveFrom = require('resolve-from');
 
-const build = async ({ cwd, env = {}, argv = [] }) => {
-  const hopsBin = resolveFrom(cwd, 'hops/bin');
-  const command = `${process.argv[0]} ${hopsBin} build ${argv.join(' ')}`;
-  debug('Starting', command);
-  try {
-    return await exec(command, { env, cwd });
-  } catch (err) {
-    return { stderr: err.message };
-  }
-};
+const build = ({ cwd, env = {}, argv = [] }) =>
+  new Promise((resolve, reject) => {
+    const hopsBin = resolveFrom(cwd, 'hops/bin');
+    const args = [hopsBin, 'build', ...argv];
+    debug('Building Hops', args, env);
+
+    const buildProcess = spawn(process.argv[0], args, { env, cwd });
+
+    let stdout = '';
+    buildProcess.stdout.on('data', (data) => {
+      stdout += data.toString('utf-8');
+    });
+
+    let stderr = '';
+    buildProcess.stderr.on('data', (data) => {
+      stderr += data.toString('utf-8');
+    });
+
+    buildProcess.on('close', (code) => resolve({ stdout, stderr, code }));
+    buildProcess.on('error', (error) => reject(error));
+    process.on('exit', () => buildProcess.kill());
+  });
+
 const startServer = ({ cwd, command, env = {}, argv = [] }) =>
   new Promise((resolve, reject) => {
     let onTeardown;
