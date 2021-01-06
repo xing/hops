@@ -43,7 +43,7 @@
     "url-join": "^4.0.1"
   },
   "dependencies": {
-    "@zendeskgarden/css-buttons": "^8.0.0",
+    "@vishnucss/chips": "^1.1.2",
     "animate.css": "^4.0.0"
   }
 }

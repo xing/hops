@@ -79,7 +79,37 @@ For more information on that topic, please have a look at [the documentation of 
 
 #### Preset Options
 
-This preset has no preset configuration options.
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `postcss.namedExport` | `Boolean` | `false` | _no_ | Whether CSS Modules do a named exports of class names rather than a default export of the class name object. |
+
+##### `postcss.namedExport`
+
+This option enables you to opt into CSS Modules exporting named exports, instead of doing a default export of the object, that holds all the class names.
+
+To enable it, set the following option in your Hops config.
+
+```json
+"hops": {
+  "postcss": {
+    "namedExport": true
+  }
+}
+```
+
+Then you can do named imports from your your CSS Modules.
+
+```js
+import { btn, btnLabel } from './module.css';
+
+const Btn = ({ children }) => (
+  <button className={btn}>
+    <span className={btnLabel}>{children}</span>
+  </button>
+);
+```
+
+Beware, that this feature requires all class names to be converted to camel-case. This can lead to issues, when e.g. a CSS library leverages the BEM-syntax and two actually different class names yield the same value after being camel-cased. If this happens, the Hops build fails.
 
 #### Render Options
 

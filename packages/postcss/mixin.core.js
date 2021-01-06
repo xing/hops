@@ -7,19 +7,18 @@ const { join, trimSlashes } = require('pathifist');
 
 const getAssetPath = (...args) => trimSlashes(join(...args));
 
-const cssLoaderLocalOptions = {
+const getCssLoaderLocalOptions = (namedExport) => ({
   modules: {
     auto: () => true,
     localIdentName: '[folder]-[name]-[local]-[hash:8]',
-    exportLocalsConvention: 'camelCase',
+    exportLocalsConvention: namedExport ? 'camelCaseOnly' : 'camelCase',
+    namedExport,
   },
-  esModule: false,
   sourceMap: process.env.NODE_ENV !== 'production',
-};
+});
 
 const cssLoaderGlobalOptions = {
   modules: false,
-  esModule: false,
   sourceMap: process.env.NODE_ENV !== 'production',
 };
 
@@ -33,7 +32,7 @@ const getPostCssLoader = (...additionalPlugins) => ({
   },
 });
 
-const getCSSLoaderConfig = (browsers, additionalLoader) => {
+const getCSSLoaderConfig = (browsers, namedExport, additionalLoader) => {
   const getLoaders = (options) =>
     [
       additionalLoader,
@@ -70,7 +69,7 @@ const getCSSLoaderConfig = (browsers, additionalLoader) => {
         use: getLoaders(cssLoaderGlobalOptions),
       },
       {
-        use: getLoaders(cssLoaderLocalOptions),
+        use: getLoaders(getCssLoaderLocalOptions(namedExport)),
       },
     ],
   };
@@ -78,30 +77,33 @@ const getCSSLoaderConfig = (browsers, additionalLoader) => {
 
 class PostCSSMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs, target) {
+    const { namedExport } = this.config.postcss;
+
     switch (target) {
       case 'build':
-        this.configureTargetBuild(webpackConfig, loaderConfigs);
+        this.configureTargetBuild(webpackConfig, loaderConfigs, namedExport);
         break;
       case 'develop':
-        this.configureTargetDevelop(loaderConfigs);
+        this.configureTargetDevelop(loaderConfigs, namedExport);
         break;
       case 'node':
-        this.configureTargetNode(loaderConfigs);
+        this.configureTargetNode(loaderConfigs, namedExport);
         break;
     }
   }
 
-  configureTargetBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }) {
+  configureTargetBuild(
+    webpackConfig,
+    { allLoaderConfigs, jsLoaderConfig },
+    namedExport
+  ) {
     allLoaderConfigs.splice(
       allLoaderConfigs.indexOf(jsLoaderConfig),
       0,
-      getCSSLoaderConfig(this.config.browsers, {
+      getCSSLoaderConfig(this.config.browsers, namedExport, {
         loader: ExtractCSSPlugin.loader,
         options: {
-          esModule: false,
-          modules: {
-            namedExport: true,
-          },
+          modules: { namedExport },
         },
       })
     );
@@ -133,23 +135,22 @@ class PostCSSMixin extends Mixin {
     );
   }
 
-  configureTargetDevelop({ allLoaderConfigs, jsLoaderConfig }) {
+  configureTargetDevelop({ allLoaderConfigs, jsLoaderConfig }, namedExport) {
     allLoaderConfigs.splice(
       allLoaderConfigs.indexOf(jsLoaderConfig),
       0,
-      getCSSLoaderConfig(this.config.browsers, {
+      getCSSLoaderConfig(this.config.browsers, namedExport, {
         loader: require.resolve('style-loader'),
         options: {
-          esModule: false,
-          modules: {
-            namedExport: true,
-          },
+          modules: { namedExport },
         },
       })
     );
   }
 
-  configureTargetNode({ allLoaderConfigs, jsLoaderConfig }) {
+  configureTargetNode({ allLoaderConfigs, jsLoaderConfig }, namedExport) {
+    const cssLoaderLocalOptions = getCssLoaderLocalOptions(namedExport);
+
     const cssLoaderConfig = {
       test: [/\.css$/],
       oneOf: [

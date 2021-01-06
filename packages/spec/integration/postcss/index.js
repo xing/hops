@@ -1,7 +1,7 @@
 import { render } from 'hops';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import styles from './styles.css';
+import * as styles from './styles.css';
 /* eslint-disable import/no-unresolved */
 import './global.css?global';
 import 'animate.css/animate.min.css?global';
