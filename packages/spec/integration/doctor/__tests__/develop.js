@@ -11,12 +11,13 @@ describe('doctor - develop', () => {
     logs.find((l) => l.endsWith(`:${type}] ${message}`));
 
   beforeAll(async () => {
-    await HopsCLI.start(
+    const { getUrl: serverStarted, stopServer } = HopsCLI.start(
       { HOPS_IGNORE_ERRORS: 'doctor-mixin-a-one' },
       '--fast-dev'
     );
+    await serverStarted();
     await delay();
-    const stderr = await killServer();
+    const { stderr } = await stopServer();
     logs = stderr.split(/\n+/).filter(Boolean);
   });
 

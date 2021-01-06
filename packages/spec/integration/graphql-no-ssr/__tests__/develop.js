@@ -2,7 +2,8 @@ describe('graphql mock server without SSR', () => {
   let url;
 
   beforeAll(async () => {
-    url = await HopsCLI.start('--fast-dev');
+    const { getUrl } = HopsCLI.start('--fast-dev');
+    url = await getUrl();
   });
 
   it('requests data on the client & not on the server', async () => {
