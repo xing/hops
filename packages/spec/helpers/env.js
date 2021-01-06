@@ -112,26 +112,26 @@ class FixtureEnvironment extends NodeEnvironment {
         const { env, argv } = getCommandModifications(args);
         return build({ cwd: that.cwd, argv, env });
       },
-      async start(...args) {
+      start(...args) {
         if (that.killServer) {
           throw new Error(
             'Another long running task ("hops start") is already running. You can only start one task per file.'
           );
         }
         const { env, argv } = getCommandModifications(args);
-        const { url, teardown } = await startServer({
+        const { getUrl, stopServer: killServer } = startServer({
           cwd: that.cwd,
           command: 'start',
           env,
           argv,
         });
         // eslint-disable-next-line require-atomic-updates
-        that.killServer = teardown;
-        that.global.killServer = () => {
+        that.killServer = killServer;
+        const stopServer = () => {
           delete that.killServer;
-          return teardown();
+          return killServer();
         };
-        return url;
+        return { getUrl, stopServer };
       },
     };
   }
