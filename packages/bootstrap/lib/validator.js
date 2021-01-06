@@ -5,9 +5,11 @@
 const { isAbsolute } = require('path');
 
 const { default: Ajv } = require('ajv');
+const { default: addFormats } = require('ajv-formats');
 const isPlainObject = require('is-plain-obj');
 
 const configureAjv = (ajv) => {
+  addFormats(ajv);
   ajv.addKeyword({
     keyword: 'absolutePath',
     errors: true,
