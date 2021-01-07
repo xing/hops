@@ -1,3 +1,5 @@
+const { handleConsoleOutput } = require('../../../helpers');
+
 describe('postcss production build', () => {
   let url;
 
@@ -8,6 +10,7 @@ describe('postcss production build', () => {
 
   it('styles when served in production mode', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     const { position, fontFamily } = await page.evaluate(() => {
@@ -28,6 +31,7 @@ describe('postcss production build', () => {
 
   it('adds css file to server side render HTML', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.setJavaScriptEnabled(false);
 
     await page.goto(url, { waitUntil: 'networkidle2' });
@@ -40,6 +44,7 @@ describe('postcss production build', () => {
 
   it('supports global un-hashed CSS classnames', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
 
     await page.setJavaScriptEnabled(false);
     await page.goto(url, { waitUntil: 'networkidle2' });
