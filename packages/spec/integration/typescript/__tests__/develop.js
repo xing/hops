@@ -1,3 +1,5 @@
+const { handleConsoleOutput } = require('../../../helpers');
+
 describe('typescript development server', () => {
   let url;
 
@@ -8,6 +10,7 @@ describe('typescript development server', () => {
 
   it('renders a simple jsx site', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url);
     expect(await page.content()).toMatch('<h1>test</h1>');
 
@@ -16,6 +19,7 @@ describe('typescript development server', () => {
 
   it('supports code-splitting', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url);
     expect(await page.content()).toMatch('<p>lorem ipsum.</p>');
 
