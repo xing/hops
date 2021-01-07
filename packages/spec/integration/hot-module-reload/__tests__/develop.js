@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { handleConsoleOutput } = require('../../../helpers');
 
 function changeFile(id) {
   const content = `
@@ -24,6 +25,7 @@ describe.skip('hot module reload', () => {
 
   it('reflects changes automatically', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url, { waitUntil: 'networkidle2' });
     await page.waitForSelector('#one', { timeout: 2000 });
 
@@ -43,6 +45,7 @@ describe.skip('hot module reload', () => {
   // https://github.com/untool/untool/pull/189
   it('allows to reload after a file change', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     changeFile('two');

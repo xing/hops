@@ -1,3 +1,5 @@
+const { handleConsoleOutput } = require('../../../helpers');
+
 describe('styled-components development server', () => {
   let url;
 
@@ -8,6 +10,7 @@ describe('styled-components development server', () => {
 
   it('allows to use styled components', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     const position = await page.evaluate(() => {
@@ -20,6 +23,7 @@ describe('styled-components development server', () => {
 
   it('inlines styles into template', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.setJavaScriptEnabled(false);
     await page.goto(url);
 

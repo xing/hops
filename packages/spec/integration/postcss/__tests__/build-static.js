@@ -1,3 +1,5 @@
+const { handleConsoleOutput } = require('../../../helpers');
+
 // Test to ensure  https://github.com/xing/hops/issues/761 has been fixed
 describe('postcss production static build', () => {
   let url;
@@ -9,6 +11,7 @@ describe('postcss production static build', () => {
 
   it('styles when served in production mode', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     const {

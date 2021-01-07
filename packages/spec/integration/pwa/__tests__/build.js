@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { handleConsoleOutput } = require('../../../helpers');
 
 describe('pwa production build', () => {
   let url;
@@ -11,6 +12,7 @@ describe('pwa production build', () => {
 
   it('registers a service worker', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     // wait until service worker is installed

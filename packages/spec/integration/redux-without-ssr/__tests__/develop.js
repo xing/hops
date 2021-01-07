@@ -1,3 +1,5 @@
+const { handleConsoleOutput } = require('../../../helpers');
+
 describe('redux development server', () => {
   let url;
 
@@ -8,6 +10,7 @@ describe('redux development server', () => {
 
   it('increments the counter on page load', async () => {
     const { page, getInnerText } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     const count = await getInnerText('h1');

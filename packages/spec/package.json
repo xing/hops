@@ -11,6 +11,7 @@
       "jest": true
     },
     "globals": {
+      "handleConsoleOutput": true,
       "createPage": true,
       "browser": true,
       "HopsCLI": true,
@@ -33,15 +34,8 @@
     "@types/styled-components": "5.1.7",
     "create-hops-app": "^14.0.0-nightly.4",
     "cross-fetch": "^3.0.4",
-    "eprom": "^1.0.0",
-    "fs-extra": "^9.0.0",
-    "jest-environment-node": "^26.0.0",
-    "mktemp": "^1.0.0",
-    "puppeteer": "^5.0.0",
-    "react-helmet-async": "^1.0.4",
-    "resolve-from": "^5.0.0",
-    "rimraf": "^3.0.0",
-    "url-join": "^4.0.1"
+    "jest-environment-hops": "^14.0.0-nightly.4",
+    "react-helmet-async": "^1.0.4"
   },
   "dependencies": {
     "@vishnucss/chips": "^1.1.2",

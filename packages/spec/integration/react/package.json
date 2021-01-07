@@ -18,7 +18,7 @@
     }
   },
   "jest": {
-    "testEnvironment": "../../helpers/env.js",
+    "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"
     ]
