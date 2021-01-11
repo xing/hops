@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.5](https://github.com/xing/hops/compare/v14.0.0-nightly.4...v14.0.0-nightly.5) (2021-01-11)
+
+
+### Bug Fixes
+
+* **bootstrap:** add Ajv formats ([7a516dc](https://github.com/xing/hops/commit/7a516dc358a6899ff8889eadbe7c43dc1ea47ed9))
+* **bootstrap:** limit pattern properties, too ([9e8c045](https://github.com/xing/hops/commit/9e8c0457d19d0c697f61d55948709ad52c98d946))
+* **bootstrap:** opt out of Ajv's strict mode ([28b429b](https://github.com/xing/hops/commit/28b429b228f3205831cdf6d85500fb58b8874bef))
+* **bootstrap:** use default import of Ajv ([49fa6e9](https://github.com/xing/hops/commit/49fa6e98938e0c1e52c872bef9a3289a28e5ced8))
+* update dependency ajv to v7 ([b2cac42](https://github.com/xing/hops/commit/b2cac42847dc9b5b110dc8eff0eb7499c9fc2b04))
+* **postcss:** update Webpack's CSS compilation ([c7e8b1e](https://github.com/xing/hops/commit/c7e8b1e236e1e1ed745917f6c83783efee161828))
+* **webpack:** ensure forked compiler exits when done ([642459e](https://github.com/xing/hops/commit/642459ecad38a529235c474404905b28459fe665))
+
+
+### Features
+
+* **jest-environment:** add package jest-environment-hops ([e5a7941](https://github.com/xing/hops/commit/e5a7941888b3fb8115b583dacd78e95f39a104d9))
+* **postcss:** add option to enable named exports for CSS Modules ([426c051](https://github.com/xing/hops/commit/426c051f129a0c5ef0e5cc65d47bdaf6355e9084))
+* **postcss:** export CSS Modules as ES Modules ([5f4ff80](https://github.com/xing/hops/commit/5f4ff80bf2897f737ba1bdcf3d9ea8322f35326e))
+
+
+### BREAKING CHANGES
+
+* **postcss:** CSS Modules switched to ESM and now export the styles
+object as a `default`-export.
+
+
+
+
+
 # [14.0.0-nightly.4](https://github.com/xing/hops/compare/v14.0.0-nightly.3...v14.0.0-nightly.4) (2020-12-07)
 
 

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.5](https://github.com/xing/hops/compare/v14.0.0-nightly.4...v14.0.0-nightly.5) (2021-01-11)
+
+
+### Bug Fixes
+
+* **bootstrap:** add Ajv formats ([7a516dc](https://github.com/xing/hops/commit/7a516dc358a6899ff8889eadbe7c43dc1ea47ed9))
+* **bootstrap:** limit pattern properties, too ([9e8c045](https://github.com/xing/hops/commit/9e8c0457d19d0c697f61d55948709ad52c98d946))
+* **bootstrap:** opt out of Ajv's strict mode ([28b429b](https://github.com/xing/hops/commit/28b429b228f3205831cdf6d85500fb58b8874bef))
+* **bootstrap:** use default import of Ajv ([49fa6e9](https://github.com/xing/hops/commit/49fa6e98938e0c1e52c872bef9a3289a28e5ced8))
+* update dependency ajv to v7 ([b2cac42](https://github.com/xing/hops/commit/b2cac42847dc9b5b110dc8eff0eb7499c9fc2b04))
+
+
+
+
+
 # [14.0.0-nightly.4](https://github.com/xing/hops/compare/v14.0.0-nightly.3...v14.0.0-nightly.4) (2020-12-07)
 
 
