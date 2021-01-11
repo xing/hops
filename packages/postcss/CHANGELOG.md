@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.3.0](https://github.com/xing/hops/compare/v13.2.2...v13.3.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* **postcss:** update Webpack's CSS compilation ([5e53691](https://github.com/xing/hops/commit/5e5369158dfb0f08e397ed07884b6af38a2b6570))
+
+
+
+
+
 ## [13.2.2](https://github.com/xing/hops/compare/v13.2.1...v13.2.2) (2020-12-07)
 
 **Note:** Version bump only for package hops-postcss

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.3.0](https://github.com/xing/hops/compare/v13.2.2...v13.3.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* **bootstrap:** add Ajv formats ([fb51f62](https://github.com/xing/hops/commit/fb51f6274bede052e9db4a10c2155f4240a44af4))
+* **bootstrap:** limit pattern properties, too ([f6885e1](https://github.com/xing/hops/commit/f6885e196df98492d9caae4bab5382432e34401e))
+* **bootstrap:** opt out of Ajv's strict mode ([9c96e2c](https://github.com/xing/hops/commit/9c96e2c8a80afe1b2a9e719e702e4fed95db334b))
+* **bootstrap:** use default import of Ajv ([df98412](https://github.com/xing/hops/commit/df98412d8b966375b278aff8d3dee62ece4e9841))
+* update dependency ajv to v7 ([71b95bb](https://github.com/xing/hops/commit/71b95bb99960685e993b56889bbaf6787eb2ee4f))
+* update dependency supports-color to v8 ([14f8179](https://github.com/xing/hops/commit/14f8179ad1982a4c1bd359e56acd194324f54c3e))
+
+
+
+
+
 ## [13.2.2](https://github.com/xing/hops/compare/v13.2.1...v13.2.2) (2020-12-07)
 
 

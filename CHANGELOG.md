@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.3.0](https://github.com/xing/hops/compare/v13.2.2...v13.3.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* **bootstrap:** add Ajv formats ([fb51f62](https://github.com/xing/hops/commit/fb51f6274bede052e9db4a10c2155f4240a44af4))
+* **bootstrap:** limit pattern properties, too ([f6885e1](https://github.com/xing/hops/commit/f6885e196df98492d9caae4bab5382432e34401e))
+* **bootstrap:** opt out of Ajv's strict mode ([9c96e2c](https://github.com/xing/hops/commit/9c96e2c8a80afe1b2a9e719e702e4fed95db334b))
+* **bootstrap:** use default import of Ajv ([df98412](https://github.com/xing/hops/commit/df98412d8b966375b278aff8d3dee62ece4e9841))
+* **postcss:** update Webpack's CSS compilation ([5e53691](https://github.com/xing/hops/commit/5e5369158dfb0f08e397ed07884b6af38a2b6570))
+* **webpack:** ensure forked compiler exits when done ([f20f0f0](https://github.com/xing/hops/commit/f20f0f0b0accade4e5973accbd3afc1bf33221fd))
+* update dependency ajv to v7 ([71b95bb](https://github.com/xing/hops/commit/71b95bb99960685e993b56889bbaf6787eb2ee4f))
+* update dependency supports-color to v8 ([14f8179](https://github.com/xing/hops/commit/14f8179ad1982a4c1bd359e56acd194324f54c3e))
+
+
+### Features
+
+* **jest-environment:** add package jest-environment-hops ([f9434ad](https://github.com/xing/hops/commit/f9434ad5767f4c9cb0099832b7f74ef7035a854e))
+
+
+
+
+
 ## [13.2.2](https://github.com/xing/hops/compare/v13.2.1...v13.2.2) (2020-12-07)
 
 
