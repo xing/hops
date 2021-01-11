@@ -3,12 +3,21 @@ const path = require('path');
 const { promisify } = require('util');
 const rimraf = promisify(require('rimraf'));
 const EProm = require('eprom');
-
 const { copy } = require('fs-extra');
 const mktemp = require('mktemp').createDir;
-const mkdirp = promisify(require('mkdirp'));
-const debug = require('debug')('hops-spec:test-helpers');
+const mkdirp = require('mkdirp');
+const debug = require('debug')('jest-env-hops:helpers');
 const resolveFrom = require('resolve-from');
+
+const getHopsCommandModifications = (args) => {
+  const [maybeEnv, ...rest] = args;
+  const env =
+    typeof maybeEnv === 'object' && maybeEnv !== null ? maybeEnv : undefined;
+  return {
+    argv: env ? rest : args,
+    env,
+  };
+};
 
 const build = ({ cwd, env = {}, argv = [] }) =>
   new Promise((resolve, reject) => {
@@ -115,7 +124,7 @@ const launchPuppeteer = async (disablePuppeteer) => {
 };
 
 const createWorkingDir = async (srcDir) => {
-  const cwdRootPath = path.resolve(__dirname, '..', '.tmp');
+  const cwdRootPath = path.resolve(srcDir, '..', '..', '.tmp');
   await mkdirp(cwdRootPath);
   const cwdPath = await mktemp(path.resolve(cwdRootPath, 'XXXXX'));
 
@@ -128,8 +137,11 @@ const createWorkingDir = async (srcDir) => {
   };
 };
 
-module.exports.startServer = startServer;
-module.exports.build = build;
-module.exports.isPuppeteerDisabled = isPuppeteerDisabled;
-module.exports.launchPuppeteer = launchPuppeteer;
-module.exports.createWorkingDir = createWorkingDir;
+module.exports = {
+  getHopsCommandModifications,
+  startServer,
+  build,
+  isPuppeteerDisabled,
+  launchPuppeteer,
+  createWorkingDir,
+};

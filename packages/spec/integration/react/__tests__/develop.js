@@ -1,5 +1,6 @@
 const fetch = require('cross-fetch');
 const urlJoin = require('url-join');
+const { handleConsoleOutput } = require('../../../helpers');
 
 describe('react development server', () => {
   let url;
@@ -11,6 +12,7 @@ describe('react development server', () => {
 
   it('renders home', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url);
     expect(await page.content()).toMatch('<h1>home</h1>');
 
@@ -19,6 +21,7 @@ describe('react development server', () => {
 
   it('renders another route', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(urlJoin(url, '/two'));
     expect(await page.content()).toMatch('<h1>two</h1>');
 
@@ -32,6 +35,7 @@ describe('react development server', () => {
 
   it('redirects server-side', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     const response = await page.goto(urlJoin(url, '/redirect'));
     const firstPageResponse = response.request().redirectChain()[0].response();
     expect(firstPageResponse.status()).toBe(301);
@@ -42,6 +46,7 @@ describe('react development server', () => {
 
   it('allows to set status code with component', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     const response = await page.goto(urlJoin(url, '/header'));
     expect(response.headers()['x-foo']).toBe('Bar');
 
@@ -55,6 +60,7 @@ describe('react development server', () => {
 
   it('allows to navigate client-side', async () => {
     const { page, getElementByText } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url);
 
     page.on('request', (request) => {
@@ -74,6 +80,7 @@ describe('react development server', () => {
     'passes server data through the %s',
     async (approach) => {
       const { page, getInnerText } = await createPage();
+      page.on('console', (msg) => handleConsoleOutput(msg));
       await page.goto(urlJoin(url, `/server-data-${approach}`));
 
       const method = await getInnerText('output');
@@ -90,6 +97,7 @@ describe('react development server', () => {
 
   it('loads async Import component server-side', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.setJavaScriptEnabled(false);
     await page.goto(urlJoin(url, '/import'));
 
@@ -101,6 +109,7 @@ describe('react development server', () => {
 
   it('prints resource hints server-side', async () => {
     const { page, getProperty } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.setJavaScriptEnabled(false);
     await page.goto(urlJoin(url, '/import'));
 
@@ -117,6 +126,7 @@ describe('react development server', () => {
 
   it('renders async Import component client-side', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(urlJoin(url, '/import'), { waitUntil: 'networkidle2' });
 
     expect(await page.content()).toMatch('imported');
@@ -126,6 +136,7 @@ describe('react development server', () => {
 
   it.each(['hook', 'hoc'])('renders config with %s', async (approach) => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(urlJoin(url, `/config-${approach}`), {
       waitUntil: 'networkidle2',
     });

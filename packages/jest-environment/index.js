@@ -1,22 +1,43 @@
-const NodeEnvironment = require('jest-environment-node');
-const debug = require('debug')('hops-spec:env');
+const colors = require('colors');
+const importFrom = require('import-from');
+const NodeEnvironment = importFrom.silent(
+  require.resolve('jest'),
+  'jest-environment-node'
+);
+const [jestMajorVersion] = require('jest/package.json').version.split('.');
+const debug = require('debug')('jest-env-hops');
 const {
+  getHopsCommandModifications,
   isPuppeteerDisabled,
   launchPuppeteer,
   startServer,
   build,
   createWorkingDir,
-} = require('./test-helpers');
+} = require('./helpers');
 
-function getProperty(property, selector) {
-  return this.$(selector)
-    .then((h) => h.getProperty(property))
-    .then((h) => h.jsonValue());
+if (!NodeEnvironment) {
+  throw new Error(
+    'Could not initialize jest-environment-hops. The required jest-environment-node is missing.'
+  );
 }
 
-async function getElementByText(rawText) {
+if (Number(jestMajorVersion) < 26) {
+  console.error(
+    colors.red(
+      'Error: You are using an unsupported version of Jest! Please upgrade to Jest v26.'
+    )
+  );
+}
+
+const getPropertyFactory = (page) => (property, selector) =>
+  page
+    .$(selector)
+    .then((h) => h.getProperty(property))
+    .then((h) => h.jsonValue());
+
+const getElementByTextFactory = (page) => async (rawText) => {
   const text = rawText.toLowerCase();
-  const handle = await this.$x(
+  const handle = await page.$x(
     `//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '${text}')]`
   );
 
@@ -29,29 +50,7 @@ async function getElementByText(rawText) {
   }
 
   return handle[0];
-}
-
-function isReactLifecycleWarning(warning) {
-  const reReactLifecycleWarning = new RegExp(
-    'Warning: componentWill[^\\s]+ has been renamed, and is not recommended for use. ' +
-      'See https://fb.me/react-async-component-lifecycle-hooks for details.'
-  );
-  return Boolean(warning.match(reReactLifecycleWarning));
-}
-
-function isIntolerableWarning(type, text) {
-  return type === 'warning' && !isReactLifecycleWarning(text);
-}
-
-function getCommandModifications(args) {
-  const [maybeEnv, ...rest] = args;
-  const env =
-    typeof maybeEnv === 'object' && maybeEnv !== null ? maybeEnv : undefined;
-  return {
-    argv: env ? rest : args,
-    env,
-  };
-}
+};
 
 class FixtureEnvironment extends NodeEnvironment {
   constructor(config, context) {
@@ -60,6 +59,7 @@ class FixtureEnvironment extends NodeEnvironment {
     this.config = config;
     this.disablePuppeteer = isPuppeteerDisabled(context.docblockPragmas);
   }
+
   async setup() {
     await super.setup();
     debug('Creating working directory for:', this.config.rootDir);
@@ -82,6 +82,7 @@ class FixtureEnvironment extends NodeEnvironment {
       }
 
       const page = await browser.newPage();
+      const getProperty = getPropertyFactory(page);
       page.setDefaultNavigationTimeout(2 * 60 * 1000);
       page.on('error', (error) => {
         throw error;
@@ -90,26 +91,18 @@ class FixtureEnvironment extends NodeEnvironment {
         throw error;
       });
 
-      page.on('console', (msg) => {
-        const type = msg.type();
-        const text = msg.text();
-        if (type === 'error' || isIntolerableWarning(type, text)) {
-          throw new Error(`${type} in browser console: ${text}`);
-        }
-      });
-
       return {
         page,
-        getProperty: getProperty.bind(page),
-        getInnerText: getProperty.bind(page, 'innerText'),
-        getElementByText: getElementByText.bind(page),
+        getProperty,
+        getInnerText: (selector) => getProperty('innerText', selector),
+        getElementByText: getElementByTextFactory(page),
       };
     };
 
     const that = this;
     this.global.HopsCLI = {
       build(...args) {
-        const { env, argv } = getCommandModifications(args);
+        const { env, argv } = getHopsCommandModifications(args);
         return build({ cwd: that.cwd, argv, env });
       },
       start(...args) {
@@ -118,7 +111,7 @@ class FixtureEnvironment extends NodeEnvironment {
             'Another long running task ("hops start") is already running. You can only start one task per file.'
           );
         }
-        const { env, argv } = getCommandModifications(args);
+        const { env, argv } = getHopsCommandModifications(args);
         const { getUrl, stopServer: killServer } = startServer({
           cwd: that.cwd,
           command: 'start',

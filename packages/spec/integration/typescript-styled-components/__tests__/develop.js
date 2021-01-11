@@ -1,3 +1,5 @@
+const { handleConsoleOutput } = require('../../../helpers');
+
 describe('typescript-styled-components development server', () => {
   let url;
 
@@ -8,6 +10,7 @@ describe('typescript-styled-components development server', () => {
 
   it('allows to use the css-props', async () => {
     const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     const color = await page.evaluate(() => {
