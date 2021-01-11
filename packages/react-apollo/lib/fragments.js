@@ -7,10 +7,16 @@ const { graphql } = require('graphql');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 
 function writeFragmentTypesFile(fragmentsFile, result) {
-  result.data.__schema.types = result.data.__schema.types.filter(
-    (t) => t.possibleTypes !== null
-  );
-  return promisify(writeFile)(fragmentsFile, JSON.stringify(result.data));
+  const possibleTypes = {};
+
+  result.data.__schema.types.forEach((supertype) => {
+    if (supertype.possibleTypes) {
+      possibleTypes[supertype.name] = supertype.possibleTypes.map(
+        (subtype) => subtype.name
+      );
+    }
+  });
+  return promisify(writeFile)(fragmentsFile, JSON.stringify(possibleTypes));
 }
 
 function executeRemoteQuery(graphqlUri, optionalHeaders = [], query) {

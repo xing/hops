@@ -1,30 +1,5 @@
 const { Mixin } = require('hops-mixin');
-
-const failedResponse = {
-  errors: [
-    {
-      message: 'Cannot query field "fooo".',
-      locations: [],
-    },
-  ],
-};
-const erroneousResponse = {
-  data: { foo: 'bar' },
-  errors: [
-    {
-      message: 'Could not resolve fields',
-      path: ['bar'],
-      locations: [
-        {
-          line: '3',
-          column: '3',
-        },
-      ],
-      id: 'RESOLVE_ERROR',
-      details: {},
-    },
-  ],
-};
+const getRawBody = require('raw-body');
 
 class GraphQlMixin extends Mixin {
   configureServer(app, middlewares) {
@@ -35,24 +10,51 @@ class GraphQlMixin extends Mixin {
       })
     );
     middlewares.initial.push({
-      path: '/graphql/failed',
+      path: '/graphql',
       method: 'post',
-      handler: (_, res) => res.status(400).json(failedResponse),
-    });
-    middlewares.initial.push({
-      path: '/graphql/erroneous',
-      method: 'post',
-      handler: (_, res) => res.json(erroneousResponse),
-    });
-    middlewares.initial.push({
-      path: '/graphql/html',
-      method: 'post',
-      handler: (_, res) => res.send('<h1>Moini!</h1>'),
-    });
-    middlewares.initial.push({
-      path: '/graphql/blocked',
-      method: 'post',
-      handler: (_, res) => res.status(429).send('Too many requests'),
+      handler(req, res, next) {
+        getRawBody(req, (error, body) => {
+          if (error) {
+            return next(error);
+          }
+
+          const parsed = JSON.parse(body);
+
+          switch (parsed.variables.type) {
+            case 'query-error':
+              return res.status(400).json({
+                errors: [
+                  {
+                    message: 'Cannot query field "fooo".',
+                    locations: [],
+                  },
+                ],
+              });
+            case 'resolve-error':
+              return res.json({
+                data: { foo: 'bar', bar: null },
+                errors: [
+                  {
+                    message: 'Could not resolve fields',
+                    path: ['bar'],
+                    locations: [
+                      {
+                        line: '3',
+                        column: '3',
+                      },
+                    ],
+                    id: 'RESOLVE_ERROR',
+                    details: {},
+                  },
+                ],
+              });
+            case 'invalid-response':
+              return res.send('<h1>Moini!</h1>');
+            case 'blocked':
+              return res.status(429).send('Too many requests');
+          }
+        });
+      },
     });
 
     return app;

@@ -15,5 +15,5 @@ _This preset must be used together with the [`hops-react`](../react/README.md#pr
 Add this preset and its peer dependencies to your existing Hops React project:
 
 ```bash
-npm install --save hops-graphql graphql-tag react-apollo
+npm install --save hops-graphql @apollo/client
 ```

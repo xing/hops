@@ -13,13 +13,12 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "graphql-tag": "^2.10.1",
+    "@apollo/client": "^3.1.3",
     "hops": "^14.0.0-nightly.8",
     "hops-graphql": "^14.0.0-nightly.8",
     "hops-postcss": "^14.0.0-nightly.8",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
-    "react-apollo": "^3.1.2",
     "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.2"

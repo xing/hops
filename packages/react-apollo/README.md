@@ -13,7 +13,7 @@ _This preset must be used together with the [`hops-react`](../react/README.md) p
 Add this preset and its peer dependencies to your existing Hops React project:
 
 ```bash
-npm install --save hops-react-apollo graphql-tag react react-apollo react-dom react-helmet-async react-router-dom
+npm install --save hops-react-apollo react @apollo/client react-dom react-helmet-async react-router-dom
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)

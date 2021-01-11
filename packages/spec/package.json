@@ -34,6 +34,7 @@
     "create-hops-app": "^14.0.0-nightly.8",
     "cross-fetch": "^3.0.4",
     "jest-environment-hops": "^14.0.0-nightly.8",
+    "raw-body": "^2.4.1",
     "react-helmet-async": "^1.0.4"
   },
   "dependencies": {

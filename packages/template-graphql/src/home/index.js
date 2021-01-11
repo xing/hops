@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
+import { graphql } from '@apollo/client/react/hoc';
 import { Helmet } from 'react-helmet-async';
 import query from './jobs.gql';
 import styles from './styles.css';
