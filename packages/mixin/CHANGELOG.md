@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.8](https://github.com/xing/hops/compare/v12.5.7...v12.5.8) (2021-01-11)
+
+**Note:** Version bump only for package hops-mixin
+
+
+
+
+
 ## [12.5.7](https://github.com/xing/hops/compare/v12.5.6...v12.5.7) (2020-12-07)
 
 **Note:** Version bump only for package hops-mixin
