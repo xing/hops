@@ -26,9 +26,9 @@ npm install --save hops-development-proxy
 
 #### Preset Options
 
-| Name    | Type    | Default | Required    | Description |
-| ------- | ------- | ------- | ----------- | ----------- |
-| `proxy` | `String | Object` | `undefined` | _no_        | Proxy target configuration |
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `proxy` | `String` \| `Object` | `undefined` | _no_ | Proxy target configuration |
 
 ##### proxy
 

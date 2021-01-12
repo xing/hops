@@ -48,12 +48,12 @@ Resources:
           title: !Sub 'Hops Serverless Express (${AWS::StackName})'
         basePath: !Sub '/${BasePath}'
         schemes:
-        - https
+          - https
         paths:
           '/':
             x-amazon-apigateway-any-method:
               produces:
-              - text/html
+                - text/html
               responses: {}
               x-amazon-apigateway-integration:
                 uri: !Sub 'arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
@@ -63,12 +63,12 @@ Resources:
           '/{proxy+}':
             x-amazon-apigateway-any-method:
               parameters:
-              - name: proxy
-                in: path
-                required: true
-                type: string
+                - name: proxy
+                  in: path
+                  required: true
+                  type: string
               produces:
-              - text/html
+                - text/html
               responses: {}
               x-amazon-apigateway-integration:
                 uri: !Sub 'arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${HopsLambdaHandler.Arn}/invocations'
@@ -108,16 +108,16 @@ Resources:
           Action: sts:AssumeRole
       Path: '/'
       Policies:
-      - PolicyName: root
-        PolicyDocument:
-          Version: '2012-10-17'
-          Statement:
-          - Effect: Allow
-            Action:
-            - logs:CreateLogGroup
-            - logs:CreateLogStream
-            - logs:PutLogEvents
-            Resource: !Sub 'arn:${AWS::Partition}:logs:*:*:*'
+        - PolicyName: root
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub 'arn:${AWS::Partition}:logs:*:*:*'
 
   LambdaApiGatewayExecutionPermission:
     Type: AWS::Lambda::Permission
@@ -157,6 +157,7 @@ Resources:
                 "body": ""
               }
 
+
 Outputs:
   DistributionDomainName:
     Value: !If
@@ -166,5 +167,9 @@ Outputs:
   Url:
     Value: !If
       - ShouldAddCustomDomain
-      - !If [HasCustomBasePath, !Sub 'https://${DomainName}/${BasePath}/', !Sub 'https://${DomainName}/']
+      - !If [
+          HasCustomBasePath,
+          !Sub 'https://${DomainName}/${BasePath}/',
+          !Sub 'https://${DomainName}/',
+        ]
       - !Sub 'https://${ApiGatewayApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/${BasePath}/'

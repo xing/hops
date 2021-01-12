@@ -30,7 +30,7 @@ You may use either `hops serve -p` or its equivalent `NODE_ENV=production hops s
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `https` | `Boolean | Object` | `false` | _no_ | Configure HTTPS support for Hops |
+| `https` | `Boolean` \| `Object` | `false` | _no_ | Configure HTTPS support for Hops |
 | `host` | `String` | `[HOST]` | _no_ | Specify the IP address that Hops should bind to |
 | `port` | `String` | `[PORT]` | _no_ | Specify the Port that Hops should listen on |
 | `distDir` | `String` | `'<rootDir>/dist'` | _no_ | The folder from which to serve static assets |
