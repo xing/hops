@@ -38,7 +38,7 @@
     "release:rc": "yarn release --conventional-prerelease --preid rc",
     "release:graduate": "yarn release --conventional-graduate",
     "reset": "git clean -dfx && yarn",
-    "fmt": "prettier --write '**/*.{js,json,css}' '**/README.md'"
+    "fmt": "prettier --write --ignore-unknown ."
   },
   "canarist": {
     "projects": [
