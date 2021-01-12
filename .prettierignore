@@ -5,3 +5,4 @@ fragmentTypes.json
 **/package.json
 CHANGELOG.md
 packages/*/CHANGELOG.md
+coverage
