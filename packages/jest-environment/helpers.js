@@ -115,6 +115,7 @@ const launchPuppeteer = async (disablePuppeteer) => {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   };
   debug('Starting puppeteer', config);
+  // eslint-disable-next-line node/no-unsupported-features/es-syntax
   const { default: puppeteer } = await import('puppeteer');
   const browser = await puppeteer.launch(config);
   return {
