@@ -39,7 +39,9 @@
     "release:rc": "yarn release --conventional-prerelease --preid rc",
     "release:graduate": "yarn release --conventional-graduate",
     "reset": "git clean -dfx && yarn",
-    "fmt": "prettier --write --ignore-unknown ."
+    "_fmt": "prettier --ignore-unknown .",
+    "fmt:check": "yarn _fmt --check",
+    "fmt": "yarn _fmt --write"
   },
   "canarist": {
     "projects": [
