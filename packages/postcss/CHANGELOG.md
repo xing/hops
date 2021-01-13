@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.6](https://github.com/xing/hops/compare/v14.0.0-nightly.5...v14.0.0-nightly.6) (2021-01-13)
+
+
+### Bug Fixes
+
+* **postcss:** disable external PostCSS configs ([0083506](https://github.com/xing/hops/commit/008350615e18733bbf0c95e6cf25d8756bb7e978))
+
+
+
+
+
 # [14.0.0-nightly.5](https://github.com/xing/hops/compare/v14.0.0-nightly.4...v14.0.0-nightly.5) (2021-01-11)
 
 
