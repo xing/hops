@@ -28,6 +28,7 @@ const getPostCssLoader = (...additionalPlugins) => ({
   options: {
     postcssOptions: {
       ident: 'postcss',
+      config: false,
       plugins: [postcssImportPlugin(), ...additionalPlugins],
     },
   },
