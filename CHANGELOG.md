@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.1](https://github.com/xing/hops/compare/v13.3.0...v13.3.1) (2021-01-13)
+
+
+### Bug Fixes
+
+* **postcss:** disable external PostCSS configs ([6e24f3f](https://github.com/xing/hops/commit/6e24f3f129481a8eb4529275381b9a94b40a2fcd))
+
+
+
+
+
 # [13.3.0](https://github.com/xing/hops/compare/v13.2.2...v13.3.0) (2021-01-11)
 
 
