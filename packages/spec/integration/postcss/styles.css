@@ -1,5 +1,6 @@
 @import url(imported-from-css.css);
-@import '@zendeskgarden/css-buttons';
+@import '@vishnucss/chips';
+@charset 'utf-8';
 
 .headline {
   composes: compose from './for-composing.css';
