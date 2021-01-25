@@ -1,6 +1,6 @@
 'use strict';
 
-const mergeWith = require('lodash.mergewith');
+const mergeWith = require('lodash/mergeWith');
 const flatten = require('flat');
 const isPlainObject = require('is-plain-obj');
 const escapeRegExp = require('escape-string-regexp');
