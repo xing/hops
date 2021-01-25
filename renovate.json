@@ -28,7 +28,16 @@
       "rangeStrategy": "bump"
     },
     {
+      "baseBranchList": ["master"],
+      "labels": [":package: master"]
+    },
+    {
+      "baseBranchList": ["v13.x"],
+      "labels": [":package: v13"]
+    },
+    {
       "baseBranchList": ["v12.x"],
+      "labels": [":package: v12"],
       "major": {
         "enabled": false
       },
