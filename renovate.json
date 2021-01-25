@@ -12,7 +12,7 @@
   "requiredStatusChecks": null,
   "semanticCommitType": "chore",
   "semanticCommitScope": null,
-  "baseBranches": ["master", "v12.x", "v11.x"],
+  "baseBranches": ["master", "v13.x", "v12.x"],
   "packageRules": [
     {
       "depTypeList": ["dependencies", "peerDependencies"],
@@ -28,9 +28,22 @@
       "rangeStrategy": "bump"
     },
     {
-      "baseBranchList": ["v11.x"],
-      "major": { "enabled": false },
-      "minor": { "enabled": false }
+      "baseBranchList": ["master"],
+      "labels": [":package: master"]
+    },
+    {
+      "baseBranchList": ["v13.x"],
+      "labels": [":package: v13"]
+    },
+    {
+      "baseBranchList": ["v12.x"],
+      "labels": [":package: v12"],
+      "major": {
+        "enabled": false
+      },
+      "minor": {
+        "enabled": false
+      }
     }
   ]
 }
