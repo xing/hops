@@ -64,7 +64,7 @@ expect(error).not.toBeDefined();
 Starts the local Hops app, so it's possible to visit it with Puppeteer.
 
 ```js
-const { getUrl, stopServer } = await HopsCLI.start(
+const { getUrl, stopServer } = HopsCLI.start(
   { NODE_ENV: 'testing' },
   '--fast-dev'
 );
