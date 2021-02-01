@@ -28,7 +28,7 @@
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
     "pathifist": "^1.0.0",
-    "webpack": "^4.41.0",
+    "webpack": "^5.0.0",
     "webpack-sources": "^2.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/pwa#readme"
