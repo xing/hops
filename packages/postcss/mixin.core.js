@@ -1,5 +1,6 @@
 const postcssImportPlugin = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
+const postcssNormalizeCharset = require('postcss-normalize-charset');
 const ExtractCSSPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const { Mixin } = require('hops-mixin');
@@ -29,7 +30,11 @@ const getPostCssLoader = (...additionalPlugins) => ({
     postcssOptions: {
       ident: 'postcss',
       config: false,
-      plugins: [postcssImportPlugin(), ...additionalPlugins],
+      plugins: [
+        postcssNormalizeCharset({ add: false }),
+        postcssImportPlugin(),
+        ...additionalPlugins,
+      ],
     },
   },
 });
