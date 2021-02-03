@@ -13,6 +13,16 @@
   "semanticCommitType": "chore",
   "semanticCommitScope": null,
   "baseBranches": ["master", "v13.x", "v12.x"],
+  "regexManagers": [
+    {
+      "fileMatch": ["^package.json$"],
+      "matchStrings": [
+        "\"react-apollo\": \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
+      ],
+      "depNameTemplate": "yarn",
+      "datasourceTemplate": "npm"
+    }
+  ],
   "packageRules": [
     {
       "depTypeList": ["dependencies", "peerDependencies"],
