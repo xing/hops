@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.2](https://github.com/xing/hops/compare/v13.3.1...v13.3.2) (2021-02-03)
+
+
+### Bug Fixes
+
+* **postcss:** tidy up misplaced [@charset](https://github.com/charset) directives ([f4e8cb3](https://github.com/xing/hops/commit/f4e8cb381054b82a7cc7d234ad79f1c20cc37106))
+
+
+
+
+
 ## [13.3.1](https://github.com/xing/hops/compare/v13.3.0...v13.3.1) (2021-01-13)
 
 
