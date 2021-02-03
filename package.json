@@ -76,7 +76,12 @@
             "directory": "internal-hops",
             "branch": "v13.x"
           }
-        ]
+        ],
+        "rootManifest": {
+          "resolutions": {
+            "react-apollo": "3.1.5"
+          }
+        }
       },
       {
         "name": "internal-workshop",
