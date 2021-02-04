@@ -12,7 +12,11 @@
   "requiredStatusChecks": null,
   "semanticCommitType": "chore",
   "semanticCommitScope": null,
-  "baseBranches": ["master", "v13.x", "v12.x"],
+  "baseBranches": [
+    "master",
+    "release-bot/next-v13.x",
+    "release-bot/next-v12.x"
+  ],
   "regexManagers": [
     {
       "fileMatch": ["^package.json$"],
@@ -42,11 +46,11 @@
       "labels": [":package: master"]
     },
     {
-      "baseBranchList": ["v13.x"],
+      "baseBranchList": ["release-bot/next-v13.x"],
       "labels": [":package: v13"]
     },
     {
-      "baseBranchList": ["v12.x"],
+      "baseBranchList": ["release-bot/next-v12.x"],
       "labels": [":package: v12"],
       "major": {
         "enabled": false
