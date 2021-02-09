@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.7](https://github.com/xing/hops/compare/v14.0.0-nightly.6...v14.0.0-nightly.7) (2021-02-09)
+
+
+### Bug Fixes
+
+* disable native Webpack stats in develop-mode ([33a060b](https://github.com/xing/hops/commit/33a060b191d94822c5d0868782c1c6cbdc88b8a5))
+
+
+
+
+
 # [14.0.0-nightly.6](https://github.com/xing/hops/compare/v14.0.0-nightly.5...v14.0.0-nightly.6) (2021-01-13)
 
 **Note:** Version bump only for package hops-webpack

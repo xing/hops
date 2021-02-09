@@ -1,7 +1,7 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "14.0.0-nightly.6",
+  "version": "14.0.0-nightly.7",
   "registry": "https://registry.npmjs.org/",
   "command": {
     "version": {

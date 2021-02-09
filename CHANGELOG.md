@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.7](https://github.com/xing/hops/compare/v14.0.0-nightly.6...v14.0.0-nightly.7) (2021-02-09)
+
+
+### Bug Fixes
+
+* **postcss:** tidy up misplaced [@charset](https://github.com/charset) directives ([7de0751](https://github.com/xing/hops/commit/7de0751e777975127b5e8e49bfdb863ab7c2a7c9))
+* disable native Webpack stats in develop-mode ([33a060b](https://github.com/xing/hops/commit/33a060b191d94822c5d0868782c1c6cbdc88b8a5))
+
+
+
+
+
 # [14.0.0-nightly.6](https://github.com/xing/hops/compare/v14.0.0-nightly.5...v14.0.0-nightly.6) (2021-01-13)
 
 
