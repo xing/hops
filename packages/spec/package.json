@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@graphql-tools/delegate": "^7.0.5",
-    "@graphql-tools/mock": "^7.0.0",
+    "@graphql-tools/mock": "^8.0.0",
     "@graphql-tools/schema": "^7.0.0",
     "@graphql-tools/stitch": "^7.0.4",
     "@testing-library/react": "^11.0.0",
