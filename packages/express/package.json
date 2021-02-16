@@ -1,6 +1,6 @@
 {
   "name": "hops-express",
-  "version": "14.0.0-nightly.7",
+  "version": "14.0.0-nightly.8",
   "description": "Customization for the our express server",
   "keywords": [
     "hops",
@@ -26,9 +26,9 @@
     "express": "^4.17.1",
     "finalhandler": "^1.1.2",
     "helmet": "^4.0.0",
-    "hops-bootstrap": "^14.0.0-nightly.7",
-    "hops-mixin": "^14.0.0-nightly.7",
-    "hops-yargs": "^14.0.0-nightly.7",
+    "hops-bootstrap": "^14.0.0-nightly.8",
+    "hops-mixin": "^14.0.0-nightly.8",
+    "hops-yargs": "^14.0.0-nightly.8",
     "is-plain-obj": "^3.0.0",
     "mime": "^2.4.4",
     "mixinable": "^5.0.1",
