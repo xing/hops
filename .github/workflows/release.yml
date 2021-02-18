@@ -32,8 +32,8 @@ jobs:
       - name: Prepare release
         run: |
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
-          git config --global user.name "Hops release bot"
-          git config --global user.email "45232789+hops-untool@users.noreply.github.com"
+          git config user.name "Hops release bot"
+          git config user.email "45232789+hops-untool@users.noreply.github.com"
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
