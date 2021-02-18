@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
       - name: Use Node.js 14.x
         uses: actions/setup-node@v2
         with:
