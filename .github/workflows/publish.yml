@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
       - name: Push version tag
         id: push-version-tag
         run: |
