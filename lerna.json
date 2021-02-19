@@ -8,7 +8,9 @@
       "message": "chore: release %s",
       "conventionalCommits": true,
       "createRelease": "github",
-      "forcePublish": true
+      "forcePublish": true,
+      "signGitCommits": true,
+      "signGitTags": true
     },
     "publish": {
       "preDistTag": "next"
