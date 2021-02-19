@@ -1,6 +1,6 @@
 {
   "name": "hops-mixin",
-  "version": "12.5.8",
+  "version": "12.5.9",
   "description": "Building blocks to build cusom hops mixins",
   "keywords": [
     "hops",
@@ -17,7 +17,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-bootstrap": "^12.5.8",
+    "hops-bootstrap": "^12.5.9",
     "mixinable": "^5.0.1"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme"
