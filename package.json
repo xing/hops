@@ -33,7 +33,7 @@
     "lint": "eslint 'packages/**/*.js'",
     "prerelease": "test -n \"$GH_TOKEN\" || (echo 'GH_TOKEN missing'; exit 1)",
     "release": "lerna publish",
-    "release:prepare": "lerna version --no-push",
+    "release:prepare": "lerna version --no-push --yes",
     "release:create-nightly": "yarn release premajor --conventional-prerelease --preid nightly",
     "release:rc": "yarn release --conventional-prerelease --preid rc",
     "release:graduate": "yarn release --conventional-graduate",
