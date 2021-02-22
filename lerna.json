@@ -11,6 +11,7 @@
       "forcePublish": true
     },
     "publish": {
+      "distTag": "v12",
       "preDistTag": "next"
     }
   }
