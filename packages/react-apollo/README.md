@@ -28,7 +28,7 @@ This preset takes care of setting up the Apollo cache and fragment matchers - if
 
 This is not strictly necessary but is recommended if you have a more complex schema and are querying fragments on unions or interfaces.
 
-Head over to https://www.apollographql.com/docs/react/data/fragments/#fragments-on-unions-and-interfaces to read more details about this.
+Head over to https://www.apollographql.com/docs/react/data/fragments/#using-fragments-with-unions-and-interfaces to read more details about this.
 
 ##### Arguments
 
@@ -122,7 +122,7 @@ By default this preset creates an `HttpLink` with the configured [`graphqlUri`](
 Read more about Apollo links here:
 
 - https://www.apollographql.com/docs/link/
-- https://www.apollographql.com/docs/react/networking/network-layer/
+- https://www.apollographql.com/docs/react/networking/basic-http-networking/
 
 ```javascript
 export default render(<MyApp />, {

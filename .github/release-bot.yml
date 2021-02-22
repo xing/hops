@@ -8,3 +8,5 @@ labels:
   ':package: v13': 'v13.x'
 
 release-pr-branch-pattern: 'release-bot/next-%s'
+
+prepare-release-command: 'yarn release:prepare'

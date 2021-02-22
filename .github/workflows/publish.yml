@@ -1,0 +1,45 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - v12.x
+      - v13.x
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Push version tag
+        id: push-version-tag
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          version="v$(jq -r .version lerna.json)"
+          echo "::set-output name=version::${version}"
+          git tag $version
+          git push origin --tags
+      - name: Extract changelog
+        run: |
+          git diff HEAD^..HEAD -- CHANGELOG.md > diff.patch
+          sed -i diff.patch -e 's/CHANGELOG.md/release_changelog.md/g'
+          touch release_changelog.md
+          git apply --recount -C0 diff.patch
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.push-version-tag.outputs.version }}
+          release_name: Release ${{ steps.push-version-tag.outputs.version }}
+          body_path: release_changelog.md
+          draft: false
+          prerelease: false
+      - name: Publish to registry
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn lerna publish from-git --yes

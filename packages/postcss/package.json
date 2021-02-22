@@ -1,6 +1,6 @@
 {
   "name": "hops-postcss",
-  "version": "13.3.2",
+  "version": "13.3.3",
   "description": "Configuration of PostCSS and Webpack for Hops",
   "keywords": [
     "hops",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "css-loader": "^5.0.1",
-    "hops-mixin": "^13.3.2",
+    "hops-mixin": "^13.3.3",
     "mini-css-extract-plugin": "^1.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "pathifist": "^1.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "13.3.2",
+  "version": "13.3.3",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -26,8 +26,8 @@
     "clone": "^2.1.2",
     "depd": "^2.0.0",
     "duplitect": "^3.0.0",
-    "hops-bootstrap": "^13.3.2",
-    "hops-mixin": "^13.3.2",
+    "hops-bootstrap": "^13.3.3",
+    "hops-mixin": "^13.3.3",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "pathifist": "^1.0.0",
