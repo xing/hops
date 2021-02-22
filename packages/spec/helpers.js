@@ -6,8 +6,15 @@ const isReactLifecycleWarning = (warning) => {
   return Boolean(warning.match(reReactLifecycleWarning));
 };
 
+const isSharedArrayBufferWarning = (warning) =>
+  warning.startsWith(
+    'SharedArrayBuffer will require cross-origin isolation as of M91, around May 2021.'
+  );
+
 const isIntolerableWarning = (type, text) =>
-  type === 'warning' && !isReactLifecycleWarning(text);
+  type === 'warning' &&
+  !isReactLifecycleWarning(text) &&
+  !isSharedArrayBufferWarning(text);
 
 exports.handleConsoleOutput = (msg) => {
   const type = msg.type();
