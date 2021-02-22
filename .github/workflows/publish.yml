@@ -12,6 +12,26 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.OS }}-node-14.x-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-14.x-
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
       - name: Push version tag
         id: push-version-tag
         run: |
@@ -23,7 +43,8 @@ jobs:
           git push origin --tags
       - name: Extract changelog
         run: |
-          git diff HEAD^..HEAD -- CHANGELOG.md > diff.patch
+          SHA=$(git log -n 1 --pretty=format:%H -- CHANGELOG.md | tr -d '\n')
+          git diff $SHA^ -- CHANGELOG.md > diff.patch
           sed -i diff.patch -e 's/CHANGELOG.md/release_changelog.md/g'
           touch release_changelog.md
           git apply --recount -C0 diff.patch
