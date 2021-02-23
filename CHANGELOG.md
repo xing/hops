@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.3](https://github.com/xing/hops/compare/v13.3.2...v13.3.3) (2021-02-23)
+
+
+### Bug Fixes
+
+* update dependency puppeteer to v7 ([f103269](https://github.com/xing/hops/commit/f1032699ee67ecf1ed31e2ef754ac2999af9c1bf))
+
+
+
+
+
 ## [13.3.2](https://github.com/xing/hops/compare/v13.3.1...v13.3.2) (2021-02-03)
 
 
