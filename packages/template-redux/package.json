@@ -16,7 +16,7 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "hops": "^13.3.3",
+    "hops": "^13.3.2",
     "hops-postcss": "^13.3.3",
     "hops-redux": "^13.3.3",
     "prop-types": "^15.7.2",
