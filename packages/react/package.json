@@ -27,7 +27,7 @@
     "depd": "^2.0.0",
     "duplitect": "^3.0.0",
     "hops-bootstrap": "^13.3.3",
-    "hops-mixin": "^13.3.3",
+    "hops-mixin": "^13.3.2",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "pathifist": "^1.0.0",

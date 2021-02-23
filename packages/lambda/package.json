@@ -24,7 +24,7 @@
     "hops-bootstrap": "^13.3.3",
     "hops-config": "^13.3.3",
     "hops-express": "^13.3.3",
-    "hops-mixin": "^13.3.3",
+    "hops-mixin": "^13.3.2",
     "pathifist": "^1.0.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.14",

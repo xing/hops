@@ -10,7 +10,7 @@
   "homepage": "https://github.com/xing/hops/tree/master/packages/yargs#readme",
   "dependencies": {
     "hops-bootstrap": "^13.3.3",
-    "hops-mixin": "^13.3.3",
+    "hops-mixin": "^13.3.2",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "yargs": "^16.1.1"

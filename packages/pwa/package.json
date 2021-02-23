@@ -23,7 +23,7 @@
     "app-manifest-loader": "^2.4.1",
     "file-loader": "^6.0.0",
     "hops-bootstrap": "^13.3.3",
-    "hops-mixin": "^13.3.3",
+    "hops-mixin": "^13.3.2",
     "hops-webpack": "^13.3.3",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
