@@ -18,7 +18,7 @@
   "dependencies": {
     "graphql-tag": "^2.10.1",
     "hops": "^13.3.3",
-    "hops-graphql": "^13.3.3",
+    "hops-graphql": "^13.3.2",
     "hops-postcss": "^13.3.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
