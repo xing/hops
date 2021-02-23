@@ -22,7 +22,7 @@
     "aws-sdk": "^2.546.0",
     "globby": "^11.0.0",
     "hops-bootstrap": "^13.3.3",
-    "hops-config": "^13.3.3",
+    "hops-config": "^13.3.2",
     "hops-express": "^13.3.3",
     "hops-mixin": "^13.3.3",
     "pathifist": "^1.0.0",

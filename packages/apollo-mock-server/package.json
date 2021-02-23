@@ -24,7 +24,7 @@
     "cross-fetch": "^3.0.4",
     "express": "^4.17.1",
     "graphql": "^15.0.0",
-    "hops-config": "^13.3.3",
+    "hops-config": "^13.3.2",
     "hops-mixin": "^13.3.3",
     "hops-webpack": "^13.3.3"
   },

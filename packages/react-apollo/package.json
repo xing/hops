@@ -27,7 +27,7 @@
     "apollo-link-http": "^1.5.16",
     "cross-fetch": "^3.0.4",
     "graphql": "^15.0.0",
-    "hops-config": "^13.3.3",
+    "hops-config": "^13.3.2",
     "hops-mixin": "^13.3.3",
     "hops-react": "^13.3.3",
     "strip-indent": "^3.0.0"
