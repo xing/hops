@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "hops-express": "^13.3.3",
-    "hops-info": "^13.3.3",
+    "hops-info": "^13.3.2",
     "hops-mixin": "^13.3.3",
     "hops-react": "^13.3.3",
     "hops-webpack": "^13.3.3",
