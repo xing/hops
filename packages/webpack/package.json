@@ -22,7 +22,7 @@
     "file-loader": "^6.0.0",
     "find-up": "^5.0.0",
     "hops-bootstrap": "^13.3.3",
-    "hops-express": "^13.3.3",
+    "hops-express": "^13.3.2",
     "hops-mixin": "^13.3.3",
     "hops-yargs": "^13.3.3",
     "is-plain-obj": "^3.0.0",

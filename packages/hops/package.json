@@ -27,7 +27,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-express": "^13.3.3",
+    "hops-express": "^13.3.2",
     "hops-info": "^13.3.3",
     "hops-mixin": "^13.3.3",
     "hops-react": "^13.3.3",
