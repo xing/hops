@@ -24,7 +24,7 @@
     "import-from": "^3.0.0",
     "mkdirp": "^1.0.4",
     "mktemp": "^1.0.0",
-    "puppeteer": "^5.5.0",
+    "puppeteer": "^7.0.0",
     "resolve-from": "^5.0.0",
     "rimraf": "^3.0.2",
     "url-join": "^4.0.1"

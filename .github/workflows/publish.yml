@@ -13,7 +13,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2
+          fetch-depth: 10
       - name: Use Node.js 14.x
         uses: actions/setup-node@v2
         with:
@@ -43,7 +43,8 @@ jobs:
           git push origin --tags
       - name: Extract changelog
         run: |
-          git diff HEAD^..HEAD -- CHANGELOG.md > diff.patch
+          SHA=$(git log -n 1 --pretty=format:%H -- CHANGELOG.md | tr -d '\n')
+          git diff $SHA^ -- CHANGELOG.md > diff.patch
           sed -i diff.patch -e 's/CHANGELOG.md/release_changelog.md/g'
           touch release_changelog.md
           git apply --recount -C0 diff.patch
