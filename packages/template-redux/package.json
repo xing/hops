@@ -18,7 +18,7 @@
   "dependencies": {
     "hops": "^13.3.3",
     "hops-postcss": "^13.3.3",
-    "hops-redux": "^13.3.3",
+    "hops-redux": "^13.3.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
