@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "hops-apollo-mock-server": "^13.3.3",
-    "hops-react-apollo": "^13.3.3"
+    "hops-react-apollo": "^13.3.2"
   },
   "peerDependencies": {
     "graphql-tag": "^2.10.0",
