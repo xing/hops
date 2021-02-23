@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "jest": "^26.0.0",
-    "jest-preset-hops": "^13.3.3",
+    "jest-preset-hops": "^13.3.2",
     "react-test-renderer": "^17.0.1"
   },
   "jest": {
