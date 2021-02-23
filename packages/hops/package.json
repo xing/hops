@@ -30,7 +30,7 @@
     "hops-express": "^13.3.3",
     "hops-info": "^13.3.3",
     "hops-mixin": "^13.3.3",
-    "hops-react": "^13.3.3",
+    "hops-react": "^13.3.2",
     "hops-webpack": "^13.3.3",
     "hops-yargs": "^13.3.3",
     "webpack-bundle-analyzer": "^4.1.0"
