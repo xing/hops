@@ -2,7 +2,6 @@ status = [
   "tests (12.x)",
   "tests (14.x)",
   "tests (15.x)",
-  "canarist",
   "canarist/internal-hops",
   "canarist/internal-workshop",
 ]

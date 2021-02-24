@@ -46,24 +46,6 @@
   "canarist": {
     "projects": [
       {
-        "name": "kicker-trainer",
-        "repositories": [
-          {
-            "url": ".",
-            "commands": [
-              ""
-            ]
-          },
-          {
-            "url": "https://github.com/foosbyte/kicker-trainer.git",
-            "commands": [
-              "yarn build -p",
-              "yarn test"
-            ]
-          }
-        ]
-      },
-      {
         "name": "internal-hops",
         "repositories": [
           {

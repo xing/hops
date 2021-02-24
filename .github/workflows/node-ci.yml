@@ -42,17 +42,3 @@ jobs:
           yarn lint
       - name: Run tests
         run: yarn test --maxWorkers=2 --ci
-
-  canarist:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - name: Use Node.js LTS
-        uses: actions/setup-node@v2
-        with:
-          node-version: 15.x
-      - name: Install canarist
-        run: npm i -g canarist
-      - name: Run canarist
-        run: canarist -p kicker-trainer
