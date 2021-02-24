@@ -14,6 +14,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 10
+      - name: Check out release commit
+        # The CHANGELOG has been touched by lerna during the creation of the
+        # latest release; so the respective commit SHA is the one we need
+        # to publish from.
+        run: |
+          SHA=$(git log -n 1 --pretty=format:%H -- CHANGELOG.md | tr -d '\n')
+          git checkout ${SHA}
       - name: Use Node.js 14.x
         uses: actions/setup-node@v2
         with:
@@ -43,8 +50,7 @@ jobs:
           git push origin --tags
       - name: Extract changelog
         run: |
-          SHA=$(git log -n 1 --pretty=format:%H -- CHANGELOG.md | tr -d '\n')
-          git diff $SHA^ -- CHANGELOG.md > diff.patch
+          git diff HEAD^ -- CHANGELOG.md > diff.patch
           sed -i diff.patch -e 's/CHANGELOG.md/release_changelog.md/g'
           touch release_changelog.md
           git apply --recount -C0 diff.patch
