@@ -1,6 +1,6 @@
 {
   "name": "jest-preset-hops",
-  "version": "13.3.4",
+  "version": "13.3.3",
   "description": "Jest preset to work with Hops powered projects",
   "keywords": [
     "hops",
@@ -29,7 +29,7 @@
     "babel-jest": "^26.0.0",
     "colors": "^1.4.0",
     "core-js": "^3.2.1",
-    "hops": "^13.3.4",
+    "hops": "^13.3.3",
     "identity-obj-proxy": "^3.0.0",
     "jest-config": "^26.0.0",
     "regenerator-runtime": "^0.13.3",
