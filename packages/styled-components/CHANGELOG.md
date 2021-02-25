@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.4](https://github.com/xing/hops/compare/v13.3.3...v13.3.4) (2021-02-25)
+
+
+### Reverts
+
+* Revert "chore: release v13.3.4" ([1665286](https://github.com/xing/hops/commit/1665286e4efb4316ce33bcc789b8ae6839ded3f9))
+* Revert "chore: release v13.3.4" ([328c4a4](https://github.com/xing/hops/commit/328c4a494de318b7a893ac99165bf1fb1304b729))
+
+
+
+
+
 ## [13.3.3](https://github.com/xing/hops/compare/v13.3.2...v13.3.3) (2021-02-23)
 
 **Note:** Version bump only for package hops-styled-components
