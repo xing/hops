@@ -1,6 +1,6 @@
 {
   "name": "hops-template-redux",
-  "version": "13.3.4",
+  "version": "13.3.3",
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
@@ -16,9 +16,9 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "hops": "^13.3.4",
-    "hops-postcss": "^13.3.4",
-    "hops-redux": "^13.3.4",
+    "hops": "^13.3.3",
+    "hops-postcss": "^13.3.3",
+    "hops-redux": "^13.3.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "jest": "^26.0.0",
-    "jest-preset-hops": "^13.3.4",
+    "jest-preset-hops": "^13.3.3",
     "react-test-renderer": "^17.0.1"
   },
   "jest": {
