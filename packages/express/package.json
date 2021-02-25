@@ -26,7 +26,7 @@
     "express": "^4.17.1",
     "finalhandler": "^1.1.2",
     "helmet": "^4.0.0",
-    "hops-bootstrap": "^13.3.4",
+    "hops-bootstrap": "^13.3.3",
     "hops-mixin": "^13.3.4",
     "hops-yargs": "^13.3.4",
     "is-plain-obj": "^3.0.0",

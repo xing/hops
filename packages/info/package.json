@@ -18,7 +18,7 @@
     "enhanced-resolve": "^5.0.0",
     "eprom": "^1.0.0",
     "escape-string-regexp": "^4.0.0",
-    "hops-bootstrap": "^13.3.4",
+    "hops-bootstrap": "^13.3.3",
     "hops-mixin": "^13.3.4",
     "mixinable": "^5.0.1"
   },

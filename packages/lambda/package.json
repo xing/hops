@@ -21,7 +21,7 @@
     "archiver": "^5.0.0",
     "aws-sdk": "^2.546.0",
     "globby": "^11.0.0",
-    "hops-bootstrap": "^13.3.4",
+    "hops-bootstrap": "^13.3.3",
     "hops-config": "^13.3.4",
     "hops-express": "^13.3.4",
     "hops-mixin": "^13.3.4",
