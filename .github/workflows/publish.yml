@@ -67,4 +67,6 @@ jobs:
       - name: Publish to registry
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn lerna publish from-git --yes
+        run: |
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+          yarn lerna publish from-git --yes
