@@ -18,7 +18,7 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "hops-apollo-mock-server": "^13.3.4",
+    "hops-apollo-mock-server": "^13.3.3",
     "hops-react-apollo": "^13.3.4"
   },
   "peerDependencies": {
