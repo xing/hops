@@ -5,7 +5,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [13.3.4](https://github.com/xing/hops/compare/v13.3.3...v13.3.4) (2021-02-25)
 
-**Note:** Version bump only for package hops-graphql
+
+### Reverts
+
+* Revert "chore: release v13.3.4" ([328c4a4](https://github.com/xing/hops/commit/328c4a494de318b7a893ac99165bf1fb1304b729))
 
 
 
