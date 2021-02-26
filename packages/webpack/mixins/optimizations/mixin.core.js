@@ -25,7 +25,12 @@ function findResolved(a, b) {
 
 class WebpackOptimizationsMixin extends Mixin {
   configureBuild(webpackConfig, { allLoaderConfigs, jsLoaderConfig }, target) {
-    const { fastBuild: fastBuildFlag, fastDev: fastDevFlag } = this.options;
+    const {
+      fastBuild: fastBuildFlag,
+      fastDev: fastDevFlag,
+      experimentalEsbuild,
+    } = this.options;
+
     const { NODE_ENV } = process.env;
     const fastBuild =
       fastBuildFlag && (target === 'build' || target === 'node');
@@ -34,17 +39,24 @@ class WebpackOptimizationsMixin extends Mixin {
       NODE_ENV !== 'production' &&
       (target === 'develop' || target === 'node');
 
+    if (fastBuild || fastDev) {
+      // do not transpile node_modules for either fastBuild or fastDev
+      const { experimental: { babelIncludePatterns = [] } = {} } = this.config;
+      jsLoaderConfig.include = include(babelIncludePatterns);
+      jsLoaderConfig.exclude = [];
+    }
+
+    if (experimentalEsbuild) {
+      // Do not apply any other options as they are for Babel.
+      return;
+    }
+
     const [, presetEnvOptions] =
       jsLoaderConfig.options.presets
         .filter(Array.isArray)
         .find(([path]) => findResolved(path, '@babel/preset-env')) || [];
 
     if (fastBuild || fastDev) {
-      // do not transpile node_modules for either fastBuild or fastDev
-      const { experimental: { babelIncludePatterns = [] } = {} } = this.config;
-      jsLoaderConfig.include = include(babelIncludePatterns);
-      jsLoaderConfig.exclude = [];
-
       // always add "regenerator-runtime/runtime" because babel will still down-
       // transpile async functions if the browserslist requires it
       webpackConfig.entry = [require.resolve('regenerator-runtime/runtime')]
