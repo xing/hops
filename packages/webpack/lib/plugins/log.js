@@ -46,10 +46,9 @@ const formatWarning = (name, duration, assets, isRebuild) => {
 };
 
 const formatSuccess = (name, duration, assets, isRebuild) => {
-  const totalSize = Object.values(assets).reduce(
-    (sum, asset) => sum + asset.size,
-    0
-  );
+  const totalSize = Object.values(assets).reduce((sum, asset) => {
+    return sum + (asset.name.endsWith('.map') ? 0 : asset.size);
+  }, 0);
   const message = `bundling '${name}' finished after ${duration} (${prettyBytes(
     totalSize
   )})`;
