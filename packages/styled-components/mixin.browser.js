@@ -1,6 +1,6 @@
-const { Mixin } = require('hops-mixin');
-const React = require('react');
-const { ThemeProvider } = require('styled-components');
+import { Mixin } from 'hops-mixin';
+import { createElement } from 'react';
+import { ThemeProvider } from 'styled-components';
 
 class StyledComponentsMixin extends Mixin {
   constructor(config, element, { styled: options = {} } = {}) {
@@ -9,12 +9,8 @@ class StyledComponentsMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return React.createElement(
-      ThemeProvider,
-      { theme: this.theme },
-      reactElement
-    );
+    return createElement(ThemeProvider, { theme: this.theme }, reactElement);
   }
 }
 
-module.exports = StyledComponentsMixin;
+export default StyledComponentsMixin;

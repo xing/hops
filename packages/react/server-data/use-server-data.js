@@ -1,8 +1,8 @@
-const React = require('react');
-const ServerDataContext = require('./context');
+import { useContext } from 'react';
+import ServerDataContext from './context';
 
 function useServerData() {
-  return React.useContext(ServerDataContext);
+  return useContext(ServerDataContext);
 }
 
-module.exports = useServerData;
+export default useServerData;

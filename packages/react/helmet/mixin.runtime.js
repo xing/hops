@@ -1,6 +1,6 @@
-const { Mixin } = require('hops-mixin');
-const { createElement } = require('react');
-const { HelmetProvider } = require('react-helmet-async');
+import { Mixin } from 'hops-mixin';
+import { createElement } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 
 class ReactHelmetMixin extends Mixin {
   constructor(config, _element, options) {
@@ -19,4 +19,4 @@ class ReactHelmetMixin extends Mixin {
   }
 }
 
-module.exports = ReactHelmetMixin;
+export default ReactHelmetMixin;

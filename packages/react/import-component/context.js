@@ -1,3 +1,7 @@
-const React = require('react');
+import { createContext } from 'react';
 
-module.exports = React.createContext({});
+const context = createContext({});
+
+export default context;
+export const Consumer = context.Consumer;
+export const Provider = context.Provider;

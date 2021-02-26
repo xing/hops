@@ -1,47 +1,25 @@
-const { withRouter } = require('react-router-dom');
-const PropTypes = require('prop-types');
+import { withRouter } from 'react-router-dom';
 
-const Miss = ({ staticContext }) => {
+export const Miss = withRouter(({ staticContext }) => {
   if (staticContext) {
     staticContext.miss = true;
   }
 
   return null;
-};
+});
 
-Miss.propTypes = {
-  staticContext: PropTypes.object,
-};
-
-exports.Miss = withRouter(Miss);
-
-const Status = ({ staticContext, code }) => {
+export const Status = withRouter(({ staticContext, code }) => {
   if (staticContext) {
     staticContext.status = code;
   }
 
   return null;
-};
+});
 
-Status.propTypes = {
-  staticContext: PropTypes.object,
-  code: PropTypes.number.isRequired,
-};
-
-exports.Status = withRouter(Status);
-
-const Header = ({ staticContext, name = '', value = '' }) => {
+export const Header = withRouter(({ staticContext, name = '', value = '' }) => {
   if (staticContext) {
     staticContext.headers = { ...staticContext.headers, [name]: value };
   }
 
   return null;
-};
-
-Header.propTypes = {
-  staticContext: PropTypes.object,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-};
-
-exports.Header = withRouter(Header);
+});

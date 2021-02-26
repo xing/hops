@@ -1,10 +1,9 @@
-const React = require('react');
-const PropTypes = require('prop-types');
-const { matchPath, withRouter } = require('react-router-dom');
+import { Component, Children, createElement } from 'react';
+import PropTypes from 'prop-types';
+import { matchPath, withRouter } from 'react-router-dom';
+import { Mixin } from 'hops-mixin';
 
-const { Mixin } = require('hops-mixin');
-
-class Dispatcher extends React.Component {
+class Dispatcher extends Component {
   constructor(props) {
     super(props);
 
@@ -47,9 +46,7 @@ class Dispatcher extends React.Component {
   }
 
   render() {
-    return this.props.children
-      ? React.Children.only(this.props.children)
-      : null;
+    return this.props.children ? Children.only(this.props.children) : null;
   }
 }
 
@@ -92,7 +89,7 @@ class ReduxActionCreatorRuntimeMixin extends Mixin {
 
   enhanceElement(reactElement) {
     const { alwaysDispatchActionsOnClient } = this.options;
-    return React.createElement(
+    return createElement(
       RoutedDispatcher,
       {
         dispatchAll: this.dispatchAll.bind(this),
@@ -104,4 +101,4 @@ class ReduxActionCreatorRuntimeMixin extends Mixin {
   }
 }
 
-module.exports = ReduxActionCreatorRuntimeMixin;
+export default ReduxActionCreatorRuntimeMixin;

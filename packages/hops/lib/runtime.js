@@ -1,6 +1,6 @@
 'use strict';
 
-const {
+export {
   render,
   Header,
   importComponent,
@@ -12,22 +12,6 @@ const {
   ConfigContext,
   withConfig,
   useConfig,
-} = require('hops-react');
+} from 'hops-react';
 
-const { Mixin, strategies } = require('hops-mixin');
-
-module.exports = {
-  Header,
-  importComponent,
-  Miss,
-  Status,
-  render,
-  ServerDataContext,
-  withServerData,
-  useServerData,
-  ConfigContext,
-  withConfig,
-  useConfig,
-  Mixin,
-  strategies,
-};
+export { Mixin, strategies } from 'hops-mixin';

@@ -1,23 +1,21 @@
-const React = require('react');
-const renderToFragments = require('hops-react/lib/fragments');
-const { existsSync, readFileSync } = require('fs');
-const {
-  Mixin,
-  strategies: {
-    sync: { override, callable, sequence },
-  },
-} = require('hops-mixin');
-
-const { ApolloProvider, getMarkupFromTree } = require('react-apollo');
-const { default: ApolloClient } = require('apollo-client');
-const { ApolloLink } = require('apollo-link');
-const { HttpLink } = require('apollo-link-http');
-const {
+import { createElement } from 'react';
+import renderToFragments from 'hops-react/lib/fragments';
+import { existsSync, readFileSync } from 'fs';
+import { Mixin, strategies } from 'hops-mixin';
+import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { ApolloLink } from 'apollo-link';
+import { HttpLink } from 'apollo-link-http';
+import {
   InMemoryCache,
   IntrospectionFragmentMatcher,
   HeuristicFragmentMatcher,
-} = require('apollo-cache-inmemory');
-const fetch = require('cross-fetch');
+} from 'apollo-cache-inmemory';
+import fetch from 'cross-fetch';
+
+const {
+  sync: { override, callable, sequence },
+} = strategies;
 
 let introspectionResult = undefined;
 
@@ -138,7 +136,7 @@ class GraphQLMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return React.createElement(
+    return createElement(
       ApolloProvider,
       { client: this.getApolloClient() },
       reactElement
@@ -153,4 +151,4 @@ GraphQLMixin.strategies = {
   canPrefetchOnServer: sequence,
 };
 
-module.exports = GraphQLMixin;
+export default GraphQLMixin;

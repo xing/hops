@@ -1,9 +1,9 @@
 /* eslint-env browser, node */
 
-const React = require('react');
-const { Mixin } = require('hops-mixin');
+import { createElement } from 'react';
 
-const { Provider } = require('./context');
+import { Mixin } from 'hops-mixin';
+import { Provider } from './context';
 
 const warnOnIncompleteBrowserWhitelist = (config) => {
   if (process.env.NODE_ENV === 'development' && typeof Proxy === 'function') {
@@ -31,7 +31,7 @@ const warnOnIncompleteBrowserWhitelist = (config) => {
 
 class HopsReactConfigMixin extends Mixin {
   enhanceElement(reactElement) {
-    return React.createElement(
+    return createElement(
       Provider,
       { value: warnOnIncompleteBrowserWhitelist(this.config) },
       reactElement
@@ -39,4 +39,4 @@ class HopsReactConfigMixin extends Mixin {
   }
 }
 
-module.exports = HopsReactConfigMixin;
+export default HopsReactConfigMixin;

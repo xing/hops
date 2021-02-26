@@ -1,8 +1,7 @@
 /* eslint-env browser */
 
-const {
-  internal: { getConfig },
-} = require('hops-bootstrap');
+import { internal } from 'hops-bootstrap';
+const { getConfig } = internal;
 
 const isLocalHost = (host) => {
   return (
@@ -14,7 +13,7 @@ const isLocalHost = (host) => {
   );
 };
 
-module.exports = function installServiceWorker() {
+export default function installServiceWorker() {
   return new Promise((resolve, reject) => {
     if (!('serviceWorker' in navigator)) {
       return reject(
@@ -31,4 +30,4 @@ module.exports = function installServiceWorker() {
       });
     }
   });
-};
+}

@@ -1,6 +1,6 @@
-const { Mixin } = require('hops-mixin');
-const fetch = require('cross-fetch');
-const { HttpLink } = require('apollo-link-http');
+import { Mixin } from 'hops-mixin';
+import fetch from 'cross-fetch';
+import { HttpLink } from 'apollo-link-http';
 
 const customFetch = (serverAddress) => (uri, options) => {
   const urlSuffix =
@@ -12,7 +12,7 @@ const customFetch = (serverAddress) => (uri, options) => {
   return fetch(newUri, options);
 };
 
-module.exports = class GraphQlMixin extends Mixin {
+export default class GraphQlMixin extends Mixin {
   bootstrap(_, res) {
     this.serverAddress = res ? res.locals.serverAddress : '';
   }
@@ -23,4 +23,4 @@ module.exports = class GraphQlMixin extends Mixin {
       fetch: customFetch(this.serverAddress),
     });
   }
-};
+}

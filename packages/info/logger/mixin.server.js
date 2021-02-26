@@ -1,6 +1,6 @@
-const { sync } = require('mixinable');
-const { Mixin } = require('hops-mixin');
-const { internal: bootstrap } = require('hops-bootstrap');
+import { sync } from 'mixinable';
+import { Mixin } from 'hops-mixin';
+import { internal as bootstrap } from 'hops-bootstrap';
 
 const { callable } = sync;
 const { validate, invariant } = bootstrap;
@@ -22,4 +22,4 @@ ServerLogMixin.strategies = {
   }),
 };
 
-module.exports = ServerLogMixin;
+export default ServerLogMixin;

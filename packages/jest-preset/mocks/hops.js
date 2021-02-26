@@ -2,4 +2,7 @@
 const hops = require('hops/lib/runtime');
 const importComponent = require('../helpers/import-component');
 
-module.exports = Object.assign(hops, { importComponent });
+module.exports = {
+  ...hops,
+  importComponent,
+};

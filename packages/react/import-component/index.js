@@ -1,9 +1,10 @@
 /* global __webpack_modules__, __webpack_require__ */
-const { createElement, Component, useContext } = require('react');
-const PropTypes = require('prop-types');
-const ImportComponentContext = require('./context');
+import { createElement, Component, useContext } from 'react';
 
-exports.importComponent = (
+import PropTypes from 'prop-types';
+import ImportComponentContext from './context';
+
+export const importComponent = (
   { load, moduleId },
   resolve = (module) => module.default
 ) => {

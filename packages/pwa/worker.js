@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = (config, assets) => {
+export default (config, assets) => {
   console.log('hello from worker', assets, config);
 };

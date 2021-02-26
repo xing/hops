@@ -1,13 +1,12 @@
-const React = require('react');
-const { Provider } = require('react-redux');
-const { applyMiddleware } = require('redux');
-const ReduxThunkMiddleware = require('redux-thunk').default;
+import { createElement } from 'react';
+import { Provider } from 'react-redux';
+import { applyMiddleware } from 'redux';
+import ReduxThunkMiddleware from 'redux-thunk';
+import { Mixin, strategies } from 'hops-mixin';
+
 const {
-  Mixin,
-  strategies: {
-    sync: { override },
-  },
-} = require('hops-mixin');
+  sync: { override },
+} = strategies;
 
 class ReduxRuntimeCommonMixin extends Mixin {
   constructor(config, element, { redux: options = {} } = {}) {
@@ -32,7 +31,7 @@ class ReduxRuntimeCommonMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return React.createElement(
+    return createElement(
       Provider,
       { store: this.getReduxStore() },
       reactElement
@@ -45,4 +44,4 @@ ReduxRuntimeCommonMixin.strategies = {
   getReduxStore: override,
 };
 
-module.exports = ReduxRuntimeCommonMixin;
+export default ReduxRuntimeCommonMixin;

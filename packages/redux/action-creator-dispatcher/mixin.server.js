@@ -1,11 +1,10 @@
-const { createLocation } = require('history');
-const {
-  strategies: {
-    sync: { sequence },
-  },
-} = require('hops-mixin');
+import { createLocation } from 'history';
+import { strategies } from 'hops-mixin';
+import ReduxActionCreatorCommonMixin from './mixin.runtime-common';
 
-const ReduxActionCreatorCommonMixin = require('./mixin.runtime-common');
+const {
+  sync: { sequence },
+} = strategies;
 
 class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
   constructor(...args) {
@@ -44,4 +43,4 @@ ReduxActionCreatorServerMixin.strategies = {
   canPrefetchOnServer: sequence,
 };
 
-module.exports = ReduxActionCreatorServerMixin;
+export default ReduxActionCreatorServerMixin;
