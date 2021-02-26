@@ -1,6 +1,6 @@
 {
   "name": "jest-environment-hops",
-  "version": "13.3.4",
+  "version": "13.3.5",
   "description": "Opinionated Jest environment to run Puppeteer-powered tests against Hops apps",
   "keywords": [
     "hops",
