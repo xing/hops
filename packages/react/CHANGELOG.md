@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.5](https://github.com/xing/hops/compare/v13.3.4...v13.3.5) (2021-02-26)
+
+**Note:** Version bump only for package hops-react
+
+
+
+
+
 ## [13.3.4](https://github.com/xing/hops/compare/v13.3.3...v13.3.4) (2021-02-25)
 
 
