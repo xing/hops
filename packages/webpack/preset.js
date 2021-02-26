@@ -20,6 +20,7 @@ module.exports = {
     join(__dirname, 'mixins', 'start'),
     join(__dirname, 'mixins', 'stats'),
     join(__dirname, 'mixins', 'optimizations'),
+    join(__dirname, 'mixins', 'esbuild'),
   ],
   mixinTypes: {
     browser: {

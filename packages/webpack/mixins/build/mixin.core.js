@@ -127,6 +127,11 @@ class WebpackBuildMixin extends Mixin {
             describe: 'Run webpack builds in parallel',
             type: 'boolean',
           },
+          experimentalEsbuild: {
+            default: false,
+            describe: 'Use esbuild for transpilation (experimental)',
+            type: 'boolean',
+          },
         },
         handler: (argv) =>
           Promise.resolve(argv.clean && this.clean())

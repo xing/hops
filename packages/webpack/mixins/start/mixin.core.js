@@ -27,6 +27,11 @@ class WebpackStartMixin extends Mixin {
               'Experimental: Enable faster development mode (modern browsers only)',
             type: 'boolean',
           },
+          experimentalEsbuild: {
+            default: false,
+            describe: 'Use esbuild for transpilation (experimental)',
+            type: 'boolean',
+          },
         },
         handler: (argv) => {
           if (process.env.NODE_ENV === 'production') {
