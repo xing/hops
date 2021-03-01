@@ -28,43 +28,36 @@ class ExpressMixin extends Mixin {
     const create = require('../lib/serve');
     return create(mode, this);
   }
-  createRenderer() {
-    const create = require('../lib/render');
-    const app = this.createServer('static');
-    return create(app);
-  }
   getServerAddress() {
     return Promise.resolve(this.serverAddressPromise);
   }
   configureServer(app, middlewares, mode) {
-    if (mode !== 'static') {
-      const helmet = require('helmet');
-      const nocache = require('nocache');
-      const express = require('express');
-      const mime = require('mime');
-      const cookieParser = require('cookie-parser');
-      const { distDir } = this.config;
-      middlewares.preinitial.push(
-        helmet({ contentSecurityPolicy: false }),
-        cookieParser()
-      );
-      middlewares.files.push(
-        express.static(distDir, {
-          maxAge: '1y',
-          setHeaders: (res, filePath) => {
-            const { noCache } = res.locals || {};
-            if (noCache || mime.getType(filePath) === 'text/html') {
-              nocache()(null, res, () => {});
-            }
-          },
-          redirect: false,
-        })
-      );
-      middlewares.postfiles.push(nocache());
-      if (typeof this.getLogger === 'function') {
-        const loggerMiddleware = require('../lib/log');
-        app.use(loggerMiddleware(this.getLogger()));
-      }
+    const helmet = require('helmet');
+    const nocache = require('nocache');
+    const express = require('express');
+    const mime = require('mime');
+    const cookieParser = require('cookie-parser');
+    const { distDir } = this.config;
+    middlewares.preinitial.push(
+      helmet({ contentSecurityPolicy: false }),
+      cookieParser()
+    );
+    middlewares.files.push(
+      express.static(distDir, {
+        maxAge: '1y',
+        setHeaders: (res, filePath) => {
+          const { noCache } = res.locals || {};
+          if (noCache || mime.getType(filePath) === 'text/html') {
+            nocache()(null, res, () => {});
+          }
+        },
+        redirect: false,
+      })
+    );
+    middlewares.postfiles.push(nocache());
+    if (typeof this.getLogger === 'function') {
+      const loggerMiddleware = require('../lib/log');
+      app.use(loggerMiddleware(this.getLogger()));
     }
 
     if (mode === 'serve' && process.env.NODE_ENV === 'production') {
@@ -164,21 +157,6 @@ ExpressMixin.strategies = {
       invariant(
         result && result.handle && result.route,
         'createServer(): Returned invalid Express app'
-      );
-    }
-  ),
-  createRenderer: validate(
-    callableSync,
-    ({ length }) => {
-      invariant(
-        length === 0,
-        'createRenderer(): Received unexpected argument(s)'
-      );
-    },
-    (result) => {
-      invariant(
-        typeof result === 'function',
-        'createRenderer(): Returned invalid renderer function'
       );
     }
   ),

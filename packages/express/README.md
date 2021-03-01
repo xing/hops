@@ -125,7 +125,7 @@ Additionally each phase also has a `pre` / `post` phase. E.g.: `preinitial` or `
 
 ##### `mode`
 
-Describes the mode that the server is operating in, it can be one of: `develop`, `serve` or `static`.
+Describes the mode that the server is operating in, it can be one of: `develop` or `serve`.
 
 ```javascript
 const { Mixin } = require('hops-mixin');
@@ -152,7 +152,7 @@ Use this hook to read the listening address or to register your application with
 
 With this mixin hook it is possible to get a fully configured Express.js application instance that you can register with your own server.
 
-It accepts `develop`, `serve` or `static` as `mode`.
+It accepts `develop` or `serve` as `mode`.
 
 #### `runServer(mode): void` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **core**
 

@@ -3,12 +3,6 @@
   "version": "14.0.0-nightly.7",
   "main": "src/app.js",
   "license": "MIT",
-  "hops": {
-    "locations": [
-      "/",
-      "/counter"
-    ]
-  },
   "scripts": {
     "start": "hops start",
     "build": "hops build",
