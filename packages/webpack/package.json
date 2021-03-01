@@ -8,6 +8,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
+    "ast-types": "^0.14.2",
     "caniuse-lite": "^1.0.30000898",
     "chalk": "^4.0.0",
     "core-js": "^3.2.1",

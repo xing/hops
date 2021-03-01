@@ -8,6 +8,7 @@ const {
 const TerserPlugin = require('terser-webpack-plugin');
 const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
+const ImportComponentPlugin = require('../plugins/import-component');
 
 const { ModuleConcatenationPlugin } = optimize;
 
@@ -138,6 +139,7 @@ module.exports = function getConfig(config, name) {
       new (isProduction ? HashedModuleIdsPlugin : NamedModulesPlugin)(),
       new ModuleConcatenationPlugin(),
       new EnvironmentPlugin({ NODE_ENV: 'development' }),
+      new ImportComponentPlugin(),
     ],
     performance: {
       hints: false,
