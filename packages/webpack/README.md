@@ -16,12 +16,12 @@ $ yarn add hops-webpack # OR npm install hops-webpack
 
 ### `build`
 
-This is the most basic of `hops-webpack`'s commands - and it simply performs a Webpack build according to its arguments and configuration. It will not only start an usual browser build, but also one for the server-side version of your application.
+This is the most basic of `hops-webpack`'s commands - and it simply performs a Webpack build according to its arguments and configuration. It will not only start a usual browser build, but also one for the server-side version of your application.
 
-Whether it uses said server-side build to generate static HTML pages depends on the arguments it is being called with - and it works best in tandem with `hops-express`' [`serve` command](../express/README.md#serve);
+To run the built application afterwards, use `hops-express`'s [`serve`-command](../express/README.md#serve);
 
 ```bash
-$ hops build -ps && hops serve -ps
+$ hops build -p && hops serve -p
 ```
 
 #### Arguments
@@ -46,12 +46,6 @@ Using the experimental `--fast-build` option will only transpile a predefined se
 
 You can extend this predefined set though by adding glob patterns to the `experimental.babelIncludePatterns` config.
 
-##### `-s` / `--static` (**deprecated**)
-
-In `static` mode, static HTML pages will be generated for the [`locations`](../express/README.md#locations) configured for your application. In `no-static` mode, `server.js` and `stats.json` files will be created instead.
-
-**Note**: Static rendering is deprecated and will be removed in a future major release.
-
 ### `develop`
 
 Using this command, you can start a full-featured development server that is as similar to a production system as possible. It does, however, ensure the browser and server versions of your application are being recompiled and redeployed whenever you change your code.
@@ -72,17 +66,13 @@ $ hops start # OR hops start -p
 
 ##### `-p` / `--production`
 
-If called in `production` mode, `hops start` will first perform a build and start an express server afterwards. Otherwise it will start a development server. `hops start -ps` is thus equivalent to `hops start -ps && hops serve -ps`, while `hops start -s` is equivalent to `hops develop -s`. All arguments are used as documented with those other commands.
+If called in `production` mode, `hops start` will first perform a build and start an express server afterwards. Otherwise it will start a development server. `hops start -p` is thus equivalent to `hops build -p && hops serve -p`, while `hops start` is equivalent to `hops develop`. All arguments are used as documented with those other commands.
 
 Of course, once again, you can also manually set `$NODE_ENV`.
 
 ```bash
 $ NODE_ENV=production hops start
 ```
-
-##### `-s` / `--static`
-
-In `static` mode, static HTML pages will be generated for the [`locations`](../express/README.md#locations) configured for your application.
 
 ##### `--parallel-build` / `--no-parallel-build`
 
@@ -182,7 +172,6 @@ _This method is also exported so that you can use it in your own, non-mixin code
 | ------------ | ---------- | ---------------------------------------------- |
 | `browsers`   | `[string]` | `['defaults']`                                 |
 | `node`       | `string`   | `'current'`                                    |
-| `locations`  | `[string]` | `[]`                                           |
 | `basePath`   | `string`   | `''`                                           |
 | `assetPath`  | `string`   | `'<basePath>'`                                 |
 | `buildDir`   | `string`   | `'<distDir>'`                                  |
@@ -212,7 +201,7 @@ This is the target Node.js version Babel's [`preset-env`](https://babeljs.io/doc
 
 ### `basePath`
 
-This is the URL base path, i.e. subfolder, your application will be served from. If set, this folder will be created in your `buildDir` during static builds.
+This is the URL base path, i.e. subfolder, your application will be served from.
 
 ```json
 {
@@ -242,7 +231,7 @@ Path of your browser build output. By default, this folder is usually removed be
 
 ### `serverDir`
 
-Path of your server build output. It will only be used in `production`, non-`static` mode. By default, this folder is located inside your `node_modules` folder and it is usually removed before building.
+Path of your server build output. It will only be used in `production`-mode. By default, this folder is located inside your `node_modules` folder and it is usually removed before building.
 
 ```json
 {
@@ -252,7 +241,7 @@ Path of your server build output. It will only be used in `production`, non-`sta
 
 ### `serverFile`
 
-Path of your server output file, relative to [`serverDir`](../webpack/README.md#serverdir). It will only be generated in `production`, non-`static` mode and is being used internally.
+Path of your server output file, relative to [`serverDir`](../webpack/README.md#serverdir). It will only be generated in `production`-mode and is being used internally.
 
 ```json
 {
@@ -262,7 +251,7 @@ Path of your server output file, relative to [`serverDir`](../webpack/README.md#
 
 ### `statsFile`
 
-Path of your stats file, relative to [`serverDir`](../webpack/README.md#serverdir). It will only be generated in `production`, non-`static` mode and is being used internally.
+Path of your stats file, relative to [`serverDir`](../webpack/README.md#serverdir). It will only be generated in `production`-mode and is being used internally.
 
 ```json
 {

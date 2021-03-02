@@ -50,11 +50,10 @@ class WebpackConfigMixin extends Mixin {
   }
 
   collectBuildConfigs(webpackConfigs) {
-    webpackConfigs.push(this.getBuildConfig('build'));
-
-    if (!this.options.static) {
-      webpackConfigs.push(this.getBuildConfig('node'));
-    }
+    webpackConfigs.push(
+      this.getBuildConfig('build'),
+      this.getBuildConfig('node')
+    );
   }
 
   configureBuild(webpackConfig, loaderConfigs, target) {

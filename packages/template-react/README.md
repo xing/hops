@@ -50,14 +50,6 @@ Before you start a production server you need to build your JS bundle files.
 
 This command will generate the browser and server bundles that are required for deploying your code or running the production server through `npm start --production`.
 
-It can also be used to statically build HTML pages for all `locations` that are configured in the config section of the `package.json`.
-
-In this scenario it will iterate through the `locations` and render each location to a HTML document that will be placed in the `dist/` folder.
-
-To make use of this execute `npm run build -- --static`¹ or `yarn build --static`¹.
-
-**¹:** the static HTML export has been [deprecated](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003).
-
 ### `npm test` / `yarn test`
 
 This command will test your code with [jest](https://facebook.github.io/jest/) a testrunner by facebook that integrates nicely with react.
@@ -74,4 +66,4 @@ Please refer to the [main readme](../../DOCUMENTATION.md#presets) for an example
 - [hops-react](../react)
 - [hops-postcss](../postcss)
 
-In this project we configure `babel` and `postcss` through the `"browsers"` field and we specify two locations `/` and `/counter` through the `"locations"` hash.
+In this project we configure `babel` and `postcss` through the `"browsers"` field.

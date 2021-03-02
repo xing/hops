@@ -5,7 +5,6 @@ const { join } = require('path');
 module.exports = {
   browsers: ['defaults'],
   node: 'current',
-  locations: [],
   basePath: '',
   assetPath: '<basePath>',
   buildDir: '<distDir>',
@@ -53,10 +52,6 @@ module.exports = {
       },
     },
     node: { type: 'string', minLength: 1 },
-    locations: {
-      type: 'array',
-      items: { type: 'string', minLength: 1 },
-    },
     basePath: { type: 'string' },
     assetPath: { type: 'string' },
     buildDir: { type: 'string', minLength: 1, absolutePath: true },

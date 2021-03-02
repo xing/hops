@@ -14,11 +14,7 @@ class LogMixin extends Mixin {
     this.handleArguments(this.options);
   }
 
-  configureServer(app, middlewares, mode) {
-    if (mode === 'static') {
-      return;
-    }
-
+  configureServer(app, middlewares) {
     middlewares.preinitial.unshift((_, res, next) => {
       Object.assign(res.locals, {
         logger: res.locals.logger || this.logger,

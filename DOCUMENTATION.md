@@ -25,7 +25,6 @@ These are the main features:
 - Universal JavaScript (the same code runs in both the server and the client)
 - Server- and client-side HMR (Hot Module Reloading) - no more restarting the server after editing your application files
 - Environment variable support at runtime (to be able to use a single build artifact for different environments)
-- Export your pages as static HTML files [[**deprecated**]](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003)
 - ES2018+ & JSX support (All new language features are supported - and, if required, automatically polyfilled - via babel-preset-env)
 - Bundle Splitting (with support for server-side rendering)
 - Curated list of presets (for data fetching, styling, deployment, etc)
@@ -240,9 +239,6 @@ _The production flag (`--production` or `-p`) is a shortcut for setting the envi
 - `npm start` starts the development server with hot module reloading, etc.
 - `npm start -- --fast-dev` (**experimental**) starts the development server with some optimizations for faster builds (_warning:_ this will lead to different bundles than in production, use with caution).
 - `npm start -- --production` executes a production build and then starts the production server.
-- `npm start -- --production --static`¹ exports static HTML pages for all configured [locations](#default-settings) and then starts the production server (_this only works in tandem with production mode_).
-
-**¹:** the static HTML export has been [deprecated](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003).
 
 #### `npm run build`
 
@@ -251,11 +247,7 @@ This command will execute a single build of all your assets.
 - `npm run build` builds all assets in development mode.
 - `npm run build -- --fast-build` (**experimental**) only transpiles a predefined set of node modules (_warning:_ you might have node modules which needs to be transpiled, use with caution).
 - `npm run build -- --production` builds all assets in production mode (which includes minification, etc).
-- `npm run build -- --static`¹ export static HTML pages for all configured [locations](#default-settings) in development mode.
-- `npm run build -- --production --static`¹ export static HTML pages in production mode (enables minification, etc).
 - `npm run build -- --analyze-client-bundle` visualize bundles' contents with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
-
-**¹:** the static HTML export has been [deprecated](https://github.com/untool/untool/blob/master/DEPRECATIONS.md#dep003).
 
 #### `npm run serve`
 
@@ -280,7 +272,6 @@ You can provide settings to a Hops application via a `"hops"` key in your `packa
 | `https` | `Boolean \| Object` | `false` | `true` or<br/>`{ "keyFile": "./my.key", "certFile": "./my.cert" }` | Configure HTTPS support for Hops |
 | `host` | `String` | `[HOST]` | `10.10.10.10` | Specify the IP address that Hops should bind to |
 | `port` | `String` | `[PORT]` | `1337` | Specify the Port that Hops should listen on |
-| `locations` | `Array<String>` | `[]` | `["/", "/about"]` | An array of locations for static rendering of HTML pages |
 | `basePath` | `String` | `''` | `/my-app` | The URL base path from which your application will be served |
 | `assetPath` | `String` | `<basePath>` | `<basePath>/assets` | The URL base path from which the assets will be served |
 | `distDir` | `String` | `<rootDir>/dist` | `<rootDir>/out` | The directory from which static assets will be served |
@@ -1162,7 +1153,6 @@ The `configureServer` hook will be called with these three arguments:
 - `mode` describes the mode that the server is operating in, it can be one of:
   - `develop` this is the development mode, which is being used when starting Hops in development (e.g. `hops start`). In this mode there will be webpack middlewares that render, watch and recompile your application as you change your application code
   - `serve` this is the production server mode, which is being used when starting Hops via `hops serve` or `hops start -p`. In this mode there will be middlewares to serve static files from the `distDir` and your app will be rendered through the prebuilt universal render middleware (which will be created when you run `hops build`)
-  - `static` will be used when exporting static HTML pages (e.g. `hops build -s` or `hops start -ps`). In this mode the server will not be bound to an actual network interface but instead mock requests are being sent against the prebuilt middleware
 
 #### Example: Adding the cookie-parser middleware
 

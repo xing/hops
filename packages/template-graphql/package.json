@@ -4,9 +4,6 @@
   "main": "src/app.js",
   "license": "MIT",
   "hops": {
-    "locations": [
-      "/"
-    ],
     "graphqlUri": "https://www.xing.com/xing-one/api"
   },
   "scripts": {
