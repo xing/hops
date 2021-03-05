@@ -28,29 +28,78 @@ const getCompilerOptions = (ts, rootPath) => {
 
 class TypescriptMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig, allLoaderConfigs }, target) {
-    const { loader, options, exclude } = jsLoaderConfig;
-    const isDevelop =
-      target === 'develop' ||
-      (target === 'node' && process.env.NODE_ENV !== 'production');
-    const loaderOptions = isDevelop
-      ? { compilerOptions: { isolatedModules: true }, transpileOnly: true }
-      : undefined;
+    const { experimentalEsbuild } = this.options;
 
-    allLoaderConfigs.unshift({
-      test: /\.tsx?$/,
-      exclude,
-      use: [
-        {
-          loader,
-          options,
-        },
-        {
-          loader: require.resolve('ts-loader'),
-          options: loaderOptions,
-        },
-      ],
-    });
     webpackConfig.resolve.extensions.push('.ts', '.tsx');
+
+    if (experimentalEsbuild) {
+      const {
+        include,
+        exclude,
+        use: [{ loader, options }, ...loaders],
+      } = jsLoaderConfig;
+
+      allLoaderConfigs.unshift(
+        {
+          test: /\.ts$/,
+          include,
+          exclude,
+          use: [
+            {
+              loader,
+              options: {
+                ...options,
+                loader: 'ts',
+              },
+            },
+            ...loaders,
+          ],
+        },
+        {
+          test: /\.tsx$/,
+          include,
+          exclude,
+          use: [
+            {
+              loader,
+              options: {
+                ...options,
+                loader: 'tsx',
+              },
+            },
+            ...loaders,
+          ],
+        }
+      );
+    } else {
+      const { exclude, loader, options } = jsLoaderConfig;
+
+      const isDevelop =
+        target === 'develop' ||
+        (target === 'node' && process.env.NODE_ENV !== 'production');
+      const loaderOptions = isDevelop
+        ? { compilerOptions: { isolatedModules: true }, transpileOnly: true }
+        : undefined;
+
+      allLoaderConfigs.unshift({
+        test: /\.tsx?$/,
+        exclude,
+        use: [
+          {
+            loader,
+            options,
+          },
+          {
+            loader: require.resolve('ts-loader'),
+            options: loaderOptions,
+          },
+        ],
+      });
+    }
+  }
+
+  handleArguments(argv) {
+    this.options = { ...this.options, ...argv };
   }
 
   diagnose() {
