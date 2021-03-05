@@ -15,6 +15,7 @@ module.exports = class DetectDuplicatePackagesMixin {
         (name) => `package "${name}" may not be installed more than once`
       )
     );
+    return duplicates.length > 0;
   }
 
   logResults(logger) {
