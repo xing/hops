@@ -38,7 +38,7 @@ exports.getConfig = (overrides = {}) => {
   if (!configs[key]) {
     const utils = require('hops-bootstrap/lib/utils');
     const { environmentalize, placeholdify, merge } = utils;
-    const raw = merge()(${getConfig(type, config, rootDir)}, overrides);
+    const raw = merge(${getConfig(type, config, rootDir)}, overrides);
     configs[key] = environmentalize(placeholdify(raw), ${escapeJS(
       config.browserWhitelist
     )});

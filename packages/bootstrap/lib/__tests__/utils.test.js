@@ -1,13 +1,11 @@
 /* eslint-env node, jest */
 
-const { merge: mergeFactory } = require('../utils');
+const { merge } = require('../utils');
 
 describe('merge', () => {
   it('should merge two objects', () => {
     const a = { a: 1 };
     const b = { b: 2 };
-
-    const merge = mergeFactory(false);
 
     const result = merge(a, b);
 
@@ -26,8 +24,6 @@ describe('merge', () => {
     const c = { a: { c: 3 } };
     const d = { b: { b: 4 } };
 
-    const merge = mergeFactory(false);
-
     const result = merge(a, b, c, d);
 
     expect(result).toEqual({
@@ -45,8 +41,6 @@ describe('merge', () => {
     const a = { mixins: ['a'], other: [1] };
     const b = { mixins: ['b'], other: [2] };
 
-    const merge = mergeFactory(false);
-
     const result = merge(a, b);
 
     expect(result).toEqual({
@@ -62,8 +56,6 @@ describe('merge', () => {
     const a = { mixins: ['a'] };
     const b = { mixins: ['a'] };
 
-    const merge = mergeFactory(false);
-
     const result = merge(a, b);
 
     expect(result).toEqual({
@@ -78,28 +70,10 @@ describe('merge', () => {
     const a = { mixins: ['a', 'b'] };
     const b = { mixins: ['a', 'c'] };
 
-    const merge = mergeFactory(false);
-
     const result = merge(a, b);
 
     expect(result).toEqual({
       mixins: ['b', 'a', 'c'],
-    });
-
-    expect(a).toEqual({ mixins: ['a', 'b'] });
-    expect(b).toEqual({ mixins: ['a', 'c'] });
-  });
-
-  it('should de-duplicate mixins (legacy sort order)', () => {
-    const a = { mixins: ['a', 'b'] };
-    const b = { mixins: ['a', 'c'] };
-
-    const merge = mergeFactory(true);
-
-    const result = merge(a, b);
-
-    expect(result).toEqual({
-      mixins: ['a', 'b', 'c'],
     });
 
     expect(a).toEqual({ mixins: ['a', 'b'] });

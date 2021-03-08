@@ -10,12 +10,7 @@ const debug = require('debug')('hops:config');
 const { loadConfig } = require('./loader');
 const { resolveMixins } = require('./resolver');
 const { validate } = require('./validator');
-const {
-  environmentalize,
-  placeholdify,
-  merge: mergeFactory,
-  getMixinSortOrder,
-} = require('./utils');
+const { environmentalize, placeholdify, merge } = require('./utils');
 
 exports.getConfig = (overrides = {}) => {
   const pkgFile = findUp('package.json');
@@ -44,7 +39,6 @@ exports.getConfig = (overrides = {}) => {
   };
   const settings = loadConfig(pkgData, rootDir);
 
-  const merge = mergeFactory(getMixinSortOrder(settings, overrides));
   const raw = merge(defaults, settings, overrides);
   const { mixins, mixinTypes, configSchema, ...clean } = raw;
   const processed = environmentalize(placeholdify(clean));

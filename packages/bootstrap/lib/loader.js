@@ -5,7 +5,7 @@ const { dirname, join } = require('path');
 const { cosmiconfigSync: cosmiconfig } = require('cosmiconfig');
 const { compatibleMessage } = require('check-error');
 
-const { merge: mergeFactory, getMixinSortOrder } = require('./utils');
+const { merge } = require('./utils');
 const {
   resolve,
   resolvePreset,
@@ -88,7 +88,6 @@ exports.loadConfig = (pkgData, rootDir) => {
   settings.presets = settings.presets.filter(
     (preset) => !(settings.ignoredPresets || []).includes(preset)
   );
-  const merge = mergeFactory(getMixinSortOrder(settings));
   const presets = loader.loadPresets(rootDir, merge, settings.presets);
 
   // eslint-disable-next-line no-unused-vars
