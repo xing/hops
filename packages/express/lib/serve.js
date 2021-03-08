@@ -3,7 +3,7 @@
 // eslint-disable-next-line node/no-deprecated-api
 const { create: createDomain } = require('domain');
 
-const debug = require('debug')('hops:express');
+const debug = require('hops-debug')('hops:express');
 
 const express = require('express');
 const finalhandler = require('finalhandler');

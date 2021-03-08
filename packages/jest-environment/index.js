@@ -5,7 +5,7 @@ const NodeEnvironment = importFrom.silent(
   'jest-environment-node'
 );
 const [jestMajorVersion] = require('jest/package.json').version.split('.');
-const debug = require('debug')('jest-env-hops');
+const debug = require('hops-debug')('hops-spec:env');
 const {
   getHopsCommandModifications,
   isPuppeteerDisabled,
