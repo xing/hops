@@ -1,6 +1,5 @@
 const { async } = require('mixinable');
 const { Mixin } = require('hops-mixin');
-const deprecate = require('depd')('hops-doctor');
 const { internal: bootstrap } = require('hops-bootstrap');
 const { createDoctor } = require('.');
 
@@ -48,18 +47,13 @@ class DoctorMixin extends Mixin {
     const { doctor } = this;
 
     return Promise.resolve().then(() => {
-      doctor.getMode().then((mode) =>
-        this.diagnose(doctor, mode).then((results) => {
-          const messages = results.filter(Boolean);
-          if (messages.length) {
-            deprecate(
-              'Returning messages from the diagnose-hook is deprecated. Please use "pushWarning" and "pushError" instead.'
-            );
-          }
-          doctor.collectResults(...[].concat(...messages));
-          doctor.logResults(this.getLogger());
-        })
-      );
+      doctor
+        .getMode()
+        .then((mode) =>
+          this.diagnose(doctor, mode).then(() =>
+            doctor.logResults(this.getLogger())
+          )
+        );
     });
   }
 

@@ -65,13 +65,13 @@ class GraphQLMixin extends Mixin {
     this.options = { ...this.options, ...argv };
   }
 
-  diagnose({ detectDuplicatePackages }) {
+  diagnose({ detectDuplicatePackages, pushWarning }) {
     detectDuplicatePackages('graphql');
     if (!existsSync(this.config.fragmentsFile)) {
-      return [
-        `Could not find a graphql introspection query result at "${this.config.fragmentsFile}".`,
-        'You might need to execute "hops graphql introspect"',
-      ];
+      pushWarning(
+        `Could not find a graphql introspection query result at "${this.config.fragmentsFile}".`
+      );
+      pushWarning('You might need to execute "hops graphql introspect"');
     }
   }
 }

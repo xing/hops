@@ -88,8 +88,7 @@ class LambdaMixin extends Mixin {
     this.options = { ...this.options, ...argv };
   }
 
-  diagnose() {
-    const warnings = [];
+  diagnose({ pushWarning }) {
     const { version: targetNodeVersion } = semver.coerce(
       !this.config.node || this.config.node === 'current'
         ? process.version
@@ -97,7 +96,7 @@ class LambdaMixin extends Mixin {
     );
 
     if (!semver.intersects(targetNodeVersion, nodeVersionRange)) {
-      warnings.push(
+      pushWarning(
         [
           `AWS Lambda only supports the Node.js version range "${nodeVersionRange}".`,
           'Please specify or use a Node.js version intersecting this range',
@@ -113,18 +112,16 @@ class LambdaMixin extends Mixin {
         trimSlashes(this.config.assetPath).indexOf(this.awsConfig.stageName) !==
           0)
     ) {
-      warnings.push(
+      pushWarning(
         `When no custom domain is configured, the stageName (${this.awsConfig.stageName}) should be the first path segment in basePath (${this.awsConfig.basePath}) and assetPath (${this.config.assetPath}).`
       );
     }
 
     if (this.awsConfig.domainName && !this.awsConfig.certificateArn) {
-      warnings.push(
+      pushWarning(
         'Setting a custom domain name also requires to specify the ACM certificate ARN.'
       );
     }
-
-    return warnings;
   }
 }
 
