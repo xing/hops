@@ -34,9 +34,14 @@ class DoctorMixin extends Mixin {
     );
   }
 
-  diagnose({ validateConfig, detectDuplicatePackages }) {
+  diagnose({ validateConfig, detectDuplicatePackages, pushError }) {
     validateConfig();
-    detectDuplicatePackages('hops-*');
+    if (detectDuplicatePackages('hops-*')) {
+      pushError(
+        'hops-duplicates',
+        `Please align the versions of the Hops's packages before proceeding.`
+      );
+    }
   }
 
   bootstrap() {

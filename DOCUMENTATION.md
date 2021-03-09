@@ -259,6 +259,14 @@ Starts a production ready Express.js server.
 In order to deploy your application, you need to make sure to also include the `./node_modules/.cache/hops-webpack` directory in your deployment, because that is where the build output of the server middleware will be stored.\
 You can also change that location by specifying a different [`serverDir`](#default-settings).
 
+### Hops version alignment
+
+Hops requires all its packages to be de-duplicated, which means their versions need to be aligned. Imagine you're building a Hops app with Apollo. So you install the following two Hops packages: `hops` and `hops-react-apollo`. This won't lead to any issues, because the latest version of these packages in the registry will be the same.
+
+Now imagine your Hops app matures and you're more or less regularly updating the Hops packages. If thereby the versions of the two installed Hops packages accidentally start to diverge — e.g. `hops@x.1.1` and `hops-react-apollo@x.1.3` — you'll get duplicated Hops packages in your `node_modules`-folder.
+
+Hops will then start to error and tell which packages need to be de-duplicated. You'll then have to resolve the duplication(s) before you're able to proceed.
+
 ## Configuration
 
 ### Settings
