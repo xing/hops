@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.8](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.8) (2021-03-09)
+
+
+### Bug Fixes
+
+* **info:** remove deprecated handling of warning messages ([4502420](https://github.com/xing/hops/commit/4502420014e44532b2dd580cac94c16beecd6a77))
+* remove static rendering ([ed90792](https://github.com/xing/hops/commit/ed90792176298284d1f19fef4c09571edfaa07e2))
+* require strictly de-duplicated Hops packages ([dd3e30a](https://github.com/xing/hops/commit/dd3e30af9f8746153ec8dcf4f102302811b2c604))
+
+
+### Features
+
+* return result from detectDuplicatePackages ([6564728](https://github.com/xing/hops/commit/656472896fc1b8af9a53e0362d8e1adcffa902b8))
+
+
+### BREAKING CHANGES
+
+* **info:** hops-info does not handle warnings returned from the `diagnose`-hook anymore.
+* Hops now requires strictly de-duplicated packages
+
+Hops will abort the build immediately when it detects a duplicated Hops
+package. This situation arises when the versions of all the installed
+Hops packages aren't aligned exactly.
+
+To resolve the situation and thus get the build going again, the
+versions have to be aligned.
+
+In case of an emergency you can unblock the build without resolving the
+underlying issue by passing `HOPS_IGNORE_ERRORS=hops-duplicates` into
+the `hops start`-/`hops build`-command. This might still lead to errors
+though, because misaligned Hops packages are common cause of bugs.
+* static rendering of Hops apps has been removed (`hops build --static`)
+
+
+
+
+
 # [14.0.0-nightly.7](https://github.com/xing/hops/compare/v14.0.0-nightly.6...v14.0.0-nightly.7) (2021-02-09)
 
 **Note:** Version bump only for package hops-info

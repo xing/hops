@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.8](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.8) (2021-03-09)
+
+
+### Bug Fixes
+
+* remove mixin-order escape hatch ([22f921f](https://github.com/xing/hops/commit/22f921f86768b8b2a71053b877073e506843a16a))
+
+
+### Features
+
+* introduce hops-debug as a node/browser wrapper for debug ([84d5f80](https://github.com/xing/hops/commit/84d5f8032a3d7679d9d7c53e55f8e9d28fc193c8))
+
+
+### BREAKING CHANGES
+
+* the config option `enableLegacyMixinSortOrder` has been removed.
+
+
+
+
+
 # [14.0.0-nightly.7](https://github.com/xing/hops/compare/v14.0.0-nightly.6...v14.0.0-nightly.7) (2021-02-09)
 
 **Note:** Version bump only for package hops-bootstrap
