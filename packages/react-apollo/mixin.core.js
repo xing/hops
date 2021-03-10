@@ -1,8 +1,9 @@
 const { existsSync } = require('fs');
-const { join } = require('path');
 const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
+const { getApolloVersion } = require('./lib/apollo-version');
 
+// TODO: print out which version of Apollo we're using
 class GraphQLMixin extends Mixin {
   configureBuild(webpackConfig, loaderConfigs) {
     const { allLoaderConfigs } = loaderConfigs;
@@ -37,14 +38,11 @@ class GraphQLMixin extends Mixin {
             },
           },
           handler: (argv) => {
-            const manifest = require(join(this.config.rootDir, 'package.json'));
-            const hasApollo3 = [
-              ...Object.keys(manifest.dependencies || {}),
-              ...Object.keys(manifest.devDependencies || {}),
-            ].includes('@apollo/client');
+            // TODO: remove with Hops v15
+            const apolloVersion = getApolloVersion();
 
             require('./lib/fragments')({
-              apolloVersion: hasApollo3 ? 3 : 2,
+              apolloVersion,
               graphqlUri: this.config.graphqlUri,
               schemaFile: this.config.graphqlSchemaFile,
               fragmentsFile: this.config.fragmentsFile,

@@ -26,6 +26,7 @@
     "apollo-link": "^1.2.14",
     "apollo-link-http": "^1.5.16",
     "cross-fetch": "^3.0.4",
+    "find-up": "^5.0.0",
     "graphql": "^15.0.0",
     "hops-config": "^14.0.0-nightly.8",
     "hops-mixin": "^14.0.0-nightly.8",
