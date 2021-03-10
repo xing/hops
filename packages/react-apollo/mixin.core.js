@@ -1,4 +1,5 @@
 const { existsSync } = require('fs');
+const { join } = require('path');
 const { Mixin } = require('hops-mixin');
 const strip = require('strip-indent');
 
@@ -36,7 +37,14 @@ class GraphQLMixin extends Mixin {
             },
           },
           handler: (argv) => {
+            const manifest = require(join(this.config.rootDir, 'package.json'));
+            const hasApollo3 = [
+              ...Object.keys(manifest.dependencies || {}),
+              ...Object.keys(manifest.devDependencies || {}),
+            ].includes('@apollo/client');
+
             require('./lib/fragments')({
+              apolloVersion: hasApollo3 ? 3 : 2,
               graphqlUri: this.config.graphqlUri,
               schemaFile: this.config.graphqlSchemaFile,
               fragmentsFile: this.config.fragmentsFile,

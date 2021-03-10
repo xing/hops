@@ -1,1 +1,1 @@
-{"__schema":{"types":[{"kind":"INTERFACE","name":"Node","possibleTypes":[{"name":"HackerNewsV2Story"},{"name":"HackerNewsV2Job"},{"name":"HackerNewsV2Poll"},{"name":"HackerNewsV2Comment"},{"name":"HackerNewsV2PollPart"},{"name":"HackerNewsV2User"}]},{"kind":"UNION","name":"UserOrCommitAuthor","possibleTypes":[{"name":"GithubCommitAuthor"},{"name":"GithubUser"}]}]}}
+{}

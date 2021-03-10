@@ -6,11 +6,25 @@ const { promisify } = require('util');
 const { graphql } = require('graphql');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 
-function writeFragmentTypesFile(fragmentsFile, result) {
-  result.data.__schema.types = result.data.__schema.types.filter(
-    (t) => t.possibleTypes !== null
-  );
-  return promisify(writeFile)(fragmentsFile, JSON.stringify(result.data));
+function writeFragmentTypesFile(apolloVersion, fragmentsFile, result) {
+  if (apolloVersion === 2) {
+    // TODO: remove with Hops v15
+    // TODO: add deprecation notice
+    result.data.__schema.types = result.data.__schema.types.filter(
+      (t) => t.possibleTypes !== null
+    );
+    return promisify(writeFile)(fragmentsFile, JSON.stringify(result.data));
+  }
+
+  const possibleTypes = {};
+  result.data.__schema.types.forEach((supertype) => {
+    if (supertype.possibleTypes) {
+      possibleTypes[supertype.name] = supertype.possibleTypes.map(
+        (subtype) => subtype.name
+      );
+    }
+  });
+  return promisify(writeFile)(fragmentsFile, JSON.stringify(possibleTypes));
 }
 
 function executeRemoteQuery(graphqlUri, optionalHeaders = [], query) {
@@ -64,5 +78,11 @@ module.exports = function generateFragmentTypes(options) {
       () => executeLocalQuery(options.schemaFile, query),
       () => executeRemoteQuery(options.graphqlUri, options.headers, query)
     )
-    .then((result) => writeFragmentTypesFile(options.fragmentsFile, result));
+    .then((result) =>
+      writeFragmentTypesFile(
+        options.apolloVersion,
+        options.fragmentsFile,
+        result
+      )
+    );
 };
