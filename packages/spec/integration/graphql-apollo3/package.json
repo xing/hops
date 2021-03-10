@@ -1,0 +1,32 @@
+{
+  "name": "fixture-graphql-apollo3",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "12 || 14 || 15"
+  },
+  "hops": {
+    "port": "8075",
+    "gracePeriod": 0,
+    "mixins": [
+      "./"
+    ],
+    "graphqlUri": "http://localhost:8075/graphql"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-hops",
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "@apollo/client": "3.x.x",
+    "hops": "*",
+    "hops-graphql": "*",
+    "qs": "^6.7.0"
+  }
+}
