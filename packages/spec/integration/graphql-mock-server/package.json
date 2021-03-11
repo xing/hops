@@ -23,6 +23,7 @@
     "build": "hops build"
   },
   "dependencies": {
+    "@apollo/client": "3.x.x",
     "hops": "*",
     "hops-graphql": "*"
   }
