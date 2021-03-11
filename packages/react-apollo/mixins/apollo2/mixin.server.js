@@ -2,6 +2,7 @@ import { createElement } from 'react';
 import renderToFragments from 'hops-react/lib/fragments';
 import { existsSync, readFileSync } from 'fs';
 import { Mixin, strategies } from 'hops-mixin';
+// eslint-disable-next-line node/no-extraneous-import
 import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { ApolloLink } from 'apollo-link';
