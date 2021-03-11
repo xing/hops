@@ -701,7 +701,7 @@ This preset will create an [Apollo client](https://www.apollographql.com/docs/re
 Install it to your project:
 
 ```shell
-npm install --save hops-react-apollo graphql-tag react-apollo
+npm install --save hops-react-apollo @apollo/client
 ```
 
 And specify your GraphQL endpoint URI in the settings:
