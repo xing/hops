@@ -8,10 +8,10 @@ This is a [preset for Hops](../../DOCUMENTATION.md#presets) in order to start an
 
 ### Installation
 
-Add this preset and its peer dependency `graphql-tag` (and any other packages that you may need to create an executable schema, such as `@graphql-tools/schema`) to your existing Hops React project:
+Add this preset (and any other packages that you may need to create an executable schema, such as `@graphql-tools/schema`) to your existing Hops React project:
 
 ```bash
-npm install --save hops-apollo-mock-server graphql-tag
+npm install --save hops-apollo-mock-server
 ```
 
 If you don't already have an existing Hops project read this section [on how to set up your first Hops project.](../../DOCUMENTATION.md#quick-start)
