@@ -5,11 +5,15 @@ const { access, readFile, writeFile } = require('fs');
 const { promisify } = require('util');
 const { graphql } = require('graphql');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
+const deprecate = require('depd')('hops-react-apollo');
 
 function writeFragmentTypesFile(apolloVersion, fragmentsFile, result) {
   if (apolloVersion === 2) {
     // TODO: remove with Hops v15
-    // TODO: add deprecation notice
+    deprecate(
+      '[DEP0006] Apollo v2 support in Hops has been deprecated and will be removed with Hops v15. Please upgrade to Apollo v3 (https://github.com/xing/hops/blob/master/DEPRECATIONS.md#dep006).'
+    );
+
     result.data.__schema.types = result.data.__schema.types.filter(
       (t) => t.possibleTypes !== null
     );

@@ -26,6 +26,7 @@
     "apollo-link": "^1.2.14",
     "apollo-link-http": "^1.5.16",
     "cross-fetch": "^3.0.4",
+    "depd": "^2.0.0",
     "find-up": "^5.0.0",
     "graphql": "^15.0.0",
     "hops-config": "^14.0.0-nightly.8",
@@ -34,6 +35,7 @@
     "strip-indent": "^3.0.0"
   },
   "peerDependencies": {
+    "@apollo/client": "^3.3.11",
     "graphql-tag": "^2.10.0",
     "react": "^16.8.0 || ^17.0.0",
     "react-apollo": "^3.1.0",
@@ -42,6 +44,7 @@
     "react-router-dom": "^5.1.0"
   },
   "devDependencies": {
+    "@apollo/client": "^3.3.11",
     "graphql-tag": "^2.10.1",
     "react": "^17.0.1",
     "react-apollo": "^3.1.2",
