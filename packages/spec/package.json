@@ -35,7 +35,7 @@
     "cross-fetch": "^3.0.4",
     "jest-environment-hops": "^14.0.0-nightly.8",
     "react-helmet-async": "^1.0.4",
-    "semver": "^6.1.2"
+    "semver": "^7.0.0"
   },
   "dependencies": {
     "@vishnucss/chips": "^1.1.2",

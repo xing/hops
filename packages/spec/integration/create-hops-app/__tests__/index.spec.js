@@ -3,14 +3,14 @@
  */
 
 const path = require('path');
-const semver = require('semver');
+const { prerelease } = require('semver');
 const { existsSync, readFileSync } = require('fs');
 const { execSync } = require('child_process');
 const { version, bin } = require(require.resolve(
   'create-hops-app/package.json'
 ));
 
-const isPreRelease = semver(version).prerelease.length > 0;
+const isPreRelease = prerelease(version) !== null;
 const createHopsAppBin = require.resolve('create-hops-app');
 
 describe('create-hops-app', () => {
