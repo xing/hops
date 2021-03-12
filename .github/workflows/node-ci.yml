@@ -35,10 +35,5 @@ jobs:
             ${{ runner.OS }}-
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Check code quality
-        if: ${{ matrix.node-version == '15.x' }}
-        run: |
-          yarn fmt:check
-          yarn lint
       - name: Run tests
-        run: yarn test --maxWorkers=2 --ci
+        run: yarn test --ci

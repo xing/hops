@@ -13,6 +13,7 @@
     ]
   },
   "jest": {
+    "displayName": "integration",
     "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"

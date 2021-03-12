@@ -13,6 +13,7 @@
     "graphqlUri": "http://localhost:8080/graphql"
   },
   "jest": {
+    "displayName": "integration",
     "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"

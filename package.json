@@ -157,9 +157,48 @@
     "packages/*"
   ],
   "jest": {
+    "collectCoverage": true,
+    "coverageProvider": "v8",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/.tmp/",
+      "/dist/"
+    ],
+    "watchPlugins": [
+      "jest-runner-eslint/watch-fix",
+      "jest-watch-select-projects",
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ],
     "projects": [
       "<rootDir>/packages/!(spec)",
-      "<rootDir>/packages/spec/integration/*"
+      "<rootDir>/packages/spec/integration/*",
+      {
+        "displayName": "lint",
+        "runner": "eslint",
+        "testPathIgnorePatterns": [
+          "/node_modules/",
+          "/.tmp/",
+          "/dist/"
+        ],
+        "testMatch": [
+          "<rootDir>/packages/**/*.js"
+        ]
+      },
+      {
+        "displayName": "prettier",
+        "runner": "prettier",
+        "preset": "jest-runner-prettier",
+        "testPathIgnorePatterns": [
+          "/node_modules/",
+          "/.tmp/",
+          "/dist/",
+          "<rootDir>/coverage/",
+          "CHANGELOG.md",
+          "fragmentTypes.json",
+          "package-lock.json"
+        ]
+      }
     ]
   },
   "config": {
@@ -182,6 +221,10 @@
     "eslint-plugin-react": "^7.16.0",
     "husky": "^4.0.0",
     "jest": "^26.0.0",
+    "jest-runner-eslint": "0.10.0",
+    "jest-runner-prettier": "0.3.6",
+    "jest-watch-select-projects": "2.0.0",
+    "jest-watch-typeahead": "0.6.1",
     "lerna": "^4.0.0",
     "lint-staged": "^10.0.0",
     "prettier": "^2.0.0"

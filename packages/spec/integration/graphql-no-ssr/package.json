@@ -13,6 +13,7 @@
     "graphqlMockSchemaFile": "<rootDir>/mock-schema.js"
   },
   "jest": {
+    "displayName": "integration",
     "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"

@@ -17,6 +17,9 @@
     "type": "git",
     "url": "https://github.com/xing/hops.git"
   },
+  "jest": {
+    "displayName": "unit"
+  },
   "dependencies": {
     "hops-apollo-mock-server": "^14.0.0-nightly.9",
     "hops-react-apollo": "^14.0.0-nightly.9"

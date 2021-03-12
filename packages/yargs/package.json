@@ -8,6 +8,9 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/xing/hops/tree/master/packages/yargs#readme",
+  "jest": {
+    "displayName": "unit"
+  },
   "dependencies": {
     "hops-bootstrap": "^14.0.0-nightly.9",
     "hops-mixin": "^14.0.0-nightly.9",
