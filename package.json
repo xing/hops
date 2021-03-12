@@ -27,20 +27,17 @@
   ],
   "scripts": {
     "preinstall": "node -e \"process.exit(process.env.npm_execpath.includes('yarn') ? 0 : 1)\"",
-    "start": "cd packages/template-react; yarn start",
-    "start:graphql": "cd packages/template-graphql; yarn start",
-    "test": "jest --coverage",
-    "lint": "eslint 'packages/**/*.js'",
+    "test": "jest",
+    "fmt": "prettier --write --ignore-unknown .",
+    "template-graphql": "yarn workspace hops-template-graphql run",
+    "template-react": "yarn workspace hops-template-react run",
+    "template-redux": "yarn workspace hops-template-redux run",
     "prerelease": "node -e \"process.exit(process.env.GH_TOKEN !== undefined)\"",
     "release": "lerna publish",
     "release:prepare": "lerna version --no-push --yes",
     "release:create-nightly": "yarn release premajor --conventional-prerelease --preid nightly",
     "release:rc": "yarn release --conventional-prerelease --preid rc",
-    "release:graduate": "yarn release --conventional-graduate",
-    "reset": "git clean -dfx && yarn",
-    "_fmt": "prettier --ignore-unknown .",
-    "fmt:check": "yarn _fmt --check",
-    "fmt": "yarn _fmt --write"
+    "release:graduate": "yarn release --conventional-graduate"
   },
   "canarist": {
     "projects": [
