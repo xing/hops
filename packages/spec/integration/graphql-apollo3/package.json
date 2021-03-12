@@ -28,6 +28,9 @@
     "@apollo/client": "3.x.x",
     "hops": "*",
     "hops-graphql": "*",
+    "react": "*",
+    "react-helmet-async": "*",
+    "react-router-dom": "*",
     "qs": "^6.7.0"
   }
 }

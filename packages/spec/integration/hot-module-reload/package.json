@@ -17,6 +17,8 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "*"
+    "hops": "*",
+    "react": "*",
+    "react-helmet-async": "*"
   }
 }

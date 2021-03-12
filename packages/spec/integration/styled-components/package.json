@@ -21,6 +21,9 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-styled-components": "*"
+    "hops-styled-components": "*",
+    "react": "*",
+    "react-helmet-async": "*",
+    "styled-components": "*"
   }
 }

@@ -25,7 +25,13 @@
   },
   "dependencies": {
     "@apollo/client": "3.x.x",
+    "@graphql-tools/delegate": "*",
+    "@graphql-tools/mock": "*",
+    "@graphql-tools/schema": "*",
+    "@graphql-tools/stitch": "*",
     "hops": "*",
-    "hops-graphql": "*"
+    "hops-graphql": "*",
+    "react": "*",
+    "react-helmet-async": "*"
   }
 }

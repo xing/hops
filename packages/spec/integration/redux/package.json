@@ -24,7 +24,12 @@
     ]
   },
   "dependencies": {
+    "cross-fetch": "*",
     "hops": "*",
-    "hops-redux": "*"
+    "hops-redux": "*",
+    "react": "*",
+    "react-helmet-async": "*",
+    "react-redux": "*",
+    "react-router-dom": "*"
   }
 }

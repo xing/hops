@@ -22,6 +22,7 @@
   "dependencies": {
     "hops": "*",
     "hops-typescript": "*",
+    "react": "*",
     "typescript": "*"
   }
 }

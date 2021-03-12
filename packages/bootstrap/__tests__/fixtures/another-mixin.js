@@ -1,4 +1,5 @@
 const { callable, override, parallel, pipe, compose } = require('mixinable');
+// eslint-disable-next-line node/no-extraneous-require
 const { Mixin } = require('hops-mixin');
 
 class AnotherMixin extends Mixin {

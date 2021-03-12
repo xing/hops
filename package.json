@@ -108,9 +108,6 @@
         "version": "detect"
       }
     },
-    "plugins": [
-      "node"
-    ],
     "rules": {
       "node/no-unsupported-features/es-syntax": [
         "error",
@@ -133,9 +130,9 @@
           ]
         }
       ],
-      "prettier/prettier": "error",
       "no-console": "off",
-      "no-process-exit": "off"
+      "no-process-exit": "off",
+      "react/prop-types": "off"
     },
     "parserOptions": {
       "ecmaVersion": 2018,
@@ -144,14 +141,12 @@
     "parser": "babel-eslint",
     "env": {
       "es6": true,
-      "node": true
+      "node": true,
+      "jest": true
     }
   },
   "eslintIgnore": [
-    "**/node_modules/**",
-    "**/template-*/**",
-    "**/__tests__/fixtures/**",
-    "**/spec/**"
+    "**/.tmp/**"
   ],
   "workspaces": [
     "packages/*"

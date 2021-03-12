@@ -24,8 +24,16 @@
     "build": "hops build"
   },
   "dependencies": {
+    "apollo-link-http": "*",
+    "cross-fetch": "*",
+    "graphql-tag": "*",
     "hops": "*",
     "hops-graphql": "*",
-    "qs": "^6.7.0"
+    "hops-mixin": "*",
+    "qs": "^6.7.0",
+    "react": "*",
+    "react-apollo": "*",
+    "react-helmet-async": "*",
+    "react-router-dom": "*"
   }
 }

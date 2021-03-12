@@ -29,6 +29,10 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "*"
+    "hops": "*",
+    "hops-mixin": "*",
+    "react": "*",
+    "react-helmet-async": "*",
+    "react-router-dom": "*"
   }
 }

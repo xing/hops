@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-postcss": "*"
+    "hops-postcss": "*",
+    "react": "*",
+    "react-helmet-async": "*"
   },
   "hops": {
     "gracePeriod": 0,
