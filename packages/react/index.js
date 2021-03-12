@@ -1,24 +1,9 @@
-const { render } = require('./render');
-const { Header, Miss, Status } = require('./router');
-const { importComponent } = require('./import-component');
-const ServerDataContext = require('./server-data/context');
-const withServerData = require('./server-data/with-server-data');
-const useServerData = require('./server-data/use-server-data');
-
-const ConfigContext = require('./config/context');
-const withConfig = require('./config/with-config');
-const useConfig = require('./config/use-config');
-
-module.exports = {
-  Header,
-  importComponent,
-  Miss,
-  Status,
-  render,
-  ServerDataContext,
-  withServerData,
-  useServerData,
-  ConfigContext,
-  withConfig,
-  useConfig,
-};
+export { render } from './render';
+export { Header, Miss, Status } from './router';
+export { importComponent } from './import-component';
+export { default as ServerDataContext } from './server-data/context';
+export { default as withServerData } from './server-data/with-server-data';
+export { default as useServerData } from './server-data/use-server-data';
+export { default as ConfigContext } from './config/context';
+export { default as withConfig } from './config/with-config';
+export { default as useConfig } from './config/use-config';

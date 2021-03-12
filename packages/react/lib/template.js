@@ -1,11 +1,11 @@
 'use strict';
 
-const esc = require('serialize-javascript');
+import esc from 'serialize-javascript';
 
 const printResourceHint = ({ rel, href, htmlAs }) =>
   `<link rel="${rel}" href="${href}" ${htmlAs ? `as="${htmlAs}" ` : ''}/>`;
 
-module.exports = ({
+export default ({
   fragments = {},
   globals = {},
   assets: { css = [], js = [] } = {},

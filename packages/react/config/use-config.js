@@ -1,8 +1,6 @@
-const React = require('react');
-const ConfigContext = require('./context');
+import { useContext } from 'react';
+import ConfigContext from './context';
 
-function useConfig() {
-  return React.useContext(ConfigContext);
+export default function useConfig() {
+  return useContext(ConfigContext);
 }
-
-module.exports = useConfig;

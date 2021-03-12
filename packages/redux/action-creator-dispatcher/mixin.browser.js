@@ -1,4 +1,4 @@
-const ReduxActionCreatorCommonMixin = require('./mixin.runtime-common');
+import ReduxActionCreatorCommonMixin from './mixin.runtime-common';
 
 class ReduxActionCreatorBrowserMixin extends ReduxActionCreatorCommonMixin {
   constructor(...args) {
@@ -7,4 +7,4 @@ class ReduxActionCreatorBrowserMixin extends ReduxActionCreatorCommonMixin {
   }
 }
 
-module.exports = ReduxActionCreatorBrowserMixin;
+export default ReduxActionCreatorBrowserMixin;

@@ -1,6 +1,6 @@
-const { renderToString } = require('react-dom/server');
+import { renderToString } from 'react-dom/server';
 
-module.exports = (element) => {
+export default (element) => {
   const reactMarkup = renderToString(element);
   return { reactMarkup };
 };

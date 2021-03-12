@@ -1,5 +1,5 @@
-const { createStore, combineReducers, compose } = require('redux');
-const ReduxRuntimeCommonMixin = require('./mixin.runtime-common');
+import { createStore, combineReducers, compose } from 'redux';
+import ReduxRuntimeCommonMixin from './mixin.runtime-common';
 
 class ReduxMixin extends ReduxRuntimeCommonMixin {
   createStore() {
@@ -34,4 +34,4 @@ class ReduxMixin extends ReduxRuntimeCommonMixin {
   }
 }
 
-module.exports = ReduxMixin;
+export default ReduxMixin;

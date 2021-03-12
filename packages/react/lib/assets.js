@@ -1,8 +1,8 @@
 'use strict';
 
-const { extname } = require('path');
+import { extname } from 'path';
 
-module.exports = (stats, modules) => {
+export default (stats, modules) => {
   const { entryFiles, vendorFiles, moduleFileMap } = stats;
   const moduleFiles = modules.reduce(
     (result, module) => [...result, ...moduleFileMap[module]],

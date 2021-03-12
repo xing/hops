@@ -1,4 +1,4 @@
-const { Mixin } = require('hops-mixin');
+import { Mixin } from 'hops-mixin';
 
 class ServerDataMixin extends Mixin {
   enhanceServerData(data, req) {
@@ -6,4 +6,4 @@ class ServerDataMixin extends Mixin {
   }
 }
 
-module.exports = ServerDataMixin;
+export default ServerDataMixin;

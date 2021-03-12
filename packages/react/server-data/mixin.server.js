@@ -1,13 +1,13 @@
 /* eslint-env browser, node */
 
-const React = require('react');
+import { createElement } from 'react';
+
+import { Mixin, strategies } from 'hops-mixin';
+import { Provider } from './context';
+
 const {
-  Mixin,
-  strategies: {
-    sync: { pipe, callable },
-  },
-} = require('hops-mixin');
-const { Provider } = require('./context');
+  sync: { pipe, callable },
+} = strategies;
 
 class HopsReactServerDataServerMixin extends Mixin {
   bootstrap(req, res) {
@@ -32,7 +32,7 @@ class HopsReactServerDataServerMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return React.createElement(
+    return createElement(
       Provider,
       { value: this.getServerData() },
       reactElement
@@ -45,4 +45,4 @@ HopsReactServerDataServerMixin.strategies = {
   getServerData: callable,
 };
 
-module.exports = HopsReactServerDataServerMixin;
+export default HopsReactServerDataServerMixin;

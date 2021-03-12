@@ -1,14 +1,13 @@
 /* eslint-env browser, node */
 
-const React = require('react');
-const {
-  Mixin,
-  strategies: {
-    sync: { callable },
-  },
-} = require('hops-mixin');
+import { createElement } from 'react';
 
-const { Provider } = require('./context');
+import { Mixin, strategies } from 'hops-mixin';
+import { Provider } from './context';
+
+const {
+  sync: { callable },
+} = strategies;
 
 class HopsReactServerDataBrowserMixin extends Mixin {
   getServerData() {
@@ -16,7 +15,7 @@ class HopsReactServerDataBrowserMixin extends Mixin {
   }
 
   enhanceElement(reactElement) {
-    return React.createElement(
+    return createElement(
       Provider,
       { value: this.getServerData() },
       reactElement
@@ -28,4 +27,4 @@ HopsReactServerDataBrowserMixin.strategies = {
   getServerData: callable,
 };
 
-module.exports = HopsReactServerDataBrowserMixin;
+export default HopsReactServerDataBrowserMixin;
