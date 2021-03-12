@@ -34,7 +34,8 @@
     "create-hops-app": "^13.3.5",
     "cross-fetch": "^3.0.4",
     "jest-environment-hops": "^13.3.5",
-    "react-helmet-async": "^1.0.4"
+    "react-helmet-async": "^1.0.4",
+    "semver": "^6.1.2"
   },
   "dependencies": {
     "@zendeskgarden/css-buttons": "^8.0.0",
