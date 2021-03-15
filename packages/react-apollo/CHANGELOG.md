@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.9](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.9) (2021-03-15)
+
+
+### chore
+
+* remove peer dependencies for apollo v2 ([581d406](https://github.com/xing/hops/commit/581d406309703f7fd1ae8c189cb38eb18f9f2806))
+
+
+### Features
+
+* **react-apollo:** implement support for apollo v3 ([ee5e984](https://github.com/xing/hops/commit/ee5e98400584d01ca62969fbe239ea84eafde1f5))
+* rewrite runtime code to ESM to facilitate tree shaking ([3352add](https://github.com/xing/hops/commit/3352adda0476c199275d2162a7c51955ab0990f2))
+
+
+### BREAKING CHANGES
+
+* Hops no longer has peer dependencies to apollo v2
+
+In detail, this means, that even though you still can use apollo@2,
+your package manager will no longer warn when you're missing a
+dependency.
+
+Please see the readme of Hops v13 for information on which dependencies
+you need with apollo@2.
+* Some parts of Hops are rewritten to ES-Modules
+This could potentially be a breaking change for some consumers when
+using deep-imports.
+
+
+
+
+
 # [14.0.0-nightly.8](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.8) (2021-03-09)
 
 **Note:** Version bump only for package hops-react-apollo

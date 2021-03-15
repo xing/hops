@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.9](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.9) (2021-03-15)
+
+
+### Bug Fixes
+
+* remove mixin-order escape hatch ([22f921f](https://github.com/xing/hops/commit/22f921f86768b8b2a71053b877073e506843a16a))
+* remove static rendering ([ed90792](https://github.com/xing/hops/commit/ed90792176298284d1f19fef4c09571edfaa07e2))
+
+
+### Features
+
+* introduce hops-debug as a node/browser wrapper for debug ([84d5f80](https://github.com/xing/hops/commit/84d5f8032a3d7679d9d7c53e55f8e9d28fc193c8))
+
+
+### BREAKING CHANGES
+
+* the config option `enableLegacyMixinSortOrder` has been removed.
+* static rendering of Hops apps has been removed (`hops build --static`)
+
+
+
+
+
 # [14.0.0-nightly.8](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.8) (2021-03-09)
 
 

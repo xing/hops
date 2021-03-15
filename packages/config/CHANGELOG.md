@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.9](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.9) (2021-03-15)
+
+
+### Features
+
+* rewrite runtime code to ESM to facilitate tree shaking ([3352add](https://github.com/xing/hops/commit/3352adda0476c199275d2162a7c51955ab0990f2))
+
+
+### BREAKING CHANGES
+
+* Some parts of Hops are rewritten to ES-Modules
+This could potentially be a breaking change for some consumers when
+using deep-imports.
+
+
+
+
+
 # [14.0.0-nightly.8](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.8) (2021-03-09)
 
 **Note:** Version bump only for package hops-config

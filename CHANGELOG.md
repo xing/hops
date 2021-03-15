@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.9](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.9) (2021-03-15)
+
+
+### Bug Fixes
+
+* **info:** remove deprecated handling of warning messages ([4502420](https://github.com/xing/hops/commit/4502420014e44532b2dd580cac94c16beecd6a77))
+* remove mixin-order escape hatch ([22f921f](https://github.com/xing/hops/commit/22f921f86768b8b2a71053b877073e506843a16a))
+* remove static rendering ([ed90792](https://github.com/xing/hops/commit/ed90792176298284d1f19fef4c09571edfaa07e2))
+* require strictly de-duplicated Hops packages ([dd3e30a](https://github.com/xing/hops/commit/dd3e30af9f8746153ec8dcf4f102302811b2c604))
+* update dependency puppeteer to v7 ([187d9a5](https://github.com/xing/hops/commit/187d9a5fa6e966225936e1a3ecefc62a5c09414b))
+* update dependency puppeteer to v8 ([8ab7206](https://github.com/xing/hops/commit/8ab72065ebd7ae3de59daee888c3250f094b677f))
+
+
+### chore
+
+* remove peer dependencies for apollo v2 ([581d406](https://github.com/xing/hops/commit/581d406309703f7fd1ae8c189cb38eb18f9f2806))
+
+
+### Features
+
+* **react-apollo:** implement support for apollo v3 ([ee5e984](https://github.com/xing/hops/commit/ee5e98400584d01ca62969fbe239ea84eafde1f5))
+* introduce hops-debug as a node/browser wrapper for debug ([84d5f80](https://github.com/xing/hops/commit/84d5f8032a3d7679d9d7c53e55f8e9d28fc193c8))
+* return result from detectDuplicatePackages ([6564728](https://github.com/xing/hops/commit/656472896fc1b8af9a53e0362d8e1adcffa902b8))
+* rewrite runtime code to ESM to facilitate tree shaking ([3352add](https://github.com/xing/hops/commit/3352adda0476c199275d2162a7c51955ab0990f2))
+
+
+### Reverts
+
+* Revert "chore: add automatic nightly release workflow" ([015c320](https://github.com/xing/hops/commit/015c320871859f9ea6b2371660e27894666f80b2))
+* Revert "chore: do not persist credentials during checkout" ([d886675](https://github.com/xing/hops/commit/d88667595177c1a0e086731f55247e33a8cb4602))
+* Revert "chore: persist credentials during checkout" ([d271bf4](https://github.com/xing/hops/commit/d271bf457152e86df4536f8d4460b824321ed00f))
+* Revert "chore: make git config for user global" ([dd27272](https://github.com/xing/hops/commit/dd27272cbc5613ddea7044950c71f8165ffc2f9c))
+* Revert "chore: make git config of user local" ([91ed5ee](https://github.com/xing/hops/commit/91ed5ee69eeda6ed495657dd406d3dacf8e09811))
+* Revert "chore: use PAT to do the git checkout" ([4e0344a](https://github.com/xing/hops/commit/4e0344aef286bb1e453816c68150f83117b8d4a3))
+
+
+### BREAKING CHANGES
+
+* Hops no longer has peer dependencies to apollo v2
+
+In detail, this means, that even though you still can use apollo@2,
+your package manager will no longer warn when you're missing a
+dependency.
+
+Please see the readme of Hops v13 for information on which dependencies
+you need with apollo@2.
+* Some parts of Hops are rewritten to ES-Modules
+This could potentially be a breaking change for some consumers when
+using deep-imports.
+* **info:** hops-info does not handle warnings returned from the `diagnose`-hook anymore.
+* Hops now requires strictly de-duplicated packages
+
+Hops will abort the build immediately when it detects a duplicated Hops
+package. This situation arises when the versions of all the installed
+Hops packages aren't aligned exactly.
+
+To resolve the situation and thus get the build going again, the
+versions have to be aligned.
+
+In case of an emergency you can unblock the build without resolving the
+underlying issue by passing `HOPS_IGNORE_ERRORS=hops-duplicates` into
+the `hops start`-/`hops build`-command. This might still lead to errors
+though, because misaligned Hops packages are common cause of bugs.
+* the config option `enableLegacyMixinSortOrder` has been removed.
+* static rendering of Hops apps has been removed (`hops build --static`)
+
+
+
+
+
 # [14.0.0-nightly.8](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.8) (2021-03-09)
 
 
