@@ -1,8 +1,23 @@
 const { existsSync } = require('fs');
 const { Mixin } = require('hops-mixin');
+const { join } = require('path');
 const strip = require('strip-indent');
+const deprecate = require('depd')('hops-react-apollo');
+const { getApolloVersion } = require('./lib/apollo-version');
 
 class GraphQLMixin extends Mixin {
+  constructor(config, ...args) {
+    super(config, ...args);
+
+    // TODO: remove with Hops v15
+    this.apolloVersion = getApolloVersion();
+    if (this.apolloVersion === 2) {
+      deprecate(
+        '[DEP0006] Apollo v2 support in Hops has been deprecated and will be removed with Hops v15. Please upgrade to Apollo v3 (https://github.com/xing/hops/blob/master/DEPRECATIONS.md#dep006).'
+      );
+    }
+  }
+
   configureBuild(webpackConfig, loaderConfigs) {
     const { allLoaderConfigs } = loaderConfigs;
 
@@ -37,6 +52,7 @@ class GraphQLMixin extends Mixin {
           },
           handler: (argv) => {
             require('./lib/fragments')({
+              apolloVersion: this.apolloVersion,
               graphqlUri: this.config.graphqlUri,
               schemaFile: this.config.graphqlSchemaFile,
               fragmentsFile: this.config.fragmentsFile,
@@ -65,13 +81,35 @@ class GraphQLMixin extends Mixin {
     this.options = { ...this.options, ...argv };
   }
 
-  diagnose({ detectDuplicatePackages, pushWarning }) {
+  diagnose({ detectDuplicatePackages, pushWarning, pushError }) {
     detectDuplicatePackages('graphql');
     if (!existsSync(this.config.fragmentsFile)) {
       pushWarning(
         `Could not find a graphql introspection query result at "${this.config.fragmentsFile}".`
       );
       pushWarning('You might need to execute "hops graphql introspect"');
+    }
+
+    const manifestPath = join(this.config.rootDir, 'package.json');
+    const manifest = require(manifestPath);
+    const hasReactApollo = [
+      ...Object.keys(manifest.dependencies || {}),
+      ...Object.keys(manifest.devDependencies || {}),
+    ].includes('react-apollo');
+    const hasApolloClient = [
+      ...Object.keys(manifest.dependencies || {}),
+      ...Object.keys(manifest.devDependencies || {}),
+    ].includes('@apollo/client');
+
+    if (hasReactApollo && hasApolloClient) {
+      pushError(
+        'apollo-version-mismatch',
+        `
+Found two conflicting versions of apollo (react-apollo and @apollo/client) in "${manifestPath}".
+- If you want to use Apollo v2 you need to remove "@apollo/client"
+- Otherwise, if you want to use Apollo v3, remove "react-apollo"
+`.trim()
+      );
     }
   }
 }

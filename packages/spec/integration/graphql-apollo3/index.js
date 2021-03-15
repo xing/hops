@@ -2,9 +2,8 @@ import { render, Status } from 'hops';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route } from 'react-router-dom';
 import React from 'react';
-import { useQuery } from 'react-apollo';
 import { parse } from 'qs';
-import gql from 'graphql-tag';
+import { gql, useQuery } from '@apollo/client';
 
 const QUERY = gql`
   query foo($type: String) {
@@ -33,7 +32,10 @@ const App = () => (
             return (
               <>
                 <Status code={500} />
-                <b>{error.message}</b>
+                <b>
+                  {error.networkError.toString()} -{' '}
+                  {error.networkError.bodyText}
+                </b>
               </>
             );
 
@@ -54,7 +56,10 @@ const App = () => (
             return (
               <>
                 <Status code={500} />
-                <b>{error.message}</b>
+                <b>
+                  {error.networkError.toString()} -{' '}
+                  {error.networkError.bodyText}
+                </b>
               </>
             );
 

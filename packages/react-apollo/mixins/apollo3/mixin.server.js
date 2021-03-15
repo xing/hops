@@ -2,34 +2,22 @@ import { createElement } from 'react';
 import renderToFragments from 'hops-react/lib/fragments';
 import { existsSync, readFileSync } from 'fs';
 import { Mixin, strategies } from 'hops-mixin';
-import { ApolloProvider, getMarkupFromTree } from 'react-apollo';
-import { ApolloClient } from 'apollo-client';
-import { ApolloLink } from 'apollo-link';
-import { HttpLink } from 'apollo-link-http';
+
 import {
-  InMemoryCache,
-  IntrospectionFragmentMatcher,
-  HeuristicFragmentMatcher,
-} from 'apollo-cache-inmemory';
+  ApolloProvider,
+  ApolloClient,
+  HttpLink,
+  ApolloLink,
+} from '@apollo/client';
+import { getMarkupFromTree } from '@apollo/client/react/ssr';
+import { InMemoryCache } from '@apollo/client/cache';
 import fetch from 'cross-fetch';
 
 const {
-  sync: { override, callable, sequence },
+  sync: { override, sequence },
 } = strategies;
 
 let introspectionResult = undefined;
-
-const wrapNetworkError = (error) => {
-  if (!error.networkError || !error.networkError.response) {
-    return error;
-  }
-  const { status, statusText } = error.networkError.response;
-  const message = status === 200 ? 'Not Acceptable' : statusText;
-  const fetchError = Object.assign(new Error(message), {
-    response: error.networkError.response,
-  });
-  return fetchError;
-};
 
 class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
@@ -86,18 +74,9 @@ class GraphQLMixin extends Mixin {
   }
 
   getApolloCache() {
-    return (
-      this.options.cache ||
-      new InMemoryCache({ fragmentMatcher: this.createFragmentMatcher() })
-    );
-  }
-
-  createFragmentMatcher() {
-    return !introspectionResult
-      ? new HeuristicFragmentMatcher()
-      : new IntrospectionFragmentMatcher({
-          introspectionQueryResultData: introspectionResult,
-        });
+    return this.options.cache || introspectionResult
+      ? new InMemoryCache({ possibleTypes: introspectionResult })
+      : new InMemoryCache();
   }
 
   async renderToFragments(element) {
@@ -105,19 +84,14 @@ class GraphQLMixin extends Mixin {
       return renderToFragments(element);
     }
 
-    let fragments = {};
-    try {
-      await getMarkupFromTree({
+    return {
+      reactMarkup: await getMarkupFromTree({
         tree: element,
         renderFunction: (tree) => {
-          fragments = renderToFragments(tree);
-          return fragments.reactMarkup;
+          return renderToFragments(tree).reactMarkup;
         },
-      });
-    } catch (err) {
-      throw wrapNetworkError(err);
-    }
-    return fragments;
+      }),
+    };
   }
 
   canPrefetchOnServer() {
@@ -130,7 +104,7 @@ class GraphQLMixin extends Mixin {
       globals: {
         ...data.globals,
         APOLLO_FRAGMENT_TYPES: introspectionResult,
-        APOLLO_STATE: this.getApolloClient().cache.extract(),
+        APOLLO_STATE: this.getApolloClient().extract(),
       },
     };
   }
@@ -147,7 +121,6 @@ class GraphQLMixin extends Mixin {
 GraphQLMixin.strategies = {
   getApolloLink: override,
   getApolloCache: override,
-  createFragmentMatcher: callable,
   canPrefetchOnServer: sequence,
 };
 

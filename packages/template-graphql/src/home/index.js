@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { Helmet } from 'react-helmet-async';
 import query from './jobs.gql';
 import styles from './styles.css';

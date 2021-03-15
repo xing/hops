@@ -1,16 +1,17 @@
 {
-  "name": "fixture-graphql-mock-server",
+  "name": "fixture-graphql-apollo3",
   "version": "1.0.0",
   "private": true,
   "engines": {
     "node": "12 || 14 || 15"
   },
   "hops": {
+    "port": "8075",
     "gracePeriod": 0,
-    "allowServerSideDataFetching": true,
-    "port": "8029",
-    "graphqlUri": "http://localhost:8029/graphql",
-    "graphqlMockSchemaFile": "<rootDir>/mock-schema.js"
+    "mixins": [
+      "./"
+    ],
+    "graphqlUri": "http://localhost:8075/graphql"
   },
   "jest": {
     "testEnvironment": "jest-environment-hops",
@@ -25,6 +26,7 @@
   "dependencies": {
     "@apollo/client": "3.x.x",
     "hops": "*",
-    "hops-graphql": "*"
+    "hops-graphql": "*",
+    "qs": "^6.7.0"
   }
 }

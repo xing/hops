@@ -18,7 +18,10 @@ describe('graphql development client', () => {
       const text = await response.text();
 
       expect(response.status).toBe(500);
-      expect(text).toContain('<pre>Error: Not Acceptable');
+      expect(text).toContain(
+        '<b>ServerParseError: Unexpected token &lt; in JSON at position 0'
+      );
+      expect(text).toContain('&lt;h1&gt;Moini!&lt;/h1&gt;');
     });
   });
 
@@ -28,7 +31,10 @@ describe('graphql development client', () => {
       const text = await response.text();
 
       expect(response.status).toBe(500);
-      expect(text).toContain('<pre>Error: Too Many Requests');
+      expect(text).toContain(
+        '<b>ServerParseError: Unexpected token T in JSON at position 0'
+      );
+      expect(text).toContain('Too many requests');
     });
   });
 
@@ -38,7 +44,9 @@ describe('graphql development client', () => {
       const text = await response.text();
 
       expect(response.status).toBe(500);
-      expect(text).toContain('<pre>Error: Bad Request');
+      expect(text).toContain(
+        '<b>Response not successful: Received status code 400'
+      );
     });
   });
 
@@ -49,7 +57,7 @@ describe('graphql development client', () => {
         const text = await response.text();
 
         expect(response.status).toBe(200);
-        expect(text).toContain('<b>GraphQL error: Could not resolve fields');
+        expect(text).toContain('<b>Could not resolve fields');
       });
     });
 
@@ -59,9 +67,7 @@ describe('graphql development client', () => {
         const text = await response.text();
 
         expect(response.status).toBe(500);
-        expect(text).toContain(
-          '<pre>Error: GraphQL error: Could not resolve fields'
-        );
+        expect(text).toContain('<b>Could not resolve fields');
       });
     });
   });

@@ -1,5 +1,6 @@
 import { createElement } from 'react';
 import { Mixin, strategies } from 'hops-mixin';
+// eslint-disable-next-line node/no-extraneous-import
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';

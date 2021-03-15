@@ -1,8 +1,8 @@
-import gql from 'graphql-tag';
 import { render } from 'hops';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Query } from 'react-apollo';
+import { Query } from '@apollo/client/react/components';
+import { gql } from '@apollo/client';
 
 const query = gql`
   query testQuery {
