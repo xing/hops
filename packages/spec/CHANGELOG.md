@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.10](https://github.com/xing/hops/compare/v12.5.9...v12.5.10) (2021-03-15)
+
+**Note:** Version bump only for package hops-spec
+
+
+
+
+
 ## [12.5.9](https://github.com/xing/hops/compare/v12.5.8...v12.5.9) (2021-02-22)
 
 **Note:** Version bump only for package hops-spec

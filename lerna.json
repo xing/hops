@@ -1,7 +1,7 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "12.5.9",
+  "version": "12.5.10",
   "registry": "https://registry.npmjs.org/",
   "command": {
     "version": {
@@ -11,6 +11,7 @@
       "forcePublish": true
     },
     "publish": {
+      "distTag": "v12",
       "preDistTag": "next"
     }
   }
