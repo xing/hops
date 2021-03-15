@@ -1,0 +1,23 @@
+{
+  "name": "hops-debug",
+  "version": "13.4.0",
+  "description": "Hops debug wrapper",
+  "main": "node.js",
+  "browser": "browser.js",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/xing/hops.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xing/hops/issues"
+  },
+  "homepage": "https://github.com/xing/hops#readme",
+  "dependencies": {
+    "debug": "^4.1.1"
+  },
+  "engines": {
+    "node": "12 || 14 || 15"
+  }
+}

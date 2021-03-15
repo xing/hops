@@ -1,4 +1,4 @@
-const debug = require('debug')('hops:webpack:stats');
+const debug = require('hops-debug')('hops:webpack:stats');
 const { sync, async } = require('mixinable');
 const { Mixin } = require('hops-mixin');
 const { internal: bootstrap } = require('hops-bootstrap');

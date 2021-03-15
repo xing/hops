@@ -1026,6 +1026,8 @@ Since the tags are namespaced to `hops`, it's possible to log all debug statemen
 DEBUG=hops* npm start
 ```
 
+To enable debugging of runtime code in the browser console, set the cookie `xing_debug` to `hops*` (or any of the tags you want to debug).
+
 Another common issue is multiple versions of the same dependency. For example `webpack` and `hops` should only ever be installed in one version.\
 Use `npm ls hops; npm ls webpack;` (or, if you are using yarn: `yarn list --pattern 'hops|webpack'`) to find out if there are duplicate packages and try to remove the duplication by re-installing or deleting your lock files, etc.
 
