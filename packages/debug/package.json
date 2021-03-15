@@ -1,6 +1,6 @@
 {
   "name": "hops-debug",
-  "version": "13.3.5",
+  "version": "13.4.0",
   "description": "Hops debug wrapper",
   "main": "node.js",
   "browser": "browser.js",

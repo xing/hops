@@ -1,6 +1,6 @@
 {
   "name": "hops-bootstrap",
-  "version": "13.3.5",
+  "version": "13.4.0",
   "description": "Hops bootstrap",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "escape-string-regexp": "^4.0.0",
     "find-up": "^5.0.0",
     "flat": "^5.0.0",
-    "hops-debug": "^13.3.5",
+    "hops-debug": "^13.4.0",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "supports-color": "^8.0.0"
