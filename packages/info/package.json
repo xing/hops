@@ -11,6 +11,9 @@
     "url": "https://github.com/xing/hops/issues"
   },
   "homepage": "https://github.com/xing/hops#readme",
+  "jest": {
+    "displayName": "unit"
+  },
   "dependencies": {
     "chalk": "^4.0.0",
     "duplitect": "^3.0.0",

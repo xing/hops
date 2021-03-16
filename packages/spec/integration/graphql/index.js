@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import React from 'react';
 import { useQuery } from 'react-apollo';
 import { parse } from 'qs';
-import gql from 'graphql-tag';
+import { gql } from 'graphql-tag';
 
 const QUERY = gql`
   query foo($type: String) {

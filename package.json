@@ -27,20 +27,17 @@
   ],
   "scripts": {
     "preinstall": "node -e \"process.exit(process.env.npm_execpath.includes('yarn') ? 0 : 1)\"",
-    "start": "cd packages/template-react; yarn start",
-    "start:graphql": "cd packages/template-graphql; yarn start",
-    "test": "jest --coverage",
-    "lint": "eslint 'packages/**/*.js'",
-    "prerelease": "test -n \"$GH_TOKEN\" || (echo 'GH_TOKEN missing'; exit 1)",
+    "test": "jest",
+    "fmt": "prettier --write --ignore-unknown .",
+    "template-graphql": "yarn workspace hops-template-graphql run",
+    "template-react": "yarn workspace hops-template-react run",
+    "template-redux": "yarn workspace hops-template-redux run",
+    "prerelease": "node -e \"process.exit(process.env.GH_TOKEN !== undefined)\"",
     "release": "lerna publish",
     "release:prepare": "lerna version --no-push --yes",
     "release:create-nightly": "yarn release premajor --conventional-prerelease --preid nightly",
     "release:rc": "yarn release --conventional-prerelease --preid rc",
-    "release:graduate": "yarn release --conventional-graduate",
-    "reset": "git clean -dfx && yarn",
-    "_fmt": "prettier --ignore-unknown .",
-    "fmt:check": "yarn _fmt --check",
-    "fmt": "yarn _fmt --write"
+    "release:graduate": "yarn release --conventional-graduate"
   },
   "canarist": {
     "projects": [
@@ -108,9 +105,6 @@
         "version": "detect"
       }
     },
-    "plugins": [
-      "node"
-    ],
     "rules": {
       "node/no-unsupported-features/es-syntax": [
         "error",
@@ -133,9 +127,9 @@
           ]
         }
       ],
-      "prettier/prettier": "error",
       "no-console": "off",
-      "no-process-exit": "off"
+      "no-process-exit": "off",
+      "react/prop-types": "off"
     },
     "parserOptions": {
       "ecmaVersion": 2018,
@@ -144,22 +138,59 @@
     "parser": "babel-eslint",
     "env": {
       "es6": true,
-      "node": true
+      "node": true,
+      "jest": true
     }
   },
   "eslintIgnore": [
-    "**/node_modules/**",
-    "**/template-*/**",
-    "**/__tests__/fixtures/**",
-    "**/spec/**"
+    "**/.tmp/**"
   ],
   "workspaces": [
     "packages/*"
   ],
   "jest": {
+    "collectCoverage": true,
+    "coverageProvider": "v8",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/.tmp/",
+      "/dist/"
+    ],
+    "watchPlugins": [
+      "jest-runner-eslint/watch-fix",
+      "jest-watch-select-projects",
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ],
     "projects": [
       "<rootDir>/packages/!(spec)",
-      "<rootDir>/packages/spec/integration/*"
+      "<rootDir>/packages/spec/integration/*",
+      {
+        "displayName": "lint",
+        "runner": "eslint",
+        "testPathIgnorePatterns": [
+          "/node_modules/",
+          "/.tmp/",
+          "/dist/"
+        ],
+        "testMatch": [
+          "<rootDir>/packages/**/*.js"
+        ]
+      },
+      {
+        "displayName": "prettier",
+        "runner": "prettier",
+        "preset": "jest-runner-prettier",
+        "testPathIgnorePatterns": [
+          "/node_modules/",
+          "/.tmp/",
+          "/dist/",
+          "<rootDir>/coverage/",
+          "CHANGELOG.md",
+          "fragmentTypes.json",
+          "package-lock.json"
+        ]
+      }
     ]
   },
   "config": {
@@ -182,6 +213,10 @@
     "eslint-plugin-react": "^7.16.0",
     "husky": "^4.0.0",
     "jest": "^26.0.0",
+    "jest-runner-eslint": "0.10.0",
+    "jest-runner-prettier": "0.3.6",
+    "jest-watch-select-projects": "2.0.0",
+    "jest-watch-typeahead": "0.6.1",
     "lerna": "^4.0.0",
     "lint-staged": "^10.0.0",
     "prettier": "^2.0.0"

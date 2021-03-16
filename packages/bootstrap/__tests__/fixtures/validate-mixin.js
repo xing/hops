@@ -1,4 +1,5 @@
 const { callable } = require('mixinable');
+// eslint-disable-next-line node/no-extraneous-require
 const { Mixin } = require('hops-mixin');
 const { internal: bootstrap } = require('../..');
 

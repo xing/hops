@@ -6,6 +6,7 @@
     "node": "12 || 14 || 15"
   },
   "jest": {
+    "displayName": "integration",
     "preset": "jest-preset-hops",
     "testPathIgnorePatterns": [
       "__tests__/setup"

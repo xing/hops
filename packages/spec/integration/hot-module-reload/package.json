@@ -6,6 +6,7 @@
     "node": "12 || 14 || 15"
   },
   "jest": {
+    "displayName": "integration",
     "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"
@@ -16,6 +17,8 @@
     "build": "hops build"
   },
   "dependencies": {
-    "hops": "*"
+    "hops": "*",
+    "react": "*",
+    "react-helmet-async": "*"
   }
 }

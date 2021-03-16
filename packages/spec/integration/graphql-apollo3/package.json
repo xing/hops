@@ -14,6 +14,7 @@
     "graphqlUri": "http://localhost:8075/graphql"
   },
   "jest": {
+    "displayName": "integration",
     "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"
@@ -27,6 +28,9 @@
     "@apollo/client": "3.x.x",
     "hops": "*",
     "hops-graphql": "*",
+    "react": "*",
+    "react-helmet-async": "*",
+    "react-router-dom": "*",
     "qs": "^6.7.0"
   }
 }

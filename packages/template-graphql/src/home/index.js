@@ -18,7 +18,7 @@ export const Home = ({ data: { loading, jobSearchByQuery } }) => {
           const company = jobDetail.companyInfo.company;
           return (
             <p key={jobDetail.id}>
-              <a href={jobDetail.url}>"{jobDetail.title}"</a> at{' '}
+              <a href={jobDetail.url}>&quot;{jobDetail.title}&quot;</a> at{' '}
               <b>{company ? company.companyName : 'N/A'}</b>
             </p>
           );
@@ -28,7 +28,7 @@ export const Home = ({ data: { loading, jobSearchByQuery } }) => {
   );
 };
 
-export default () => {
+export default function HomeWithData() {
   const data = useQuery(query);
   return <Home data={data} />;
-};
+}

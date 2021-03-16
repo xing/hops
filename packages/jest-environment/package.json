@@ -16,6 +16,9 @@
     "directory": "packages/jest-environment"
   },
   "main": "index.js",
+  "jest": {
+    "displayName": "unit"
+  },
   "dependencies": {
     "colors": "^1.4.0",
     "eprom": "^1.0.0",

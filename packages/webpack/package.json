@@ -4,6 +4,9 @@
   "description": "webpack support for Hops applications",
   "license": "MIT",
   "homepage": "https://github.com/xing/hops/tree/master/packages/hops-webpack#readme",
+  "jest": {
+    "displayName": "unit"
+  },
   "dependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",

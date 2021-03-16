@@ -13,6 +13,7 @@
     ]
   },
   "jest": {
+    "displayName": "integration",
     "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"
@@ -24,6 +25,8 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-pwa": "*"
+    "hops-pwa": "*",
+    "react": "*",
+    "react-helmet-async": "*"
   }
 }

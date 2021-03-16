@@ -13,6 +13,7 @@
     "graphqlMockSchemaFile": "<rootDir>/mock-schema.js"
   },
   "jest": {
+    "displayName": "integration",
     "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"
@@ -24,7 +25,10 @@
   },
   "dependencies": {
     "@apollo/client": "3.x.x",
+    "@graphql-tools/schema": "*",
     "hops": "*",
-    "hops-graphql": "*"
+    "hops-graphql": "*",
+    "react": "*",
+    "react-helmet-async": "*"
   }
 }

@@ -102,7 +102,7 @@ describe('react development server', () => {
     await page.goto(urlJoin(url, '/import'));
 
     expect(await page.content()).toMatch('imported');
-    expect(await page.content()).toMatch(/Hello bold [^a-z]+text[^a-z]+\!/);
+    expect(await page.content()).toMatch(/Hello bold [^a-z]+text[^a-z]+!/);
 
     await page.close();
   });

@@ -6,11 +6,15 @@
     "node": "12 || 14 || 15"
   },
   "jest": {
+    "displayName": "integration",
     "preset": "jest-preset-hops"
   },
   "dependencies": {
     "hops": "*",
     "hops-preset-jest": "*",
+    "react": "*",
+    "react-helmet-async": "*",
+    "react-router-dom": "*",
     "react-test-renderer": "^16.8.1 || ^17.0.0"
   }
 }
