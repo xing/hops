@@ -1,6 +1,6 @@
 {
   "name": "hops-typescript",
-  "version": "14.0.0-nightly.9",
+  "version": "14.0.0-nightly.10",
   "description": "TypeScript support for Hops applications",
   "keywords": [
     "hops",
@@ -18,7 +18,7 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-mixin": "^14.0.0-nightly.9",
+    "hops-mixin": "^14.0.0-nightly.10",
     "ts-loader": "^8.0.0"
   },
   "peerDependencies": {

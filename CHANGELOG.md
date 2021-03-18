@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.10](https://github.com/xing/hops/compare/v14.0.0-nightly.9...v14.0.0-nightly.10) (2021-03-18)
+
+
+### Features
+
+* provide display names to Hops's React contexts ([36b6b1d](https://github.com/xing/hops/commit/36b6b1dee1a267f7a78de0e04cee6028362a5450))
+
+
+### Reverts
+
+* use module type "commonjs" instead of "esm" ([cd07037](https://github.com/xing/hops/commit/cd07037c669328ce2d541cb0718a5ef802f0be75))
+
+
+
+
+
 # [14.0.0-nightly.9](https://github.com/xing/hops/compare/v14.0.0-nightly.7...v14.0.0-nightly.9) (2021-03-15)
 
 
