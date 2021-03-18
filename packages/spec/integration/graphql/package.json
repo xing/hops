@@ -10,7 +10,8 @@
     "mixins": [
       "./"
     ],
-    "graphqlUri": "http://localhost:8080/graphql"
+    "port": "8180",
+    "graphqlUri": "http://localhost:8180/graphql"
   },
   "jest": {
     "displayName": "integration",
