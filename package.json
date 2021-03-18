@@ -32,7 +32,7 @@
     "template-graphql": "yarn workspace hops-template-graphql run",
     "template-react": "yarn workspace hops-template-react run",
     "template-redux": "yarn workspace hops-template-redux run",
-    "prerelease": "node -e \"process.exit(process.env.GH_TOKEN !== undefined)\"",
+    "prerelease": "node -e \"process.exit(process.env.GH_TOKEN === undefined)\"",
     "release": "lerna publish",
     "release:prepare": "lerna version --no-push --yes",
     "release:create-nightly": "yarn release premajor --conventional-prerelease --preid nightly",
