@@ -1000,7 +1000,7 @@ Hops uses webpack to configure and instrument your application. However, test ru
 Install it to your project:
 
 ```shell
-npm install --save-dev jest-preset-hops jest
+npm install --save-dev jest-preset-hops jest babel-jest ts-jest
 ```
 
 Add `jest-preset-hops` as [preset](https://facebook.github.io/jest/docs/en/configuration.html#preset-string) to your Jest config. This can for example be done by adding it to your package.json.
