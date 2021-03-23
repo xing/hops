@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "13.4.0",
+  "version": "13.4.1",
   "description": "React and Redux implementation for Hops",
   "keywords": [
     "hops",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "history": "^4.10.1",
-    "hops-mixin": "^13.4.0",
+    "hops-mixin": "^13.4.1",
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.1](https://github.com/xing/hops/compare/v13.4.0...v13.4.1) (2021-03-23)
+
+
+### Bug Fixes
+
+* **webpack:** disable native Webpack stats in develop-mode ([de76cb5](https://github.com/xing/hops/commit/de76cb51446e7846f4f5f04c37d6dcbefb4495e8))
+
+
+
+
+
 # [13.4.0](https://github.com/xing/hops/compare/v13.3.5...v13.4.0) (2021-03-15)
 
 
