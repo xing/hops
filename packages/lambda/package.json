@@ -1,6 +1,6 @@
 {
   "name": "hops-lambda",
-  "version": "13.4.0",
+  "version": "13.4.1",
   "description": "Quick and easy deployment of Hops applications to AWS Lambda",
   "keywords": [
     "hops",
@@ -21,10 +21,10 @@
     "archiver": "^5.0.0",
     "aws-sdk": "^2.546.0",
     "globby": "^11.0.0",
-    "hops-bootstrap": "^13.4.0",
-    "hops-config": "^13.4.0",
-    "hops-express": "^13.4.0",
-    "hops-mixin": "^13.4.0",
+    "hops-bootstrap": "^13.4.1",
+    "hops-config": "^13.4.1",
+    "hops-express": "^13.4.1",
+    "hops-mixin": "^13.4.1",
     "pathifist": "^1.0.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.14",
