@@ -17,12 +17,22 @@ if (Number(jestMajorVersion) < 26) {
   );
 }
 
+const useEsbuild = process.env.USE_EXPERIMENTAL_ESBUILD === 'true';
+const jsTransform = useEsbuild
+  ? require.resolve('./transforms/esbuild.js')
+  : require.resolve('./transforms/babel.js');
+const tsTransform = useEsbuild
+  ? require.resolve('./transforms/esbuild.js')
+  : require.resolve('ts-jest');
+
 module.exports = {
-  globals: {
-    'ts-jest': {
-      babelConfig: require('./transforms/babel.js').babelConfig,
-    },
-  },
+  globals: useEsbuild
+    ? {}
+    : {
+        'ts-jest': {
+          babelConfig: require('./transforms/babel.js').babelConfig,
+        },
+      },
   moduleNameMapper: {
     '^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$': require.resolve(
       './mocks/file.js'
@@ -37,12 +47,14 @@ module.exports = {
     '**/?(*.)+(spec|test).ts?(x)',
   ],
   transform: {
-    '^.+\\.(js|jsx|mjs)$': require.resolve('./transforms/babel.js'),
-    '^.+\\.(ts|tsx)$': require.resolve('ts-jest'),
+    '^.+\\.(js|jsx|mjs)$': jsTransform,
+    '^.+\\.(ts|tsx)$': tsTransform,
     '^.+\\.(gql|graphql)$': require.resolve('./transforms/graphql.js'),
   },
   transformIgnorePatterns: [],
-  setupFiles: [require.resolve('regenerator-runtime/runtime')],
+  setupFiles: useEsbuild
+    ? []
+    : [require.resolve('regenerator-runtime/runtime')],
   // fixes: https://github.com/facebook/jest/issues/6766
   testURL: 'http://localhost',
 };
