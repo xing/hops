@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.11](https://github.com/xing/hops/compare/v14.0.0-nightly.10...v14.0.0-nightly.11) (2021-03-24)
+
+
+### Bug Fixes
+
+* revert deprecation of hops-config import ([7498871](https://github.com/xing/hops/commit/7498871cfd0cd12f2fbbaa211caf9c9ae8bfd68d))
+
+
+
+
+
 # [14.0.0-nightly.10](https://github.com/xing/hops/compare/v14.0.0-nightly.9...v14.0.0-nightly.10) (2021-03-18)
 
 **Note:** Version bump only for package hops-config

@@ -1,6 +1,6 @@
 {
   "name": "hops-pwa",
-  "version": "14.0.0-nightly.10",
+  "version": "14.0.0-nightly.11",
   "description": "ServiceWorker and Web App Manifest support for Hops",
   "keywords": [
     "hops",
@@ -25,9 +25,9 @@
   "dependencies": {
     "app-manifest-loader": "^2.4.1",
     "file-loader": "^6.0.0",
-    "hops-bootstrap": "^14.0.0-nightly.10",
-    "hops-mixin": "^14.0.0-nightly.10",
-    "hops-webpack": "^14.0.0-nightly.10",
+    "hops-bootstrap": "^14.0.0-nightly.11",
+    "hops-mixin": "^14.0.0-nightly.11",
+    "hops-webpack": "^14.0.0-nightly.11",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
     "pathifist": "^1.0.0",

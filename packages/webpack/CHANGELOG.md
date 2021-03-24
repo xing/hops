@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.11](https://github.com/xing/hops/compare/v14.0.0-nightly.10...v14.0.0-nightly.11) (2021-03-24)
+
+
+### Bug Fixes
+
+* **webpack:** ignore source-maps in total asset size ([dc59abd](https://github.com/xing/hops/commit/dc59abda61bb1bc27956c047a759485f4b5ca51f))
+
+
+### Features
+
+* **webpack:** introduce experimental esbuild transpilation ([1746b4d](https://github.com/xing/hops/commit/1746b4da07b53c2b37815916bc8ed14aa24a6d1a))
+
+
+
+
+
 # [14.0.0-nightly.10](https://github.com/xing/hops/compare/v14.0.0-nightly.9...v14.0.0-nightly.10) (2021-03-18)
 
 **Note:** Version bump only for package hops-webpack

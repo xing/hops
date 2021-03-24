@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.11](https://github.com/xing/hops/compare/v14.0.0-nightly.10...v14.0.0-nightly.11) (2021-03-24)
+
+
+### Features
+
+* **jest-preset:** introduce experimental esbuild transpilation ([6a2845e](https://github.com/xing/hops/commit/6a2845e6d2daf096edc1d61c59d65cdb68fc0391))
+
+
+
+
+
 # [14.0.0-nightly.10](https://github.com/xing/hops/compare/v14.0.0-nightly.9...v14.0.0-nightly.10) (2021-03-18)
 
 **Note:** Version bump only for package jest-preset-hops

@@ -1,6 +1,6 @@
 {
   "name": "create-hops-app",
-  "version": "14.0.0-nightly.10",
+  "version": "14.0.0-nightly.11",
   "description": "CLI tool to create Hops applications",
   "keywords": [
     "hops",

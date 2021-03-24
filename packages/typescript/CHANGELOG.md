@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.11](https://github.com/xing/hops/compare/v14.0.0-nightly.10...v14.0.0-nightly.11) (2021-03-24)
+
+
+### Features
+
+* **typescript:** add support for esbuild ([13028d2](https://github.com/xing/hops/commit/13028d2946cabb39d9482894bf2361fd7a77f8e3))
+
+
+
+
+
 # [14.0.0-nightly.10](https://github.com/xing/hops/compare/v14.0.0-nightly.9...v14.0.0-nightly.10) (2021-03-18)
 
 **Note:** Version bump only for package hops-typescript

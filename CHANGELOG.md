@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0-nightly.11](https://github.com/xing/hops/compare/v14.0.0-nightly.10...v14.0.0-nightly.11) (2021-03-24)
+
+
+### Bug Fixes
+
+* revert deprecation of hops-config import ([7498871](https://github.com/xing/hops/commit/7498871cfd0cd12f2fbbaa211caf9c9ae8bfd68d))
+* **webpack:** ignore source-maps in total asset size ([dc59abd](https://github.com/xing/hops/commit/dc59abda61bb1bc27956c047a759485f4b5ca51f))
+
+
+### Features
+
+* **jest-preset:** introduce experimental esbuild transpilation ([6a2845e](https://github.com/xing/hops/commit/6a2845e6d2daf096edc1d61c59d65cdb68fc0391))
+* **react:** add support for esbuild ([6a416a8](https://github.com/xing/hops/commit/6a416a8c981c841ca2ec799ea7c51f5097fe4793))
+* **typescript:** add support for esbuild ([13028d2](https://github.com/xing/hops/commit/13028d2946cabb39d9482894bf2361fd7a77f8e3))
+* **webpack:** introduce experimental esbuild transpilation ([1746b4d](https://github.com/xing/hops/commit/1746b4da07b53c2b37815916bc8ed14aa24a6d1a))
+
+
+
+
+
 # [14.0.0-nightly.10](https://github.com/xing/hops/compare/v14.0.0-nightly.9...v14.0.0-nightly.10) (2021-03-18)
 
 
