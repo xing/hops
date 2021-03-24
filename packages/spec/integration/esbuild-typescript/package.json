@@ -1,0 +1,32 @@
+{
+  "name": "fixture-esbuild-typescript",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "12 || 14 || 15"
+  },
+  "jest": {
+    "displayName": "integration",
+    "testEnvironment": "jest-environment-hops",
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
+  },
+  "hops": {
+    "gracePeriod": 0
+  },
+  "scripts": {
+    "start": "hops start --experimental-esbuild",
+    "build": "hops build --experimental-esbuild"
+  },
+  "dependencies": {
+    "esbuild": "*",
+    "esbuild-jest": "*",
+    "esbuild-loader": "*",
+    "hops": "*",
+    "hops-typescript": "*",
+    "react": "*",
+    "react-helmet-async": "*",
+    "typescript": "*"
+  }
+}
