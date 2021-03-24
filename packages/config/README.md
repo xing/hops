@@ -4,8 +4,6 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a package that exposes your applications configuration and is mostly here for legacy reasons. It has thus been [deprecated](../../DEPRECATIONS.md#dep0001) as of version 12 of Hops and will be removed with the next major release.
-
 Please use [`withConfig`](../../DOCUMENTATION.md#withconfigcomponent) or [`useConfig`](../../DOCUMENTATION.md#useconfig-config) to access the configuration inside your application's React components.
 
 Inside [mixins](../bootstrap#mixins) you can access the config through `this.config`.
