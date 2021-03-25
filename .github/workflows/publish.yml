@@ -3,8 +3,8 @@ name: Publish
 on:
   push:
     branches:
-      - v12.x
       - v13.x
+      - v14.x
 
 jobs:
   publish:
