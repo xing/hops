@@ -23,8 +23,8 @@
 
 ## Docs
 
+- [Hops v14 documentation](https://github.com/xing/hops/blob/v14.x/DOCUMENTATION.md).
 - [Hops v13 documentation](https://github.com/xing/hops/blob/v13.x/DOCUMENTATION.md).
-- [Hops v12 documentation](https://github.com/xing/hops/blob/v12.x/DOCUMENTATION.md).
 
 ## Contributing
 
