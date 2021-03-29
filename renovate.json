@@ -14,8 +14,8 @@
   "semanticCommitScope": null,
   "baseBranches": [
     "master",
-    "release-bot/next-v13.x",
-    "release-bot/next-v12.x"
+    "release-bot/next-v14.x",
+    "release-bot/next-v13.x"
   ],
   "regexManagers": [
     {
@@ -46,12 +46,12 @@
       "labels": [":package: master"]
     },
     {
-      "baseBranchList": ["release-bot/next-v13.x"],
-      "labels": [":package: v13"]
+      "baseBranchList": ["release-bot/next-v14.x"],
+      "labels": [":package: v14"]
     },
     {
-      "baseBranchList": ["release-bot/next-v12.x"],
-      "labels": [":package: v12"],
+      "baseBranchList": ["release-bot/next-v13.x"],
+      "labels": [":package: v13"],
       "major": {
         "enabled": false
       },
