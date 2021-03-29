@@ -8,7 +8,8 @@
       "message": "chore: release %s",
       "conventionalCommits": true,
       "createRelease": "github",
-      "forcePublish": true
+      "forcePublish": true,
+      "exact": true
     },
     "publish": {
       "preDistTag": "next"
