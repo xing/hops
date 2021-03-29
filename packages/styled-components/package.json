@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
-    "hops-mixin": "^14.0.0-nightly.11"
+    "hops-mixin": "14.0.0-nightly.11"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",

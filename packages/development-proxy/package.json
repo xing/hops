@@ -17,8 +17,8 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-debug": "^14.0.0-nightly.11",
-    "hops-mixin": "^14.0.0-nightly.11",
+    "hops-debug": "14.0.0-nightly.11",
+    "hops-mixin": "14.0.0-nightly.11",
     "http-proxy-middleware": "^1.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/development-proxy#readme"

@@ -18,7 +18,7 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-mixin": "^14.0.0-nightly.11",
+    "hops-mixin": "14.0.0-nightly.11",
     "ts-loader": "^8.0.0"
   },
   "peerDependencies": {

@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "depd": "^2.0.0",
-    "hops-bootstrap": "^14.0.0-nightly.11"
+    "hops-bootstrap": "14.0.0-nightly.11"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/config#readme"
 }

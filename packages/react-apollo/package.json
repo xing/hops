@@ -32,9 +32,9 @@
     "depd": "^2.0.0",
     "find-up": "^5.0.0",
     "graphql": "^15.0.0",
-    "hops-config": "^14.0.0-nightly.11",
-    "hops-mixin": "^14.0.0-nightly.11",
-    "hops-react": "^14.0.0-nightly.11",
+    "hops-config": "14.0.0-nightly.11",
+    "hops-mixin": "14.0.0-nightly.11",
+    "hops-react": "14.0.0-nightly.11",
     "strip-indent": "^3.0.0"
   },
   "peerDependencies": {

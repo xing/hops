@@ -29,7 +29,7 @@
     "@babel/preset-react": "^7.9.4",
     "colors": "^1.4.0",
     "core-js": "^3.2.1",
-    "hops": "^14.0.0-nightly.11",
+    "hops": "14.0.0-nightly.11",
     "identity-obj-proxy": "^3.0.0",
     "import-from": "^3.0.0",
     "regenerator-runtime": "^0.13.3"
