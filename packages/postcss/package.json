@@ -32,7 +32,7 @@
     "postcss-normalize-charset": "^4.0.1",
     "postcss-preset-env": "^6.7.0",
     "style-loader": "^2.0.0",
-    "webpack": "^4.41.0"
+    "webpack": "^5.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/postcss#readme"
 }
