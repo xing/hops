@@ -1,6 +1,6 @@
 {
   "name": "hops-mixin",
-  "version": "14.0.0-nightly.11",
+  "version": "14.0.0",
   "description": "Building blocks to build cusom hops mixins",
   "keywords": [
     "hops",

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0](https://github.com/xing/hops/compare/v14.0.0-nightly.11...v14.0.0) (2021-03-29)
+
+**Note:** Version bump only for package hops-express
+
+
+
+
+
 # [14.0.0-nightly.11](https://github.com/xing/hops/compare/v14.0.0-nightly.10...v14.0.0-nightly.11) (2021-03-24)
 
 **Note:** Version bump only for package hops-express
