@@ -13,7 +13,7 @@
   "homepage": "https://github.com/xing/hops#readme",
   "dependencies": {
     "ajv": "^7.0.0",
-    "ajv-formats": "^1.5.1",
+    "ajv-formats": "^2.0.0",
     "check-error": "^1.0.2",
     "cosmiconfig": "^7.0.0",
     "dotenv": "^8.1.0",
