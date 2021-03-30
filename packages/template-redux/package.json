@@ -1,7 +1,7 @@
 {
   "name": "hops-template-redux",
   "version": "15.0.0-nightly.0",
-  "main": "src/app.js",
+  "main": "src/app.jsx",
   "license": "MIT",
   "scripts": {
     "start": "hops start",

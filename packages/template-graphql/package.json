@@ -1,7 +1,7 @@
 {
   "name": "hops-template-graphql",
   "version": "15.0.0-nightly.0",
-  "main": "src/app.js",
+  "main": "src/app.jsx",
   "license": "MIT",
   "hops": {
     "graphqlUri": "https://www.xing.com/xing-one/api"
