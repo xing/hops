@@ -1,6 +1,6 @@
 {
   "name": "hops-spec",
-  "version": "15.0.0-nightly.0",
+  "version": "15.0.0-nightly.1",
   "private": true,
   "files": [],
   "eslintConfig": {
@@ -35,9 +35,9 @@
     "@graphql-tools/stitch": "^7.0.4",
     "@testing-library/react": "^11.0.0",
     "@types/styled-components": "^5.1.8",
-    "create-hops-app": "15.0.0-nightly.0",
+    "create-hops-app": "15.0.0-nightly.1",
     "cross-fetch": "^3.0.4",
-    "jest-environment-hops": "15.0.0-nightly.0",
+    "jest-environment-hops": "15.0.0-nightly.1",
     "raw-body": "^2.4.1",
     "react-apollo": "^3.1.2",
     "react-helmet-async": "^1.0.4",
