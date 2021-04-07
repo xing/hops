@@ -84,7 +84,7 @@ exports.validate = (config, properties) => {
     return [];
   } else {
     return ajv.errors.map(
-      ({ dataPath, message }) => `config${dataPath} ${message}`
+      ({ instancePath, message }) => `config${instancePath} ${message}`
     );
   }
 };
