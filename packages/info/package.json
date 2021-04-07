@@ -22,7 +22,8 @@
     "escape-string-regexp": "^4.0.0",
     "hops-bootstrap": "15.0.0-nightly.0",
     "hops-mixin": "15.0.0-nightly.0",
-    "mixinable": "^5.0.1"
+    "mixinable": "^5.0.1",
+    "web-vitals": "^1.1.1"
   },
   "engines": {
     "node": "12 || 14 || 15"
