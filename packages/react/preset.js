@@ -9,5 +9,6 @@ module.exports = {
     join(__dirname, 'import-component'),
     join(__dirname, 'server-data'),
     join(__dirname, 'config'),
+    join(__dirname, 'fast-refresh'),
   ],
 };
