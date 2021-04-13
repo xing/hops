@@ -29,7 +29,7 @@ class ReactFastRefreshMixin extends Mixin {
   }
 
   configureCommand(definition) {
-    if (definition.command === 'start') {
+    if (['develop', 'start'].includes(definition.command)) {
       definition.builder.fastRefresh = {
         default: false,
         describe:
