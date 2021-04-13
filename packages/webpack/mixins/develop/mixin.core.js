@@ -22,7 +22,19 @@ class WebpackDevelopMixin extends Mixin {
       this.configureCommand({
         command: 'develop',
         describe: `Serve ${name} in watch mode`,
-        builder: {},
+        builder: {
+          fastDev: {
+            default: false,
+            describe:
+              'Experimental: Enable faster development mode (modern browsers only)',
+            type: 'boolean',
+          },
+          experimentalEsbuild: {
+            default: process.env.USE_EXPERIMENTAL_ESBUILD === 'true',
+            describe: 'Use esbuild for transpilation (experimental)',
+            type: 'boolean',
+          },
+        },
         handler: () =>
           this.clean()
             .then(this.runServer.bind(this, 'develop'))
