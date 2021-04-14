@@ -9,7 +9,7 @@
     "gracePeriod": 0
   },
   "jest": {
-    "displayName": "foo",
+    "displayName": "integration",
     "testEnvironment": "jest-environment-hops",
     "setupFilesAfterEnv": [
       "../../jest.setup.js"
