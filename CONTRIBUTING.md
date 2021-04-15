@@ -50,6 +50,7 @@ These steps are to be done on the master branch:
 - Add the new release label to the check-label config ([example](https://github.com/xing/hops/pull/1682/commits/1fc5688406594e769621e3836809d21a0da18604))
 - Update the release-bot config for the new branches ([example](https://github.com/xing/hops/pull/1682/commits/07187953765851052f5aef32647d5a96f400cabe))
 - Update base branches in renovate config ([example](https://github.com/xing/hops/pull/1682/commits/dad6ee42a1d80dcccb47c587c61ebeb02ea2a819))
+<!-- TODO: add new commit here that includes the update of the "branches-ignore"-property in node-ci.yml -->
 - Update the branches in CI workflows ([example](https://github.com/xing/hops/pull/1682/commits/f9fb27bee52d511c879b9cf2efd484317706832a))
 - Update documentation links ([example](https://github.com/xing/hops/pull/1682/commits/67b14b9ce66db3281e9e5ab2f53172afabd5f7bc))
 
