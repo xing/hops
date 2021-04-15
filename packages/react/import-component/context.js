@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-const context = createContext({});
+const context = createContext(undefined);
 
 context.displayName = 'Hops.ImportComponent';
 
