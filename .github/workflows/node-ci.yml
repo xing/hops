@@ -5,6 +5,9 @@ on:
     branches-ignore:
       - 'staging.tmp'
       - 'trying.tmp'
+      - 'master'
+      - 'v14.x'
+      - 'v13.x'
 
 jobs:
   tests:
