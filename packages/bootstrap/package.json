@@ -24,7 +24,7 @@
     "hops-debug": "15.0.0-nightly.1",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
-    "supports-color": "^8.0.0"
+    "supports-color": "^9.0.0"
   },
   "engines": {
     "node": "12 || 14 || 15"
