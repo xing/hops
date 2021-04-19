@@ -50,7 +50,7 @@
     "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.2",
-    "ts-jest": "^26.0.0"
+    "ts-jest": "^26.5.4"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/jest-preset#readme"
 }
