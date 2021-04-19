@@ -38,7 +38,7 @@
     "create-hops-app": "15.0.0-nightly.1",
     "cross-fetch": "^3.0.4",
     "esbuild-jest": "^0.5.0",
-    "esbuild-loader": "^2.10.0",
+    "esbuild-loader": "^2.11.0",
     "jest-environment-hops": "15.0.0-nightly.1",
     "raw-body": "^2.4.1",
     "react-apollo": "^3.1.2",
