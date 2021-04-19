@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "archiver": "^5.0.0",
-    "aws-sdk": "^2.546.0",
+    "aws-sdk": "^2.884.0",
     "globby": "^11.0.0",
     "hops-bootstrap": "15.0.0-nightly.1",
     "hops-config": "15.0.0-nightly.1",
