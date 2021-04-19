@@ -1,0 +1,4 @@
+ignore-branches:
+  - master
+  - v14.x
+  - v13.x

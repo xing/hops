@@ -4409,10 +4409,10 @@ camelize@^1.0.0:
   resolved "https://registry.yarnpkg.com/camelize/-/camelize-1.0.0.tgz#164a5483e630fa4321e5af07020e531831b2609b"
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
-canarist@^2.2.2:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/canarist/-/canarist-2.2.3.tgz#4682f782fa42cf4a5f251c77a56a231d6f68dd60"
-  integrity sha512-ks4nOSeoDibLljbG4TwWFpQepGulgkarssyql2eClbfe2rv5meEIzgtL495wI35hSEaP/ZO6nGfF2oBRrM/JvA==
+canarist@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/canarist/-/canarist-2.3.0.tgz#3f62fec2250825681c09e55da77de853b488ac76"
+  integrity sha512-3Pewh1/UzpF6RVyTAm3kVRfajcdlvWV1iHh4bjgW0z+FcAd8dMJG9nBIjT0W/IzpiR1oLbRulMFZd2iVeSFdYA==
   dependencies:
     cosmiconfig "^7.0.0"
     debug "^4.1.1"
@@ -6034,11 +6034,6 @@ esbuild@^0.10.2:
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.10.2.tgz#caa65a8f3096d547d89159918039df6c5c6c90be"
   integrity sha512-/5vsZD7wTJJHC3yNXLUjXNvUDwqwNoIMvFvLd9tcDQ9el5l13pspYm3yufavjIeYvNtAbo+6N/6uoWx9dGA6ug==
-
-esbuild@^0.9.6:
-  version "0.9.7"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.9.7.tgz#ea0d639cbe4b88ec25fbed4d6ff00c8d788ef70b"
-  integrity sha512-VtUf6aQ89VTmMLKrWHYG50uByMF4JQlVysb8dmg6cOgW8JnFCipmz7p+HNBl+RR3LLCuBxFGVauAe2wfnF9bLg==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -13287,13 +13282,6 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
-  dependencies:
-    has-flag "^4.0.0"
-
-supports-color@^8.0.0:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-8.1.1.tgz#cd6fc17e28500cff56c1b86c0a7fd4a54a73005c"
-  integrity sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==
   dependencies:
     has-flag "^4.0.0"
 

@@ -82,9 +82,17 @@ This feature is enabled by default and can be disabled via the `--no-parallel-bu
 
 ##### `--fast-dev` _experimental_
 
-Using the experimental `--fast-dev` option will disable automatic polyfilling and transpiling of all `node_modules` files through babel to enable faster development times. This will lead to a different bundle being created than in production mode and will not work on all browsers (modern browsers only). Use with caution and report any bugs you may encounter.
+Using the experimental `--fast-dev` option will disable automatic polyfilling and transpiling of all `node_modules` files through babel to enable faster development times. This will lead to a different bundle being created than in production mode and will not work in all browsers (modern browsers only). Use with caution and report any bugs you may encounter.
 
 **DO NOT USE THIS MODE FOR QA OR PRODUCTION**
+
+##### `--experimental-esbuild` _experimental_
+
+Using the experimental `--experimental-esbuild` option will replace the `babel-loader` of Hops's internal Webpack config with the `esbuild-loader`. While ESBuild is significantly faster than Babel, it's still early-stage and might lead to unexpected results.
+
+To use it, install [`esbuild-loader`](https://www.npmjs.com/package/esbuild-loader) and [`esbuild-jest`](https://www.npmjs.com/package/esbuild-jest) as dev-dependencies in your project.
+
+Please report any bugs you may encounter.
 
 ## API
 
