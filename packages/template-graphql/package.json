@@ -13,7 +13,7 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.11",
+    "@apollo/client": "^3.3.14",
     "hops": "15.0.0-nightly.1",
     "hops-graphql": "15.0.0-nightly.1",
     "hops-postcss": "15.0.0-nightly.1",
