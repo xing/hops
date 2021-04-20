@@ -237,7 +237,9 @@ This command will either start the development server or execute a production bu
 _The production flag (`--production` or `-p`) is a shortcut for setting the environment variable `NODE_ENV=production`, so these two are interchangeable._
 
 - `npm start` starts the development server with hot module reloading, etc.
+- `npm start -- --fast-refresh` (**experimental**) starts the development server with react-refresh, etc.
 - `npm start -- --fast-dev` (**experimental**) starts the development server with some optimizations for faster builds (_warning:_ this will lead to different bundles than in production, use with caution).
+- `npm start -- --experimental-esbuild` (**experimental**) starts the development server with [ESBuild](https://esbuild.github.io/) instead of [Babel](https://babeljs.io/). [Read here how to set it up.](packages/webpack#--experimental-esbuild-experimental)
 - `npm start -- --production` executes a production build and then starts the production server.
 
 #### `npm run build`
@@ -248,6 +250,7 @@ This command will execute a single build of all your assets.
 - `npm run build -- --fast-build` (**experimental**) only transpiles a predefined set of node modules (_warning:_ you might have node modules which needs to be transpiled, use with caution).
 - `npm run build -- --production` builds all assets in production mode (which includes minification, etc).
 - `npm run build -- --analyze-client-bundle` visualize bundles' contents with [webpack bundle analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
+- `npm run build -- --experimental-esbuild` (**experimental**) builds the assets using [ESBuild](https://esbuild.github.io/) instead of [Babel](https://babeljs.io/). [Read here how to set it up.](packages/webpack#--experimental-esbuild-experimental)
 
 #### `npm run serve`
 

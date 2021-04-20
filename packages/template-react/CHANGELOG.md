@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
+
+
+### Bug Fixes
+
+* set correct "main" fields for templates ([6d9d0c7](https://github.com/xing/hops/commit/6d9d0c7efb1a608d1a055e37a11e13404bb9161b))
+
+
+### Features
+
+* **react:** add fast refresh plugin ([e5fcf09](https://github.com/xing/hops/commit/e5fcf09e15fcc902097e2e6454527ec19084c5e3))
+
+
+
+
+
 ## [14.0.1](https://github.com/xing/hops/compare/v14.0.0...v14.0.1) (2021-03-29)
 
 **Note:** Version bump only for package hops-template-react

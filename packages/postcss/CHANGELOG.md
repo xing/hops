@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
+
+
+### Bug Fixes
+
+* update webpack core ([8c89d8d](https://github.com/xing/hops/commit/8c89d8d0616846c24a90aef779d50fed9cd0b2f9))
+
+
+
+
+
 ## [14.0.1](https://github.com/xing/hops/compare/v14.0.0...v14.0.1) (2021-03-29)
 
 **Note:** Version bump only for package hops-postcss

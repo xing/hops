@@ -1,6 +1,6 @@
 {
   "name": "create-hops-app",
-  "version": "14.0.1",
+  "version": "14.1.0",
   "description": "CLI tool to create Hops applications",
   "keywords": [
     "hops",
@@ -11,7 +11,7 @@
     "node": "12 || 14 || 15"
   },
   "bin": {
-    "create-hops-app@next": "./index.js"
+    "create-hops-app": "./index.js"
   },
   "repository": {
     "type": "git",

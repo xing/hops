@@ -1,0 +1,28 @@
+{
+  "name": "fixture-fast-refresh",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "12 || 14 || 15"
+  },
+  "hops": {
+    "gracePeriod": 0
+  },
+  "jest": {
+    "displayName": "integration",
+    "testEnvironment": "jest-environment-hops",
+    "setupFilesAfterEnv": [
+      "../../jest.setup.js"
+    ]
+  },
+  "scripts": {
+    "start": "hops start",
+    "build": "hops build"
+  },
+  "dependencies": {
+    "hops": "*",
+    "react": "*",
+    "react-helmet-async": "*",
+    "react-router-dom": "*"
+  }
+}

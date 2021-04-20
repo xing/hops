@@ -66,8 +66,16 @@
             ]
           },
           {
+            "url": "enc:r6BTklZr+axySHpOBj0JysOusV4S8o7YtSxZ9fi66rL5grn3vMkHUbMdb3OY5+tv",
+            "directory": "internal-hops",
+            "branch": "release-bot/next-v14.x",
+            "commands": [
+              ""
+            ]
+          },
+          {
             "url": "enc:r6BTklZr+axySHpOBj0JyiGPh/P525a+dfwfWHQq5kkrY1Wruq8QaSL2vCfb0cWp",
-            "branch": "hops-nightly"
+            "branch": "hops-14.x"
           }
         ]
       }
@@ -203,11 +211,8 @@
     "@commitlint/config-conventional": "^12.0.0",
     "@commitlint/config-lerna-scopes": "^12.0.0",
     "babel-eslint": "^10.0.3",
-    "canarist": "^2.2.2",
+    "canarist": "^2.3.0",
     "cz-conventional-changelog": "^3.0.2",
-    "esbuild": "^0.9.6",
-    "esbuild-jest": "^0.5.0",
-    "esbuild-loader": "^2.10.0",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-import": "^2.18.2",
@@ -219,7 +224,7 @@
     "jest-runner-eslint": "0.10.0",
     "jest-runner-prettier": "0.3.6",
     "jest-watch-select-projects": "2.0.0",
-    "jest-watch-typeahead": "0.6.1",
+    "jest-watch-typeahead": "0.6.2",
     "lerna": "^4.0.0",
     "lint-staged": "^10.0.0",
     "prettier": "^2.0.0"
