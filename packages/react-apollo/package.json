@@ -1,6 +1,6 @@
 {
   "name": "hops-react-apollo",
-  "version": "13.4.1",
+  "version": "13.4.2",
   "description": "React and GraphQL implementation for Hops",
   "keywords": [
     "hops",
@@ -27,9 +27,9 @@
     "apollo-link-http": "^1.5.16",
     "cross-fetch": "^3.0.4",
     "graphql": "^15.0.0",
-    "hops-config": "^13.4.1",
-    "hops-mixin": "^13.4.1",
-    "hops-react": "^13.4.1",
+    "hops-config": "^13.4.2",
+    "hops-mixin": "^13.4.2",
+    "hops-react": "^13.4.2",
     "strip-indent": "^3.0.0"
   },
   "peerDependencies": {
