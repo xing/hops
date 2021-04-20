@@ -1,3 +1,3 @@
 const React = require('react');
 
-module.exports = React.createContext({});
+module.exports = React.createContext(undefined);
