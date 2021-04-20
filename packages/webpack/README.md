@@ -92,7 +92,30 @@ Using the experimental `--experimental-esbuild` option will replace the `babel-l
 
 To use it, install [`esbuild-loader`](https://www.npmjs.com/package/esbuild-loader) and [`esbuild-jest`](https://www.npmjs.com/package/esbuild-jest) as dev-dependencies in your project.
 
-Please report any bugs you may encounter.
+In order to use esbuild in Jest you need to set the `USE_EXPERIMENTAL_ESBUILD` environment variable to `true`.
+
+```sh
+USE_EXPERIMENTAL_ESBUILD=true npm test
+```
+
+**Please be aware that things are working differently in esbuild than Babel. The currently known drawbacks and limitations are:**
+
+- esbuild is not on a stable release cycle yet. Please also read about the [production readyness](https://esbuild.github.io/faq/#production-readiness) from the main author.
+- esbuild does not typecheck your TypeScript files, it can only convert them to JavaScript.
+- to use the JSX syntax in TypeScript you have to use the `.tsx` extention. We recommend to also use the `.jsx` extention for JavaScript based JSX files to be consistent, even though it's not required.
+- Hops' `importComponent` is currently a Babel plugin and for esbuild we only implemented the transpilation of the simple syntax for now (arrow function with import expression). That means it only supports default imports, but no named imports.
+
+```js
+// example of supported syntax:
+const Home = importComponent(() => import('./home'));
+// example of unsupported syntax:
+const Home = importComponent(
+  () => import('./home'),
+  (namespace) => namespace.Home
+);
+```
+
+And there might be more issues. So please report any bugs you may encounter to us.
 
 ## API
 
