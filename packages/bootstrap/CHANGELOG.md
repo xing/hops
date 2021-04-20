@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
+
+
+### Bug Fixes
+
+* **bootstrap:** adapt validator to breaking changes in ajv ([37e9ea9](https://github.com/xing/hops/commit/37e9ea97b0a2d0ea530e4306a7a43f1dc3a4a5b0))
+* update dependency ajv to v8 ([b3f6033](https://github.com/xing/hops/commit/b3f6033dfc1a81303db1c1e0397811dc817cf1ef))
+* update dependency ajv-formats to v2 ([5b768f1](https://github.com/xing/hops/commit/5b768f123b7a8f28feebae881724dd43f967007d))
+
+
+
+
+
 ## [14.0.1](https://github.com/xing/hops/compare/v14.0.0...v14.0.1) (2021-03-29)
 
 **Note:** Version bump only for package hops-bootstrap

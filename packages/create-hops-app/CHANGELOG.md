@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
+
+
+### Bug Fixes
+
+* **create-hops-app:** rename bin to "create-hops-app" for stable version ([35a0b79](https://github.com/xing/hops/commit/35a0b79cd339daf044863a696e5f4e9f0c924748))
+
+
+
+
+
 ## [14.0.1](https://github.com/xing/hops/compare/v14.0.0...v14.0.1) (2021-03-29)
 
 **Note:** Version bump only for package create-hops-app

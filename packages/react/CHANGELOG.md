@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
+
+
+### Bug Fixes
+
+* correctly initialize import component context ([2df0da6](https://github.com/xing/hops/commit/2df0da6d44256d6c77cc0bc1a3dcf435a65a8a2e)), closes [#1729](https://github.com/xing/hops/issues/1729)
+* **react:** add missing CLI-flag to develop command ([9bfe85f](https://github.com/xing/hops/commit/9bfe85f685eef18bfa8103f8717a1f13351b1b87))
+
+
+### Features
+
+* **react:** add fast refresh plugin ([e5fcf09](https://github.com/xing/hops/commit/e5fcf09e15fcc902097e2e6454527ec19084c5e3))
+
+
+
+
+
 ## [14.0.1](https://github.com/xing/hops/compare/v14.0.0...v14.0.1) (2021-03-29)
 
 **Note:** Version bump only for package hops-react

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
+
+
+### Bug Fixes
+
+* correctly initialize import component context ([2df0da6](https://github.com/xing/hops/commit/2df0da6d44256d6c77cc0bc1a3dcf435a65a8a2e)), closes [#1729](https://github.com/xing/hops/issues/1729)
+* **react:** add missing CLI-flag to develop command ([9bfe85f](https://github.com/xing/hops/commit/9bfe85f685eef18bfa8103f8717a1f13351b1b87))
+* **webpack:** add missing CLI-flags to develop command ([fe9ce0e](https://github.com/xing/hops/commit/fe9ce0e790e3d4e8c6bc9fc5f40ecb537e11cd86))
+* update dependency ajv to v8 ([b3f6033](https://github.com/xing/hops/commit/b3f6033dfc1a81303db1c1e0397811dc817cf1ef))
+* update webpack core ([8c89d8d](https://github.com/xing/hops/commit/8c89d8d0616846c24a90aef779d50fed9cd0b2f9))
+* **bootstrap:** adapt validator to breaking changes in ajv ([37e9ea9](https://github.com/xing/hops/commit/37e9ea97b0a2d0ea530e4306a7a43f1dc3a4a5b0))
+* set correct "main" fields for templates ([6d9d0c7](https://github.com/xing/hops/commit/6d9d0c7efb1a608d1a055e37a11e13404bb9161b))
+* update dependency ajv-formats to v2 ([5b768f1](https://github.com/xing/hops/commit/5b768f123b7a8f28feebae881724dd43f967007d))
+* **create-hops-app:** rename bin to "create-hops-app" for stable version ([35a0b79](https://github.com/xing/hops/commit/35a0b79cd339daf044863a696e5f4e9f0c924748))
+
+
+### Features
+
+* **react:** add fast refresh plugin ([e5fcf09](https://github.com/xing/hops/commit/e5fcf09e15fcc902097e2e6454527ec19084c5e3))
+* add web vitals support ([68b85cf](https://github.com/xing/hops/commit/68b85cf8637f1cc2e67ebe284e6b4d1c54f9edda))
+
+
+
+
+
 ## [14.0.1](https://github.com/xing/hops/compare/v14.0.0...v14.0.1) (2021-03-29)
 
 **Note:** Version bump only for package hops-lerna-root
