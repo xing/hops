@@ -70,7 +70,7 @@ exports.importComponent = (
     }
 
     return createElement(Importer, {
-      hasModules: Boolean(modules),
+      hasModules: Boolean(modules && modules.length > 0),
       loader,
       render,
       ownProps,

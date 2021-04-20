@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.2](https://github.com/xing/hops/compare/v13.4.1...v13.4.2) (2021-04-20)
+
+
+### Bug Fixes
+
+* correctly initialize import component context ([209f720](https://github.com/xing/hops/commit/209f7200e143b64f7f8b6bf085a45eb19b0c52d7)), closes [#1729](https://github.com/xing/hops/issues/1729)
+
+
+
+
+
 ## [13.4.1](https://github.com/xing/hops/compare/v13.4.0...v13.4.1) (2021-03-23)
 
 
