@@ -47,7 +47,11 @@ class GraphQLMixin extends Mixin {
   }
 
   getApolloCache() {
-    return this.options.cache || global['APOLLO_FRAGMENT_TYPES']
+    if (this.options.cache) {
+      return this.options.cache;
+    }
+
+    return global['APOLLO_FRAGMENT_TYPES']
       ? new InMemoryCache({
           possibleTypes: global['APOLLO_FRAGMENT_TYPES'],
         }).restore(global['APOLLO_STATE'])
