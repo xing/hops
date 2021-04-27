@@ -62,7 +62,8 @@
         ],
         "rootManifest": {
           "resolutions": {
-            "react-apollo": "3.1.5"
+            "react-apollo": "3.1.5",
+            "graphql-tag": "^2.12"
           }
         }
       },
