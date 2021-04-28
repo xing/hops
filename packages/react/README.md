@@ -30,7 +30,6 @@ After installing this preset your main entry file (either referenced via `packag
 
 ```javascript
 import { render } from 'hops-react';
-import React from 'react';
 
 export default render(<h1>Hello World!</h1>);
 ```
@@ -46,8 +45,8 @@ Check out this [integration test](../spec/integration/react) as an example for h
 `render` accepts two arguments: a react element and an optional options object. `hops-react` will use the contents of `options.router` to configure the [React Router](https://github.com/ReactTraining/react-router) instances it controls.
 
 ```javascript
-import React from 'react';
 import { render } from 'hops-react';
+
 export default render(<h1>hello world</h1>);
 ```
 

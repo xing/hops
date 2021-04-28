@@ -123,7 +123,6 @@ The main export of the entry file must be the result of `hops`'s [`render()`](#r
 
 ```javascript
 import { render } from 'hops';
-import React from 'react';
 
 export default render(<h1>Hello World!</h1>);
 ```
@@ -136,7 +135,6 @@ Hops ships with [`react-router`](https://reacttraining.com/react-router/web/guid
 
 ```javascript
 import { render, Miss } from 'hops';
-import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 const Home = () => <h1>Home</h1>;
@@ -174,7 +172,6 @@ And when we now import this file we will have access to all its class names whic
 **`src/app.js`**
 
 ```javascript
-import React from 'react';
 import { render } from 'hops';
 import styles from './styles.css';
 
@@ -190,7 +187,6 @@ You can use code-splitting (or bundle-splitting) to reduce the size of the asset
 **`src/my-component.js`**
 
 ```javascript
-import React from 'react';
 export default () => <p>This has been loaded lazily</p>;
 ```
 
@@ -198,7 +194,6 @@ export default () => <p>This has been loaded lazily</p>;
 
 ```javascript
 import { render, importComponent } from 'hops';
-import React from 'react';
 
 const MyLazyComponent = importComponent(() => import('./my-component'));
 
@@ -350,7 +345,6 @@ The above example demonstrates how you can pass the value of the environment var
 
 ```javascript
 import { render, withConfig } from 'hops';
-import React from 'react';
 
 const Config = withConfig(({ config }) => <div>{config.myApiUrl}</div>);
 
@@ -493,7 +487,6 @@ It is commonly used in an application's routing config as the last route:
 
 ```javascript
 import { render, Miss } from 'hops';
-import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 const Home = () => <h1>Home</h1>;
@@ -514,7 +507,6 @@ With this component you can declaratively change the status code of the HTTP res
 
 ```javascript
 import { render, Status } from 'hops';
-import React from 'react';
 
 export default render(<Status code={418} />);
 ```
@@ -525,7 +517,6 @@ With this component you can specify additional HTTP headers to be sent in the se
 
 ```javascript
 import { render, Header } from 'hops';
-import React from 'react';
 
 export default render(<Header name="X-Foo" value="my-value" />);
 ```
@@ -592,7 +583,6 @@ During tests `importComponent` simply outputs the referenced component. If you'd
 **Example: check the loading state**
 
 ```javascript
-import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import testRenderer from 'react-test-renderer';
 import App from '../';
@@ -779,7 +769,6 @@ At the end they will be combined to a single CSS file and loaded automatically.
 
 ```javascript
 import { render } from 'hops';
-import React from 'react';
 import styles from './styles.css';
 
 export default render(<h1 className={styles.headline}>hello world</h1>);
@@ -805,7 +794,6 @@ Now you can use styled-components in your app and it will work out of the box wi
 
 ```javascript
 import { render } from 'hops';
-import React from 'react';
 import styled from 'styled-components';
 
 const H1 = styled.h1`
@@ -864,7 +852,6 @@ Now you can `import`/`require` your web app manifest and render a `<link />` tag
 
 ```javascript
 import { render } from 'hops';
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import manifest from './manifest.webmanifest';
 
@@ -894,7 +881,6 @@ And then register the service worker in your main entry file:
 
 ```javascript
 import { render } from 'hops';
-import React from 'react';
 import installServiceWorker from 'hops-pwa';
 
 installServiceWorker();
@@ -1226,7 +1212,6 @@ module.exports = MyExpressMixin;
 **`my-component.js`**
 
 ```javascript
-import React from 'react';
 import { withServerData } from 'hops';
 
 const MyComponent = ({ serverData }) => <div>{serverData.someKey}</div>;
@@ -1271,7 +1256,6 @@ And then, once [activated](#activating-presets), you can use it like this in you
 import { render } from 'hops';
 import { action, observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
-import React from 'react';
 
 const theme = observable(
   {
