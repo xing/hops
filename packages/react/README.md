@@ -4,7 +4,7 @@
 
 **Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
 
-This is a [preset for Hops](../../DOCUMENTATION.md#presets) that enables React, JSX, React-Helmet Async and React-Router support in Hops applications.
+This is a [preset for Hops](../../DOCUMENTATION.md#presets) that enables React, JSX, React-Helmet Async and React-Router support in Hops applications. It also supports [the JSX Transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html).
 
 `hops-react`'s main runtime exports are a couple of React components that allow implementers to declaratively control server (or system) behavior. Additionally, `hops-react` features full support for [`react-router`](https://github.com/ReactTraining/react-router)'s and [`react-helmet-async`](https://github.com/staylor/react-helmet-async)'s components.
 
