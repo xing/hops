@@ -88,7 +88,7 @@ Using the experimental `--fast-dev` option will disable automatic polyfilling an
 
 ##### `--experimental-esbuild` _experimental_
 
-Using the experimental `--experimental-esbuild` option will replace the `babel-loader` of Hops's internal Webpack config with the `esbuild-loader`. While ESBuild is significantly faster than Babel, it's still early-stage and might lead to unexpected results.
+Using the experimental `--experimental-esbuild` option will replace the `babel-loader` of Hops's internal Webpack config with the `esbuild-loader`. While esbuild is significantly faster than Babel, it's still early-stage and might lead to unexpected results.
 
 To use it, install [`esbuild-loader`](https://www.npmjs.com/package/esbuild-loader) and [`esbuild-jest`](https://www.npmjs.com/package/esbuild-jest) as dev-dependencies in your project.
 
@@ -103,6 +103,7 @@ USE_EXPERIMENTAL_ESBUILD=true npm test
 - esbuild is not on a stable release cycle yet. Please also read about the [production readyness](https://esbuild.github.io/faq/#production-readiness) from the main author.
 - esbuild does not typecheck your TypeScript files, it can only convert them to JavaScript.
 - to use the JSX syntax in TypeScript you have to use the `.tsx` extention. We recommend to also use the `.jsx` extention for JavaScript based JSX files to be consistent, even though it's not required.
+- it does not support [the new JSX Transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html), so it's up to you to import `React` into every component
 - Hops' `importComponent` is currently a Babel plugin and for esbuild we only implemented the transpilation of the simple syntax for now (arrow function with import expression). That means it only supports default imports, but no named imports.
 
 ```js
