@@ -22,7 +22,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "eprom": "^1.0.0",
-    "fs-extra": "^9.0.1",
+    "fs-extra": "^10.0.0",
     "hops-debug": "15.0.0-nightly.1",
     "import-from": "^3.0.0",
     "mkdirp": "^1.0.4",
