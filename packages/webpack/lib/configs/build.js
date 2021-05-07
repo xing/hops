@@ -7,6 +7,7 @@ const {
 } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const { join, trimSlashes } = require('pathifist');
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const getModules = require('../utils/modules');
 
 const { ModuleConcatenationPlugin } = optimize;
@@ -95,9 +96,10 @@ module.exports = function getConfig(config, name) {
         relative(config.rootDir, info.absoluteResourcePath),
     },
     resolve: {
+      plugins: [PnpWebpackPlugin],
       modules: getModules(config.rootDir),
       alias: {
-        'hops/entrypoint': config.rootDir,
+        'hops/entrypoint': require.resolve(config.rootDir),
         'regenerator-runtime': dirname(
           require.resolve('regenerator-runtime/package.json')
         ),
@@ -115,6 +117,9 @@ module.exports = function getConfig(config, name) {
         'jsnext:main',
         'main',
       ],
+    },
+    resolveLoader: {
+      plugins: [PnpWebpackPlugin.moduleLoader(module)],
     },
     module: {
       rules: [{ oneOf: allLoaderConfigs }],

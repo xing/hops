@@ -7,6 +7,7 @@ const {
   optimize,
 } = require('webpack');
 const { join, trimSlashes } = require('pathifist');
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const getModules = require('../utils/modules');
 
 const { LimitChunkCountPlugin } = optimize;
@@ -109,9 +110,10 @@ module.exports = function getConfig(config, name) {
         resolve(info.absoluteResourcePath),
     },
     resolve: {
+      plugins: [PnpWebpackPlugin],
       modules: getModules(config.rootDir),
       alias: {
-        'hops/entrypoint': config.rootDir,
+        'hops/entrypoint': require.resolve(config.rootDir),
         'core-js': dirname(require.resolve('core-js/package.json')),
       },
       extensions: ['.mjs', '.js'],
@@ -126,6 +128,9 @@ module.exports = function getConfig(config, name) {
         'jsnext:main',
         'main',
       ],
+    },
+    resolveLoader: {
+      plugins: [PnpWebpackPlugin.moduleLoader(module)],
     },
     module: {
       rules: [{ oneOf: allLoaderConfigs }],
