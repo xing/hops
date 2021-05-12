@@ -1,8 +1,7 @@
 {
   "extends": ["config:base"],
-  "pinVersions": false,
   "prCreation": "not-pending",
-  "masterIssue": true,
+  "dependencyDashboard": true,
   "lockFileMaintenance": {
     "enabled": true
   },
@@ -29,28 +28,27 @@
   ],
   "packageRules": [
     {
-      "depTypeList": ["dependencies", "peerDependencies"],
+      "matchDepTypes": ["dependencies", "peerDependencies"],
       "semanticCommitType": "fix"
     },
     {
-      "depTypeList": ["peerDependencies"],
+      "matchDepTypes": ["peerDependencies"],
       "rangeStrategy": "widen"
     },
     {
-      "depTypeList": ["devDependencies"],
-      "updateTypes": ["major", "minor"],
+      "matchDepTypes": ["devDependencies"],
       "rangeStrategy": "bump"
     },
     {
-      "baseBranchList": ["master"],
+      "matchBaseBranches": ["master"],
       "labels": [":package: master"]
     },
     {
-      "baseBranchList": ["release-bot/next-v14.x"],
+      "matchBaseBranches": ["release-bot/next-v14.x"],
       "labels": [":package: v14"]
     },
     {
-      "baseBranchList": ["release-bot/next-v13.x"],
+      "matchBaseBranches": ["release-bot/next-v13.x"],
       "labels": [":package: v13"],
       "major": {
         "enabled": false
