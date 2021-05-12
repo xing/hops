@@ -42,7 +42,7 @@
     "jest-environment-hops": "15.0.0-nightly.1",
     "raw-body": "^2.4.1",
     "react-apollo": "^3.1.5",
-    "react-helmet-async": "^1.0.4",
+    "react-helmet-async": "^1.0.9",
     "semver": "^7.0.0"
   },
   "dependencies": {
