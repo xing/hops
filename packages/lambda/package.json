@@ -21,19 +21,19 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "archiver": "^5.0.0",
-    "aws-sdk": "^2.546.0",
-    "globby": "^11.0.0",
+    "archiver": "5.3.0",
+    "aws-sdk": "2.893.0",
+    "globby": "11.0.3",
     "hops-bootstrap": "15.0.0-nightly.1",
     "hops-config": "15.0.0-nightly.1",
     "hops-express": "15.0.0-nightly.1",
     "hops-mixin": "15.0.0-nightly.1",
-    "pathifist": "^1.0.0",
-    "prompt": "^1.0.0",
-    "resolve-tree": "^0.1.14",
-    "semver": "^7.0.0",
-    "serverless-http": "^2.3.0",
-    "strip-indent": "^3.0.0"
+    "pathifist": "1.0.0",
+    "prompt": "1.1.0",
+    "resolve-tree": "0.1.14",
+    "semver": "7.3.5",
+    "serverless-http": "2.7.0",
+    "strip-indent": "3.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/lambda#readme"
 }

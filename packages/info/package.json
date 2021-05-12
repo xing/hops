@@ -15,15 +15,15 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "chalk": "^4.0.0",
-    "duplitect": "^3.0.0",
-    "enhanced-resolve": "^5.0.0",
-    "eprom": "^1.0.0",
-    "escape-string-regexp": "^4.0.0",
+    "chalk": "4.1.1",
+    "duplitect": "3.0.0",
+    "enhanced-resolve": "5.8.0",
+    "eprom": "1.0.0",
+    "escape-string-regexp": "4.0.0",
     "hops-bootstrap": "15.0.0-nightly.1",
     "hops-mixin": "15.0.0-nightly.1",
-    "mixinable": "^5.0.1",
-    "web-vitals": "^1.1.1"
+    "mixinable": "5.0.2",
+    "web-vitals": "1.1.1"
   },
   "engines": {
     "node": "12 || 14 || 15"

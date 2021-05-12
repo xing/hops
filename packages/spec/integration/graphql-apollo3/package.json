@@ -25,12 +25,12 @@
     "build": "hops build"
   },
   "dependencies": {
-    "@apollo/client": "3.x.x",
+    "@apollo/client": "3.3.17",
     "hops": "*",
     "hops-graphql": "*",
     "react": "*",
     "react-helmet-async": "*",
     "react-router-dom": "*",
-    "qs": "^6.7.0"
+    "qs": "6.10.1"
   }
 }
