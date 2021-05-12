@@ -33,7 +33,7 @@
     "resolve-tree": "^0.1.14",
     "semver": "^7.0.0",
     "serverless-http": "^2.3.0",
-    "strip-indent": "^3.0.0"
+    "strip-indent": "^4.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/lambda#readme"
 }
