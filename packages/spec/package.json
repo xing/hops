@@ -43,7 +43,7 @@
     "raw-body": "^2.4.1",
     "react-apollo": "^3.1.5",
     "react-helmet-async": "^1.0.9",
-    "semver": "^7.0.0"
+    "semver": "^7.3.5"
   },
   "dependencies": {
     "@vishnucss/chips": "^1.1.2",
