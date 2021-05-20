@@ -39,7 +39,7 @@
     "react": "^17.0.2",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.4",
+    "redux": "^4.1.0",
     "redux-thunk": "^2.3.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/redux#readme"
