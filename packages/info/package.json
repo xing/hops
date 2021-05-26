@@ -17,7 +17,7 @@
   "dependencies": {
     "chalk": "^4.0.0",
     "duplitect": "^3.0.0",
-    "enhanced-resolve": "^5.0.0",
+    "enhanced-resolve": "5.8.2",
     "eprom": "^1.0.0",
     "escape-string-regexp": "^4.0.0",
     "hops-bootstrap": "15.0.0-nightly.1",
