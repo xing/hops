@@ -20,7 +20,7 @@
     "enhanced-resolve": "^5.0.0",
     "eprom": "^1.0.0",
     "escape-string-regexp": "^4.0.0",
-    "event-source-polyfill": "^1.0.9",
+    "event-source-polyfill": "1.0.24",
     "file-loader": "^6.0.0",
     "find-up": "^5.0.0",
     "hops-bootstrap": "15.0.0-nightly.1",
