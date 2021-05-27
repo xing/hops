@@ -11,9 +11,10 @@ class ReactCoreMixin extends Mixin {
     if (experimentalEsbuild) {
       jsLoaderConfig.use[0].options.loader = 'jsx';
     } else {
-      jsLoaderConfig.options.presets.push(
-        require.resolve('@babel/preset-react')
-      );
+      jsLoaderConfig.options.presets.push([
+        require.resolve('@babel/preset-react'),
+        { runtime: 'automatic' },
+      ]);
 
       jsLoaderConfig.options.plugins.push(
         require.resolve('@babel/plugin-transform-flow-strip-types'),
