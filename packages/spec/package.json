@@ -46,7 +46,7 @@
     "semver": "^7.3.5"
   },
   "dependencies": {
-    "@vishnucss/chips": "^1.1.2",
-    "animate.css": "^4.0.0"
+    "@vishnucss/chips": "1.1.2",
+    "animate.css": "4.1.1"
   }
 }

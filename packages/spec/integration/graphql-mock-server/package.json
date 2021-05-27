@@ -24,7 +24,7 @@
     "build": "hops build"
   },
   "dependencies": {
-    "@apollo/client": "3.x.x",
+    "@apollo/client": "3.3.19",
     "@graphql-tools/delegate": "*",
     "@graphql-tools/mock": "*",
     "@graphql-tools/schema": "*",

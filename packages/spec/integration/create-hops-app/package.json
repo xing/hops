@@ -13,6 +13,6 @@
     ]
   },
   "dependencies": {
-    "semver": "^7.0.0"
+    "semver": "7.3.5"
   }
 }

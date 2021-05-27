@@ -22,17 +22,17 @@
     "url": "https://github.com/xing/hops.git"
   },
   "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-transform-flow-strip-types": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-react": "^7.9.4",
-    "colors": "^1.4.0",
-    "core-js": "^3.2.1",
+    "@babel/core": "7.13.16",
+    "@babel/plugin-proposal-class-properties": "7.13.0",
+    "@babel/plugin-transform-flow-strip-types": "7.13.0",
+    "@babel/preset-env": "7.13.15",
+    "@babel/preset-react": "7.13.13",
+    "colors": "1.4.0",
+    "core-js": "3.11.0",
     "hops": "15.0.0-nightly.1",
-    "identity-obj-proxy": "^3.0.0",
-    "import-from": "^3.0.0",
-    "regenerator-runtime": "^0.13.3"
+    "identity-obj-proxy": "3.0.0",
+    "import-from": "3.0.0",
+    "regenerator-runtime": "0.13.7"
   },
   "peerDependencies": {
     "babel-jest": "^26.0.0",

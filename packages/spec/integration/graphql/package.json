@@ -31,7 +31,7 @@
     "hops": "*",
     "hops-graphql": "*",
     "hops-mixin": "*",
-    "qs": "^6.7.0",
+    "qs": "6.10.1",
     "react": "*",
     "react-apollo": "*",
     "react-helmet-async": "*",
