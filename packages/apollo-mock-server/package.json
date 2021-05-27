@@ -22,12 +22,12 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "apollo-server-express": "^2.23.0",
+    "apollo-server-express": "2.25.0",
     "cookie-parser": "^1.4.4",
     "cross-fetch": "^3.0.4",
     "express": "^4.17.1",
     "graphql": "^15.0.0",
-    "graphql-tag": "^2.12.3",
+    "graphql-tag": "2.12.4",
     "hops-config": "15.0.0-nightly.1",
     "hops-mixin": "15.0.0-nightly.1",
     "hops-webpack": "15.0.0-nightly.1"
