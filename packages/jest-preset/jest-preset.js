@@ -57,4 +57,5 @@ module.exports = {
     : [require.resolve('regenerator-runtime/runtime')],
   // fixes: https://github.com/facebook/jest/issues/6766
   testURL: 'http://localhost',
+  testEnvironment: 'jsdom',
 };
