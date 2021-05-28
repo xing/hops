@@ -6,8 +6,7 @@ const debugRegex = new RegExp(debugCookie.replace('*', '.*'));
 
 module.exports = function debug(name) {
   const isEnabled = debugCookie !== '' && debugRegex.test(name);
-
-  return isEnabled
+  const fn = isEnabled
     ? (format, ...args) => {
         if (typeof format === 'string') {
           console.debug(
@@ -27,4 +26,8 @@ module.exports = function debug(name) {
         }
       }
     : () => {};
+
+  fn.extend = (suffix) => debug(`${name}:${suffix}`);
+
+  return fn;
 };
