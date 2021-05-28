@@ -22,7 +22,7 @@
     "find-up": "^5.0.0",
     "flat": "^5.0.0",
     "hops-debug": "15.0.0-nightly.1",
-    "is-plain-obj": "^3.0.0",
+    "is-plain-obj": "^4.0.0",
     "mixinable": "^5.0.1"
   },
   "engines": {
