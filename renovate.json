@@ -36,7 +36,7 @@
       "rangeStrategy": "widen"
     },
     {
-      "matchDepTypes": ["devDependencies"],
+      "matchDepTypes": ["dependencies", "devDependencies"],
       "rangeStrategy": "replace"
     },
     {
