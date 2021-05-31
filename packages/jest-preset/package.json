@@ -41,7 +41,7 @@
     "react-dom": "^16.8.0 || ^17.0.0",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.0",
-    "ts-jest": "^26.0.0"
+    "ts-jest": "^26.0.0 || ^27.0.0"
   },
   "devDependencies": {
     "babel-jest": "^26.0.0",
