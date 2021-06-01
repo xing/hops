@@ -31,7 +31,7 @@
     "core-js": "^3.2.1",
     "hops": "15.0.0-nightly.1",
     "identity-obj-proxy": "^3.0.0",
-    "import-from": "^3.0.0",
+    "import-from": "^4.0.0",
     "regenerator-runtime": "^0.13.3"
   },
   "peerDependencies": {
