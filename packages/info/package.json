@@ -23,7 +23,7 @@
     "hops-bootstrap": "14.1.0",
     "hops-mixin": "14.1.0",
     "mixinable": "^5.0.1",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^2.0.0"
   },
   "engines": {
     "node": "12 || 14 || 15"
