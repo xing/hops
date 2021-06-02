@@ -24,7 +24,7 @@
     "css-loader": "^5.0.1",
     "hops-mixin": "14.1.0",
     "mini-css-extract-plugin": "^1.0.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "optimize-css-assets-webpack-plugin": "^6.0.0",
     "pathifist": "^1.0.0",
     "postcss": "^8.2.1",
     "postcss-import": "^14.0.0",
