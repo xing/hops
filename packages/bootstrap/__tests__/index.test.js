@@ -93,11 +93,15 @@ test('Should allow placeholders in the configuration which are resolved', () => 
 test('Should allow env-vars in the configuration which are resolved', () => {
   process.env.HOPS_TEST_KEY = 'value';
   process.env.ENV_KEY_WITH_DEFAULT2 = 'value';
+  process.env.FOOBAR = 'TEST';
 
   const instance = initialize({
     result1: '[HOPS_TEST_KEY]',
     result2: '[ENV_KEY_WITH_DEFAULT1=default-value]',
     result3: '[ENV_KEY_WITH_DEFAULT2=default-value]',
+    result4: {
+      bar: '[FOOBAR]',
+    },
     mixins: [join(__dirname, 'fixtures', 'config-mixin')],
   });
 
@@ -106,6 +110,7 @@ test('Should allow env-vars in the configuration which are resolved', () => {
   expect(config.result1).toBe('value');
   expect(config.result2).toBe('default-value');
   expect(config.result3).toBe('value');
+  expect(config.result4.bar).toBe('TEST');
 });
 
 test('Should ignore non-string values when checking for placeholders', () => {
