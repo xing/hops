@@ -17,9 +17,8 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    '^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$': require.resolve(
-      './mocks/file.js'
-    ),
+    '^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$':
+      require.resolve('./mocks/file.js'),
     '^.+\\.tpl$': require.resolve('./mocks/tpl.js'),
     '^.+\\.css(\\?global)?$': require.resolve('identity-obj-proxy'),
     '^hops$': require.resolve('./mocks/hops.js'),
