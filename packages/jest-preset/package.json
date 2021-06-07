@@ -44,8 +44,8 @@
     "ts-jest": "^26.0.0"
   },
   "devDependencies": {
-    "babel-jest": "^26.0.0",
-    "jest": "^26.0.0",
+    "babel-jest": "^27.0.0",
+    "jest": "^27.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet-async": "^1.0.9",
