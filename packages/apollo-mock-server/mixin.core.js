@@ -58,15 +58,13 @@ class GraphQLMixin extends Mixin {
     }
 
     if (exists(this.config.graphqlMockSchemaFile)) {
-      webpackConfig.resolve.alias[
-        'hops-apollo-mock-server/schema'
-      ] = require.resolve(this.config.graphqlMockSchemaFile);
+      webpackConfig.resolve.alias['hops-apollo-mock-server/schema'] =
+        require.resolve(this.config.graphqlMockSchemaFile);
     }
 
     if (exists(this.config.graphqlMockContextExtenderFile)) {
-      webpackConfig.resolve.alias[
-        'hops-apollo-mock-server/context-extender'
-      ] = require.resolve(this.config.graphqlMockContextExtenderFile);
+      webpackConfig.resolve.alias['hops-apollo-mock-server/context-extender'] =
+        require.resolve(this.config.graphqlMockContextExtenderFile);
     }
 
     if (target === 'graphql-mock-server') {
