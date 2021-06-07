@@ -21,8 +21,8 @@ module.exports = class AnalyzerCoreMixin extends Mixin {
     ) {
       return;
     }
-    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-      .BundleAnalyzerPlugin;
+    const BundleAnalyzerPlugin =
+      require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
     webpackConfig.plugins.push(
       new BundleAnalyzerPlugin({
