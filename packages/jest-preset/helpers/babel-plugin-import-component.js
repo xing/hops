@@ -93,8 +93,8 @@ module.exports = ({ types: t }) => ({
         t.assertCallExpression(importCallExpression);
         t.assertImport(importCallExpression.get('callee'));
 
-        const importedComponent = importCallExpression.get('arguments.0').node
-          .value;
+        const importedComponent =
+          importCallExpression.get('arguments.0').node.value;
 
         pathReplacement(argument, importedComponent);
       });
