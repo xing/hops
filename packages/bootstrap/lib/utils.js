@@ -64,28 +64,30 @@ exports.getMixinSortOrder = (...args) =>
     return enableLegacyMixinSortOrder;
   }, false);
 
-exports.merge = (enableLegacyMixinSortOrder = false) => (...args) => {
-  return merge({}, ...args, (objValue, srcValue, key) => {
-    if (Array.isArray(objValue)) {
-      if ('mixins' === key) {
-        // #542: remove this in untool v3 if no potential side-effects have been
-        // discovered
-        if (enableLegacyMixinSortOrder) {
-          return [...objValue, ...srcValue].filter(
-            (curr, index, self) => self.indexOf(curr) === index
-          );
-        }
+exports.merge =
+  (enableLegacyMixinSortOrder = false) =>
+  (...args) => {
+    return merge({}, ...args, (objValue, srcValue, key) => {
+      if (Array.isArray(objValue)) {
+        if ('mixins' === key) {
+          // #542: remove this in untool v3 if no potential side-effects have been
+          // discovered
+          if (enableLegacyMixinSortOrder) {
+            return [...objValue, ...srcValue].filter(
+              (curr, index, self) => self.indexOf(curr) === index
+            );
+          }
 
-        return [
-          ...objValue.filter((curr) => !srcValue.includes(curr)),
-          ...srcValue,
-        ];
+          return [
+            ...objValue.filter((curr) => !srcValue.includes(curr)),
+            ...srcValue,
+          ];
+        }
+        return srcValue;
       }
       return srcValue;
-    }
-    return srcValue;
-  });
-};
+    });
+  };
 
 exports.placeholdify = (config) => {
   const flatConfig = flatten(config);
