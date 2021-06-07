@@ -134,13 +134,15 @@ Beware that middlewares passed as render option take precedence.
 
 ```javascript
 // Object with fetch is passed as third parameter to thunks
-const incrementFetch = () => (dispatch, getState, { fetch }) => {
-  return fetch('/api')
-    .then((r) => r.json())
-    .then(({ value }) => {
-      dispatch({ type: 'INCREMENT', payload: value });
-    });
-};
+const incrementFetch =
+  () =>
+  (dispatch, getState, { fetch }) => {
+    return fetch('/api')
+      .then((r) => r.json())
+      .then(({ value }) => {
+        dispatch({ type: 'INCREMENT', payload: value });
+      });
+  };
 ```
 
 #### `canPrefetchOnServer(): boolean` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **server**

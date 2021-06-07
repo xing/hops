@@ -113,9 +113,8 @@ exports.LoggerPlugin = class LoggerPlugin {
         errors
           .concat(...children.map((c) => c.errors))
           .reduce((acc, error) => {
-            const coreJsResolutionErrorCulprit = getCoreJsResolutionErrorCulprit(
-              error
-            );
+            const coreJsResolutionErrorCulprit =
+              getCoreJsResolutionErrorCulprit(error);
             if (coreJsResolutionErrorCulprit) {
               const isFirstOccurrence = !acc.some(
                 (e) =>

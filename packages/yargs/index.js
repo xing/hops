@@ -15,12 +15,8 @@ const configure = (config, options) => ({
       if (argv.production || argv.p) {
         process.env.NODE_ENV = 'production';
       }
-      const {
-        bootstrap,
-        registerCommands,
-        handleArguments,
-        handleError,
-      } = initialize(config, options);
+      const { bootstrap, registerCommands, handleArguments, handleError } =
+        initialize(config, options);
       invariant(
         bootstrap && registerCommands && handleArguments && handleError,
         "Can't use hops-yargs mixin"
