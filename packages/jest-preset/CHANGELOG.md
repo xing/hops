@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.2](https://github.com/xing/hops/compare/v15.0.0-nightly.1...v15.0.0-nightly.2) (2021-06-08)
+
+
+### Bug Fixes
+
+* **jest-preset:** use correct import of babel-jest package ([e50c595](https://github.com/xing/hops/commit/e50c5955ab3c54f57cfd08bc4b2689da3b8ddce0))
+* update dependency import-from to v4 ([c674e10](https://github.com/xing/hops/commit/c674e10ce243875da4c0e971a94e3c0fda9ddd91))
+* **jest-preset:** set Jest test environment explicitly ([ab13512](https://github.com/xing/hops/commit/ab13512f5068f3aea10a834d9f5bd4e52a564c38))
+
+
+### Features
+
+* **jest-preset:** enable ESM support for Typescript ([a9a9bd8](https://github.com/xing/hops/commit/a9a9bd826708b3476f2fcc6d05199ad89511cd4b))
+* update Jest to version 27 ([35d373e](https://github.com/xing/hops/commit/35d373eab1a2dc546891ce2f1de3f45a7160f32b)), closes [#1832](https://github.com/xing/hops/issues/1832) [#1831](https://github.com/xing/hops/issues/1831) [#1760](https://github.com/xing/hops/issues/1760)
+
+
+
+
+
 # [15.0.0-nightly.1](https://github.com/xing/hops/compare/v15.0.0-nightly.0...v15.0.0-nightly.1) (2021-04-07)
 
 **Note:** Version bump only for package jest-preset-hops

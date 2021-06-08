@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.2](https://github.com/xing/hops/compare/v15.0.0-nightly.1...v15.0.0-nightly.2) (2021-06-08)
+
+
+### Bug Fixes
+
+* correctly initialize import component context ([e9dd60d](https://github.com/xing/hops/commit/e9dd60d0576f026404a174da7e1b529c784ab57c)), closes [#1729](https://github.com/xing/hops/issues/1729)
+* **react:** add missing CLI-flag to develop command ([5dc7966](https://github.com/xing/hops/commit/5dc7966f22a1a2b185bb93467157e401da29f96f))
+
+
+### Features
+
+* **react:** add fast refresh plugin ([90189a2](https://github.com/xing/hops/commit/90189a265f0a461ddd390c4e06533de53461d084))
+* **react:** switch to the new JSX transform ([8c9a353](https://github.com/xing/hops/commit/8c9a35382a81c6c0a6751670f2b08233e878e500))
+
+
+
+
+
 # [15.0.0-nightly.1](https://github.com/xing/hops/compare/v15.0.0-nightly.0...v15.0.0-nightly.1) (2021-04-07)
 
 **Note:** Version bump only for package hops-react

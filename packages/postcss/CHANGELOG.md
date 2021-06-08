@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.2](https://github.com/xing/hops/compare/v15.0.0-nightly.1...v15.0.0-nightly.2) (2021-06-08)
+
+
+### Bug Fixes
+
+* update dependency optimize-css-assets-webpack-plugin to v6 ([4e52f69](https://github.com/xing/hops/commit/4e52f69e9e993894a2ac85c460c33f68c5d98bd8))
+* update webpack core ([64c748f](https://github.com/xing/hops/commit/64c748fe3907fa6a440a9b41d1264cb956ac05c2))
+
+
+
+
+
 # [15.0.0-nightly.1](https://github.com/xing/hops/compare/v15.0.0-nightly.0...v15.0.0-nightly.1) (2021-04-07)
 
 **Note:** Version bump only for package hops-postcss

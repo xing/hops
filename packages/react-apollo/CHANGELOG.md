@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.2](https://github.com/xing/hops/compare/v15.0.0-nightly.1...v15.0.0-nightly.2) (2021-06-08)
+
+
+### Bug Fixes
+
+* allow custom apollo cache ([e3b76eb](https://github.com/xing/hops/commit/e3b76eb026a79e42a49677d06af22b5bc3dc234f))
+
+
+
+
+
 # [15.0.0-nightly.1](https://github.com/xing/hops/compare/v15.0.0-nightly.0...v15.0.0-nightly.1) (2021-04-07)
 
 **Note:** Version bump only for package hops-react-apollo
