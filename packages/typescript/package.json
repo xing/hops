@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "hops-mixin": "15.0.0-nightly.2",
-    "ts-loader": "^8.0.0"
+    "ts-loader": "^9.0.0"
   },
   "peerDependencies": {
     "typescript": "^3.7.0 || ^4.0.0"
