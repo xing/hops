@@ -1,4 +1,6 @@
-const babelJest = require('babel-jest');
+const babelJest = ((mod) => {
+  return mod.default || mod;
+})(require('babel-jest'));
 
 const babelConfig = {
   presets: [

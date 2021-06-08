@@ -31,6 +31,7 @@ module.exports = {
     : {
         'ts-jest': {
           babelConfig: require('./transforms/babel.js').babelConfig,
+          useESM: true,
         },
       },
   moduleNameMapper: {

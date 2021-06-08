@@ -59,7 +59,10 @@
         ],
         "rootManifest": {
           "resolutions": {
-            "graphql-tag": "^2.12"
+            "graphql-tag": "^2.12",
+            "babel-jest": "^26.0.0",
+            "jest": "^26.0.0",
+            "ts-jest": "^26.0.0"
           }
         }
       },
@@ -84,7 +87,14 @@
             "url": "enc:r6BTklZr+axySHpOBj0JyiGPh/P525a+dfwfWHQq5kkrY1Wruq8QaSL2vCfb0cWp",
             "branch": "hops-14.x"
           }
-        ]
+        ],
+        "rootManifest": {
+          "resolutions": {
+            "babel-jest": "^26.0.0",
+            "jest": "^26.0.0",
+            "ts-jest": "^26.0.0"
+          }
+        }
       }
     ]
   },
@@ -227,11 +237,11 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "husky": "^4.0.0",
-    "jest": "^26.0.0",
+    "jest": "^27.0.0",
     "jest-runner-eslint": "0.10.0",
     "jest-runner-prettier": "0.3.6",
     "jest-watch-select-projects": "2.0.0",
-    "jest-watch-typeahead": "0.6.2",
+    "jest-watch-typeahead": "0.6.4",
     "lerna": "^4.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.0.0"
