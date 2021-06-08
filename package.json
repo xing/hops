@@ -59,7 +59,10 @@
         ],
         "rootManifest": {
           "resolutions": {
-            "graphql-tag": "^2.12"
+            "graphql-tag": "^2.12",
+            "babel-jest": "^26.0.0",
+            "jest": "^26.0.0",
+            "ts-jest": "^26.0.0"
           }
         }
       },
@@ -83,7 +86,14 @@
             "url": "enc:r6BTklZr+axySHpOBj0JyiGPh/P525a+dfwfWHQq5kkrY1Wruq8QaSL2vCfb0cWp",
             "branch": "hops-15.x"
           }
-        ]
+        ],
+        "rootManifest": {
+          "resolutions": {
+            "babel-jest": "^26.0.0",
+            "jest": "^26.0.0",
+            "ts-jest": "^26.0.0"
+          }
+        }
       }
     ]
   },
