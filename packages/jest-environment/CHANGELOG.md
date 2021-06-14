@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.3](https://github.com/xing/hops/compare/v13.4.2...v13.4.3) (2021-06-14)
+
+**Note:** Version bump only for package jest-environment-hops
+
+
+
+
+
 ## [13.4.2](https://github.com/xing/hops/compare/v13.4.1...v13.4.2) (2021-04-20)
 
 **Note:** Version bump only for package jest-environment-hops
