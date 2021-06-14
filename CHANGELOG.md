@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **jest-preset:** use correct import of babel-jest package ([20f6ed3](https://github.com/xing/hops/commit/20f6ed3f2b87e752f56eb02404c26fdea8d78dd4))
+* allow custom apollo cache ([e1b89af](https://github.com/xing/hops/commit/e1b89af9a869eb0aa843d73afa04edec46bc596d))
+* update dependency dotenv to v10 ([8e206ed](https://github.com/xing/hops/commit/8e206ed06a06ed0779afd165a6931be210be1a28))
+* update dependency dotenv to v9 ([467ae09](https://github.com/xing/hops/commit/467ae09c8f356209a50f88e6b80a46e0939d3b3d))
+* update dependency fs-extra to v10 ([5a82bc9](https://github.com/xing/hops/commit/5a82bc909d9b16511d1761d6b3673aedfbe79088))
+* update dependency http-proxy-middleware to v2 ([dfaa00b](https://github.com/xing/hops/commit/dfaa00b31fc798b3f2caf0b057b10646705cac6d))
+* update dependency import-from to v4 ([07ffb06](https://github.com/xing/hops/commit/07ffb06b6c132b247d0ce6ca2807d28677827bff))
+* update dependency nocache to v3 ([bffb53f](https://github.com/xing/hops/commit/bffb53f2cfd85f5977db5d871b8b703a29f4860b))
+* update dependency optimize-css-assets-webpack-plugin to v6 ([2defe26](https://github.com/xing/hops/commit/2defe2627163632ca1195ee05c71bc619b3b1912))
+* update dependency puppeteer to v10 ([8fe3351](https://github.com/xing/hops/commit/8fe3351c5220255358005d3b60fe1e9d7a325e88))
+* update dependency web-vitals to v2 ([8bc5a64](https://github.com/xing/hops/commit/8bc5a64a2617d1e50a973bf8fbb33baf8d58dcd5))
+* update dependency webpack-dev-middleware to v5 ([7c2164c](https://github.com/xing/hops/commit/7c2164cc3f04e510cdffc9e6e09145ce5400aeb5))
+* **apollo-mock-server:** update package graphql-tag ([9d1816a](https://github.com/xing/hops/commit/9d1816aa250cdefbe84f523bd6577b2f69808023))
+* **debug:** provide method extend in the browser ([d657fda](https://github.com/xing/hops/commit/d657fdaa0616a401d4935302c42b3fbd1dfcae25))
+* **jest-preset:** set Jest test environment explicitly ([1847985](https://github.com/xing/hops/commit/1847985e41d152788db447aad878a1b56246906d))
+* update dependency puppeteer to v9 ([aafcdec](https://github.com/xing/hops/commit/aafcdec798cbcb9a58f7a824be3ff13c3d3ba9f4))
+* update dependency yargs to v17 ([99fb4c6](https://github.com/xing/hops/commit/99fb4c6c52ff20722b169cfc7d2d23eedde07f11))
+
+
+### Features
+
+* **jest-preset:** enable ESM support for Typescript ([4a8cf18](https://github.com/xing/hops/commit/4a8cf183f9eab34f72b4daf568ed3108b20ba238))
+* update Jest to version 27 ([31fd69b](https://github.com/xing/hops/commit/31fd69b23fd5f1dd0e0cfce46d7a8db173eb9361)), closes [#1838](https://github.com/xing/hops/issues/1838) [#1839](https://github.com/xing/hops/issues/1839) [#1761](https://github.com/xing/hops/issues/1761)
+* **react:** switch to the new JSX transform ([8c3acfb](https://github.com/xing/hops/commit/8c3acfbb9791b7b83122cea61edd1dab7057d8cb))
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* update dependency fs-extra to v10 ([5a82bc9](https://github.com/xing/hops/commit/5a82bc909d9b16511d1761d6b3673aedfbe79088))
+* update dependency import-from to v4 ([07ffb06](https://github.com/xing/hops/commit/07ffb06b6c132b247d0ce6ca2807d28677827bff))
+* update dependency puppeteer to v10 ([8fe3351](https://github.com/xing/hops/commit/8fe3351c5220255358005d3b60fe1e9d7a325e88))
+* update dependency puppeteer to v9 ([aafcdec](https://github.com/xing/hops/commit/aafcdec798cbcb9a58f7a824be3ff13c3d3ba9f4))
+
+
+### Features
+
+* update Jest to version 27 ([31fd69b](https://github.com/xing/hops/commit/31fd69b23fd5f1dd0e0cfce46d7a8db173eb9361)), closes [#1838](https://github.com/xing/hops/issues/1838) [#1839](https://github.com/xing/hops/issues/1839) [#1761](https://github.com/xing/hops/issues/1761)
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 **Note:** Version bump only for package jest-environment-hops

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **apollo-mock-server:** update package graphql-tag ([9d1816a](https://github.com/xing/hops/commit/9d1816aa250cdefbe84f523bd6577b2f69808023))
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 **Note:** Version bump only for package hops-apollo-mock-server

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Features
+
+* update Jest to version 27 ([31fd69b](https://github.com/xing/hops/commit/31fd69b23fd5f1dd0e0cfce46d7a8db173eb9361)), closes [#1838](https://github.com/xing/hops/issues/1838) [#1839](https://github.com/xing/hops/issues/1839) [#1761](https://github.com/xing/hops/issues/1761)
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 
