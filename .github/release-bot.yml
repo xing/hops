@@ -12,3 +12,5 @@ labels:
 release-pr-branch-pattern: 'release-bot/next-%s'
 
 prepare-release-command: 'yarn release:prepare'
+
+rollback-release-command: 'yarn release:rollback'

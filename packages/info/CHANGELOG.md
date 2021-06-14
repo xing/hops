@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* update dependency web-vitals to v2 ([8bc5a64](https://github.com/xing/hops/commit/8bc5a64a2617d1e50a973bf8fbb33baf8d58dcd5))
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 

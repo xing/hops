@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* update dependency webpack-dev-middleware to v5 ([7c2164c](https://github.com/xing/hops/commit/7c2164cc3f04e510cdffc9e6e09145ce5400aeb5))
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 

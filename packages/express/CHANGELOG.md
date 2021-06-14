@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* update dependency nocache to v3 ([bffb53f](https://github.com/xing/hops/commit/bffb53f2cfd85f5977db5d871b8b703a29f4860b))
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 **Note:** Version bump only for package hops-express

@@ -32,9 +32,11 @@
     "template-graphql": "yarn workspace hops-template-graphql run",
     "template-react": "yarn workspace hops-template-react run",
     "template-redux": "yarn workspace hops-template-redux run",
+    "is-release-bot-commit": "node -e \"process.exit(child_process.execSync('git show -s --format=\\'%an\\' HEAD').toString().trim() == 'Hops release bot' ? 0 : 1)\"",
     "prerelease": "node -e \"process.exit(process.env.GH_TOKEN === undefined)\"",
     "release": "lerna publish",
     "release:prepare": "lerna version --no-push --yes",
+    "release:rollback": "yarn is-release-bot-commit && git reset --hard HEAD^",
     "release:create-nightly": "yarn release premajor --conventional-prerelease --preid nightly",
     "release:rc": "yarn release --conventional-prerelease --preid rc",
     "release:graduate": "yarn release --conventional-graduate"
@@ -54,7 +56,12 @@
             "url": "enc:r6BTklZr+axySHpOBj0JysOusV4S8o7YtSxZ9fi66rL5grn3vMkHUbMdb3OY5+tv",
             "directory": "internal-hops"
           }
-        ]
+        ],
+        "rootManifest": {
+          "resolutions": {
+            "graphql-tag": "^2.12"
+          }
+        }
       },
       {
         "name": "internal-workshop",
@@ -224,9 +231,9 @@
     "jest-runner-eslint": "0.10.0",
     "jest-runner-prettier": "0.3.6",
     "jest-watch-select-projects": "2.0.0",
-    "jest-watch-typeahead": "0.6.2",
+    "jest-watch-typeahead": "0.6.3",
     "lerna": "^4.0.0",
-    "lint-staged": "^10.0.0",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.0.0"
   }
 }

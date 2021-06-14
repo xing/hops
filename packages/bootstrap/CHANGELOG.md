@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* update dependency dotenv to v10 ([8e206ed](https://github.com/xing/hops/commit/8e206ed06a06ed0779afd165a6931be210be1a28))
+* update dependency dotenv to v9 ([467ae09](https://github.com/xing/hops/commit/467ae09c8f356209a50f88e6b80a46e0939d3b3d))
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 

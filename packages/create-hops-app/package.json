@@ -1,6 +1,6 @@
 {
   "name": "create-hops-app",
-  "version": "14.1.0",
+  "version": "14.2.0",
   "description": "CLI tool to create Hops applications",
   "keywords": [
     "hops",
@@ -25,7 +25,7 @@
     "tar": "^6.0.0",
     "validate-npm-package-name": "^3.0.0",
     "write-pkg": "^4.0.0",
-    "yargs": "^16.1.1"
+    "yargs": "^17.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/create-hops-app#readme"
 }

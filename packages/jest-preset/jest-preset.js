@@ -31,12 +31,12 @@ module.exports = {
     : {
         'ts-jest': {
           babelConfig: require('./transforms/babel.js').babelConfig,
+          useESM: true,
         },
       },
   moduleNameMapper: {
-    '^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$': require.resolve(
-      './mocks/file.js'
-    ),
+    '^.+\\.(png|gif|jpe?g|webp|html|svg|((o|t)tf)|woff2?|ico)$':
+      require.resolve('./mocks/file.js'),
     '^.+\\.tpl$': require.resolve('./mocks/tpl.js'),
     '^.+\\.css(\\?global)?$': require.resolve('identity-obj-proxy'),
     '^hops$': require.resolve('./mocks/hops.js'),
@@ -57,4 +57,5 @@ module.exports = {
     : [require.resolve('regenerator-runtime/runtime')],
   // fixes: https://github.com/facebook/jest/issues/6766
   testURL: 'http://localhost',
+  testEnvironment: 'jsdom',
 };

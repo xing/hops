@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **jest-preset:** use correct import of babel-jest package ([20f6ed3](https://github.com/xing/hops/commit/20f6ed3f2b87e752f56eb02404c26fdea8d78dd4))
+* update dependency import-from to v4 ([07ffb06](https://github.com/xing/hops/commit/07ffb06b6c132b247d0ce6ca2807d28677827bff))
+* **jest-preset:** set Jest test environment explicitly ([1847985](https://github.com/xing/hops/commit/1847985e41d152788db447aad878a1b56246906d))
+
+
+### Features
+
+* **jest-preset:** enable ESM support for Typescript ([4a8cf18](https://github.com/xing/hops/commit/4a8cf183f9eab34f72b4daf568ed3108b20ba238))
+* update Jest to version 27 ([31fd69b](https://github.com/xing/hops/commit/31fd69b23fd5f1dd0e0cfce46d7a8db173eb9361)), closes [#1838](https://github.com/xing/hops/issues/1838) [#1839](https://github.com/xing/hops/issues/1839) [#1761](https://github.com/xing/hops/issues/1761)
+
+
+
+
+
 # [14.1.0](https://github.com/xing/hops/compare/v14.0.1...v14.1.0) (2021-04-20)
 
 **Note:** Version bump only for package jest-preset-hops
