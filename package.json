@@ -31,9 +31,11 @@
     "start:graphql": "cd packages/template-graphql; yarn start",
     "test": "jest --coverage",
     "lint": "eslint 'packages/**/*.js'",
+    "is-release-bot-commit": "node -e \"process.exit(child_process.execSync('git show -s --format=\\'%an\\' HEAD').toString().trim() == 'Hops release bot' ? 0 : 1)\"",
     "prerelease": "test -n \"$GH_TOKEN\" || (echo 'GH_TOKEN missing'; exit 1)",
     "release": "lerna publish",
     "release:prepare": "lerna version --no-push --yes",
+    "release:rollback": "yarn is-release-bot-commit && git reset --hard HEAD^",
     "release:alpha": "yarn release --conventional-prerelease --preid alpha",
     "release:beta": "yarn release --conventional-prerelease --preid beta",
     "release:rc": "yarn release --conventional-prerelease --preid rc",
@@ -62,7 +64,8 @@
         ],
         "rootManifest": {
           "resolutions": {
-            "react-apollo": "3.1.5"
+            "react-apollo": "3.1.5",
+            "graphql-tag": "^2.12"
           }
         }
       },

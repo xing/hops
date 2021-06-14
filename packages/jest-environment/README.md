@@ -83,12 +83,8 @@ await stopServer();
 Convenience function for creating a new `Puppeteer.Page`-instance, which resolves to an object, that holds the `page`-instance and three helper functions.
 
 ```js
-const {
-  page,
-  getProperty,
-  getInnerText,
-  getElementByText,
-} = await createPage();
+const { page, getProperty, getInnerText, getElementByText } =
+  await createPage();
 await page.goto('http://localhost:8080/');
 
 const headingClass = await getProperty('className', '.heading');
