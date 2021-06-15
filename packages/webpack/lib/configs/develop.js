@@ -139,7 +139,9 @@ module.exports = function getConfig(config, name) {
       maxAssetSize: 52428800,
     },
     infrastructureLogging: {
-      level: 'none',
+      // TODO: check in integration tests, that no stdout
+      // containing "<e> [webpack-dev-middleware]" is present
+      level: 'error',
     },
     devtool: 'eval-cheap-module-source-map',
     watchOptions: { aggregateTimeout: 300, ignored: /node_modules/ },
