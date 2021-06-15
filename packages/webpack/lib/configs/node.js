@@ -118,6 +118,10 @@ module.exports = function getConfig(config, name) {
       devtoolModuleFilenameTemplate: (info) =>
         resolve(info.absoluteResourcePath),
     },
+    // fixme
+    cache: {
+      type: 'memory',
+    },
     resolve: {
       modules: getModules(config.rootDir),
       alias: {
