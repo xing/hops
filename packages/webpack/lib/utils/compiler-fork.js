@@ -58,7 +58,15 @@ process.once('message', (message) => {
     if (watch) {
       compiler.watch(watchOptions, callback);
     } else {
-      compiler.run(callback);
+      compiler.run((error, stats) => {
+        if (error) {
+          callback(error);
+        }
+
+        compiler.close((error) => {
+          callback(error, stats);
+        });
+      });
     }
   } catch (error) {
     process.send({

@@ -47,7 +47,7 @@ const formatWarning = (name, duration, assets, isRebuild) => {
 
 const formatSuccess = (name, duration, assets, isRebuild) => {
   const totalSize = Object.values(assets)
-    .filter((asset) => !asset.name.endsWith('.map'))
+    .filter((asset) => asset.name && !asset.name.endsWith('.map'))
     .reduce((sum, asset) => {
       return sum + asset.size;
     }, 0);
@@ -112,7 +112,7 @@ exports.LoggerPlugin = class LoggerPlugin {
       if (hasErrors || hasWarnings) {
         errors
           .concat(...children.map((c) => c.errors))
-          .reduce((acc, error) => {
+          .reduce((acc, { message: error }) => {
             const coreJsResolutionErrorCulprit =
               getCoreJsResolutionErrorCulprit(error);
             if (coreJsResolutionErrorCulprit) {
@@ -134,7 +134,7 @@ exports.LoggerPlugin = class LoggerPlugin {
           .forEach((error) => this.logger.error(error));
         warnings
           .concat(...children.map((c) => c.warnings))
-          .forEach((warning) => this.logger.warn(warning));
+          .forEach(({ message: warning }) => this.logger.warn(warning));
       }
 
       this.lastHashes[name] = hash;

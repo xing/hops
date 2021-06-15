@@ -22,17 +22,17 @@
   },
   "dependencies": {
     "css-loader": "^5.0.1",
+    "css-minimizer-webpack-plugin": "^3.0.1",
     "hops-mixin": "15.0.0-nightly.2",
-    "mini-css-extract-plugin": "^1.0.0",
-    "optimize-css-assets-webpack-plugin": "^6.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
     "pathifist": "^1.0.0",
     "postcss": "^8.2.1",
     "postcss-import": "^14.0.0",
-    "postcss-loader": "^4.1.0",
+    "postcss-loader": "^6.1.0",
     "postcss-normalize-charset": "^4.0.1",
     "postcss-preset-env": "^6.7.0",
     "style-loader": "^2.0.0",
-    "webpack": "^4.43.0"
+    "webpack": "5.24.4"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/postcss#readme"
 }
