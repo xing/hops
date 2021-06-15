@@ -7,15 +7,44 @@ const ServiceWorkerPlugin = require('./lib/service-worker-plugin');
 const getAssetPath = (...args) => trimSlashes(join(...args));
 
 class PWAMixin extends Mixin {
-  configureBuild(webpackConfig, { allLoaderConfigs }, target) {
+  configureBuild(
+    webpackConfig,
+    { fileLoaderConfig, urlLoaderConfig, allLoaderConfigs },
+    target
+  ) {
+    const filename = getAssetPath(
+      this.config.assetPath,
+      '[name]-[hash:16].[ext]'
+    );
+    const emitFile = target === 'build' || target === 'develop';
+    const loaderIndex = urlLoaderConfig.oneOf.findIndex(
+      ({ resourceQuery: r }) =>
+        r instanceof RegExp && 'noinline'.match(r) !== null
+    );
+
+    // Rolling back to file-loader here, because the app-manifest-loader
+    // isn't able to deal with Asset Modules, yet.
+    delete fileLoaderConfig.type;
+    delete fileLoaderConfig.generator;
+    fileLoaderConfig.loader = require.resolve('file-loader');
+    fileLoaderConfig.options = {
+      name: filename,
+      esModule: false,
+      emitFile,
+    };
+    urlLoaderConfig.oneOf[loaderIndex] = {
+      resourceQuery: /noinline/,
+      ...fileLoaderConfig,
+    };
+
     const webmanifestLoader = {
       test: /(\.webmanifest|browserconfig\.xml)$/,
       use: [
         {
           loader: require.resolve('file-loader'),
           options: {
-            name: getAssetPath(this.config.assetPath, '[name]-[hash:16].[ext]'),
-            emitFile: target === 'build' || target === 'develop',
+            name: filename,
+            emitFile,
           },
         },
         {
