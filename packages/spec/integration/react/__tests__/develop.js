@@ -151,4 +151,15 @@ describe('react development server', () => {
     const content = await response.text();
     expect(content).toMatch('data:;base64,iVBORw0KGgo=');
   });
+
+  it('renders images', async () => {
+    const { page } = await createPage();
+    page.on('console', (msg) => handleConsoleOutput(msg));
+    await page.goto(urlJoin(url, '/images'), { waitUntil: 'networkidle2' });
+
+    await expect(page.$$('img[src^="data:image/"]')).resolves.toHaveLength(2);
+    await expect(page.$$('img[src$=".png"]')).resolves.toHaveLength(1);
+
+    await page.close();
+  });
 });

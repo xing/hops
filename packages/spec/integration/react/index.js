@@ -24,6 +24,10 @@ const BoldText = importComponent(() =>
     './bold-text'
   )
 );
+const Images = importComponent(
+  () => import('./images'),
+  (mod) => mod.Images
+);
 
 const ServerDataHoC = withServerData(({ serverData }) => (
   <output>{serverData.method}</output>
@@ -58,6 +62,9 @@ export default render(
     </Helmet>
     <div>
       <Link to="/two">Link to two</Link>
+      <>&#8199;</>
+      <Link to="/images">Link to images</Link>
+      <>&#8199;</>
       <Link to="/import">Link to import</Link>
       <Switch>
         <Route path="/" exact render={() => <h1>home</h1>} />
@@ -75,6 +82,7 @@ export default render(
         <Route path="/server-data-hook" exact component={ServerDataHook} />
         <Route path="/config-hoc" exact component={ConfigHoC} />
         <Route path="/config-hook" exact component={ConfigHook} />
+        <Route path="/images" exact component={Images} />
         <Miss />
       </Switch>
     </div>
