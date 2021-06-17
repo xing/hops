@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.3](https://github.com/xing/hops/compare/v15.0.0-nightly.2...v15.0.0-nightly.3) (2021-06-17)
+
+
+### Bug Fixes
+
+* update dependency puppeteer to v10 ([7422f7b](https://github.com/xing/hops/commit/7422f7b0fd1192942b5c805904b9b43c0c71a2cb))
+
+
+
+
+
 # [15.0.0-nightly.2](https://github.com/xing/hops/compare/v15.0.0-nightly.1...v15.0.0-nightly.2) (2021-06-08)
 
 

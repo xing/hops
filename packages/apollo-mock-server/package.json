@@ -1,6 +1,6 @@
 {
   "name": "hops-apollo-mock-server",
-  "version": "15.0.0-nightly.2",
+  "version": "15.0.0-nightly.3",
   "description": "Apollo based mock server for Hops",
   "keywords": [
     "hops",
@@ -28,9 +28,9 @@
     "express": "^4.17.1",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.12.3",
-    "hops-config": "15.0.0-nightly.2",
-    "hops-mixin": "15.0.0-nightly.2",
-    "hops-webpack": "15.0.0-nightly.2"
+    "hops-config": "15.0.0-nightly.3",
+    "hops-mixin": "15.0.0-nightly.3",
+    "hops-webpack": "15.0.0-nightly.3"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/graphql#readme"
 }
