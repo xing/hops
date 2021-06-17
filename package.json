@@ -84,7 +84,14 @@
             "url": "enc:r6BTklZr+axySHpOBj0JyiGPh/P525a+dfwfWHQq5kkrY1Wruq8QaSL2vCfb0cWp",
             "branch": "hops-14.x"
           }
-        ]
+        ],
+        "rootManifest": {
+          "resolutions": {
+            "babel-jest": "^27",
+            "jest": "^27",
+            "ts-jest": "^27"
+          }
+        }
       }
     ]
   },
