@@ -1,6 +1,6 @@
 'use strict';
 
-const SingleEntryPlugin = require('webpack/lib/SingleEntryPlugin');
+const { Compilation, EntryPlugin } = require('webpack');
 const { ConcatSource, RawSource } = require('webpack-sources');
 
 const PLUGIN_NAME = 'hops-service-worker-plugin';
@@ -22,7 +22,7 @@ module.exports = class ServiceWorkerPlugin {
     function onMake(compilation, callback) {
       compilation
         .createChildCompiler(PLUGIN_NAME, { filename: publicWorkerFilename }, [
-          new SingleEntryPlugin(
+          new EntryPlugin(
             compiler.context,
             require.resolve('./worker-shim'),
             'worker'
@@ -31,12 +31,12 @@ module.exports = class ServiceWorkerPlugin {
         .runAsChild(callback);
     }
 
-    function onEmit(compilation, callback) {
-      compilation.assets[publicWorkerFilename] = new ConcatSource(
+    function onEmit(assets, callback) {
+      assets[publicWorkerFilename] = new ConcatSource(
         new RawSource(
           'HOPS_ASSETS = ' +
             JSON.stringify(
-              Object.keys(compilation.assets).filter(function (item) {
+              Object.keys(assets).filter(function (item) {
                 return (
                   !item.match(
                     /hot-update\.js(:?on)?|\.webmanifest|\.map|assets\.json$/
@@ -46,12 +46,21 @@ module.exports = class ServiceWorkerPlugin {
             ) +
             ';'
         ),
-        compilation.assets[publicWorkerFilename]
+        assets[publicWorkerFilename]
       );
       callback();
     }
 
-    compiler.hooks.make.tapAsync(PLUGIN_NAME, onMake);
-    compiler.hooks.emit.tapAsync(PLUGIN_NAME, onEmit);
+    compiler.hooks.make.tapAsync(PLUGIN_NAME, (compilation, callback) => {
+      onMake(compilation, callback);
+
+      compilation.hooks.processAssets.tapAsync(
+        {
+          name: PLUGIN_NAME,
+          stage: Compilation.PROCESS_ASSETS_STAGE_DERIVED,
+        },
+        onEmit
+      );
+    });
   }
 };

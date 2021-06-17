@@ -58,20 +58,28 @@ class WebpackBuildMixin extends Mixin {
     const webpackConfigs = [];
     this.collectBuildConfigs(webpackConfigs);
 
-    return new Promise((resolve, reject) =>
-      webpack(
+    return new Promise((resolve, reject) => {
+      const compiler = webpack(
         webpackConfigs.length === 1 ? webpackConfigs[0] : webpackConfigs
-      ).run((error, stats) => {
+      );
+
+      compiler.run((error, stats) => {
         if (error) {
           reject(error);
         } else if (stats.hasErrors()) {
           const { errors } = stats.toJson({ all: false, errors: true });
           reject(new Error(`Build failed with ${errors.length} error(s)`));
         } else {
-          resolve(stats);
+          compiler.close((error) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(stats);
+            }
+          });
         }
-      })
-    ).then((stats) => {
+      });
+    }).then((stats) => {
       this.inspectBuild(stats, webpackConfigs);
       return stats;
     });

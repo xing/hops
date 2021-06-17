@@ -1,15 +1,10 @@
 const { dirname, relative } = require('path');
-const {
-  EnvironmentPlugin,
-  HashedModuleIdsPlugin,
-  NamedModulesPlugin,
-  optimize,
-} = require('webpack');
+const { EnvironmentPlugin, DefinePlugin, ids } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
 
-const { ModuleConcatenationPlugin } = optimize;
+const { HashedModuleIdsPlugin, NamedModuleIdsPlugin } = ids;
 
 module.exports = function getConfig(config, name) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
@@ -45,10 +40,9 @@ module.exports = function getConfig(config, name) {
 
   const fileLoaderConfig = {
     exclude: [/\.(?:m?js|html|json)$/],
-    loader: require.resolve('file-loader'),
-    options: {
-      name: getAssetPath('[name]-[hash:16].[ext]'),
-      esModule: false,
+    type: 'asset/resource',
+    generator: {
+      filename: getAssetPath('[name]-[contenthash:16][ext]'),
     },
   };
 
@@ -60,11 +54,14 @@ module.exports = function getConfig(config, name) {
         ...fileLoaderConfig,
       },
       {
-        loader: require.resolve('url-loader'),
-        options: {
-          limit: 10000,
-          name: getAssetPath('[name]-[hash:16].[ext]'),
-          esModule: false,
+        type: 'asset',
+        generator: {
+          filename: getAssetPath('[name]-[contenthash:16][ext]'),
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10000,
+          },
         },
       },
     ],
@@ -81,6 +78,7 @@ module.exports = function getConfig(config, name) {
       allLoaderConfigs,
     },
     name,
+    target: ['web', 'es2020'],
     mode: isProduction ? 'production' : 'development',
     bail: isProduction,
     context: config.rootDir,
@@ -93,6 +91,10 @@ module.exports = function getConfig(config, name) {
       chunkFilename: getAssetPath(`${config.name}-[id]-[chunkhash:12].js`),
       devtoolModuleFilenameTemplate: (info) =>
         relative(config.rootDir, info.absoluteResourcePath),
+    },
+    // fixme
+    cache: {
+      type: 'memory',
     },
     resolve: {
       modules: getModules(config.rootDir),
@@ -123,7 +125,6 @@ module.exports = function getConfig(config, name) {
     optimization: {
       splitChunks: {
         chunks: 'all',
-        name: false,
       },
       minimizer: [
         new TerserPlugin({
@@ -133,10 +134,15 @@ module.exports = function getConfig(config, name) {
           },
         }),
       ],
+      chunkIds: 'natural',
+      usedExports: true,
+      concatenateModules: true,
     },
     plugins: [
-      new (isProduction ? HashedModuleIdsPlugin : NamedModulesPlugin)(),
-      new ModuleConcatenationPlugin(),
+      new (isProduction ? HashedModuleIdsPlugin : NamedModuleIdsPlugin)(),
+      // Needed for bootstrap/lib/utils#environmentalize, which falls
+      // back to `process.env` if there's no global variable `_env`
+      new DefinePlugin({ 'process.env': JSON.stringify({}) }),
       new EnvironmentPlugin({ NODE_ENV: 'development' }),
     ],
     performance: {

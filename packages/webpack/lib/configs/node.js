@@ -2,14 +2,14 @@ const { dirname, resolve } = require('path');
 const {
   EnvironmentPlugin,
   HotModuleReplacementPlugin,
-  HashedModuleIdsPlugin,
-  NamedModulesPlugin,
   optimize,
+  ids,
 } = require('webpack');
 const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
 
 const { LimitChunkCountPlugin } = optimize;
+const { HashedModuleIdsPlugin, NamedModuleIdsPlugin } = ids;
 
 module.exports = function getConfig(config, name) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
@@ -50,11 +50,13 @@ module.exports = function getConfig(config, name) {
 
   const fileLoaderConfig = {
     exclude: [/\.(?:m?js|html|json)$/],
-    loader: require.resolve('file-loader'),
-    options: {
-      name: getAssetPath('[name]-[hash:16].[ext]'),
-      esModule: false,
-      emitFile: false,
+    type: 'asset/resource',
+    generator: {
+      filename: getAssetPath('[name]-[contenthash:16][ext]'),
+      // TODO: comment in next line as soon as webpack@>5.24.4 supports prefetching
+      // and we'll have thus updated webpack to the latest version, which supports
+      // this option
+      // emit: false,
     },
   };
 
@@ -66,12 +68,18 @@ module.exports = function getConfig(config, name) {
         ...fileLoaderConfig,
       },
       {
-        loader: require.resolve('url-loader'),
-        options: {
-          limit: 10000,
-          name: getAssetPath('[name]-[hash:16].[ext]'),
-          emitFile: false,
-          esModule: false,
+        type: 'asset',
+        generator: {
+          filename: getAssetPath('[name]-[contenthash:16][ext]'),
+          // TODO: comment in next line as soon as webpack@>5.24.4 supports prefetching
+          // and we'll have thus updated webpack to the latest version, which supports
+          // this option
+          // emit: false,
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10000,
+          },
         },
       },
     ],
@@ -104,9 +112,15 @@ module.exports = function getConfig(config, name) {
       publicPath: '/',
       pathinfo: true,
       filename: config.serverFile,
-      libraryTarget: 'commonjs2',
+      library: {
+        type: 'commonjs2',
+      },
       devtoolModuleFilenameTemplate: (info) =>
         resolve(info.absoluteResourcePath),
+    },
+    // fixme
+    cache: {
+      type: 'memory',
     },
     resolve: {
       modules: getModules(config.rootDir),
@@ -133,10 +147,11 @@ module.exports = function getConfig(config, name) {
     externals: [],
     optimization: {
       minimizer: [],
+      chunkIds: 'natural',
     },
     plugins: [
       new LimitChunkCountPlugin({ maxChunks: 1 }),
-      new (isProduction ? HashedModuleIdsPlugin : NamedModulesPlugin)(),
+      new (isProduction ? HashedModuleIdsPlugin : NamedModuleIdsPlugin)(),
       isProduction ? { apply: () => {} } : new HotModuleReplacementPlugin(),
       new EnvironmentPlugin({ NODE_ENV: 'development' }),
     ],

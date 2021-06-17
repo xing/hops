@@ -2,8 +2,32 @@ const { mkdirSync, writeFileSync } = require('fs');
 const { dirname } = require('path');
 const { trimTrailingSlash } = require('pathifist');
 
-const analyzeCompilation = ({ chunks, chunkGroups }) => {
-  const entryChunks = chunks.filter(({ entryModule }) => !!entryModule);
+const analyzeCompilation = ({ chunks, chunkGroups, chunkGraph }) => {
+  const entryChunks = [];
+  const chunksByModule = [];
+
+  for (const chunk of chunks) {
+    for (const entry of chunkGraph.getChunkEntryModulesIterable(chunk)) {
+      if (chunkGraph.isModuleInChunk(entry, chunk)) {
+        entryChunks.push(chunk);
+      }
+    }
+
+    for (const module of chunkGraph.getChunkModules(chunk)) {
+      const moduleId = chunkGraph.getModuleId(module);
+
+      if (!moduleId) {
+        continue;
+      }
+
+      const { chunks } = chunkGroups.find(({ chunks }) =>
+        chunks.includes(chunk)
+      );
+
+      chunksByModule.push([moduleId, chunks]);
+    }
+  }
+
   const vendorChunks = chunkGroups.reduce(
     (result, { chunks }) => [
       ...result,
@@ -11,17 +35,6 @@ const analyzeCompilation = ({ chunks, chunkGroups }) => {
         ? chunks.filter((chunk) => !entryChunks.includes(chunk))
         : []),
     ],
-    []
-  );
-
-  const chunksByModule = chunks.reduce(
-    (result, chunk) =>
-      Array.from(chunk.modulesIterable).reduce((result, module) => {
-        const { chunks } = chunkGroups.find(({ chunks }) =>
-          chunks.includes(chunk)
-        );
-        return [...result, [module.id, chunks]];
-      }, result),
     []
   );
 
@@ -33,7 +46,7 @@ const extractFiles = (chunkData, rawPublicPath) => {
   const { entryChunks, vendorChunks, chunksByModule } = chunkData;
   const gatherFiles = (result, { files }) => [
     ...result,
-    ...files.map((file) => `${publicPath}/${file}`),
+    ...Array.from(files).map((file) => `${publicPath}/${file}`),
   ];
 
   return {
@@ -58,9 +71,13 @@ exports.StatsWritePlugin = class StatsWritePlugin {
           }
 
           const stats = {
-            ...compilation
-              .getStats()
-              .toJson({ all: false, assets: true, entrypoints: true }),
+            ...compilation.getStats().toJson({
+              chunksSort: 'id',
+              all: false,
+              assets: true,
+              chunkGroupChildren: true,
+              entrypoints: true,
+            }),
             ...extractFiles(analyzeCompilation(compilation), publicPath),
           };
 

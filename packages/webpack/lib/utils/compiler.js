@@ -50,7 +50,15 @@ function startCompilation(webpackConfig, options = {}) {
     if (watch) {
       compiler.watch(webpackConfig.watchOptions, callback);
     } else {
-      compiler.run(callback);
+      compiler.run((error, stats) => {
+        if (error) {
+          callback(error);
+        }
+
+        compiler.close((error) => {
+          callback(error, stats);
+        });
+      });
     }
   });
 }

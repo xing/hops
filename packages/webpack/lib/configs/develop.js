@@ -2,7 +2,7 @@ const { dirname, relative } = require('path');
 const {
   EnvironmentPlugin,
   HotModuleReplacementPlugin,
-  NamedModulesPlugin,
+  DefinePlugin,
 } = require('webpack');
 const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
@@ -40,10 +40,9 @@ module.exports = function getConfig(config, name) {
 
   const fileLoaderConfig = {
     exclude: [/\.(?:m?js|html|json)$/],
-    loader: require.resolve('file-loader'),
-    options: {
-      name: getAssetPath('[name]-[hash:16].[ext]'),
-      esModule: false,
+    type: 'asset/resource',
+    generator: {
+      filename: getAssetPath('[name]-[contenthash:16][ext]'),
     },
   };
 
@@ -55,11 +54,14 @@ module.exports = function getConfig(config, name) {
         ...fileLoaderConfig,
       },
       {
-        loader: require.resolve('url-loader'),
-        options: {
-          limit: 10000,
-          name: getAssetPath('[name]-[hash:16].[ext]'),
-          esModule: false,
+        type: 'asset',
+        generator: {
+          filename: getAssetPath('[name]-[contenthash:16][ext]'),
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10000,
+          },
         },
       },
     ],
@@ -76,6 +78,7 @@ module.exports = function getConfig(config, name) {
       allLoaderConfigs,
     },
     name,
+    target: ['web', 'es2020'],
     mode: 'development',
     context: config.rootDir,
     entry: require.resolve('../shims/develop'),
@@ -83,10 +86,14 @@ module.exports = function getConfig(config, name) {
       path: config.buildDir,
       publicPath: '/',
       pathinfo: true,
-      filename: getAssetPath(`${config.name}.js`),
+      filename: getAssetPath(`${config.name}-[id].js`),
       chunkFilename: getAssetPath(`${config.name}-[id].js`),
       devtoolModuleFilenameTemplate: (info) =>
         relative(config.rootDir, info.absoluteResourcePath),
+    },
+    // fixme
+    cache: {
+      type: 'memory',
     },
     resolve: {
       modules: getModules(config.rootDir),
@@ -115,10 +122,14 @@ module.exports = function getConfig(config, name) {
     },
     externals: [],
     optimization: {
-      splitChunks: { chunks: 'all', name: false },
+      splitChunks: { chunks: 'all' },
+      moduleIds: 'named',
+      chunkIds: 'natural',
     },
     plugins: [
-      new NamedModulesPlugin(),
+      // Needed for bootstrap/lib/utils#environmentalize, which falls
+      // back to `process.env` if there's no global variable `_env`
+      new DefinePlugin({ 'process.env': JSON.stringify({}) }),
       new HotModuleReplacementPlugin(),
       new EnvironmentPlugin({ NODE_ENV: 'development' }),
     ],
@@ -128,9 +139,11 @@ module.exports = function getConfig(config, name) {
       maxAssetSize: 52428800,
     },
     infrastructureLogging: {
-      level: 'none',
+      // TODO: check in integration tests, that no stdout
+      // containing "<e> [webpack-dev-middleware]" is present
+      level: 'error',
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-cheap-module-source-map',
     watchOptions: { aggregateTimeout: 300, ignored: /node_modules/ },
   };
 };
