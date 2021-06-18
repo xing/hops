@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.4](https://github.com/xing/hops/compare/v15.0.0-nightly.3...v15.0.0-nightly.4) (2021-06-18)
+
+
+### Bug Fixes
+
+* **webpack:** bring back named chunks in dev-mode ([19a2f81](https://github.com/xing/hops/commit/19a2f810b5e49f961b070c206ce8fe4c6b0c2f29))
+* **webpack:** ensure to collect all entry modules ([8b49a5a](https://github.com/xing/hops/commit/8b49a5a20be7918d9be7a519ef1d5338c899f05b))
+
+
+
+
+
 # [15.0.0-nightly.3](https://github.com/xing/hops/compare/v15.0.0-nightly.2...v15.0.0-nightly.3) (2021-06-17)
 
 
