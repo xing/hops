@@ -7,13 +7,12 @@ const analyzeCompilation = ({ chunks, chunkGroups, chunkGraph }) => {
   const chunksByModule = [];
 
   for (const chunk of chunks) {
-    for (const entry of chunkGraph.getChunkEntryModulesIterable(chunk)) {
-      if (chunkGraph.isModuleInChunk(entry, chunk)) {
+    for (const module of chunkGraph.getChunkModulesIterable(chunk)) {
+      if (chunkGraph.isEntryModule(module)) {
         entryChunks.push(chunk);
+        continue;
       }
-    }
 
-    for (const module of chunkGraph.getChunkModules(chunk)) {
       const moduleId = chunkGraph.getModuleId(module);
 
       if (!moduleId) {
