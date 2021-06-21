@@ -6,7 +6,7 @@ const getModules = require('../utils/modules');
 
 const { HashedModuleIdsPlugin, NamedModuleIdsPlugin } = ids;
 
-module.exports = function getConfig(config, name) {
+module.exports = function getConfig(config, name, buildDependencies) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
   const isProduction = process.env.NODE_ENV === 'production';
 
@@ -92,9 +92,17 @@ module.exports = function getConfig(config, name) {
       devtoolModuleFilenameTemplate: (info) =>
         relative(config.rootDir, info.absoluteResourcePath),
     },
-    // fixme
     cache: {
-      type: 'memory',
+      type: 'filesystem',
+      buildDependencies: {
+        config: [__filename].concat(buildDependencies),
+      },
+    },
+    snapshot: {
+      buildDependencies: {
+        hash: true,
+        timestamp: false,
+      },
     },
     resolve: {
       modules: getModules(config.rootDir),

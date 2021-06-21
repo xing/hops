@@ -14,16 +14,45 @@ const { validate, invariant } = bootstrap;
 const debugConfig = (target, config) =>
   debug(`hops:webpack:config:${target}`)(config);
 
+const collectWebpackBuildDependencies = (config) => {
+  const buildDependencies = bootstrap
+    .getMixins(config)
+    .reduce((acc, mixin, i) => {
+      if (typeof mixin.prototype.configureBuild === 'function') {
+        acc.push(config._mixins.core[i]);
+      }
+      return acc;
+    }, []);
+
+  debug('hops:webpack:dependencies')(buildDependencies);
+
+  return buildDependencies;
+};
+
 class WebpackConfigMixin extends Mixin {
   getBuildConfig(target, baseConfig) {
     const { loaderConfigs = {}, ...webpackConfig } = (() => {
+      const buildDependencies = collectWebpackBuildDependencies(this.config);
+
       switch (baseConfig || target) {
         case 'build':
-          return require('../../lib/configs/build')(this.config, target);
+          return require('../../lib/configs/build')(
+            this.config,
+            target,
+            buildDependencies
+          );
         case 'develop':
-          return require('../../lib/configs/develop')(this.config, target);
+          return require('../../lib/configs/develop')(
+            this.config,
+            target,
+            buildDependencies
+          );
         case 'node':
-          return require('../../lib/configs/node')(this.config, target);
+          return require('../../lib/configs/node')(
+            this.config,
+            target,
+            buildDependencies
+          );
         default:
           if (baseConfig && exists(baseConfig)) {
             return require(baseConfig)(this.config, target);
