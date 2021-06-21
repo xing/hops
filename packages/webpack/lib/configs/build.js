@@ -78,7 +78,7 @@ module.exports = function getConfig(config, name) {
       allLoaderConfigs,
     },
     name,
-    target: ['web', 'es2020'],
+    target: ['web', 'es5'],
     mode: isProduction ? 'production' : 'development',
     bail: isProduction,
     context: config.rootDir,
