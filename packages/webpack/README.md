@@ -298,3 +298,4 @@ Available tags for the [`debug`](https://www.npmjs.com/package/debug)-module are
 - `hops:webpack:config:build`
 - `hops:webpack:config:develop`
 - `hops:webpack:config:node`
+- `hops:webpack:dependencies`
