@@ -11,7 +11,7 @@ const getModules = require('../utils/modules');
 const { LimitChunkCountPlugin } = optimize;
 const { HashedModuleIdsPlugin, NamedModuleIdsPlugin } = ids;
 
-module.exports = function getConfig(config, name) {
+module.exports = function getConfig(config, name, buildDependencies) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
   const isProduction = process.env.NODE_ENV === 'production';
 
@@ -118,9 +118,17 @@ module.exports = function getConfig(config, name) {
       devtoolModuleFilenameTemplate: (info) =>
         resolve(info.absoluteResourcePath),
     },
-    // fixme
     cache: {
-      type: 'memory',
+      type: 'filesystem',
+      buildDependencies: {
+        config: [__filename].concat(buildDependencies),
+      },
+    },
+    snapshot: {
+      buildDependencies: {
+        hash: true,
+        timestamp: !isProduction,
+      },
     },
     resolve: {
       modules: getModules(config.rootDir),
