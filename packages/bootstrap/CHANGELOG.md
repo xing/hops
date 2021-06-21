@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.5](https://github.com/xing/hops/compare/v15.0.0-nightly.4...v15.0.0-nightly.5) (2021-06-21)
+
+
+### Features
+
+* **webpack:** enable filesystem-based caching ([dccb7e0](https://github.com/xing/hops/commit/dccb7e0384f5140265f6cb68279ae73bbcb49da8))
+
+
+
+
+
 # [15.0.0-nightly.4](https://github.com/xing/hops/compare/v15.0.0-nightly.3...v15.0.0-nightly.4) (2021-06-18)
 
 **Note:** Version bump only for package hops-bootstrap
