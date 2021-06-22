@@ -37,6 +37,10 @@ function installPackages(packages, type, options) {
     if (type === 'dev') {
       command.push('--dev');
     }
+    // TODO: remove this after PR #1878 has been released
+    if (process.version.startsWith('v16')) {
+      command.push('--ignore-engines');
+    }
   } else {
     command =
       packages.length === 0
