@@ -1,6 +1,6 @@
 {
   "name": "hops-info",
-  "version": "14.2.0",
+  "version": "14.2.1",
   "description": "Hops info mixin",
   "repository": {
     "type": "git",
@@ -20,8 +20,8 @@
     "enhanced-resolve": "^5.0.0",
     "eprom": "^1.0.0",
     "escape-string-regexp": "^4.0.0",
-    "hops-bootstrap": "14.2.0",
-    "hops-mixin": "14.2.0",
+    "hops-bootstrap": "14.2.1",
+    "hops-mixin": "14.2.1",
     "mixinable": "^5.0.1",
     "web-vitals": "^2.0.0"
   },

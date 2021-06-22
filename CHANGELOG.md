@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.2.1](https://github.com/xing/hops/compare/v14.2.0...v14.2.1) (2021-06-22)
+
+
+### Bug Fixes
+
+* **create-hops-app:** add intermediary support for Node v16 ([4a19797](https://github.com/xing/hops/commit/4a1979784f33cfc9e44f2966ce13abcf412527f6))
+
+
+
+
+
 # [14.2.0](https://github.com/xing/hops/compare/v14.1.0...v14.2.0) (2021-06-14)
 
 
