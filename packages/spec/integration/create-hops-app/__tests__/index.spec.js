@@ -5,7 +5,7 @@
 const path = require('path');
 const { prerelease } = require('semver');
 const { existsSync, readFileSync } = require('fs');
-const { execSync } = require('child_process');
+const execa = require('execa');
 const { version, bin } = require(require.resolve(
   'create-hops-app/package.json'
 ));
@@ -21,27 +21,43 @@ describe('create-hops-app', () => {
     process.chdir(cwd);
   });
 
-  it('initializes a Hops app with yarn', () => {
+  it('initializes a Hops app with yarn', async () => {
     const name = 'my-app-yarn';
-    const args = [name, `--template ${template}@${version}`].join(' ');
+    const args = [name, `--template ${template}@${version}`];
 
-    execSync(`${createHopsAppBin} ${args}`, { stdio: 'ignore' });
+    const { all: output } = await execa(createHopsAppBin, args, {
+      all: true,
+    });
 
     const lockFile = path.join(cwd, name, 'yarn.lock');
 
-    expect(existsSync(lockFile)).toBeTruthy();
+    // Leaving the realm of `expect` here in order to be able to
+    // print the output of the command in case of failure.
+    if (!existsSync(lockFile)) {
+      console.log(output);
+
+      throw new Error(`Could not find file ${name}/yarn.lock`);
+    }
+
     expect(readFileSync(lockFile, 'utf-8')).toContain('hops-react');
   });
 
-  it('initializes a Hops app with npm', () => {
+  it('initializes a Hops app with npm', async () => {
     const name = 'my-app-npm';
-    const args = [name, `--template ${template}@${version}`, `--npm`].join(' ');
+    const args = [name, `--template ${template}@${version}`, `--npm`];
 
-    execSync(`${createHopsAppBin} ${args}`, { stdio: 'ignore' });
+    const { all: output } = await execa(createHopsAppBin, args, { all: true });
 
     const lockFile = path.join(cwd, name, 'package-lock.json');
 
-    expect(existsSync(lockFile)).toBeTruthy();
+    // Leaving the realm of `expect` here in order to be able to
+    // print the output of the command in case of failure.
+    if (!existsSync(lockFile)) {
+      console.log(output);
+
+      throw new Error(`Could not find file ${name}/yarn.lock`);
+    }
+
     expect(readFileSync(lockFile, 'utf-8')).toContain('hops-react');
   });
 

@@ -1,6 +1,6 @@
 {
   "name": "hops-debug",
-  "version": "14.2.0",
+  "version": "14.2.1",
   "description": "Hops debug wrapper",
   "main": "node.js",
   "browser": "browser.js",
@@ -21,6 +21,6 @@
     "debug": "^4.1.1"
   },
   "engines": {
-    "node": "12 || 14 || 15"
+    "node": "12 || 14 || 15 || 16"
   }
 }

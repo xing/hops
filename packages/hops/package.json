@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "14.2.0",
+  "version": "14.2.1",
   "description": "Hops main Package to build and run Hops applications",
   "keywords": [
     "hops",
@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "12 || 14 || 15"
+    "node": "12 || 14 || 15 || 16"
   },
   "bin": {
     "hops": "bin.js"
@@ -30,12 +30,12 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-express": "14.2.0",
-    "hops-info": "14.2.0",
-    "hops-mixin": "14.2.0",
-    "hops-react": "14.2.0",
-    "hops-webpack": "14.2.0",
-    "hops-yargs": "14.2.0",
+    "hops-express": "14.2.1",
+    "hops-info": "14.2.1",
+    "hops-mixin": "14.2.1",
+    "hops-react": "14.2.1",
+    "hops-webpack": "14.2.1",
+    "hops-yargs": "14.2.1",
     "webpack-bundle-analyzer": "^4.1.0"
   },
   "peerDependencies": {

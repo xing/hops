@@ -1,6 +1,6 @@
 {
   "name": "hops-apollo-mock-server",
-  "version": "14.2.0",
+  "version": "14.2.1",
   "description": "Apollo based mock server for Hops",
   "keywords": [
     "hops",
@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": "12 || 14 || 15"
+    "node": "12 || 14 || 15 || 16"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,9 @@
     "express": "^4.17.1",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.12.3",
-    "hops-config": "14.2.0",
-    "hops-mixin": "14.2.0",
-    "hops-webpack": "14.2.0"
+    "hops-config": "14.2.1",
+    "hops-mixin": "14.2.1",
+    "hops-webpack": "14.2.1"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/graphql#readme"
 }
