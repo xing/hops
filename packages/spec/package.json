@@ -39,6 +39,7 @@
     "cross-fetch": "^3.0.4",
     "esbuild-jest": "^0.5.0",
     "esbuild-loader": "^2.10.0",
+    "execa": "^5.1.1",
     "jest-environment-hops": "14.2.0",
     "raw-body": "^2.4.1",
     "react-apollo": "^3.1.2",
