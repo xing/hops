@@ -9,7 +9,7 @@ it('renders loading state correctly', () => {
   const tree = renderer
     .create(
       <HelmetProvider>
-        <Home data={{ loading: true }} />
+        <Home loading />
       </HelmetProvider>
     )
     .toJSON();
@@ -18,7 +18,6 @@ it('renders loading state correctly', () => {
 
 it('renders loaded state correctly', () => {
   const data = {
-    loading: false,
     jobSearchByQuery: {
       collection: [
         {
@@ -38,7 +37,7 @@ it('renders loaded state correctly', () => {
   };
   const tree = renderer.create(
     <HelmetProvider>
-      <Home data={data} />
+      <Home loading={false} data={data} />
     </HelmetProvider>
   );
   expect(tree).toMatchSnapshot();
