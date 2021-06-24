@@ -17,6 +17,8 @@ if (Number(jestMajorVersion) < 26) {
   );
 }
 
+const enableMockServiceWorker = process.env.ENABLE_MSW === 'true';
+
 const useEsbuild = process.env.USE_EXPERIMENTAL_ESBUILD === 'true';
 const jsTransform = useEsbuild
   ? require.resolve('./transforms/esbuild.js')
@@ -52,9 +54,12 @@ module.exports = {
     '^.+\\.(gql|graphql)$': require.resolve('./transforms/graphql.js'),
   },
   transformIgnorePatterns: [],
-  setupFiles: useEsbuild
-    ? []
-    : [require.resolve('regenerator-runtime/runtime')],
+  setupFiles: [
+    useEsbuild ? undefined : require.resolve('regenerator-runtime/runtime'),
+  ].filter(Boolean),
+  setupFilesAfterEnv: [
+    enableMockServiceWorker ? require.resolve('./setup-msw.js') : undefined,
+  ].filter(Boolean),
   // fixes: https://github.com/facebook/jest/issues/6766
   testURL: 'http://localhost',
   testEnvironment: 'jsdom',
