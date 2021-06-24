@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "preinstall": "node -e \"process.exit(process.env.npm_execpath.includes('yarn') ? 0 : 1)\"",
-    "test": "jest",
+    "test": "ENABLE_MSW=true jest",
     "fmt": "prettier --write --ignore-unknown .",
     "template-graphql": "yarn workspace hops-template-graphql run",
     "template-react": "yarn workspace hops-template-react run",
