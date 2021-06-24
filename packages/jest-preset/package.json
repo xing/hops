@@ -36,12 +36,22 @@
   },
   "peerDependencies": {
     "babel-jest": "^26.0.0 || ^27.0.0",
+    "hops-msw": "14.2.1",
+    "hops-react-apollo": "14.2.1",
     "jest": "^26.0.0 || ^27.0.0",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.0",
     "ts-jest": "^26.0.0 || ^27.0.3"
+  },
+  "peerDependenciesMeta": {
+    "hops-msw": {
+      "optional": true
+    },
+    "hops-react-apollo": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "babel-jest": "^26.0.0",
