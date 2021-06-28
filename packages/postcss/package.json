@@ -31,7 +31,7 @@
     "postcss-loader": "^6.1.0",
     "postcss-normalize-charset": "^4.0.1",
     "postcss-preset-env": "^6.7.0",
-    "style-loader": "^2.0.0",
+    "style-loader": "^3.0.0",
     "webpack": "5.24.4"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/postcss#readme"
