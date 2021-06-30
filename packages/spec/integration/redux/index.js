@@ -50,12 +50,15 @@ const setMatchParam = (params, { match: { params: matchParams } }) => {
   };
 };
 
-const Counter = ({ count, increment, val }) => (
+const Counter = ({ count, increment, incrementAsync, val }) => (
   <>
     <Helmet>
       <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
     </Helmet>
     <button onClick={increment}>+</button>
+    <>&nbsp;</>
+    <button onClick={incrementAsync}>async +</button>
+    <>&nbsp;</>
     <counter>{count}</counter>
     <value>{val}</value>
     <Route
@@ -72,7 +75,7 @@ const Counter = ({ count, increment, val }) => (
 
 const ConnectedCounter = connect(
   ({ counter, value }) => ({ count: counter, val: value }),
-  { increment }
+  { increment, incrementAsync: incrementFetch }
 )(Counter);
 
 export default render(<ConnectedCounter />, {

@@ -27,6 +27,7 @@
     "cross-fetch": "*",
     "hops": "*",
     "hops-redux": "*",
+    "hops-msw": "*",
     "react": "*",
     "react-helmet-async": "*",
     "react-redux": "*",
