@@ -1,6 +1,6 @@
 {
   "name": "jest-environment-hops",
-  "version": "15.0.0-nightly.5",
+  "version": "15.0.0-nightly.6",
   "description": "Opinionated Jest environment to run Puppeteer-powered tests against Hops apps",
   "keywords": [
     "hops",
@@ -23,7 +23,7 @@
     "colors": "^1.4.0",
     "eprom": "^1.0.0",
     "fs-extra": "^10.0.0",
-    "hops-debug": "15.0.0-nightly.5",
+    "hops-debug": "15.0.0-nightly.6",
     "import-from": "^4.0.0",
     "mkdirp": "^1.0.4",
     "mktemp": "^1.0.0",

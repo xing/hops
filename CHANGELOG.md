@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.6](https://github.com/xing/hops/compare/v15.0.0-nightly.5...v15.0.0-nightly.6) (2021-06-30)
+
+
+### Bug Fixes
+
+* update dependency style-loader to v3 ([002b84a](https://github.com/xing/hops/commit/002b84abfd703e698ccb692ea66d62a224e1b519))
+* **create-hops-app:** add intermediary support for Node v16 ([87172b0](https://github.com/xing/hops/commit/87172b0d05e981b074636576371f4551c1d6f8ec))
+* **template-graphql:** correctly pass data and loading state ([aadadf8](https://github.com/xing/hops/commit/aadadf8749083df6202b69b5d38244e6ea068e6f))
+
+
+### Features
+
+* **jest-preset:** automatically set-up graphql and msw ([3f092d3](https://github.com/xing/hops/commit/3f092d3493a814b4c073dc2af8b03917973125c4))
+* **msw:** introduce new hops-msw package ([8c29169](https://github.com/xing/hops/commit/8c29169b781719e44e5fbec201083fd52c20e991))
+* **react-apollo:** expose helper functions for unit testing ([e174900](https://github.com/xing/hops/commit/e174900defe735252e5fa1f63782ad546fd6b9e6))
+
+
+
+
+
 # [15.0.0-nightly.5](https://github.com/xing/hops/compare/v15.0.0-nightly.4...v15.0.0-nightly.5) (2021-06-21)
 
 

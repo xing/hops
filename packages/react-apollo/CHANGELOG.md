@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.6](https://github.com/xing/hops/compare/v15.0.0-nightly.5...v15.0.0-nightly.6) (2021-06-30)
+
+
+### Features
+
+* **react-apollo:** expose helper functions for unit testing ([e174900](https://github.com/xing/hops/commit/e174900defe735252e5fa1f63782ad546fd6b9e6))
+
+
+
+
+
 # [15.0.0-nightly.5](https://github.com/xing/hops/compare/v15.0.0-nightly.4...v15.0.0-nightly.5) (2021-06-21)
 
 **Note:** Version bump only for package hops-react-apollo

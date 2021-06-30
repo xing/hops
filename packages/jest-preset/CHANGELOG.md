@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.6](https://github.com/xing/hops/compare/v15.0.0-nightly.5...v15.0.0-nightly.6) (2021-06-30)
+
+
+### Features
+
+* **jest-preset:** automatically set-up graphql and msw ([3f092d3](https://github.com/xing/hops/commit/3f092d3493a814b4c073dc2af8b03917973125c4))
+
+
+
+
+
 # [15.0.0-nightly.5](https://github.com/xing/hops/compare/v15.0.0-nightly.4...v15.0.0-nightly.5) (2021-06-21)
 
 **Note:** Version bump only for package jest-preset-hops
