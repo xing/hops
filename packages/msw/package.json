@@ -1,0 +1,32 @@
+{
+  "name": "hops-msw",
+  "version": "14.2.1",
+  "description": "Mock service worker support for Hops",
+  "keywords": [
+    "hops",
+    "mocking",
+    "graphql",
+    "rest",
+    "msw"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": "12 || 14 || 15 || 16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xing/hops.git"
+  },
+  "jest": {
+    "displayName": "unit"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cross-fetch": "^3.1.4",
+    "execa": "^5.1.1",
+    "hops-mixin": "14.2.1",
+    "msw": "^0.30.0",
+    "url-join": "^4.0.1"
+  },
+  "homepage": "https://github.com/xing/hops/tree/master/packages/msw#readme"
+}
