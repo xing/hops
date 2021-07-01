@@ -232,7 +232,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
-    "husky": "^4.3.8",
+    "husky": "^7.0.0",
     "jest": "^26.0.0",
     "jest-runner-eslint": "0.10.1",
     "jest-runner-prettier": "0.3.6",
