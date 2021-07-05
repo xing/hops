@@ -72,7 +72,7 @@ const mockDeleteRequest = (pathName, data) => {
 
 /** @type {import('hops-msw/integration').registerServerMocks} */
 const registerServerMocks = async (...mocks) => {
-  await fetch(getMockEndpoint('/_mocks/register'), {
+  await fetch(getMockEndpoint('/_msw/register'), {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -83,7 +83,7 @@ const registerServerMocks = async (...mocks) => {
 
 /** @type {import('hops-msw/integration').resetServerMocks} */
 const resetServerMocks = async () => {
-  await fetch(getMockEndpoint('/_mocks/reset'));
+  await fetch(getMockEndpoint('/_msw/reset'));
 };
 
 module.exports = {
