@@ -38,21 +38,32 @@ class MswMixin extends Mixin {
     // eslint-disable-next-line node/no-unsupported-features/es-syntax
     const { setupWorker, graphql, rest } = await import('msw');
     const worker = setupWorker();
-    const registerBrowserMock = (mock) =>
+    const registerBrowserMock = (mock) => {
       worker.use(createBrowserMock({ graphql, rest }, mock));
+    };
 
     window.hopsMswMocksReset = () => worker.resetHandlers();
     window.hopsMswMocks = window.hopsMswMocks || [];
-    window.hopsMswMocks.push = (mock) => registerBrowserMock(mock);
+    window.hopsMswMocks.push = (...mocks) => {
+      mocks.forEach((mock) => registerBrowserMock(mock));
+      window.hopsMswMocksReady();
+    };
     window.hopsMswMocks.forEach((mock) => registerBrowserMock(mock));
 
-    return worker.start({
+    await worker.start({
       serviceWorker: {
         url: this.config.mockServiceWorkerUri,
       },
       options: {
         scope: this.config.basePath || '/',
       },
+    });
+
+    return new Promise((resolve) => {
+      window.hopsMswMocksReady = () => resolve();
+      if (window.hopsMswMocks.length > 0) {
+        window.hopsMswMocksReady();
+      }
     });
   }
 }
