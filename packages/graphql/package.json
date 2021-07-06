@@ -1,6 +1,6 @@
 {
   "name": "hops-graphql",
-  "version": "15.0.0-nightly.7",
+  "version": "15.0.0-nightly.8",
   "description": "React and GraphQL implementation for Hops",
   "keywords": [
     "hops",
@@ -21,8 +21,8 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-apollo-mock-server": "15.0.0-nightly.7",
-    "hops-react-apollo": "15.0.0-nightly.7"
+    "hops-apollo-mock-server": "15.0.0-nightly.8",
+    "hops-react-apollo": "15.0.0-nightly.8"
   },
   "peerDependencies": {
     "@apollo/client": "^3.3.11",

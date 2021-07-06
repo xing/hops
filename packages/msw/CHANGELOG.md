@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.8](https://github.com/xing/hops/compare/v15.0.0-nightly.7...v15.0.0-nightly.8) (2021-07-06)
+
+
+### Bug Fixes
+
+* **msw:** delay rendering until msw mocks have been registered ([dffafa4](https://github.com/xing/hops/commit/dffafa43f0e6647912843ba14061617128f9893a))
+
+
+
+
+
 # [15.0.0-nightly.7](https://github.com/xing/hops/compare/v15.0.0-nightly.6...v15.0.0-nightly.7) (2021-07-05)
 
 
