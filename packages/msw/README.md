@@ -12,11 +12,12 @@ This package (together with `jest-preset-hops`) takes care of setting up the MSW
 
 ```javascript
 import { render, waitFor } from '@testing-library/react';
-import { mockServer, graphql } from 'hops-msw';
+import { getMockServer } from 'hops-msw/unit';
+import { graphql } from 'hops-msw';
 import { withApolloTestProvider } from 'hops-react-apollo';
 
 it('loads graphql data', async () => {
-  mockServer.use(
+  getMockServer().use(
     graphql.query('search', (req, res, ctx) => {
       return res(
         ctx.data({
