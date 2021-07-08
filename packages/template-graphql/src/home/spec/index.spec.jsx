@@ -1,4 +1,5 @@
-import { mockServer, graphql } from 'hops-msw/unit';
+import { getMockServer } from 'hops-msw/unit';
+import { graphql } from 'hops-msw';
 import { withApolloTestProvider } from 'hops-react-apollo';
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
@@ -46,7 +47,7 @@ it('renders loaded state correctly', () => {
 });
 
 it('loads graphql data', async () => {
-  mockServer.use(
+  getMockServer().use(
     graphql.query('search', (req, res, ctx) => {
       return res(
         ctx.data({

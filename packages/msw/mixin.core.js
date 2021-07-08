@@ -1,5 +1,14 @@
 const { Mixin } = require('hops-mixin');
 
+function exists(path) {
+  try {
+    require.resolve(path);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 const getMockServiceWorkerContent = () => {
   const { mkdtempSync, readFileSync } = require('fs');
   const { tmpdir } = require('os');
@@ -21,6 +30,14 @@ const getMockServiceWorkerContent = () => {
 };
 
 module.exports = class MswMixin extends Mixin {
+  configureBuild(webpackConfig) {
+    if (exists(this.config.mockServiceWorkerHandlersFile)) {
+      webpackConfig.resolve.alias['hops-msw/handlers'] = require.resolve(
+        this.config.mockServiceWorkerHandlersFile
+      );
+    }
+  }
+
   configureServer(_, middlewares) {
     if (process.env.ENABLE_MSW !== 'true') {
       return;
@@ -30,8 +47,14 @@ module.exports = class MswMixin extends Mixin {
     const { setupServer } = require('msw/node');
     const { json: bodyParserJson } = require('body-parser');
 
-    const mockServer = setupServer();
     let mockServiceWorker;
+    const mockServer = setupServer();
+
+    if (exists(this.config.mockServiceWorkerHandlersFile)) {
+      const { handlers } = require(this.config.mockServiceWorkerHandlersFile);
+
+      handlers.forEach((handler) => mockServer.use(handler));
+    }
 
     mockServer.listen();
     process.on('SIGTERM', () => mockServer.close());

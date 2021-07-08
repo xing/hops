@@ -2,6 +2,7 @@
   "name": "hops-msw",
   "version": "15.0.0-nightly.8",
   "description": "Mock service worker support for Hops",
+  "main": "index.js",
   "keywords": [
     "hops",
     "mocking",
