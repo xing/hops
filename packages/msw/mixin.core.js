@@ -38,7 +38,7 @@ module.exports = class MswMixin extends Mixin {
     }
   }
 
-  configureServer(_, middlewares) {
+  configureServer(app, middlewares) {
     if (process.env.ENABLE_MSW !== 'true') {
       return;
     }
@@ -78,6 +78,10 @@ module.exports = class MswMixin extends Mixin {
         bodyParserJson(),
         (req, res) => {
           const { mocks } = req.body;
+
+          // setting this on `app.locals`, because it is a "global" and
+          // affects all following requests
+          app.locals.mswWaitForBrowserMocks = true;
 
           mocks.forEach(({ type, method, identifier, data }) => {
             switch (type) {
@@ -125,6 +129,8 @@ module.exports = class MswMixin extends Mixin {
       path: '/_msw/reset',
       handler: (_, res) => {
         mockServer.resetHandlers();
+
+        app.locals.mswWaitForBrowserMocks = false;
 
         res.type('text/plain').end('ok');
       },
