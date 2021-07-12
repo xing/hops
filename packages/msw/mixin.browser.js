@@ -41,13 +41,9 @@ class MswMixin extends Mixin {
     const { setupWorker, graphql, rest } = await import('msw');
     const worker = setupWorker();
 
-    try {
-      // eslint-disable-next-line node/no-unsupported-features/es-syntax, import/no-unresolved, node/no-missing-import
-      const { handlers } = await import('hops-msw/handlers');
-      handlers.forEach((handler) => worker.use(handler));
-    } catch {
-      // ignore if no handlers file has been provided
-    }
+    // eslint-disable-next-line node/no-unsupported-features/es-syntax, node/no-extraneous-import
+    const { handlers } = await import('hops-msw/handlers');
+    handlers.forEach((handler) => worker.use(handler));
 
     const registerBrowserMock = (mock) => {
       worker.use(createBrowserMock({ graphql, rest }, mock));
