@@ -4,7 +4,8 @@
   "main": "src/app.jsx",
   "license": "MIT",
   "hops": {
-    "graphqlUri": "https://www.xing.com/xing-one/api"
+    "graphqlUri": "https://www.xing.com/xing-one/api",
+    "mockServiceWorkerHandlersFile": "<rootDir>/mocks.js"
   },
   "scripts": {
     "start": "hops start",

@@ -1,9 +1,11 @@
-import { mockServer, graphql } from 'hops-msw/unit';
+import { getMockServer } from 'hops-msw/unit';
+import { graphql } from 'hops-msw';
 import { withApolloTestProvider } from 'hops-react-apollo';
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import renderer, { act } from 'react-test-renderer';
 import HomeWithData, { Home } from '../index.jsx';
+import { jobSearchByQueryData } from '../../../mocks';
 
 HelmetProvider.canUseDOM = false;
 
@@ -46,34 +48,9 @@ it('renders loaded state correctly', () => {
 });
 
 it('loads graphql data', async () => {
-  mockServer.use(
+  getMockServer().use(
     graphql.query('search', (req, res, ctx) => {
-      return res(
-        ctx.data({
-          __typename: 'Query',
-          jobSearchByQuery: {
-            __typename: 'JobSearchResult',
-            collection: [
-              {
-                __typename: 'JobItemResult',
-                jobDetail: {
-                  __typename: 'VisibleJob',
-                  id: '1',
-                  url: 'https://www.xing.com/jobs/1',
-                  title: 'some job',
-                  companyInfo: {
-                    __typename: 'JobCompanyInfo',
-                    company: {
-                      __typename: 'Company',
-                      companyName: 'cool company',
-                    },
-                  },
-                },
-              },
-            ],
-          },
-        })
-      );
+      return res(ctx.data(jobSearchByQueryData()));
     })
   );
 

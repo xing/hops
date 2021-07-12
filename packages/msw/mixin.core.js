@@ -1,5 +1,14 @@
 const { Mixin } = require('hops-mixin');
 
+function exists(path) {
+  try {
+    require.resolve(path);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 const getMockServiceWorkerContent = () => {
   const { mkdtempSync, readFileSync } = require('fs');
   const { tmpdir } = require('os');
@@ -21,7 +30,15 @@ const getMockServiceWorkerContent = () => {
 };
 
 module.exports = class MswMixin extends Mixin {
-  configureServer(_, middlewares) {
+  configureBuild(webpackConfig) {
+    if (exists(this.config.mockServiceWorkerHandlersFile)) {
+      webpackConfig.resolve.alias['hops-msw/handlers'] = require.resolve(
+        this.config.mockServiceWorkerHandlersFile
+      );
+    }
+  }
+
+  configureServer(app, middlewares) {
     if (process.env.ENABLE_MSW !== 'true') {
       return;
     }
@@ -30,8 +47,14 @@ module.exports = class MswMixin extends Mixin {
     const { setupServer } = require('msw/node');
     const { json: bodyParserJson } = require('body-parser');
 
-    const mockServer = setupServer();
     let mockServiceWorker;
+    const mockServer = setupServer();
+
+    if (exists(this.config.mockServiceWorkerHandlersFile)) {
+      const { handlers } = require(this.config.mockServiceWorkerHandlersFile);
+
+      handlers.forEach((handler) => mockServer.use(handler));
+    }
 
     mockServer.listen();
     process.on('SIGTERM', () => mockServer.close());
@@ -55,6 +78,10 @@ module.exports = class MswMixin extends Mixin {
         bodyParserJson(),
         (req, res) => {
           const { mocks } = req.body;
+
+          // setting this on `app.locals`, because it is a "global" and
+          // affects all following requests
+          app.locals.mswWaitForBrowserMocks = true;
 
           mocks.forEach(({ type, method, identifier, data }) => {
             switch (type) {
@@ -102,6 +129,8 @@ module.exports = class MswMixin extends Mixin {
       path: '/_msw/reset',
       handler: (_, res) => {
         mockServer.resetHandlers();
+
+        app.locals.mswWaitForBrowserMocks = false;
 
         res.type('text/plain').end('ok');
       },
