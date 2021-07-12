@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.9](https://github.com/xing/hops/compare/v15.0.0-nightly.8...v15.0.0-nightly.9) (2021-07-12)
+
+
+### Bug Fixes
+
+* update dependency msw to ^0.31.0 ([79ed0dc](https://github.com/xing/hops/commit/79ed0dc851aa5f4e990f036c90ba48e1fe8d860e))
+
+
+### Features
+
+* **msw:** allow to specify a handlers file to use during development ([fa11617](https://github.com/xing/hops/commit/fa1161750eac2b1c569d653fff68a8ffc761e0bf))
+* **msw:** only wait for browser mocks in integration tests ([b40d8ac](https://github.com/xing/hops/commit/b40d8ac8b475631ca722fd5b54dacdd2219bb4e9))
+
+
+
+
+
 # [15.0.0-nightly.8](https://github.com/xing/hops/compare/v15.0.0-nightly.7...v15.0.0-nightly.8) (2021-07-06)
 
 

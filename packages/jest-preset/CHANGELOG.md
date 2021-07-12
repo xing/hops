@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.9](https://github.com/xing/hops/compare/v15.0.0-nightly.8...v15.0.0-nightly.9) (2021-07-12)
+
+
+### Features
+
+* **msw:** allow to specify a handlers file to use during development ([fa11617](https://github.com/xing/hops/commit/fa1161750eac2b1c569d653fff68a8ffc761e0bf))
+
+
+
+
+
 # [15.0.0-nightly.8](https://github.com/xing/hops/compare/v15.0.0-nightly.7...v15.0.0-nightly.8) (2021-07-06)
 
 **Note:** Version bump only for package jest-preset-hops
