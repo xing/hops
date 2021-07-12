@@ -13,6 +13,7 @@ describe('development server with msw mocks', () => {
     const { getUrl } = HopsCLI.start(
       {
         ENABLE_MSW: 'true',
+        PORT: '8949',
       },
       '--fast-dev'
     );
