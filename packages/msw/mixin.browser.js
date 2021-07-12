@@ -31,6 +31,8 @@ const createBrowserMock = (
 
 class MswMixin extends Mixin {
   async bootstrap() {
+    const { mswWaitForBrowserMocks } = this.getServerData();
+
     if (this.config.enableMockServiceWorker !== 'true') {
       return;
     }
@@ -39,19 +41,15 @@ class MswMixin extends Mixin {
     const { setupWorker, graphql, rest } = await import('msw');
     const worker = setupWorker();
 
-    let hasHandlers = false;
-
     try {
       // eslint-disable-next-line node/no-unsupported-features/es-syntax, import/no-unresolved, node/no-missing-import
       const { handlers } = await import('hops-msw/handlers');
-      hasHandlers = true;
       handlers.forEach((handler) => worker.use(handler));
     } catch {
       // ignore if no handlers file has been provided
     }
 
     const registerBrowserMock = (mock) => {
-      hasHandlers = true;
       worker.use(createBrowserMock({ graphql, rest }, mock));
     };
 
@@ -78,7 +76,7 @@ class MswMixin extends Mixin {
     return new Promise((resolve) => {
       window.hopsMswMocksReady = () => resolve();
 
-      if (hasHandlers) {
+      if (!mswWaitForBrowserMocks) {
         window.hopsMswMocksReady();
       }
     });
