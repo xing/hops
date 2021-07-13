@@ -5,7 +5,12 @@ describe('redux development server', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl } = HopsCLI.start(
+      {
+        PORT: '8950',
+      },
+      '--fast-dev'
+    );
     url = await getUrl();
   });
 
