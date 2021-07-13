@@ -1,7 +1,7 @@
 import { Miss, render } from 'hops';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './home';
+import Home from './home/index.jsx';
 
 const App = () => (
   <Switch>

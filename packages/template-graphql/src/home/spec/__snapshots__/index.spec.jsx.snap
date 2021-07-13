@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`loads graphql data 1`] = `
+<div>
+  <h1
+    className="headline"
+  >
+    Hello World!
+  </h1>
+  <p>
+    <a
+      href="https://www.xing.com/jobs/1"
+    >
+      "
+      some job
+      "
+    </a>
+     at
+     
+    <b>
+      cool company
+    </b>
+  </p>
+</div>
+`;
+
 exports[`renders loaded state correctly 1`] = `
 <div>
   <h1

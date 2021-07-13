@@ -26,13 +26,15 @@ const reducers = {
 
 const increment = () => ({ type: 'INCREMENT', payload: 1 });
 
-const incrementFetch = () => (dispatch) => {
-  return fetch('http://localhost:8901/api')
-    .then((r) => r.json())
-    .then(({ value }) => {
-      dispatch({ type: 'INCREMENT', payload: value });
-    });
-};
+const incrementFetch =
+  () =>
+  (dispatch, _, { config }) => {
+    return fetch(`http://localhost:${config.port}/api`)
+      .then((r) => r.json())
+      .then(({ value }) => {
+        dispatch({ type: 'INCREMENT', payload: value });
+      });
+  };
 
 const setParam = ({ param }) => ({ type: 'SET_VALUE', payload: param });
 
@@ -50,12 +52,15 @@ const setMatchParam = (params, { match: { params: matchParams } }) => {
   };
 };
 
-const Counter = ({ count, increment, val }) => (
+const Counter = ({ count, increment, incrementAsync, val }) => (
   <>
     <Helmet>
       <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
     </Helmet>
     <button onClick={increment}>+</button>
+    <>&nbsp;</>
+    <button onClick={incrementAsync}>async +</button>
+    <>&nbsp;</>
     <counter>{count}</counter>
     <value>{val}</value>
     <Route
@@ -72,7 +77,7 @@ const Counter = ({ count, increment, val }) => (
 
 const ConnectedCounter = connect(
   ({ counter, value }) => ({ count: counter, val: value }),
-  { increment }
+  { increment, incrementAsync: incrementFetch }
 )(Counter);
 
 export default render(<ConnectedCounter />, {
