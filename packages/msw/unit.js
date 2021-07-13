@@ -1,10 +1,15 @@
 // @ts-check
 
 const { setupServer } = require('msw/node');
-const { graphql, rest } = require('msw');
+
+let mockServer;
 
 module.exports = {
-  mockServer: setupServer(),
-  graphql,
-  rest,
+  getMockServer() {
+    if (mockServer) {
+      return mockServer;
+    }
+
+    return (mockServer = setupServer());
+  },
 };

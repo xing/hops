@@ -1,4 +1,4 @@
-import { mockServer } from 'hops-msw/unit';
+import { getMockServer } from 'hops-msw/unit';
 
 let client;
 
@@ -11,7 +11,7 @@ beforeAll(async () => {
     // we don't have hops-react-apollo installed and won't create a client
   }
 
-  mockServer.listen();
+  getMockServer().listen();
 });
 
 afterEach(async () => {
@@ -19,9 +19,9 @@ afterEach(async () => {
     await client.clearStore();
   }
 
-  mockServer.resetHandlers();
+  getMockServer().resetHandlers();
 });
 
 afterAll(() => {
-  mockServer.close();
+  getMockServer().close();
 });
