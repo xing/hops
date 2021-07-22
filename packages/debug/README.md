@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-debug.svg)](https://www.npmjs.com/package/hops-debug)
 
-**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.**
 
 This package proxies the [`debug`](https://www.npmjs.com/package/debug) package from npm and makes it available for server- and client-code.
 

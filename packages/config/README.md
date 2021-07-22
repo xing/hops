@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-config.svg)](https://www.npmjs.com/package/hops-config)
 
-**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.**
 
 Please use [`withConfig`](../../DOCUMENTATION.md#withconfigcomponent) or [`useConfig`](../../DOCUMENTATION.md#useconfig-config) to access the configuration inside your application's React components.
 

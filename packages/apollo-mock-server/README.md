@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-apollo-mock-server.svg)](https://www.npmjs.com/package/hops-apollo-mock-server)
 
-**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.**
 
 This is a [preset for Hops](../../DOCUMENTATION.md#presets) in order to start and configure an Apollo Server that can be used for GraphQL mocking to enable faster local development.
 

@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-msw.svg)](https://www.npmjs.com/package/hops-msw)
 
-**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.**
 
 This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to set up a [Mock Service Worker](https://www.npmjs.com/package/msw) for your Hops app. It allows to mock REST and GraphQL APIs in unit and integration tests.
 
