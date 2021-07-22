@@ -37,7 +37,7 @@
     "pathifist": "^1.0.0",
     "prop-types": "^15.7.2",
     "react-refresh": "^0.10.0",
-    "serialize-javascript": "^5.0.0"
+    "serialize-javascript": "^6.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
