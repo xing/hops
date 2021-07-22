@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-mixin.svg)](https://www.npmjs.com/package/hops-mixin)
 
-**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.**
 
 Contains the building blocks needed to build your own hops mixins. Mixins allow you to alter and extend Hops' functionality.
 

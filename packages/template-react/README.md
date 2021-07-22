@@ -2,9 +2,9 @@
 
 [![npm](https://img.shields.io/npm/v/hops-template-react.svg)](https://www.npmjs.com/package/hops-template-react)
 
-**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.**
 
-This is a small example application showing [hops](../../DOCUMENTATION.md) in action. It demonstrates how to use hops with React.
+This is a small example application showing [hops](https://github.com/xing/hops#docs) in action. It demonstrates how to use hops with React.
 
 It has the following folder structure:
 

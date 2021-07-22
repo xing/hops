@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/jest-environment-hops.svg)](https://www.npmjs.com/package/jest-environment-hops)
 
-Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.
+Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.
 
 > **This package is part of Hops's internal tooling. Hence, it doesn't provide an API contract. Breaking changes may be introduced even with patch releases. Use at your own risk.**
 

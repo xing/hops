@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-express.svg)](https://www.npmjs.com/package/hops-express)
 
-**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.**
 
 This is one of the core presets for Hops and provides the development and production server configuration and mixin infrastructure in order to build a Hops application.
 

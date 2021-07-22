@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/hops-react.svg)](https://www.npmjs.com/package/hops-react)
 
-**Please see the [main Hops Readme](../../DOCUMENTATION.md) for general information and a Getting Started Guide.**
+**Please see the [main Hops Readme](https://github.com/xing/hops#docs) for general information and a Getting Started Guide.**
 
 This is a [preset for Hops](../../DOCUMENTATION.md#presets) that enables React, JSX, React-Helmet Async and React-Router support in Hops applications. It also supports [the JSX Transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html).
 
