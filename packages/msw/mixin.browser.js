@@ -40,6 +40,11 @@ class MswMixin extends Mixin {
       return;
     }
 
+    if (!('serviceWorker' in navigator)) {
+      debug('This browser does not support service workers.');
+      return;
+    }
+
     debug('wait until browser mocks are registered:', mswWaitForBrowserMocks);
 
     // eslint-disable-next-line node/no-unsupported-features/es-syntax
