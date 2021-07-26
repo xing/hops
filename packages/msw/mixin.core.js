@@ -1,4 +1,5 @@
 const { Mixin } = require('hops-mixin');
+const debug = require('hops-debug')('hops:msw:core');
 
 function exists(path) {
   try {
@@ -32,6 +33,7 @@ const getMockServiceWorkerContent = () => {
 module.exports = class MswMixin extends Mixin {
   configureBuild(webpackConfig) {
     if (exists(this.config.mockServiceWorkerHandlersFile)) {
+      debug('handlers file exists - registering the webpack alias now');
       webpackConfig.resolve.alias['hops-msw/handlers'] = require.resolve(
         this.config.mockServiceWorkerHandlersFile
       );
@@ -51,6 +53,7 @@ module.exports = class MswMixin extends Mixin {
     const mockServer = setupServer();
 
     if (exists(this.config.mockServiceWorkerHandlersFile)) {
+      debug('handlers file exists - registering the server handlers now');
       const { handlers } = require(this.config.mockServiceWorkerHandlersFile);
 
       handlers.forEach((handler) => mockServer.use(handler));
@@ -82,6 +85,7 @@ module.exports = class MswMixin extends Mixin {
           // setting this on `app.locals`, because it is a "global" and
           // affects all following requests
           app.locals.mswWaitForBrowserMocks = true;
+          debug('/_msw/register called with:', mocks);
 
           mocks.forEach(({ type, method, identifier, data }) => {
             switch (type) {
@@ -128,6 +132,8 @@ module.exports = class MswMixin extends Mixin {
       method: 'get',
       path: '/_msw/reset',
       handler: (_, res) => {
+        debug('/_msw/reset called');
+
         mockServer.resetHandlers();
 
         app.locals.mswWaitForBrowserMocks = false;
