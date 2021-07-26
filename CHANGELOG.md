@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.11](https://github.com/xing/hops/compare/v15.0.0-nightly.10...v15.0.0-nightly.11) (2021-07-26)
+
+
+### Bug Fixes
+
+* **msw:** correct type definition for main export ([37686d8](https://github.com/xing/hops/commit/37686d8f89af38225c77f6a4e79a4fcb5cd52da8))
+* **msw:** do not install msw if browser does not support service workers ([7c5c201](https://github.com/xing/hops/commit/7c5c201883012ed7cccba7fe408edb70cdde760b))
+* update dependency msw to ^0.33.0 ([9b0765e](https://github.com/xing/hops/commit/9b0765e9417f3000c926f148851ebd25bde08c71))
+
+
+### Features
+
+* **msw:** allow to skip waiting for browser mocks ([e395c52](https://github.com/xing/hops/commit/e395c524e925e19d0fd32a77ed3610a96d1b060a))
+* **msw:** print debug information from the mixins ([c3cf7ea](https://github.com/xing/hops/commit/c3cf7ead00e0d02012c8717529504405ca217a48))
+
+
+
+
+
 # [15.0.0-nightly.10](https://github.com/xing/hops/compare/v15.0.0-nightly.9...v15.0.0-nightly.10) (2021-07-13)
 
 
