@@ -82,7 +82,7 @@ class MswMixin extends Mixin {
     return new Promise((resolve) => {
       window.hopsMswMocksReady = () => resolve();
 
-      if (!mswWaitForBrowserMocks) {
+      if (!mswWaitForBrowserMocks || window.hopsMswMocksRegistered) {
         window.hopsMswMocksReady();
       }
     });
