@@ -222,9 +222,9 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.0.0",
-    "@commitlint/config-conventional": "^12.0.0",
-    "@commitlint/config-lerna-scopes": "^12.0.0",
+    "@commitlint/cli": "^13.0.0",
+    "@commitlint/config-conventional": "^13.0.0",
+    "@commitlint/config-lerna-scopes": "^13.0.0",
     "babel-eslint": "^10.0.3",
     "canarist": "^2.3.0",
     "cz-conventional-changelog": "^3.0.2",
