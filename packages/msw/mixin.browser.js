@@ -1,6 +1,9 @@
 /* eslint-env browser */
 
 import { Mixin } from 'hops-mixin';
+import createDebug from 'hops-debug';
+
+const debug = createDebug('hops:msw:browser');
 
 const createBrowserMock = (
   { graphql, rest },
@@ -37,6 +40,13 @@ class MswMixin extends Mixin {
       return;
     }
 
+    if (!('serviceWorker' in navigator)) {
+      debug('This browser does not support service workers.');
+      return;
+    }
+
+    debug('wait until browser mocks are registered:', mswWaitForBrowserMocks);
+
     // eslint-disable-next-line node/no-unsupported-features/es-syntax
     const { setupWorker, graphql, rest } = await import('msw');
     const worker = setupWorker();
@@ -72,7 +82,7 @@ class MswMixin extends Mixin {
     return new Promise((resolve) => {
       window.hopsMswMocksReady = () => resolve();
 
-      if (!mswWaitForBrowserMocks) {
+      if (!mswWaitForBrowserMocks || window.hopsMswMocksRegistered) {
         window.hopsMswMocksReady();
       }
     });
