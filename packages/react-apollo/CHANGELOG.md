@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.3.0](https://github.com/xing/hops/compare/v14.2.1...v14.3.0) (2021-07-27)
+
+
+### Features
+
+* **react-apollo:** expose helper functions for unit testing ([7908021](https://github.com/xing/hops/commit/7908021694a0b3822c0b0835bdecf78f992a1827))
+
+
+
+
+
 ## [14.2.1](https://github.com/xing/hops/compare/v14.2.0...v14.2.1) (2021-06-22)
 
 **Note:** Version bump only for package hops-react-apollo

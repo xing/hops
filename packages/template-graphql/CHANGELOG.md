@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.3.0](https://github.com/xing/hops/compare/v14.2.1...v14.3.0) (2021-07-27)
+
+
+### Features
+
+* **msw:** allow to specify a handlers file to use during development ([f83409a](https://github.com/xing/hops/commit/f83409aca4303c5024eddfa52f4b8359087bbd87))
+* **template-graphql:** use msw for development mode ([f84f4a3](https://github.com/xing/hops/commit/f84f4a38eb2140eeb958ab22ea5eb469ba64f692))
+
+
+
+
+
 ## [14.2.1](https://github.com/xing/hops/compare/v14.2.0...v14.2.1) (2021-06-22)
 
 **Note:** Version bump only for package hops-template-graphql

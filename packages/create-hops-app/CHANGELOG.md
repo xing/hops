@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.3.0](https://github.com/xing/hops/compare/v14.2.1...v14.3.0) (2021-07-27)
+
+
+### Bug Fixes
+
+* **create-hops-app:** remove intermediary hack ([4363e09](https://github.com/xing/hops/commit/4363e09da43b6d9ea20969f633a0c192be4804a1))
+
+
+
+
+
 ## [14.2.1](https://github.com/xing/hops/compare/v14.2.0...v14.2.1) (2021-06-22)
 
 

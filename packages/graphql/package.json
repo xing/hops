@@ -1,6 +1,6 @@
 {
   "name": "hops-graphql",
-  "version": "14.2.1",
+  "version": "14.3.0",
   "description": "React and GraphQL implementation for Hops",
   "keywords": [
     "hops",
@@ -21,8 +21,8 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-apollo-mock-server": "14.2.1",
-    "hops-react-apollo": "14.2.1"
+    "hops-apollo-mock-server": "14.3.0",
+    "hops-react-apollo": "14.3.0"
   },
   "peerDependencies": {
     "@apollo/client": "^3.3.11",
