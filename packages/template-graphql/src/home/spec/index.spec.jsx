@@ -1,7 +1,11 @@
+import { getMockServer } from 'hops-msw/unit';
+import { graphql } from 'hops-msw';
+import { withApolloTestProvider } from 'hops-react-apollo';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { HelmetProvider } from 'react-helmet-async';
-import { Home } from '../';
+import renderer, { act } from 'react-test-renderer';
+import HomeWithData, { Home } from '../index.jsx';
+import { jobSearchByQueryData } from '../../../mocks';
 
 HelmetProvider.canUseDOM = false;
 
@@ -9,7 +13,7 @@ it('renders loading state correctly', () => {
   const tree = renderer
     .create(
       <HelmetProvider>
-        <Home data={{ loading: true }} />
+        <Home loading={true} />
       </HelmetProvider>
     )
     .toJSON();
@@ -18,7 +22,6 @@ it('renders loading state correctly', () => {
 
 it('renders loaded state correctly', () => {
   const data = {
-    loading: false,
     jobSearchByQuery: {
       collection: [
         {
@@ -38,8 +41,30 @@ it('renders loaded state correctly', () => {
   };
   const tree = renderer.create(
     <HelmetProvider>
-      <Home data={data} />
+      <Home data={data} loading={false} />
     </HelmetProvider>
   );
+  expect(tree).toMatchSnapshot();
+});
+
+it('loads graphql data', async () => {
+  getMockServer().use(
+    graphql.query('search', (req, res, ctx) => {
+      return res(ctx.data(jobSearchByQueryData()));
+    })
+  );
+
+  const tree = renderer.create(
+    withApolloTestProvider(
+      <HelmetProvider>
+        <HomeWithData />
+      </HelmetProvider>
+    )
+  );
+
+  await act(async () => {
+    await new Promise((res) => setTimeout(res, 10));
+  });
+
   expect(tree).toMatchSnapshot();
 });

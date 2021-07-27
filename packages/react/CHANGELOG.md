@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.3.0](https://github.com/xing/hops/compare/v14.2.1...v14.3.0) (2021-07-27)
+
+
+### Bug Fixes
+
+* update dependency serialize-javascript to v6 ([a133b9c](https://github.com/xing/hops/commit/a133b9c8fc1bd33369926a1a104019064a920cf1))
+
+
+
+
+
 ## [14.2.1](https://github.com/xing/hops/compare/v14.2.0...v14.2.1) (2021-06-22)
 
 **Note:** Version bump only for package hops-react

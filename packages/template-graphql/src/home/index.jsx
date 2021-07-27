@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import query from './jobs.gql';
 import styles from './styles.css';
 
-export const Home = ({ data: { loading, jobSearchByQuery } }) => {
+export const Home = ({ loading, data: { jobSearchByQuery } = {} }) => {
   return (
     <div>
       <Helmet>
@@ -29,6 +29,7 @@ export const Home = ({ data: { loading, jobSearchByQuery } }) => {
 };
 
 export default function HomeWithData() {
-  const data = useQuery(query);
-  return <Home data={data} />;
+  const { data, loading } = useQuery(query);
+
+  return <Home data={data} loading={loading} />;
 }

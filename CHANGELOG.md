@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.3.0](https://github.com/xing/hops/compare/v14.2.1...v14.3.0) (2021-07-27)
+
+
+### Bug Fixes
+
+* **msw:** correct type definition for main export ([17a2d25](https://github.com/xing/hops/commit/17a2d25875534e2974b769d901b76c34c23b49a7))
+* **msw:** do not install msw if browser does not support service workers ([faa82b3](https://github.com/xing/hops/commit/faa82b321fc46efbaa3c0f852b818869780a4833))
+* update dependency msw to ^0.31.0 ([d8d4984](https://github.com/xing/hops/commit/d8d4984202a2e6f566f59ee1d66b85a3deac77d5))
+* update dependency msw to ^0.33.0 ([3833165](https://github.com/xing/hops/commit/3833165f73246e8870b7920fd44242e841fe2230))
+* **msw:** provide empty hops-msw/handlers file to fix webpack errors ([50f66d5](https://github.com/xing/hops/commit/50f66d5e449f87cbd8f2dc3d6039354f33e95736))
+* update dependency serialize-javascript to v6 ([a133b9c](https://github.com/xing/hops/commit/a133b9c8fc1bd33369926a1a104019064a920cf1))
+* **create-hops-app:** remove intermediary hack ([4363e09](https://github.com/xing/hops/commit/4363e09da43b6d9ea20969f633a0c192be4804a1))
+
+
+### Features
+
+* **jest-preset:** automatically set-up graphql and msw ([860a8fe](https://github.com/xing/hops/commit/860a8fe9ba558f6195842edb73d1724fd50419b4))
+* **msw:** allow to skip waiting for browser mocks ([78ecff9](https://github.com/xing/hops/commit/78ecff9846edc5b61cc2955ee6e4b1eaeda39894))
+* **msw:** allow to specify a handlers file to use during development ([f83409a](https://github.com/xing/hops/commit/f83409aca4303c5024eddfa52f4b8359087bbd87))
+* **msw:** introduce new hops-msw package ([c01c062](https://github.com/xing/hops/commit/c01c06268f67b349bc9f249b09b438f3007f8e7e))
+* **msw:** only wait for browser mocks in integration tests ([a4318f0](https://github.com/xing/hops/commit/a4318f0b2752bda91a93c0f041e50fc24068143e))
+* **msw:** print debug information from the mixins ([de2d02c](https://github.com/xing/hops/commit/de2d02c72d41a75cc1ed925f5a421abdf2b2f13f))
+* **react-apollo:** expose helper functions for unit testing ([7908021](https://github.com/xing/hops/commit/7908021694a0b3822c0b0835bdecf78f992a1827))
+* **template-graphql:** use msw for development mode ([f84f4a3](https://github.com/xing/hops/commit/f84f4a38eb2140eeb958ab22ea5eb469ba64f692))
+
+
+
+
+
 ## [14.2.1](https://github.com/xing/hops/compare/v14.2.0...v14.2.1) (2021-06-22)
 
 

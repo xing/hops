@@ -1,6 +1,6 @@
 {
   "name": "hops-development-proxy",
-  "version": "14.2.1",
+  "version": "14.3.0",
   "description": "Proxy",
   "keywords": [
     "hops"
@@ -17,8 +17,8 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-debug": "14.2.1",
-    "hops-mixin": "14.2.1",
+    "hops-debug": "14.3.0",
+    "hops-mixin": "14.3.0",
     "http-proxy-middleware": "^2.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/development-proxy#readme"

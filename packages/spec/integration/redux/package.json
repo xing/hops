@@ -18,15 +18,19 @@
   },
   "hops": {
     "gracePeriod": 0,
-    "port": "8901",
+    "port": "[PORT]",
     "mixins": [
       "./"
-    ]
+    ],
+    "browserWhitelist": {
+      "port": true
+    }
   },
   "dependencies": {
     "cross-fetch": "*",
     "hops": "*",
     "hops-redux": "*",
+    "hops-msw": "*",
     "react": "*",
     "react-helmet-async": "*",
     "react-redux": "*",
