@@ -42,3 +42,63 @@ test('Should allow Object whitelisting', () => {
   expect(res._env.FOOBAR).toBe('TEST');
   expect(res._env.SECOND).toBe('BANANA');
 });
+
+test('Should handle Arrays', () => {
+  global._env = {
+    FOOBAR: 'TEST',
+    SECOND: 'PINEAPPLE',
+  };
+
+  const res = environmentalize(
+    {
+      foo: [
+        {
+          bar: '[FOOBAR]',
+          baz: '[SECOND]',
+        },
+      ],
+    },
+    { foo: true }
+  );
+
+  delete global._env;
+  expect(res._env.FOOBAR).toBe('TEST');
+  expect(res._env.SECOND).toBe('PINEAPPLE');
+});
+
+test('Should support fallbacks', () => {
+  global._env = {};
+
+  const res = environmentalize(
+    {
+      foo: {
+        bar: '[FOOBAR=apple]',
+      },
+    },
+    { 'foo.bar': true }
+  );
+
+  delete global._env;
+  expect(res._env.FOOBAR).toBe('apple');
+  expect(res._env.SECOND).toBe(undefined);
+});
+
+test('Should ignore other props', () => {
+  global._env = {
+    FOOBAR: 'onion',
+    SECOND: 'cheese',
+  };
+
+  const res = environmentalize(
+    {
+      foo: {
+        bar: '[FOOBAR]',
+      },
+    },
+    { 'foo.bar': true }
+  );
+
+  delete global._env;
+  expect(res._env.FOOBAR).toBe('onion');
+  expect(res._env.SECOND).toBe(undefined);
+});
