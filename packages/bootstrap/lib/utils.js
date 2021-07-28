@@ -118,7 +118,7 @@ exports.environmentalize = (_config, whitelist = {}) => {
     if (typeof item === 'string' && regExp.test(item)) {
       return item.replace(regExp, (_, key, fallback) => {
         const replaced = env[key] || fallback || '';
-        if (whitelist[path.join('.')]) {
+        if (whitelist[path.join('.')] || whitelist[path[0]]) {
           _env[key] = replaced;
         }
         return replaceRecursive(replaced);
