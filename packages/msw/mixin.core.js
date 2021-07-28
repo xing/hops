@@ -79,7 +79,7 @@ module.exports = class MswMixin extends Mixin {
 
     middlewares.initial.push({
       method: 'post',
-      path: '/_mocks/register',
+      path: '/_msw/register',
       handler: [
         bodyParserJson(),
         (req, res) => {
@@ -132,7 +132,7 @@ module.exports = class MswMixin extends Mixin {
 
     middlewares.initial.push({
       method: 'get',
-      path: '/_mocks/reset',
+      path: '/_msw/reset',
       handler: (_, res) => {
         debug('/_msw/reset called');
 

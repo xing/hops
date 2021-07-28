@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.3.1](https://github.com/xing/hops/compare/v14.3.0...v14.3.1) (2021-07-28)
+
+
+### Bug Fixes
+
+* **msw:** rename /_mocks/ endpoint to /_msw/ to avoid clashes ([713d3d2](https://github.com/xing/hops/commit/713d3d24408ee031b1ab1290d0b42ee2b5d313e6))
+
+
+
+
+
 # [14.3.0](https://github.com/xing/hops/compare/v14.2.1...v14.3.0) (2021-07-27)
 
 
