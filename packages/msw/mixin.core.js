@@ -63,8 +63,6 @@ module.exports = class MswMixin extends Mixin {
     mockServer.listen();
     process.on('SIGTERM', () => mockServer.close());
 
-    middlewares.parse.push(cookieParser());
-
     middlewares.files.push({
       path: this.config.mockServiceWorkerUri,
       handler: (_, res) => {
@@ -78,14 +76,32 @@ module.exports = class MswMixin extends Mixin {
     });
 
     middlewares.initial.push({
+      method: 'options',
+      path: '/_msw/register',
+      handler: (req, res) => {
+        res.set({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*',
+        });
+        res.status(200).end();
+      },
+    });
+
+    middlewares.initial.push({
       method: 'post',
       path: '/_msw/register',
       handler: [
         bodyParserJson(),
+        cookieParser(),
         (req, res) => {
           const { mocks } = req.body;
 
           debug('/_msw/register called with:', mocks);
+
+          res.set({
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*',
+          });
 
           res.cookie('mswWaitForBrowserMocks', 'true');
 
@@ -133,15 +149,18 @@ module.exports = class MswMixin extends Mixin {
     middlewares.initial.push({
       method: 'get',
       path: '/_msw/reset',
-      handler: (_, res) => {
-        debug('/_msw/reset called');
+      handler: [
+        cookieParser(),
+        (_, res) => {
+          debug('/_msw/reset called');
 
-        mockServer.resetHandlers();
+          mockServer.resetHandlers();
 
-        res.clearCookie('mswWaitForBrowserMocks');
+          res.clearCookie('mswWaitForBrowserMocks');
 
-        res.type('text/plain').end('ok');
-      },
+          res.type('text/plain').end('ok');
+        },
+      ],
     });
   }
 };
