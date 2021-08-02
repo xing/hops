@@ -1,15 +1,5 @@
 // @ts-check
 
-const { fetch } = require('cross-fetch');
-
-const getMockEndpoint = (pathName) => {
-  if (typeof process.env.MOCK_HOST !== 'string') {
-    throw new Error('Please define MOCK_HOST.');
-  }
-
-  return new URL(pathName, process.env.MOCK_HOST).toString();
-};
-
 /** @type {import('hops-msw/integration').mockGraphQLQuery} */
 const mockGraphQLQuery = (operationName, data) => {
   return {
@@ -70,22 +60,6 @@ const mockDeleteRequest = (pathName, data) => {
   };
 };
 
-/** @type {import('hops-msw/integration').registerServerMocks} */
-const registerServerMocks = async (...mocks) => {
-  await fetch(getMockEndpoint('/_msw/register'), {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({ mocks }),
-  });
-};
-
-/** @type {import('hops-msw/integration').resetServerMocks} */
-const resetServerMocks = async () => {
-  await fetch(getMockEndpoint('/_msw/reset'));
-};
-
 module.exports = {
   mockGraphQLQuery,
   mockGraphQLMutation,
@@ -94,7 +68,4 @@ module.exports = {
   mockPostRequest,
   mockPutRequest,
   mockDeleteRequest,
-
-  registerServerMocks,
-  resetServerMocks,
 };

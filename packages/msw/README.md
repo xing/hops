@@ -8,6 +8,18 @@ This is a [preset for Hops](../../DOCUMENTATION.md#presets) that can be used to 
 
 This package (together with `jest-preset-hops`) takes care of setting up the MSW mock server already, so if you use it for unit-testing, you do not need to do this yourself.
 
+### Installation
+
+Add this preset to your existing Hops React project:
+
+```bash
+npm install --save hops-msw
+```
+
+In order to use it for unit-testing, you also need to install the [`jest-preset-hops`](../jest-preset-hops/README.md) package.
+
+### Usage
+
 **Example:**
 
 ```javascript
@@ -39,12 +51,34 @@ it('loads graphql data', async () => {
 
 Read the [MSW documentation](https://mswjs.io/) for more information on how to write mocks.
 
-### Installation
+See [here](../spec/integration/redux/__tests__/mocked.js) an example of how to write an integration test using puppeteer.
 
-Add this preset to your existing Hops React project:
+### Configuration
 
-```bash
-npm install --save hops-msw
+#### Preset Options
+
+| Name | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| mockServiceWorkerHandlersFile | `String` | `''` | _no_ | The path to your mock handlers file (which will be used during development) |
+| mockServiceWorkerUri | `String` | `/sw.js` | _no_ | The path on which the mock service worker will be served from |
+| enableMockServiceWorker | `String` | `[ENABLE_MSW]` | _no_ | Whether to enable mock-service-worker (defaults to the environment variable `ENABLE_MSW`) |
+
+##### `mockServiceWorkerHandlersFile`
+
+Use this option to register an [array of handlers](https://mswjs.io/docs/getting-started/mocks/graphql-api). These will be used during development if `ENABLE_MSW=true` is set. See [here](../template-graphql) for an example.
+
+**Note:** Unfortunately the handlers must be written in ES5 (no import/export) until we can drop Node.js 12 support.
+
+```json
+"hops": {
+  "mockServiceWorkerHandlersFile": "<rootDir>/mocks.js"
+}
 ```
 
-In order to use it for unit-testing, you also need to install the [`jest-preset-hops`](../jest-preset-hops/README.md) package.
+##### `mockServiceWorkerUri`
+
+Usually this doesn't need to be changed.
+
+##### `enableMockServiceWorker`
+
+Usually this doesn't need to be changed, since its default is to use the environment variable `ENABLE_MSW`.

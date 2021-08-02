@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.3.2](https://github.com/xing/hops/compare/v14.3.1...v14.3.2) (2021-08-02)
+
+
+### Bug Fixes
+
+* **msw:** remove unusable integration test APIs ([89c1b24](https://github.com/xing/hops/commit/89c1b24f0238df36c638e91bc6091ecc0323e3d9))
+
+
+
+
+
 ## [14.3.1](https://github.com/xing/hops/compare/v14.3.0...v14.3.1) (2021-07-28)
 
 

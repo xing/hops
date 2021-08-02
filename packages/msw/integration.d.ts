@@ -19,8 +19,4 @@ declare module 'hops-msw/integration' {
   export function mockPutRequest(pathName: string, data: Data): Mock;
 
   export function mockDeleteRequest(pathName: string, data: Data): Mock;
-
-  export function registerServerMocks(...mocks: Mock[]): Promise<void>;
-
-  export function resetServerMocks(): Promise<void>;
 }
