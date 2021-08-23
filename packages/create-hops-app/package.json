@@ -24,7 +24,7 @@
     "load-json-file": "^6.2.0",
     "tar": "^6.0.0",
     "validate-npm-package-name": "^3.0.0",
-    "write-pkg": "^4.0.0",
+    "write-pkg": "^5.0.0",
     "yargs": "^17.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/create-hops-app#readme"
