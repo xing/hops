@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "hops-msw": "15.0.0-nightly.11",
-    "jest": "^26.0.0",
+    "jest": "^27.0.0",
     "jest-preset-hops": "15.0.0-nightly.11",
     "react-test-renderer": "^17.0.2"
   },
