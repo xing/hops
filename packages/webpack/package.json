@@ -49,7 +49,7 @@
     "webpack": "^4.43.0",
     "webpack-dev-middleware": "^5.0.0",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-sources": "^2.0.0",
+    "webpack-sources": "^3.0.0",
     "zen-observable": "^0.8.15"
   },
   "engines": {
