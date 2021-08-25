@@ -1,4 +1,4 @@
-import { getMockServer } from 'hops-msw/unit';
+const { getMockServer } = require('hops-msw/unit');
 
 let client;
 
