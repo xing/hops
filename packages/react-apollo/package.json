@@ -30,7 +30,7 @@
     "apollo-link-http": "^1.5.16",
     "cross-fetch": "^3.0.4",
     "depd": "^2.0.0",
-    "find-up": "^5.0.0",
+    "find-up": "^6.0.0",
     "graphql": "^15.0.0",
     "hops-config": "15.0.0-nightly.11",
     "hops-mixin": "15.0.0-nightly.11",
