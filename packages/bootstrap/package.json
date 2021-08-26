@@ -19,7 +19,7 @@
     "dotenv": "^10.0.0",
     "enhanced-resolve": "^5.0.0",
     "escape-string-regexp": "^4.0.0",
-    "find-up": "^5.0.0",
+    "find-up": "^6.0.0",
     "flat": "^5.0.0",
     "hops-debug": "14.3.2",
     "is-plain-obj": "^3.0.0",
