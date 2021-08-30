@@ -9,7 +9,7 @@ import extendContext from 'hops-apollo-mock-server/context-extender';
 
 const apolloAppPromise = Promise.resolve(
   typeof schema === 'function' ? schema() : schema
-).then((resolvedSchema) => {
+).then(async (resolvedSchema) => {
   const app = express();
   app.use(cookieParser());
 
@@ -22,6 +22,8 @@ const apolloAppPromise = Promise.resolve(
     },
     context: (context) => extendContext({ ...context, config: hopsConfig }),
   });
+
+  await server.start();
 
   server.applyMiddleware({
     app,
