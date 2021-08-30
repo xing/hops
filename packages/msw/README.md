@@ -20,6 +20,8 @@ In order to use it for unit-testing, you also need to install the [`jest-preset-
 
 ### Usage
 
+Set the environment variable `ENABLE_MSW` to `true` when running your unit tests.
+
 **Example:**
 
 ```javascript
@@ -60,8 +62,7 @@ See [here](../spec/integration/redux/__tests__/mocked.js) an example of how to w
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
 | mockServiceWorkerHandlersFile | `String` | `''` | _no_ | The path to your mock handlers file (which will be used during development) |
-| mockServiceWorkerUri | `String` | `/sw.js` | _no_ | The path on which the mock service worker will be served from |
-| enableMockServiceWorker | `String` | `[ENABLE_MSW]` | _no_ | Whether to enable mock-service-worker (defaults to the environment variable `ENABLE_MSW`) |
+| mockServiceWorkerUri | `String` | `<basePath>/sw.js` | _no_ | The path on which the mock service worker will be served from |
 
 ##### `mockServiceWorkerHandlersFile`
 
@@ -78,7 +79,3 @@ Use this option to register an [array of handlers](https://mswjs.io/docs/getting
 ##### `mockServiceWorkerUri`
 
 Usually this doesn't need to be changed.
-
-##### `enableMockServiceWorker`
-
-Usually this doesn't need to be changed, since its default is to use the environment variable `ENABLE_MSW`.

@@ -34,9 +34,10 @@ const createBrowserMock = (
 
 class MswMixin extends Mixin {
   async bootstrap() {
-    const { mswWaitForBrowserMocks } = this.getServerData();
+    const { mswWaitForBrowserMocks, enableMockServiceWorker } =
+      this.getServerData();
 
-    if (this.config.enableMockServiceWorker !== 'true') {
+    if (enableMockServiceWorker !== true) {
       return;
     }
 
