@@ -63,6 +63,11 @@ module.exports = class MswMixin extends Mixin {
     mockServer.listen();
     process.on('SIGTERM', () => mockServer.close());
 
+    middlewares.initial.push((req, res, next) => {
+      res.locals.enableMockServiceWorker = true;
+      next();
+    });
+
     middlewares.files.push({
       path: this.config.mockServiceWorkerUri,
       handler: (_, res) => {
