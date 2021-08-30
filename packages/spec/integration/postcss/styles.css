@@ -1,6 +1,5 @@
 @import url(imported-from-css.css);
 @import '@vishnucss/chips';
-@charset 'utf-8';
 
 .headline {
   composes: compose from './for-composing.css';
