@@ -18,6 +18,8 @@ npm install --save hops-msw
 
 In order to use it for unit-testing, you also need to install the [`jest-preset-hops`](../jest-preset-hops/README.md) package.
 
+**Note:** Please be aware that only one service worker can exist per scope. Therefore `hops-msw` does not work together with `hops-pwa`.
+
 ### Usage
 
 Set the environment variable `ENABLE_MSW` to `true` when running your unit tests.
