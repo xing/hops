@@ -22,8 +22,12 @@ const overrideHandleError = (functions, error, recoverable) => {
 
 class YargsMixin extends Mixin {
   handleError(error) {
-    // eslint-disable-next-line no-console
-    console.error(error.stack || error);
+    if (typeof this.getLogger === 'function') {
+      // eslint-disable-next-line no-console
+      this.getLogger().error(error.stack || error);
+    } else {
+      console.error(error.stack || error);
+    }
   }
 }
 
