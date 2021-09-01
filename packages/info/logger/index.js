@@ -3,10 +3,14 @@
 const { format } = require('util');
 const chalk = require('chalk');
 const escapeRegExp = require('escape-string-regexp');
+const { appendFile, accessSync, constants } = require('fs');
+const { join } = require('path');
 
 const colorize = (string, color) => {
   return chalk.level > 0 ? chalk[color](string) : `[${string}]`;
 };
+
+const noop = () => {};
 
 const logLevels = { error: 0, warn: 1, info: 2, verbose: 3 };
 
@@ -14,6 +18,12 @@ class Logger {
   constructor({ name, _workspace }) {
     this.name = name;
     this.level = logLevels.info;
+
+    this.logLocation = process.env.HOPS_LOG_LOCATION;
+    if (this.logLocation && !accessSync(this.logLocation, constants.W_OK)) {
+      this.logLocation = '';
+    }
+
     this.getCleanMessage = (error) =>
       String(error.stack || error).replace(
         new RegExp(escapeRegExp(_workspace), 'g'),
@@ -30,7 +40,15 @@ class Logger {
     const prefix = colorize(`${name}:error`, 'red');
     const message = getCleanMessage(error);
     if (level >= logLevels.error) {
-      console.error(`${prefix} ${format(message, ...args)}`);
+      const formatted = `${prefix} ${format(message, ...args)}`;
+      console.error(formatted);
+      if (this.logLocation) {
+        appendFile(
+          join(this.logLocation, 'hops-log.txt'),
+          `${new Date().toISOString()} ${formatted}\n`,
+          noop
+        );
+      }
     }
   }
 
@@ -39,7 +57,15 @@ class Logger {
     const prefix = colorize(`${name}:warning`, 'yellow');
     const message = getCleanMessage(warning);
     if (level >= logLevels.warn) {
-      console.warn(`${prefix} ${format(message, ...args)}`);
+      const formatted = `${prefix} ${format(message, ...args)}`;
+      console.warn(formatted);
+      if (this.logLocation) {
+        appendFile(
+          join(this.logLocation, 'hops-log.txt'),
+          `${new Date().toISOString()} ${formatted}\n`,
+          noop
+        );
+      }
     }
   }
 
@@ -47,7 +73,15 @@ class Logger {
     const { level, name } = this;
     const prefix = colorize(`${name}:info`, 'gray');
     if (level >= logLevels.info) {
-      console.log(`${prefix} ${format(message, ...args)}`);
+      const formatted = `${prefix} ${format(message, ...args)}`;
+      console.log(formatted);
+      if (this.logLocation) {
+        appendFile(
+          join(this.logLocation, 'hops-log.txt'),
+          `${new Date().toISOString()} ${formatted}\n`,
+          noop
+        );
+      }
     }
   }
 
@@ -55,7 +89,15 @@ class Logger {
     const { level, name } = this;
     const prefix = colorize(`${name}:${type}`, 'gray');
     if (level >= logLevels.verbose) {
-      console.log(`${prefix} ${format(message, ...args)}`);
+      const formatted = `${prefix} ${format(message, ...args)}`;
+      console.log(formatted);
+      if (this.logLocation) {
+        appendFile(
+          join(this.logLocation, 'hops-log.txt'),
+          `${new Date().toISOString()} ${formatted}\n`,
+          noop
+        );
+      }
     }
   }
 }
