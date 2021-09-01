@@ -78,6 +78,21 @@ function forkCompilation(mixin, buildConfigArgs, options = {}) {
   });
 
   return new Observable((subscriber) => {
+    child.on('error', (error) => {
+      error.recoverable = false;
+      subscriber.error(error);
+    });
+
+    child.on('exit', (code, signal) => {
+      if (code !== 0) {
+        const error = new Error(
+          `Webpack child compiler exited with code: ${code} and signal: ${signal}`
+        );
+        error.recoverable = false;
+        subscriber.error(error);
+      }
+    });
+
     child.on('message', ({ type, data, reason }) => {
       if (type === 'reject') {
         subscriber.error(

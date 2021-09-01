@@ -15,7 +15,7 @@ const sequenceWithReturn = (functions, arg, ...args) => {
 const overrideHandleError = (functions, error, recoverable) => {
   override(functions, error, recoverable);
 
-  if (!recoverable) {
+  if (recoverable !== true) {
     process.exit(1);
   }
 };
