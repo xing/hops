@@ -19,17 +19,25 @@ function createRenderMiddleware(buildConfigArgs, watch, mixin) {
   const enhancedPromise = new EnhancedPromise();
   let middleware;
 
-  compilation.subscribe(({ output }) => {
-    enhancedPromise.reset();
+  compilation.subscribe(
+    ({ output }) => {
+      enhancedPromise.reset();
 
-    if (middleware) {
-      process.emit('RELOAD');
-    } else {
-      middleware = loadRenderMiddleware(output);
+      if (middleware) {
+        process.emit('RELOAD');
+      } else {
+        middleware = loadRenderMiddleware(output);
+      }
+
+      enhancedPromise.resolve(middleware);
+    },
+    (error) => {
+      mixin.handleError(
+        error,
+        typeof error.recoverable === 'boolean' ? error.recoverable : true
+      );
     }
-
-    enhancedPromise.resolve(middleware);
-  });
+  );
 
   return function renderMiddleware(req, res, next) {
     enhancedPromise
