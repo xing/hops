@@ -18,7 +18,11 @@ npm install --save hops-msw
 
 In order to use it for unit-testing, you also need to install the [`jest-preset-hops`](../jest-preset-hops/README.md) package.
 
+**Note:** Please be aware that only one service worker can exist per scope. Therefore `hops-msw` does not work together with `hops-pwa`.
+
 ### Usage
+
+Set the environment variable `ENABLE_MSW` to `true` when running your unit tests.
 
 **Example:**
 
@@ -60,8 +64,7 @@ See [here](../spec/integration/redux/__tests__/mocked.js) an example of how to w
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
 | mockServiceWorkerHandlersFile | `String` | `''` | _no_ | The path to your mock handlers file (which will be used during development) |
-| mockServiceWorkerUri | `String` | `/sw.js` | _no_ | The path on which the mock service worker will be served from |
-| enableMockServiceWorker | `String` | `[ENABLE_MSW]` | _no_ | Whether to enable mock-service-worker (defaults to the environment variable `ENABLE_MSW`) |
+| mockServiceWorkerUri | `String` | `<basePath>/sw.js` | _no_ | The path on which the mock service worker will be served from |
 
 ##### `mockServiceWorkerHandlersFile`
 
@@ -78,7 +81,3 @@ Use this option to register an [array of handlers](https://mswjs.io/docs/getting
 ##### `mockServiceWorkerUri`
 
 Usually this doesn't need to be changed.
-
-##### `enableMockServiceWorker`
-
-Usually this doesn't need to be changed, since its default is to use the environment variable `ENABLE_MSW`.

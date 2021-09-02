@@ -63,7 +63,7 @@ it('loads graphql data', async () => {
   );
 
   await act(async () => {
-    await new Promise((res) => setTimeout(res, 10));
+    await new Promise((res) => setTimeout(res, 100));
   });
 
   expect(tree).toMatchSnapshot();

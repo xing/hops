@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.4.0](https://github.com/xing/hops/compare/v14.3.2...v14.4.0) (2021-09-02)
+
+
+### Bug Fixes
+
+* **bootstrap:** fix object whitelisting for environmentalize ([1b4c577](https://github.com/xing/hops/commit/1b4c57765b6053ff514464813ce8703becb885b0)), closes [#1156](https://github.com/xing/hops/issues/1156)
+
+
+
+
+
 ## [14.3.2](https://github.com/xing/hops/compare/v14.3.1...v14.3.2) (2021-08-02)
 
 **Note:** Version bump only for package hops-bootstrap

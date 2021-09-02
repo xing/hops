@@ -15,15 +15,19 @@ const sequenceWithReturn = (functions, arg, ...args) => {
 const overrideHandleError = (functions, error, recoverable) => {
   override(functions, error, recoverable);
 
-  if (!recoverable) {
+  if (recoverable !== true) {
     process.exit(1);
   }
 };
 
 class YargsMixin extends Mixin {
   handleError(error) {
-    // eslint-disable-next-line no-console
-    console.error(error.stack || error);
+    if (typeof this.getLogger === 'function') {
+      // eslint-disable-next-line no-console
+      this.getLogger().error(error.stack || error);
+    } else {
+      console.error(error.stack || error);
+    }
   }
 }
 

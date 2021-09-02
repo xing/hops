@@ -1,6 +1,6 @@
 {
   "name": "hops-react-apollo",
-  "version": "14.3.2",
+  "version": "14.4.0",
   "description": "React and GraphQL implementation for Hops",
   "keywords": [
     "hops",
@@ -23,7 +23,7 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "@graphql-tools/schema": "^7.0.0",
+    "@graphql-tools/schema": "^8.0.0",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link": "^1.2.14",
@@ -32,9 +32,9 @@
     "depd": "^2.0.0",
     "find-up": "^5.0.0",
     "graphql": "^15.0.0",
-    "hops-config": "14.3.2",
-    "hops-mixin": "14.3.2",
-    "hops-react": "14.3.2",
+    "hops-config": "14.4.0",
+    "hops-mixin": "14.4.0",
+    "hops-react": "14.4.0",
     "strip-indent": "^3.0.0"
   },
   "peerDependencies": {

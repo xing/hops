@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.4.0](https://github.com/xing/hops/compare/v14.3.2...v14.4.0) (2021-09-02)
+
+
+### Bug Fixes
+
+* always use this.getLogger instead of console.* methods ([ebde9f7](https://github.com/xing/hops/commit/ebde9f7b1d0233c3f7619b026dbb73971a16b0ea))
+
+
+
+
+
 ## [14.3.2](https://github.com/xing/hops/compare/v14.3.1...v14.3.2) (2021-08-02)
 
 **Note:** Version bump only for package hops-styled-components

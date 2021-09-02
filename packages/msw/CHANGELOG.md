@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.4.0](https://github.com/xing/hops/compare/v14.3.2...v14.4.0) (2021-09-02)
+
+
+### Bug Fixes
+
+* **msw:** prepend msw service worker path with basePath ([7833b55](https://github.com/xing/hops/commit/7833b55a3decd468de1eff910d3c6e04dd640ba5))
+* **msw:** remove `enableMockServiceWorker` configuration option ([e8ac8af](https://github.com/xing/hops/commit/e8ac8af3a23bec265a02e0c47ffa777ef9fb268f))
+* update dependency msw to ^0.35.0 ([cd104ae](https://github.com/xing/hops/commit/cd104ae8cecbbdd53da6fa504a37d006a874bca4))
+
+
+
+
+
 ## [14.3.2](https://github.com/xing/hops/compare/v14.3.1...v14.3.2) (2021-08-02)
 
 
