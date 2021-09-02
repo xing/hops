@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.4.0](https://github.com/xing/hops/compare/v14.3.2...v14.4.0) (2021-09-02)
+
+
+### Bug Fixes
+
+* always use this.getLogger instead of console.* methods ([ebde9f7](https://github.com/xing/hops/commit/ebde9f7b1d0233c3f7619b026dbb73971a16b0ea))
+* **bootstrap:** fix object whitelisting for environmentalize ([1b4c577](https://github.com/xing/hops/commit/1b4c57765b6053ff514464813ce8703becb885b0)), closes [#1156](https://github.com/xing/hops/issues/1156)
+* exit Hops on unrecovrable webpack errors ([1e13ef2](https://github.com/xing/hops/commit/1e13ef2bafa950c401d1f3ddb1664f90ef14e3db))
+* **jest-preset:** use require instead of import ([f701f11](https://github.com/xing/hops/commit/f701f116570702fc5d2de61a49d0fc1811bc7186))
+* **msw:** prepend msw service worker path with basePath ([7833b55](https://github.com/xing/hops/commit/7833b55a3decd468de1eff910d3c6e04dd640ba5))
+* **msw:** remove `enableMockServiceWorker` configuration option ([e8ac8af](https://github.com/xing/hops/commit/e8ac8af3a23bec265a02e0c47ffa777ef9fb268f))
+* update dependency msw to ^0.35.0 ([cd104ae](https://github.com/xing/hops/commit/cd104ae8cecbbdd53da6fa504a37d006a874bca4))
+
+
+### Features
+
+* **info:** optionally log into hops-log.txt ([1d9a875](https://github.com/xing/hops/commit/1d9a875737ae25c19155c0c9f9fadae446155577))
+
+
+
+
+
 ## [14.3.2](https://github.com/xing/hops/compare/v14.3.1...v14.3.2) (2021-08-02)
 
 
