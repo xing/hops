@@ -1,14 +1,7 @@
 const { join } = require('path');
-const { getApolloVersion } = require('./lib/apollo-version');
 
 module.exports = {
-  mixins: [
-    __dirname,
-    // TODO: remove with Hops v15
-    getApolloVersion() === 2
-      ? join(__dirname, 'mixins', 'apollo2')
-      : join(__dirname, 'mixins', 'apollo3'),
-  ],
+  mixins: [__dirname, join(__dirname, 'mixins', 'apollo3')],
   fragmentsFile: '<rootDir>/fragmentTypes.json',
   allowServerSideDataFetching: true,
   browserWhitelist: {
