@@ -2,20 +2,10 @@ const { existsSync } = require('fs');
 const { Mixin } = require('hops-mixin');
 const { join } = require('path');
 const strip = require('strip-indent');
-const deprecate = require('depd')('hops-react-apollo');
-const { getApolloVersion } = require('./lib/apollo-version');
 
 class GraphQLMixin extends Mixin {
   constructor(config, ...args) {
     super(config, ...args);
-
-    // TODO: remove with Hops v15
-    this.apolloVersion = getApolloVersion();
-    if (this.apolloVersion === 2) {
-      deprecate(
-        '[DEP0006] Apollo v2 support in Hops has been deprecated and will be removed with Hops v15. Please upgrade to Apollo v3 (https://github.com/xing/hops/blob/master/DEPRECATIONS.md#dep006).'
-      );
-    }
   }
 
   configureBuild(webpackConfig, loaderConfigs) {
@@ -52,7 +42,6 @@ class GraphQLMixin extends Mixin {
           },
           handler: (argv) => {
             require('./lib/fragments')({
-              apolloVersion: this.apolloVersion,
               graphqlUri: this.config.graphqlUri,
               schemaFile: this.config.graphqlSchemaFile,
               fragmentsFile: this.config.fragmentsFile,
