@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.4.1](https://github.com/xing/hops/compare/v14.4.0...v14.4.1) (2021-09-07)
+
+
+### Bug Fixes
+
+* **info:** test if logLocation is writable ([9fcc2d0](https://github.com/xing/hops/commit/9fcc2d0d495bd5c2cde03761e8d3e05f3fa04c3d))
+
+
+
+
+
 # [14.4.0](https://github.com/xing/hops/compare/v14.3.2...v14.4.0) (2021-09-02)
 
 
