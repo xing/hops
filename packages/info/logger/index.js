@@ -20,7 +20,9 @@ class Logger {
     this.level = logLevels.info;
 
     this.logLocation = process.env.HOPS_LOG_LOCATION;
-    if (this.logLocation && !accessSync(this.logLocation, constants.W_OK)) {
+    try {
+      accessSync(this.logLocation, constants.W_OK);
+    } catch {
       this.logLocation = '';
     }
 
