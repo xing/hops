@@ -21,8 +21,8 @@ const configure = (config, options) => ({
         bootstrap && registerCommands && handleArguments && handleError,
         "Can't use hops-yargs mixin"
       );
-      process.on('uncaughtException', handleError);
-      process.on('unhandledRejection', handleError);
+      process.on('uncaughtException', (e) => handleError(e));
+      process.on('unhandledRejection', (e) => handleError(e));
       bootstrap().then(() => {
         registerCommands(
           yargs
