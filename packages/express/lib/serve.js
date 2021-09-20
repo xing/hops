@@ -11,6 +11,25 @@ const isPlainObject = require('is-plain-obj');
 
 const { Router } = express;
 
+function wrapMiddleware(middleware, domain) {
+  return Object.defineProperty(
+    domain.bind((...args) => {
+      try {
+        const maybePromise = middleware(...args);
+        if (maybePromise && typeof maybePromise.catch === 'function') {
+          maybePromise.catch(args[args.length - 1]);
+        }
+      } catch (e) {
+        args[args.length - 1](e);
+      }
+    }),
+    'length',
+    {
+      value: middleware.length,
+    }
+  );
+}
+
 module.exports = (mode, { configureServer, handleError }) => {
   const phases = ['initial', 'files', 'parse', 'routes', 'final'].reduce(
     (result, key) => [...result, `pre${key}`, key, `post${key}`],
@@ -36,16 +55,12 @@ module.exports = (mode, { configureServer, handleError }) => {
         const handlers = [].concat(handler);
         container[method](
           path,
-          ...handlers.map((handler) => domain.bind(handler))
+          ...handlers.map((handler) => wrapMiddleware(handler, domain))
         );
       } else {
         const middlewares = [].concat(middleware);
         container.use(
-          ...middlewares.map((middleware) =>
-            Object.defineProperty(domain.bind(middleware), 'length', {
-              value: middleware.length,
-            })
-          )
+          ...middlewares.map((middleware) => wrapMiddleware(middleware, domain))
         );
       }
     });

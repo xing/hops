@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.5.0](https://github.com/xing/hops/compare/v14.4.1...v14.5.0) (2021-09-20)
+
+
+### Bug Fixes
+
+* do no exit hops in certain cases ([05b6096](https://github.com/xing/hops/commit/05b609685e5f3f273fe69da5ebc3f9690688705a))
+
+
+
+
+
 ## [14.4.1](https://github.com/xing/hops/compare/v14.4.0...v14.4.1) (2021-09-07)
 
 **Note:** Version bump only for package hops-yargs

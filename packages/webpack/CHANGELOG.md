@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.5.0](https://github.com/xing/hops/compare/v14.4.1...v14.5.0) (2021-09-20)
+
+**Note:** Version bump only for package hops-webpack
+
+
+
+
+
 ## [14.4.1](https://github.com/xing/hops/compare/v14.4.0...v14.4.1) (2021-09-07)
 
 **Note:** Version bump only for package hops-webpack

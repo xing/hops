@@ -1,6 +1,6 @@
 {
   "name": "hops-msw",
-  "version": "14.4.1",
+  "version": "14.5.0",
   "description": "Mock service worker support for Hops",
   "main": "index.js",
   "keywords": [
@@ -26,8 +26,8 @@
     "cookie-parser": "^1.4.4",
     "cross-fetch": "^3.1.4",
     "execa": "^5.1.1",
-    "hops-debug": "14.4.1",
-    "hops-mixin": "14.4.1",
+    "hops-debug": "14.5.0",
+    "hops-mixin": "14.5.0",
     "msw": "^0.35.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/msw#readme"
