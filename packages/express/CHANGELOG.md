@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.5.0](https://github.com/xing/hops/compare/v14.4.1...v14.5.0) (2021-09-20)
+
+
+### Features
+
+* handle errors in async middlewares ([c89f3b8](https://github.com/xing/hops/commit/c89f3b85c6c41cf0fcd36079ef6b4a71437c4dc2))
+
+
+
+
+
 ## [14.4.1](https://github.com/xing/hops/compare/v14.4.0...v14.4.1) (2021-09-07)
 
 **Note:** Version bump only for package hops-express
