@@ -54,13 +54,13 @@
     }
   },
   "devDependencies": {
-    "babel-jest": "^26.0.0",
-    "jest": "^26.0.0",
+    "babel-jest": "^27.0.0",
+    "jest": "^27.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.4",
     "react-router-dom": "^5.1.2",
-    "ts-jest": "^26.0.0"
+    "ts-jest": "^27.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/jest-preset#readme"
 }
