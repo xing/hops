@@ -1,6 +1,5 @@
 const { existsSync } = require('fs');
 const { Mixin } = require('hops-mixin');
-const { join } = require('path');
 const strip = require('strip-indent');
 
 class GraphQLMixin extends Mixin {
@@ -70,35 +69,13 @@ class GraphQLMixin extends Mixin {
     this.options = { ...this.options, ...argv };
   }
 
-  diagnose({ detectDuplicatePackages, pushWarning, pushError }) {
+  diagnose({ detectDuplicatePackages, pushWarning }) {
     detectDuplicatePackages('graphql');
     if (!existsSync(this.config.fragmentsFile)) {
       pushWarning(
         `Could not find a graphql introspection query result at "${this.config.fragmentsFile}".`
       );
       pushWarning('You might need to execute "hops graphql introspect"');
-    }
-
-    const manifestPath = join(this.config.rootDir, 'package.json');
-    const manifest = require(manifestPath);
-    const hasReactApollo = [
-      ...Object.keys(manifest.dependencies || {}),
-      ...Object.keys(manifest.devDependencies || {}),
-    ].includes('react-apollo');
-    const hasApolloClient = [
-      ...Object.keys(manifest.dependencies || {}),
-      ...Object.keys(manifest.devDependencies || {}),
-    ].includes('@apollo/client');
-
-    if (hasReactApollo && hasApolloClient) {
-      pushError(
-        'apollo-version-mismatch',
-        `
-Found two conflicting versions of apollo (react-apollo and @apollo/client) in "${manifestPath}".
-- If you want to use Apollo v2 you need to remove "@apollo/client"
-- Otherwise, if you want to use Apollo v3, remove "react-apollo"
-`.trim()
-      );
     }
   }
 }
