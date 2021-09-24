@@ -59,6 +59,7 @@
         ],
         "rootManifest": {
           "resolutions": {
+            "@apollo/client": "^3.4.13",
             "graphql-tag": "^2.12"
           }
         }
@@ -86,6 +87,7 @@
         ],
         "rootManifest": {
           "resolutions": {
+            "@apollo/client": "^3.4.13",
             "babel-jest": "^27",
             "jest": "^27",
             "ts-jest": "^27"
