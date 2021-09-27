@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.12](https://github.com/xing/hops/compare/v15.0.0-nightly.11...v15.0.0-nightly.12) (2021-09-27)
+
+**Note:** Version bump only for package hops-template-react
+
+
+
+
+
 # [15.0.0-nightly.11](https://github.com/xing/hops/compare/v15.0.0-nightly.10...v15.0.0-nightly.11) (2021-07-26)
 
 **Note:** Version bump only for package hops-template-react

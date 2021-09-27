@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.12](https://github.com/xing/hops/compare/v15.0.0-nightly.11...v15.0.0-nightly.12) (2021-09-27)
+
+
+### Bug Fixes
+
+* always use this.getLogger instead of console.* methods ([d8ea941](https://github.com/xing/hops/commit/d8ea941f5828e5736f2b1ad04c26309585661df0))
+* do no exit hops in certain cases ([b47ff82](https://github.com/xing/hops/commit/b47ff82f8f873879fa200014731ec5cde7a3c4b2))
+* exit Hops on unrecovrable webpack errors ([2030586](https://github.com/xing/hops/commit/203058633427f38a9902856b8295651207323f30))
+
+
+### chore
+
+* remove node 12 from engines field ([d3d3624](https://github.com/xing/hops/commit/d3d3624cec813bfe4d9ab4abe86e051bd7f9e61e))
+* remove node 15 from engines ([f3c08b2](https://github.com/xing/hops/commit/f3c08b28feb6d64ff57f6c34b1f67a023146243d))
+
+
+### BREAKING CHANGES
+
+* drops Node 15 support
+* drops Node 12 support
+
+
+
+
+
 # [15.0.0-nightly.11](https://github.com/xing/hops/compare/v15.0.0-nightly.10...v15.0.0-nightly.11) (2021-07-26)
 
 **Note:** Version bump only for package hops-yargs

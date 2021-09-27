@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.12](https://github.com/xing/hops/compare/v15.0.0-nightly.11...v15.0.0-nightly.12) (2021-09-27)
+
+
+### Bug Fixes
+
+* always use this.getLogger instead of console.* methods ([d8ea941](https://github.com/xing/hops/commit/d8ea941f5828e5736f2b1ad04c26309585661df0))
+* **bootstrap:** fix object whitelisting for environmentalize ([871333f](https://github.com/xing/hops/commit/871333f76e95ec91ab9a7c6e6b112dd5bf80f4f8)), closes [#1156](https://github.com/xing/hops/issues/1156)
+* do no exit hops in certain cases ([b47ff82](https://github.com/xing/hops/commit/b47ff82f8f873879fa200014731ec5cde7a3c4b2))
+* exit Hops on unrecovrable webpack errors ([2030586](https://github.com/xing/hops/commit/203058633427f38a9902856b8295651207323f30))
+* **info:** test if logLocation is writable ([6ba3261](https://github.com/xing/hops/commit/6ba326147e890e0efb9d8d5c722eaeb51ec05f7a))
+* **jest-preset:** use require instead of import ([0822ad9](https://github.com/xing/hops/commit/0822ad94bbad9ca42abf2ccb9fc1c628021de32a))
+* **msw:** prepend msw service worker path with basePath ([40e786c](https://github.com/xing/hops/commit/40e786c3ba2908eb81e788b586dbfea83955b357))
+* **msw:** remove `enableMockServiceWorker` configuration option ([7348164](https://github.com/xing/hops/commit/73481649f85cf3c7bc2956b8ef89755f84164cb0))
+* **msw:** remove unusable integration test APIs ([cc822ab](https://github.com/xing/hops/commit/cc822ab3a70527858422629aa6de75dfb4f0703f))
+* remove deprecated apollo 2 ([ce21a80](https://github.com/xing/hops/commit/ce21a80a0d37f16aace51eab2f78ce420e86cd0b))
+* remove version pinning of webpack 5 ([216ad8d](https://github.com/xing/hops/commit/216ad8d56a8b2209369b8fd1fe145aacfd4d965f))
+* solve apollo conflicts in canarist ([a3664fc](https://github.com/xing/hops/commit/a3664fc3a057a782c691894a9caffeffee5717fc))
+* **spec:** remove invalid test ([f6ebdf6](https://github.com/xing/hops/commit/f6ebdf6fbb68bbcbaed25f89c70e28c054d82091))
+* update dependency css-loader to v6 ([f2cfbd0](https://github.com/xing/hops/commit/f2cfbd06dedd04d520a611fc34a0cdfda051f5ea))
+* update dependency msw to ^0.35.0 ([5b8f69b](https://github.com/xing/hops/commit/5b8f69bbcaa738169dc881b15ca00f2237dd7091))
+* update dependency postcss-normalize-charset to v5 ([11e3b18](https://github.com/xing/hops/commit/11e3b18c4c6c7190977629aefb7f0a79e1fbe31c))
+* update dependency serialize-javascript to v6 ([9b2d934](https://github.com/xing/hops/commit/9b2d934645dff298603db6a0d5a047b2210098c7))
+* update dependency webpack to v5.46.0 ([a67cd2c](https://github.com/xing/hops/commit/a67cd2c606f872ae4f80381bba5d1fe5cf2536cd))
+* update dependency webpack to v5.51.1 ([bee9400](https://github.com/xing/hops/commit/bee94004cdc29b5073b8e79f2dc1250f5788c3f7))
+* update dependency webpack-sources to v3 ([8dca82a](https://github.com/xing/hops/commit/8dca82a850b8c45e4556c7c764e8184d87ce7652))
+
+
+### chore
+
+* remove node 12 from engines field ([d3d3624](https://github.com/xing/hops/commit/d3d3624cec813bfe4d9ab4abe86e051bd7f9e61e))
+* remove node 15 from engines ([f3c08b2](https://github.com/xing/hops/commit/f3c08b28feb6d64ff57f6c34b1f67a023146243d))
+
+
+### Features
+
+* handle errors in async middlewares ([7923530](https://github.com/xing/hops/commit/7923530db10700030202be9d59409d12acdbf2a9))
+* **info:** optionally log into hops-log.txt ([825f44f](https://github.com/xing/hops/commit/825f44f10d3e6a68d2ec6ab659294edbc63ce3ea))
+
+
+### BREAKING CHANGES
+
+* removes deprecated apollo 2 client
+* drops Node 15 support
+* drops Node 12 support
+
+
+
+
+
 # [15.0.0-nightly.11](https://github.com/xing/hops/compare/v15.0.0-nightly.10...v15.0.0-nightly.11) (2021-07-26)
 
 

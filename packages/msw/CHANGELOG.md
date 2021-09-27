@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.12](https://github.com/xing/hops/compare/v15.0.0-nightly.11...v15.0.0-nightly.12) (2021-09-27)
+
+
+### Bug Fixes
+
+* **msw:** prepend msw service worker path with basePath ([40e786c](https://github.com/xing/hops/commit/40e786c3ba2908eb81e788b586dbfea83955b357))
+* **msw:** remove `enableMockServiceWorker` configuration option ([7348164](https://github.com/xing/hops/commit/73481649f85cf3c7bc2956b8ef89755f84164cb0))
+* **msw:** remove unusable integration test APIs ([cc822ab](https://github.com/xing/hops/commit/cc822ab3a70527858422629aa6de75dfb4f0703f))
+* update dependency msw to ^0.35.0 ([5b8f69b](https://github.com/xing/hops/commit/5b8f69bbcaa738169dc881b15ca00f2237dd7091))
+
+
+### chore
+
+* remove node 12 from engines field ([d3d3624](https://github.com/xing/hops/commit/d3d3624cec813bfe4d9ab4abe86e051bd7f9e61e))
+* remove node 15 from engines ([f3c08b2](https://github.com/xing/hops/commit/f3c08b28feb6d64ff57f6c34b1f67a023146243d))
+
+
+### BREAKING CHANGES
+
+* drops Node 15 support
+* drops Node 12 support
+
+
+
+
+
 # [15.0.0-nightly.11](https://github.com/xing/hops/compare/v15.0.0-nightly.10...v15.0.0-nightly.11) (2021-07-26)
 
 

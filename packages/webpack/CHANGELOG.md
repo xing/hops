@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-nightly.12](https://github.com/xing/hops/compare/v15.0.0-nightly.11...v15.0.0-nightly.12) (2021-09-27)
+
+
+### Bug Fixes
+
+* exit Hops on unrecovrable webpack errors ([2030586](https://github.com/xing/hops/commit/203058633427f38a9902856b8295651207323f30))
+* remove version pinning of webpack 5 ([216ad8d](https://github.com/xing/hops/commit/216ad8d56a8b2209369b8fd1fe145aacfd4d965f))
+* update dependency webpack to v5.46.0 ([a67cd2c](https://github.com/xing/hops/commit/a67cd2c606f872ae4f80381bba5d1fe5cf2536cd))
+* update dependency webpack to v5.51.1 ([bee9400](https://github.com/xing/hops/commit/bee94004cdc29b5073b8e79f2dc1250f5788c3f7))
+* update dependency webpack-sources to v3 ([8dca82a](https://github.com/xing/hops/commit/8dca82a850b8c45e4556c7c764e8184d87ce7652))
+
+
+### chore
+
+* remove node 12 from engines field ([d3d3624](https://github.com/xing/hops/commit/d3d3624cec813bfe4d9ab4abe86e051bd7f9e61e))
+* remove node 15 from engines ([f3c08b2](https://github.com/xing/hops/commit/f3c08b28feb6d64ff57f6c34b1f67a023146243d))
+
+
+### BREAKING CHANGES
+
+* drops Node 15 support
+* drops Node 12 support
+
+
+
+
+
 # [15.0.0-nightly.11](https://github.com/xing/hops/compare/v15.0.0-nightly.10...v15.0.0-nightly.11) (2021-07-26)
 
 **Note:** Version bump only for package hops-webpack
