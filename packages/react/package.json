@@ -1,6 +1,6 @@
 {
   "name": "hops-react",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "React and ReactRouter setup for Hops",
   "keywords": [
     "hops",
@@ -30,8 +30,8 @@
     "clone": "^2.1.2",
     "depd": "^2.0.0",
     "duplitect": "^3.0.0",
-    "hops-bootstrap": "15.0.0-nightly.13",
-    "hops-mixin": "15.0.0-nightly.13",
+    "hops-bootstrap": "15.0.0-nightly.14",
+    "hops-mixin": "15.0.0-nightly.14",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "pathifist": "^1.0.0",
@@ -51,5 +51,6 @@
     "react-helmet-async": "^1.0.9",
     "react-router-dom": "^5.2.0"
   },
-  "homepage": "https://github.com/xing/hops/tree/master/packages/react#readme"
+  "homepage": "https://github.com/xing/hops/tree/master/packages/react#readme",
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }

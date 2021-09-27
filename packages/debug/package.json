@@ -1,6 +1,6 @@
 {
   "name": "hops-debug",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "Hops debug wrapper",
   "main": "node.js",
   "browser": "browser.js",
@@ -22,5 +22,6 @@
   },
   "engines": {
     "node": "14 || 16"
-  }
+  },
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }

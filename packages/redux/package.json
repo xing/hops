@@ -1,6 +1,6 @@
 {
   "name": "hops-redux",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "React and Redux implementation for Hops",
   "keywords": [
     "hops",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "history": "^4.10.1",
-    "hops-mixin": "15.0.0-nightly.13",
+    "hops-mixin": "15.0.0-nightly.14",
     "prop-types": "^15.7.2"
   },
   "peerDependencies": {
@@ -42,5 +42,6 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },
-  "homepage": "https://github.com/xing/hops/tree/master/packages/redux#readme"
+  "homepage": "https://github.com/xing/hops/tree/master/packages/redux#readme",
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }

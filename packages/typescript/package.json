@@ -1,6 +1,6 @@
 {
   "name": "hops-typescript",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "TypeScript support for Hops applications",
   "keywords": [
     "hops",
@@ -18,7 +18,7 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-mixin": "15.0.0-nightly.13",
+    "hops-mixin": "15.0.0-nightly.14",
     "ts-loader": "^9.2.2"
   },
   "peerDependencies": {
@@ -28,5 +28,6 @@
     "chalk": "^4.1.1",
     "typescript": "^4.0.0"
   },
-  "homepage": "https://github.com/xing/hops/tree/master/packages/typescript#readme"
+  "homepage": "https://github.com/xing/hops/tree/master/packages/typescript#readme",
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }

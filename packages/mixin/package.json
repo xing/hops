@@ -1,6 +1,6 @@
 {
   "name": "hops-mixin",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "Building blocks to build cusom hops mixins",
   "keywords": [
     "hops",
@@ -23,5 +23,6 @@
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1"
   },
-  "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme"
+  "homepage": "https://github.com/xing/hops/tree/master/packages/mixin#readme",
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }

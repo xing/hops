@@ -1,6 +1,6 @@
 {
   "name": "hops-postcss",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "Configuration of PostCSS and Webpack for Hops",
   "keywords": [
     "hops",
@@ -23,7 +23,7 @@
   "dependencies": {
     "css-loader": "^6.0.0",
     "css-minimizer-webpack-plugin": "^3.0.1",
-    "hops-mixin": "15.0.0-nightly.13",
+    "hops-mixin": "15.0.0-nightly.14",
     "mini-css-extract-plugin": "^1.6.0",
     "pathifist": "^1.0.0",
     "postcss": "^8.2.1",
@@ -34,5 +34,6 @@
     "style-loader": "^3.0.0",
     "webpack": "^5.51.1"
   },
-  "homepage": "https://github.com/xing/hops/tree/master/packages/postcss#readme"
+  "homepage": "https://github.com/xing/hops/tree/master/packages/postcss#readme",
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }

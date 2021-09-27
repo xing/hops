@@ -1,6 +1,6 @@
 {
   "name": "hops-config",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "Hops core configuration",
   "keywords": [
     "hops",
@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "depd": "^2.0.0",
-    "hops-bootstrap": "15.0.0-nightly.13"
+    "hops-bootstrap": "15.0.0-nightly.14"
   },
-  "homepage": "https://github.com/xing/hops/tree/master/packages/config#readme"
+  "homepage": "https://github.com/xing/hops/tree/master/packages/config#readme",
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }

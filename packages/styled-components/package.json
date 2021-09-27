@@ -1,6 +1,6 @@
 {
   "name": "hops-styled-components",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "Styled components support for Hops applications",
   "keywords": [
     "hops",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
-    "hops-mixin": "15.0.0-nightly.13"
+    "hops-mixin": "15.0.0-nightly.14"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
@@ -34,5 +34,6 @@
     "react-dom": "^17.0.2",
     "styled-components": "^5.0.0"
   },
-  "homepage": "https://github.com/xing/hops/tree/master/packages/styled-components#readme"
+  "homepage": "https://github.com/xing/hops/tree/master/packages/styled-components#readme",
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }

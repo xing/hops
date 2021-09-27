@@ -1,6 +1,6 @@
 {
   "name": "hops-yargs",
-  "version": "15.0.0-nightly.13",
+  "version": "15.0.0-nightly.14",
   "description": "yargs support for Hops applications",
   "repository": {
     "type": "git",
@@ -12,13 +12,14 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-bootstrap": "15.0.0-nightly.13",
-    "hops-mixin": "15.0.0-nightly.13",
+    "hops-bootstrap": "15.0.0-nightly.14",
+    "hops-mixin": "15.0.0-nightly.14",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "yargs": "^17.0.0"
   },
   "engines": {
     "node": "14 || 16"
-  }
+  },
+  "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
 }
