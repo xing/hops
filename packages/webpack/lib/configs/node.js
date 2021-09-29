@@ -156,6 +156,7 @@ module.exports = function getConfig(config, name, buildDependencies) {
     optimization: {
       minimizer: [],
       chunkIds: 'natural',
+      usedExports: false,
     },
     plugins: [
       new LimitChunkCountPlugin({ maxChunks: 1 }),

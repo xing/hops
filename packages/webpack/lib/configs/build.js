@@ -143,7 +143,7 @@ module.exports = function getConfig(config, name, buildDependencies) {
         }),
       ],
       chunkIds: 'natural',
-      usedExports: true,
+      usedExports: false,
       concatenateModules: true,
     },
     plugins: [
