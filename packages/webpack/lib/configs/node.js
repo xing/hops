@@ -9,7 +9,7 @@ const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
 
 const { LimitChunkCountPlugin } = optimize;
-const { HashedModuleIdsPlugin, NamedModuleIdsPlugin } = ids;
+const { NamedModuleIdsPlugin } = ids;
 
 module.exports = function getConfig(config, name, buildDependencies) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
@@ -159,7 +159,7 @@ module.exports = function getConfig(config, name, buildDependencies) {
     },
     plugins: [
       new LimitChunkCountPlugin({ maxChunks: 1 }),
-      new (isProduction ? HashedModuleIdsPlugin : NamedModuleIdsPlugin)(),
+      new NamedModuleIdsPlugin(),
       isProduction ? { apply: () => {} } : new HotModuleReplacementPlugin(),
       new EnvironmentPlugin({ NODE_ENV: 'development' }),
     ],
