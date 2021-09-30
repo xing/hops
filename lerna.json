@@ -12,6 +12,7 @@
       "exact": true
     },
     "publish": {
+      "distTag": "v14",
       "preDistTag": "next"
     }
   }
