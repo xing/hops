@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0](https://github.com/xing/hops/compare/v15.0.0-nightly.14...v15.0.0) (2021-09-30)
+
+
+### Bug Fixes
+
+* create same hashes on server and client ([63d90db](https://github.com/xing/hops/commit/63d90dbde4bfd066a19ca3f67f8a9f3b27d884c6))
+
+
+
+
+
 # [15.0.0-nightly.14](https://github.com/xing/hops/compare/v15.0.0-nightly.13...v15.0.0-nightly.14) (2021-09-27)
 
 **Note:** Version bump only for package hops-lerna-root

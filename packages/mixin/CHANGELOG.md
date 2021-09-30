@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0](https://github.com/xing/hops/compare/v15.0.0-nightly.14...v15.0.0) (2021-09-30)
+
+**Note:** Version bump only for package hops-mixin
+
+
+
+
+
 # [15.0.0-nightly.14](https://github.com/xing/hops/compare/v15.0.0-nightly.13...v15.0.0-nightly.14) (2021-09-27)
 
 **Note:** Version bump only for package hops-mixin
