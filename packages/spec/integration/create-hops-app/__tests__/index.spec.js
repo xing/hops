@@ -4,6 +4,7 @@
 
 const path = require('path');
 const { prerelease } = require('semver');
+const semverMajor = require('semver/functions/major');
 const { existsSync, readFileSync } = require('fs');
 const execa = require('execa');
 const { version, bin } = require(require.resolve(
@@ -11,10 +12,10 @@ const { version, bin } = require(require.resolve(
 ));
 
 const isPreRelease = prerelease(version) !== null;
+const majorVersion = semverMajor(version);
 const createHopsAppBin = require.resolve('create-hops-app');
-
 describe('create-hops-app', () => {
-  const version = isPreRelease ? 'next' : 'latest';
+  const version = isPreRelease ? 'next' : majorVersion;
   const template = 'hops-template-react';
 
   beforeAll(() => {
