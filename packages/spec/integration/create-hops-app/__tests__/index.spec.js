@@ -24,7 +24,7 @@ describe('create-hops-app', () => {
 
   it('initializes a Hops app with yarn', async () => {
     const name = 'my-app-yarn';
-    const args = [name, `--template ${template}@${version}`];
+    const args = [name, '--template', `${template}@${version}`];
 
     const { all: output } = await execa(createHopsAppBin, args, {
       all: true,
@@ -45,7 +45,7 @@ describe('create-hops-app', () => {
 
   it('initializes a Hops app with npm', async () => {
     const name = 'my-app-npm';
-    const args = [name, `--template ${template}@${version}`, `--npm`];
+    const args = [name, '--template', `${template}@${version}`, `--npm`];
 
     const { all: output } = await execa(createHopsAppBin, args, { all: true });
 
