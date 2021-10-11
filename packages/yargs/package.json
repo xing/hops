@@ -1,6 +1,6 @@
 {
   "name": "hops-yargs",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "description": "yargs support for Hops applications",
   "repository": {
     "type": "git",
@@ -12,8 +12,8 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-bootstrap": "15.0.0",
-    "hops-mixin": "15.0.0",
+    "hops-bootstrap": "15.0.1",
+    "hops-mixin": "15.0.1",
     "is-plain-obj": "^3.0.0",
     "mixinable": "^5.0.1",
     "yargs": "^17.0.0"
