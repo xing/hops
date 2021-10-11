@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.1](https://github.com/xing/hops/compare/v15.0.0...v15.0.1) (2021-10-11)
+
+
+### Bug Fixes
+
+* update dependency @pmmmwh/react-refresh-webpack-plugin to ^0.5.0 ([f872348](https://github.com/xing/hops/commit/f87234872bf17bda9b01dd4d1e33109752c5d04e))
+
+
+
+
+
 # [15.0.0](https://github.com/xing/hops/compare/v15.0.0-nightly.14...v15.0.0) (2021-09-30)
 
 **Note:** Version bump only for package hops-react
