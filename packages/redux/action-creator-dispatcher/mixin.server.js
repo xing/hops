@@ -1,4 +1,4 @@
-import { createLocation } from 'history';
+import { parsePath } from 'history';
 import { strategies } from 'hops-mixin';
 import ReduxActionCreatorCommonMixin from './mixin.runtime-common';
 
@@ -22,7 +22,7 @@ class ReduxActionCreatorServerMixin extends ReduxActionCreatorCommonMixin {
 
   async fetchData(data) {
     if (this.canPrefetchOnServer().every((value) => value)) {
-      await this.dispatchAll(createLocation(this.request.originalUrl));
+      await this.dispatchAll(parsePath(this.request.originalUrl));
       this.prefetchedOnServer = true;
     }
     return data;
