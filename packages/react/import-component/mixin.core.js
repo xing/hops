@@ -5,7 +5,7 @@ class ImportComponentCoreMixin extends Mixin {
     const { experimentalEsbuild } = this.options;
 
     if (experimentalEsbuild) {
-      jsLoaderConfig.use.push(require.resolve('./import-component-loader.js'));
+      jsLoaderConfig.use.push(require.resolve('./swc-loader.js'));
     } else {
       jsLoaderConfig.options.plugins.push([
         require.resolve('../lib/babel'),
