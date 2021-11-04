@@ -2,9 +2,9 @@ const { Mixin } = require('hops-mixin');
 
 class ImportComponentCoreMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig }) {
-    const { experimentalEsbuild } = this.options;
+    const { experimentalEsbuild, experimentalSWC } = this.options;
 
-    if (experimentalEsbuild) {
+    if (experimentalEsbuild || experimentalSWC) {
       jsLoaderConfig.use.push(require.resolve('./swc-loader.js'));
     } else {
       jsLoaderConfig.options.plugins.push([

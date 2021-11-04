@@ -140,6 +140,12 @@ class WebpackBuildMixin extends Mixin {
             describe: 'Use esbuild for transpilation (experimental)',
             type: 'boolean',
           },
+          experimentalSWC: {
+            alias: 'experimental-swc',
+            default: process.env.USE_EXPERIMENTAL_SWC === 'true',
+            describe: 'Use SWC for transpilation (experimental)',
+            type: 'boolean',
+          },
         },
         handler: (argv) =>
           Promise.resolve(argv.clean && this.clean())

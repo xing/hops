@@ -2,7 +2,7 @@ const { Mixin } = require('hops-mixin');
 
 class ReactCoreMixin extends Mixin {
   configureBuild(webpackConfig, { fileLoaderConfig, jsLoaderConfig }, target) {
-    const { experimentalEsbuild } = this.options;
+    const { experimentalEsbuild, experimentalSWC } = this.options;
 
     webpackConfig.resolve.extensions.push('.jsx');
     fileLoaderConfig.exclude.push(/\.jsx$/);
@@ -10,6 +10,8 @@ class ReactCoreMixin extends Mixin {
 
     if (experimentalEsbuild) {
       jsLoaderConfig.use[0].options.loader = 'jsx';
+    } else if (experimentalSWC) {
+      jsLoaderConfig.use[0].options.jsc.parser.jsx = true;
     } else {
       jsLoaderConfig.options.presets.push([
         require.resolve('@babel/preset-react'),

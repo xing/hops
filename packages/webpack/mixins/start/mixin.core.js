@@ -32,6 +32,12 @@ class WebpackStartMixin extends Mixin {
             describe: 'Use esbuild for transpilation (experimental)',
             type: 'boolean',
           },
+          experimentalSWC: {
+            alias: 'experimental-swc',
+            default: process.env.USE_EXPERIMENTAL_SWC === 'true',
+            describe: 'Use SWC for transpilation (experimental)',
+            type: 'boolean',
+          },
         },
         handler: (argv) => {
           if (process.env.NODE_ENV === 'production') {

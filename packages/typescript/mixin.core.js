@@ -28,7 +28,7 @@ const getCompilerOptions = (ts, rootPath) => {
 
 class TypescriptMixin extends Mixin {
   configureBuild(webpackConfig, { jsLoaderConfig, allLoaderConfigs }, target) {
-    const { experimentalEsbuild } = this.options;
+    const { experimentalEsbuild, experimentalSWC } = this.options;
 
     webpackConfig.resolve.extensions.push('.ts', '.tsx');
 
@@ -65,6 +65,57 @@ class TypescriptMixin extends Mixin {
               options: {
                 ...options,
                 loader: 'tsx',
+              },
+            },
+            ...loaders,
+          ],
+        }
+      );
+    } else if (experimentalSWC) {
+      const {
+        include,
+        exclude,
+        use: [{ options }, ...loaders],
+      } = jsLoaderConfig;
+
+      allLoaderConfigs.unshift(
+        {
+          test: /\.ts$/,
+          include,
+          exclude,
+          use: [
+            {
+              options: {
+                ...options,
+                jsc: {
+                  ...options.jsc,
+                  parser: {
+                    ...options.jsc.parser,
+                    syntax: 'typescript',
+                    tsx: false,
+                  },
+                },
+              },
+            },
+            ...loaders,
+          ],
+        },
+        {
+          test: /\.tsx$/,
+          include,
+          exclude,
+          use: [
+            {
+              options: {
+                ...options,
+                jsc: {
+                  ...options.jsc,
+                  parser: {
+                    ...options.jsc.parser,
+                    syntax: 'typescript',
+                    tsx: true,
+                  },
+                },
               },
             },
             ...loaders,
