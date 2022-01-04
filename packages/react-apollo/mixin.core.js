@@ -18,6 +18,13 @@ class GraphQLMixin extends Mixin {
         loader: 'graphql-tag/loader',
       });
     }
+
+    if (existsSync(this.config.fragmentsFile)) {
+      webpackConfig.resolve.alias = {
+        ...webpackConfig.resolve.alias,
+        'hops-react-apollo/fragmentTypes.json': this.config.fragmentsFile,
+      };
+    }
   }
 
   registerCommands(yargs) {
@@ -75,7 +82,7 @@ class GraphQLMixin extends Mixin {
       pushWarning(
         `Could not find a graphql introspection query result at "${this.config.fragmentsFile}".`
       );
-      pushWarning('You might need to execute "hops graphql introspect"');
+      pushWarning('Please execute "hops graphql introspect"');
     }
   }
 }
