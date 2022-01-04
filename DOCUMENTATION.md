@@ -726,8 +726,8 @@ _Reminder: These options must be passed in an options hash as the second argumen
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of a `apollo-link` |
-| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of a `apollo-cache` |
+| `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of an apollo link (e.g. [`HttpLink`](https://www.apollographql.com/docs/react/api/link/apollo-link-http/)) |
+| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of an apollo cache (e.g. [`InMemoryCache`](https://www.apollographql.com/docs/react/api/cache/InMemoryCache/)) |
 
 For more details and more advanced use-cases, head over to the [full readme of `hops-react-apollo`](packages/react-apollo) for more details.
 
