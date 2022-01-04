@@ -1,6 +1,5 @@
 import { createElement } from 'react';
 import renderToFragments from 'hops-react/lib/fragments';
-import { existsSync, readFileSync } from 'fs';
 import { Mixin, strategies } from 'hops-mixin';
 
 import {
@@ -11,30 +10,21 @@ import {
 } from '@apollo/client';
 import { getMarkupFromTree } from '@apollo/client/react/ssr';
 import { InMemoryCache } from '@apollo/client/cache';
+
+// eslint-disable-next-line node/no-extraneous-import, node/no-missing-import, import/no-unresolved
+import possibleTypes from 'hops-react-apollo/fragmentTypes.json';
+
 import fetch from 'cross-fetch';
 
 const {
   sync: { override, sequence },
 } = strategies;
 
-let introspectionResult = undefined;
-
 class GraphQLMixin extends Mixin {
   constructor(config, element, { graphql: options = {} } = {}) {
     super(config, element);
 
     this.options = options;
-
-    if (introspectionResult === undefined) {
-      try {
-        if (existsSync(config.fragmentsFile)) {
-          const fileContent = readFileSync(config.fragmentsFile, 'utf-8');
-          introspectionResult = JSON.parse(fileContent);
-        }
-      } catch (_) {
-        introspectionResult = null;
-      }
-    }
   }
 
   getApolloClient() {
@@ -74,9 +64,9 @@ class GraphQLMixin extends Mixin {
   }
 
   getApolloCache() {
-    return this.options.cache || introspectionResult
-      ? new InMemoryCache({ possibleTypes: introspectionResult })
-      : new InMemoryCache();
+    const { cache = new InMemoryCache({ possibleTypes }) } = this.options;
+
+    return cache;
   }
 
   async renderToFragments(element) {
@@ -103,7 +93,6 @@ class GraphQLMixin extends Mixin {
       ...data,
       globals: {
         ...data.globals,
-        APOLLO_FRAGMENT_TYPES: introspectionResult,
         APOLLO_STATE: this.getApolloClient().extract(),
       },
     };
