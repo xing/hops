@@ -8,6 +8,10 @@ const {
 
 const { ApolloProvider, ApolloClient, HttpLink } = require('@apollo/client');
 const { InMemoryCache } = require('@apollo/client/cache');
+
+// eslint-disable-next-line node/no-extraneous-require, node/no-missing-require
+const possibleTypes = require('hops-react-apollo/fragmentTypes.json');
+
 require('cross-fetch/polyfill');
 
 class GraphQLMixin extends Mixin {
@@ -47,15 +51,9 @@ class GraphQLMixin extends Mixin {
   }
 
   getApolloCache() {
-    if (this.options.cache) {
-      return this.options.cache;
-    }
+    const { cache = new InMemoryCache({ possibleTypes }) } = this.options;
 
-    return global['APOLLO_FRAGMENT_TYPES']
-      ? new InMemoryCache({
-          possibleTypes: global['APOLLO_FRAGMENT_TYPES'],
-        }).restore(global['APOLLO_STATE'])
-      : new InMemoryCache().restore(global['APOLLO_STATE']);
+    return cache.restore(global['APOLLO_STATE']);
   }
 
   enhanceElement(reactElement) {
