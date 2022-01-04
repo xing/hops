@@ -22,13 +22,11 @@ If you don't already have an existing Hops project read this section [on how to 
 
 #### `graphql introspect`
 
-Extract information to support the `IntrospectionFragmentMatcher` from either a remote GraphQL server or from a local GraphQL schema file.
+This command extracts the polymorphic relationships between interfaces and types that implement it and writes it to the location of `fragmentsFile`.
 
-This preset takes care of setting up the Apollo cache and fragment matchers - if a `fragmentsFile` is present it will use the `IntrospectionFragmentMatcher`, otherwise it will fall back to a `HeuristicFragmentMatcher`.
+This is recommended if you have a more complex schema and are querying fragments on unions or interfaces.
 
-This is not strictly necessary but is recommended if you have a more complex schema and are querying fragments on unions or interfaces.
-
-Head over to https://www.apollographql.com/docs/react/data/fragments/#using-fragments-with-unions-and-interfaces to read more details about this.
+Head over to https://www.apollographql.com/docs/react/data/fragments/ to read more details about this.
 
 ##### Arguments
 
@@ -68,7 +66,7 @@ declare module '*.gql';
 
 ##### `fragmentsFile`
 
-This option controls where the fragment type information that are used for the `IntrospectionFragmentMatcher` should be saved.
+This option controls where the fragment type information that are used for the `possibleTypes` option should be saved.
 
 By default executing `$ hops graphql introspect` will create a file called `fragmentTypes.json` in the application root directory.
 
@@ -108,12 +106,12 @@ Bear in mind, that setting this value to `true` on the other hand has no mandato
 
 #### Render Options
 
-This preset has only a single runtime option which can be passed to the `render()` options inside the `styled` key (see example above).
+This preset has options for controlling the apollo cache and link via the `graphql` key inside the options object of the `render(element, options?)` function.
 
 | Name | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of a `apollo-link` |
-| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of a `apollo-cache` |
+| `graphql.link` | `ApolloLink` | `ApolloHttpLink` | _no_ | An instance of an apollo link (e.g. [`HttpLink`](https://www.apollographql.com/docs/react/api/link/apollo-link-http/)) |
+| `graphql.cache` | `ApolloCache` | `ApolloCacheInMemory` | _no_ | An instance of an apollo cache (e.g. [`InMemoryCache`](https://www.apollographql.com/docs/react/api/cache/InMemoryCache/)) |
 
 ##### `link`
 
@@ -132,16 +130,20 @@ export default render(<MyApp />, {
 
 ##### `cache`
 
-By default this preset creates an [`InMemoryCache`](https://www.apollographql.com/docs/react/caching/cache-configuration/) which uses either the [`IntrospectionFragmentMatcher` or `HeuristicFragmentMatcher`](https://www.apollographql.com/docs/react/data/fragments/) depending on whether fragment introspection results are available or not (create them with [`$ hops graphql introspect`](#graphql-introspect)).
+By default this preset creates an [`InMemoryCache`](https://www.apollographql.com/docs/react/caching/cache-configuration/) and passes the fragment types as `possibleTypes` (create them with [`$ hops graphql introspect`](#graphql-introspect)). It also takes care of cache rehydration to pass cached data from a server-side request to the client-side.
 
 In case you need to configure a different Apollo cache you can pass an instantiated cache to the render options.
 
 Read more about Apollo caches here: https://www.apollographql.com/docs/react/caching/cache-configuration/
 
 ```javascript
+import possibleTypes from 'hops-react-apollo-preset/fragmentTypes.json';
+
 export default render(<MyApp />, {
   graphql: {
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      possibleTypes,
+    }),
   },
 });
 ```
@@ -161,10 +163,6 @@ Beware that `link` passed as render option takes precedence.
 #### `getApolloCache(): ApolloCache` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
 
 Hook to return a custom [ApolloCache](https://www.apollographql.com/docs/react/advanced/caching.html).
-
-### `createFragmentMatcher` ([override](https://github.com/untool/mixinable/blob/master/README.md#defineoverride)) **runtime/browser/server**
-
-Allows to get the [fragment matcher](https://www.apollographql.com/docs/react/advanced/fragments.html) that needs to be passed to the `ApolloCache`. Useful if you plan to override `getApolloCache`.
 
 #### `canPrefetchOnServer(): boolean` ([sequence](https://github.com/untool/mixinable/blob/master/README.md#defineparallel)) **server**
 
