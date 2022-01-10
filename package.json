@@ -60,6 +60,7 @@
         ],
         "rootManifest": {
           "resolutions": {
+            "colors": "1.4.0",
             "graphql-tag": "^2.12"
           }
         }
@@ -89,6 +90,7 @@
         "rootManifest": {
           "resolutions": {
             "babel-jest": "^27",
+            "colors": "1.4.0",
             "jest": "^27",
             "ts-jest": "^27"
           }
