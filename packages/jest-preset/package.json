@@ -27,7 +27,7 @@
     "@babel/plugin-transform-flow-strip-types": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
-    "colors": "^1.4.0",
+    "chalk": "^4.0.0",
     "core-js": "^3.2.1",
     "hops": "14.5.0",
     "identity-obj-proxy": "^3.0.0",
