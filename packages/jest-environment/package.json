@@ -20,7 +20,7 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "colors": "^1.4.0",
+    "chalk": "^4.0.0",
     "eprom": "^1.0.0",
     "fs-extra": "^10.0.0",
     "hops-debug": "15.0.1",
