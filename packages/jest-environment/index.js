@@ -1,4 +1,4 @@
-const colors = require('colors');
+const chalk = require('chalk');
 const importFrom = require('import-from');
 const NodeEnvironment = importFrom.silent(
   require.resolve('jest'),
@@ -23,7 +23,7 @@ if (!NodeEnvironment) {
 
 if (Number(jestMajorVersion) < 26) {
   console.error(
-    colors.red(
+    chalk.red(
       'Error: You are using an unsupported version of Jest! Please upgrade to Jest v26.'
     )
   );
