@@ -132,9 +132,12 @@ exports.LoggerPlugin = class LoggerPlugin {
             return acc;
           }, [])
           .forEach((error) => this.logger.error(error));
+
         warnings
           .concat(...children.map((c) => c.warnings))
-          .forEach(({ message: warning }) => this.logger.warn(warning));
+          .forEach(({ message: warning, moduleName, loc }) => {
+            this.logger.warn(warning, chalk.gray(`(${moduleName}:${loc})`));
+          });
       }
 
       this.lastHashes[name] = hash;
