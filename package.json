@@ -156,9 +156,31 @@
     },
     "parserOptions": {
       "ecmaVersion": 2018,
-      "sourceType": "module"
+      "sourceType": "module",
+      "requireConfigFile": false,
+      "babelOptions": {
+        "presets": [
+          "@babel/preset-react"
+        ]
+      }
     },
     "parser": "@babel/eslint-parser",
+    "overrides": [
+      {
+        "files": [
+          "packages/spec/integration/react/index.js",
+          "packages/spec/integration/react/flow-text.js",
+          "packages/spec/integration/jest-preset/__tests__/setup/calculator-flow.js"
+        ],
+        "parserOptions": {
+          "babelOptions": {
+            "plugins": [
+              "@babel/plugin-syntax-flow"
+            ]
+          }
+        }
+      }
+    ],
     "env": {
       "es6": true,
       "node": true,
@@ -223,6 +245,8 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.5",
+    "@babel/plugin-syntax-flow": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
     "@commitlint/cli": "^13.0.0",
     "@commitlint/config-conventional": "^13.0.0",
     "@commitlint/config-lerna-scopes": "^13.0.0",
