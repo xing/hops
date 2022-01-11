@@ -43,13 +43,13 @@
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0",
     "react-helmet-async": "^1.0.4",
-    "react-router-dom": "^5.1.0"
+    "react-router-dom": "^5.1.0 || ^6.0.0"
   },
   "devDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet-async": "^1.0.9",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^6.0.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/react#readme",
   "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
