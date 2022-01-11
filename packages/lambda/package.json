@@ -23,7 +23,7 @@
   "dependencies": {
     "archiver": "^5.0.0",
     "aws-sdk": "^2.546.0",
-    "chalk": "^4.0.0",
+    "chalk": "^5.0.0",
     "globby": "^11.0.0",
     "hops-bootstrap": "16.0.0-nightly.0",
     "hops-config": "16.0.0-nightly.0",
