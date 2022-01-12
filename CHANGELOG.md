@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.2](https://github.com/xing/hops/compare/v15.0.1...v15.0.2) (2022-01-12)
+
+
+### Bug Fixes
+
+* **apollo-mock-server:** move playground.png image to mock server folder ([e3afc18](https://github.com/xing/hops/commit/e3afc18bcb1294f7266fcfe4b627a63435bf1a9f))
+* fix incorrect argument passing to process ([5508d3d](https://github.com/xing/hops/commit/5508d3d6565da55473a3c152a7c1455111a8bb02))
+* **jest-environment:** replace package colors with chalk ([e4f944d](https://github.com/xing/hops/commit/e4f944d5d8bbd2b63b3e7c2eae2af31da93ce0cd))
+* **jest-preset:** replace package colors with chalk ([47c1580](https://github.com/xing/hops/commit/47c158057045bba861309bb52d16b87668d070d2))
+* **lambda:** replace package prompt with readline ([bb73a59](https://github.com/xing/hops/commit/bb73a59f2d6c53c83ba39ae443570d7a4d387678))
+* **react-apollo:** make fragmentTypes available to the client-side ([2551037](https://github.com/xing/hops/commit/255103788206632bb81717f8f0222e18dcc42a87))
+* reference the current version, not latest ([0b83fca](https://github.com/xing/hops/commit/0b83fca935fac72150d1f4de25e1b50ff61ea0fa))
+* **webpack:** externalize server source-map to prevent RangeError ([1d43d68](https://github.com/xing/hops/commit/1d43d68bac5b028f85a76682936c5d13fb2aa1f4))
+* **webpack:** print file name and location in webpack warnings ([94eddc8](https://github.com/xing/hops/commit/94eddc8d22b73f27515b04f3a66b6f29bff9fc6c))
+
+
+
+
+
 ## [15.0.1](https://github.com/xing/hops/compare/v15.0.0...v15.0.1) (2021-10-11)
 
 

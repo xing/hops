@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.2](https://github.com/xing/hops/compare/v15.0.1...v15.0.2) (2022-01-12)
+
+
+### Bug Fixes
+
+* **webpack:** externalize server source-map to prevent RangeError ([1d43d68](https://github.com/xing/hops/commit/1d43d68bac5b028f85a76682936c5d13fb2aa1f4))
+* **webpack:** print file name and location in webpack warnings ([94eddc8](https://github.com/xing/hops/commit/94eddc8d22b73f27515b04f3a66b6f29bff9fc6c))
+
+
+
+
+
 ## [15.0.1](https://github.com/xing/hops/compare/v15.0.0...v15.0.1) (2021-10-11)
 
 **Note:** Version bump only for package hops-webpack

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.2](https://github.com/xing/hops/compare/v15.0.1...v15.0.2) (2022-01-12)
+
+
+### Bug Fixes
+
+* **jest-environment:** replace package colors with chalk ([e4f944d](https://github.com/xing/hops/commit/e4f944d5d8bbd2b63b3e7c2eae2af31da93ce0cd))
+
+
+
+
+
 ## [15.0.1](https://github.com/xing/hops/compare/v15.0.0...v15.0.1) (2021-10-11)
 
 **Note:** Version bump only for package jest-environment-hops
