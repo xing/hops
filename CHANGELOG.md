@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.5.1](https://github.com/xing/hops/compare/v14.5.0...v14.5.1) (2022-01-12)
+
+
+### Bug Fixes
+
+* fix incorrect argument passing to process ([fd525cf](https://github.com/xing/hops/commit/fd525cfe101b6a28a6d6e36e5c7fe5453bbaef92))
+* **jest-environment:** replace package colors with chalk ([c945e61](https://github.com/xing/hops/commit/c945e617c47f9fff74f80613ae779e3256c37edd))
+* **jest-preset:** replace package colors with chalk ([1d84f8a](https://github.com/xing/hops/commit/1d84f8ac5c971fe75d76f8e9f0c0591b06fa563d))
+* **lambda:** replace package prompt with readline ([0891763](https://github.com/xing/hops/commit/089176310eedacdab9f3a0a4daf086feb80b8c68))
+* reference the current version, not latest ([6f041fb](https://github.com/xing/hops/commit/6f041fba1c5889160e013b58fb9aab43a1d4af8f))
+* **webpack:** externalize server source-map to prevent RangeError ([7929ea9](https://github.com/xing/hops/commit/7929ea90d937e103be0258575aecc35e839c4d0a))
+
+
+
+
+
 # [14.5.0](https://github.com/xing/hops/compare/v14.4.1...v14.5.0) (2021-09-20)
 
 

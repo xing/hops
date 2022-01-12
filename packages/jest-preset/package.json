@@ -1,6 +1,6 @@
 {
   "name": "jest-preset-hops",
-  "version": "14.5.0",
+  "version": "14.5.1",
   "description": "Jest preset to work with Hops powered projects",
   "keywords": [
     "hops",
@@ -27,9 +27,9 @@
     "@babel/plugin-transform-flow-strip-types": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
-    "colors": "^1.4.0",
+    "chalk": "^4.0.0",
     "core-js": "^3.2.1",
-    "hops": "14.5.0",
+    "hops": "14.5.1",
     "identity-obj-proxy": "^3.0.0",
     "import-from": "^4.0.0",
     "regenerator-runtime": "^0.13.3"
