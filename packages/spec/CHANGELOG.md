@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.5.1](https://github.com/xing/hops/compare/v14.5.0...v14.5.1) (2022-01-12)
+
+
+### Bug Fixes
+
+* fix incorrect argument passing to process ([fd525cf](https://github.com/xing/hops/commit/fd525cfe101b6a28a6d6e36e5c7fe5453bbaef92))
+* reference the current version, not latest ([6f041fb](https://github.com/xing/hops/commit/6f041fba1c5889160e013b58fb9aab43a1d4af8f))
+
+
+
+
+
 # [14.5.0](https://github.com/xing/hops/compare/v14.4.1...v14.5.0) (2021-09-20)
 
 **Note:** Version bump only for package hops-spec
