@@ -24,7 +24,7 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "history": "^4.10.1",
+    "history": "^5.0.0",
     "hops-mixin": "16.0.0-nightly.1",
     "prop-types": "^15.7.2"
   },
