@@ -21,7 +21,7 @@ function startCompilation(webpackConfig, options = {}) {
   const compiler = createCompiler(webpackConfig);
   const output = join(webpackConfig.output.path, webpackConfig.output.filename);
 
-  sourceMapSupport.install({ environment: 'node', hookRequire: true });
+  sourceMapSupport.install({ environment: 'node' });
 
   return new Observable((subscriber) => {
     const callback = (error, stats) => {
