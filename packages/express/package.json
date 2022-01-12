@@ -32,7 +32,7 @@
     "hops-debug": "16.0.0-nightly.1",
     "hops-mixin": "16.0.0-nightly.1",
     "hops-yargs": "16.0.0-nightly.1",
-    "is-plain-obj": "^3.0.0",
+    "is-plain-obj": "^4.0.0",
     "mime": "^2.4.4",
     "mixinable": "^5.0.1",
     "morgan": "^1.9.1",
