@@ -31,7 +31,7 @@
     "hops-config": "16.0.0-nightly.1",
     "hops-mixin": "16.0.0-nightly.1",
     "hops-react": "16.0.0-nightly.1",
-    "strip-indent": "^3.0.0"
+    "strip-indent": "^4.0.0"
   },
   "peerDependencies": {
     "@apollo/client": "^3.3.11",
