@@ -14,7 +14,7 @@
     "serve": "hops serve"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.11",
+    "@apollo/client": "3.4.17",
     "hops": "16.0.0-nightly.1",
     "hops-postcss": "16.0.0-nightly.1",
     "hops-react-apollo": "16.0.0-nightly.1",
