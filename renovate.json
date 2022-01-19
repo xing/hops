@@ -16,16 +16,6 @@
     "release-bot/next-v15.x",
     "release-bot/next-v14.x"
   ],
-  "regexManagers": [
-    {
-      "fileMatch": ["^package.json$"],
-      "matchStrings": [
-        "\"react-apollo\": \"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
-      ],
-      "depNameTemplate": "yarn",
-      "datasourceTemplate": "npm"
-    }
-  ],
   "packageRules": [
     {
       "matchDepTypes": ["dependencies", "peerDependencies"],
