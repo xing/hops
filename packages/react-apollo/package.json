@@ -23,7 +23,7 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.19",
+    "@apollo/client": "3.4.17",
     "@graphql-tools/schema": "^8.0.0",
     "cross-fetch": "^3.0.4",
     "find-up": "^5.0.0",
