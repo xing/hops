@@ -28,7 +28,7 @@
     "execa": "^5.1.1",
     "hops-debug": "15.0.2",
     "hops-mixin": "15.0.2",
-    "msw": "^0.35.0"
+    "msw": "^0.36.0"
   },
   "homepage": "https://github.com/xing/hops/tree/master/packages/msw#readme",
   "gitHead": "015197ee2f876911d9fa781cac1777ebed405015"
