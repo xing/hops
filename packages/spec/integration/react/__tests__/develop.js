@@ -117,9 +117,9 @@ describe('react development server', () => {
     const preloadAs = await getProperty('as', 'link[rel="preload"]');
     const prefetchHref = await getProperty('href', 'link[rel="prefetch"]');
 
-    expect(preloadHref).toMatch(/\/fixture-react-[0-9].js$/);
+    expect(preloadHref).toMatch(/\/fixture-react-[^.]+.js$/);
     expect(preloadAs).toBe('script');
-    expect(prefetchHref).toMatch(/\/fixture-react-[0-9].js$/);
+    expect(prefetchHref).toMatch(/\/fixture-react-[^.]+.js$/);
 
     await page.close();
   });

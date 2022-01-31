@@ -4,7 +4,6 @@ const { trimTrailingSlash } = require('pathifist');
 
 const analyzeCompilation = ({ chunks, chunkGroups, chunkGraph }) => {
   const entryChunks = [];
-  const chunksByModule = [];
 
   for (const chunk of chunks) {
     for (const module of chunkGraph.getChunkModulesIterable(chunk)) {
@@ -12,18 +11,6 @@ const analyzeCompilation = ({ chunks, chunkGroups, chunkGraph }) => {
         entryChunks.push(chunk);
         continue;
       }
-
-      const moduleId = chunkGraph.getModuleId(module);
-
-      if (!moduleId) {
-        continue;
-      }
-
-      const { chunks } = chunkGroups.find(({ chunks }) =>
-        chunks.includes(chunk)
-      );
-
-      chunksByModule.push([moduleId, chunks]);
     }
   }
 
@@ -37,12 +24,12 @@ const analyzeCompilation = ({ chunks, chunkGroups, chunkGraph }) => {
     []
   );
 
-  return { entryChunks, vendorChunks, chunksByModule };
+  return { entryChunks, vendorChunks };
 };
 
 const extractFiles = (chunkData, rawPublicPath) => {
   const publicPath = trimTrailingSlash(rawPublicPath);
-  const { entryChunks, vendorChunks, chunksByModule } = chunkData;
+  const { entryChunks, vendorChunks } = chunkData;
   const gatherFiles = (result, { files }) => [
     ...result,
     ...Array.from(files).map((file) => `${publicPath}/${file}`),
@@ -51,10 +38,6 @@ const extractFiles = (chunkData, rawPublicPath) => {
   return {
     entryFiles: entryChunks.reduce(gatherFiles, []),
     vendorFiles: vendorChunks.reduce(gatherFiles, []),
-    moduleFileMap: chunksByModule.reduce((result, [module, chunks]) => {
-      result[module] = chunks.reduce(gatherFiles, []);
-      return result;
-    }, {}),
   };
 };
 
@@ -76,6 +59,7 @@ exports.StatsWritePlugin = class StatsWritePlugin {
               assets: true,
               chunkGroupChildren: true,
               entrypoints: true,
+              chunkGroups: true,
             }),
             ...extractFiles(analyzeCompilation(compilation), publicPath),
           };

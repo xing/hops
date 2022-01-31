@@ -1,15 +1,19 @@
 'use strict';
 
 import { extname } from 'path';
+import { ensureLeadingSlash } from 'pathifist';
 
-export default (stats, modules) => {
-  const { entryFiles, vendorFiles, moduleFileMap } = stats;
-  const moduleFiles = modules.reduce(
-    (result, module) => [...result, ...moduleFileMap[module]],
-    []
-  );
+export default (stats, chunks) => {
+  const { entryFiles, vendorFiles } = stats;
+  const chunkFiles = chunks.reduce((result, chunk) => {
+    const chunkGroup = stats.namedChunkGroups[chunk];
+    const assets = chunkGroup.assets.map((asset) =>
+      ensureLeadingSlash(asset.name)
+    );
+    return [...result, ...assets];
+  }, []);
 
-  return [...vendorFiles, ...moduleFiles, ...entryFiles]
+  return [...vendorFiles, ...chunkFiles, ...entryFiles]
     .filter(
       (asset, index, self) =>
         self.indexOf(asset) === index &&

@@ -3,13 +3,11 @@ const {
   EnvironmentPlugin,
   HotModuleReplacementPlugin,
   optimize,
-  ids,
 } = require('webpack');
 const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
 
 const { LimitChunkCountPlugin } = optimize;
-const { HashedModuleIdsPlugin, NamedModuleIdsPlugin } = ids;
 
 module.exports = function getConfig(config, name, buildDependencies) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
@@ -155,12 +153,9 @@ module.exports = function getConfig(config, name, buildDependencies) {
     externals: [],
     optimization: {
       minimizer: [],
-      chunkIds: 'natural',
-      usedExports: false,
     },
     plugins: [
       new LimitChunkCountPlugin({ maxChunks: 1 }),
-      new (isProduction ? HashedModuleIdsPlugin : NamedModuleIdsPlugin)(),
       isProduction ? { apply: () => {} } : new HotModuleReplacementPlugin(),
       new EnvironmentPlugin({ NODE_ENV: 'development' }),
     ],

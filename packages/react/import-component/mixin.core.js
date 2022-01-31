@@ -9,7 +9,7 @@ class ImportComponentCoreMixin extends Mixin {
     } else {
       jsLoaderConfig.options.plugins.push([
         require.resolve('../lib/babel'),
-        { module: 'hops' },
+        { module: 'hops', rootDir: this.config.rootDir },
       ]);
     }
   }
