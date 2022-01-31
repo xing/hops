@@ -34,7 +34,7 @@ describe('pwa production build', () => {
     // all responses should now come from the service worker
     expect(
       Array.from(requests.values()).map((r) => r.response().fromServiceWorker())
-    ).toEqual([true, true, true]);
+    ).toEqual([true, true]);
 
     await page.close();
   });
