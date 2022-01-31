@@ -129,11 +129,7 @@ module.exports = function getConfig(config, name, buildDependencies) {
       rules: [{ oneOf: allLoaderConfigs }],
     },
     externals: [],
-    optimization: {
-      splitChunks: { chunks: 'all' },
-      moduleIds: 'named',
-      chunkIds: 'natural',
-    },
+    optimization: {},
     plugins: [
       // Needed for bootstrap/lib/utils#environmentalize, which falls
       // back to `process.env` if there's no global variable `_env`
