@@ -5,12 +5,12 @@ import { Provider } from './context';
 class ImportComponentMixin extends Mixin {
   bootstrap(_req, res) {
     if (res) {
-      res.locals.modules = this.modules = [];
+      res.locals.chunks = this.chunks = [];
     }
   }
 
   enhanceElement(element) {
-    return createElement(Provider, { value: this.modules }, element);
+    return createElement(Provider, { value: this.chunks }, element);
   }
 }
 

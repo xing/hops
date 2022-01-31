@@ -1,10 +1,8 @@
 const { dirname, relative } = require('path');
-const { EnvironmentPlugin, DefinePlugin, ids } = require('webpack');
+const { EnvironmentPlugin, DefinePlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const { join, trimSlashes } = require('pathifist');
 const getModules = require('../utils/modules');
-
-const { HashedModuleIdsPlugin, NamedModuleIdsPlugin } = ids;
 
 module.exports = function getConfig(config, name, buildDependencies) {
   const getAssetPath = (...arg) => trimSlashes(join(config.assetPath, ...arg));
@@ -131,9 +129,6 @@ module.exports = function getConfig(config, name, buildDependencies) {
     },
     externals: [],
     optimization: {
-      splitChunks: {
-        chunks: 'all',
-      },
       minimizer: [
         new TerserPlugin({
           extractComments: false,
@@ -142,12 +137,8 @@ module.exports = function getConfig(config, name, buildDependencies) {
           },
         }),
       ],
-      chunkIds: 'natural',
-      usedExports: false,
-      concatenateModules: true,
     },
     plugins: [
-      new (isProduction ? HashedModuleIdsPlugin : NamedModuleIdsPlugin)(),
       // Needed for bootstrap/lib/utils#environmentalize, which falls
       // back to `process.env` if there's no global variable `_env`
       new DefinePlugin({ 'process.env': JSON.stringify({}) }),
