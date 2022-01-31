@@ -5,7 +5,10 @@ class ImportComponentCoreMixin extends Mixin {
     const { experimentalEsbuild } = this.options;
 
     if (experimentalEsbuild) {
-      jsLoaderConfig.use.push(require.resolve('./import-component-loader.js'));
+      jsLoaderConfig.use.push({
+        loader: require.resolve('./import-component-loader.js'),
+        options: { module: 'hops', rootDir: this.config.rootDir },
+      });
     } else {
       jsLoaderConfig.options.plugins.push([
         require.resolve('../lib/babel'),

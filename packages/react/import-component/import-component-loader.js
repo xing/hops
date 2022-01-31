@@ -1,10 +1,31 @@
-const regex =
-  /importComponent\s*\(\s*\(\)\s+=>\s+import\(\s*'([^']+)'\s*\)\s*\)/g;
+const { transform } = require('@babel/core');
+const regex = /importComponent/g;
 
 function importComponentLoader(source) {
-  return source.replace(
-    regex,
-    "importComponent({ load: () => import('$1'), moduleId: require.resolveWeak('$1') })"
+  const callback = this.async();
+
+  if (!regex.test(source)) {
+    return callback(null, source);
+  }
+
+  const options = this.getOptions();
+
+  transform(
+    source,
+    {
+      plugins: [
+        [require.resolve('./babel'), options],
+        require.resolve('@babel/plugin-syntax-jsx'),
+      ],
+      filename: this.resourcePath,
+    },
+    (err, result) => {
+      if (err) {
+        return callback(err);
+      }
+
+      callback(null, result.code, result.map);
+    }
   );
 }
 
