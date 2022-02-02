@@ -29,6 +29,7 @@ class WebpackOptimizationsMixin extends Mixin {
       fastBuild: fastBuildFlag,
       fastDev: fastDevFlag,
       experimentalEsbuild,
+      experimentalSWC,
     } = this.options;
 
     const { NODE_ENV } = process.env;
@@ -46,7 +47,7 @@ class WebpackOptimizationsMixin extends Mixin {
       jsLoaderConfig.exclude = [];
     }
 
-    if (experimentalEsbuild) {
+    if (experimentalEsbuild || experimentalSWC) {
       // Do not apply any other options as they are for Babel.
       return;
     }
