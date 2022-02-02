@@ -250,7 +250,7 @@
     "@commitlint/cli": "^13.0.0",
     "@commitlint/config-conventional": "^13.0.0",
     "@commitlint/config-lerna-scopes": "^13.0.0",
-    "canarist": "^2.3.1",
+    "canarist": "^2.3.2",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.3.0",
