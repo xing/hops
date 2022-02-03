@@ -58,7 +58,7 @@
             "branch": "debug-canarist",
             "commands": [
               "cd .. && yarn list --pattern jest",
-              "yarn test"
+              "ENABLE_MSW=true yarn jest"
             ]
           }
         ],
