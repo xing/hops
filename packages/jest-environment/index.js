@@ -5,6 +5,8 @@ const NodeEnvironment = importFrom.silent(
   'jest-environment-node'
 );
 
+const { writeFileSync } = require('fs');
+
 // const { spawnSync } = require('child_process');
 
 const [jestMajorVersion] = require('jest/package.json').version.split('.');
@@ -81,19 +83,20 @@ class FixtureEnvironment extends NodeEnvironment {
     this.global.cwd = cwd;
 
     this.global.createPage = async () => {
-      console.log(11111111);
+      writeFileSync(1, '111111111111');
       if (this.disablePuppeteer) {
-        console.log(
+        writeFileSync(
+          1,
           '_____________No browser available; please enable Puppeteer.'
         );
         throw new Error('No browser available; please enable Puppeteer.');
       }
 
-      console.log(222222222222);
+      writeFileSync(1, '2222222222222');
 
       let page;
       try {
-        console.log('2a2a2a2a');
+        writeFileSync(1, '2a2a2a2a');
 
         /*
         const { stdout, stderr } = spawnSync('curl', ['http://localhost:8190']);
@@ -104,14 +107,14 @@ class FixtureEnvironment extends NodeEnvironment {
         console.log(stderr.toString());
 */
         page = await browser.newPage();
-        console.log('2b2b2b2b');
+        writeFileSync(1, '2b2b2b2b');
 
         page.on('console', (msg) => console.log('PAGE LOG:', msg.text()));
       } catch (e) {
-        console.log('_____________________BÄM', e);
+        writeFileSync(1, '_____________________BÄM' + e.toString());
       }
 
-      console.log(33333333333333);
+      writeFileSync(1, '33333333333333');
 
       const getProperty = getPropertyFactory(page);
       console.log(44444444444444);
@@ -121,10 +124,14 @@ class FixtureEnvironment extends NodeEnvironment {
       console.log(55555555555555);
 
       page.on('error', (error) => {
+        writeFileSync(1, '_________________ERROR1');
+
         console.log('_________________ERROR1', error);
         throw error;
       });
       page.on('pageerror', (error) => {
+        writeFileSync(1, '_________________ERROR2');
+
         console.log('_________________ERROR2', error);
 
         throw error;
