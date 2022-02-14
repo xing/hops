@@ -105,9 +105,12 @@ class FixtureEnvironment extends NodeEnvironment {
       console.log(55555555555555);
 
       page.on('error', (error) => {
+        console.log('_________________ERROR1', error);
         throw error;
       });
       page.on('pageerror', (error) => {
+        console.log('_________________ERROR2', error);
+
         throw error;
       });
 
