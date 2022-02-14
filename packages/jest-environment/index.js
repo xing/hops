@@ -60,6 +60,7 @@ class FixtureEnvironment extends NodeEnvironment {
     super(config);
 
     this.config = config;
+    console.log(context.docblockPragmas);
     this.disablePuppeteer = isPuppeteerDisabled(context.docblockPragmas);
   }
 
@@ -82,6 +83,9 @@ class FixtureEnvironment extends NodeEnvironment {
     this.global.createPage = async () => {
       console.log(11111111);
       if (this.disablePuppeteer) {
+        console.log(
+          '_____________No browser available; please enable Puppeteer.'
+        );
         throw new Error('No browser available; please enable Puppeteer.');
       }
 
@@ -90,13 +94,14 @@ class FixtureEnvironment extends NodeEnvironment {
       let page;
       try {
         console.log('2a2a2a2a');
+        /*
         const { stdout, stderr } = spawnSync('curl', ['http://localhost:8190']);
 
         console.log('----------------___AAAA');
         console.log(stdout.toString());
         console.log('___________________B_____________');
         console.log(stderr.toString());
-
+*/
         page = await browser.newPage();
         console.log('2b2b2b2b');
 
