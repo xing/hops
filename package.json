@@ -58,7 +58,7 @@
             "branch": "debug-canarist",
             "commands": [
               "cd .. && yarn list --pattern jest",
-              "ENABLE_MSW=true yarn jest --bail 1 --runInBand"
+              "ENABLE_MSW=true yarn jest --bail 1"
             ]
           }
         ],
