@@ -58,7 +58,7 @@
             "branch": "debug-canarist",
             "commands": [
               "cd .. && yarn list --pattern jest",
-              "ENABLE_MSW=true yarn jest --bail 1"
+              "ENABLE_MSW=true yarn jest --bail 1 packages/spec/integration/user-auth/__tests__/prefetch.js packages/spec/integration/i18n/__tests__/develop.js packages/spec/integration/hops-demo/__tests__/hops-demo.js"
             ]
           }
         ],
