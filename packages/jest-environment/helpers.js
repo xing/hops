@@ -63,31 +63,35 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
 
   started.stdout.on('data', (data) => {
     const line = data.toString('utf-8');
-    debug('stdout >', line);
+    console.log('stdout >', line);
     stdout += line;
 
     const [, url] = line.match(/listening at (.*)/i) || [];
     if (url) {
-      debug('found match:', url);
+      console.log('found match:', url);
       urlPromise.resolve(url);
     }
   });
 
   started.stderr.on('data', (data) => {
     const line = data.toString('utf-8');
-    debug('stderr >', line);
+    console.log('stderr >', line);
     stderr += line;
   });
 
   started.on('close', (code) => {
-    debug('Server stopped. exitcode:', code);
+    console.log('Server stopped. exitcode:', code);
     urlPromise.reject('server closed');
     stopServer = () => {};
   });
 
-  started.on('error', (error) => teardownPromise.reject(error));
+  started.on('error', (error) => {
+    console.log('-__________________', error);
+    teardownPromise.reject(error);
+  });
 
   process.on('exit', () => {
+    console.log('__________________EXIT');
     stopServer();
   });
 
@@ -114,7 +118,7 @@ const launchPuppeteer = async (disablePuppeteer) => {
     devtools: isDebug,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   };
-  debug('Starting puppeteer', config);
+  console.log('>>>> Starting puppeteer', config);
   // eslint-disable-next-line node/no-unsupported-features/es-syntax
   const { default: puppeteer } = await import('puppeteer');
   const browser = await puppeteer.launch(config);

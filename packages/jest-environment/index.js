@@ -61,12 +61,13 @@ class FixtureEnvironment extends NodeEnvironment {
   }
 
   async setup() {
+    console.log('setup-------------');
     await super.setup();
-    debug('Creating working directory for:', this.config.rootDir);
+    console.log('Creating working directory for:', this.config.rootDir);
     const { cwd, removeWorkingDir } = await createWorkingDir(
       this.config.rootDir
     );
-    debug('Working directory created:', cwd);
+    console.log('Working directory created:', cwd);
     this.cwd = cwd;
     this.removeWorkingDir = removeWorkingDir;
     const { browser, teardown: closeBrowser } = await launchPuppeteer(
