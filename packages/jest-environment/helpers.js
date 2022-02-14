@@ -34,12 +34,20 @@ const build = ({ cwd, env = {}, argv = [] }) =>
 
     let stderr = '';
     buildProcess.stderr.on('data', (data) => {
+      console.log('_________BOOOOOOOOOOM', data.toString('utf-8'));
       stderr += data.toString('utf-8');
     });
 
     buildProcess.on('close', (code) => resolve({ stdout, stderr, code }));
-    buildProcess.on('error', (error) => reject(error));
-    process.on('exit', () => buildProcess.kill());
+    buildProcess.on('error', (error) => {
+      console.log('_____________________BUID ERROR ');
+
+      reject(error);
+    });
+    process.on('exit', () => {
+      console.log('_____________________BUID EXIT ');
+      buildProcess.kill();
+    });
   });
 
 const startServer = ({ cwd, command, env = {}, argv = [] }) => {

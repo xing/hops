@@ -61,13 +61,12 @@ class FixtureEnvironment extends NodeEnvironment {
   }
 
   async setup() {
-    console.log('setup-------------');
     await super.setup();
     console.log('Creating working directory for:', this.config.rootDir);
     const { cwd, removeWorkingDir } = await createWorkingDir(
       this.config.rootDir
     );
-    console.log('Working directory created:', cwd);
+    debug('Working directory created:', cwd);
     this.cwd = cwd;
     this.removeWorkingDir = removeWorkingDir;
     const { browser, teardown: closeBrowser } = await launchPuppeteer(
@@ -78,13 +77,23 @@ class FixtureEnvironment extends NodeEnvironment {
     this.global.cwd = cwd;
 
     this.global.createPage = async () => {
+      console.log(11111111);
       if (this.disablePuppeteer) {
         throw new Error('No browser available; please enable Puppeteer.');
       }
 
+      console.log(222222222222);
+
       const page = await browser.newPage();
+      console.log(33333333333333);
+
       const getProperty = getPropertyFactory(page);
+      console.log(44444444444444);
+
       page.setDefaultNavigationTimeout(2 * 60 * 1000);
+
+      console.log(55555555555555);
+
       page.on('error', (error) => {
         throw error;
       });
