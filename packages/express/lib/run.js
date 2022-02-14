@@ -60,6 +60,7 @@ module.exports = (app, { config, handleError, inspectServer }) => {
   const { host, port, https } = config;
   const server = createServer(app, https);
   domain.on('error', (error) => {
+    console.log('DOMAIN ERROR', error);
     handleError(error, true);
     shutdownServer(server, app, config).then(
       () => process.exit(1),
@@ -69,7 +70,10 @@ module.exports = (app, { config, handleError, inspectServer }) => {
   process.on('SIGTERM', () =>
     shutdownServer(server, app, config).then(
       () => process.exit(0),
-      (error) => handleError(error)
+      (error) => {
+        console.log('HANDLE Error.apply................', error);
+        handleError(error);
+      }
     )
   );
   getPort(port).then(
