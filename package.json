@@ -58,7 +58,7 @@
             "branch": "debug-canarist",
             "commands": [
               "cd .. && yarn list --pattern jest",
-              "DEBUG=puppeteer* ENABLE_MSW=true yarn jest --bail 1 --runInBand"
+              "DEBUG=puppeteer*,hops:i18n:test ENABLE_MSW=true yarn jest --bail 1 --runInBand"
             ]
           }
         ],
