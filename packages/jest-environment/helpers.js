@@ -129,7 +129,14 @@ const launchPuppeteer = async (disablePuppeteer) => {
   console.log('>>>> Starting puppeteer', config);
   // eslint-disable-next-line node/no-unsupported-features/es-syntax
   const { default: puppeteer } = await import('puppeteer');
-  const browser = await puppeteer.launch(config);
+  let browser;
+
+  try {
+    browser = await puppeteer.launch(config);
+  } catch (e) {
+    console.log('________________________BOOOM', e);
+  }
+
   return {
     browser,
     teardown: async () => await browser.close(),

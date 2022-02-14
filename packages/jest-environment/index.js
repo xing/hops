@@ -86,7 +86,11 @@ class FixtureEnvironment extends NodeEnvironment {
 
       let page;
       try {
+        console.log('2a2a2a2a');
         page = await browser.newPage();
+        console.log('2b2b2b2b');
+
+        page.on('console', (msg) => console.log('PAGE LOG:', msg.text()));
       } catch (e) {
         console.log('_____________________BÄM', e);
       }
