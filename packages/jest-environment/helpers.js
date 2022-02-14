@@ -76,7 +76,7 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
 
     const [, url] = line.match(/listening at (.*)/i) || [];
     if (url) {
-      console.log('found match:', url);
+      consle.log('found match:', url);
       urlPromise.resolve(url);
     }
   });
