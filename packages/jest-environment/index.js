@@ -84,7 +84,13 @@ class FixtureEnvironment extends NodeEnvironment {
 
       console.log(222222222222);
 
-      const page = await browser.newPage();
+      let page;
+      try {
+        page = await browser.newPage();
+      } catch (e) {
+        console.log('_____________________BÄM', e);
+      }
+
       console.log(33333333333333);
 
       const getProperty = getPropertyFactory(page);
