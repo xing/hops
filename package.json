@@ -96,7 +96,8 @@
             "babel-jest": "^27",
             "colors": "1.4.0",
             "jest": "^27",
-            "ts-jest": "^27"
+            "ts-jest": "^27",
+            "puppeteer": "^13"
           }
         }
       }
