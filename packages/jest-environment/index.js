@@ -93,9 +93,9 @@ class FixtureEnvironment extends NodeEnvironment {
         const { stdout, stderr } = spawnSync('curl', ['http://localhost:8190']);
 
         console.log('----------------___AAAA');
-        console.log(stdout);
+        console.log(stdout.toString());
         console.log('___________________B_____________');
-        console.log(stderr);
+        console.log(stderr.toString());
 
         page = await browser.newPage();
         console.log('2b2b2b2b');
