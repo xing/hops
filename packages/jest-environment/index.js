@@ -5,7 +5,7 @@ const NodeEnvironment = importFrom.silent(
   'jest-environment-node'
 );
 
-const { spawnSync } = require('child_process');
+// const { spawnSync } = require('child_process');
 
 const [jestMajorVersion] = require('jest/package.json').version.split('.');
 const debug = require('hops-debug')('hops-spec:env');
@@ -94,6 +94,7 @@ class FixtureEnvironment extends NodeEnvironment {
       let page;
       try {
         console.log('2a2a2a2a');
+
         /*
         const { stdout, stderr } = spawnSync('curl', ['http://localhost:8190']);
 
