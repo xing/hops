@@ -60,7 +60,7 @@ class FixtureEnvironment extends NodeEnvironment {
     super(config);
 
     this.config = config;
-    console.log(context.docblockPragmas);
+    console.log('context.docblockPragmas', context.docblockPragmas);
     this.disablePuppeteer = isPuppeteerDisabled(context.docblockPragmas);
   }
 
