@@ -4,8 +4,9 @@ describe('postcss production build', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('-p');
+    const { getUrl, started } = HopsCLI.start('-p');
     url = await getUrl();
+    await started();
   });
 
   it('styles when served in production mode', async () => {

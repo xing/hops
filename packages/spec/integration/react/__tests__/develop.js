@@ -6,8 +6,9 @@ describe('react development server', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, started } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await started();
   });
 
   it('renders home', async () => {

@@ -4,8 +4,9 @@ describe('styled-components development server', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, started } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await started();
   });
 
   it('allows to use styled components', async () => {

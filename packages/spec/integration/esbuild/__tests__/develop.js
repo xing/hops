@@ -4,8 +4,13 @@ describe('esbuild - develop', () => {
   let url, page, getInnerText;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev', '--experimental-esbuild');
+    const { getUrl, started } = HopsCLI.start(
+      '--fast-dev',
+      '--experimental-esbuild'
+    );
     url = await getUrl();
+    await started();
+
     const pptr = await createPage();
     page = pptr.page;
     getInnerText = pptr.getInnerText;

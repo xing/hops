@@ -4,8 +4,9 @@ describe('graphql mock server', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, started } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await started();
   });
 
   it('renders a mocked quote', async () => {

@@ -4,8 +4,9 @@ describe('react-postcss', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, started } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await started();
   });
 
   it('styles when served in development mode', async () => {

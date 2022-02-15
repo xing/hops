@@ -6,8 +6,9 @@ describe('pwa production build', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('-p');
+    const { getUrl, started } = HopsCLI.start('-p');
     url = await getUrl();
+    await started();
   });
 
   it('registers a service worker', async () => {

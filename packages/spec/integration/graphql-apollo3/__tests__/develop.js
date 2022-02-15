@@ -8,8 +8,9 @@ describe('graphql development client', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, started } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await started();
   });
 
   describe('/invalid-response (HTML)', () => {
