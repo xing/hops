@@ -159,7 +159,11 @@ class FixtureEnvironment extends NodeEnvironment {
           );
         }
         const { env, argv } = getHopsCommandModifications(args);
-        const { getUrl, stopServer: killServer } = startServer({
+        const {
+          getUrl,
+          stopServer: killServer,
+          started,
+        } = startServer({
           cwd: that.cwd,
           command: 'start',
           env,
@@ -171,7 +175,7 @@ class FixtureEnvironment extends NodeEnvironment {
           delete that.killServer;
           return killServer();
         };
-        return { getUrl, stopServer };
+        return { getUrl, stopServer, started };
       },
     };
   }
