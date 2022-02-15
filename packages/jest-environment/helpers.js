@@ -53,8 +53,12 @@ const build = ({ cwd, env = {}, argv = [] }) =>
 const startServer = ({ cwd, command, env = {}, argv = [] }) => {
   const teardownPromise = new EProm();
   const urlPromise = new EProm();
+  const startedPromise = new EProm();
+
   let stdout = '';
   let stderr = '';
+  const success1 = "bundling 'develop' finished";
+  const success2 = "bundling 'node' finished";
 
   const hopsBin = resolveFrom(cwd, 'hops/bin');
   const args = [hopsBin, command].concat(argv);
@@ -78,6 +82,11 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
     if (url) {
       console.log('found match:', url);
       urlPromise.resolve(url);
+    }
+
+    console.log(stdout.includes(success1), stdout.includes(success2));
+    if (stdout.includes(success1) && stdout.includes(success2)) {
+      startedPromise.resolve();
     }
   });
 
@@ -103,7 +112,11 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
     stopServer();
   });
 
-  return { getUrl: () => urlPromise, stopServer };
+  return {
+    getUrl: () => urlPromise,
+    stopServer,
+    started: () => startedPromise,
+  };
 };
 
 const isPuppeteerDisabled = (pragmas) => {
