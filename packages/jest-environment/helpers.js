@@ -86,6 +86,12 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
     ) {
       hasFinishedPromise.resolve();
     }
+
+    if (line.match(/bundling [^ ]+ failed/)) {
+      setTimeout(() => {
+        hasFinishedPromise.reject({ stdout, stderr });
+      }, 5000);
+    }
   });
 
   started.stderr.on('data', (data) => {
