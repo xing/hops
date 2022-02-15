@@ -70,7 +70,7 @@ describe('development server with msw mocks', () => {
   let baseUrl;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start(
+    const { getUrl, hasFinished } = HopsCLI.start(
       {
         ENABLE_MSW: 'true',
         PORT: '8949',
@@ -78,6 +78,10 @@ describe('development server with msw mocks', () => {
       '--fast-dev'
     );
     baseUrl = await getUrl();
+    await hasFinished([
+      "bundling 'develop' finished",
+      "bundling 'node' finished",
+    ]);
   });
 
   describe('Adding up to 12', () => {

@@ -16,8 +16,15 @@ describe('react fast refresh', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev', '--fast-refresh');
+    const { getUrl, hasFinished } = HopsCLI.start(
+      '--fast-dev',
+      '--fast-refresh'
+    );
     url = await getUrl();
+    await hasFinished([
+      "bundling 'develop' finished",
+      "bundling 'node' finished",
+    ]);
   });
 
   it('renders caption only once', async () => {

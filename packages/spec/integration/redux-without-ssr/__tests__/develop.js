@@ -4,8 +4,12 @@ describe('redux development server', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, hasFinished } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await hasFinished([
+      "bundling 'develop' finished",
+      "bundling 'node' finished",
+    ]);
   });
 
   it('increments the counter on page load', async () => {
