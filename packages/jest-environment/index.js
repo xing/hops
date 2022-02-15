@@ -83,6 +83,7 @@ class FixtureEnvironment extends NodeEnvironment {
     this.global.cwd = cwd;
 
     this.global.createPage = async () => {
+      // debug
       writeFileSync(1, '111111111111');
       if (this.disablePuppeteer) {
         writeFileSync(
