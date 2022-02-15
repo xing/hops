@@ -4,8 +4,15 @@ describe('typescript development server', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev', '--experimental-esbuild');
+    const { getUrl, hasFinished } = HopsCLI.start(
+      '--fast-dev',
+      '--experimental-esbuild'
+    );
     url = await getUrl();
+    await hasFinished([
+      "bundling 'develop' finished",
+      "bundling 'node' finished",
+    ]);
   });
 
   it('renders a simple jsx site', async () => {
