@@ -45,8 +45,11 @@ const build = ({ cwd, env = {}, argv = [] }) =>
 const startServer = ({ cwd, command, env = {}, argv = [] }) => {
   const teardownPromise = new EProm();
   const urlPromise = new EProm();
+
   let stdout = '';
   let stderr = '';
+  const success1 = "bundling 'develop' finished";
+  const success2 = "bundling 'node' finished";
 
   const hopsBin = resolveFrom(cwd, 'hops/bin');
   const args = [hopsBin, command].concat(argv);
@@ -61,6 +64,7 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
     return teardownPromise;
   };
 
+  let serverUrl = '';
   started.stdout.on('data', (data) => {
     const line = data.toString('utf-8');
     debug('stdout >', line);
@@ -68,8 +72,12 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
 
     const [, url] = line.match(/listening at (.*)/i) || [];
     if (url) {
+      serverUrl = url;
       debug('found match:', url);
-      urlPromise.resolve(url);
+    }
+
+    if (stdout.includes(success1) && stdout.includes(success2) && serverUrl) {
+      urlPromise.resolve(serverUrl);
     }
   });
 
