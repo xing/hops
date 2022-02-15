@@ -19,8 +19,12 @@ describe.skip('hot module reload', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, hasFinished } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await hasFinished([
+      "bundling 'develop' finished",
+      "bundling 'node' finished",
+    ]);
   });
 
   it('reflects changes automatically', async () => {
