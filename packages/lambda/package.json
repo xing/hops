@@ -1,6 +1,6 @@
 {
   "name": "hops-lambda",
-  "version": "16.0.0-nightly.1",
+  "version": "16.0.0-nightly.2",
   "description": "Quick and easy deployment of Hops applications to AWS Lambda",
   "keywords": [
     "hops",
@@ -25,10 +25,10 @@
     "aws-sdk": "^2.546.0",
     "chalk": "^4.0.0",
     "globby": "^11.0.0",
-    "hops-bootstrap": "16.0.0-nightly.1",
-    "hops-config": "16.0.0-nightly.1",
-    "hops-express": "16.0.0-nightly.1",
-    "hops-mixin": "16.0.0-nightly.1",
+    "hops-bootstrap": "16.0.0-nightly.2",
+    "hops-config": "16.0.0-nightly.2",
+    "hops-express": "16.0.0-nightly.2",
+    "hops-mixin": "16.0.0-nightly.2",
     "pathifist": "^1.0.0",
     "prompt": "^1.0.0",
     "resolve-tree": "^0.1.14",

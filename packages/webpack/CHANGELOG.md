@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-nightly.2](https://github.com/xing/hops/compare/v16.0.0-nightly.1...v16.0.0-nightly.2) (2022-02-16)
+
+
+### Bug Fixes
+
+* reference webpack chunks via chunk name ([4d9db89](https://github.com/xing/hops/commit/4d9db895be547a0577cd336e29676a5cb836d284)), closes [#1976](https://github.com/xing/hops/issues/1976)
+
+
+
+
+
 # [16.0.0-nightly.1](https://github.com/xing/hops/compare/v16.0.0-nightly.0...v16.0.0-nightly.1) (2022-01-12)
 
 
