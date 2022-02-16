@@ -97,7 +97,7 @@ describe('development server with msw mocks', () => {
 
       page.on('console', (msg) => handleConsoleOutput(msg));
 
-      registerServerMocks(
+      await registerServerMocks(
         page,
         baseUrl,
         mockGetRequest(new URL('/api', baseUrl).toString(), { value: 5 })
