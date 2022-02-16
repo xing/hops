@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://github.com/xing/hops/compare/v15.0.2...v15.1.0) (2022-02-16)
+
+
+### Bug Fixes
+
+* reference webpack chunks via chunk name ([3521a78](https://github.com/xing/hops/commit/3521a7868976c855f036ab7b4c6a0e5fd556812d)), closes [#1976](https://github.com/xing/hops/issues/1976)
+
+
+
+
+
 ## [15.0.2](https://github.com/xing/hops/compare/v15.0.1...v15.0.2) (2022-01-12)
 
 **Note:** Version bump only for package hops-react

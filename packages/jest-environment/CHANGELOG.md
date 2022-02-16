@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://github.com/xing/hops/compare/v15.0.2...v15.1.0) (2022-02-16)
+
+
+### Bug Fixes
+
+* wait for webpack builds to finish ([eb6737e](https://github.com/xing/hops/commit/eb6737e3e38a18814dbb906f3b01c016fcbc9162))
+
+
+### Features
+
+* **jest-environment:** reject hasFinished when build has failed ([bbe6ddc](https://github.com/xing/hops/commit/bbe6ddcd45e6592bf81bd8338c9ae98bd9459be4))
+
+
+
+
+
 ## [15.0.2](https://github.com/xing/hops/compare/v15.0.1...v15.0.2) (2022-01-12)
 
 
