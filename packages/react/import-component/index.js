@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import ImportComponentContext from './context';
 
 export const importComponent = (
-  { load, moduleId },
+  { load, moduleId, chunkName },
   resolve = (module) => module.default
 ) => {
   class Importer extends Component {
-    constructor({ hasModules }) {
+    constructor() {
       super();
-      if (hasModules || __webpack_modules__[moduleId]) {
+      if (__webpack_modules__[moduleId]) {
         this.state = { Component: resolve(__webpack_require__(moduleId)) };
       } else {
         this.state = { loading: true };
@@ -57,21 +57,19 @@ export const importComponent = (
   }
 
   Importer.propTypes = {
-    hasModules: PropTypes.bool,
     ownProps: PropTypes.object.isRequired,
     loader: PropTypes.func,
     render: PropTypes.func,
   };
 
   function Import({ loader, render, ...ownProps }) {
-    const modules = useContext(ImportComponentContext);
+    const chunks = useContext(ImportComponentContext);
 
-    if (modules) {
-      modules.push(moduleId);
+    if (chunks) {
+      chunks.push(chunkName());
     }
 
     return createElement(Importer, {
-      hasModules: Boolean(modules && modules.length > 0),
       loader,
       render,
       ownProps,

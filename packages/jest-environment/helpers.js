@@ -45,6 +45,8 @@ const build = ({ cwd, env = {}, argv = [] }) =>
 const startServer = ({ cwd, command, env = {}, argv = [] }) => {
   const teardownPromise = new EProm();
   const urlPromise = new EProm();
+  const hasFinishedPromise = new EProm();
+
   let stdout = '';
   let stderr = '';
 
@@ -61,6 +63,12 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
     return teardownPromise;
   };
 
+  let linesToFinish = [];
+  const hasFinished = (lines) => {
+    linesToFinish.push(...lines);
+    return hasFinishedPromise;
+  };
+
   started.stdout.on('data', (data) => {
     const line = data.toString('utf-8');
     debug('stdout >', line);
@@ -70,6 +78,19 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
     if (url) {
       debug('found match:', url);
       urlPromise.resolve(url);
+    }
+
+    if (
+      linesToFinish.length > 0 &&
+      linesToFinish.every((lineToFinish) => stdout.includes(lineToFinish))
+    ) {
+      hasFinishedPromise.resolve();
+    }
+
+    if (line.match(/bundling [^ ]+ failed/)) {
+      setTimeout(() => {
+        hasFinishedPromise.reject({ stdout, stderr });
+      }, 5000);
     }
   });
 
@@ -91,7 +112,7 @@ const startServer = ({ cwd, command, env = {}, argv = [] }) => {
     stopServer();
   });
 
-  return { getUrl: () => urlPromise, stopServer };
+  return { getUrl: () => urlPromise, stopServer, hasFinished };
 };
 
 const isPuppeteerDisabled = (pragmas) => {

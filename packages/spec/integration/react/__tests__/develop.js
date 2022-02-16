@@ -6,8 +6,12 @@ describe('react development server', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, hasFinished } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await hasFinished([
+      "bundling 'develop' finished",
+      "bundling 'node' finished",
+    ]);
   });
 
   it('renders home', async () => {
@@ -117,9 +121,9 @@ describe('react development server', () => {
     const preloadAs = await getProperty('as', 'link[rel="preload"]');
     const prefetchHref = await getProperty('href', 'link[rel="prefetch"]');
 
-    expect(preloadHref).toMatch(/\/fixture-react-[0-9].js$/);
+    expect(preloadHref).toMatch(/\/fixture-react-[^.]+.js$/);
     expect(preloadAs).toBe('script');
-    expect(prefetchHref).toMatch(/\/fixture-react-[0-9].js$/);
+    expect(prefetchHref).toMatch(/\/fixture-react-[^.]+.js$/);
 
     await page.close();
   });

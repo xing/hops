@@ -27,8 +27,8 @@ class ReactMixin extends Mixin {
     return renderToFragments(element);
   }
 
-  renderTemplate(fragments, { modules }) {
-    const assets = getAssets(this.stats, modules);
+  renderTemplate(fragments, { chunks }) {
+    const assets = getAssets(this.stats, chunks);
     const resourceHints = getResourceHints(this.stats);
     const globals = { _env: this.config._env };
 
@@ -70,9 +70,9 @@ class ReactMixin extends Mixin {
           } else {
             res.status(router.status || 200);
 
-            // note: res.locals.modules is set by the ImportComponentMixin
+            // note: res.locals.chunks is set by the ImportComponentMixin
             return this.renderTemplate(fragments, {
-              modules: res.locals.modules,
+              chunks: res.locals.chunks,
             }).then((page) => res.send(page));
           }
         }

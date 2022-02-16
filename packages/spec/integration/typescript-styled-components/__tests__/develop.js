@@ -4,8 +4,12 @@ describe('typescript-styled-components development server', () => {
   let url;
 
   beforeAll(async () => {
-    const { getUrl } = HopsCLI.start('--fast-dev');
+    const { getUrl, hasFinished } = HopsCLI.start('--fast-dev');
     url = await getUrl();
+    await hasFinished([
+      "bundling 'develop' finished",
+      "bundling 'node' finished",
+    ]);
   });
 
   it('allows to use the css-props', async () => {

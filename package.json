@@ -54,11 +54,13 @@
           },
           {
             "url": "enc:r6BTklZr+axySHpOBj0JysOusV4S8o7YtSxZ9fi66rL5grn3vMkHUbMdb3OY5+tv",
-            "directory": "internal-hops"
+            "directory": "internal-hops",
+            "branch": "wait-for-compilation"
           }
         ],
         "rootManifest": {
           "resolutions": {
+            "@babel/core": "7.15.0",
             "colors": "1.4.0",
             "graphql-tag": "^2.12"
           }
@@ -250,7 +252,7 @@
     "@commitlint/cli": "^13.0.0",
     "@commitlint/config-conventional": "^13.0.0",
     "@commitlint/config-lerna-scopes": "^13.0.0",
-    "canarist": "^2.3.1",
+    "canarist": "^2.3.2",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.3.0",
