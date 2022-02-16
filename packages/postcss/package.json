@@ -30,7 +30,7 @@
     "postcss-import": "^14.0.0",
     "postcss-loader": "^6.1.0",
     "postcss-normalize-charset": "^5.0.0",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-preset-env": "^7.0.0",
     "style-loader": "^3.0.0",
     "webpack": "^5.51.1"
   },
