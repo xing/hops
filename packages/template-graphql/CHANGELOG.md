@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://github.com/xing/hops/compare/v15.0.2...v15.1.0) (2022-02-16)
+
+
+### Bug Fixes
+
+* pin @apollo/client to 3.4.17 due to SSR bug in useLazyQuery ([de003f2](https://github.com/xing/hops/commit/de003f2a4a5f6cd0d4143625c267b25e65dfa458))
+
+
+
+
+
 ## [15.0.2](https://github.com/xing/hops/compare/v15.0.1...v15.0.2) (2022-01-12)
 
 **Note:** Version bump only for package hops-template-graphql
