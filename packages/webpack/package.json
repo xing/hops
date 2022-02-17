@@ -29,7 +29,6 @@
     "hops-yargs": "16.0.0-nightly.2",
     "is-plain-obj": "^3.0.0",
     "jsesc": "^3.0.0",
-    "loader-utils": "^2.0.0",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
     "minimatch": "^3.0.4",
