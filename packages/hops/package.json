@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "15.1.0",
+  "version": "15.1.1",
   "description": "Hops main Package to build and run Hops applications",
   "keywords": [
     "hops",
@@ -30,12 +30,12 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-express": "15.1.0",
-    "hops-info": "15.1.0",
-    "hops-mixin": "15.1.0",
-    "hops-react": "15.1.0",
-    "hops-webpack": "15.1.0",
-    "hops-yargs": "15.1.0",
+    "hops-express": "15.1.1",
+    "hops-info": "15.1.1",
+    "hops-mixin": "15.1.1",
+    "hops-react": "15.1.1",
+    "hops-webpack": "15.1.1",
+    "hops-yargs": "15.1.1",
     "webpack-bundle-analyzer": "^4.1.0"
   },
   "peerDependencies": {

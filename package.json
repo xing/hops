@@ -157,9 +157,31 @@
     },
     "parserOptions": {
       "ecmaVersion": 2018,
-      "sourceType": "module"
+      "sourceType": "module",
+      "requireConfigFile": false,
+      "babelOptions": {
+        "presets": [
+          "@babel/preset-react"
+        ]
+      }
     },
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
+    "overrides": [
+      {
+        "files": [
+          "packages/spec/integration/react/index.js",
+          "packages/spec/integration/react/flow-text.js",
+          "packages/spec/integration/jest-preset/__tests__/setup/calculator-flow.js"
+        ],
+        "parserOptions": {
+          "babelOptions": {
+            "plugins": [
+              "@babel/plugin-syntax-flow"
+            ]
+          }
+        }
+      }
+    ],
     "env": {
       "es6": true,
       "node": true,
@@ -223,21 +245,23 @@
     }
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/plugin-syntax-flow": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
     "@commitlint/cli": "^13.0.0",
     "@commitlint/config-conventional": "^13.0.0",
     "@commitlint/config-lerna-scopes": "^13.0.0",
-    "babel-eslint": "^10.1.0",
     "canarist": "^2.3.2",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.0.0",
+    "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react": "^7.28.0",
     "husky": "^4.3.8",
     "jest": "^27.0.0",
-    "jest-runner-eslint": "0.11.1",
+    "jest-runner-eslint": "1.0.0",
     "jest-runner-prettier": "0.3.7",
     "jest-watch-select-projects": "2.0.0",
     "jest-watch-typeahead": "0.6.5",

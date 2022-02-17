@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.1](https://github.com/xing/hops/compare/v15.1.0...v15.1.1) (2022-02-17)
+
+
+### Bug Fixes
+
+* update dependency postcss-preset-env to v7 ([5db06ac](https://github.com/xing/hops/commit/5db06acc89ca93d20968a36c4263b4d8fd40798f))
+
+
+
+
+
 # [15.1.0](https://github.com/xing/hops/compare/v15.0.2...v15.1.0) (2022-02-16)
 
 **Note:** Version bump only for package hops-postcss
