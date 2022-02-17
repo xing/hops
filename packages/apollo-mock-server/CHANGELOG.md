@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-nightly.3](https://github.com/xing/hops/compare/v16.0.0-nightly.2...v16.0.0-nightly.3) (2022-02-17)
+
+
+### Bug Fixes
+
+* start server for version 3 ([687ca03](https://github.com/xing/hops/commit/687ca03ba3e7902a57b513cd4a98f8a10686f9ce))
+* update dependency apollo-server-express to v3 ([2e7ef2d](https://github.com/xing/hops/commit/2e7ef2d7b8620dfbbf3db81cea42e60218f194d1))
+
+
+
+
+
 # [16.0.0-nightly.2](https://github.com/xing/hops/compare/v16.0.0-nightly.1...v16.0.0-nightly.2) (2022-02-16)
 
 **Note:** Version bump only for package hops-apollo-mock-server

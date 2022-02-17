@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-nightly.3](https://github.com/xing/hops/compare/v16.0.0-nightly.2...v16.0.0-nightly.3) (2022-02-17)
+
+
+### Bug Fixes
+
+* update dependency loader-utils to v3 ([69a79d4](https://github.com/xing/hops/commit/69a79d483a3a238122267b751a927d20f5dc9bf9))
+
+
+
+
+
 # [16.0.0-nightly.2](https://github.com/xing/hops/compare/v16.0.0-nightly.1...v16.0.0-nightly.2) (2022-02-16)
 
 

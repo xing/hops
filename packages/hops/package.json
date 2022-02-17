@@ -1,6 +1,6 @@
 {
   "name": "hops",
-  "version": "16.0.0-nightly.2",
+  "version": "16.0.0-nightly.3",
   "description": "Hops main Package to build and run Hops applications",
   "keywords": [
     "hops",
@@ -30,12 +30,12 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "hops-express": "16.0.0-nightly.2",
-    "hops-info": "16.0.0-nightly.2",
-    "hops-mixin": "16.0.0-nightly.2",
-    "hops-react": "16.0.0-nightly.2",
-    "hops-webpack": "16.0.0-nightly.2",
-    "hops-yargs": "16.0.0-nightly.2",
+    "hops-express": "16.0.0-nightly.3",
+    "hops-info": "16.0.0-nightly.3",
+    "hops-mixin": "16.0.0-nightly.3",
+    "hops-react": "16.0.0-nightly.3",
+    "hops-webpack": "16.0.0-nightly.3",
+    "hops-yargs": "16.0.0-nightly.3",
     "webpack-bundle-analyzer": "^4.1.0"
   },
   "peerDependencies": {
