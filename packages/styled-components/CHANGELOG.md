@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.1](https://github.com/xing/hops/compare/v15.1.0...v15.1.1) (2022-02-17)
+
+
+### Bug Fixes
+
+* **styled-components:** pin babel-plugin-styled-components to v1.12.1 ([1ac6fa9](https://github.com/xing/hops/commit/1ac6fa9d3e03c7d9fae7325d28b0e0be6e09fa03))
+
+
+
+
+
 # [15.1.0](https://github.com/xing/hops/compare/v15.0.2...v15.1.0) (2022-02-16)
 
 **Note:** Version bump only for package hops-styled-components
