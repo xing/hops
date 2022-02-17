@@ -21,7 +21,7 @@
     "displayName": "unit"
   },
   "dependencies": {
-    "babel-plugin-styled-components": "1.12.1",
+    "babel-plugin-styled-components": "1.13.3",
     "hops-mixin": "16.0.0-nightly.3"
   },
   "peerDependencies": {
