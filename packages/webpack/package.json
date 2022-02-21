@@ -35,7 +35,7 @@
     "minimatch": "^3.0.4",
     "mixinable": "^5.0.1",
     "pathifist": "^1.0.0",
-    "pretty-bytes": "^5.3.0",
+    "pretty-bytes": "^6.0.0",
     "pretty-ms": "^7.0.0",
     "regenerator-runtime": "^0.13.3",
     "rimraf": "^3.0.0",
