@@ -2,7 +2,6 @@ status = [
   "tests (14.x)",
   "tests (16.x)",
   "canarist/internal-hops",
-  "canarist/internal-workshop",
 ]
 
 block_labels = [
