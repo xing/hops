@@ -24,7 +24,7 @@
     "archiver": "^5.0.0",
     "aws-sdk": "^2.546.0",
     "chalk": "^4.0.0",
-    "globby": "^11.0.0",
+    "globby": "^13.0.0",
     "hops-bootstrap": "15.1.1",
     "hops-config": "15.1.1",
     "hops-express": "15.1.1",
