@@ -27,7 +27,7 @@
     "eprom": "^1.0.0",
     "express": "^4.17.1",
     "finalhandler": "^1.1.2",
-    "helmet": "^4.0.0",
+    "helmet": "^5.0.0",
     "hops-bootstrap": "16.0.0-nightly.3",
     "hops-debug": "16.0.0-nightly.3",
     "hops-mixin": "16.0.0-nightly.3",
