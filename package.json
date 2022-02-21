@@ -64,37 +64,6 @@
             "graphql-tag": "^2.12"
           }
         }
-      },
-      {
-        "name": "internal-workshop",
-        "repositories": [
-          {
-            "url": ".",
-            "commands": [
-              ""
-            ]
-          },
-          {
-            "url": "enc:r6BTklZr+axySHpOBj0JysOusV4S8o7YtSxZ9fi66rL5grn3vMkHUbMdb3OY5+tv",
-            "directory": "internal-hops",
-            "branch": "release-bot/next-v14.x",
-            "commands": [
-              ""
-            ]
-          },
-          {
-            "url": "enc:r6BTklZr+axySHpOBj0JyiGPh/P525a+dfwfWHQq5kkrY1Wruq8QaSL2vCfb0cWp",
-            "branch": "hops-14.x"
-          }
-        ],
-        "rootManifest": {
-          "resolutions": {
-            "babel-jest": "^27",
-            "colors": "1.4.0",
-            "jest": "^27",
-            "ts-jest": "^27"
-          }
-        }
       }
     ]
   },
