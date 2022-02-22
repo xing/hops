@@ -39,7 +39,13 @@ class ExpressMixin extends Mixin {
     const cookieParser = require('cookie-parser');
     const { distDir } = this.config;
     middlewares.preinitial.push(
-      helmet({ contentSecurityPolicy: false }),
+      helmet({
+        contentSecurityPolicy: false,
+        crossOriginEmbedderPolicy: false,
+        crossOriginOpenerPolicy: false,
+        crossOriginResourcePolicy: false,
+        originAgentCluster: false,
+      }),
       cookieParser()
     );
     middlewares.files.push(
