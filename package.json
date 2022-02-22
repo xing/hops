@@ -229,7 +229,7 @@
     "jest-runner-eslint": "1.0.0",
     "jest-runner-prettier": "0.3.7",
     "jest-watch-select-projects": "2.0.0",
-    "jest-watch-typeahead": "0.6.3",
+    "jest-watch-typeahead": "0.6.5",
     "lerna": "^4.0.0",
     "lint-staged": "^12.0.0",
     "prettier": "^2.0.0"
