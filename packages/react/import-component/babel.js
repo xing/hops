@@ -81,7 +81,12 @@ module.exports = ({ types: t }) => ({
           const hasher = crypto.createHash('md4');
           hasher.update(nodePath.relative(this.opts.rootDir, state.filename));
           hasher.update(importedComponent);
-          const hash = hasher.digest('base64').slice(0, 4);
+          const hash = hasher
+            .digest('base64')
+            .replace('/', '-')
+            .replace('+', '_')
+            .replace('=', '')
+            .slice(0, 4);
 
           t.addComment(
             argPath.node,
