@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.2](https://github.com/xing/hops/compare/v15.1.1...v15.1.2) (2022-02-23)
+
+
+### Bug Fixes
+
+* **react:** replace invalid characters in chunk name ([58486fe](https://github.com/xing/hops/commit/58486fea9007b4a03320209653623bf6a8a264f7))
+* update dependency mime to v3 ([6d4e500](https://github.com/xing/hops/commit/6d4e500aae6c6466326621221a07614bbf5a628f))
+* update dependency minimatch to v5 ([8671e9f](https://github.com/xing/hops/commit/8671e9f51f11313fba6c20bb025442d1f1a6d7c7))
+* update dependency puppeteer to v13 ([f4ea28e](https://github.com/xing/hops/commit/f4ea28ec58927f080f8f43bdce1067f325d60d17))
+
+
+
+
+
 ## [15.1.1](https://github.com/xing/hops/compare/v15.1.0...v15.1.1) (2022-02-17)
 
 
