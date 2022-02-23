@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.2](https://github.com/xing/hops/compare/v15.1.1...v15.1.2) (2022-02-23)
+
+
+### Bug Fixes
+
+* **react:** replace invalid characters in chunk name ([58486fe](https://github.com/xing/hops/commit/58486fea9007b4a03320209653623bf6a8a264f7))
+
+
+
+
+
 ## [15.1.1](https://github.com/xing/hops/compare/v15.1.0...v15.1.1) (2022-02-17)
 
 **Note:** Version bump only for package hops-react
