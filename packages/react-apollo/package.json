@@ -27,7 +27,7 @@
     "@graphql-tools/schema": "^8.0.0",
     "cross-fetch": "^3.0.4",
     "find-up": "^5.0.0",
-    "graphql": "^15.0.0",
+    "graphql": "^16.0.0",
     "hops-config": "15.1.2",
     "hops-mixin": "15.1.2",
     "hops-react": "15.1.2",
