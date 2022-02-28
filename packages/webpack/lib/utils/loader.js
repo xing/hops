@@ -1,6 +1,5 @@
 const escapeJS = require('jsesc');
 const escapeRegExp = require('escape-string-regexp');
-const { getOptions } = require('loader-utils');
 
 const getHelpers = (type) =>
   type === 'server'
@@ -28,7 +27,7 @@ const getMixins = (type, mixins) => {
 module.exports = function configLoader() {
   this.cacheable();
 
-  const { type, mixins, config, rootDir } = getOptions(this);
+  const { type, mixins, config, rootDir } = this.getOptions();
 
   return `
 ${getHelpers(type)}
