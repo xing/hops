@@ -39,7 +39,8 @@
     "release:rollback": "yarn is-release-bot-commit && git reset --hard HEAD^",
     "release:create-nightly": "yarn release premajor --conventional-prerelease --preid nightly",
     "release:rc": "yarn release --conventional-prerelease --preid rc",
-    "release:graduate": "yarn release --conventional-graduate"
+    "release:graduate": "yarn release --conventional-graduate",
+    "prepare": "husky install"
   },
   "canarist": {
     "projects": [
@@ -66,12 +67,6 @@
         }
       }
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{js,json,css}": [
@@ -229,7 +224,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
-    "husky": "^4.3.8",
+    "husky": "^7.0.0",
     "jest": "^27.0.0",
     "jest-runner-eslint": "1.0.0",
     "jest-runner-prettier": "0.3.7",
