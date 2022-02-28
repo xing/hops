@@ -23,7 +23,7 @@ jobs:
           SHA=$(git log -n 1 --pretty=format:%H -- CHANGELOG.md | tr -d '\n')
           git checkout ${SHA}
       - name: Use Node.js 14.x
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 14.x
       - name: Get yarn cache directory path
