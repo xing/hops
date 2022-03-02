@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-nightly.4](https://github.com/xing/hops/compare/v16.0.0-nightly.3...v16.0.0-nightly.4) (2022-03-02)
+
+
+### Bug Fixes
+
+* update dependency minimatch to v5 ([f05b22b](https://github.com/xing/hops/commit/f05b22b9ec23792ead5eaef2cf89f1100458c24e))
+
+
+
+
+
 # [16.0.0-nightly.3](https://github.com/xing/hops/compare/v16.0.0-nightly.2...v16.0.0-nightly.3) (2022-02-17)
 
 

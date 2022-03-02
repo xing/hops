@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-nightly.4](https://github.com/xing/hops/compare/v16.0.0-nightly.3...v16.0.0-nightly.4) (2022-03-02)
+
+
+### Bug Fixes
+
+* disable new helmet defaults ([72f62df](https://github.com/xing/hops/commit/72f62df07c46d691db5f609bf17a4028cd507cfb))
+* **react:** replace invalid characters in chunk name ([bf735bd](https://github.com/xing/hops/commit/bf735bdda65fe7b33e7fe19aaddaa42bb2917644))
+* resolutions msw 0.38 ([ca09616](https://github.com/xing/hops/commit/ca09616c878e2f6f85f60fc7e4c0efd5c4ed2840))
+* update dependency @pmmmwh/react-refresh-webpack-plugin to ^0.5.0 ([5af4487](https://github.com/xing/hops/commit/5af4487c8128daeee8cbc832c4cfcc9614a39d3a))
+* update dependency dotenv to v16 ([ce67cbb](https://github.com/xing/hops/commit/ce67cbb0cfaf854f97cc589175e49821d67ee47b))
+* update dependency graphql to v16 ([837008e](https://github.com/xing/hops/commit/837008e3a610fa141e107b0ae4c42a07d1b2b62f))
+* update dependency helmet to v5 ([31d2f5b](https://github.com/xing/hops/commit/31d2f5bcc3dc87dab1d6dc115c64bbae3d3dab1a))
+* update dependency mime to v3 ([31649d0](https://github.com/xing/hops/commit/31649d031c7818305ae17966eb2b35fc866d65a1))
+* update dependency mini-css-extract-plugin to v2 ([2fb57d9](https://github.com/xing/hops/commit/2fb57d971f98c8a754d4e3d05f6014136cdf0baf))
+* update dependency minimatch to v5 ([f05b22b](https://github.com/xing/hops/commit/f05b22b9ec23792ead5eaef2cf89f1100458c24e))
+* update dependency msw to ^0.38.0 ([8b847e4](https://github.com/xing/hops/commit/8b847e4ee30f15beb123415e4cf4afa69959fe77))
+* update dependency puppeteer to v13 ([d351160](https://github.com/xing/hops/commit/d3511607d204c09d50a2217d3d731c0688ec62c2))
+* update dependency react-refresh to ^0.11.0 ([27ebe82](https://github.com/xing/hops/commit/27ebe822844464798cc924d6b5f7fde0554d016b))
+
+
+### BREAKING CHANGES
+
+* graphql is in v16 now, it includes many breaking
+changes. Please take a look at the graphql docs for details
+* if you use hashes (`#`) in your dotenv variables,
+you have to use quotes now:
+
+```
+SECRET_HASH=something#with#hash
+```
+
+must be quoted now:
+
+```
+SECRET_HASH="something#with#hash"
+```
+
+
+
+
+
 # [16.0.0-nightly.3](https://github.com/xing/hops/compare/v16.0.0-nightly.2...v16.0.0-nightly.3) (2022-02-17)
 
 

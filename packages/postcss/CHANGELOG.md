@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-nightly.4](https://github.com/xing/hops/compare/v16.0.0-nightly.3...v16.0.0-nightly.4) (2022-03-02)
+
+
+### Bug Fixes
+
+* update dependency mini-css-extract-plugin to v2 ([2fb57d9](https://github.com/xing/hops/commit/2fb57d971f98c8a754d4e3d05f6014136cdf0baf))
+
+
+
+
+
 # [16.0.0-nightly.3](https://github.com/xing/hops/compare/v16.0.0-nightly.2...v16.0.0-nightly.3) (2022-02-17)
 
 
