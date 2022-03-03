@@ -62,8 +62,7 @@
           "resolutions": {
             "@babel/core": "7.15.0",
             "colors": "1.4.0",
-            "graphql-tag": "^2.12",
-            "msw": "^0.38.0"
+            "graphql-tag": "^2.12"
           }
         }
       }
