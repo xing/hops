@@ -12,18 +12,36 @@ const { resolveMixins } = require('./resolver');
 const { validate } = require('./validator');
 const { environmentalize, placeholdify, merge } = require('./utils');
 
-exports.getConfig = (overrides = {}) => {
+const _getDefaults = () => {
   const pkgFile = findUp('package.json');
   const pkgData = require(pkgFile);
   const rootDir = dirname(pkgFile);
   const lockFile = findUp('yarn.lock', { cwd: rootDir });
+  const settings = loadConfig('hops', pkgData, rootDir);
 
   loadEnv({ path: join(rootDir, '.env') });
 
-  const defaults = {
+  return {
     rootDir,
     name: pkgData.name || basename(rootDir),
     version: pkgData.version || '0.0.0',
+    _workspace: lockFile ? dirname(lockFile) : rootDir,
+    settings,
+  };
+};
+
+exports.getConfig = ({
+  untoolNamespace = 'hops',
+  getDefaults = _getDefaults,
+  _mixins,
+  ...overrides
+}) => {
+  const { rootDir, name, version, _workspace, settings } = getDefaults();
+
+  const defaults = {
+    rootDir,
+    name,
+    version,
     mixins: [],
     mixinTypes: {
       core: {
@@ -37,7 +55,6 @@ exports.getConfig = (overrides = {}) => {
       version: { type: 'string', minLength: 1 },
     },
   };
-  const settings = loadConfig(pkgData, rootDir);
 
   const raw = merge(defaults, settings, overrides);
   const { mixins, mixinTypes, configSchema, ...clean } = raw;
@@ -45,10 +62,10 @@ exports.getConfig = (overrides = {}) => {
 
   const config = {
     ...processed,
-    _mixins: resolveMixins(rootDir, mixinTypes, mixins),
+    _mixins: _mixins || resolveMixins(rootDir, mixinTypes, mixins),
     _warnings: validate(processed, configSchema),
-    _workspace: lockFile ? dirname(lockFile) : rootDir,
-    _overrides: overrides,
+    _workspace,
+    _overrides: { untoolNamespace, ...overrides },
   };
   debug(config);
   return config;
