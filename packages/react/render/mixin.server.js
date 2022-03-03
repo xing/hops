@@ -41,16 +41,28 @@ class ReactMixin extends Mixin {
   }
 
   render(req, res, next) {
-    return this.bootstrap(req, res)
-      .then(() => this.enhanceElement(this.element))
-      .then((element) =>
-        this.fetchData({}, element).then(() => this.renderToFragments(element))
-      )
+    let waiting = this.bootstrap(req, res);
+
+    if (res.locals.noSSR) {
+      waiting = waiting.then(() => {
+        return {};
+      });
+    } else {
+      waiting = waiting
+        .then(() => this.enhanceElement(this.element))
+        .then((element) => {
+          return this.fetchData({}, element).then(() =>
+            this.renderToFragments(element)
+          );
+        });
+    }
+
+    return waiting
       .then((fragments) => {
         // note: res.locals.helmetContext is set by the ReactHelmetMixin
         Object.assign(
           fragments,
-          Object.entries(res.locals.helmetContext.helmet).reduce(
+          Object.entries(res.locals.helmetContext.helmet || {}).reduce(
             (result, [key, value]) => ({ ...result, [key]: value.toString() }),
             { headPrefix: '', headSuffix: '' }
           )
