@@ -26,5 +26,8 @@ module.exports = {
     port: { oneOf: [{ type: 'string' }, { type: 'number' }] },
     distDir: { type: 'string', minLength: 1, absolutePath: true },
     gracePeriod: { type: 'number' },
+    helmetConfig: {
+      type: 'object',
+    },
   },
 };

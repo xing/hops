@@ -35,6 +35,7 @@ You may use either `hops serve -p` or its equivalent `NODE_ENV=production hops s
 | `port` | `String` | `[PORT]` | _no_ | Specify the Port that Hops should listen on |
 | `distDir` | `String` | `'<rootDir>/dist'` | _no_ | The folder from which to serve static assets |
 | `gracePeriod` | `number` | `30000` | _no_ | Time to wait (in ms) until killing the server |
+| `helmetConfig` | `Object` | `{}` | _no_ | Headers to set or overwrite in helmet |
 
 ##### `https`
 
@@ -90,6 +91,10 @@ The amount of time (in milliseconds) to wait after receiving a [`SIGTERM`](https
   "gracePeriod": 60000
 }
 ```
+
+##### `helmetConfig`
+
+The config to set security http headers via [helmet](https://helmetjs.github.io/).
 
 #### Render Options
 
