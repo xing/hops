@@ -1,6 +1,6 @@
 {
   "name": "jest-preset-hops",
-  "version": "15.1.2",
+  "version": "15.2.0",
   "description": "Jest preset to work with Hops powered projects",
   "keywords": [
     "hops",
@@ -30,7 +30,7 @@
     "@babel/preset-react": "^7.9.4",
     "chalk": "^4.0.0",
     "core-js": "^3.2.1",
-    "hops": "15.1.2",
+    "hops": "15.2.0",
     "identity-obj-proxy": "^3.0.0",
     "import-from": "^4.0.0",
     "regenerator-runtime": "^0.13.3"

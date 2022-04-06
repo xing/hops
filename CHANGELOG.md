@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.2.0](https://github.com/xing/hops/compare/v15.1.2...v15.2.0) (2022-04-06)
+
+
+### Bug Fixes
+
+* update dependency loader-utils to v3 ([3de91e1](https://github.com/xing/hops/commit/3de91e1988286e8c5e3729d7b877e434acd166d3))
+* update dependency react-refresh to ^0.11.0 ([7adebdc](https://github.com/xing/hops/commit/7adebdc44a9c818d030efb24c3a084c6881b9995))
+
+
+### Features
+
+* **express:** make helmet headers configurable ([71bd502](https://github.com/xing/hops/commit/71bd50295226eb4cdfd855964b0ca14ee20c3384))
+
+
+
+
+
 ## [15.1.2](https://github.com/xing/hops/compare/v15.1.1...v15.1.2) (2022-02-23)
 
 
