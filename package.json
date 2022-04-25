@@ -62,7 +62,8 @@
           "resolutions": {
             "@babel/core": "7.15.0",
             "colors": "1.4.0",
-            "graphql-tag": "^2.12"
+            "graphql-tag": "^2.12",
+            "event-source-polyfill": "1.0.25"
           }
         }
       }
