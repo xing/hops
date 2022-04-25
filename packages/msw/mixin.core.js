@@ -11,12 +11,18 @@ function exists(path) {
 }
 
 const getMockServiceWorkerContent = () => {
-  const { mkdtempSync, readFileSync } = require('fs');
+  const { mkdtempSync, readFileSync, mkdirSync } = require('fs');
   const { tmpdir } = require('os');
   const { join } = require('path');
   const { sync: execa } = require('execa');
+  let dir;
 
-  const dir = mkdtempSync(join(tmpdir(), 'msw-'));
+  try {
+    dir = mkdtempSync(join(tmpdir(), 'msw-'));
+  } catch (error) {
+    mkdirSync(tmpdir());
+    dir = mkdtempSync(join(tmpdir(), 'msw-'));
+  }
 
   execa(process.execPath, [
     require.resolve('msw/cli'),
