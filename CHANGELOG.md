@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.1](https://github.com/xing/hops/compare/v15.2.0...v15.2.1) (2022-06-20)
+
+
+### Bug Fixes
+
+* **msw:** create tmp folder on mkdtempSync failure ([fd1229e](https://github.com/xing/hops/commit/fd1229e7a4eb70172c142406b15f23d13f370441))
+
+
+
+
+
 # [15.2.0](https://github.com/xing/hops/compare/v15.1.2...v15.2.0) (2022-04-06)
 
 
