@@ -64,9 +64,20 @@ class GraphQLMixin extends Mixin {
   }
 
   getApolloCache() {
-    const { cache = new InMemoryCache({ possibleTypes }) } = this.options;
+    const { cache } = this.options;
 
-    return cache;
+    if (cache && process.env.NODE_ENV !== 'production') {
+      this.getLogger().warn(
+        'Custom Apollo Cache was used, this will lead to memory leaks, use custom setting `possibleTypes` instead'
+      );
+    }
+
+    return (
+      cache ??
+      new InMemoryCache({
+        possibleTypes: this.options.possibleTypes || possibleTypes,
+      })
+    );
   }
 
   async renderToFragments(element) {
