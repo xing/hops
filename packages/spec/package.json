@@ -28,7 +28,7 @@
     "node": "14 || 16"
   },
   "devDependencies": {
-    "@apollo/client": "3.4.17",
+    "@apollo/client": "3.11.8",
     "@graphql-tools/delegate": "^8.0.0",
     "@graphql-tools/mock": "^8.0.0",
     "@graphql-tools/schema": "^8.0.0",
