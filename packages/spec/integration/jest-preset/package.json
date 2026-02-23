@@ -16,6 +16,6 @@
     ]
   },
   "dependencies": {
-    "hops-preset-jest": "*"
+    "jest-preset-hops": "*"
   }
 }

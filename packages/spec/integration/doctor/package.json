@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-preset-jest": "*",
+    "jest-preset-hops": "*",
     "react": "*"
   }
 }
