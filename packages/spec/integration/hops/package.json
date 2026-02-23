@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "hops": "*",
-    "hops-preset-jest": "*",
+    "jest-preset-hops": "*",
     "react": "*",
     "react-helmet-async": "*",
     "react-router-dom": "*",
