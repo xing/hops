@@ -227,7 +227,7 @@
     "husky": "^7.0.0",
     "jest": "^27.0.0",
     "jest-runner-eslint": "1.0.0",
-    "jest-runner-prettier": "0.3.7",
+    "jest-runner-prettier": "1.0.0",
     "jest-watch-select-projects": "2.0.0",
     "jest-watch-typeahead": "1.0.0",
     "lerna": "^4.0.0",
