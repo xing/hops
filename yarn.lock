@@ -6812,9 +6812,9 @@ graphql-tag@^2.11.0, graphql-tag@^2.12.3:
     tslib "^2.1.0"
 
 graphql@^16.0.0, graphql@^16.3.0:
-  version "16.3.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.3.0.tgz#a91e24d10babf9e60c706919bb182b53ccdffc05"
-  integrity sha512-xm+ANmA16BzCT5pLjuXySbQVFwH3oJctUVdy81w1sV0vBU0KgDdBGtxQOUd5zqOBk/JayAFeG8Dlmeq74rjm/A==
+  version "16.15.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.15.0.tgz#9e87af2e3adb6808cf3bde1c4f0bbfa675b4bac1"
+  integrity sha512-32kz9FecohDiC/tgcViwnRXM7HFBVTPiW7pHO+DikKOI5KjhU/jNULOReXsrFqt2WAYbE9xFXsTffJw6iTO8qw==
 
 gzip-size@^6.0.0:
   version "6.0.0"
